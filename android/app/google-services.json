@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "325206134116",
+    "project_id": "know-yourself-60f9b",
+    "storage_bucket": "know-yourself-60f9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325206134116:android:fc2e9a7c62a7e8218e3e71",
+        "android_client_info": {
+          "package_name": "com.knowyourself.beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325206134116-q10oh895nch8al76i1uufhl0phav58ee.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.knowyourself.beta",
+            "certificate_hash": "131acf073936be4673d05fb3919456da07ec26df"
+          }
+        },
+        {
+          "client_id": "325206134116-o3pc0hmenrp7st7vnqhdq7i8hburloh9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkQ4UXWamKwCHizYmpGq14GSEHnZChhnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325206134116-o3pc0hmenrp7st7vnqhdq7i8hburloh9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "325206134116-pmmjqnk6mua70addqsa58u73t22v9t5s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.knowyourself.beta"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
