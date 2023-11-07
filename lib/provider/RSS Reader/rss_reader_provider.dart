@@ -18,7 +18,7 @@ class RSSReaderProvider extends ChangeNotifier {
     try {
       var response = await client.get(
         Uri.parse(
-          'https://www.google.com',
+          'https://www.mentcura.com/blog/blog-feed.xml',
         ),
       );
 

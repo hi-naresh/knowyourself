@@ -68,15 +68,15 @@ Future<void> main() async {
   Hive.init(dir.path);
   AppInfo.init();
   JournalHiveBox.init(dateTime: DateTime.now());
-  NotificationManger.init();
-  Workmanager().initialize(
-    callbackDispatcher, // The top level function, aka callbackDispatcher
-  );
-  Workmanager().registerPeriodicTask(
-    "quote-notification",
-    "QuoteNotification",
-    frequency: const Duration(hours: 2),
-  );
+  // NotificationManger.init();
+  // Workmanager().initialize(
+  //   callbackDispatcher, // The top level function, aka callbackDispatcher
+  // );
+  // Workmanager().registerPeriodicTask(
+  //   "quote-notification",
+  //   "QuoteNotification",
+  //   frequency: const Duration(hours: 2),
+  // );
   // BackGroundManager.init();
   GoogleFonts.config.allowRuntimeFetching = false;
   runApp( MyApp(
