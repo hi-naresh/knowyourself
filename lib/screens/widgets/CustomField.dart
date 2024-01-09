@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourself/utils/ui_colors.dart';
 import 'Constants.dart';
 
 Column myField(
@@ -34,10 +35,10 @@ Column myField(
 
       const SizedBox(height: 10),
       Container(
-        width: 360,
+        width: double.infinity,
         height: 50,
         decoration: border(context,
-            colorbg: Colors.grey.withOpacity(0.25),
+            colorbg: kPrimaryColor.withOpacity(0.15),
             borderColor: Colors.transparent,
             borderRadius: 10),
         child: TextFormField(

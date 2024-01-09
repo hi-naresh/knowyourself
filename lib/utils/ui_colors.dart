@@ -7,7 +7,7 @@ const Color kJournalLightCardColor = Color(0xFFFFFFFF);
 const Color kJournalDarkCardColor = Color(0xFF3C3C56);
 const Color kJournalDarkPrimaryColor = Color(0xFF111116);
 const Color kJournalLightPrimaryColor = Color(0xFFFFD9E9);
-const Color kJournalPrimaryColor = Color(0xFFFF4D98);
+const Color kJournalPrimaryColor = Color(0xFF016EEA);
 const Color kFABDarkColor = Color(0xFF111116);
 const Color kFABLightColor = Color(0xFFFFD9E9);
 const Color kCalendarLightContainerColor = Color(0xFFE6E6EA);
@@ -65,11 +65,13 @@ const Color kSettingsDarkCardColor = Color(0x000000ff);
 const Color kLightModeScaffoldColor = Color(0xFFFFFFFF);
 const Color kDarkModeScaffoldColor = Color(0xff232330);
 
-const Color kPrimaryColor = Color(0xFF724CF9);
+const Color kPrimaryColor = Color(0xFFFF5D9C);
+const Color kBackground =  Color(0xFFFFE0F7);
 const Color kSecondaryColor = Color(0xFFD2C6FF);
 const Color kPrimaryTextColor = Colors.black;
 const Color kSecondaryTextColor = Color(0xFF8E8E8E);
 const Color kLightModeTextFieldColor = Color(0xFFE6E6EA);
+
 
 const Color kDarkModeCardColor = Color(0xff3C3C56);
 
@@ -79,7 +81,7 @@ const Color kLightModeBottomNavBarColor = Colors.white;
 const Color kDarkModeBottomNavBarColor = Color(0xFF3C3C56);
 const Color kCalendarPrimaryColor = Color(0xFFFF4D98);
 const Color kCalendarSecondaryColor = Color(0xfff0f0f4);
-const Color kTodoPrimaryColor = Color(0xFFFF852D);
+const Color kTodoPrimaryColor = Color(0xFF19C788);
 const Color kHomePrimaryColor = Color(0xFF6A61F1);
 const Color kAccountPrimaryColor = Color(0xFF6A61F1);
 

@@ -79,7 +79,7 @@ Future<void> main() async {
   // );
   // BackGroundManager.init();
   GoogleFonts.config.allowRuntimeFetching = false;
-  runApp( MyApp(
+  runApp( const MyApp(
       // isUserSignedIn: isUserSignedIn
   ));
 }

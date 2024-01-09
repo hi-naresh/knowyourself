@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/screens/Register/LoginScreen.dart';
 import 'package:knowyourself/screens/Register/SignUpInfo.dart';
+import 'package:knowyourself/screens/widgets/global_styles.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:knowyourself/screens/Extras/Avatar%20Select%20Screen/avatar_select_screen.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
+
+import '../Avatar Select Screen/avatar_select_screen.dart';
 
 // ignore: must_be_immutable
 class OnBoardingScreen extends StatefulWidget {
@@ -18,58 +20,46 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController _pageController = PageController();
 
+  static TextStyle head(Color color) => TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w800,
+    fontFamily: 'Poppins',
+    color:color,
+  );
+
+  static TextStyle info(Color color) => TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Poppins',
+    color:color,
+  );
+
   final Text onBoardScreen1RichText = Text.rich(
     TextSpan(
       children: [
         TextSpan(
-          text: "Express Your ",
-          style: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.w600),
+          text: 'Welcome to ',
+          style : head(Color(0xFF191D21)),
         ),
         TextSpan(
-          text: "Feelings ",
-          style: TextStyle(
-              fontSize: 28.sp,
-              fontWeight: FontWeight.w600,
-              height: 1.2,
-              color: kPrimaryColor),
+          text: 'K',
+          style: head(Color(0xFFFF5D9C)),
         ),
         TextSpan(
-          text: "and Create Your ",
-          style: TextStyle(
-              fontSize: 28.sp, fontWeight: FontWeight.w600, height: 1.2),
+          text: 'now ',
+          style: head(Color(0xFF19C788)),
         ),
         TextSpan(
-          text: "Entries ",
-          style: TextStyle(
-              fontSize: 28.sp,
-              fontWeight: FontWeight.w600,
-              color: kPrimaryColor,
-              height: 1.2),
-        ),
-      ],
-    ),
-  );
-
-  final Text onBoardScreen3RichText = Text.rich(
-    TextSpan(
-      children: [
-        TextSpan(
-          text: "Keep a record upon your ",
-          style: TextStyle(
-              fontSize: 28.sp, fontWeight: FontWeight.w600, height: 1.2),
+          text: 'Yourself ',
+          style: head(Color(0xFF0086DF))
         ),
         TextSpan(
-          text: "achievements ",
-          style: TextStyle(
-              fontSize: 28.sp,
-              fontWeight: FontWeight.w600,
-              color: kJournalPrimaryColor,
-              height: 1.2),
+          text: 'Better\n',
+          style: head(Color(0xFF191D21)),
         ),
         TextSpan(
-          text: "and celebrate ",
-          style: TextStyle(
-              fontSize: 28.sp, fontWeight: FontWeight.w600, height: 1.2),
+          text:  'Embark on a transformative journey with Know Yourself Better, unlocking the tools to illuminate the spark within.',
+          style: info(Color(0xFF191D21))
         ),
       ],
     ),
@@ -79,17 +69,35 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     TextSpan(
       children: [
         TextSpan(
-          text: "Add & keep a check upon your ",
-          style: TextStyle(
-              fontSize: 28.sp, fontWeight: FontWeight.w600, height: 1.2),
+          text: 'Feel,',
+          style: head(Color(0xFFFF5D9C)),
         ),
         TextSpan(
-          text: "daily task ",
-          style: TextStyle(
-              fontSize: 28.sp,
-              fontWeight: FontWeight.w600,
-              color: kTodoPrimaryColor,
-              height: 1.2),
+          text: 'Track,',
+          style: head(Color(0xFF19C788)),
+        ),
+        TextSpan(
+          text: 'Thrive. ',
+          style: head(Color(0xFF0086DF))
+        ),
+        TextSpan(
+          text:   "\n\nCapture emotions, track feelings, and gain personalized insights. Empower yourself for a deeper understanding, navigating life's highs and lows.",
+          style: info(Color(0xFF191D21)),
+        ),
+      ],
+    ),
+  );
+
+  final Text onBoardScreen3RichText = Text.rich(
+    TextSpan(
+      children: [
+        TextSpan(
+          text: 'Get Started ',
+          style: head(Color(0xFF0086DF)),
+        ),
+        TextSpan(
+          text: "\n\nYour path to self-discovery \nawaits—let's start this empowering journey together.",
+          style: info(const Color(0xFF191D21)),
         ),
       ],
     ),
@@ -113,11 +121,32 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return kJournalPrimaryColor;
   }
 
+  Future showBottomSheet(BuildContext context, {required Widget child}) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          decoration: const BoxDecoration(
+            color: Color(0xFFFFE0F7),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
+            ),
+          ),
+          height: 750,
+          // color: Colors.white,
+          child: child,
+        );
+      },
+    );
+  }
+
   int activeIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFFE4F8),
       body: Stack(
         alignment: Alignment.center,
         children: [
@@ -131,15 +160,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             children: [
               _buildPage(
                   richText: onBoardScreen1RichText,
-                  svgName: "onboard1",
+                  pngName: "onboard1",
                   context: context),
               _buildPage(
                   richText: onBoardScreen2RichText,
-                  svgName: "onboard2",
+                  pngName: "onboard2",
                   context: context),
               _buildPage(
                   richText: onBoardScreen3RichText,
-                  svgName: "onboard3",
+                  pngName: "getstarted",
                   context: context),
             ],
           ),
@@ -164,8 +193,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 if (activeIndex == 2) {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (BuildContext context) {
-                    // return const AvatarSelectScreen();
-                    return LoginScreen();
+                    return const AvatarSelectScreen();
+                    // return const LoginScreen();
                   }));
 
                   return;
@@ -178,9 +207,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      button(context, 'Login', () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()))),
+                      button(context, 'Sign In', () => showBottomSheet(context, child: const LoginScreen())),
                       SizedBox(width: 20.w,),
-                      button(context, 'Sign Up', () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignupInfoScreen()))),
+                      button(context, 'Sign Up', () => showBottomSheet(context, child: const SignupInfoScreen())),
                     ],
                   )
                   :
@@ -230,26 +259,23 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   Container _buildPage(
       {required Text richText,
-      required String svgName,
+      required String pngName,
       required BuildContext context}) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(40),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: 30.h,
-          ),
-          richText,
-          SizedBox(
             height: 350.h,
             width: double.infinity,
-            child: SvgPicture.asset(
-              "assets/illustrations/$svgName.svg",
+            child: Image.asset(
+              "assets/illustrations/$pngName.png",
               fit: BoxFit.contain,
             ),
           ),
+          richText,
           const Spacer()
         ],
       ),

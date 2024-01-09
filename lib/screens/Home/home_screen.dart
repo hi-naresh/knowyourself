@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:knowyourself/screens/Home/widgets/mood_widget.dart';
+import 'package:knowyourself/screens/Home/widgets/recommend_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/provider/App%20State/app_state_provider.dart';
 import 'package:knowyourself/provider/Extras/user_data_provider.dart';
@@ -36,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen>
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: 50.h,
+            height: 60.h,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen>
                             TextSpan(
                               text: value.userName,
                               style: TextStyle(
-                                  fontSize: 35.sp,
+                                  fontSize: 30.sp,
                                   fontWeight: FontWeight.w600,
                                   height: 1.2),
                             ),
@@ -100,25 +102,13 @@ class _HomeScreenState extends State<HomeScreen>
           SizedBox(
             height: 12.h,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Quote of the day",
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
           const Padding(
               padding: EdgeInsets.only(left: 20, right: 20),
-              child: QuoteWidget()),
+              child: SizedBox(
+                  height: 220,
+                  width: double.infinity,
+                  child: MoodWidget())
+          ),
           SizedBox(
             height: 10.h,
           ),
@@ -127,20 +117,24 @@ class _HomeScreenState extends State<HomeScreen>
             child: TodoRadialWidget(),
           ),
           SizedBox(
-            height: 12.h,
+            height: 20.h,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 20, right: 20),
+            child: RecommendWidget(),
           ),
 
-          GestureDetector(
-            onTap: () {
-              // Navigator.of(context)
-              //     .push(MaterialPageRoute(builder: (BuildContext context) {
-              //   return const ChatbotScreen();
-              // }));
-              Provider.of<AppStateProvider>(context, listen: false)
-                  .updatePage(2);
-            },
-            child: const JournalEntryTextWidget(),
-          ),
+          // GestureDetector(
+          //   onTap: () {
+          //     // Navigator.of(context)
+          //     //     .push(MaterialPageRoute(builder: (BuildContext context) {
+          //     //   return const ChatbotScreen();
+          //     // }));
+          //     Provider.of<AppStateProvider>(context, listen: false)
+          //         .updatePage(2);
+          //   },
+          //   child: const JournalEntryTextWidget(),
+          // ),
 
           // Consumer<JournalProvider>(
           //   builder: (BuildContext context, value, Widget? child) {

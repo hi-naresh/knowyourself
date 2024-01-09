@@ -26,8 +26,11 @@ class _LoginScreenState extends State<LoginScreen> {
   final AuthService _authService = AuthService(); // Add this line
 
   Future<void> login() async {
-    String email = emailController.text.trim();
+    String username = emailController.text.trim();
     String password = passwordController.text.trim();
+
+    String domain = "@aurouniversity.edu.in";
+    String email = "$username$domain";
 
     try {
       UserCredential userCredential = await _authService.signIn(email, password);
@@ -62,12 +65,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return Container(
       key: _scaffoldKey,
-      appBar: myAppBar(context, 'Sign In'),
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
+      child: Padding(
+        padding: const EdgeInsets.all(30.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [

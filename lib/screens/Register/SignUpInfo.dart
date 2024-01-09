@@ -98,9 +98,9 @@ class _SignupInfoScreenState extends State<SignupInfoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: myAppBar(context, 'Sign Up'),
-      body: Column(
+    return Padding(
+      padding: const EdgeInsets.all(30.0),
+      child: Column(
         children: [
           Expanded(
             child: ListView(

@@ -22,7 +22,7 @@ class AvatarSelectScreen extends StatelessWidget {
             width: 70.w,
             decoration: BoxDecoration(
               color: value.avatar != avatar
-                  ? const Color(0xFFE6E6EA)
+                  ? kBackground
                   : kPrimaryColor,
               borderRadius: const BorderRadius.all(
                 Radius.circular(20),
@@ -53,7 +53,7 @@ class AvatarSelectScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  height: 30.h,
+                  height: 60.h,
                 ),
                 Text.rich(
                   TextSpan(
@@ -61,7 +61,7 @@ class AvatarSelectScreen extends StatelessWidget {
                       TextSpan(
                         text: 'What Should We ',
                         style: TextStyle(
-                          fontSize: 32.sp,
+                          fontSize: 32,
                           fontWeight: FontWeight.w600,
                           height: 1,
                         ),
@@ -127,7 +127,7 @@ class AvatarSelectScreen extends StatelessWidget {
                       TextSpan(
                         text: 'Which ',
                         style: TextStyle(
-                          fontSize: 32.sp,
+                          fontSize: 32,
                           fontWeight: FontWeight.w600,
                           height: 1,
                         ),
@@ -135,7 +135,7 @@ class AvatarSelectScreen extends StatelessWidget {
                       TextSpan(
                         text: 'Avatar ',
                         style: TextStyle(
-                          fontSize: 32.sp,
+                          fontSize: 32,
                           fontWeight: FontWeight.w600,
                           color: kPrimaryColor,
                           height: 1,
@@ -144,7 +144,7 @@ class AvatarSelectScreen extends StatelessWidget {
                       TextSpan(
                         text: 'Would You Like?',
                         style: TextStyle(
-                          fontSize: 32.sp,
+                          fontSize: 32,
                           fontWeight: FontWeight.w600,
                           height: 1,
                         ),
