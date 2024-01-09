@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/screens/Register/LoginScreen.dart';
 import 'package:knowyourself/screens/Register/SignUpInfo.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:knowyourself/screens/Extras/Avatar%20Select%20Screen/avatar_select_screen.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 
 // ignore: must_be_immutable
@@ -18,82 +17,112 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController _pageController = PageController();
 
-  final Text onBoardScreen1RichText = Text.rich(
+  final Text onBoardScreen1RichText = const Text.rich(
     TextSpan(
       children: [
         TextSpan(
-          text: "Express Your ",
-          style: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.w600),
+          text: 'Welcome to ',
+          style: TextStyle(
+            color: Color(0xFF191D21),
+            fontSize: 36,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins',
+          ),
         ),
         TextSpan(
-          text: "Feelings ",
+          text: 'K',
           style: TextStyle(
-              fontSize: 28.sp,
-              fontWeight: FontWeight.w600,
-              height: 1.2,
-              color: kPrimaryColor),
+            color: Color(0xFFFF5D9C),
+            fontSize: 36,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins',
+          ),
         ),
         TextSpan(
-          text: "and Create Your ",
+          text: 'now ',
           style: TextStyle(
-              fontSize: 28.sp, fontWeight: FontWeight.w600, height: 1.2),
+            color: Color(0xFF19C788),
+            fontSize: 36,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins',
+          ),
         ),
         TextSpan(
-          text: "Entries ",
+          text: 'Yourself ',
           style: TextStyle(
-              fontSize: 28.sp,
-              fontWeight: FontWeight.w600,
-              color: kPrimaryColor,
-              height: 1.2),
+            color: Color(0xFF0086DF),
+            fontSize: 36,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins',
+          ),
+        ),
+        TextSpan(
+          text: 'Better\n',
+          style: TextStyle(
+            color: Color(0xFF191D21),
+            fontSize: 36,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins',
+          ),
+        ),
+        TextSpan(
+          text:  'Embark on a transformative journey with Know Yourself Better, unlocking the tools to illuminate the spark within.',
+          style: TextStyle(fontSize: 22.0, fontFamily: 'Poppins', color: Color(0xFF000000)),
         ),
       ],
     ),
   );
 
-  final Text onBoardScreen3RichText = Text.rich(
+  final Text onBoardScreen2RichText = const Text.rich(
     TextSpan(
       children: [
         TextSpan(
-          text: "Keep a record upon your ",
+          text: 'Feel, ',
           style: TextStyle(
-              fontSize: 28.sp, fontWeight: FontWeight.w600, height: 1.2),
+            color: Color(0xFFFF5D9C),
+            fontSize: 36,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins',
+          ),
         ),
         TextSpan(
-          text: "achievements ",
+          text: 'Track, ',
           style: TextStyle(
-              fontSize: 28.sp,
-              fontWeight: FontWeight.w600,
-              color: kJournalPrimaryColor,
-              height: 1.2),
+            color: Color(0xFF19C788),
+            fontSize: 36,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins',
+          ),
         ),
         TextSpan(
-          text: "and celebrate ",
+          text: 'Thrive. ',
           style: TextStyle(
-              fontSize: 28.sp, fontWeight: FontWeight.w600, height: 1.2),
+            color: Color(0xFF0086DF),
+            fontSize: 36,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins',
+          ),
+        ),
+        TextSpan(
+          text:   "Capture emotions, track feelings, and gain personalized insights. Empower yourself for a deeper understanding, navigating life's highs and lows.",
+          style: TextStyle(fontSize: 22.0, fontFamily: 'Poppins', color: Color(0xFF000000)),
         ),
       ],
     ),
   );
 
-  final Text onBoardScreen2RichText = Text.rich(
+  final Text onBoardScreen3RichText = const Text.rich(
     TextSpan(
       children: [
         TextSpan(
-          text: "Add & keep a check upon your ",
-          style: TextStyle(
-              fontSize: 28.sp, fontWeight: FontWeight.w600, height: 1.2),
-        ),
-        TextSpan(
-          text: "daily task ",
-          style: TextStyle(
-              fontSize: 28.sp,
-              fontWeight: FontWeight.w600,
-              color: kTodoPrimaryColor,
-              height: 1.2),
+          text: "\nYour path to self-discovery \nawaits—let's start this empowering journey together.",
+          style: TextStyle(fontSize: 22.0, fontFamily: 'Poppins', color: Color(0xFF000000)),
         ),
       ],
     ),
   );
+
+
 
   Color _buildColor() {
     if (activeIndex == 0) {
@@ -131,15 +160,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             children: [
               _buildPage(
                   richText: onBoardScreen1RichText,
-                  svgName: "onboard1",
+                  pngName: "onboard1",
                   context: context),
               _buildPage(
                   richText: onBoardScreen2RichText,
-                  svgName: "onboard2",
+                  pngName: "onboard2",
                   context: context),
               _buildPage(
                   richText: onBoardScreen3RichText,
-                  svgName: "onboard3",
+                  pngName: "getstarted",
                   context: context),
             ],
           ),
@@ -165,7 +194,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (BuildContext context) {
                     // return const AvatarSelectScreen();
-                    return LoginScreen();
+                    return const LoginScreen();
                   }));
 
                   return;
@@ -178,9 +207,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      button(context, 'Login', () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()))),
+                      button(context, 'Login', () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()))),
                       SizedBox(width: 20.w,),
-                      button(context, 'Sign Up', () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignupInfoScreen()))),
+                      button(context, 'Sign Up', () => Navigator.push(context, MaterialPageRoute(builder: (context) => const SignupInfoScreen()))),
                     ],
                   )
                   :
@@ -230,7 +259,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   Container _buildPage(
       {required Text richText,
-      required String svgName,
+      required String pngName,
       required BuildContext context}) {
     return Container(
       padding: const EdgeInsets.all(20),
@@ -245,8 +274,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           SizedBox(
             height: 350.h,
             width: double.infinity,
-            child: SvgPicture.asset(
-              "assets/illustrations/$svgName.svg",
+            child: Image.asset(
+              "assets/illustrations/$pngName.png",
               fit: BoxFit.contain,
             ),
           ),
