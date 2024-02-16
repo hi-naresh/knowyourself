@@ -23,15 +23,6 @@ class _ArticleScreenState extends State<ArticleScreen>
           parent: AlwaysScrollableScrollPhysics(),
         ),
         slivers: [
-          SliverAppBar(
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            title: Text(
-              "Mindful Reads",
-              style: TextStyle(
-                  fontSize: 24.sp,
-                  color: Theme.of(context).textTheme.bodySmall?.color),
-            ),
-          ),
           Consumer<RSSReaderProvider>(
             builder: (BuildContext context, rss, Widget? child) {
               if (rss.isLoading) {

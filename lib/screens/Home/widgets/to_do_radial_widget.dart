@@ -12,16 +12,9 @@ class TodoRadialWidget extends StatelessWidget {
     return Container(
       height: 120.h,
       width: double.infinity,
-      decoration: const BoxDecoration(
-        color: Color(0xFFFFCDA9),
+      decoration:  BoxDecoration(
+        color: Color(0xFFFFCDA9).withOpacity(0.5),
         borderRadius: BorderRadius.all(Radius.circular(25)),
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.1),
-            offset: Offset(0.0, 4), //(x,y)
-            blurRadius: 38.0,
-          ),
-        ],
       ),
       // margin: const EdgeInsets.all(20),
       padding: EdgeInsets.all(10.r),
@@ -85,7 +78,7 @@ class TodoRadialWidget extends StatelessWidget {
                   completedTasks: (value.toDolist.length -
                       value.getUncompletedTasksCount()),
                   totalTasks: value.toDolist.length,
-                  radius: 40.h,
+                  radius: 32.h,
                   strokeWidth: 10,
                 ),
                 child: SizedBox(

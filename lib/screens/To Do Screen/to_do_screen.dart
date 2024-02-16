@@ -35,6 +35,7 @@ class _ToDoScreenState extends State<ToDoScreen>
     super.build(context);
     _resetSavedData();
     return Scaffold(
+      backgroundColor: kBackground1,
       body: SingleChildScrollView(child: Consumer<AppStateProvider>(
         builder: (BuildContext context, value, Widget? child) {
           return Column(
@@ -42,7 +43,7 @@ class _ToDoScreenState extends State<ToDoScreen>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 20.h,
+                height: 40.h,
               ),
               // Padding(
               //   padding: const EdgeInsets.only(left: 20, top: 20),
@@ -86,9 +87,9 @@ class _ToDoScreenState extends State<ToDoScreen>
                           padding: 0,
                           spacing: 15,
                           indexOfSeenStatus: status.getSeenStatues() - 1,
-                          radius: 35.r,
+                          radius: 25.r,
                           numberOfStatus: status.statusList.length,
-                          strokeWidth: 7,
+                          strokeWidth: 5,
                           seenColor: Colors.grey,
                           image: "assets/avatars/${userData.avatar}.png"),
                     ),

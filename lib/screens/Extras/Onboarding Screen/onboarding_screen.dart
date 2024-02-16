@@ -63,6 +63,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ),
       ],
     ),
+    textAlign: TextAlign.center,
+
   );
 
   final Text onBoardScreen2RichText = Text.rich(
@@ -77,7 +79,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           style: head(Color(0xFF19C788)),
         ),
         TextSpan(
-          text: 'Thrive. ',
+          text: 'Thrive',
           style: head(Color(0xFF0086DF))
         ),
         TextSpan(
@@ -86,21 +88,23 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ),
       ],
     ),
+    textAlign: TextAlign.center,
   );
 
   final Text onBoardScreen3RichText = Text.rich(
     TextSpan(
       children: [
         TextSpan(
-          text: 'Get Started ',
+          text: 'Get Started!',
           style: head(Color(0xFF0086DF)),
         ),
         TextSpan(
-          text: "\n\nYour path to self-discovery \nawaits—let's start this empowering journey together.",
+          text: "\n\nYour path to self-discovery \nawaits, let's start this empowering journey together.",
           style: info(const Color(0xFF191D21)),
         ),
       ],
     ),
+    textAlign: TextAlign.center,
   );
 
   Color _buildColor() {
@@ -127,7 +131,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       builder: (BuildContext context) {
         return Container(
           decoration: const BoxDecoration(
-            color: Color(0xFFFFE0F7),
+            color: kBackground,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(25),
               topRight: Radius.circular(25),
@@ -146,7 +150,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFFE4F8),
+      backgroundColor: kBackground,
       body: Stack(
         alignment: Alignment.center,
         children: [

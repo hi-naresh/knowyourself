@@ -8,6 +8,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
+import 'package:knowyourself/provider/MySpace/question_provider.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/hive%20boxes/journal_box.dart';
@@ -79,6 +80,13 @@ Future<void> main() async {
   // );
   // BackGroundManager.init();
   GoogleFonts.config.allowRuntimeFetching = false;
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      // statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.light,
+    ),
+  );
   runApp( const MyApp(
       // isUserSignedIn: isUserSignedIn
   ));
@@ -117,23 +125,24 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    if (SharedPreferencesHelper.getSavedTheme() == 0) {
-      SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(
-            statusBarColor: Colors.white,
-            statusBarIconBrightness: Brightness.dark,
-            systemNavigationBarColor: kLightModeBottomNavBarColor,
-            systemNavigationBarIconBrightness: Brightness.dark),
-      );
-    } else {
-      SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(
-            statusBarColor: kDarkModeScaffoldColor,
-            statusBarIconBrightness: Brightness.light,
-            systemNavigationBarColor: kDarkModeScaffoldColor,
-            systemNavigationBarIconBrightness: Brightness.light),
-      );
-    }
+    // if (SharedPreferencesHelper.getSavedTheme() == 0) {
+    //   SystemChrome.setSystemUIOverlayStyle(
+    //     const SystemUiOverlayStyle(
+    //         // statusBarColor: Colors.white,
+    //         statusBarIconBrightness: Brightness.light,
+    //         // systemNavigationBarColor: kLightModeBottomNavBarColor,
+    //         systemNavigationBarIconBrightness: Brightness.light
+    //     ),
+    //   );
+    // } else {
+    //   SystemChrome.setSystemUIOverlayStyle(
+    //     const SystemUiOverlayStyle(
+    //         statusBarColor: kDarkModeScaffoldColor,
+    //         statusBarIconBrightness: Brightness.light,
+    //         systemNavigationBarColor: kDarkModeScaffoldColor,
+    //         systemNavigationBarIconBrightness: Brightness.light),
+    //   );
+    // }
 
     return MultiProvider(
       providers: [
@@ -182,6 +191,11 @@ class _MyAppState extends State<MyApp> {
             return StatusProvider();
           },
         ),
+        ChangeNotifierProvider<QuestionsProvider>(
+            create:(BuildContext context){
+              return QuestionsProvider();
+            }
+            )
       ],
       child: ScreenUtilInit(
         builder: (BuildContext context, Widget? child) {
@@ -248,7 +262,6 @@ class onLoggedin extends StatelessWidget {
             return const OnBoardingScreen();
           }
         }
-
     );
   }
 }

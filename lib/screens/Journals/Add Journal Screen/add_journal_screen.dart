@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/widgets/aspect_select.dart';
+import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/widgets/express_feelings.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/provider/journal/journal_editor_provider.dart';
 import 'package:knowyourself/screens/Journals/View%20Journal%20Screen/view_journal_screen.dart';
@@ -16,8 +18,10 @@ class AddJournalPageWidget extends StatefulWidget {
 class _AddJournalPageWidgetState extends State<AddJournalPageWidget> {
   final List<Widget> _journalPages = [
     const MoodSelectWidget(),
-    const TitleTextFieldWidget(),
-    const NotesTextFieldWidget(),
+    // const TitleTextFieldWidget(),
+    const AspectSelectWidget(),
+    // const NotesTextFieldWidget(),
+    const ExpressFeelingsWidget(),
     const ViewJournalScreen(readOnly: false),
   ];
   int _index = 0;

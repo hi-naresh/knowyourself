@@ -9,7 +9,7 @@ class RecommendWidget extends StatelessWidget {
     return  Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
-        color: const Color(0xFFE6E9EF),
+        color: const Color(0xFFEDF3EA),
       ),
       child: const Padding(
         padding: EdgeInsets.all(20.0),

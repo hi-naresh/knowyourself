@@ -2,6 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:knowyourself/screens/Learn/learn_screen.dart';
+import 'package:knowyourself/screens/Space/MySpaceScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/models/Quote/quote_model.dart';
 import 'package:knowyourself/screens/Home/home_screen.dart';
@@ -17,6 +20,8 @@ import 'package:knowyourself/utils/ui_colors.dart';
 import 'package:knowyourself/screens/Main%20Screen/widgets/Bottom%20Nav%20Bar/bottom_nar_bar.dart';
 import 'package:knowyourself/screens/Main%20Screen/widgets/Bottom%20Nav%20Bar/bottom_nav_bar_widget.dart';
 
+import '../Analysis/analysis_screen.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -27,10 +32,12 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     const HomeScreen(),
-    const ArticleScreen(),
-    const JournalsScreen(),
-    const ToDoScreen(),
-
+    // const ArticleScreen(),
+    const AnalysisScreen(),
+    // const JournalsScreen(),
+    // const ToDoScreen(),
+    const LearnScreen(),
+    MySpaceScreen()
     // const AccountScreen(),
   ];
 
@@ -52,10 +59,10 @@ class _MainScreenState extends State<MainScreen> {
 
   Widget _buildFAB(BuildContext context) {
     return SizedBox(
-      width: 70.h,
-      height: 70.h,
+      width: 60.h,
+      height: 60.h,
       child: RawMaterialButton(
-        fillColor: getFABColor(context),
+        fillColor: kApp3,
         shape: const CircleBorder(),
         elevation: 0.0,
         onPressed: () {
@@ -66,8 +73,8 @@ class _MainScreenState extends State<MainScreen> {
         },
         child: Icon(
           Icons.add,
-          size: 50.sp,
-          color: kCalendarPrimaryColor,
+          size: 40.sp,
+          color: kBackground1,
         ),
       ),
     );
@@ -89,7 +96,7 @@ class _MainScreenState extends State<MainScreen> {
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
           floatingActionButton:
-              value.pageState == 2 ? _buildFAB(context) : null,
+              value.pageState == 3 ? _buildFAB(context) : null,
           extendBody: true,
           body: PageView(
             physics: const NeverScrollableScrollPhysics(),
@@ -100,28 +107,28 @@ class _MainScreenState extends State<MainScreen> {
             height: 70,
             items: [
               BottomNavBarWidget(
-                iconData: Icons.home,
+                icon :"assets/icons/home.svg",
                 iconSize: 30.r,
-                selectedIconColor: kHomePrimaryColor,
-                title: 'Home',
+                selectedIconColor: kApp1,
+                // title: 'Home',
               ),
               BottomNavBarWidget(
-                iconData: Icons.article,
+                icon : "assets/icons/analysis.svg",
                 iconSize: 30.r,
-                selectedIconColor: kHomePrimaryColor,
-                title: 'Articles',
+                selectedIconColor: kApp2,
+                // title: 'Articles',
               ),
               BottomNavBarWidget(
-                iconData: Icons.library_books,
+                icon : "assets/icons/learn.svg",
                 iconSize: 30.r,
-                selectedIconColor: kJournalPrimaryColor,
-                title: 'Journal',
+                selectedIconColor: kApp3,
+                // title: 'Journal',
               ),
               BottomNavBarWidget(
-                iconData: Icons.list_alt,
+                icon : "assets/icons/myspace.svg",
                 iconSize: 30.r,
-                selectedIconColor: kTodoPrimaryColor,
-                title: 'Tasks',
+                selectedIconColor: kApp4,
+                // title: 'Tasks',
               ),
             ],
             currentIndex: value.pageState,

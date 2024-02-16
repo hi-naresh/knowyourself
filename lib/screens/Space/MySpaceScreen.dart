@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:knowyourself/screens/Journals/Journals%20Screen/journals_screen.dart';
+import 'package:knowyourself/screens/Space/widgets/question_space.dart';
+import 'package:knowyourself/screens/widgets/Placeholder.dart';
 import 'package:provider/provider.dart';
 
+import '../../hive boxes/journal_box.dart';
 import '../../models/Questions.dart';
 import '../../provider/MySpace/question_provider.dart';
+import '../../provider/journal/journal_provider.dart';
+import '../../utils/ui_colors.dart';
+import '../Journals/Journals Screen/widgets/calendar_widget.dart';
+import '../Journals/Journals Screen/widgets/data_widget.dart';
+import '../Journals/Journals Screen/widgets/journal_widget.dart';
 
 class MySpaceScreen extends StatefulWidget {
   @override
@@ -10,41 +21,6 @@ class MySpaceScreen extends StatefulWidget {
 }
 
 class _MySpaceScreenState extends State<MySpaceScreen> {
-  final _questionController = TextEditingController();
-  DateTime _selectedDate = DateTime.now();
-  String _selectedCategory = 'short';
-
-  void _addQuestion() {
-    if (_questionController.text.isEmpty || _selectedDate == null) return;
-
-    Provider.of<QuestionsProvider>(context, listen: false).addQuestion(
-      Question(
-        text: _questionController.text,
-        deadline: _selectedDate,
-        category: _selectedCategory,
-      ),
-    );
-    _questionController.clear(); // Clear the text field after question is added
-  }
-
-  void _presentDatePicker() {
-    showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2100),
-    ).then((pickedDate) {
-      if (pickedDate == null) return;
-      setState(() {
-        _selectedDate = pickedDate;
-      });
-    });
-  }
-
-  void onPressed() {
-    //modalSheet menu with daily, weekly, monthly, yearly
-
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,98 +28,150 @@ class _MySpaceScreenState extends State<MySpaceScreen> {
       appBar: AppBar(
         title: Text('My Space'),
       ),
-      body: Container(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(
-              controller: _questionController,
-              decoration: InputDecoration(labelText: 'Enter your question'),
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  _selectedDate == null
-                      ? 'No Date Chosen!'
-                      : 'Picked Date: ${_selectedDate.toLocal()}',
-                ),
-              ],
-            ),
-            ElevatedButton(
-              onPressed: _presentDatePicker,
-              child: Text(
-                'Choose Date',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            //add notification button daily or weekly or monthly or yearly
-            ElevatedButton(onPressed: onPressed,
-                child: Text(
-                  'Reminder',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ChoiceChip(
-                  label: Text('Short-term'),
-                  selected: _selectedCategory == 'short',
-                  onSelected: (selected) {
-                    if (selected) {
-                      setState(() {
-                        _selectedCategory = 'short';
-                      });
-                    }
-                  },
-                ),
-                SizedBox(width: 20),
-                ChoiceChip(
-                  label: Text('Long-term'),
-                  selected: _selectedCategory == 'long',
-                  onSelected: (selected) {
-                    if (selected) {
-                      setState(() {
-                        _selectedCategory = 'long';
-                      });
-                    }
-                  },
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              child: Text('Add Question'),
-              onPressed: _addQuestion,
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              child: Consumer<QuestionsProvider>(
-                builder: (context, value, child) {
-                  return ListView.builder(
-                    itemCount: value.questions.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(value.questions[index].text),
-                        subtitle: Text(
-                          'Deadline: ${value.questions[index].deadline.toLocal()}',
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 240.h,
+                child: CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: kPalette6,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30),
+                          ),
                         ),
-                        trailing: IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () {
-                            // value.deleteQuestion(value.questions[index]);
-                          },
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 10.h),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Consumer<JournalProvider>(
+                                    builder: (BuildContext context, value, Widget? child) {
+                                      return Text.rich(
+                                        TextSpan(
+                                          children: [
+                                            TextSpan(
+                                              text: 'My Journal',
+                                              style: TextStyle(
+                                                  fontSize: 30.sp,
+                                                  color: kPalette5,
+                                                  fontWeight: FontWeight.w900,
+                                                  height: 1.1),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  Consumer<JournalProvider>(
+                                    builder: (BuildContext context, value, Widget? child) {
+                                      return FutureBuilder(
+                                        future: JournalHiveBox.getMonthNumofEntries(
+                                          dateTime: value.getDate,
+                                        ),
+                                        builder: (BuildContext context,
+                                            AsyncSnapshot<dynamic> snapshot) {
+                                          if (snapshot.hasData) {
+                                            int entries = snapshot.data as int;
+                                            return Row(
+                                              children: [
+                                                SvgPicture.asset(
+                                                  "assets/icons/entries.svg",
+                                                  height: 20.h,
+                                                  color: kPalette5,
+                                                ),
+                                                SizedBox(width: 5.w,),
+                                                Text (entries.toString(),
+                                                  style: TextStyle(
+                                                    fontSize: 16.sp,
+                                                    color: kPalette5,
+                                                    fontWeight: FontWeight.w900,
+                                                  ),),
+                                                SizedBox(width: 5.w,),
+                                                Text("Entries",
+                                                  style: TextStyle(
+                                                    fontSize: 16.sp,
+                                                    color: kPalette5,
+                                                    fontWeight: FontWeight.w900,
+                                                  ),),
+
+                                              ],
+                                            );
+                                          }
+                                          return SvgDataWidget(
+                                            svgPicture: SvgPicture.asset(
+                                              "assets/icons/entries.svg",
+                                              height: 20.h,
+                                            ),
+                                            value: 0,
+                                            title: "Entries",
+                                          );
+                                        },
+                                      );
+                                    },
+                                  )
+                                ],
+                              ),
+                              SizedBox(height: 20.h),
+                              CalendarWidget(),
+                            ],
+                          ),
                         ),
-                      );
-                    },
-                  );
-                },
+                      ),
+                    ),
+                    Consumer<JournalProvider>(
+                      builder: (BuildContext context, value, Widget? child) {
+                        List journals = value.journals;
+                        if (journals.isEmpty) {
+                          return SliverToBoxAdapter(
+                              child: Padding(
+                                  padding: EdgeInsets.all(10.r),
+                                  child: Center(
+                                    child: Text(
+                                      "No Journals Entries!",
+                                      style: TextStyle(
+                                        fontSize: 20.sp,
+                                        color: kPalette5,
+                                        fontWeight: FontWeight.w900,
+                                      ),
+                                    ),
+                                  )
+                              ));
+                        }
+                        return SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            childCount: journals.length,
+                                (context, index) {
+                              return JournalWidget(journalModel: journals[index]);
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: 20.h),
+              SizedBox(
+                height: 340,
+                child:QuestionSpace(),
+              ),
+              SizedBox(height: 20.h),
+              CustomPlaceHolder("My MileStones", 130, double.infinity),
+              SizedBox(height: 20.h),
+              // JournalsScreen(),
+              CustomPlaceHolder("Gratitude", 130, double.infinity),
+              SizedBox(height: 80.h),
+            ],
+          ),
         ),
       ),
     );

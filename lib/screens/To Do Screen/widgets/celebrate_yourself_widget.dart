@@ -43,7 +43,7 @@ class CelebrateYourselfWidget extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
-                      color: kTodoPrimaryColor),
+                      color: kApp4),
                 ),
               ],
             ),

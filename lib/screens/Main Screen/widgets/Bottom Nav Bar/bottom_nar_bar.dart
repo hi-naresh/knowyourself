@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/screens/Main%20Screen/widgets/Bottom%20Nav%20Bar/bottom_nav_bar_widget.dart';
+import 'package:knowyourself/utils/ui_colors.dart';
 
 class BottomRoundedNavBar extends StatelessWidget {
   final List<BottomNavBarWidget> items;
@@ -27,7 +29,7 @@ class BottomRoundedNavBar extends StatelessWidget {
       return items[index].selectedIconColor;
     }
 
-    return const Color(0xFFB3B3B7);
+    return kGreyed;
   }
 
   // Color _buildTextColor(int index, BuildContext context) {
@@ -38,13 +40,13 @@ class BottomRoundedNavBar extends StatelessWidget {
   //   return const Color(0xFFB3B3B7);
   // }
 
-  Widget _buildBottomNavbarWidget(int index, BuildContext context) {
-    return Icon(
-      items[index].iconData,
-      color: _buildIconContainerColor(index, context),
-      size: items[index].iconSize,
-    );
-  }
+  // Widget _buildBottomNavbarWidget(int index, BuildContext context) {
+  //   return I(
+  //     items[index].icon,
+  //     color: _buildIconContainerColor(index, context),
+  //     size: items[index].iconSize,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -53,18 +55,11 @@ class BottomRoundedNavBar extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.only(left: 10, right: 10),
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(50),
+      decoration: const BoxDecoration(
+        color: kBottomNav,
+        borderRadius: BorderRadius.all(
+          Radius.circular(40),
         ),
-        boxShadow: const [
-          BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.1),
-            offset: Offset(0.0, 2), //(x,y)
-            blurRadius: 21.0,
-          ),
-        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,13 +81,12 @@ class BottomRoundedNavBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    _buildBottomNavbarWidget(i, context),
-                    Text(
-                      items[i].title,
-                      style: TextStyle(
-                          color: _buildIconContainerColor(i, context),
-                          fontSize: 11),
-                    )
+                    // _buildBottomNavbarWidget(i, context),
+                    SvgPicture.asset(
+                      items[i].icon,
+                      color: _buildIconContainerColor(i, context),
+                      height: 25.h,
+                    ),
                   ],
                 ),
               ),

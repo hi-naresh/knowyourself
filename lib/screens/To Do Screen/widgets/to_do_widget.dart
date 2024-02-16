@@ -34,7 +34,7 @@ class ToDoContainerWidget extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 24.sp,
                       fontWeight: FontWeight.w600,
-                      color: kTodoPrimaryColor),
+                      color: kApp4),
                 ),
               ],
             ),
@@ -78,7 +78,7 @@ class ToDoContainerWidget extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w700,
-                                  color: kTodoPrimaryColor),
+                                  color: kApp4),
                             ),
                             TextSpan(
                                 text: ' task(s) today.',
@@ -166,7 +166,7 @@ class ToDoContainerWidget extends StatelessWidget {
                             width: 240.w,
                             height: 40.h,
                             decoration: BoxDecoration(
-                              color: kTodoPrimaryColor,
+                              color: kApp4,
                               borderRadius: BorderRadius.circular(40),
                             ),
                             child: Center(

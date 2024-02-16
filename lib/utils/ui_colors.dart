@@ -66,12 +66,36 @@ const Color kLightModeScaffoldColor = Color(0xFFFFFFFF);
 const Color kDarkModeScaffoldColor = Color(0xff232330);
 
 const Color kPrimaryColor = Color(0xFFFF5D9C);
-const Color kBackground =  Color(0xFFFFE0F7);
+const Color kBackground =  Color(0xFFFFECEC);
+const Color kBackground1 = Color(0xFFF5F5F5);
+const Color kBottomNav = Color(0xFFFFFFFF);
+
 const Color kSecondaryColor = Color(0xFFD2C6FF);
 const Color kPrimaryTextColor = Colors.black;
 const Color kSecondaryTextColor = Color(0xFF8E8E8E);
 const Color kLightModeTextFieldColor = Color(0xFFE6E6EA);
 
+const Color kApp1 = Color(0xFFFFB4B6);
+const Color kApp2 = Color(0xFFE2B0FF);
+const Color kApp3 = Color(0xFFAAB8EA);
+const Color kApp4 = Color(0xFFFFB999);
+const Color kGreyed = Color(0xFFBEBEBE);
+
+
+// Color(0xFFFF5D9C)
+// Color(0xFF19C788)
+// Color(0xFF0086DF)
+// Color(0xFF191D21)
+const Color kPalette1 = Color(0xFFFF5D9C);
+const Color kPalette2 = Color(0xFF19C788);
+const Color kPalette3 = Color(0xFF0086DF);
+const Color kPalette4 = Color(0xFF191D21);
+
+const Color kPalette5 = Color(0xFF343434);
+
+const Color kPalette6 = Color(0xFFFBFBFB);
+const Color kPalette6_1 = Color(0xFFFFFFFF);
+const Color kPalette6_2 = Color(0xFFAAB8EA);
 
 const Color kDarkModeCardColor = Color(0xff3C3C56);
 

@@ -49,8 +49,9 @@ class ReminderSreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kBackground,
       body: Container(
-        margin: const EdgeInsets.all(40.0),
+        margin: const EdgeInsets.all(30.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,10 +61,10 @@ class ReminderSreen extends StatelessWidget {
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(
+                    const TextSpan(
                       text: 'Want Us To Keep You on Track with Small ',
                       style: TextStyle(
-                          fontSize: 30.sp, fontWeight: FontWeight.w600),
+                          fontSize: 30, fontWeight: FontWeight.w600),
                     ),
                     TextSpan(
                       text: 'Reminders ',
@@ -79,11 +80,12 @@ class ReminderSreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
-            SvgPicture.asset(
-              "assets/illustrations/reminder.svg",
-              height: 350.h,
+            Image.asset(
+              "assets/illustrations/reminder.png",
+              height: 280.h,
             ),
             GestureDetector(
               onTap: () async {
@@ -96,7 +98,7 @@ class ReminderSreen extends StatelessWidget {
                 width: double.infinity,
                 height: 50.h,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFE7E5FD),
+                  color: kPalette1,
                   borderRadius: BorderRadius.circular(40),
                 ),
                 child: Center(
@@ -104,7 +106,7 @@ class ReminderSreen extends StatelessWidget {
                     "Yes, Please",
                     style: TextStyle(
                       fontSize: 16.sp,
-                      color: const Color(0xFF6A61F1),
+                      color: kPalette5,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -118,11 +120,12 @@ class ReminderSreen extends StatelessWidget {
               child: Text(
                 "No, Thanks",
                 style: TextStyle(
-                    fontSize: 12.sp,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                     color: const Color(0xFF7A89A3)),
               ),
-            )
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

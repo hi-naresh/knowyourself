@@ -25,110 +25,98 @@ class _JournalsScreenState extends State<JournalsScreen>
     super.build(context);
 
     return Scaffold(
+      backgroundColor: kBackground1,
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: SizedBox(height: 50.h),
-          ),
-          SliverToBoxAdapter(
             child: Container(
-              padding: const EdgeInsets.all(20),
-              margin: const EdgeInsets.only(left: 20, right: 20),
-              width: double.infinity,
               decoration: BoxDecoration(
-                color: Theme.of(context).chipTheme.selectedColor,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(20),
+                color: kPalette6,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
                 ),
               ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Consumer<JournalProvider>(
-                        builder: (BuildContext context, value, Widget? child) {
-                          return Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Your Entries \nin ',
-                                  style: TextStyle(
-                                      fontSize: 30.sp,
-                                      fontWeight: FontWeight.w700,
-                                      height: 1.1),
-                                ),
-                                TextSpan(
-                                  text: DateFormat.MMMM().format(value.getDate),
-                                  // recognizer: TapGestureRecognizer()..onTap = () {},
-                                  style: TextStyle(
-                                      fontSize: 32.sp,
-                                      fontWeight: FontWeight.w700,
-                                      color: kJournalPrimaryColor),
-                                ),
-                                WidgetSpan(
-                                  child: Icon(Icons.arrow_drop_down,
-                                      size: 20.r, color: kJournalPrimaryColor),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                      Consumer<UserDataProvider>(
-                        builder: (BuildContext context, value, Widget? child) {
-                          return CircleAvatar(
-                            radius: 25.r,
-                            backgroundColor: const Color(0xFFD9D9D9),
-                            backgroundImage: AssetImage(
-                              "assets/avatars/${value.avatar}.png",
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Consumer<JournalProvider>(
-                        builder: (BuildContext context, value, Widget? child) {
-                          return FutureBuilder(
-                            future: JournalHiveBox.getMonthNumofEntries(
-                              dateTime: value.getDate,
-                            ),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<dynamic> snapshot) {
-                              if (snapshot.hasData) {
-                                int entries = snapshot.data as int;
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 10.h),
+                child: Column(
+                  children: [
+                    SizedBox(height: 70.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Consumer<JournalProvider>(
+                          builder: (BuildContext context, value, Widget? child) {
+                            return Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'My Journal',
+                                    style: TextStyle(
+                                        fontSize: 30.sp,
+                                        color: kPalette5,
+                                        fontWeight: FontWeight.w900,
+                                        height: 1.1),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                        Consumer<JournalProvider>(
+                          builder: (BuildContext context, value, Widget? child) {
+                            return FutureBuilder(
+                              future: JournalHiveBox.getMonthNumofEntries(
+                                dateTime: value.getDate,
+                              ),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<dynamic> snapshot) {
+                                if (snapshot.hasData) {
+                                  int entries = snapshot.data as int;
+                                  return Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        "assets/icons/entries.svg",
+                                        height: 20.h,
+                                        color: kPalette5,
+                                      ),
+                                      SizedBox(width: 5.w,),
+                                      Text (entries.toString(),
+                                        style: TextStyle(
+                                          fontSize: 16.sp,
+                                          color: kPalette5,
+                                          fontWeight: FontWeight.w900,
+                                        ),),
+                                      SizedBox(width: 5.w,),
+                                      Text("Entries",
+                                        style: TextStyle(
+                                          fontSize: 16.sp,
+                                          color: kPalette5,
+                                          fontWeight: FontWeight.w900,
+                                        ),),
+
+                                    ],
+                                  );
+                                }
                                 return SvgDataWidget(
                                     svgPicture: SvgPicture.asset(
                                       "assets/icons/entries.svg",
                                       height: 20.h,
                                     ),
-                                    value: entries,
-                                    title: "Entries");
-                              }
-                              return SvgDataWidget(
-                                  svgPicture: SvgPicture.asset(
-                                    "assets/icons/entries.svg",
-                                    height: 20.h,
-                                  ),
-                                  value: 0,
-                                  title: "Entries");
-                            },
-                          );
-                        },
-                      ),
-                    ],
-                  )
-                ],
+                                    value: 0,
+                                    title: "Entries",
+                                );
+                              },
+                            );
+                          },
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
+                    CalendarWidget(),
+                  ],
+                ),
               ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              margin: const EdgeInsets.only(left: 20, right: 20),
-              child: const CalendarWidget(),
             ),
           ),
           Consumer<JournalProvider>(
@@ -138,10 +126,17 @@ class _JournalsScreenState extends State<JournalsScreen>
                 return SliverToBoxAdapter(
                     child: Padding(
                   padding: EdgeInsets.all(10.r),
-                  child: SvgPicture.asset(
-                    "assets/illustrations/no_journals.svg",
-                    height: 200.h,
-                  ),
+                  child: Center(
+                    heightFactor: 10.h,
+                    child: Text(
+                      "No Journals Entries!",
+                      style: TextStyle(
+                        fontSize: 20.sp,
+                        color: kPalette5,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  )
                 ));
               }
               return SliverList(
