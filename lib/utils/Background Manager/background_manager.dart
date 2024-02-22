@@ -29,7 +29,7 @@ class BackGroundManager {
         final random = Random();
         final index = random.nextInt(affirmations.length);
         String quote = affirmations[index];
-        NotificationManger.showNotification(title: "Never Forget", body: quote);
+        NotificationManager.showNotification(title: "Never Forget", body: quote);
       }
 
       return Future.value(true);

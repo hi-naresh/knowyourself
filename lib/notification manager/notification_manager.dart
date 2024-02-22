@@ -1,9 +1,18 @@
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
-class NotificationManger {
+class NotificationManager {
   static final _notification = FlutterLocalNotificationsPlugin();
+
+  static Future<NotificationDetails> _taskCompletionNotificationDetails() async {
+    return const NotificationDetails(
+      android: AndroidNotificationDetails(
+        "channel id 3", // Unique channel ID for task completion notifications
+        "Task Completions", // Channel name
+        importance: Importance.max,
+      ),
+    );
+  }
 
   static Future<NotificationDetails> _reminderNotificationsDetails() async {
     return const NotificationDetails(
@@ -27,39 +36,12 @@ class NotificationManger {
 
   static Future init({bool initSchedule = false}) async {
     AndroidInitializationSettings androidSettings =
-        const AndroidInitializationSettings("@mipmap/not_launcher");
+    const AndroidInitializationSettings("@mipmap/not_launcher");
     InitializationSettings initializationSettings =
-        InitializationSettings(android: androidSettings);
+    InitializationSettings(android: androidSettings);
 
     await _notification.initialize(initializationSettings);
   }
-
-  // static Future<void> scheduleNotification() async {
-  //   const int intervalHours = 2;
-  //   final now = DateTime.now();
-  //   final notificationTime = DateTime(
-  //       now.year, now.month, now.day, 9); // set notification time to 9:00 am
-  //   final endTime =
-  //       DateTime(now.year, now.month, now.day, 21); // set end time to 9:00 pm
-
-  //   if (now.isAfter(notificationTime) && now.isBefore(endTime)) {
-  //     const AndroidNotificationDetails androidPlatformChannelSpecifics =
-  //         AndroidNotificationDetails("channel id 5", "periodic notification",
-  //             importance: Importance.max, priority: Priority.high);
-
-  //     const NotificationDetails platformChannelSpecifics = NotificationDetails(
-  //       android: androidPlatformChannelSpecifics,
-  //     );
-
-  //     await _notification.periodicallyShow(
-  //       0,
-  //       'My Notification Title',
-  //       'My Notification Body',
-  //       RepeatInterval.hourly,
-  //       platformChannelSpecifics,
-  //     );
-  //   }
-  // }
 
   static Future showNotification({
     int id = 0,
@@ -76,6 +58,22 @@ class NotificationManger {
     );
   }
 
+  static Future showTaskCompletionNotification() async {
+    const int notificationId = 1; // Unique ID for task completion notification
+    const String title = 'Task Completed!';
+    const String body = 'Great job! You completed a task from your to-do list.';
+
+    return _notification.zonedSchedule(
+      notificationId,
+      title,
+      body,
+      tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)), // Show after 5 seconds
+      await _taskCompletionNotificationDetails(),
+      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+      androidAllowWhileIdle: true,
+    );
+  }
+
   static Future showScheduleNotification({
     int id = 0,
     String? title,
@@ -89,8 +87,7 @@ class NotificationManger {
       body,
       tz.TZDateTime.from(scheduledDate, tz.UTC),
       await _reminderNotificationsDetails(),
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
+      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       androidAllowWhileIdle: true,
     );
   }
@@ -108,8 +105,7 @@ class NotificationManger {
       body,
       _scheduleTime(time),
       await _reminderNotificationsDetails(),
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
+      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       androidAllowWhileIdle: true,
       matchDateTimeComponents: DateTimeComponents.time,
     );

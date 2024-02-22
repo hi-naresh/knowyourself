@@ -46,7 +46,7 @@ class ReminderNotificationWidget extends StatelessWidget {
   }
 
   void _showNotification() {
-    NotificationManger.showNotificationDaily(
+    NotificationManager.showNotificationDaily(
       title: "Have Something to Write?",
       body: "Add it to your Journal!",
       time: Time(
@@ -125,7 +125,7 @@ class ReminderNotificationWidget extends StatelessWidget {
                           _canNotify = value;
 
                           if (value == false) {
-                            NotificationManger.cancelNotificationDaily();
+                            NotificationManager.cancelNotificationDaily();
                             SharedPreferencesHelper
                                 .saveReminderNotificationPermission(_canNotify);
                             return;
