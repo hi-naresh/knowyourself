@@ -66,20 +66,20 @@ flutter_native_splash:
   # splash screen to a png image.  This is useful for gradients. The image will be stretch to the
   # size of the app. Only one parameter can be used, color and background_image cannot both be set.
   color: "#FDF3F1"
-  background_image: "assets/icons/logo.png"
+#  background_image: "assets/icons/logo.png"
 
   # The image parameter allows you to specify an image used in the splash screen.  It must be a
   # png file and should be sized for 4x pixel density.
-  image: assets/res/logo.png
+#  image: assets/res/logo.png
 
   # The branding property allows you to specify an image used as branding in the splash screen.
   # It must be a png file. It is supported for Android, iOS and the Web.  For Android 12,
   # see the Android 12 section below.
-  branding: assets/res/sailcc.png
+#  branding: assets/res/sailcc.png
 
   # To position the branding image at the bottom of the screen you can use bottom, bottomRight,
   # and bottomLeft. The default values is bottom if not specified or specified something else.
-  branding_mode: bottom
+#  branding_mode: bottom
 
   # The color_dark, background_image_dark, image_dark, branding_dark are parameters that set the background
   # and image when the device is in dark mode. If they are not specified, the app will use the
@@ -178,8 +178,6 @@ flutter:
     - assets/illustrations/
     - assets/avatars/
     - assets/icons/
-    - assets/quote/
-    - assets/gradients/
     - assets/status/
 
   # An image asset can refer to one or more resolution-specific "variants", see
