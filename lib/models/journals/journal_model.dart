@@ -1,17 +1,21 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
 class JournalModel {
+  String id; // Add id field
+
+  // Other fields remain unchanged
   int journalId;
   DateTime createdOn;
   String mood;
   String title;
   Color color;
   String description;
+  //String aspect
 
   JournalModel({
+    required this.id, // Update constructor to include id
     required this.journalId,
     required this.createdOn,
     required this.mood,
@@ -21,6 +25,7 @@ class JournalModel {
   });
 
   JournalModel copyWith({
+    String? id, // Update copyWith to include id
     int? journalId,
     DateTime? createdOn,
     String? mood,
@@ -29,6 +34,7 @@ class JournalModel {
     String? description,
   }) {
     return JournalModel(
+      id: id ?? this.id,
       journalId: journalId ?? this.journalId,
       createdOn: createdOn ?? this.createdOn,
       mood: mood ?? this.mood,
@@ -40,6 +46,7 @@ class JournalModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id, // Include id in the toMap method
       'journalId': journalId,
       'createdOn': createdOn.millisecondsSinceEpoch,
       'mood': mood,
@@ -51,6 +58,7 @@ class JournalModel {
 
   factory JournalModel.fromMap(Map<String, dynamic> map) {
     return JournalModel(
+      id: map['id'] as String, // Get id from the map
       journalId: map['journalId'] as int,
       createdOn: DateTime.fromMillisecondsSinceEpoch(map['createdOn'] as int),
       mood: map['mood'] as String,
@@ -67,14 +75,15 @@ class JournalModel {
 
   @override
   String toString() {
-    return 'JournalModel(journalId: $journalId, createdOn: $createdOn, mood: $mood, title: $title, color: $color, description: $description)';
+    return 'JournalModel(id: $id, journalId: $journalId, createdOn: $createdOn, mood: $mood, title: $title, color: $color, description: $description)';
   }
 
   @override
   bool operator ==(covariant JournalModel other) {
     if (identical(this, other)) return true;
 
-    return other.journalId == journalId &&
+    return other.id == id && // Compare id field
+        other.journalId == journalId &&
         other.createdOn == createdOn &&
         other.mood == mood &&
         other.title == title &&
@@ -84,11 +93,12 @@ class JournalModel {
 
   @override
   int get hashCode {
-    return journalId.hashCode ^
-        createdOn.hashCode ^
-        mood.hashCode ^
-        title.hashCode ^
-        color.hashCode ^
-        description.hashCode;
+    return id.hashCode ^ // Include id field in hashCode
+    journalId.hashCode ^
+    createdOn.hashCode ^
+    mood.hashCode ^
+    title.hashCode ^
+    color.hashCode ^
+    description.hashCode;
   }
 }

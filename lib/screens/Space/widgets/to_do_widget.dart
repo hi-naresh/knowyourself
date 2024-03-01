@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:knowyourself/screens/Space/widgets/to_do_detail_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/models/To%20Do/status_model.dart';
 import 'package:knowyourself/models/To%20Do/to_do_model.dart';
 import 'package:knowyourself/provider/ToDo/status_provider.dart';
 import 'package:knowyourself/provider/ToDo/to_do_provider.dart';
-import 'package:knowyourself/screens/To%20Do%20Screen/widgets/to_do_detail_widget.dart';
 import 'package:knowyourself/utils/linear_percent_indicator.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 

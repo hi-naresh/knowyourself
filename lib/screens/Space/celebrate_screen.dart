@@ -3,12 +3,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:knowyourself/screens/Space/widgets/celebration_title_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/models/To%20Do/celebration_model.dart';
 import 'package:knowyourself/models/To%20Do/status_model.dart';
 import 'package:knowyourself/provider/ToDo/celebration_provider.dart';
 import 'package:knowyourself/provider/ToDo/status_provider.dart';
-import 'package:knowyourself/screens/To%20Do%20Screen/widgets/celebration_title_widget.dart';
 
 import '../../utils/ui_colors.dart';
 
@@ -95,7 +95,7 @@ class CelebrateYourSelfScreen extends StatelessWidget {
                                 maxLines: 1,
                                 maxLength: 50,
                                 controller:
-                                    value.celebrationTextEditingController,
+                                value.celebrationTextEditingController,
                                 keyboardType: TextInputType.multiline,
                                 decoration: InputDecoration(
                                   fillColor: Theme.of(context)
@@ -104,11 +104,11 @@ class CelebrateYourSelfScreen extends StatelessWidget {
                                   filled: true,
                                   enabledBorder: const UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: kTodoPrimaryColor),
+                                    BorderSide(color: kTodoPrimaryColor),
                                   ),
                                   focusedBorder: const UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: kTodoPrimaryColor),
+                                    BorderSide(color: kTodoPrimaryColor),
                                   ),
                                 ),
                               ),
@@ -123,7 +123,7 @@ class CelebrateYourSelfScreen extends StatelessWidget {
               Container(
                 width: double.infinity,
                 margin:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
@@ -169,7 +169,7 @@ class CelebrateYourSelfScreen extends StatelessWidget {
                     ),
                     CelebrateTitleWidget(
                       celebrationModel:
-                          CelebrationModel(title: "I am thankful for "),
+                      CelebrationModel(title: "I am thankful for "),
                     ),
                     CelebrateTitleWidget(
                       celebrationModel: CelebrationModel(

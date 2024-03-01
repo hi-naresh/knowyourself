@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:knowyourself/screens/Register/LoginScreen.dart';
-import 'package:knowyourself/screens/Register/SignUpInfo.dart';
+import 'package:knowyourself/screens/Register/login_screen.dart';
+import 'package:knowyourself/screens/Register/signup_screen.dart';
 import 'package:knowyourself/screens/widgets/global_styles.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:knowyourself/utils/ui_colors.dart';

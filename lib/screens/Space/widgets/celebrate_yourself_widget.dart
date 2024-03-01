@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/provider/ToDo/celebration_provider.dart';
-import 'package:knowyourself/screens/To%20Do%20Screen/celebrate_yourself_screen.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
+import '../celebrate_screen.dart';
 
 class CelebrateYourselfWidget extends StatelessWidget {
   const CelebrateYourselfWidget({super.key});

@@ -150,7 +150,8 @@ class ExpressFeelingsWidget extends StatelessWidget {
                         color: Color((Random().nextDouble() * 0xFFFFFF).toInt())
                             .withOpacity(1.0),
                         description:
-                        journalEditorProvider.notesEditingController.text);
+                        journalEditorProvider.notesEditingController.text,
+                        id: '');
                     journalEditorProvider.updateJournal(journalModel);
                     journalEditorProvider.updateIndex(3);
                   },

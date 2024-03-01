@@ -4,16 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/screens/Learn/learn_screen.dart';
-import 'package:knowyourself/screens/Space/MySpaceScreen.dart';
+import 'package:knowyourself/screens/Space/space_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/models/Quote/quote_model.dart';
 import 'package:knowyourself/screens/Home/home_screen.dart';
 import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/add_journal_screen.dart';
-import 'package:knowyourself/screens/Journals/Journals%20Screen/journals_screen.dart';
 import 'package:knowyourself/provider/App%20State/app_state_provider.dart';
 
-import 'package:knowyourself/screens/Rss%20Screen/article_screen.dart';
-import 'package:knowyourself/screens/To%20Do%20Screen/to_do_screen.dart';
 import 'package:knowyourself/utils/affirmations.dart';
 import 'package:knowyourself/utils/pref.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
@@ -35,10 +32,9 @@ class _MainScreenState extends State<MainScreen> {
     // const ArticleScreen(),
     const AnalysisScreen(),
     // const JournalsScreen(),
-    // const ToDoScreen(),
     const LearnScreen(),
-    MySpaceScreen()
-    // const AccountScreen(),
+    MySpaceScreen(),
+    // const ToDoScreen(),
   ];
 
   void saveQuote() {

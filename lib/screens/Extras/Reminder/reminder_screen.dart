@@ -12,7 +12,7 @@ class ReminderSreen extends StatelessWidget {
   const ReminderSreen({super.key});
 
   void _showNotification(Duration notificationTime) {
-    NotificationManger.showNotificationDaily(
+    NotificationManager.showNotificationDaily(
       title: "Have Something to Write?",
       body: "Add it to your Journal!",
       time: Time(

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:knowyourself/screens/Journals/Journals%20Screen/journals_screen.dart';
+import 'package:knowyourself/screens/Space/widgets/celebrate_yourself_widget.dart';
 import 'package:knowyourself/screens/Space/widgets/question_space.dart';
+import 'package:knowyourself/screens/Space/widgets/to_do_widget.dart';
 import 'package:knowyourself/screens/widgets/Placeholder.dart';
 import 'package:provider/provider.dart';
 
@@ -22,15 +24,25 @@ class MySpaceScreen extends StatefulWidget {
 
 class _MySpaceScreenState extends State<MySpaceScreen> {
 
+  // void _resetSavedData() {
+  //   if (SharedPreferencesHelper.getDate() !=
+  //       DateFormat('dd-MM-yyyy').format(DateTime.now())) {
+  //     SharedPreferencesHelper.deleteStatus();
+  //     SharedPreferencesHelper.saveDate(DateTime.now());
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
+    // super.build(context);
+    // _resetSavedData();
     return Scaffold(
       appBar: AppBar(
         title: Text('My Space'),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 0.0),
           child: Column(
             children: [
               SizedBox(
@@ -160,10 +172,16 @@ class _MySpaceScreenState extends State<MySpaceScreen> {
                 ),
               ),
               SizedBox(height: 20.h),
+              const ToDoContainerWidget(),
+              SizedBox(
+                height: 10.h,
+              ),
+              const CelebrateYourselfWidget(),
               SizedBox(
                 height: 340,
                 child:QuestionSpace(),
               ),
+
               SizedBox(height: 20.h),
               CustomPlaceHolder("My MileStones", 130, double.infinity),
               SizedBox(height: 20.h),

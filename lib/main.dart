@@ -51,7 +51,7 @@ callbackDispatcher() {
       String quote = affirmations[quoteIndex];
       final titleIndex = random.nextInt(quotesTitle.length);
       String title = quotesTitle[titleIndex];
-      NotificationManger.showNotification(title: title, body: quote);
+      NotificationManager.showNotification(title: title, body: quote);
     }
 
     return Future.value(true);
