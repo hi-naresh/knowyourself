@@ -1,5 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:knowyourself/utils/ui_colors.dart';
+
+import 'CustomTitles.dart';
+
+
+ButtonStyle appButtonStyle(BuildContext context) {
+  return ButtonStyle(
+    backgroundColor: MaterialStateProperty.all(kApp4),
+    padding: MaterialStateProperty.all(
+      const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+    ),
+    textStyle: MaterialStateProperty.all(
+      // customTitle(kBoxLight, 16),
+      TextStyle(
+        color: Colors.white,
+        fontSize: 18.0,
+      ),
+    ),
+    shape: MaterialStateProperty.all(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+    ),
+  );
+}
 
 Container appButton(
   BuildContext context,

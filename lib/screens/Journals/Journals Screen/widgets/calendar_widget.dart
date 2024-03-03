@@ -32,7 +32,7 @@ class CalendarWidget extends StatelessWidget {
         final int totalDays = DateTime(2030, 12, 31).difference(DateTime(2024, 1, 1)).inDays;
 
         return SizedBox(
-          height: 80.h,
+          height: 85.h,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: totalDays,
@@ -134,13 +134,13 @@ class CalendarWidget extends StatelessWidget {
       // dateStyle = dateStyle;
       // dayStyle = dayStyle;
     } else if (isSelected) {
-      backgroundColor = kPalette5;
+      backgroundColor = kSelectedDate;
       dateStyle = dateStyle.copyWith(color: kPalette6);
       dayStyle = dateStyle.copyWith(fontSize: 10.sp);
       borderColor = kPalette6_1.withOpacity(0.7);
       borderWidth=2;
     } else if (isToday) {
-      backgroundColor = kPalette6_2 ;
+      backgroundColor = kPalette5 ;
       dateStyle = dateStyle.copyWith(color: kPalette6);
       dayStyle = dateStyle.copyWith(fontSize: 10.sp);
     } else {
@@ -154,9 +154,9 @@ class CalendarWidget extends StatelessWidget {
           ? null // If the day is disabled, do nothing.
           : () => onDaySelected(day), // If it's not disabled, call the onDaySelected function.
       child: Container(
-        margin: margin,
+        margin: EdgeInsets.symmetric(horizontal: 7.w),
         padding: padding,
-        width: 55.w,
+        width: 64.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius),
           border: Border.all(

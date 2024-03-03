@@ -12,20 +12,13 @@ class CelebrateYourselfWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+        color: kBoxLight,
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),
-        boxShadow: const [
-          BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.25),
-            offset: Offset(0.0, 4), //(x,y)
-            blurRadius: 38.0,
-          ),
-        ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

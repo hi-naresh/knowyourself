@@ -20,15 +20,17 @@ class ToDoPainter extends CustomPainter {
 
     Paint paint = Paint();
 
-    paint.color = const Color(0xFFC7AA95);
+    paint.color = const Color(0xFFBAA7AE);
     paint.strokeCap = StrokeCap.round;
     paint.style = PaintingStyle.stroke;
+    //inner shadow
+    paint.maskFilter = MaskFilter.blur(BlurStyle.inner, 0.5);
     paint.strokeWidth = strokeWidth;
     Offset radialPosition = Offset(size.width / 2, size.height / 2);
     canvas.drawCircle(radialPosition, radius, paint);
 
     Paint radialProgress = Paint();
-    radialProgress.color = const Color(0xFFFF852D);
+    radialProgress.color = const Color(0xFFFFA497);
     radialProgress.strokeCap = StrokeCap.round;
     radialProgress.style = PaintingStyle.stroke;
     radialProgress.strokeWidth = strokeWidth;

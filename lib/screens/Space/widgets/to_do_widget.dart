@@ -26,11 +26,11 @@ class ToDoContainerWidget extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                    text: 'My Daily ',
+                    text: 'My ',
                     style: TextStyle(
                         fontSize: 24.sp, fontWeight: FontWeight.w600)),
                 TextSpan(
-                  text: 'Task',
+                  text: 'Milestones',
                   style: TextStyle(
                       fontSize: 24.sp,
                       fontWeight: FontWeight.w600,
@@ -46,17 +46,10 @@ class ToDoContainerWidget extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: Theme.of(context).cardColor,
+              color: kBoxLight,
               borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
-              boxShadow: const [
-                BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.25),
-                  offset: Offset(0.0, 4), //(x,y)
-                  blurRadius: 38.0,
-                ),
-              ],
             ),
             child: Consumer<TodoProvider>(
               builder: (BuildContext context, value, Widget? child) {

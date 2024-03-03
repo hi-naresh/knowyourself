@@ -55,10 +55,10 @@ class _MainScreenState extends State<MainScreen> {
 
   Widget _buildFAB(BuildContext context) {
     return SizedBox(
-      width: 60.h,
-      height: 60.h,
+      width: 50.h,
+      height: 50.h,
       child: RawMaterialButton(
-        fillColor: kApp3,
+        fillColor: kApp4,
         shape: const CircleBorder(),
         elevation: 0.0,
         onPressed: () {
@@ -90,15 +90,20 @@ class _MainScreenState extends State<MainScreen> {
       builder: (BuildContext context, value, Widget? child) {
         return Scaffold(
           floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat,
+              FloatingActionButtonLocation.centerDocked,
           floatingActionButton:
               value.pageState == 3 ? _buildFAB(context) : null,
           extendBody: true,
-          body: PageView(
-            physics: const NeverScrollableScrollPhysics(),
-            controller: value.pageController,
-            children: _screens,
-          ),
+          // body: PageView(
+          //   physics: const NeverScrollableScrollPhysics(),
+          //   controller: value.pageController,
+          //   children: _screens,
+          // ),
+          // body: IndexedStack(
+          //   index: value.pageState,
+          //   children: _screens,
+          // ),
+          body: _screens[value.pageState],
           bottomNavigationBar: BottomRoundedNavBar(
             height: 70,
             items: [
@@ -106,25 +111,25 @@ class _MainScreenState extends State<MainScreen> {
                 icon :"assets/icons/home.svg",
                 iconSize: 30.r,
                 selectedIconColor: kApp1,
-                // title: 'Home',
+                title: 'Home',
               ),
               BottomNavBarWidget(
                 icon : "assets/icons/analysis.svg",
                 iconSize: 30.r,
                 selectedIconColor: kApp2,
-                // title: 'Articles',
+                title: 'Insights',
               ),
               BottomNavBarWidget(
                 icon : "assets/icons/learn.svg",
                 iconSize: 30.r,
                 selectedIconColor: kApp3,
-                // title: 'Journal',
+                title: 'Learn',
               ),
               BottomNavBarWidget(
                 icon : "assets/icons/myspace.svg",
                 iconSize: 30.r,
                 selectedIconColor: kApp4,
-                // title: 'Tasks',
+                title: 'Space',
               ),
             ],
             currentIndex: value.pageState,
@@ -137,3 +142,4 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
+

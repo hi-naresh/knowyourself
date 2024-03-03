@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,7 +31,7 @@ class BottomRoundedNavBar extends StatelessWidget {
       return items[index].selectedIconColor;
     }
 
-    return kGreyed;
+    return kGreyed1;
   }
 
   // Color _buildTextColor(int index, BuildContext context) {
@@ -50,48 +52,78 @@ class BottomRoundedNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height.h,
-      margin: const EdgeInsets.all(10),
-      padding: const EdgeInsets.only(left: 10, right: 10),
-      width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(
-        color: kBottomNav,
-        borderRadius: BorderRadius.all(
-          Radius.circular(40),
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          for (int i = 0; i < items.length; i++)
-            GestureDetector(
-              onTap: () {
-                onChanged(i);
-              },
-              behavior: HitTestBehavior.opaque,
-              child: AnimatedContainer(
-                width: 80.w,
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 10.0, vertical: 10.0),
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.linearToEaseOut,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // _buildBottomNavbarWidget(i, context),
-                    SvgPicture.asset(
-                      items[i].icon,
-                      color: _buildIconContainerColor(i, context),
-                      height: 25.h,
-                    ),
-                  ],
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(40),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+          child: Container(
+            height: height.h,
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            width: MediaQuery.of(context).size.width,
+            // color: kBoxLight.withOpacity(0.5),
+            decoration: BoxDecoration(
+              //code for shadow in upper direction
+              boxShadow: [
+                BoxShadow(
+                  color: kBoxLight.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 20,
+                  offset: const Offset(10, 10), // changes position of shadow
                 ),
+              ],
+              borderRadius: BorderRadius.circular(40),
+              border: Border.all(
+                color: kBoxLight,
+                width: 1.5,
               ),
-            )
-        ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                for (int i = 0; i < items.length; i++)
+                  GestureDetector(
+                    onTap: () {
+                      onChanged(i);
+                    },
+                    behavior: HitTestBehavior.opaque,
+                    child: AnimatedContainer(
+                      width: 80.w,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 10.0),
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.linearToEaseOut,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          // _buildBottomNavbarWidget(i, context),
+                          SvgPicture.asset(
+                            items[i].icon,
+                            color: _buildIconContainerColor(i, context),
+                            height: 25.h,
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            items[i].title,
+                            style: TextStyle(
+                              color: _buildIconContainerColor(i, context),
+                              fontSize: 11.sp,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
