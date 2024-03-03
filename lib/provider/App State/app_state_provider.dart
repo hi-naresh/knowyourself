@@ -18,10 +18,16 @@ class AppStateProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updatePage(int page) {
-    _pageState = page;
-    _pageController.animateToPage(page,
-        duration: const Duration(milliseconds: 200), curve: Curves.bounceIn);
+  void updatePage(int index) {
+    _pageState = index;
     notifyListeners();
   }
+
+
+// void updatePage(int page) {
+  //   _pageState = page;
+  //   _pageController.animateToPage(page,
+  //       duration: const Duration(milliseconds: 200), curve: Curves.bounceIn);
+  //   notifyListeners();
+  // }
 }

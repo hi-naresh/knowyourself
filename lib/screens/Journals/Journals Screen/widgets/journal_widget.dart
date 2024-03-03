@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:knowyourself/utils/ui_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/models/journals/journal_model.dart';
 import 'package:knowyourself/provider/App%20State/app_state_provider.dart';
@@ -93,7 +94,7 @@ class JournalWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: const EdgeInsets.only(left: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Text(
                 DateFormat.jm().format(journalModel.createdOn),
                 style: TextStyle(
@@ -104,29 +105,14 @@ class JournalWidget extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(
-                  left: 20, right: 20, top: 10, bottom: 10),
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(20),
               height: 85.h,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(
-                  Radius.circular(15),
+                  Radius.circular(20),
                 ),
-                color: Theme.of(context).cardColor,
-                boxShadow: [
-                  !appStateProvider.isDarkMode
-                      ? const BoxShadow(
-                          color: Color.fromRGBO(0, 0, 0, 0.25),
-                          offset: Offset(0.0, 4), //(x,y)
-                          blurRadius: 59.0,
-                        )
-                      : const BoxShadow(
-                          color: Color.fromRGBO(0, 0, 0, 0.25),
-                          offset: Offset(0.0, 4), //(x,y)
-                          blurRadius: 59.0,
-                        ),
-                ],
+                color: kBoxLight,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -138,7 +124,7 @@ class JournalWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Theme.of(context).chipTheme.secondarySelectedColor,
                       borderRadius: const BorderRadius.all(
-                        Radius.circular(10),
+                        Radius.circular(20),
                       ),
                     ),
                     child: Center(

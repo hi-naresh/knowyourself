@@ -79,16 +79,27 @@ Future<void> main() async {
   //   frequency: const Duration(hours: 2),
   // );
   // BackGroundManager.init();
-  GoogleFonts.config.allowRuntimeFetching = false;
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      // statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-      statusBarBrightness: Brightness.light,
-    ),
-  );
+  GoogleFonts.config.allowRuntimeFetching = true;
+  if (SharedPreferencesHelper.getSavedTheme() == 0) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        // statusBarColor: Colors.red,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: kLightModeBottomNavBarColor,
+          systemNavigationBarIconBrightness: Brightness.dark
+      ),
+    );
+  } else {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        // statusBarColor: Colors.blue,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: kDarkModeScaffoldColor,
+          systemNavigationBarIconBrightness: Brightness.light),
+    );
+  }
   runApp( const MyApp(
-      // isUserSignedIn: isUserSignedIn
+    // isUserSignedIn: isUserSignedIn
   ));
 }
 
@@ -125,24 +136,6 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    // if (SharedPreferencesHelper.getSavedTheme() == 0) {
-    //   SystemChrome.setSystemUIOverlayStyle(
-    //     const SystemUiOverlayStyle(
-    //         // statusBarColor: Colors.white,
-    //         statusBarIconBrightness: Brightness.light,
-    //         // systemNavigationBarColor: kLightModeBottomNavBarColor,
-    //         systemNavigationBarIconBrightness: Brightness.light
-    //     ),
-    //   );
-    // } else {
-    //   SystemChrome.setSystemUIOverlayStyle(
-    //     const SystemUiOverlayStyle(
-    //         statusBarColor: kDarkModeScaffoldColor,
-    //         statusBarIconBrightness: Brightness.light,
-    //         systemNavigationBarColor: kDarkModeScaffoldColor,
-    //         systemNavigationBarIconBrightness: Brightness.light),
-    //   );
-    // }
 
     return MultiProvider(
       providers: [
@@ -195,53 +188,53 @@ class _MyAppState extends State<MyApp> {
             create:(BuildContext context){
               return QuestionsProvider();
             }
-            )
+        )
       ],
       child: ScreenUtilInit(
         builder: (BuildContext context, Widget? child) {
           return Consumer<AppStateProvider>(
               builder: (BuildContext context, theme, Widget? child) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'KYB',
-              darkTheme: ThemeData.dark().copyWith(
-                primaryColor: kPrimaryColor,
-                canvasColor: Colors.transparent,
-                cardColor: kDarkModeCardColor,
-                scaffoldBackgroundColor: kDarkModeScaffoldColor,
-                iconTheme: const IconThemeData(color: Colors.white),
-                chipTheme: const ChipThemeData(
-                    backgroundColor: Color(0xFF3C3C56),
-                    secondarySelectedColor: Color(0xFF323248),
-                    selectedColor: Colors.black),
-                textTheme: GoogleFonts.poppinsTextTheme(
-                  Theme.of(context).textTheme,
-                ).apply(
-                  bodyColor: Colors.white,
-                  displayColor: Colors.white,
-                ),
-              ),
-              theme: ThemeData.light().copyWith(
-                primaryColor: kPrimaryColor,
-                scaffoldBackgroundColor: kLightModeScaffoldColor,
-                canvasColor: Colors.transparent,
-                cardColor: kLightModeCardColor,
-                chipTheme: const ChipThemeData(
-                    backgroundColor: Color(0xFFE6E6EB),
-                    secondarySelectedColor: Color(0xFFE4E4E4),
-                    selectedColor: Color(0xFFFFD9E9)),
-                iconTheme: const IconThemeData(color: Colors.black),
-                textTheme: GoogleFonts.poppinsTextTheme(
-                  Theme.of(context).textTheme,
-                ).apply(
-                  bodyColor: kPrimaryTextColor,
-                  displayColor: kPrimaryTextColor,
-                ),
-              ),
-              themeMode: theme.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-              home: onLoggedin(),
-            );
-          });
+                return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  title: 'KYB',
+                  darkTheme: ThemeData.dark().copyWith(
+                    primaryColor: kPrimaryColor,
+                    canvasColor: Colors.transparent,
+                    cardColor: kDarkModeCardColor,
+                    scaffoldBackgroundColor: kDarkModeScaffoldColor,
+                    iconTheme: const IconThemeData(color: Colors.white),
+                    chipTheme: const ChipThemeData(
+                        backgroundColor: Color(0xFF3C3C56),
+                        secondarySelectedColor: Color(0xFF323248),
+                        selectedColor: Colors.black),
+                    textTheme: GoogleFonts.poppinsTextTheme(
+                      Theme.of(context).textTheme,
+                    ).apply(
+                      bodyColor: Colors.white,
+                      displayColor: Colors.white,
+                    ),
+                  ),
+                  theme: ThemeData.light().copyWith(
+                    primaryColor: kPrimaryColor,
+                    scaffoldBackgroundColor: kLightModeScaffoldColor,
+                    canvasColor: Colors.transparent,
+                    cardColor: kLightModeCardColor,
+                    chipTheme: const ChipThemeData(
+                        backgroundColor: Color(0xFFE6E6EB),
+                        secondarySelectedColor: Color(0xFFE4E4E4),
+                        selectedColor: Color(0xFFFFD9E9)),
+                    iconTheme: const IconThemeData(color: Colors.black),
+                    textTheme: GoogleFonts.poppinsTextTheme(
+                      Theme.of(context).textTheme,
+                    ).apply(
+                      bodyColor: kPrimaryTextColor,
+                      displayColor: kPrimaryTextColor,
+                    ),
+                  ),
+                  themeMode: theme.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+                  home: onLoggedin(),
+                );
+              });
         },
       ),
     );

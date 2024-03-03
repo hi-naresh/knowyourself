@@ -118,7 +118,7 @@ class _AccountScreenState extends State<AccountScreen>
     super.build(context);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -183,7 +183,7 @@ class _AccountScreenState extends State<AccountScreen>
                   leadingIcon: Icons.reviews_outlined,
                   title: "Rate Us",
                   description:
-                      "We would love to know what you think of our app",
+                  "We would love to know what you think of our app",
                   switchWidget: Icon(
                     Icons.chevron_right,
                     size: 25.r,
@@ -216,7 +216,7 @@ class _AccountScreenState extends State<AccountScreen>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Image.asset(
-                            "assets/icons/logo.png",
+                            "assets/res/logo.png",
                             height: 25.r,
                             width: 25.r,
                           ),
@@ -326,20 +326,23 @@ class _AccountScreenState extends State<AccountScreen>
                 ),
               ),
 
+              SizedBox(
+                height: 20.h,
+              ),
+              Image.asset(
+                "assets/res/sailcc.png",
+                height: 40.r,
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
               Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "Made For ",
+                      text: "Made for SAILC",
                       style: TextStyle(
                           fontSize: 15.sp, fontWeight: FontWeight.w400),
-                    ),
-                    TextSpan(
-                      text: " SAILC ",
-                      style: TextStyle(
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
                     ),
                   ],
                 ),
