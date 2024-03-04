@@ -143,13 +143,13 @@ class TitleTextFieldWidget extends StatelessWidget {
                 ),
               ],
             ),
-            InkWell(
-              onTap: () {
-                if (journalEditorProvider.titleEditingController.text != "") {
-                  journalEditorProvider.updateIndex(2);
+            ButtonContainer(
+                label: "Next",
+                onTap: () {
+                  if (journalEditorProvider.titleEditingController.text != "") {
+                    journalEditorProvider.updateIndex(2);
+                  }
                 }
-              },
-              child: const ButtonContainer(label: "Next"),
             ),
           ],
         ),

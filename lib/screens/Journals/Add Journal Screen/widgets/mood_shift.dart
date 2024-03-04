@@ -7,10 +7,10 @@ class MoodShift extends StatelessWidget {
   MoodShift({super.key});
 
   final List<Map<String, dynamic>> moods = [
-    {'mood': 'Cheerful', 'color': Colors.yellow},
-    {'mood': 'Calm', 'color': Colors.blue},
-    {'mood': 'Positive', 'color': Colors.pink},
-    {'mood': 'Sleep', 'color': Colors.purple},
+    {'mood': 'Cheerful', 'color': kApp1},
+    {'mood': 'Calm', 'color': kApp2},
+    {'mood': 'Positive', 'color': kApp3},
+    {'mood': 'Sleep', 'color': kApp4},
   ];
 
   @override

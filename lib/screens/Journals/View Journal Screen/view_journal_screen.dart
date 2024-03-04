@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/widgets/button_container.dart';
 import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/widgets/mood_shift.dart';
+import 'package:knowyourself/screens/widgets/custom_header.dart';
 import 'package:provider/provider.dart';
 
 import 'package:knowyourself/models/journals/journal_model.dart';
@@ -43,92 +45,95 @@ class _ViewJournalScreenState extends State<ViewJournalScreen> {
     return Scaffold(
       body: Container(
         color: Theme.of(context).scaffoldBackgroundColor,
+        padding: EdgeInsets.only(
+            left: 15.w, right: 15.w, top: 10.h, bottom: 20.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              color: Theme.of(context).scaffoldBackgroundColor,
-              padding: const EdgeInsets.only(
-                  left: 20, right: 20, top: 10, bottom: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (widget.readOnly)
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: IconButton(
-                        padding: EdgeInsets.zero,
-                        iconSize: 45.h,
-                        icon: const Icon(Icons.close),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                  if (!widget.readOnly)
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: IconButton(
-                        padding: EdgeInsets.zero,
-                        iconSize: 45.h,
-                        icon: const Icon(Icons.arrow_back),
-                        onPressed: () {
-                          Provider.of<JournalEditorProvider>(context,
-                                  listen: false)
-                              .updateIndex(2);
-                        },
-                      ),
-                    ),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                            text: 'Emotion ',
-                            style: TextStyle(
-                                fontSize: 28.sp,
-                                fontWeight: FontWeight.w600)),
-                        TextSpan(
-                          text: 'Summary',
-                          style: TextStyle(
-                              fontSize: 28.sp,
-                              fontWeight: FontWeight.w600,
-                              color: kPrimaryColor),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Text(
-                  //   DateFormat('EEEE').format(journalModel.createdOn),
-                  //   style: TextStyle(
-                  //       fontWeight: FontWeight.w600,
-                  //       fontSize: 28.sp,
-                  //       color: kPrimaryColor),
-                  // ),
-                  if (widget.readOnly)
-                    Text(
-                      DateFormat(
-                        'MMMM d, HH:mm',
-                      ).format(journalModel.createdOn),
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14.sp,
-                          color: const Color(0xFFB2B2B7)),
-                    ),
-                  if (!widget.readOnly)
-                    Text(
-                      DateFormat(
-                        'EEEE, MMMM d',
-                      ).format(journalModel.createdOn),
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14.sp,
-                          color: const Color(0xFFB2B2B7)),
-                    ),
-                ],
-              ),
-            ),
+            // Container(
+            //   color: Theme.of(context).scaffoldBackgroundColor,
+            //   padding: const EdgeInsets.only(
+            //       left: 20, right: 20, top: 10, bottom: 10),
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.start,
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       if (widget.readOnly)
+            //         Align(
+            //           alignment: Alignment.centerRight,
+            //           child: IconButton(
+            //             padding: EdgeInsets.zero,
+            //             iconSize: 45.h,
+            //             icon: const Icon(Icons.close),
+            //             onPressed: () {
+            //               Navigator.pop(context);
+            //             },
+            //           ),
+            //         ),
+            //       if (!widget.readOnly)
+            //         Align(
+            //           alignment: Alignment.centerLeft,
+            //           child: IconButton(
+            //             padding: EdgeInsets.zero,
+            //             iconSize: 45.h,
+            //             icon: const Icon(Icons.arrow_back),
+            //             onPressed: () {
+            //               Provider.of<JournalEditorProvider>(context,
+            //                       listen: false)
+            //                   .updateIndex(2);
+            //             },
+            //           ),
+            //         ),
+            //       Text.rich(
+            //         TextSpan(
+            //           children: [
+            //             TextSpan(
+            //                 text: 'Emotion ',
+            //                 style: TextStyle(
+            //                     fontSize: 28.sp,
+            //                     fontWeight: FontWeight.w600)),
+            //             TextSpan(
+            //               text: 'Summary',
+            //               style: TextStyle(
+            //                   fontSize: 28.sp,
+            //                   fontWeight: FontWeight.w600,
+            //                   color: kPrimaryColor),
+            //             ),
+            //           ],
+            //         ),
+            //       ),
+            //       // Text(
+            //       //   DateFormat('EEEE').format(journalModel.createdOn),
+            //       //   style: TextStyle(
+            //       //       fontWeight: FontWeight.w600,
+            //       //       fontSize: 28.sp,
+            //       //       color: kPrimaryColor),
+            //       // ),
+            //       if (widget.readOnly)
+            //         Text(
+            //           DateFormat(
+            //             'MMMM d, HH:mm',
+            //           ).format(journalModel.createdOn),
+            //           style: TextStyle(
+            //               fontWeight: FontWeight.w400,
+            //               fontSize: 14.sp,
+            //               color: const Color(0xFFB2B2B7)),
+            //         ),
+            //       if (!widget.readOnly)
+            //         Text(
+            //           DateFormat(
+            //             'EEEE, MMMM d',
+            //           ).format(journalModel.createdOn),
+            //           style: TextStyle(
+            //               fontWeight: FontWeight.w400,
+            //               fontSize: 14.sp,
+            //               color: const Color(0xFFB2B2B7)),
+            //         ),
+            //     ],
+            //   ),
+            // ),
+            CustomHeader(title: "Emotion"),
             if (!widget.readOnly)
               Padding(
                 padding: const EdgeInsets.only(
@@ -266,58 +271,17 @@ class _ViewJournalScreenState extends State<ViewJournalScreen> {
               ),
             ),
             if (!widget.readOnly)
-              GestureDetector(
+              ButtonContainer(
+                  label: "Save",
+                  onTap: () {
+                    _saveJournal();
+                  }),
+
+            ButtonContainer(
+                label: "Shift Mood",
                 onTap: () {
-                  _saveJournal();
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  margin:
-                      const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-                  width: double.infinity,
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFE7E5FD),
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Save",
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        color: kPrimaryColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            GestureDetector(
-              onTap: () {
-                _shiftMood();
-              },
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                margin:
-                const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-                width: double.infinity,
-                height: 50.h,
-                decoration: BoxDecoration(
-                  color: const Color(0xFFE7E5FD),
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                child: Center(
-                  child: Text(
-                    "Shift Mood",
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                  _shiftMood();
+                }),
           ],
         ),
       ),

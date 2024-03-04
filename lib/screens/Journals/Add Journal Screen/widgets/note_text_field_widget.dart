@@ -120,26 +120,26 @@ class NotesTextFieldWidget extends StatelessWidget {
                 ),
               ],
             ),
-            InkWell(
-              onTap: () {
-                if (journalEditorProvider.notesEditingController.text == "") {
-                  return;
+            ButtonContainer(
+                label: "Done",
+                onTap: (){
+                  if (journalEditorProvider.notesEditingController.text == "") {
+                    return;
+                  }
+                  JournalModel journalModel = JournalModel(
+                      journalId: (Random.secure().nextInt(90000) + 10000),
+                      createdOn: DateTime.now(),
+                      mood: Provider.of<JournalEditorProvider>(context,
+                          listen: false)
+                          .mood,
+                      title: journalEditorProvider.titleEditingController.text,
+                      color: Color((Random().nextDouble() * 0xFFFFFF).toInt())
+                          .withOpacity(1.0),
+                      description:
+                      journalEditorProvider.notesEditingController.text, id: '');
+                  journalEditorProvider.updateJournal(journalModel);
+                  journalEditorProvider.updateIndex(3);
                 }
-                JournalModel journalModel = JournalModel(
-                    journalId: (Random.secure().nextInt(90000) + 10000),
-                    createdOn: DateTime.now(),
-                    mood: Provider.of<JournalEditorProvider>(context,
-                            listen: false)
-                        .mood,
-                    title: journalEditorProvider.titleEditingController.text,
-                    color: Color((Random().nextDouble() * 0xFFFFFF).toInt())
-                        .withOpacity(1.0),
-                    description:
-                        journalEditorProvider.notesEditingController.text, id: '');
-                journalEditorProvider.updateJournal(journalModel);
-                journalEditorProvider.updateIndex(3);
-              },
-              child: const ButtonContainer(label: "Done"),
             ),
           ],
         ),

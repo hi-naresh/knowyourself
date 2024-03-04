@@ -19,7 +19,7 @@ class _AddJournalPageWidgetState extends State<AddJournalPageWidget> {
   final List<Widget> _journalPages = [
     const MoodSelectWidget(),
     // const TitleTextFieldWidget(),
-    const AspectSelectWidget(),
+     AspectSelectWidget(),
     // const NotesTextFieldWidget(),
     const ExpressFeelingsWidget(),
     const ViewJournalScreen(readOnly: false),
