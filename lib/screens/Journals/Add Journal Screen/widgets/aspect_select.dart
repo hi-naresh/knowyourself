@@ -98,7 +98,7 @@ class AspectSelectWidget extends StatelessWidget {
                               CustomPlaceHolder("Emotionally", 60, double.infinity),
                               SizedBox(height: 20.h,),
                               CustomPlaceHolder("Spiritually", 60, double.infinity),
-
+                              // make 4 options which can be selected
                             ]
                           ),
                         ),

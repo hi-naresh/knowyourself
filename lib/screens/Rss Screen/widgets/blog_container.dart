@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:knowyourself/screens/Rss%20Screen/read_article_screen.dart';
+import 'package:knowyourself/screens/widgets/CustomTitles.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 
 import 'package:webfeed_revised/webfeed_revised.dart';
@@ -25,90 +26,87 @@ class BlogContainer extends StatelessWidget {
         }));
       },
       child: Container(
-        margin: EdgeInsets.only(top: 10.h, left: 20.w, right: 20.w),
+        margin: EdgeInsets.only(top: 10.h),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
+          color: kBoxLight,
           borderRadius: BorderRadius.circular(14.r),
-          boxShadow: const [
-            BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.15),
-              offset: Offset(0.0, 4.0), //(x,y)
-              blurRadius: 6.0,
-            ),
-          ],
         ),
-        child: Column(
+        child: Row(
           children: [
             ClipRRect(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10.r),
-                  topRight: Radius.circular(10.r)),
+                  bottomLeft: Radius.circular(10.r),
+                  topRight: Radius.circular(50.r),
+                  bottomRight: Radius.circular(50.r)
+              ),
               child: Image.network(
                 rssItem.content!.images.first.toString(),
-                height: 200.h,
-                width: double.infinity,
+                height: 110.h,
+                width: 100.h,
                 fit: BoxFit.cover,
               ),
             ),
             const SizedBox(),
-            Padding(
-              padding: EdgeInsets.all(8.r),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    rssItem.title.toString(),
-                    style:
-                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Text(
-                    rssItem.description.toString(),
-                    style:
-                        TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w300),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        DateFormat.yMMMMd().format(
-                          DateTime.parse(
-                            rssItem.pubDate.toString(),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(10.r),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      rssItem.title.toString(),
+                      maxLines: 1,
+                      style:customTitleBold(kDarkText, 16, FontWeight.w700),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Text(
+                      rssItem.description.toString(),
+                      maxLines: 3,
+                      style:customTitleBold(kDarkText, 10, FontWeight.w400),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          DateFormat.yMMMMd().format(
+                            DateTime.parse(
+                              rssItem.pubDate.toString(),
+                            ),
                           ),
+                          style: customTitleBold(kApp3, 12, FontWeight.w600),
                         ),
-                        style: TextStyle(fontSize: 12.sp, color: Colors.blue),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return ReadArticleScreen(
-                              rssItem: rssItem,
-                            );
-                          }));
-                        },
-                        child: Container(
-                          decoration: const BoxDecoration(
-                              color: kPrimaryColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(25))),
-                          width: 80.w,
-                          padding: const EdgeInsets.all(10),
-                          child: Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                            size: 30.r,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) {
+                              return ReadArticleScreen(
+                                rssItem: rssItem,
+                              );
+                            }));
+                          },
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                color: kApp3,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(25))),
+                            padding: const EdgeInsets.all(5),
+                            child: Icon(
+                              Icons.arrow_forward,
+                              color: Colors.white,
+                              size: 20.r,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
-                  )
-                ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             )
           ],

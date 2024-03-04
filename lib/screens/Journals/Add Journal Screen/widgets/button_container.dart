@@ -14,7 +14,7 @@ class ButtonContainer extends StatelessWidget {
       width: double.infinity,
       height: 50.h,
       decoration: BoxDecoration(
-        color: kSecondaryColor,
+        color: kApp1,
         borderRadius: BorderRadius.circular(40),
       ),
       child: Center(
@@ -22,7 +22,7 @@ class ButtonContainer extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 16.sp,
-            color: kPrimaryColor,
+            color: kDarkText,
             fontWeight: FontWeight.w500,
           ),
         ),

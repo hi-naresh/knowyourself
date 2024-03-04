@@ -9,6 +9,7 @@ import 'package:knowyourself/screens/Space/widgets/celebrate_yourself_widget.dar
 import 'package:knowyourself/screens/Space/widgets/question_space.dart';
 import 'package:knowyourself/screens/Space/widgets/to_do_widget.dart';
 import 'package:knowyourself/screens/widgets/Placeholder.dart';
+import 'package:knowyourself/screens/widgets/custom_header.dart';
 import 'package:provider/provider.dart';
 
 import '../../hive boxes/journal_box.dart';
@@ -33,12 +34,12 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
   late TabController _tabController;
 
   final _selectedColor = kApp4;
-  final _unselectedColor = Color(0xff5f6368);
-  final _tabs = [
+  // final _unselectedColor = Color(0xff5f6368);
+  final _tabs = const [
     Tab(text: 'Journal'),
-    Tab(text: 'Story'),
     Tab(text: 'Milestones'),
     Tab(text: 'Questions'),
+    Tab(text: 'Story'),
     Tab(text: 'Celebration'),
   ];
 
@@ -68,22 +69,12 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
     // super.build(context);
     // _resetSavedData();
     return Scaffold(
-        body: Column(
-          children: [
-            Stack(
-              alignment: Alignment.center,
-              children :[
-                Text(
-                  "Space",
-                  style: customTitleBold(kGreyed1.withOpacity(0.1)
-                      , 90, FontWeight.w700),
-                ),
-                header(),
-              ]
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 0.h,horizontal: 15.w),
-              child: Container(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Column(
+            children: [
+              const CustomHeader(title: "Space"),
+              Container(
                 clipBehavior: Clip.none,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade200,
@@ -109,23 +100,21 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
                   tabs: _tabs,
                 ),
               ),
-            ),
-            Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              SizedBox(height: 10.h),
+              Expanded(
                   child: TabBarView(
                     controller: _tabController,
                     children:  [
                       _journalTab(),
-                      Center(child: Text("Status Pages"),),
                       _milestonesTab(),
                       _questionsTab(),
+                      Center(child: Text("Story Page"),),
                       _celebrationTab()
                     ],
-                  ),
-                )
-            )
-          ],
+                  )
+              )
+            ],
+          ),
         )
     );
   }
@@ -137,10 +126,7 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
           child: Container(
             decoration: BoxDecoration(
               color: kPalette6,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30),
-              ),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 10.h),
@@ -273,42 +259,6 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
       child: Column(
         children: [
           CelebrateYourselfWidget()
-        ],
-      ),
-    );
-  }
-
-  Widget header(){
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return const AccountScreen();
-              }));
-            },
-            child: Consumer<UserDataProvider>(
-              builder: (BuildContext context, value, Widget? child) {
-                return CircleAvatar(
-                  radius: 18.r,
-                  backgroundColor: const Color(0xFFD9D9D9),
-                  backgroundImage: AssetImage(
-                    "assets/avatars/${value.avatar}.png",
-                  ),
-                );
-              },
-            ),
-          ),
-          IconButton(
-            onPressed: onPressed,
-            icon: SvgPicture.asset(
-              "assets/icons/bell.svg",
-              color: Colors.black,
-            ),)
         ],
       ),
     );

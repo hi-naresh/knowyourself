@@ -5,12 +5,11 @@ import 'package:knowyourself/screens/Home/widgets/mood_widget.dart';
 import 'package:knowyourself/screens/Home/widgets/progress_milestones.dart';
 import 'package:knowyourself/screens/Home/widgets/recommend_widget.dart';
 import 'package:knowyourself/screens/widgets/CustomTitles.dart';
+import 'package:knowyourself/screens/widgets/custom_header.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/provider/App%20State/app_state_provider.dart';
-import 'package:knowyourself/provider/Extras/user_data_provider.dart';
 import 'package:knowyourself/screens/Home/widgets/to_do_radial_widget.dart';
-import 'package:knowyourself/screens/Journals/Account%20Screen/account_screen.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -23,16 +22,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with AutomaticKeepAliveClientMixin {
   get onPressed => null;
-
-  String greeting() {
-    var hour = DateTime.now().hour;
-    if (hour < 12 && hour > 5) {
-      return 'Good Morning!';
-    } else if (hour < 17 && hour > 12) {
-      return 'Good Afternoon!';
-    }
-    return 'Good Evening!';
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,13 +37,14 @@ class _HomeScreenState extends State<HomeScreen>
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 40.h,
-              ),
-              header(),
-              SizedBox(
-                height: 15.h,
-              ),
+              // SizedBox(
+              //   height: 40.h,
+              // ),
+              // header(),
+              const CustomHeader(title: "Home"),
+              // SizedBox(
+              //   height: 15.h,
+              // ),
               const MoodWidget(),
               SizedBox(
                 height: 20.h,
@@ -105,55 +95,9 @@ class _HomeScreenState extends State<HomeScreen>
     );
   }
 
-  Widget header(){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (BuildContext context) {
-                  return const AccountScreen();
-                }));
-              },
-              child: Consumer<UserDataProvider>(
-                builder: (BuildContext context, value, Widget? child) {
-                  return CircleAvatar(
-                    radius: 18.r,
-                    backgroundColor: const Color(0xFFD9D9D9),
-                    backgroundImage: AssetImage(
-                      "assets/avatars/${value.avatar}.png",
-                    ),
-                  );
-                },
-              ),
-            ),
-            SizedBox(
-              width: 10.w,
-            ),
-            Consumer<UserDataProvider>(
-              builder: (BuildContext context, value, Widget? child) {
-                return Text(greeting(),style: customTitle(kDarkText, 16),);
-              },
-            ),
-          ],
-        ),
-
-        IconButton(
-          onPressed: onPressed,
-          icon: SvgPicture.asset(
-            "assets/icons/bell.svg",
-            color: Colors.black,
-          ),)
-      ],
-    );
-  }
-
   Widget checkIn(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       decoration: BoxDecoration(
         color: Colors.pink.shade100,
         borderRadius: BorderRadius.circular(30.0),
@@ -162,11 +106,11 @@ class _HomeScreenState extends State<HomeScreen>
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 3,
-            offset: Offset(0, 1), // changes position of shadow
+            offset: const Offset(0, 1), // changes position of shadow
           ),
         ],
       ),
-      child: Row(
+      child: const Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(Icons.star, color: Colors.orange), // Replace with your custom icon
@@ -197,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen>
     return Container(
       height: height,
       width: width,
-      padding: EdgeInsets.all(18),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: kBoxLight,
         borderRadius: BorderRadius.circular(20),

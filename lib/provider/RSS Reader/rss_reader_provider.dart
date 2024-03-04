@@ -10,6 +10,8 @@ class RSSReaderProvider extends ChangeNotifier {
   final bool _hasError = false;
   bool get hasError => _hasError;
   bool _isLoading = true;
+  //category
+  String _selectedCategory = 'All';
   bool get isLoading => _isLoading;
   void fetchBlogs() async {
     final client = IOClient(
@@ -22,6 +24,7 @@ class RSSReaderProvider extends ChangeNotifier {
         ),
       );
 
+
       _isLoading = false;
 
       notifyListeners();
@@ -30,11 +33,22 @@ class RSSReaderProvider extends ChangeNotifier {
       if (rssFeed.items != null) {
         _blogs = rssFeed.items!;
       }
+      //filter blogs by category
+      _blogs = filterBlogsByCategory(_blogs, _selectedCategory);
 
       client.close();
       notifyListeners();
     } catch (e) {
       rethrow;
+    }
+  }
+
+  List<RssItem> filterBlogsByCategory(List<RssItem> blogs, String selectedCategory) {
+    if (selectedCategory == 'All') {
+      return blogs;
+    } else {
+      return blogs.where((blog) =>
+      blog.categories!.any((element) => element.value.toLowerCase() == selectedCategory.toLowerCase())).toList();
     }
   }
 }

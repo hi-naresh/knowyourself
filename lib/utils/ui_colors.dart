@@ -76,9 +76,9 @@ const Color kPrimaryTextColor = Colors.black;
 const Color kSecondaryTextColor = Color(0xFF8E8E8E);
 const Color kLightModeTextFieldColor = Color(0xFFE6E6EA);
 
-const Color kApp2 = Color(0xFFFFB4B6);
-const Color kApp3 = Color(0xFFE2B0FF);
-const Color kApp1 = Color(0xFFAAB8EA);
+const Color kApp2 = kPie1;
+const Color kApp3 = kPie2;
+const Color kApp1 = kPie;
 const Color kApp4 = Color(0xFFFFB999);
 const Color kGreyed = Color(0xFFBEBEBE);
 const Color kGreyed1 = Color(0xFF363538);

@@ -154,7 +154,7 @@ class CalendarWidget extends StatelessWidget {
           ? null // If the day is disabled, do nothing.
           : () => onDaySelected(day), // If it's not disabled, call the onDaySelected function.
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 7.w),
+        margin: EdgeInsets.symmetric(horizontal: 5.w),
         padding: padding,
         width: 64.w,
         decoration: BoxDecoration(
