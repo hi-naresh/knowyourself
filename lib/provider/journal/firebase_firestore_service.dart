@@ -16,7 +16,15 @@ class FirebaseFirestoreService {
 
   Future<void> addJournalEntry(JournalModel journalModel) async {
     try {
-      await _journalCollection.add(journalModel.toMap());
+      DocumentReference docRef = await _journalCollection.add({
+        'createdOn': DateTime.now(),
+        'mood': journalModel.mood,
+        'title': journalModel.title,
+        'description': journalModel.description,
+        'journalId': journalModel.journalId, // Include journalId in Firestore document
+      });
+      // Update the journalModel with the Firestore document ID
+      journalModel = journalModel.copyWith(id: docRef.id);
     } catch (e) {
       print('Error adding journal entry: $e');
       throw 'Failed to add journal entry';
