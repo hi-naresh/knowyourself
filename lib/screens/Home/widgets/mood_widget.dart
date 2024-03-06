@@ -26,7 +26,8 @@ class MoodWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomContainer(
       width: double.infinity,
-      color: kNewP1,
+      color: kNewP1_1,
+      // color: kApp1,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,8 +37,8 @@ class MoodWidget extends StatelessWidget {
           Consumer<UserDataProvider>(
             builder: (BuildContext context, value, Widget? child) {
               return Text(
-                greeting()+value.userName,
-                style: customTitleBold(kDarkText, 20, FontWeight.w800),
+                "${greeting()}${value.userName}!",
+                style: customTitleBold(kDarkText, 20, FontWeight.w700),
                 textAlign: TextAlign.left,
               );
             },
@@ -45,7 +46,7 @@ class MoodWidget extends StatelessWidget {
 
           Text(
             "How do you feel?",
-            style: customTitleBold(kDarkText, 21, FontWeight.w800),
+            style: customTitleBold(kDarkText, 21, FontWeight.w700),
             textAlign: TextAlign.left,
           ),
           const SizedBox(height: 10),

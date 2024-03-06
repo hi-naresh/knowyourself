@@ -31,19 +31,26 @@ class _AddJournalPageWidgetState extends State<AddJournalPageWidget> {
     return Consumer<JournalEditorProvider>(
       builder: (BuildContext context, value, Widget? child) {
         _index = value.index;
-        return WillPopScope(
-          onWillPop: () async {
-            if (_index == 0) {
-              value.clearJournalData();
-              Navigator.pop(context);
-
-              return false;
-            }
-            _index -= 1;
-            value.updateIndex(_index);
-            return false;
-          },
-          child: PageView(
+        // return WillPopScope(
+        //   onWillPop: () async {
+        //     if (_index == 0) {
+        //       value.clearJournalData();
+        //       Navigator.pop(context);
+        //
+        //       return false;
+        //     }
+        //     _index -= 1;
+        //     value.updateIndex(_index);
+        //     return false;
+        //   },
+        //   child: PageView(
+        //     physics: const NeverScrollableScrollPhysics(),
+        //     controller: value.pageController,
+        //     children: _journalPages,
+        //   ),
+        // );
+        return Scaffold(
+          body: PageView(
             physics: const NeverScrollableScrollPhysics(),
             controller: value.pageController,
             children: _journalPages,

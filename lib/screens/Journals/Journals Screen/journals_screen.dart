@@ -25,7 +25,7 @@ class _JournalsScreenState extends State<JournalsScreen>
     super.build(context);
 
     return Scaffold(
-      backgroundColor: kBackground1,
+      // backgroundColor: kBackground1,
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(

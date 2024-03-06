@@ -22,14 +22,20 @@ class _ProgressBarState extends State<ProgressBar> {
 
   @override
   Widget build(BuildContext context) {
+    int currentIndex() => Provider.of<JournalEditorProvider>(context, listen: false).index;
     return Padding(
       padding: const EdgeInsets.only(top:20.0),
       child: LinearPercentIndicator(
         alignment: MainAxisAlignment.spaceBetween,
         leading: GestureDetector(
           onTap: () {
+            if (currentIndex() == 0) {
+              Navigator.pop(context);
+            }
             Provider.of<JournalEditorProvider>(context, listen: false)
-                .updateIndex(0);
+                .updateIndex(currentIndex() - 1);
+            // Provider.of<JournalEditorProvider>(context, listen: false)
+            //     .updateIndex(0);
           },
           child: Icon(
             Icons.arrow_back_ios_new_rounded,

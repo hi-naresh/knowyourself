@@ -25,7 +25,8 @@ class CustomHeader extends StatelessWidget {
           height: 110.h,
           child: Text(
             title,
-            style: customTitleBold(kGreyed1.withOpacity(0.1)
+            style: customTitleBold(
+                kGreyed1.withOpacity(0.05)
                 , 90, FontWeight.w700),
           ),
         ),

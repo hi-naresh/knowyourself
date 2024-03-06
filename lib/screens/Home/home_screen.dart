@@ -6,10 +6,11 @@ import 'package:knowyourself/screens/Home/widgets/progress_milestones.dart';
 import 'package:knowyourself/screens/Home/widgets/recommend_widget.dart';
 import 'package:knowyourself/screens/widgets/CustomTitles.dart';
 import 'package:knowyourself/screens/widgets/custom_header.dart';
+import 'package:knowyourself/screens/widgets/my_card.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/provider/App%20State/app_state_provider.dart';
-import 'package:knowyourself/screens/Home/widgets/to_do_radial_widget.dart';
+import 'package:knowyourself/screens/Home/widgets/milestones_widget.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen>
       // backgroundColor: kBackground2,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
+          padding: EdgeInsets.symmetric(horizontal: 22.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -165,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen>
               GestureDetector(
                 onTap: () {
                   Provider.of<AppStateProvider>(context, listen: false)
-                      .updatePage(2);
+                      .updatePage(3);
                 },
                 child: Text(
                   "View All",
@@ -181,20 +182,24 @@ class _HomeScreenState extends State<HomeScreen>
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            outerContainer( 55.h, 0.4*wi, Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SvgPicture.asset("assets/icons/journall.svg"),
-                Text("Journal", style: h3Bold,),
-              ],
-            ) ),
-            outerContainer( 55.h, 0.4*wi, Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SvgPicture.asset("assets/icons/assess.svg"),
-                Text("Review", style: h3Bold,),
-              ],
-            ) )
+            MyCard(
+                onTap: (){
+                  Provider.of<AppStateProvider>(context, listen: false)
+                      .updatePage(3);
+                },
+                left: wi*0.4 - 0.4*wi/2,
+                width: 0.4*wi,
+                height: 60.h,
+                title: "Journal",
+                color: kApp1,
+                imageUrl: "assets/illustrations/journalm.svg"),
+            MyCard(
+                left: wi*0.4 - 0.4*wi/2,
+                width: 0.4*wi,
+                height: 60.h,
+                title: "Review",
+                color: kApp2,
+                imageUrl: "assets/illustrations/review.svg"),
           ],
         ),
       ],

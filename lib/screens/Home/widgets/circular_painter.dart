@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourself/utils/ui_colors.dart';
 
 class ToDoPainter extends CustomPainter {
   final int completedTasks;
@@ -20,7 +21,7 @@ class ToDoPainter extends CustomPainter {
 
     Paint paint = Paint();
 
-    paint.color = const Color(0xFFBAA7AE);
+    paint.color = kProgress;
     paint.strokeCap = StrokeCap.round;
     paint.style = PaintingStyle.stroke;
     //inner shadow

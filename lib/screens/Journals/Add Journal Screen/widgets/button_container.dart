@@ -5,8 +5,10 @@ import 'package:knowyourself/utils/ui_colors.dart';
 
 class ButtonContainer extends StatelessWidget {
   final String label;
-  final Function() onTap;
-  const ButtonContainer({super.key, required this.label, required this.onTap});
+  final Function()? onTap;
+  final double? width;
+  final double? height;
+  const ButtonContainer({super.key, required this.label, required this.onTap, this.width, this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +17,8 @@ class ButtonContainer extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.all(10),
-        width: double.infinity,
-        height: 50.h,
+        width: width!=null ?double.infinity : width,
+        height: height!=null ? 50.h : height,
         decoration: BoxDecoration(
           color: kApp1,
           borderRadius: BorderRadius.circular(30.0),

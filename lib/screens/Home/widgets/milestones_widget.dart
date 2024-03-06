@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/screens/Space/space_screen.dart';
 import 'package:knowyourself/screens/widgets/CustomContaincer.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/provider/ToDo/to_do_provider.dart';
 import 'package:knowyourself/screens/Home/widgets/circular_painter.dart';
-
 import '../../widgets/CustomTitles.dart';
 
 class TodoRadialWidget extends StatelessWidget {
@@ -16,43 +16,49 @@ class TodoRadialWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomContainer(
       width: double.infinity,
-      color: kNewP2,
+      color: kNewP2_1,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Stack(
             children: [
-              Text(
-                "Daily milestones",
-                style: h2,),
-              Consumer<TodoProvider>(
-                builder: (BuildContext context, value, Widget? child) {
-                  return Text.rich(
-                    TextSpan(
-                      children: [
+              Opacity(
+                opacity: 0.7,
+                child: SvgPicture.asset(
+                  "assets/illustrations/milestones.svg",
+                  width: 120.h,
+                  height: 120.h,
+                  fit: BoxFit.contain,
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Daily milestones",
+                    style: customTitleBold(kPalette5, 20.sp, FontWeight.w700),),
+                  Consumer<TodoProvider>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return Text.rich(
                         TextSpan(
-                            text: (value.toDolist.length -
-                                value.getUncompletedTasksCount())
-                                .toString(),
-                            style: h4(kDarkText)),
-                        TextSpan(
-                          text: '/${value.toDolist.length} task completed',
-                          style: h4(kLightText),
+                          children: [
+                            TextSpan(
+                                text: (value.toDolist.length -
+                                    value.getUncompletedTasksCount())
+                                    .toString(),
+                                style: h4(kDarkText)),
+                            TextSpan(
+                              text: '/${value.toDolist.length} task completed',
+                              style: h4(kLightText),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 5.h,
-              ),
-              Image.asset(
-                "assets/illustrations/miles.png",
-                height: 80.h,
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),
@@ -67,7 +73,7 @@ class TodoRadialWidget extends StatelessWidget {
                       completedTasks: (value.toDolist.length -
                           value.getUncompletedTasksCount()),
                       totalTasks: value.toDolist.length,
-                      radius: 34.h,
+                      radius: 32.h,
                       strokeWidth: 12.h,
                     ),
                     child: SizedBox(
@@ -93,16 +99,11 @@ class TodoRadialWidget extends StatelessWidget {
                     return MySpaceScreen(); }));
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                   decoration: decorationGrad,
-                  child: Text("Start",style: customTitle(kDarkText, 13),),
+                  child: Text("Start",style: customTitleBold(kWhite, 13,FontWeight.w700),),
                 ),
               ),
-              // ElevatedButton(
-              //   decoration: ,
-              //     onPressed: (){},
-              //     child: Text("Start"),
-              // )
             ],
           ),
         ],

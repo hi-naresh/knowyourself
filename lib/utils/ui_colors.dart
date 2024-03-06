@@ -78,6 +78,7 @@ const Color kLightModeTextFieldColor = Color(0xFFE6E6EA);
 
 const Color kApp2 = kPie1;
 const Color kApp3 = kPie2;
+const Color kApp3_1 = Color(0xFFD9FFED);
 const Color kApp1 = kPie;
 const Color kApp4 = Color(0xFFFFB999);
 const Color kGreyed = Color(0xFFBEBEBE);
@@ -85,7 +86,9 @@ const Color kGreyed1 = Color(0xFF363538);
 const Color kShadow = Color(0xFFE8E8E8);
 
 const Color kNewP1 = Color(0xFFD7E6FE);
+const Color kNewP1_1 = Color(0xFFBFDAFF);
 const Color kNewP2 = Color(0xFFFFEAE7);
+const Color kNewP2_1 = Color(0xFFFFCCBF);
 const Color kBoxLight = Color(0xFFF4F3F1);
 
 const Color kPie = Color(0xFFAEBFFF);
@@ -93,6 +96,7 @@ const Color kPie1 = Color(0xFFFF98BF);
 const Color kPie2 = Color(0xFF63D5AC);
 const Color kPieBox = Color(0xFFEEF6FF);
 const Color kPieBox1 = Color(0xFFDAE1EA);
+const Color kProgress = Color(0xFFE9EDF1);
 
 
 
@@ -100,7 +104,7 @@ const Color kPieBox1 = Color(0xFFDAE1EA);
 const Color kDarkText = Color(0xFF371B34);
 const Color kLightText = Color(0xFF696969);
 
-Decoration decorationGrad = BoxDecoration(
+Decoration decorationGrad = const BoxDecoration(
   gradient: LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,

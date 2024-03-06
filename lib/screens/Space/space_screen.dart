@@ -10,6 +10,7 @@ import 'package:knowyourself/screens/Space/widgets/question_space.dart';
 import 'package:knowyourself/screens/Space/widgets/to_do_widget.dart';
 import 'package:knowyourself/screens/widgets/Placeholder.dart';
 import 'package:knowyourself/screens/widgets/custom_header.dart';
+import 'package:knowyourself/screens/widgets/global_styles.dart';
 import 'package:provider/provider.dart';
 
 import '../../hive boxes/journal_box.dart';
@@ -78,16 +79,13 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
                 clipBehavior: Clip.none,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(25.0),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 5.w),
+                padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.w),
                 child: TabBar(
                   controller: _tabController,
                   dividerHeight: 0,
-                  indicator: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: _selectedColor
-                  ),
+                  indicator: Styles.containerDecoration(_selectedColor),
                   labelColor: Colors.white,
                   isScrollable: true,
                   padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 3),
@@ -125,7 +123,7 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
         SliverToBoxAdapter(
           child: Container(
             decoration: BoxDecoration(
-              color: kPalette6,
+              color: kBoxLight,
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
             child: Padding(

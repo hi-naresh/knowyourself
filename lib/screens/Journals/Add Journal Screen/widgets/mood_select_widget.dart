@@ -29,6 +29,11 @@ class _MoodSelectWidgetState extends State<MoodSelectWidget> {
       )
   );
 
+  //values of the animated emojis to string
+  List<String> _emojisToString = List.generate(10, (index) =>
+      AnimatedEmojis.values[index].toString()
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,6 +123,7 @@ class _MoodSelectWidgetState extends State<MoodSelectWidget> {
                       onChanged: (newValue) {
                         setState(() {
                           _sliderValue = newValue;
+                          //print string of the emoji
                         });
                       },
                       emojis: _emojis,
@@ -136,6 +142,7 @@ class _MoodSelectWidgetState extends State<MoodSelectWidget> {
                 onTap: (){
                   Provider.of<JournalEditorProvider>(context, listen: false)
                       .updateIndex(1);
+                  //add the mood to the journal data
                 }
             ),
           ],

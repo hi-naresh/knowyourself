@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/widgets/progress_bar.dart';
 import 'package:knowyourself/screens/widgets/CustomTitles.dart';
-import 'package:knowyourself/screens/widgets/Placeholder.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/provider/journal/journal_editor_provider.dart';
@@ -17,7 +16,7 @@ class AspectSelectWidget extends StatefulWidget {
 }
 
 class _AspectSelectWidgetState extends State<AspectSelectWidget> {
-  int _selectedOptionIndex = 0; // Index of the selected option
+  int _selectedOptionIndex = 0;
 
   List<String> options = ['Mental', 'Physical', 'Emotional', 'Spiritual'];
 
@@ -146,54 +145,4 @@ class _AspectSelectWidgetState extends State<AspectSelectWidget> {
     );
   }
 
-  Widget card(BuildContext context, String title, Color color, String imageUrl) {
-    return Container(
-      width: double.infinity,
-      height: 150,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [color.withOpacity(0.5), color],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 10,
-            offset: Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-            right: 16,
-            top: 16,
-            child: Opacity(
-              opacity: 0.5,
-              child: Image.network(
-                imageUrl,
-                width: 100,
-                height: 100,
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              title,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }

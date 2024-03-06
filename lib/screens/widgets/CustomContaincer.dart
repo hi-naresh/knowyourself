@@ -42,13 +42,20 @@ class CustomContainer extends StatelessWidget {
           borderRadius: borderRadius,
           border: Border.all(
             color: color,
-            width: 2,
+            width: 1,
           ),
-          color: color,
+          gradient: LinearGradient(
+            colors: [
+              color,
+              color.withOpacity(0.5),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomLeft,
+          ),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(0.8),
-              offset: const Offset(5, 5),
+              color: color.withOpacity(0.7),
+              offset: const Offset(0, 5),
               blurRadius: 15,
             )
           ],

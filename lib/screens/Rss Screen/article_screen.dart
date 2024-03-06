@@ -49,8 +49,7 @@ class _ArticleScreenState extends State<ArticleScreen>
                     padding: const EdgeInsets.all(8.0),
                     child: ChoiceChip(
                       backgroundColor: kBoxLight,
-                      selectedColor: kApp3,
-
+                      selectedColor: kApp3.withOpacity(0.5),
                       shape: RoundedRectangleBorder(
                         side: const BorderSide(
                           color: Colors.transparent,
