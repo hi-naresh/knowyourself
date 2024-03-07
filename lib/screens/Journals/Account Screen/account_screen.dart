@@ -10,6 +10,7 @@ import 'package:knowyourself/screens/Journals/Account%20Screen/widgets/notificat
 import 'package:knowyourself/screens/Journals/Account%20Screen/widgets/reminder_notification_widget.dart';
 import 'package:knowyourself/screens/Journals/Account%20Screen/widgets/theme_switch.dart';
 import 'package:knowyourself/screens/Journals/Journals%20Screen/widgets/switch_container.dart';
+import 'package:knowyourself/screens/widgets/custom_header.dart';
 import 'package:knowyourself/utils/app_info.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 
@@ -118,16 +119,15 @@ class _AccountScreenState extends State<AccountScreen>
     super.build(context);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 40.h,
-              ),
-              GestureDetector(
+              CustomHeader(
+                title: "Settings",
+                  custom: GestureDetector(
                 onTap: () {
                   Navigator.pop(context);
                 },
@@ -137,18 +137,15 @@ class _AccountScreenState extends State<AccountScreen>
                     margin: const EdgeInsets.only(left: 10),
                     padding: const EdgeInsets.all(5),
                     decoration: const BoxDecoration(
-                        color: kPrimaryColor, shape: BoxShape.circle),
+                        color: kApp1, shape: BoxShape.circle),
                     child: Icon(
-                      Icons.arrow_back,
+                      Icons.close_rounded,
                       color: Colors.white,
-                      size: 40.r,
+                      size: 25.r,
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
+              )),
               const AccountWidget(),
               SizedBox(
                 height: 20.h,

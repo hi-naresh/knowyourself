@@ -25,11 +25,7 @@ class CustomContainer extends StatelessWidget {
     this.padding = const EdgeInsets.all(16),
     this.margin = const EdgeInsets.all(0),
     this.boxShadow = const [
-      BoxShadow(
-        color: kShadow,
-        offset: const Offset(5, 5),
-        blurRadius: 10,
-      ),
+
     ],
     this.alignment = Alignment.center,
     this.onTap,
@@ -44,8 +40,25 @@ class CustomContainer extends StatelessWidget {
         // height: height,
         decoration: BoxDecoration(
           borderRadius: borderRadius,
-          color: color,
-          boxShadow: boxShadow,
+          border: Border.all(
+            color: color,
+            width: 1,
+          ),
+          gradient: LinearGradient(
+            colors: [
+              color,
+              color.withOpacity(0.5),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomLeft,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: color.withOpacity(0.7),
+              offset: const Offset(0, 5),
+              blurRadius: 15,
+            )
+          ],
         ),
         padding: padding,
         margin: margin,

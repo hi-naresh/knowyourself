@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:knowyourself/screens/widgets/CustomContaincer.dart';
 import 'package:knowyourself/screens/widgets/CustomTitles.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
+import 'package:provider/provider.dart';
 
+import '../../../provider/Extras/user_data_provider.dart';
 import '../../Journals/Add Journal Screen/add_journal_screen.dart';
 
 // import '../../MoodScreens/MoodScreen.dart';
@@ -10,18 +12,41 @@ import '../../Journals/Add Journal Screen/add_journal_screen.dart';
 class MoodWidget extends StatelessWidget {
   const MoodWidget({super.key});
 
+  String greeting() {
+    var hour = DateTime.now().hour;
+    if (hour < 12 && hour > 5) {
+      return 'Good Morning, ';
+    } else if (hour < 17 && hour > 12) {
+      return 'Good Afternoon, ';
+    }
+    return 'Good Evening, ';
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
       width: double.infinity,
-      color: kNewP1,
+      color: kNewP1_1,
+      // color: kApp1,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          //consumer to provide the user's name
+          const SizedBox(height: 10),
+          Consumer<UserDataProvider>(
+            builder: (BuildContext context, value, Widget? child) {
+              return Text(
+                "${greeting()}${value.userName}!",
+                style: customTitleBold(kDarkText, 20, FontWeight.w700),
+                textAlign: TextAlign.left,
+              );
+            },
+          ),
+
           Text(
-            "How are you feeling today?",
-            style: h2Bold,
+            "How do you feel?",
+            style: customTitleBold(kDarkText, 21, FontWeight.w700),
             textAlign: TextAlign.left,
           ),
           const SizedBox(height: 10),
@@ -35,13 +60,9 @@ class MoodWidget extends StatelessWidget {
                   color: const Color(0x4DF5F5F5),
                 ),
                 padding: const EdgeInsets.all(10.0),
-                child: const Text(
+                child: Text(
                   "Express Your Mood & Reflect:\nLog emotions and thoughts.",
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 14,
-                    // fontWeight: FontWeight.w600,
-                  ),
+                  style: customTitleBold(kDarkText, 12, FontWeight.w400),
                   textAlign: TextAlign.left,
                 ),
               ),

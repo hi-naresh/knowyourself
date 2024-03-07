@@ -6,6 +6,8 @@ import 'package:knowyourself/provider/journal/journal_provider.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../../widgets/global_styles.dart';
+
 class CalendarWidget extends StatelessWidget {
   const CalendarWidget({super.key});
 
@@ -32,7 +34,7 @@ class CalendarWidget extends StatelessWidget {
         final int totalDays = DateTime(2030, 12, 31).difference(DateTime(2024, 1, 1)).inDays;
 
         return SizedBox(
-          height: 85.h,
+          height: 100.h,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: totalDays,
@@ -154,17 +156,10 @@ class CalendarWidget extends StatelessWidget {
           ? null // If the day is disabled, do nothing.
           : () => onDaySelected(day), // If it's not disabled, call the onDaySelected function.
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 7.w),
+        margin: EdgeInsets.symmetric(horizontal: 5.w,vertical: 10.h),
         padding: padding,
         width: 64.w,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadius),
-          border: Border.all(
-            color: borderColor,
-            width: borderWidth,
-          ),
-          color: backgroundColor,
-        ),
+        decoration: Styles.containerDecoration(backgroundColor),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

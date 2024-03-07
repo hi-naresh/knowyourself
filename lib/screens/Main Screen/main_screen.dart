@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/screens/Learn/learn_screen.dart';
 import 'package:knowyourself/screens/Space/space_screen.dart';
+import 'package:knowyourself/screens/widgets/global_styles.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/models/Quote/quote_model.dart';
 import 'package:knowyourself/screens/Home/home_screen.dart';
@@ -53,28 +54,65 @@ class _MainScreenState extends State<MainScreen> {
     saveQuote();
   }
 
+  // Widget _buildFAB(BuildContext context) {
+  //   return SizedBox(
+  //     width: 50.h,
+  //     height: 50.h,
+  //     child: RawMaterialButton(
+  //       fillColor: kApp4,
+  //       shape: const CircleBorder(),
+  //       elevation: 0.0,
+  //       onPressed: () {
+  //         Navigator.of(context)
+  //             .push(MaterialPageRoute(builder: (BuildContext context) {
+  //           return const AddJournalPageWidget();
+  //         }));
+  //       },
+  //       child: Icon(
+  //         Icons.add,
+  //         size: 40.sp,
+  //         color: kBackground1,
+  //       ),
+  //     ),
+  //   );
+  // }
+
   Widget _buildFAB(BuildContext context) {
     return SizedBox(
       width: 50.h,
       height: 50.h,
-      child: RawMaterialButton(
-        fillColor: kApp4,
-        shape: const CircleBorder(),
-        elevation: 0.0,
-        onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (BuildContext context) {
-            return const AddJournalPageWidget();
-          }));
-        },
-        child: Icon(
-          Icons.add,
-          size: 40.sp,
-          color: kBackground1,
+      child: Container(
+        decoration: Styles.containerDecoration(kApp4),
+        child: IconButton(
+          icon: SvgPicture.asset(
+            "assets/icons/add.svg",
+            color: kBackground1,
+            height: 20.h,
+            width: 20.h,
+          ),
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (BuildContext context) {
+              return const AddJournalPageWidget();
+            }));
+          },
         ),
       ),
     );
   }
+
+//   Icon(
+//   Icons.add,
+//   size: 40.sp,
+//   color: kBackground1,
+//   )
+//
+//   onPressed: () {
+//   Navigator.of(context)
+//       .push(MaterialPageRoute(builder: (BuildContext context) {
+//   return const AddJournalPageWidget();
+//   }));
+// },
 
   @override
   void dispose() {

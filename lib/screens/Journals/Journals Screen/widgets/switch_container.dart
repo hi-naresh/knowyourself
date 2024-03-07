@@ -25,7 +25,7 @@ class SwitchContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: const BorderRadius.all(
-          Radius.circular(20),
+          Radius.circular(25),
         ),
       ),
       child: Row(

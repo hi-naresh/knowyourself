@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:knowyourself/screens/widgets/Placeholder.dart';
+import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/widgets/progress_bar.dart';
+import 'package:knowyourself/screens/widgets/CustomTitles.dart';
+import 'package:knowyourself/utils/ui_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/provider/journal/journal_editor_provider.dart';
 import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/widgets/button_container.dart';
-import 'package:knowyourself/utils/linear_percent_indicator.dart';
 
-class AspectSelectWidget extends StatelessWidget {
+
+class AspectSelectWidget extends StatefulWidget {
   const AspectSelectWidget({super.key});
+
+  @override
+  State<AspectSelectWidget> createState() => _AspectSelectWidgetState();
+}
+
+class _AspectSelectWidgetState extends State<AspectSelectWidget> {
+  int _selectedOptionIndex = 0;
+
+  List<String> options = ['Mental', 'Physical', 'Emotional', 'Spiritual'];
 
   @override
   Widget build(BuildContext context) {
@@ -18,47 +29,14 @@ class AspectSelectWidget extends StatelessWidget {
           child: Container(
             margin: const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.9,
+            height: MediaQuery.of(context).size.height * 0.93,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
                   children: [
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Consumer<JournalEditorProvider>(
-                          builder: (context, value, child) {
-                            return LinearPercentIndicator(
-                              alignment: MainAxisAlignment.spaceBetween,
-                              leading: GestureDetector(
-                                onTap: () {
-                                  Provider.of<JournalEditorProvider>(context,
-                                      listen: false)
-                                      .updateIndex(0);
-                                },
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  size: 30.r,
-                                ),
-                              ),
-                              barRadius: const Radius.circular(20),
-                              lineHeight: 10.h,
-                              width: 200.w,
-                              percent: 0.6,
-                              backgroundColor: const Color(0xFFD9D9D9),
-                              progressColor: const Color(0xFF5349DB),
-                              trailing: Text(
-                                "2/3",
-                                style: TextStyle(
-                                    fontSize: 14.sp, fontWeight: FontWeight.w600),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
+                    const ProgressBar(steps: "2/3", percent: 0.6,),
                     SizedBox(
                       height: 20.h,
                     ),
@@ -70,12 +48,19 @@ class AspectSelectWidget extends StatelessWidget {
                           builder: (BuildContext context, value, Widget? child) {
                             return Padding(
                               padding: const EdgeInsets.all(10),
-                              child: Text(
-                                "In Which Aspect of Life?",
-                                style: TextStyle(
-                                  fontSize: 30.sp,
-                                  fontWeight: FontWeight.w600,
+                              child: Text.rich(
+                                TextSpan(
+                                  children: [
+                                    TextSpan(
+                                        text: 'In which ',
+                                        style: customTitleBold(kDarkText, 28.sp, FontWeight.w700)),
+                                    TextSpan(
+                                      text: 'Aspect?',
+                                      style: customTitleBold(kApp1, 28.sp, FontWeight.w700),
+                                    ),
+                                  ],
                                 ),
+                                textAlign: TextAlign.center,
                               ),
                             );
                           },
@@ -91,14 +76,7 @@ class AspectSelectWidget extends StatelessWidget {
                           ),
                           child: Column(
                             children:[
-                              CustomPlaceHolder("Mentally", 60, double.infinity),
-                              SizedBox(height: 20.h,),
-                              CustomPlaceHolder("Physically", 60, double.infinity),
-                              SizedBox(height: 20.h,),
-                              CustomPlaceHolder("Emotionally", 60, double.infinity),
-                              SizedBox(height: 20.h,),
-                              CustomPlaceHolder("Spiritually", 60, double.infinity),
-
+                              optionsAspect(context, options),
                             ]
                           ),
                         ),
@@ -106,15 +84,65 @@ class AspectSelectWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                InkWell(
-                  onTap: () {
-                    journalEditorProvider.updateIndex(2);
-                  },
-                  child: const ButtonContainer(label: "Next"),
-                ),
+                ButtonContainer(label: "Next", onTap: () {
+                  journalEditorProvider.updateIndex(2);
+                },),
               ],
             ),
           ),
         ));
   }
+
+  Widget optionsAspect(BuildContext context, List<String> options) {
+    return Column(
+      children: List.generate(options.length, (index) {
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              _selectedOptionIndex = index;
+            });
+          },
+          child: Container(
+            margin: EdgeInsets.symmetric(vertical: 12.0),
+            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+            decoration: BoxDecoration(
+              color: _selectedOptionIndex == index ? kApp1 : Colors.grey[200],
+              borderRadius: BorderRadius.circular(30.0),
+              border: Border.all(
+                color: _selectedOptionIndex == index ? kApp1: Colors.transparent,
+                width: 2,
+              ),
+              boxShadow: [
+                if (_selectedOptionIndex == index)
+                  BoxShadow(
+                    color: kApp1.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 5,
+                    offset: Offset(0, 3),
+                  ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  options[index],
+                  style: TextStyle(
+                    color: _selectedOptionIndex == index ? Colors.white : Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+                if (_selectedOptionIndex == index)
+                  Icon(
+                    Icons.check_circle,
+                    color: Colors.white,
+                  ),
+              ],
+            ),
+          ),
+        );
+      }),
+    );
+  }
+
 }

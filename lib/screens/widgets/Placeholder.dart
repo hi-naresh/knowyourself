@@ -7,7 +7,7 @@ Widget CustomPlaceHolder(String text, double height, double width) {
     height: height,
     width: width,
     decoration: BoxDecoration(
-      color: kPalette6_2,
+      color: kBoxLight,
       borderRadius: BorderRadius.circular(20),
     ),
     margin: EdgeInsets.only(left: 5, right: 5),

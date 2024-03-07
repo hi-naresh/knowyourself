@@ -1,12 +1,10 @@
 {
   "images" : [
     {
-      "filename" : "sailcc.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "sailcc 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

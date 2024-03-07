@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:knowyourself/screens/widgets/CustomContaincer.dart';
 import 'package:knowyourself/screens/widgets/CustomTitles.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 
@@ -8,11 +9,8 @@ class RecommendWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25),
-        color: const Color(0xFFEDF3EA),
-      ),
+    return  CustomContainer(
+      color: kPieBox1,
       padding: const EdgeInsets.all(20.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

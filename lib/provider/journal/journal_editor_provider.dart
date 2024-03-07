@@ -21,6 +21,11 @@ class JournalEditorProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void getIndexOfPage() {
+    _index = index;
+    notifyListeners();
+  }
+
   void updateJournal(JournalModel journalModel) {
     _journalModel = journalModel;
   }
