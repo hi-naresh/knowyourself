@@ -6,12 +6,14 @@ class MyCard extends StatelessWidget {
   final String title;
   final Color color;
   final String imageUrl;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final double? left;
   final double? top;
   final Function()? onTap;
-  const MyCard({super.key, required this.title, required this.color, required this.imageUrl, required this.width, required this.height, this.onTap, this.left, this.top});
+  const MyCard({super.key,
+    required this.title, required this.color, required this.imageUrl,
+    this.width, this.height, this.onTap, this.left, this.top});
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +42,8 @@ class MyCard extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              left: left==null? width / 4: left,
-              top: height/20,
+              left: left?? width!/ 4,
+              top: top?? height!/20,
               child: Opacity(
                 opacity: 1,
                 // child: Image.asset(

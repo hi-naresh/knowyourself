@@ -8,11 +8,12 @@ import '../../../../utils/ui_colors.dart';
 import '../../../widgets/CustomTitles.dart';
 
 class ProgressBar extends StatefulWidget {
-  final String progress;
+  final String steps;
+  final double percent;
 
   const ProgressBar({
     super.key,
-    required this.progress});
+    required this.steps, required this.percent});
 
   @override
   State<ProgressBar> createState() => _ProgressBarState();
@@ -31,9 +32,12 @@ class _ProgressBarState extends State<ProgressBar> {
           onTap: () {
             if (currentIndex() == 0) {
               Navigator.pop(context);
+            }else{
+              Provider.of<JournalEditorProvider>(context, listen: false)
+                  .updateIndex(currentIndex() - 1);
             }
-            Provider.of<JournalEditorProvider>(context, listen: false)
-                .updateIndex(currentIndex() - 1);
+            // Provider.of<JournalEditorProvider>(context, listen: false)
+            //     .updateIndex(currentIndex() - 1);
             // Provider.of<JournalEditorProvider>(context, listen: false)
             //     .updateIndex(0);
           },
@@ -45,11 +49,11 @@ class _ProgressBarState extends State<ProgressBar> {
         barRadius: const Radius.circular(20),
         lineHeight: 10.h,
         width: 200.w,
-        percent: 0.6,
+        percent: widget.percent,
         backgroundColor: kBoxLight,
         progressColor: kApp1,
         trailing: Text(
-          widget.progress,
+          widget.steps,
           style: customTitleBold(kDarkText, 14.sp, FontWeight.w700),
         ),
       ),

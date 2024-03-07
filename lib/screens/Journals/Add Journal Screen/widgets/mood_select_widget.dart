@@ -5,11 +5,8 @@ import 'package:knowyourself/screens/widgets/CustomTitles.dart';
 import 'package:provider/provider.dart';
 import 'package:knowyourself/provider/journal/journal_editor_provider.dart';
 import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/widgets/button_container.dart';
-import 'package:knowyourself/utils/linear_percent_indicator.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
-import 'package:knowyourself/utils/utils_functions.dart';
 import 'package:animated_emoji/animated_emoji.dart';
-
 import 'full_circle_slider.dart';
 
 class MoodSelectWidget extends StatefulWidget {
@@ -27,11 +24,6 @@ class _MoodSelectWidgetState extends State<MoodSelectWidget> {
         size: 40,
         repeat: true,
       )
-  );
-
-  //values of the animated emojis to string
-  List<String> _emojisToString = List.generate(10, (index) =>
-      AnimatedEmojis.values[index].toString()
   );
 
   @override
@@ -82,7 +74,7 @@ class _MoodSelectWidgetState extends State<MoodSelectWidget> {
             //     ),
             //   ],
             // ),
-            ProgressBar(progress: "1/3"),
+            const ProgressBar(percent:0.3,steps: "1/3"),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -128,10 +120,27 @@ class _MoodSelectWidgetState extends State<MoodSelectWidget> {
                       },
                       emojis: _emojis,
                     ),
-                    AnimatedEmoji(
-                      AnimatedEmojis.values[(_sliderValue * 10).round()],
-                      size: 256,
-                      repeat: true,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white70,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 1,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.orange.withOpacity(0.5),
+                            blurRadius: 20,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: AnimatedEmoji(
+                        AnimatedEmojis.values[(_sliderValue * 10).round()],
+                        size: 216,
+                        repeat: true,
+                      ),
                     ),
                   ],
                 ),

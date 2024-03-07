@@ -30,7 +30,7 @@ class _AnimatedPieChartState extends State<AnimatedPieChart> with TickerProvider
 
     for (var i = 0; i < widget.coreValues.length; i++) {
       var controller = AnimationController(
-        duration: Duration(milliseconds: 500), // Duration of each segment's animation
+        duration: const Duration(milliseconds: 200), // Duration of each segment's animation
         vsync: this,
       );
       _controllers.add(controller);

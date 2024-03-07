@@ -40,7 +40,7 @@ class _ExpressFeelingsWidgetState extends State<ExpressFeelingsWidget> {
               children: [
                 Column(
                   children: [
-                    ProgressBar(progress: "3/3"),
+                    const ProgressBar(steps: "3/3", percent: 1,),
                     SizedBox(
                       height: 20.h,
                     ),
@@ -89,17 +89,20 @@ class _ExpressFeelingsWidgetState extends State<ExpressFeelingsWidget> {
                         label: 'Enter journal desciption',
                         hint: 'Press to enter journal description',
                         child: TextField(
+                          onTap: () {
+                            FocusScope.of(context).unfocus();
+                          },
                           controller: journalEditorProvider.notesEditingController,
                           keyboardType: TextInputType.multiline,
                           textInputAction: TextInputAction.newline,
                           textAlignVertical: TextAlignVertical.top,
                           expands: true,
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.all(20),
+                          decoration: const InputDecoration(
+                            contentPadding: EdgeInsets.all(20),
                             // fillColor: Theme.of(context).chipTheme.backgroundColor,
                             fillColor: kBoxLight,
                             filled: true,
-                            border: const OutlineInputBorder(
+                            border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(25)),
                               borderSide: BorderSide.none,
                             ),
@@ -131,6 +134,7 @@ class _ExpressFeelingsWidgetState extends State<ExpressFeelingsWidget> {
                       id: '');
                   journalEditorProvider.updateJournal(journalModel);
                   journalEditorProvider.updateIndex(3);
+                  FocusScope.of(context).unfocus();
                 },),
               ],
             ),

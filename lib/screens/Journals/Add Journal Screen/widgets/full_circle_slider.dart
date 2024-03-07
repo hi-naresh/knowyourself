@@ -48,7 +48,7 @@ class _FullCircleSliderState extends State<FullCircleSlider> {
       },
       child: CustomPaint(
         painter: CircleSliderPainter(value: widget.value, emojis: widget.emojis),
-        size: Size(270.h, 270.h), // Define the size of the full circle here
+        size: Size(250.h, 250.h), // Define the size of the full circle here
       ),
     );
   }
@@ -67,9 +67,28 @@ class CircleSliderPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 25;
 
-    final handlerPaint = Paint()
+    final handlerPaintShadow = Paint()
+      ..color = kApp1.withOpacity(0.75)
+      ..maskFilter = const MaskFilter.blur(BlurStyle.inner, 5)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 8;
+
+    final handlerPaintBorder = Paint()
       ..color = kApp1
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3;
+
+    final handlerPaint = Paint()
+      // ..color = kApp1
+    ..shader = LinearGradient(
+      colors: [kApp1.withOpacity(0.5), kApp1],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomCenter,
+    ).createShader(Rect.fromCircle(center: Offset(size.width / 2, size.height / 6), radius: size.width / 4))
       ..style = PaintingStyle.fill;
+
+    //add border to the handlerPaint
+
 
     final center = Offset(size.width / 2, size.height / 2);
     final radius = size.width / 2;
@@ -85,17 +104,11 @@ class CircleSliderPainter extends CustomPainter {
       radius * math.cos(angle) + center.dx,
       radius * math.sin(angle) + center.dy,
     );
+    //can be removed if performance issues are noticed
+    canvas.drawCircle(handlerCenter, size.width / 15, handlerPaintShadow);
+    canvas.drawCircle(handlerCenter, size.width / 15, handlerPaintBorder);
 
-    // Draw the handler as a circle containing an emoji
-    int emojiIndex = (value * (emojis.length - 1)).round();
-    // This assumes that emojis are square, adjust if not
-    final double emojiSize = 30.0; // Size of the emoji inside the handler
-    final emojiPainter = emojis[emojiIndex];
-    final emojiOffset = handlerCenter - Offset(emojiSize / 2, emojiSize / 2);
-    // TODO: Embed the emoji widget into the canvas
-    // You'll need to convert the emoji widget to an image and draw it on the canvas,
-    // or use an alternative method to draw it.
-
+    const double emojiSize = 30.0;
     // Draw the handler circle
     canvas.drawCircle(handlerCenter, emojiSize/1.5, handlerPaint);
   }

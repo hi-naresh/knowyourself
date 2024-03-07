@@ -1,25 +1,16 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:knowyourself/screens/Journals/Journals%20Screen/journals_screen.dart';
 import 'package:knowyourself/screens/Space/widgets/celebrate_yourself_widget.dart';
 import 'package:knowyourself/screens/Space/widgets/question_space.dart';
 import 'package:knowyourself/screens/Space/widgets/to_do_widget.dart';
-import 'package:knowyourself/screens/widgets/Placeholder.dart';
 import 'package:knowyourself/screens/widgets/custom_header.dart';
 import 'package:knowyourself/screens/widgets/global_styles.dart';
 import 'package:provider/provider.dart';
-
 import '../../hive boxes/journal_box.dart';
-import '../../models/Questions.dart';
-import '../../provider/Extras/user_data_provider.dart';
-import '../../provider/MySpace/question_provider.dart';
 import '../../provider/journal/journal_provider.dart';
 import '../../utils/ui_colors.dart';
-import '../Journals/Account Screen/account_screen.dart';
 import '../Journals/Journals Screen/widgets/calendar_widget.dart';
 import '../Journals/Journals Screen/widgets/data_widget.dart';
 import '../Journals/Journals Screen/widgets/journal_widget.dart';
@@ -81,7 +72,7 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
                   color: Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(25.0),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.w),
+                padding: EdgeInsets.symmetric(vertical: 0.h, horizontal: 5.w),
                 child: TabBar(
                   controller: _tabController,
                   dividerHeight: 0,
@@ -93,7 +84,7 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
                   labelPadding: EdgeInsets.symmetric(horizontal: 20.w),
                   // labelStyle: h3,
                   // tabAlignment: TabAlignment.center,
-                  indicatorPadding: EdgeInsets.symmetric(horizontal: -20),
+                  indicatorPadding: const EdgeInsets.symmetric(horizontal: -20,vertical: 5),
                   unselectedLabelColor: Colors.black,
                   tabs: _tabs,
                 ),
@@ -106,7 +97,7 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
                       _journalTab(),
                       _milestonesTab(),
                       _questionsTab(),
-                      Center(child: Text("Story Page"),),
+                      const Center(child: Text("Story Page"),),
                       _celebrationTab()
                     ],
                   )
@@ -235,7 +226,7 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
   }
 
   Widget _milestonesTab(){
-    return SizedBox(
+    return const SizedBox(
       child: Column(
         children: [
           ToDoContainerWidget()
@@ -253,7 +244,7 @@ class _MySpaceScreenState extends State<MySpaceScreen> with SingleTickerProvider
   }
 
   Widget _celebrationTab(){
-    return SizedBox(
+    return const SizedBox(
       child: Column(
         children: [
           CelebrateYourselfWidget()

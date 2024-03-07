@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/widgets/button_container.dart';
 import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/widgets/mood_shift.dart';
+import 'package:knowyourself/screens/widgets/CustomTitles.dart';
 import 'package:knowyourself/screens/widgets/custom_header.dart';
 import 'package:provider/provider.dart';
 
@@ -43,10 +44,8 @@ class _ViewJournalScreenState extends State<ViewJournalScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Theme.of(context).scaffoldBackgroundColor,
-        padding: EdgeInsets.only(
-            left: 15.w, right: 15.w, top: 10.h, bottom: 20.h),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,73 +139,56 @@ class _ViewJournalScreenState extends State<ViewJournalScreen> {
                     left: 20, right: 20, top: 0, bottom: 0),
                 child: Text(
                   "Mood",
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+                  style: customTitleBold(null, 16.sp, FontWeight.w700),
                 ),
               ),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 if (widget.readOnly == false) {
                   Provider.of<JournalEditorProvider>(context, listen: false)
                       .updateIndex(0);
                 }
               },
-              child: Container(
-                height: 70.h,
-                width: 200.w,
-                margin: const EdgeInsets.only(
-                    left: 20, right: 20, top: 10, bottom: 10),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).chipTheme.backgroundColor,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 10.w,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      shape: BoxShape.circle,
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).cardColor,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                      ),
-                      child: SvgPicture.asset(
-                        "assets/emojis/${journalModel.mood}.svg",
-                        height: 50.h,
-                        width: 50.h,
-                      ),
+                    child: SvgPicture.asset(
+                      "assets/emojis/${journalModel.mood}.svg",
+                      height: 50.h,
+                      width: 50.h,
                     ),
-                    SizedBox(
-                      width: 20.w,
-                    ),
-                    Text(
-                      journalModel.mood.toTitleCase(),
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: 0.w,
+                  ),
+                  Text(
+                    journalModel.mood.toTitleCase(),
+                    style: customTitleBold(null, 14.sp, FontWeight.w600),
+                  ),
+                ],
               ),
             ),
             if (!widget.readOnly)
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 0, bottom: 0),
+                    left: 20, right: 20, top: 10, bottom: 0),
                 child: Text(
                   "Aspect",
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+                  style: customTitleBold(null, 16.sp, FontWeight.w700),
+
                 ),
               ),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 if (widget.readOnly == false) {
                   Provider.of<JournalEditorProvider>(context, listen: false)
@@ -235,14 +217,14 @@ class _ViewJournalScreenState extends State<ViewJournalScreen> {
                 padding: const EdgeInsets.only(
                     left: 20, right: 20, top: 0, bottom: 0),
                 child: Text(
-                  "Reasons for your feelings",
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+                  "Reasons",
+                    style: customTitleBold(null, 16.sp, FontWeight.w700),
+
                 ),
               ),
             Expanded(
               flex: 1,
-              child: InkWell(
+              child: GestureDetector(
                 onTap: () {
                   if (widget.readOnly == false) {
                     Provider.of<JournalEditorProvider>(context, listen: false)

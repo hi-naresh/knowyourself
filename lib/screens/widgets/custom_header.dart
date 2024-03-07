@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-
 import '../../provider/Extras/user_data_provider.dart';
 import '../../utils/ui_colors.dart';
 import '../Journals/Account Screen/account_screen.dart';
 import 'CustomTitles.dart';
 
 class CustomHeader extends StatelessWidget {
-  const CustomHeader({Key? key, required this.title}) : super(key: key);
+  const CustomHeader({Key? key, required this.title, this.custom}) : super(key: key);
 
   final String title;
+  final Widget? custom;
 
   get onPressed => null;
 
@@ -42,7 +42,7 @@ class CustomHeader extends StatelessWidget {
                     return const AccountScreen();
                   }));
                 },
-                child: Consumer<UserDataProvider>(
+                child: custom?? Consumer<UserDataProvider>(
                   builder: (BuildContext context, value, Widget? child) {
                     return CircleAvatar(
                       radius: 18.r,
@@ -52,7 +52,7 @@ class CustomHeader extends StatelessWidget {
                       ),
                     );
                   },
-                ),
+                ) ,
               ),
               IconButton(
                 onPressed: onPressed,

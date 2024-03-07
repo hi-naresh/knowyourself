@@ -58,7 +58,13 @@ class _HomeScreenState extends State<HomeScreen>
               SizedBox(
                 height: 20.h,
               ),
-              ProgressComponent(),
+              const ProgressComponent(
+                milestonesProgress: {
+                  'Daily': 0.35,
+                  'Monthly': 0.5,
+                  'Yearly': 0.7,
+                },
+              ),
               SizedBox(
                 height: 20.h,
               ),

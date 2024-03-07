@@ -36,7 +36,7 @@ class _AspectSelectWidgetState extends State<AspectSelectWidget> {
               children: [
                 Column(
                   children: [
-                    ProgressBar(progress: "2/3") ,
+                    const ProgressBar(steps: "2/3", percent: 0.6,),
                     SizedBox(
                       height: 20.h,
                     ),

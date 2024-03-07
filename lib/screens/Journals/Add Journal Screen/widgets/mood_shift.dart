@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:knowyourself/screens/Journals/Add%20Journal%20Screen/widgets/button_container.dart';
 import 'package:knowyourself/screens/widgets/CustomTitles.dart';
 import 'package:knowyourself/screens/widgets/global_styles.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 
+import '../../../widgets/custom_header.dart';
 import 'activities_to_shift.dart';
 
 class MoodShift extends StatelessWidget {
@@ -21,36 +23,67 @@ class MoodShift extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('I want to feel...'),
-        leading: BackButton(),
-      ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(20),
-        itemCount: moods.length,
-        itemBuilder: (context, index) {
-          return Container(
-            decoration: Styles.containerDecoration(colors[index]),
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: MoodTile(
-                mood: moods[index]['mood']!,
-                color: moods[index]['color']!,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.h),
+        child: Column(
+          children: [
+            CustomHeader(
+              title: 'Shift',
+              custom: GestureDetector(
                 onTap: () {
-                  // Handle the tap event
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ActivitiesToShiftScreen(),
+                  Navigator.pop(context);
+                },
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.all(5),
+                    decoration: const BoxDecoration(
+                        color: kApp1, shape: BoxShape.circle),
+                    child: Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: Colors.white,
+                      size: 25.r,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.all(20),
+                itemCount: moods.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    decoration: Styles.containerDecoration(colors[index]),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: MoodTile(
+                        mood: moods[index]['mood']!,
+                        color: moods[index]['color']!,
+                        onTap: () {
+                          // Handle the tap event
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ActivitiesToShiftScreen(),
+                            ),
+                          );
+                          // print('Tapped on ${moods[index]['mood']}');
+                        },
+                      ),
                     ),
                   );
-                  // print('Tapped on ${moods[index]['mood']}');
                 },
               ),
             ),
-          );
-        },
+            ButtonContainer(label: "Not found here", onTap: (){
+              Navigator.pop(context);
+            }),
+            SizedBox(height: 10.h,)
+          ],
+        ),
       ),
     );
   }

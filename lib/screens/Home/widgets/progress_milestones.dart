@@ -7,9 +7,50 @@ import 'package:knowyourself/screens/widgets/CustomContaincer.dart';
 import 'package:knowyourself/screens/widgets/CustomTitles.dart';
 import 'package:knowyourself/utils/ui_colors.dart';
 
-class ProgressComponent extends StatelessWidget {
+class ProgressComponent extends StatefulWidget {
+  final Map<String, double> milestonesProgress;
+  final List<Color> colors;
+
+  const ProgressComponent({
+    Key? key,
+    required this.milestonesProgress,
+    this.colors = const [kApp1, kApp2, kApp3],
+  }) : super(key: key);
+
+  @override
+  State<ProgressComponent> createState() => _ProgressComponentState();
+}
+
+class _ProgressComponentState extends State<ProgressComponent> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late List<Animation<double>> _animations;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1), // The duration of the animation
+    );
+
+    _animations = widget.milestonesProgress.keys.map((key) {
+      return Tween<double>(begin: 0, end: widget.milestonesProgress[key]!).animate(
+        CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+      );
+    }).toList();
+
+    // Start the animation when the widget is inserted into the tree
+    _animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
+
     return CustomContainer(
       color: kPieBox,
       child: Row(
@@ -30,24 +71,24 @@ class ProgressComponent extends StatelessWidget {
               ProgressLabel(progress: '46%', label: 'Yearly', color: kPie2),
             ],
           ),
-          CustomPaint(
-            painter: ProgressPainter(),
-            child: Container(
-              width: 140.h,
-              height: 140.h,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'G',
-                      style: customTitleBold(kDarkText, 16, FontWeight.w400),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          AnimatedBuilder(
+              animation: _animationController,
+              builder: (context, child) {
+                return CustomPaint(
+                  painter: ProgressPainter(progress: _animations.map((e) => e.value).toList()),
+                  child: SizedBox(
+                    width: 150.w,
+                    height: 150.h,
+                    child: Center(
+                      child: Text(
+                        'G',
+                        style: h3Bold,
+                      ),
+                    )
+                  ),
+                );
+              }
+          )
         ],
       ),
     );
@@ -79,6 +120,11 @@ class ProgressComponent extends StatelessWidget {
 }
 
 class ProgressPainter extends CustomPainter {
+
+  final List <double> progress;
+
+  ProgressPainter({required this.progress});
+
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
@@ -91,9 +137,9 @@ class ProgressPainter extends CustomPainter {
     canvas.drawCircle(center, radius, backgroundPaint);
 
     // Draw complete circles for each progress bar with greyed-out remaining percentage
-    drawProgressArc(canvas, center, radius - 10, kPie, 0.12, true);
-    drawProgressArc(canvas, center, radius - 40, kPie1, 0.68, true);
-    drawProgressArc(canvas, center, radius - 70, kPie2, 0.46, true);
+    drawProgressArc(canvas, center, radius - 0, kPie, progress[0], true);
+    drawProgressArc(canvas, center, radius - 30, kPie1,progress[1], true);
+    drawProgressArc(canvas, center, radius - 60, kPie2, progress[2], true);
   }
 
   void drawProgressArc(Canvas canvas, Offset center, double radius, Color color, double percent, bool drawBackground) {

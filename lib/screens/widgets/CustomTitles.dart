@@ -14,10 +14,10 @@ customTitle(Color color, double size) => GoogleFonts.epilogue(
   fontWeight: FontWeight.w500,
   color: color,
 );
-customTitleBold(Color color, double size, FontWeight weight) => GoogleFonts.epilogue(
+customTitleBold(Color? color, double size, FontWeight weight) => GoogleFonts.epilogue(
   fontSize: size.sp,
   fontWeight: weight,
-  color: color,
+  color: color?? color,
 );
 final h2 = GoogleFonts.epilogue(
   fontSize: 20.sp,

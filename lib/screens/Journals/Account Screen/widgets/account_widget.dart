@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:knowyourself/screens/widgets/CustomTitles.dart';
+import 'package:knowyourself/utils/ui_colors.dart';
 
 import 'package:provider/provider.dart';
 import 'package:knowyourself/provider/Extras/user_data_provider.dart';
@@ -29,22 +31,22 @@ class AccountWidget extends StatelessWidget {
                   height: 90.h,
                   width: 90.h,
                   foregroundDecoration: BoxDecoration(
+                    shape: BoxShape.circle,
                     image: DecorationImage(
                         image: AssetImage("assets/avatars/${value.avatar}.png"),
                         fit: BoxFit.contain),
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFD9D9D9),
-                    boxShadow: const [
+                    color: kApp1.withOpacity(0.3),
+                    shape: BoxShape.circle,
+                    boxShadow: [
                       BoxShadow(
-                        color: Color.fromRGBO(106, 97, 241, 0.3),
-                        offset: Offset(0.0, 0.3), //(x,y)
-                        blurRadius: 38.0,
+                        color: kApp1.withOpacity(0.2),
+                        spreadRadius: 1,
+                        blurRadius: 15,
+                        offset: const Offset(0, 4),
                       ),
                     ],
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(27.r),
-                    ),
                   ),
                   // child: FittedBox(
                   //   child: Image.asset(
@@ -71,7 +73,7 @@ class AccountWidget extends StatelessWidget {
                   height: 25.h,
                   width: 25.h,
                   decoration: const BoxDecoration(
-                      color: Color(0xFF858585), shape: BoxShape.circle),
+                      color: kApp1, shape: BoxShape.circle),
                   child: Icon(
                     Icons.edit,
                     color: Colors.white,
@@ -96,8 +98,7 @@ class AccountWidget extends StatelessWidget {
                     value.userName,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
-                    style:
-                        TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w600),
+                    style:customTitleBold( null,24.sp, FontWeight.w600),
                     textAlign: TextAlign.center,
                   );
                 },
@@ -111,6 +112,7 @@ class AccountWidget extends StatelessWidget {
                       "assets/icons/points.svg",
                       height: 15.h,
                       width: 15.h,
+                      color: kApp1,
                     ),
                   );
                 },

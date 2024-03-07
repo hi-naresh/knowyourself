@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import '../utils/ui_colors.dart';
+
 class CoreValue {
   String name;
   double percentage;
@@ -16,61 +18,61 @@ List<CoreValue> coreValues = [
   CoreValue(
     name: 'Progress',
     percentage: 100,
-    color: const Color(0xFFEF7C00),
+    color: kCoreValue1_1,
   ),
   CoreValue(
     name: 'Receptivity',
     percentage: 90,
-    color: const Color(0xFFEFB500),
+    color: kCoreValue2_1,
   ),
   CoreValue(
     name: 'Aspiration',
     percentage: 65,
-    color: const Color(0xFFF8D600),
+    color: kCoreValue3_1,
   ),
   CoreValue(
     name: 'Perseverance',
     percentage: 40,
-    color: const Color(0xFFB9D900),
+    color: kCoreValue4_1,
   ),
   CoreValue(
     name: 'Gratitude',
     percentage: 60,
-    color: const Color(0xFF00AE1B),
+    color: kCoreValue5_1,
   ),
   CoreValue(
     name: 'Humility',
     percentage: 55,
-    color: const Color(0xFF007530),
+    color: kCoreValue6_1 ,
   ),
   CoreValue(
     name: 'Sincerity',
     percentage: 60,
-    color: const Color(0xFF005CA5),
+    color: kCoreValue7_1,
   ),
   CoreValue(
     name: 'Peace',
     percentage: 70,
-    color: const Color(0xFF1C3385),
+    color: kCoreValue8_1,
   ),
   CoreValue(
     name: 'Equanimity',
     percentage: 40,
-    color: const Color(0xFF692A81),
+    color: kCoreValue9_1,
   ),
   CoreValue(
     name: 'Generosity',
     percentage: 30,
-    color: const Color(0xFFBC037B),
+    color: kCoreValue10_1,
   ),
   CoreValue(
     name: 'Goodness',
     percentage: 80,
-    color: const Color(0xFFF0025E),
+    color:kCoreValue11_1,
   ),
   CoreValue(
     name: 'Courage',
     percentage: 100,
-    color: const Color(0xFFEC0012),
+    color: kCoreValue12_1,
   ),
 ];
