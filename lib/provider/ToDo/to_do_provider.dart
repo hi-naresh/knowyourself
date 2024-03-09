@@ -21,8 +21,8 @@ class TodoProvider extends ChangeNotifier {
   Future<void> _initializeNotifications() async {
     const AndroidInitializationSettings initializationSettingsAndroid =
     AndroidInitializationSettings('app_icon');
-    final InitializationSettings initializationSettings =
-    const InitializationSettings(android: initializationSettingsAndroid);
+    const InitializationSettings initializationSettings =
+    InitializationSettings(android: initializationSettingsAndroid);
     await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
 
