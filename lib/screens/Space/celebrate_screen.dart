@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:knowyourself/screens/Space/widgets/celebration_title_widget.dart';
@@ -13,7 +14,7 @@ import 'package:knowyourself/provider/ToDo/status_provider.dart';
 import '../../utils/ui_colors.dart';
 
 class CelebrateYourSelfScreen extends StatelessWidget {
-  const CelebrateYourSelfScreen({super.key});
+  const CelebrateYourSelfScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -209,13 +210,15 @@ class CelebrateYourSelfScreen extends StatelessWidget {
                           value.saveCelebrationString();
                           int imageIndex = Random().nextInt(9);
                           StatusModel statusModel = StatusModel(
-                              title: value.celebrationString,
-                              image: "bg$imageIndex.jpg",
-                              dateTime: DateTime.now(),
-                              hasSeen: false,
-                              statustype: Statustype.celebrate);
+                            title: value.celebrationString,
+                            image: "bg$imageIndex.jpg",
+                            dateTime: DateTime.now(),
+                            hasSeen: false,
+                            statustype: Statustype.celebrate,
+                          );
                           Provider.of<StatusProvider>(context, listen: false)
                               .addStatus(statusModel: statusModel);
+                          showNotification(); // Call function to show local notification
                           Navigator.pop(context);
                         }
                       },
@@ -249,4 +252,34 @@ class CelebrateYourSelfScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+// Function to show local notification
+Future<void> showNotification() async {
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  FlutterLocalNotificationsPlugin();
+  const AndroidInitializationSettings initializationSettingsAndroid =
+  AndroidInitializationSettings('@mipmap/ic_launcher');
+  final InitializationSettings initializationSettings =
+  InitializationSettings(android: initializationSettingsAndroid);
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
+  const AndroidNotificationDetails androidPlatformChannelSpecifics =
+  AndroidNotificationDetails(
+    'celebrate_channel', // id
+    'Celebration Notifications', // title
+    //'Shows notifications for celebrations', // description
+    importance: Importance.high,
+    priority: Priority.high,
+    ticker: 'ticker',
+  );
+  const NotificationDetails platformChannelSpecifics =
+  NotificationDetails(android: androidPlatformChannelSpecifics);
+
+  await flutterLocalNotificationsPlugin.show(
+    0,
+    'Celebrate Yourself',
+    'You have celebrated successfully!',
+    platformChannelSpecifics,
+  );
 }
