@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:knowyourself/screens/widgets/AppButtons.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 
 import '../../../models/Questions.dart';
 import '../../../provider/MySpace/question_provider.dart';
+import '../../widgets/AppButtons.dart';
 import '../../../utils/ui_colors.dart';
 import '../../widgets/CustomTitles.dart';
 
 class QuestionSpace extends StatefulWidget {
-  const QuestionSpace({super.key});
+  const QuestionSpace({Key? key});
 
   @override
   State<QuestionSpace> createState() => _QuestionSpaceState();
@@ -20,7 +20,7 @@ class _QuestionSpaceState extends State<QuestionSpace> {
   DateTime _selectedDate = DateTime.now();
   String _selectedCategory = 'short';
 
-  void _addQuestion() {
+  void _addQuestion(BuildContext context) {
     if (_questionController.text.isEmpty || _selectedDate == null) return;
 
     Provider.of<QuestionsProvider>(context, listen: false).addQuestion(
@@ -31,6 +31,9 @@ class _QuestionSpaceState extends State<QuestionSpace> {
       ),
     );
     _questionController.clear(); // Clear the text field after question is added
+
+    // Show local notification
+    showNotification();
   }
 
   void _presentDatePicker() {
@@ -48,16 +51,15 @@ class _QuestionSpaceState extends State<QuestionSpace> {
   }
 
   void onPressed() {
-    //modalSheet menu with daily, weekly, monthly, yearly
-
+    // Modal sheet menu with daily, weekly, monthly, yearly
   }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height*0.7,
+      height: MediaQuery.of(context).size.height * 0.7,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -65,15 +67,16 @@ class _QuestionSpaceState extends State<QuestionSpace> {
               TextSpan(
                 children: [
                   TextSpan(
-                      text: 'My ',
-                      style: TextStyle(
-                          fontSize: 24.sp, fontWeight: FontWeight.w600)),
+                    text: 'My ',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                  ),
                   TextSpan(
                     text: 'Questions',
                     style: TextStyle(
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.w600,
-                        color: kApp4),
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                      color: kApp4,
+                    ),
                   ),
                 ],
               ),
@@ -102,14 +105,15 @@ class _QuestionSpaceState extends State<QuestionSpace> {
                   style: appButtonStyle(context),
                   child: Text(
                     'Choose Date',
-                    style: customTitle(kWhite, 14.sp),
+                    style: customTitle(kWhite, 14),
                   ),
                 ),
-                FilledButton(onPressed: onPressed,
+                FilledButton(
+                  onPressed: onPressed,
                   style: appButtonStyle(context),
                   child: Text(
                     'Reminder',
-                    style: customTitle(kWhite, 14.sp),
+                    style: customTitle(kWhite, 14),
                   ),
                 ),
               ],
@@ -121,18 +125,11 @@ class _QuestionSpaceState extends State<QuestionSpace> {
                 ChoiceChip(
                   label: Text('Short-term'),
                   selected: _selectedCategory == 'short',
-                  // labelPadding: EdgeInsets.all(5.0),
-                  labelStyle: TextStyle(
-                    color: kDarkText,
-                  ),
-                  side: BorderSide(
-                    color: kApp4,
-                    width: 1.0,
-                  ),
+                  labelStyle: TextStyle(color: kDarkText),
+                  side: BorderSide(color: kApp4, width: 1.0),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
-                  // selectedColor: kApp4,
                   onSelected: (selected) {
                     if (selected) {
                       setState(() {
@@ -145,13 +142,8 @@ class _QuestionSpaceState extends State<QuestionSpace> {
                 ChoiceChip(
                   label: Text('Long-term'),
                   selected: _selectedCategory == 'long',
-                  labelStyle: TextStyle(
-                    color: kDarkText,
-                  ),
-                  side: BorderSide(
-                    color: kApp4,
-                    width: 1.0,
-                  ),
+                  labelStyle: TextStyle(color: kDarkText),
+                  side: BorderSide(color: kApp4, width: 1.0),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
@@ -169,7 +161,7 @@ class _QuestionSpaceState extends State<QuestionSpace> {
             FilledButton(
               style: appButtonStyle(context),
               child: Text('Add Question'),
-              onPressed: _addQuestion,
+              onPressed: () => _addQuestion(context), // Pass context to _addQuestion function
             ),
             SizedBox(height: 20),
             Expanded(
@@ -200,4 +192,33 @@ class _QuestionSpaceState extends State<QuestionSpace> {
       ),
     );
   }
+}
+
+// Function to show local notification
+Future<void> showNotification() async {
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  FlutterLocalNotificationsPlugin();
+  const AndroidInitializationSettings initializationSettingsAndroid =
+  AndroidInitializationSettings('@mipmap/ic_launcher');
+  final InitializationSettings initializationSettings =
+  InitializationSettings(android: initializationSettingsAndroid);
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
+  const AndroidNotificationDetails androidPlatformChannelSpecifics =
+  AndroidNotificationDetails(
+    'question_channel', // id
+    'Question Notifications', // title
+    importance: Importance.high,
+    priority: Priority.high,
+    ticker: 'ticker',
+  );
+  const NotificationDetails platformChannelSpecifics =
+  NotificationDetails(android: androidPlatformChannelSpecifics);
+
+  await flutterLocalNotificationsPlugin.show(
+    0,
+    'Question Added',
+    'Your question has been added successfully!',
+    platformChannelSpecifics,
+  );
 }
