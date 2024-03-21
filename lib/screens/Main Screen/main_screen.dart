@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:knowyourself/screens/Journals/entry_screen.dart';
 import 'package:knowyourself/screens/Learn/learn_screen.dart';
 import 'package:knowyourself/screens/Space/space_screen.dart';
 import 'package:knowyourself/screens/widgets/global_styles.dart';
@@ -77,7 +78,21 @@ class _MainScreenState extends State<MainScreen> {
   //   );
   // }
 
-  Widget _buildFAB(BuildContext context) {
+  void popup( BuildContext context,Widget widget, double he) {
+    showModalBottomSheet(
+        constraints: BoxConstraints(maxHeight: he *0.93),
+        isScrollControlled: true,
+        enableDrag: true,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        // backgroundColor: const Color(0xff1D192D),
+        context: context,
+        builder: (context) => ClipRRect(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+            child: widget)
+    );
+  }
+
+  Widget _buildFAB(BuildContext context,double he) {
     return SizedBox(
       width: 50.h,
       height: 50.h,
@@ -90,12 +105,7 @@ class _MainScreenState extends State<MainScreen> {
             height: 20.h,
             width: 20.h,
           ),
-          onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (BuildContext context) {
-              return const AddJournalPageWidget();
-            }));
-          },
+          onPressed:() => popup(context,JournalEntryScreen(),he)
         ),
       ),
     );
@@ -124,13 +134,14 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var he = MediaQuery.of(context).size.height;
     return Consumer<AppStateProvider>(
       builder: (BuildContext context, value, Widget? child) {
         return Scaffold(
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
           floatingActionButton:
-              value.pageState == 3 ? _buildFAB(context) : null,
+              value.pageState == 3 ? _buildFAB(context,he) : null,
           extendBody: true,
           // body: PageView(
           //   physics: const NeverScrollableScrollPhysics(),
