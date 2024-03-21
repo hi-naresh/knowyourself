@@ -16,3 +16,13 @@ KYB - Identify your inner-self and understand true mental health. It will cover 
 - My Questions: Ask questions to yourself and find answers, app will remind you to think on it.
 - Milestones Tracker : Set and track your milestones.Daily, weekly, monthly, and yearly.
 - Celebrate: Acknowledge and celebrate your accomplishments, no matter how small.
+
+
+//TODO 
+- local Auth
+- notifications 
+- save userData offline
+- point controller
+- fetch articles
+- background manager - work manager
+- mood screens

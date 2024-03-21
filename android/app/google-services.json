@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "325206134116",
+    "firebase_url": "https://know-yourself-60f9b-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "know-yourself-60f9b",
     "storage_bucket": "know-yourself-60f9b.appspot.com"
   },
@@ -39,10 +40,10 @@
               "client_type": 3
             },
             {
-              "client_id": "325206134116-pmmjqnk6mua70addqsa58u73t22v9t5s.apps.googleusercontent.com",
+              "client_id": "325206134116-49k98kvr7624e09cop4t0vtfuk9tub66.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.knowyourself.beta"
+                "bundle_id": "com.knowyourself.beta.RunnerTests"
               }
             }
           ]
