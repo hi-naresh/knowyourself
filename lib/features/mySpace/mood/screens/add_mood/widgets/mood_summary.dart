@@ -109,47 +109,52 @@ class MoodSummaryPage extends StatelessWidget {
             //   ),
             // ),
             if (!readOnly)
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 0, bottom: 0),
-                child: Text(
-                  "Mood",
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ),
-            const SizedBox(
-              height: KSizes.defaultSpace,
-            ),
-            GestureDetector(
-              onTap: () {
-                // if (widget.readOnly == false) {
-                //   Provider.of<JournalEditorProvider>(context, listen: false)
-                //       .updateIndex(0);
-                // }
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              Row(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: SvgPicture.asset(
-                      "assets/emojis/happy.svg",
-                      height: 50,
-                      width: 50,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 20, right: 20, top: 0, bottom: 0),
+                    child: Text(
+                      "Mood",
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ),
-                  Text(
-                    "${(controller.sliderValue.value * 10).round()}",
-                    style: Theme.of(context).textTheme.titleSmall,
+                  const SizedBox(
+                    height: KSizes.defaultSpace,
+                  ),
+                  GestureDetector(
+                    onTap: () =>controller.jumpToPage(0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const SizedBox(
+                          width: KSizes.xl,
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).cardColor,
+                            shape: BoxShape.circle,
+                          ),
+                          child: SvgPicture.asset(
+                            "assets/emojis/happy.svg",
+                            height: 30,
+                            width: 30,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: KSizes.md,
+                        ),
+                        Text(
+                          controller.moodString,
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-            ),
+
             if (!readOnly)
               Padding(
                 padding: const EdgeInsets.only(
@@ -163,12 +168,7 @@ class MoodSummaryPage extends StatelessWidget {
               height: KSizes.sm,
             ),
             GestureDetector(
-              onTap: () {
-                // if (widget.readOnly == false) {
-                //   Provider.of<JournalEditorProvider>(context, listen: false)
-                //       .updateIndex(1);
-                // }
-              },
+              onTap: () =>controller.jumpToPage(1),
               child: Container(
                 width: double.infinity,
                 height: 60,
@@ -182,12 +182,39 @@ class MoodSummaryPage extends StatelessWidget {
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "${controller.selectAspect.value}",
+                      controller.aspectString,
                     )),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 20, right: 20, top: 10, bottom: 0),
+              child: Text(
+                "Happened At",
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ),
             const SizedBox(
-              height: KSizes.defaultSpace,
+              height: KSizes.sm,
+            ),
+            GestureDetector(
+              onTap: () =>controller.jumpToPage(1),
+              child: Container(
+                width: double.infinity,
+                height: 60,
+                padding: const EdgeInsets.all(10),
+                margin: const EdgeInsets.only(
+                    left: 20, right: 20, top: 10, bottom: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: kEmptyProgress,
+                ),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      controller.happenedAtString,
+                    )),
+              ),
             ),
             if (!readOnly)
               Padding(
@@ -201,12 +228,7 @@ class MoodSummaryPage extends StatelessWidget {
             Expanded(
               flex: 1,
               child: GestureDetector(
-                onTap: () {
-                  // if (widget.readOnly == false) {
-                  //   Provider.of<JournalEditorProvider>(context, listen: false)
-                  //       .updateIndex(2);
-                  // }
-                },
+                onTap: () =>controller.jumpToPage(2),
                 child: Container(
                   width: double.infinity,
                   margin: const EdgeInsets.only(

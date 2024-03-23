@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:knowyourself/common/widgets/appbar/appbar.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../../common/styles/styles.dart';
+import '../../../../../../routes.dart';
 import '../../../../../../utils/constants/colors.dart';
 import 'activities_to_shift.dart';
 
@@ -38,16 +40,7 @@ class MoodShiftPage extends StatelessWidget {
                       child: MoodTile(
                         mood: moods[index]['mood']!,
                         color: moods[index]['color']!,
-                        onTap: () {
-                          // Handle the tap event
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ActivitiesToShiftScreen(),
-                            ),
-                          );
-                          // print('Tapped on ${moods[index]['mood']}');
-                        },
+                        onTap: ()=>Get.toNamed(KRoutes.getActivitiesRoute()),
                       ),
                     ),
                   );

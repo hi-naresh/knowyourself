@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/helpers/shadow_disabler.dart';
 
 class CustomContainer extends StatelessWidget {
@@ -19,7 +20,7 @@ class CustomContainer extends StatelessWidget {
     // this.height = double.maxFinite,
     this.color = Colors.white,
     this.borderRadius = const BorderRadius.all(Radius.circular(25)),
-    this.padding = const EdgeInsets.all(16),
+    this.padding = const EdgeInsets.all(KSizes.md),
     this.margin = const EdgeInsets.all(0),
     this.boxShadow = const [
 

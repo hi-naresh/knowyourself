@@ -23,7 +23,6 @@ class _MyAppState extends State<MyApp> {
     //   onNotificationCreatedMethod: NotificationController.onNotificationCreatedMethod,
     // );
     super.initState();
-
   }
 
   @override

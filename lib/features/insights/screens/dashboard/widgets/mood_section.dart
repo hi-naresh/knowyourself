@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/features/insights/controller/dashboard_controller.dart';
@@ -79,7 +80,7 @@ class MoodSection extends StatelessWidget {
                       padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                         const EdgeInsets.all(KSizes.md),
                       ),
-                      backgroundColor: MaterialStateProperty.all<Color>(KColors.darkerGrey),
+                      backgroundColor: MaterialStateProperty.all<Color>(KColors.scaffoldDark),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -88,7 +89,7 @@ class MoodSection extends StatelessWidget {
                     ),
                     onPressed: ()=>Get.toNamed(KRoutes.getAddMoodRoute()),
                     icon: const Icon(
-                      Icons.arrow_forward_ios_outlined,
+                      CupertinoIcons.forward ,
                       color: Colors.white,
                     ),
                   ),

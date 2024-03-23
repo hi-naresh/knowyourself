@@ -51,7 +51,7 @@ class _ProgressComponentState extends State<ProgressComponent> with SingleTicker
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      color: kEmptyProgress.withOpacity(0.3),
+      color: kApp1Light,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -141,9 +141,9 @@ class ProgressPainter extends CustomPainter {
     canvas.drawCircle(center, radius, backgroundPaint);
 
     // Draw complete circles for each progress bar with greyed-out remaining percentage
-    drawProgressArc(canvas, center, radius - 0, kApp1, progress[0], true);
+    drawProgressArc(canvas, center, radius - 0, kApp3, progress[0], true);
     drawProgressArc(canvas, center, radius - 30, kApp2,progress[1], true);
-    drawProgressArc(canvas, center, radius - 55, kApp3, progress[2], true);
+    drawProgressArc(canvas, center, radius - 55, kApp1, progress[2], true);
   }
 
   void drawProgressArc(Canvas canvas, Offset center, double radius, Color color, double percent, bool drawBackground) {

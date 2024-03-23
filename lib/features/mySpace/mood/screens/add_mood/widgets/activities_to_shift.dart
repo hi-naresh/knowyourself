@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:knowyourself/routes.dart';
 
 import '../../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../../utils/constants/colors.dart';
@@ -37,16 +39,13 @@ class ActivitiesToShiftScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return ActivityTile(
                     activity: activities[index],
-                    onTap: () {
-                      // Handle the tap event
-                      print('Tapped on ${activities[index].title}');
-                    },
+                    onTap: (){},
                   );
                 },
               ),
             ),
             ElevatedButton(
-                onPressed: (){},
+                onPressed: ()=> Get.offAllNamed(KRoutes.getMasterRoute()),
                 child: const Text('Home')
             ),
           ],

@@ -3,6 +3,7 @@ import 'package:animated_emoji/emojis.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
+import 'package:knowyourself/routes.dart';
 
 import '../screens/add_mood/widgets/aspect_select.dart';
 import '../screens/add_mood/widgets/express_feelings.dart';
@@ -29,13 +30,17 @@ class AddMoodController extends GetxController {
         repeat: true,
       )
   );
+  String get moodString => emojis[(sliderValue.value * 10).round() % 10].emoji.name;
 
 
   RxInt selectAspect = 0.obs;
   List<String> aspectsList = ['Mental', 'Physical', 'Vital', 'Spiritual'];
-
+  //get aspect from index
+  String get aspectString => aspectsList[selectAspect.value];
   RxInt selectHappenedAt = 0.obs; //0 for social, 1 for work, 2 for home, 3 for personal
   final happenedAt = ['Social', 'Work', 'Home', 'Personal'];
+  //get happenedAt from index
+  String get happenedAtString => happenedAt[selectHappenedAt.value];
   final TextEditingController reasons = TextEditingController();
 
   final List<Widget> journalPages = [
@@ -61,6 +66,13 @@ class AddMoodController extends GetxController {
     pageController.nextPage(
       duration: const Duration(milliseconds: 400),
       curve: Curves.easeInOut,
+    );
+  }
+
+  void jumpToPage( index) {
+    pageController.animateToPage(index,
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeInOut
     );
   }
 
@@ -102,12 +114,13 @@ class AddMoodController extends GetxController {
     // Provider.of<JournalEditorProvider>(context, listen: false)
     //     .clearJournalData();
     // Navigator.pop(context);
+    Get.back();
   }
 
   void shiftMood() {
     // Navigator.push(context,
     // MaterialPageRoute(builder: (context) => MoodShift()));
-    Get.to(() => MoodShiftPage());
+    Get.toNamed(KRoutes.getMoodShiftRoute());
   }
 
 // void getIndexOfPage() {
