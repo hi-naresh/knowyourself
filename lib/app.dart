@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '/bindings/general_bindings.dart';
-import '/features/auth/screens/login/login_screen.dart';
 import 'routes.dart';
 import 'package:get/get.dart';
 import '../utils/theme/theme.dart';

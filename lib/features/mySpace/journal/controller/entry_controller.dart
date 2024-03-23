@@ -19,7 +19,7 @@ class EntryController extends GetxController {
   }
 
   Future<void> _openAudioSession() async {
-    await soundRecorder!.isRecording;
+    soundRecorder!.isRecording;
     // setState(() => isRecorderInitialized = true);
   }
 
@@ -32,8 +32,8 @@ class EntryController extends GetxController {
   // }
 
   Future<void> pickImage() async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     // Use the image file here...
   }
 

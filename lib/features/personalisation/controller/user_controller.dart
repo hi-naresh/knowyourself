@@ -21,7 +21,7 @@ class UserController extends GetxController {
   Future<void> fetchUserRecord() async{
     try{
       final userSnapshot = await userRepo.fetchUserRecord();
-      this.user(userSnapshot);
+      user(userSnapshot);
       // return userSnapshot;
     } catch(e){
       KHelper.showSnackBar("Data not found!", "Something went wrong. Try again.");

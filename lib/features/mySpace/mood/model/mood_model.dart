@@ -75,13 +75,11 @@ class MoodCheckIn {
   Mood mood;
   AtWhatPlace whichPlace;
   int point;
-  Emotion emotion;
   MoodCheckIn({
     required this.dateTime,
     required this.mood,
     required this.whichPlace,
     required this.point,
-    required this.emotion,
   });
 
   MoodCheckIn copyWith({
@@ -89,14 +87,12 @@ class MoodCheckIn {
     Mood? mood,
     AtWhatPlace? whichPlace,
     int? point,
-    Emotion? emotion,
   }) {
     return MoodCheckIn(
       dateTime: dateTime ?? this.dateTime,
       mood: mood ?? this.mood,
       whichPlace: whichPlace ?? this.whichPlace,
       point: point ?? this.point,
-      emotion: emotion ?? this.emotion,
     );
   }
 
@@ -106,7 +102,6 @@ class MoodCheckIn {
       'mood': mood.index,
       'whichPlace': whichPlace.index,
       'point': point,
-      'emotion': emotion.index,
     };
   }
 
@@ -116,7 +111,6 @@ class MoodCheckIn {
       mood: Mood.values[map['mood']],
       whichPlace: AtWhatPlace.values[map['whichPlace']],
       point: map['point'] as int,
-      emotion: Emotion.values[map['emotion']],
     );
   }
 
@@ -127,7 +121,7 @@ class MoodCheckIn {
 
   @override
   String toString() {
-    return 'MoodCheckIn(dateTime: $dateTime, mood: $mood, whichPlace: $whichPlace, point: $point, emotion: $emotion)';
+    return 'MoodCheckIn(dateTime: $dateTime, mood: $mood, whichPlace: $whichPlace, point: $point)';
   }
 
   @override
@@ -137,8 +131,7 @@ class MoodCheckIn {
     return other.dateTime == dateTime &&
         other.mood == mood &&
         other.whichPlace == whichPlace &&
-        other.point == point &&
-        other.emotion == emotion;
+        other.point == point;
   }
 
   @override
@@ -146,7 +139,6 @@ class MoodCheckIn {
     return dateTime.hashCode ^
         mood.hashCode ^
         whichPlace.hashCode ^
-        point.hashCode ^
-        emotion.hashCode;
+        point.hashCode ;
   }
 }

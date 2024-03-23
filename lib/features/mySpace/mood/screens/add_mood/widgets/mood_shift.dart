@@ -5,8 +5,8 @@ import '../../../../../../common/styles/styles.dart';
 import '../../../../../../utils/constants/colors.dart';
 import 'activities_to_shift.dart';
 
-class MoodShift extends StatelessWidget {
-  MoodShift({super.key});
+class MoodShiftPage extends StatelessWidget {
+  MoodShiftPage({super.key});
 
   final List<Map<String, dynamic>> moods = [
     {'mood': 'Cheerful', 'color': kApp1},
@@ -20,7 +20,7 @@ class MoodShift extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:KAppBar(back: true,),
+      appBar:const KAppBar(back: true,),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: KSizes.defaultSpace),
         child: Column(

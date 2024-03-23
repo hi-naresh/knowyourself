@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:knowyourself/common/widgets/appbar/appbar.dart';
@@ -6,39 +5,21 @@ import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../controller/add_mood_controller.dart';
-import '../../../model/mood_model_old.dart';
+import '../../../model/mood_model_input.dart';
 import 'package:get/get.dart';
 
-import 'mood_shift.dart';
-class MoodSummary extends StatefulWidget {
+class MoodSummaryPage extends StatelessWidget {
   final bool readOnly;
   final MoodModel? moodModel;
-  const MoodSummary(
-      {super.key, required this.readOnly, this.moodModel});
-
-  @override
-  State<MoodSummary> createState() => _MoodSummaryState();
-}
-
-class _MoodSummaryState extends State<MoodSummary> {
-  // late MoodModel moodModel;
-
-  @override
-  void initState() {
-    super.initState();
-    // if (widget.moodModel == null) {
-    //   moodModel =
-    //       Provider.of<JournalEditorProvider>(context, listen: false).journal!;
-    // } else {
-    //   moodModel = widget.moodModel!;
-    // }
-  }
+  const MoodSummaryPage({super.key, required this.readOnly, this.moodModel});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(AddMoodController());
     return Scaffold(
-      appBar: const KAppBar(back: true,),
+      appBar: const KAppBar(
+        back: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(KSizes.defaultSpace),
         child: Column(
@@ -127,13 +108,13 @@ class _MoodSummaryState extends State<MoodSummary> {
             //     ],
             //   ),
             // ),
-            if (!widget.readOnly)
+            if (!readOnly)
               Padding(
                 padding: const EdgeInsets.only(
                     left: 20, right: 20, top: 0, bottom: 0),
                 child: Text(
                   "Mood",
-                  style:Theme.of(context).textTheme.headlineMedium,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
             const SizedBox(
@@ -163,20 +144,19 @@ class _MoodSummaryState extends State<MoodSummary> {
                     ),
                   ),
                   Text(
-                    controller.mood.value,
+                    "${(controller.sliderValue.value * 10).round()}",
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ],
               ),
             ),
-            if (!widget.readOnly)
+            if (!readOnly)
               Padding(
                 padding: const EdgeInsets.only(
                     left: 20, right: 20, top: 10, bottom: 0),
                 child: Text(
                   "Aspect",
                   style: Theme.of(context).textTheme.headlineMedium,
-
                 ),
               ),
             const SizedBox(
@@ -202,21 +182,20 @@ class _MoodSummaryState extends State<MoodSummary> {
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      controller.aspect.value,
+                      "${controller.selectAspect.value}",
                     )),
               ),
             ),
             const SizedBox(
               height: KSizes.defaultSpace,
             ),
-            if (!widget.readOnly)
+            if (!readOnly)
               Padding(
                 padding: const EdgeInsets.only(
                     left: 20, right: 20, top: 0, bottom: 0),
                 child: Text(
                   "Reasons",
-                    style: Theme.of(context).textTheme.headlineMedium,
-
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
             Expanded(
@@ -233,55 +212,31 @@ class _MoodSummaryState extends State<MoodSummary> {
                   margin: const EdgeInsets.only(
                       left: 20, right: 20, top: 10, bottom: 20),
                   padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20)),
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
                       color: kEmptyProgress),
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Text(
-                        controller.aspect.value,
+                        controller.reasons.text,
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-            if (!widget.readOnly)
+            if (!readOnly)
               ElevatedButton(
-                  onPressed: () {
-                    _saveJournal();
-                  },
-                  child: Text("Save")
-              ),
+                  onPressed: ()=>controller.saveMoodData(),
+                  child: const Text("Save")),
             ElevatedButton(
-                onPressed: () {
-                  _shiftMood();
-                },
-                child: Text("Shift Mood")
-            ),
+                onPressed: ()=>controller.shiftMood(),
+                child: const Text("Shift Mood")),
           ],
         ),
       ),
     );
-  }
-
-  void _saveJournal() {
-    // Provider.of<JournalEditorProvider>(context, listen: false).updateIndex(0);
-    // Provider.of<JournalProvider>(context, listen: false)
-    //     .updateJournalList(moodModel);
-    // Provider.of<PointsProvider>(context, listen: false)
-    //     .setScore(point: kAddJournalPoint);
-    // Provider.of<JournalEditorProvider>(context, listen: false)
-    //     .clearJournalData();
-    // Navigator.pop(context);
-  }
-
-  void _shiftMood(){
-    // Navigator.push(context,
-    // MaterialPageRoute(builder: (context) => MoodShift()));
-    Get.to(()=>MoodShift()  );
   }
 }

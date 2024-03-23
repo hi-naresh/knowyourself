@@ -37,7 +37,7 @@ class PLoginForm extends StatelessWidget {
                 hintText: KTexts.passwordHint,
                 suffixIcon: IconButton(
                     onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
-                    icon: Icon(Icons.remove_red_eye_outlined))
+                    icon: const Icon(Icons.remove_red_eye_outlined))
               ),
 
             ),
@@ -73,7 +73,7 @@ class PLoginForm extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(KSizes.md),
               ),
-              child: Text(KTexts.signIn),
+              child: const Text(KTexts.signIn),
             ),
           ),
           const SizedBox(height: KSizes.defaultSpace),
@@ -83,7 +83,7 @@ class PLoginForm extends StatelessWidget {
               onPressed: () {
                 Get.toNamed(KRoutes.getSignupRoute());
               },
-              child: Text(KTexts.createAccount),
+              child: const Text(KTexts.createAccount),
             ),
           ),
         ],

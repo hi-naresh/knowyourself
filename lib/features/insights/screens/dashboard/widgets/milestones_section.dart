@@ -1,9 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
 import 'package:knowyourself/features/master.dart';
 import 'package:knowyourself/features/mySpace/space_screen.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
@@ -103,7 +99,7 @@ class DailyMilestoneSection extends StatelessWidget {
                 style: const ButtonStyle().copyWith(
                   foregroundColor: MaterialStateProperty.all(Colors.black),
                 ),
-                  child: Text("Start"),
+                  child: const Text("Start"),
               ),
             ],
           ),

@@ -1,26 +1,16 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:knowyourself/features/mySpace/mood/controller/add_mood_controller.dart';
-import 'package:knowyourself/features/mySpace/mood/model/mood_model_old.dart';
-import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/progress_bar.dart';
+import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/helpers/progress_bar.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/utils/device/device_utility.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import '../../../../../../utils/constants/colors.dart';
 
 
-class ExpressFeelingsWidget extends StatefulWidget {
-  const ExpressFeelingsWidget({super.key});
-
-  @override
-  State<ExpressFeelingsWidget> createState() => _ExpressFeelingsWidgetState();
-}
-
-class _ExpressFeelingsWidgetState extends State<ExpressFeelingsWidget> {
-  int _selectedOptionIndex = 0; // Index of the selected option
-
-  List<String> options = ['Social', 'Work', 'Home', 'Personal'];
+class ExpressFeelingsPage extends StatelessWidget {
+  const ExpressFeelingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,29 +28,71 @@ class _ExpressFeelingsWidgetState extends State<ExpressFeelingsWidget> {
                 Column(
                   children: [
                     const ProgressBar(steps: "3/3", percent: 1,),
-                    SizedBox(
+                    const SizedBox(
                       height: KSizes.defaultSpace,
                     ),
                     Text(
                       'Write down reasons for your Feelings',
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: KSizes.defaultSpace,
                     ),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          optionsPlace(context, options)
-                        ],
+                      child: Obx(
+                          ()=> Row(
+                          children: List.generate(controller.happenedAt.length, (index) {
+                            return GestureDetector(
+                              onTap: ()=>controller.selectHappenedAt.value = index,
+                              child: Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 3.0),
+                                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                                decoration: BoxDecoration(
+                                  color: controller.selectHappenedAt.value == index ? kApp1 : Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  border: Border.all(
+                                    color: controller.selectHappenedAt.value == index ? kApp1: Colors.transparent,
+                                    width: 2,
+                                  ),
+                                  boxShadow: [
+                                    if (controller.selectHappenedAt.value == index)
+                                      BoxShadow(
+                                        color: kApp1.withOpacity(0.5),
+                                        spreadRadius: 1,
+                                        blurRadius: 5,
+                                        offset: const Offset(0, 3),
+                                      ),
+                                  ],
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      controller.happenedAt[index],
+                                      style: TextStyle(
+                                        color: controller.selectHappenedAt.value == index ? Colors.white : Colors.black,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    if (controller.selectHappenedAt.value == index)
+                                      const Icon(
+                                        Icons.check_circle,
+                                        color: Colors.white,
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }),
+                        ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: KSizes.defaultSpace,
                     ),
                     Container(
-                      height: 300,
+                      height: KDeviceUtils.getScreenHeight() * 0.5,
                       width: double.infinity,
                       margin: const EdgeInsets.only(left: 10, right: 10),
                       decoration: const BoxDecoration(
@@ -73,8 +105,7 @@ class _ExpressFeelingsWidgetState extends State<ExpressFeelingsWidget> {
                           onTap: () {
                             FocusScope.of(context).unfocus();
                           },
-                          // controller: journalEditorProvider.notesEditingController,
-                          controller: controller.notesEditingController,
+                          controller: controller.reasons,
                           keyboardType: TextInputType.multiline,
                           textInputAction: TextInputAction.newline,
                           textAlignVertical: TextAlignVertical.top,
@@ -116,7 +147,7 @@ class _ExpressFeelingsWidgetState extends State<ExpressFeelingsWidget> {
                       // journalEditorProvider.updateJournal(journalModel);
                       // journalEditorProvider.updateIndex(3);
                       // FocusScope.of(context).unfocus();
-                      if(controller.notesEditingController.text == "") {
+                      if(controller.reasons.text == "") {
                         KHelper.showSnackBar("Please input reasons","In order to understand your mood better" );
                       }else{
                         // MoodModel moodModel = MoodModel(
@@ -127,72 +158,16 @@ class _ExpressFeelingsWidgetState extends State<ExpressFeelingsWidget> {
                         //     description: controller.notesEditingController.text,
                         //     happenedAt: "Home");
                         // controller.updateJournal(moodModel);
-                        controller.pageController.nextPage(
-                          duration: const Duration(milliseconds: 400),
-                          curve: Curves.easeInOut,
-                        );
+                        controller.nextPage();
                         FocusScope.of(context).unfocus();
                       }
 
                     },
-                    child: Text("Save")
+                    child: const Text("Save")
                 ),
               ],
             ),
           ),
         ));
   }
-
-  Widget optionsPlace(BuildContext context, List<String> options) {
-    return Row(
-      children: List.generate(options.length, (index) {
-        return GestureDetector(
-          onTap: () {
-            setState(() {
-              _selectedOptionIndex = index;
-            });
-          },
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 3.0),
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-            decoration: BoxDecoration(
-              color: _selectedOptionIndex == index ? kApp1 : Colors.grey[200],
-              borderRadius: BorderRadius.circular(30.0),
-              border: Border.all(
-                color: _selectedOptionIndex == index ? kApp1: Colors.transparent,
-                width: 2,
-              ),
-              boxShadow: [
-                if (_selectedOptionIndex == index)
-                  BoxShadow(
-                    color: kApp1.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 5,
-                    offset: Offset(0, 3),
-                  ),
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  options[index],
-                  style: TextStyle(
-                    color: _selectedOptionIndex == index ? Colors.white : Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-                if (_selectedOptionIndex == index)
-                  Icon(
-                    Icons.check_circle,
-                    color: Colors.white,
-                  ),
-              ],
-            ),
-          ),
-        );
-      }),
-    );
-  }
-
 }

@@ -50,7 +50,7 @@ class GratitudeTitle extends StatelessWidget {
                   ),
                 ),
               ),
-            SizedBox(
+            const SizedBox(
               width: KSizes.defaultSpace,
             ),
             Text(

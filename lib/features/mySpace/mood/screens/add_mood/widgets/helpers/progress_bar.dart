@@ -1,40 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourself/features/mySpace/mood/controller/add_mood_controller.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
-import '../../../../../../common/widgets/linear_percent_indicator.dart';
-import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../../common/widgets/linear_percent_indicator.dart';
+import '../../../../../../../utils/constants/colors.dart';
+import 'package:get/get.dart';
 
 class ProgressBar extends StatefulWidget {
   final String steps;
   final double percent;
 
-  const ProgressBar({
-    super.key,
-    required this.steps, required this.percent});
+  const ProgressBar({super.key, required this.steps, required this.percent});
 
   @override
   State<ProgressBar> createState() => _ProgressBarState();
 }
 
 class _ProgressBarState extends State<ProgressBar> {
-
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(AddMoodController());
     return Padding(
-      padding: const EdgeInsets.only(top:20.0),
+      padding: const EdgeInsets.only(top: 20.0),
       child: LinearPercentIndicator(
         alignment: MainAxisAlignment.spaceBetween,
         leading: GestureDetector(
-          onTap: () {
-            //    int currentIndex() => Provider.of<JournalEditorProvider>(context, listen: false).index;
-            // if (currentIndex() == 0) {
-            //   Navigator.pop(context);
-            // }else{
-            //   Provider.of<JournalEditorProvider>(context, listen: false)
-            //       .updateIndex(currentIndex() - 1);
-            // }
-          },
-          child: Icon(
+          onTap: () =>controller.previousPage(),
+          child: const Icon(
             Icons.arrow_back_ios_new_rounded,
             size: KSizes.iconMd,
           ),

@@ -10,8 +10,8 @@ class JournalController extends GetxController {
   final TextEditingController _titleEditingController = TextEditingController();
   final TextEditingController _notesEditingController = TextEditingController();
   final PageController _pageController = PageController();
-  var _dateTime = DateTime.now().obs;
-  var _listOfJournals = <JournalModel>[].obs;
+  final _dateTime = DateTime.now().obs;
+  final _listOfJournals = <JournalModel>[].obs;
 
   DateTime get getDate => _dateTime.value;
   List<JournalModel> get journals => _listOfJournals;
@@ -19,11 +19,6 @@ class JournalController extends GetxController {
   TextEditingController get notesEditingController => _notesEditingController;
   PageController get pageController => _pageController;
 
-  @override
-  void onInit() {
-    super.onInit();
-    // Initialize data or listeners if needed
-  }
 
   void updateDate(DateTime dateTime) async {
     try {

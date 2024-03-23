@@ -62,7 +62,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               title: Text(notification.title),
               subtitle: Text(notification.body),
               trailing: IconButton(
-                icon: Icon(Icons.close_rounded),
+                icon: const Icon(Icons.close_rounded),
                 onPressed: () => removeNotification(notification.id),
               ),
             ),

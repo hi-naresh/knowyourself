@@ -38,7 +38,7 @@ class GratitudeScreen extends StatelessWidget {
                 style:Theme.of(context).textTheme.bodyLarge,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: KSizes.defaultSpace,
             ),
             Text.rich(
@@ -101,7 +101,7 @@ class GratitudeScreen extends StatelessWidget {
                     "More Reasons To Celebrate",
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: KSizes.defaultSpace,
                   ),
                   GratitudeTitle(
@@ -185,7 +185,7 @@ class GratitudeScreen extends StatelessWidget {
             //     );
             //   },
             // )
-            ElevatedButton(onPressed: (){}, child: Text("Celebrate"))
+            ElevatedButton(onPressed: (){}, child: const Text("Celebrate"))
           ],
         ),
       ),

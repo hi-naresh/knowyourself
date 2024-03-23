@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/widget/milestone_detail.dart';
@@ -18,7 +17,7 @@ class MilestoneAdd extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text.rich(
+          const Text.rich(
             TextSpan(
               children: [
                 TextSpan(
@@ -35,7 +34,7 @@ class MilestoneAdd extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 18,
           ),
           Container(
@@ -55,20 +54,20 @@ class MilestoneAdd extends StatelessWidget {
                   Obx(() => Text.rich(
                     TextSpan(
                       children: [
-                        TextSpan(
+                        const TextSpan(
                             text: 'I will accomplish ',
                             style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
                         TextSpan(
                           text: controller.getUncompletedTasksCount().toString(),
-                          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: kApp4),
+                          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: kApp4),
                         ),
-                        TextSpan(
+                        const TextSpan(
                             text: ' task(s) today.',
                             style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
                       ],
                     ),
                   )),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Obx(() => LinearPercentIndicator(
                     padding: EdgeInsets.zero,
                     lineHeight: 5,
@@ -79,7 +78,7 @@ class MilestoneAdd extends StatelessWidget {
                     backgroundColor: const Color(0xFFD9D9D9),
                     barRadius: const Radius.circular(20),
                   )),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Obx(() => ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
@@ -133,7 +132,7 @@ class MilestoneAdd extends StatelessWidget {
                         child: Center(
                           child: Obx(() => Text(
                             !controller.isAdding.isTrue ? "Add Task" : "Save Task",
-                            style: TextStyle(fontSize: 13, color: Colors.white, fontWeight: FontWeight.w500),
+                            style: const TextStyle(fontSize: 13, color: Colors.white, fontWeight: FontWeight.w500),
                           )),
                         ),
                       ),

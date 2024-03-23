@@ -1,40 +1,21 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+import 'package:get/get.dart';
 
-import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../../utils/constants/colors.dart';
 
-class FullCircleSlider extends StatefulWidget {
-  final double value;
+class FullCircleSlider extends StatelessWidget {
   final Function(double) onChanged;
   final List<Widget> emojis;
+  final FullCircleSliderController controller = Get.put(FullCircleSliderController());
 
-  const FullCircleSlider({
+  FullCircleSlider({
     Key? key,
-    required this.value,
+    required double value,
     required this.onChanged,
     required this.emojis,
-  }) : super(key: key);
-
-  @override
-  _FullCircleSliderState createState() => _FullCircleSliderState();
-}
-
-class _FullCircleSliderState extends State<FullCircleSlider> {
-  // Calculate the angle for the current value
-  double angleForValue(double value) {
-    return value * 2 * math.pi - (math.pi / 2);
-  }
-
-  // Update the value of the slider based on the touch position
-  void _updateValue(Offset localPosition, Size size) {
-    final Offset center = Offset(size.width / 2, size.height / 2);
-    final double angle = math.atan2(localPosition.dy - center.dy, localPosition.dx - center.dx) + (math.pi / 2);
-    double newValue = angle / (2 * math.pi);
-    if (newValue < 0) newValue += 1.0;
-    if (newValue > 1) newValue -= 1.0;
-    setState(() {
-      widget.onChanged(newValue);
-    });
+  }) : super(key: key) {
+    controller.value.value = value;
   }
 
   @override
@@ -43,16 +24,34 @@ class _FullCircleSliderState extends State<FullCircleSlider> {
       onPanUpdate: (details) {
         final RenderBox renderBox = context.findRenderObject() as RenderBox;
         final Offset localPosition = renderBox.globalToLocal(details.globalPosition);
-        _updateValue(localPosition, renderBox.size);
+        controller.updateValue(localPosition, renderBox.size);
+        onChanged(controller.value.value);
       },
-      child: CustomPaint(
-        painter: CircleSliderPainter(value: widget.value, emojis: widget.emojis),
-        size: Size(280, 280), // Define the size of the full circle here
-      ),
+      child: Obx(() => CustomPaint(
+        painter: CircleSliderPainter(value: controller.value.value, emojis: emojis),
+        size: const Size(280, 280), // Define the size of the full circle here
+      )),
     );
   }
 }
+class FullCircleSliderController extends GetxController {
+  var value = 0.0.obs;
 
+  // Calculate the angle for the current value
+  double angleForValue(double value) {
+    return value * 2 * math.pi - (math.pi / 2);
+  }
+
+  // Update the value of the slider based on the touch position
+  void updateValue(Offset localPosition, Size size) {
+    final Offset center = Offset(size.width / 2, size.height / 2);
+    final double angle = math.atan2(localPosition.dy - center.dy, localPosition.dx - center.dx) + (math.pi / 2);
+    double newValue = angle / (2 * math.pi);
+    if (newValue < 0) newValue += 1.0;
+    if (newValue > 1) newValue -= 1.0;
+    value.value = newValue;
+  }
+}
 class CircleSliderPainter extends CustomPainter {
   final double value;
   final List<Widget> emojis;

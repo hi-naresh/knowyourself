@@ -42,7 +42,7 @@ class KAppBar extends StatelessWidget implements PreferredSizeWidget {
                 : CircleAvatar(
                     backgroundColor: KColors.primary,
                     child: SvgPicture.asset(
-                      KImages.avatarM,
+                      KImages.avatarF,
                       height: KSizes.iconLg,
                     ),
                   ),

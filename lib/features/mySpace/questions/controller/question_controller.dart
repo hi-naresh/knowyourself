@@ -18,7 +18,7 @@ class QuestionController extends GetxController {
     // Here you can integrate your logic to schedule notifications
   }
   void addQuestion() {
-    if (questionController.text.isEmpty || selectedDate == null) return;
+    if (questionController.text.isEmpty) return;
 
     addQuestions(
       Question(
@@ -43,4 +43,12 @@ class QuestionController extends GetxController {
     _questions.removeAt(index);
     update();
   }
+
+  pickDate() {
+    
+  }
+
+  pickReminder() {}
+  
+  
 }

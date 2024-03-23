@@ -45,12 +45,12 @@ class JournalScreen extends StatelessWidget {
                                   height: 20,
                                   color: kApp4,
                                 ),
-                                SizedBox(width: KSizes.sm),
+                                const SizedBox(width: KSizes.sm),
                                 Text(
                                   entries.toString(),
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
-                                SizedBox(width: KSizes.sm),
+                                const SizedBox(width: KSizes.sm),
                                 Text(
                                   "Entries",
                                   style: Theme.of(context).textTheme.titleLarge,
@@ -76,7 +76,7 @@ class JournalScreen extends StatelessWidget {
             if (journals.isEmpty) {
               return SliverToBoxAdapter(
                   child: Padding(
-                      padding: EdgeInsets.all(KSizes.defaultSpace),
+                      padding: const EdgeInsets.all(KSizes.defaultSpace),
                       child: Center(
                         child: Text(
                           "No Journals Entries!",

@@ -98,10 +98,10 @@ class JournalWidget extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Text(
                 DateFormat.jm().format(journalModel.createdOn),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
-                  color: const Color(0xFF868686),
+                  color: Color(0xFF868686),
                 ),
               ),
             ),
@@ -147,7 +147,7 @@ class JournalWidget extends StatelessWidget {
                             journalModel.title,
                             softWrap: true,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.w600),
                           ),
                           Text(
@@ -155,7 +155,7 @@ class JournalWidget extends StatelessWidget {
                             softWrap: true,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 10, fontWeight: FontWeight.w500),
                           ),
                         ],
