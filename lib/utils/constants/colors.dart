@@ -76,7 +76,7 @@ class KColors {
   //scaffold color
   static const Color scaffoldLight = Color(0xfff4f3ff);
 
-  static const Color scaffoldDark = Color(0xff050811);
+  static const Color scaffoldDark = Color(0xff151617);
 
   // Background colors
   static const Color light = Color(0xffe5e5ea);

@@ -2,15 +2,20 @@
 class KImages {
 
   // -- App Logos
-  static const String appLogo = "assets/logo/kyb.svg";
-  static const String sailcLogo = "assets/res/sailcc.png";
+  static const String appLogo = "assets/brand/kyb.svg";
+  static const String sailcLogo = "assets/brand/sailcc.png";
 
   //animations
   static const String logoAnim = "assets/animations/KYB.json";
+  //onboard
+  static const String onBoard1 = "assets/illustrations/onboard1.svg";
+  static const String onBoard2 = "assets/illustrations/onboard2.svg";
+  static const String onBoard3 = "assets/illustrations/onboard3.svg";
+
 
   //avatars
   static const String avatarM = "assets/avatars/avatar3.svg";
-  static const String avatarF = "assets/avatars/avatar2.svg";
+  static const String avatarF = "assets/avatars/avatar5.svg";
 
   //illustrations
   static const String health1 = "assets/illustrations/health1.svg";
@@ -47,7 +52,7 @@ class KImages {
   static const String spiritual = "assets/illustrations/spiritual.svg";
 
   // -- Social Logos
-  static const String google = "assets/logo/google.svg";
+  static const String google = "assets/brand/google.svg";
 
   //home icons
   static const String home = "assets/icons/home.svg";

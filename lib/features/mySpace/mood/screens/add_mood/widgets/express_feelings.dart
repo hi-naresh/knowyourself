@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/utils/device/device_utility.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../utils/helpers/shadow_disabler.dart';
 
 
 class ExpressFeelingsPage extends StatelessWidget {
@@ -55,7 +56,7 @@ class ExpressFeelingsPage extends StatelessWidget {
                                     color: controller.selectHappenedAt.value == index ? kApp1: Colors.transparent,
                                     width: 2,
                                   ),
-                                  boxShadow: [
+                                  boxShadow: CustomShadow.getShadow([
                                     if (controller.selectHappenedAt.value == index)
                                       BoxShadow(
                                         color: kApp1.withOpacity(0.5),
@@ -63,8 +64,7 @@ class ExpressFeelingsPage extends StatelessWidget {
                                         blurRadius: 5,
                                         offset: const Offset(0, 3),
                                       ),
-                                  ],
-                                ),
+                                  ]),                                ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [

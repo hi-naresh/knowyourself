@@ -19,7 +19,7 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(UserController());
-    final appController = Get.put(AppStateController());
+    final appController = AppStateController.instance;
     return Scaffold(
       appBar: const KAppBar(
         back: true,
@@ -71,14 +71,18 @@ class SettingScreen extends StatelessWidget {
               SettingTile(
                 title: "Dark Mode",
                 subtitle: "Switch to dark mode",
-                trailing: Switch(
-                  value: false,
-                  onChanged: (value) => appController.isDarkMode = !appController.isDarkMode,
+                trailing:Obx(() => Switch(
+                  value: appController.isDarkMode.value,
+                  onChanged: (value) {
+                    appController.toggleTheme();
+                  },
                   activeColor: Theme.of(context).primaryColor,
                 ),
+                ) ,
                 icon: Icons.dark_mode_outlined,
               ),
-              SettingTile(
+
+            SettingTile(
                   title: "Bio-metric Login",
                   subtitle: "Login with your face/fingerprint",
                   trailing: Switch(
@@ -117,7 +121,7 @@ class SettingScreen extends StatelessWidget {
                   icon: Icons.logout),
               const SizedBox(height: KSizes.spaceBtwSections),
               Image.asset(
-                "assets/res/sailcc.png",
+                KImages.sailcLogo,
                 height: 40,
               ),
               const SizedBox(

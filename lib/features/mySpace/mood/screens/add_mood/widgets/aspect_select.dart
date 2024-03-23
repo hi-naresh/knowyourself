@@ -5,6 +5,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../../utils/constants/colors.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../utils/helpers/shadow_disabler.dart';
 import '../../../controller/add_mood_controller.dart';
 
 class AspectSelectPage extends StatelessWidget {
@@ -61,7 +62,7 @@ class AspectSelectPage extends StatelessWidget {
                                         color: controller.selectAspect.value == index ? kApp1: Colors.transparent,
                                         width: 2,
                                       ),
-                                      boxShadow: [
+                                      boxShadow: CustomShadow.getShadow([
                                         if (controller.selectAspect.value == index)
                                           BoxShadow(
                                             color: kApp1.withOpacity(0.5),
@@ -69,8 +70,7 @@ class AspectSelectPage extends StatelessWidget {
                                             blurRadius: 5,
                                             offset: const Offset(0, 3),
                                           ),
-                                      ],
-                                    ),
+                                      ]),                                    ),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
