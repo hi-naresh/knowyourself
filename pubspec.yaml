@@ -77,6 +77,6 @@ flutter:
     - assets/emojis/
     - assets/illustrations/
     - assets/avatars/
+    - assets/brand/
     - assets/icons/
-    - assets/logo/
     - assets/animations/

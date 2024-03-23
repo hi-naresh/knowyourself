@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_emoji/animated_emoji.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/helpers/progress_bar.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
+import '../../../../../../utils/helpers/shadow_disabler.dart';
 import '../../../controller/add_mood_controller.dart';
 import 'helpers/full_circle_slider.dart';
 import 'package:get/get.dart';
@@ -60,14 +61,13 @@ class MoodSelectPage extends StatelessWidget {
                           color: Colors.white,
                           width: 1,
                         ),
-                        boxShadow: [
+                        boxShadow: CustomShadow.getShadow([
                           BoxShadow(
                             color: Colors.orange.withOpacity(0.5),
                             blurRadius: 20,
                             offset: const Offset(0, 4),
                           ),
-                        ],
-                      ),
+                        ]),                      ),
                       child: Obx(
                             ()=> AnimatedEmoji(
                           AnimatedEmojis.values[(controller.sliderValue.value * 10).round()],

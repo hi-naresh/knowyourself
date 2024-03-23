@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourself/utils/helpers/shadow_disabler.dart';
 import '../../utils/constants/sizes.dart';
 
 class KStyles {
@@ -18,15 +19,13 @@ class KStyles {
       begin: Alignment.topCenter,
       end: Alignment.bottomLeft,
     ),
+    boxShadow:CustomShadow.getShadow( [BoxShadow(
+      color: color.withOpacity(0.2),
+      spreadRadius: 1,
+      blurRadius: 8,
+      offset: const Offset(0, 4),
+    ),]),
     borderRadius: BorderRadius.circular(30),
-    // boxShadow: [
-    //   BoxShadow(
-    //     color: color.withOpacity(0.2),
-    //     spreadRadius: 1,
-    //     blurRadius: 8,
-    //     offset: const Offset(0, 4),
-    //   ),
-    // ],
   );
 
   static BoxDecoration containerDecoration(Color color) => BoxDecoration(
@@ -35,15 +34,12 @@ class KStyles {
       begin: Alignment.topLeft,
       end: Alignment.bottomLeft,
     ),
+    boxShadow:CustomShadow.getShadow( [BoxShadow(
+          color: color.withOpacity(0.5),
+          spreadRadius: 1,
+          blurRadius: 10,
+          offset: const Offset(0, 4),
+        ),]),
     borderRadius: BorderRadius.circular(25),
-    boxShadow: [
-      BoxShadow(
-        color: color.withOpacity(0.5),
-        spreadRadius: 1,
-        blurRadius: 10,
-        offset: const Offset(0, 4),
-      ),
-    ],
   );
-
 }

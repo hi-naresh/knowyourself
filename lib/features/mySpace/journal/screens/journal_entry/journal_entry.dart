@@ -10,7 +10,7 @@ class JournalEntryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(EntryController());
     return SizedBox(
-      height: Get.height * 0.5,
+      height: Get.height * 0.7,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal:  KSizes.defaultSpace),
         child: Column(

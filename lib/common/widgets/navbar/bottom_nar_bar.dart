@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../utils/helpers/shadow_disabler.dart';
 import '/utils/constants/sizes.dart';
 import '../../../utils/constants/colors.dart';
 
@@ -63,15 +64,14 @@ class BottomRoundedNavBar extends StatelessWidget {
             decoration: BoxDecoration(
               //code for shadow in upper direction
               // color: kBoxLight.withOpacity(0.5),
-              boxShadow: [
+              boxShadow: CustomShadow.getShadow([
                 BoxShadow(
                   color: kBoxLight.withOpacity(0.5),
                   spreadRadius: 1,
                   blurRadius: 10,
                   offset: const Offset(10, 10), // changes position of shadow
                 ),
-              ],
-              borderRadius: BorderRadius.circular(KSizes.borderRadiusXxl),
+              ]),              borderRadius: BorderRadius.circular(KSizes.borderRadiusXxl),
               border: Border.all(
                 color: kBoxLight,
                 width: 1.5,

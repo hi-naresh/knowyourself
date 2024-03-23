@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../utils/helpers/shadow_disabler.dart';
+
 class MyCard extends StatelessWidget {
   final String title;
   final Color color;
@@ -29,15 +31,14 @@ class MyCard extends StatelessWidget {
             end: Alignment.bottomLeft,
           ),
           borderRadius: BorderRadius.circular(16),
-          boxShadow: [
+          boxShadow: CustomShadow.getShadow([
             BoxShadow(
               color: color.withOpacity(0.5),
               spreadRadius: 1,
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
-          ],
-        ),
+          ]),        ),
         child: Stack(
           children: [
             Positioned(

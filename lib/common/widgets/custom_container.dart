@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourself/utils/helpers/shadow_disabler.dart';
 
 class CustomContainer extends StatelessWidget {
   final Widget child;
@@ -48,13 +49,13 @@ class CustomContainer extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomLeft,
           ),
-          boxShadow: [
+          boxShadow: CustomShadow.getShadow( [
             BoxShadow(
               color: color.withOpacity(0.7),
               offset: const Offset(0, 5),
               blurRadius: 15,
             )
-          ],
+          ]),
         ),
         padding: padding,
         margin: margin,

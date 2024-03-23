@@ -51,7 +51,7 @@ class _ProgressComponentState extends State<ProgressComponent> with SingleTicker
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      color: kPieBox,
+      color: kEmptyProgress.withOpacity(0.3),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

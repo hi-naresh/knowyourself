@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import '../../../utils/helpers/shadow_disabler.dart';
+import '../../../utils/theme/theme.dart';
 
 class AppStateController extends GetxController {
   // Accessing GetStorage
-  final GetStorage _storage = GetStorage();
-  final String _themeKey = 'isDarkMode';
-
-  // Observable for theme status. Defaults to false if not set in storage.
-  // final RxBool isDark = (GetStorage().read('isDarkMode') ?? false).obs;
-  final RxBool isDark = false.obs;
-  bool get isDarkMode => isDark.value;
-  set isDarkMode(bool value) => isDark.value = value;
-
+  static final storage = GetStorage();
+  static AppStateController get instance => Get.find();
+  RxBool isDarkMode = false.obs;
   final PageController _pageController = PageController();
   PageController get pageController => _pageController;
 
@@ -22,23 +18,19 @@ class AppStateController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Load initial theme state from GetStorage, if available.
-    isDark.value = _storage.read(_themeKey) ?? false;
+    isDarkMode.value = Get.isDarkMode;
+    CustomShadow.disableShadows = isDarkMode.value;
   }
 
-  void updateTheme(bool value) {
-    isDarkMode = value;
-    // Save the new theme state to GetStorage
-    _storage.write(_themeKey, value);
+  void toggleTheme() {
+    isDarkMode.value = !isDarkMode.value;
+    CustomShadow.disableShadows = isDarkMode.value;
+    // Get.changeTheme(isDarkMode.value ? KAppTheme.darkTheme : KAppTheme.lightTheme);
+    Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
   }
 
   void updatePage(int index) {
     _pageState.value = index;
-  }
-
-  toggleDarkMode() {
-    isDarkMode = !isDarkMode;
-    updateTheme(isDarkMode);
   }
 
 }

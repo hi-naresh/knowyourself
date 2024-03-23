@@ -6,6 +6,7 @@ import 'package:knowyourself/features/insights/screens/insights/insight_screen.d
 import 'package:knowyourself/features/learning/screens/learn_screen.dart';
 import 'package:knowyourself/features/mySpace/journal/screens/journal_entry/journal_entry.dart';
 import 'package:knowyourself/features/mySpace/space_screen.dart';
+import 'package:knowyourself/features/personalisation/controller/app_controller.dart';
 
 import '../../common/styles/styles.dart';
 import '../../utils/constants/colors.dart';
