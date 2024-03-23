@@ -23,7 +23,7 @@ class Dashboard extends StatelessWidget {
             DailyMilestoneSection(),
             SizedBox(height: KSizes.defaultSpace),
             MyselfSection(),
-            SizedBox(height: KSizes.defaultSpace),
+            SizedBox(height: KSizes.spaceBtwSections),
             ProgressComponent(
               milestonesProgress: {
                 'Daily': 0.35,

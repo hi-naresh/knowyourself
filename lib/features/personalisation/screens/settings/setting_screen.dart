@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -41,7 +42,7 @@ class SettingScreen extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: CircleAvatar(
-                  radius: 30,
+                  radius: KSizes.iconMd,
                   backgroundColor: KColors.primary,
                   child: SvgPicture.asset(
                     KImages.avatarF,
@@ -57,7 +58,7 @@ class SettingScreen extends StatelessWidget {
                 ),
                 subtitle: Obx(()=> Text(controller.user.value.username ?? "No email")),
                 trailing: IconButton(
-                  icon: const Icon(Icons.edit),
+                  icon: const Icon(CupertinoIcons.paperplane),
                   onPressed: () {
                     // Navigate to the profile edit screen
                     Get.toNamed(KRoutes.getProfileEditRoute());
@@ -71,7 +72,7 @@ class SettingScreen extends StatelessWidget {
               SettingTile(
                 title: "Dark Mode",
                 subtitle: "Switch to dark mode",
-                trailing:Obx(() => Switch(
+                trailing:Obx(() => CupertinoSwitch(
                   value: appController.isDarkMode.value,
                   onChanged: (value) {
                     appController.toggleTheme();
@@ -79,46 +80,46 @@ class SettingScreen extends StatelessWidget {
                   activeColor: Theme.of(context).primaryColor,
                 ),
                 ) ,
-                icon: Icons.dark_mode_outlined,
+                icon: CupertinoIcons.moon_circle,
               ),
 
             SettingTile(
                   title: "Bio-metric Login",
                   subtitle: "Login with your face/fingerprint",
-                  trailing: Switch(
+                  trailing: CupertinoSwitch(
                     value: true,
                     onChanged: (value) {},
                     activeColor: Theme.of(context).primaryColor,
                   ),
-                  icon: Icons.security_outlined),
+                  icon: CupertinoIcons.eye_slash),
               SettingTile(
                 title: "Notifications",
                 subtitle: "In order to remind your tasks.",
-                trailing: Switch(
+                trailing: CupertinoSwitch(
                   value: true,
                   onChanged: (value) {},
                   activeColor: Theme.of(context).primaryColor,
                 ),
-                icon: Icons.notifications_active_outlined,
+                icon: CupertinoIcons.bell,
               ),
               const SettingTile(
                   title: "About",
                   subtitle: "Know more about KYB",
-                  trailing: Icon(Icons.chevron_right),
-                  icon: Icons.info_outline),
+                  trailing: Icon(CupertinoIcons.forward),
+                  icon: CupertinoIcons.layers_alt),
               const SettingTile(
                   title: "Help",
                   subtitle: "Get help from KYB",
-                  trailing: Icon(Icons.chevron_right),
-                  icon: Icons.help_outline),
+                  trailing: Icon(CupertinoIcons.forward),
+                  icon: CupertinoIcons.conversation_bubble),
               SettingTile(
                   onTap: () {
                     KHelper.showBottomSheet(const LogoutPop());
                   },
                   title: "Logout",
                   subtitle: "Logout from KYB",
-                  trailing: const Icon(Icons.chevron_right),
-                  icon: Icons.logout),
+                  trailing: const Icon(CupertinoIcons.forward),
+                  icon: CupertinoIcons.square_arrow_left),
               const SizedBox(height: KSizes.spaceBtwSections),
               Image.asset(
                 KImages.sailcLogo,

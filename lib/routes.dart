@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/add_mood_screen.dart';
+import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/activities_to_shift.dart';
+import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/mood_shift.dart';
 import 'common/extras/notification_screen.dart';
 import 'features/master.dart';
 import 'features/personalisation/screens/profile/profile_screen.dart';
@@ -49,6 +51,11 @@ class KRoutes{
   static const String addMood = '/addMood';
   static String getAddMoodRoute() => addMood;
 
+  static const String moodShift = '/moodShift';
+  static String getMoodShiftRoute() => moodShift;
+
+  static const String activities = '/activities';
+  static String getActivitiesRoute() => activities;
 
 
   //extras
@@ -88,6 +95,12 @@ class KRoutes{
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
     GetPage(name: addMood, page: () => const AddMoodScreen(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    GetPage(name: moodShift, page: () => MoodShiftPage(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    GetPage(name: activities, page: () => ActivitiesToShiftScreen(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
   ];

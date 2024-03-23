@@ -76,7 +76,7 @@ class KColors {
   //scaffold color
   static const Color scaffoldLight = Color(0xfff4f3ff);
 
-  static const Color scaffoldDark = Color(0xff151617);
+  static const Color scaffoldDark = Color(0xff1f1f25);
 
   // Background colors
   static const Color light = Color(0xffe5e5ea);
@@ -187,7 +187,7 @@ const Color kApp4Dark = Color(0xFFFFA497);
 const Color kProgress = Color(0xFFE9EDF1);
 Color kBoxLight = kEmptyProgress.withOpacity(0.5);
 const Color kPieBox = Color(0xFFEEF6FF);
-const Color kEmptyProgress = Color(0xFFDAE1EA);
+const Color kEmptyProgress = Color(0xFFE3E9F3);
 
 // const Color kPalette6_1 = Color(0xFFEAE9E8);
 // const Color kPalette6 = Color(0xFFFBFBFB);

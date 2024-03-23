@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -58,11 +59,7 @@ class KAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () {
                   Get.toNamed(KRoutes.getNotificationsRoute());
                 },
-                icon: SvgPicture.asset(
-                  "assets/icons/bell.svg",
-                  height: KSizes.iconXl,
-                  color: Theme.of(context).textTheme.labelLarge?.color,
-                ),
+                icon: const Icon(CupertinoIcons.bell,size: KSizes.iconXl,),
               ),
             ],
           ),

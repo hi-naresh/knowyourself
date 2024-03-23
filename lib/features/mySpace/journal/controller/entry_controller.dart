@@ -77,4 +77,10 @@ class EntryController extends GetxController {
     return formattedDate;
   }
 
+  addBookmark() {}
+
+  deFocusKeyboard(BuildContext context) {
+    FocusScope.of(context).unfocus();
+  }
+
 }

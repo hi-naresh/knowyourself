@@ -24,7 +24,7 @@ class MySpaceScreen extends StatelessWidget {
             clipBehavior: Clip.none,
             decoration: BoxDecoration(
               color: kEmptyProgress,
-              borderRadius: BorderRadius.circular(25.0),
+              borderRadius: BorderRadius.circular(KSizes.cardRadiusLg),
             ),
             padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 5),
             child: TabBar(

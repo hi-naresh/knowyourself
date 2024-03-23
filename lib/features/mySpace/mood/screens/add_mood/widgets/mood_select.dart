@@ -26,22 +26,14 @@ class MoodSelectPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "How Are You Feeling?",
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-                const SizedBox(
-                  height: KSizes.defaultSpace,
-                ),
-                Text(
-                  "Emotion: ${(controller.sliderValue.value * 10).round()}",
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
+                  "How Are You\n Feeling?",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
                 const SizedBox(
-                  height: KSizes.defaultSpace,
+                  height: KSizes.defaultSpace*2,
                 ),
                 Stack(
                   alignment: Alignment.center,
@@ -77,6 +69,31 @@ class MoodSelectPage extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                const SizedBox(
+                  height: KSizes.defaultSpace*2,
+                ),
+                Obx(
+                  //     ()=> Text(
+                  //   "Emotion\n ${(controller.moodString)}",
+                  //   textAlign: TextAlign.center,
+                  //   style: Theme.of(context).textTheme.headlineSmall,
+                  // ),
+                    ()=> Text.rich(
+                      textAlign: TextAlign.center,
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Emotion\n",
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
+                          TextSpan(
+                            text: controller.moodString,
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                        ],
+                      ),
+                    )
                 ),
               ],
             ),

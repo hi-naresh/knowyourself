@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
@@ -18,51 +19,60 @@ class JournalEntryScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                IconButton(
+                  icon: const Icon(CupertinoIcons.bookmark),
+                  onPressed: ()=>controller.addBookmark(),
+                ),
                 Text(
                   controller.getCurrentDate(),
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 TextButton(onPressed: (){},
                     child: Text('Save', style: Theme.of(context).textTheme.titleLarge)
                 )
               ],
             ),
-            TextField(
+            TextFormField(
+              onTap: ()=>controller.deFocusKeyboard(context),
               controller: controller.textEditingController,
               maxLines: null,
               keyboardType: TextInputType.multiline,
               decoration: const InputDecoration(
-                hintText: 'Start writing...',
+                hintText: 'Your reflection for today...',
                 hintStyle: TextStyle(color: Colors.grey),
-                border: InputBorder.none,
+                contentPadding: EdgeInsets.all(KSizes.defaultSpace),
+                disabledBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
               ),
             ),
             const Spacer(),
             Container(
               // color: Theme.of(context).scaffoldBackgroundColor,
-              padding: const EdgeInsets.symmetric(vertical: KSizes.md),
+              padding: const EdgeInsets.symmetric(vertical: KSizes.lg),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.camera_outlined),
+                    icon: const Icon(CupertinoIcons.photo_on_rectangle),
                     onPressed: ()=>controller.pickImage(),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.camera_alt_outlined),
+                    icon: const Icon(CupertinoIcons.camera),
                     onPressed: ()=>controller.pickImage(),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.location_on_outlined),
+                    icon: const Icon(CupertinoIcons.location_solid),
                     onPressed: ()=>controller.addLocation(),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.mic_none_outlined),
+                    icon: const Icon(CupertinoIcons.waveform_path_badge_plus),
                     onPressed: ()=>controller.recordVoiceNote()
                   ),
                   IconButton(
-                    icon: const Icon(Icons.stop_circle),
+                    icon: const Icon(CupertinoIcons.largecircle_fill_circle),
                     onPressed: ()=>controller.stopRecording(),
                   ),
                 ],
