@@ -17,47 +17,39 @@ class MySpaceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const selectedColor = kApp4;
     final controller = Get.put(MySpaceController());
-    return Builder(
-      builder: (BuildContext context) {
-        final TabController tabController = TabController(
-            length: controller.tabs.length, vsync: Scaffold.of(context));
-        tabController.addListener(() {
-          if (!tabController.indexIsChanging) {
-            controller.changeTab(tabController.index);
-          }
-        });
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: KSizes.defaultSpace,vertical: KSizes.defaultSpace/2),
-          child: Column(
-            children: [
-              Container(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: KSizes.defaultSpace,vertical: KSizes.defaultSpace/2),
+      child: Column(
+        children: [
+          Container(
+            clipBehavior: Clip.none,
+            decoration: BoxDecoration(
+              color: kEmptyProgress,
+              borderRadius: BorderRadius.circular(25.0),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 5),
+            child: TabBar(
+              controller: controller.tabController,
+              dividerHeight: 0,
+              indicator: KStyles.containerDecoration(selectedColor),
+              labelColor: Colors.white,
+              isScrollable: true,
+              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+              tabAlignment: TabAlignment.center,
+              labelPadding: EdgeInsets.symmetric(horizontal: 20),
+              // labelStyle: h3,
+              // tabAlignment: TabAlignment.center,
+              indicatorPadding: const EdgeInsets.symmetric(
+                  horizontal: -20, vertical: 5),
+              unselectedLabelColor: Colors.black,
+              tabs: controller.tabs,
+            ),
+          ),
+          const SizedBox(height: KSizes.defaultSpace),
+          Expanded(
+              child: TabBarView(
                 clipBehavior: Clip.none,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
-                child: TabBar(
-                  controller: tabController,
-                  dividerHeight: 0,
-                  indicator: KStyles.containerDecoration(selectedColor),
-                  labelColor: Colors.white,
-                  isScrollable: true,
-                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
-                  tabAlignment: TabAlignment.center,
-                  labelPadding: EdgeInsets.symmetric(horizontal: 20),
-                  // labelStyle: h3,
-                  // tabAlignment: TabAlignment.center,
-                  indicatorPadding: const EdgeInsets.symmetric(
-                      horizontal: -20, vertical: 5),
-                  unselectedLabelColor: Colors.black,
-                  tabs: controller.tabs,
-                ),
-              ),
-              const SizedBox(height: KSizes.defaultSpace),
-              Expanded(
-                  child: TabBarView(
-                controller: tabController,
+                controller: controller.tabController,
                 children: const [
                   JournalScreen(),
                   MilestoneAdd(),
@@ -66,16 +58,17 @@ class MySpaceScreen extends StatelessWidget {
                   GratitudeWidget()
                 ],
               ))
-            ],
-          ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
 
-class MySpaceController extends GetxController {
+class MySpaceController extends GetxController with GetSingleTickerProviderStateMixin {
+
+  static MySpaceController get instance => Get.find();
   final RxInt tabIndex = 0.obs;
+  late TabController tabController;
   final tabs = const [
     Tab(text: 'Journal'),
     Tab(text: 'Milestones'),
@@ -83,8 +76,14 @@ class MySpaceController extends GetxController {
     Tab(text: 'Story'),
     Tab(text: 'Gratitude'),
   ];
-
-  void changeTab(int index) {
-    tabIndex.value = index;
+  @override
+  void onInit() {
+    super.onInit();
+    tabController = TabController(length: 5, vsync: this);
+  }
+  void updateTabIndex(int index) {
+    if (tabController.indexIsChanging || tabController.index != index) {
+      tabController.animateTo(index);
+    }
   }
 }

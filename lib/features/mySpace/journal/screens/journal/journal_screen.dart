@@ -19,64 +19,54 @@ class JournalScreen extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
-          child: Container(
-            decoration: BoxDecoration(
-              color: kBoxLight,
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(KSizes.sm),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "My Journal",
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      Obx(() {
-                        // Assuming you have a Rx<DateTime> or similar observable for the current date
-                        final DateTime currentDate = controller.getDate;
-
-                        // Asynchronous operation to get the number of entries, now managed within the GetX controller
-                        final Future<int> entriesFuture = JournalGetStorage.getMonthNumOfEntries(currentDate);
-
-                        return FutureBuilder<int>(
-                          future: entriesFuture,
-                          builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-                            if (snapshot.hasData) {
-                              int entries = snapshot.data!;
-                              return Row(
-                                children: [
-                                  SvgPicture.asset(
-                                    "assets/icons/entries.svg",
-                                    height: 20,
-                                    color: kApp4,
-                                  ),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    entries.toString(),
-                                    style: Theme.of(context).textTheme.titleLarge,
-                                  ),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    "Entries",
-                                    style: Theme.of(context).textTheme.titleLarge,
-                                  ),
-                                ],
-                              );
-                            }
-                            return Text("..."); // Placeholder for loading or no data state
-                          },
-                        );
-                      })
-                    ],
-                  ),
-                  const SizedBox(height: KSizes.defaultSpace),
-                  const CalendarWidget(),
-                ],
-              ),
+          child: Padding(
+            padding: const EdgeInsets.all(KSizes.md),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "My Journal",
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    Obx(() {
+                      final DateTime currentDate = controller.getDate;
+                      final Future<int> entriesFuture = JournalGetStorage.getMonthNumOfEntries(currentDate);
+                      return FutureBuilder<int>(
+                        future: entriesFuture,
+                        builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                          if (snapshot.hasData) {
+                            int entries = snapshot.data!;
+                            return Row(
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/icons/entries.svg",
+                                  height: 20,
+                                  color: kApp4,
+                                ),
+                                SizedBox(width: KSizes.sm),
+                                Text(
+                                  entries.toString(),
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                ),
+                                SizedBox(width: KSizes.sm),
+                                Text(
+                                  "Entries",
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                ),
+                              ],
+                            );
+                          }
+                          return const Text("..."); // Placeholder for loading or no data state
+                        },
+                      );
+                    })
+                  ],
+                ),
+                const SizedBox(height: KSizes.defaultSpace),
+                const CalendarWidget(),
+              ],
             ),
           ),
         ),
@@ -90,7 +80,7 @@ class JournalScreen extends StatelessWidget {
                       child: Center(
                         child: Text(
                           "No Journals Entries!",
-                          style: Theme.of(context).textTheme.headlineMedium,
+                          style: Theme.of(context).textTheme.titleSmall,
                         ),
                       )));
             }

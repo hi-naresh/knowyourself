@@ -74,11 +74,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/res/
     - assets/emojis/
     - assets/illustrations/
     - assets/avatars/
     - assets/icons/
-    - assets/status/
     - assets/logo/
     - assets/animations/

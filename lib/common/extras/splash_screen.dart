@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
+import 'package:knowyourself/utils/constants/image_strings.dart';
+import 'package:knowyourself/utils/device/device_utility.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -7,18 +8,27 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Lottie.asset(
-          'assets/animations/seeking-development.json',
-          width: 200,
-          height: 200,
-          repeat: false,
-          fit: BoxFit.cover,
-        ),
-        // child: SvgPicture.asset(
-        //   KImages.appLogo,
-        //   width: 200,
-        // ),
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Lottie.asset(
+            KImages.logoAnim,
+            width: 200,
+            height: 200,
+            repeat: false,
+            fit: BoxFit.cover,
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: KDeviceUtils.getScreenHeight() * 0.07),
+              child: Image.asset(
+                KImages.sailcLogo,
+                width: 150,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

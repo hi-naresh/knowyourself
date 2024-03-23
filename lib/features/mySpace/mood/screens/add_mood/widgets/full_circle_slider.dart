@@ -47,7 +47,7 @@ class _FullCircleSliderState extends State<FullCircleSlider> {
       },
       child: CustomPaint(
         painter: CircleSliderPainter(value: widget.value, emojis: widget.emojis),
-        size: Size(250, 250), // Define the size of the full circle here
+        size: Size(280, 280), // Define the size of the full circle here
       ),
     );
   }

@@ -1,5 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
+import 'package:knowyourself/features/master.dart';
+import 'package:knowyourself/features/mySpace/space_screen.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
@@ -18,46 +24,40 @@ class DailyMilestoneSection extends StatelessWidget {
       color: kApp4Light,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(
+            clipBehavior: Clip.none,
             children: [
-              Opacity(
-                opacity: 0.7,
+              Positioned(
+                top: KSizes.lg,
                 child: SvgPicture.asset(
-                  KImages.milestones,
-                  width: 120,
-                  height: 120,
+                  KImages.health5,
+                  height: 130,
                   fit: BoxFit.contain,
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text.rich(
+              Text.rich(
+                TextSpan(
+                  children: [
                     TextSpan(
-                      children: [
-                        TextSpan(
-                          //demo
-                            text: "Tasks: 5/",
-                            // text: (value.toDolist.length - value.getUncompletedTasksCount()).toString(),
-                            style: Theme.of(context).textTheme.labelSmall
-                        ),
-                        TextSpan(
-                          //demo
-                            text: "2",
-                            // text: '/${value.toDolist.length} task completed',
-                            style: Theme.of(context).textTheme.labelSmall
-                        ),
-                      ],
+                      //demo
+                        text: "Tasks: 5/",
+                        // text: (value.toDolist.length - value.getUncompletedTasksCount()).toString(),
+                        style: Theme.of(context).textTheme.labelSmall
                     ),
-                  ),
-                  Text(
-                    KTexts.dailyMilestones,
-                    style: Theme.of(context).textTheme.headlineMedium,),
-
-                ],
+                    TextSpan(
+                      //demo
+                        text: "2",
+                        // text: '/${value.toDolist.length} task completed',
+                        style: Theme.of(context).textTheme.labelSmall
+                    ),
+                    TextSpan(
+                      text: "\n${KTexts.dailyMilestones}",
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -94,10 +94,14 @@ class DailyMilestoneSection extends StatelessWidget {
                 height: KSizes.sm,
               ),
               ElevatedButton(
-                //decorationGrad
-                  onPressed: (){},
-                style: ButtonStyle().copyWith(
-                  // padding: ,
+                  onPressed: (){
+                    final controller = MySpaceController.instance;
+                    final masterController = MasterController.instance;
+                    masterController.currentIndex.value = 3;
+                    controller.updateTabIndex(1);
+                  },
+                style: const ButtonStyle().copyWith(
+                  foregroundColor: MaterialStateProperty.all(Colors.black),
                 ),
                   child: Text("Start"),
               ),

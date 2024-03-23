@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/features/insights/controller/dashboard_controller.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
+import 'package:knowyourself/utils/constants/image_strings.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
 import '../../../../../common/widgets/custom_container.dart';
@@ -18,59 +20,72 @@ class MoodSection extends StatelessWidget {
     return CustomContainer(
       width: double.infinity,
       color: kApp1Light,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
+        clipBehavior: Clip.none,
         children: [
-          //consumer to provide the user's name
-          Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text: controller.greeting(),
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-                TextSpan(
-                  text: "${userController.user.value.fullName!}!",
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-                TextSpan(
-                  text: "\n${KTexts.feel}",
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ],
+          Positioned(
+            right: 0,
+            top: 0,
+            child: Opacity(
+              opacity: 0.1,
+              child: SvgPicture.asset(
+                KImages.health13,
+                height: 140,
+              ),
             ),
-            ),
-
-
-          const SizedBox(height: KSizes.md),
-          Row(
+          ),
+          Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(13),
-                  color: const Color(0x4DF5F5F5),
+              Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: controller.greeting(),
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    TextSpan(
+                      text: "${userController.user.value.fullName!}!",
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    TextSpan(
+                      text: "\n${KTexts.feel}",
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                  ],
                 ),
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  "Express Your Mood & Reflect:\nLog emotions and thoughts.",
-                  style: Theme.of(context).textTheme.labelSmall,
-                  textAlign: TextAlign.left,
                 ),
-              ),
-              const Spacer(),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Container(
-                  width: 60.0,
-                  height: 60.0,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xff393939), // Change the color as needed
+              const SizedBox(height: KSizes.md),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(13),
+                      color: const Color(0x4DF5F5F5),
+                    ),
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      "Express Your Mood & Reflect:\nLog emotions and thoughts.",
+                      style: Theme.of(context).textTheme.labelSmall,
+                      textAlign: TextAlign.left,
+                    ),
                   ),
-                  child: IconButton(
+                  const Spacer(),
+                  IconButton(
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                        const EdgeInsets.all(KSizes.md),
+                      ),
+                      backgroundColor: MaterialStateProperty.all<Color>(KColors.darkerGrey),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                    ),
                     onPressed: () {
                       //navigate
                       Get.to( () => const AddMoodScreen());
@@ -80,7 +95,7 @@ class MoodSection extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                ),
+                ],
               ),
             ],
           ),

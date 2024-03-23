@@ -27,7 +27,7 @@ class KColors {
   );
 
 
-  static Gradient accentPrimaryGradient = LinearGradient(
+  static const Gradient accentPrimaryGradient = LinearGradient(
     colors: [
       primary,
       scaffoldDark,
@@ -36,13 +36,13 @@ class KColors {
     end: Alignment.bottomLeft,
   );
 
-  static List<BoxShadow> defaultShadow =  [
-    BoxShadow(
-      color: primary.withOpacity(0.7),
-      offset: const Offset(0, 5),
-      blurRadius: 15,
-    )
-  ];
+  // static List<BoxShadow> defaultShadow =  [
+  //   BoxShadow(
+  //     color: primary.withOpacity(0.7),
+  //     offset: const Offset(0, 5),
+  //     blurRadius: 15,
+  //   )
+  // ];
   //
   // static const Gradient accent3Gradient= LinearGradient(
   //   colors: [
@@ -186,7 +186,7 @@ const Color kApp4Dark = Color(0xFFFFA497);
 
 //grey
 const Color kProgress = Color(0xFFE9EDF1);
-const Color kBoxLight = Color(0xFFF4F3F1);
+Color kBoxLight = kEmptyProgress.withOpacity(0.5);
 const Color kPieBox = Color(0xFFEEF6FF);
 const Color kEmptyProgress = Color(0xFFDAE1EA);
 
@@ -194,11 +194,8 @@ const Color kEmptyProgress = Color(0xFFDAE1EA);
 // const Color kPalette6 = Color(0xFFFBFBFB);
 
 //cal
-const Color kCalDisabled = kPieBox;
-const Color kCalSelected = Color(0xFF363538);
-const Color kSelectedDate = Color(0xFFF5B293);
+const Color kDisText = Color(0xFF171616);
 const Color kSelectedText = Color(0xFFFBFBFB);
-
 
 
 
