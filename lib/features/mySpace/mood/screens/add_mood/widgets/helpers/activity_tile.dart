@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../common/widgets/my_card.dart';
-import '../../../model/activity_model.dart';
+import '../../../../../../../common/widgets/my_card.dart';
+import '../../../../model/activity_model.dart';
 class ActivityTile extends StatelessWidget {
   final Activity activity;
   final VoidCallback onTap;

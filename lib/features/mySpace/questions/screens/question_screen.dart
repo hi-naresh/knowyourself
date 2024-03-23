@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/questions/controller/question_controller.dart';
+import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../utils/constants/colors.dart';
 class QuestionSpace extends StatelessWidget {
@@ -16,7 +17,7 @@ class QuestionSpace extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text.rich(
+            const Text.rich(
               TextSpan(
                 children: [
                   TextSpan(
@@ -33,11 +34,12 @@ class QuestionSpace extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: KSizes.defaultSpace),
             TextField(
               controller: controller.questionController,
-              decoration: InputDecoration(labelText: 'Enter your question'),
+              decoration: const InputDecoration(labelText: 'Enter your question'),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: KSizes.defaultSpace),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -48,36 +50,28 @@ class QuestionSpace extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: KSizes.defaultSpace),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                FilledButton(
-                  onPressed: (){},
-                  child: Text(
-                    'Choose Date',
-                  ),
+                ElevatedButton(
+                  onPressed: () => controller.pickDate(),
+                  child: const Text('Choose Date'),
                 ),
-                FilledButton(
-                  onPressed: (){},
-                  child: Text(
-                    'Reminder',
-                  ),
+                ElevatedButton(
+                  onPressed: () => controller.pickReminder(),
+                  child: const Text('Reminder'),
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ChoiceChip(
-                  label: Text('Short-term'),
+                  label: const Text('Short-term'),
                   selected: controller.selectedCategory == 'short',
-                  // labelPadding: EdgeInsets.all(5.0),
-                  // labelStyle: TextStyle(
-                  //   color: kDarkText,
-                  // ),
-                  side: BorderSide(
+                  side: const BorderSide(
                     color: kApp4,
                     width: 1.0,
                   ),
@@ -87,14 +81,13 @@ class QuestionSpace extends StatelessWidget {
                   selectedColor: kApp4,
                   onSelected: (selected) => controller.selectedCategory = 'short',
                 ),
-                SizedBox(width: 20),
                 ChoiceChip(
-                  label: Text('Long-term'),
+                  label: const Text('Long-term'),
                   selected: controller.selectedCategory == 'long',
                   // labelStyle: TextStyle(
                   //   color: kDarkText,
                   // ),
-                  side: BorderSide(
+                  side: const BorderSide(
                     color: kApp4,
                     width: 1.0,
                   ),
@@ -105,12 +98,12 @@ class QuestionSpace extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
-            FilledButton(
-              child: Text('Add Question'),
+            const SizedBox(height: KSizes.defaultSpace),
+            ElevatedButton(
               onPressed: () => controller.addQuestion(),
+              child: const Text('Add Question'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child:ListView.builder(
                 itemCount: controller.questions.length,
@@ -119,7 +112,7 @@ class QuestionSpace extends StatelessWidget {
                     title: Text(controller.questions[index].text),
                     subtitle: Text(controller.questions[index].category),
                     trailing: IconButton(
-                      icon: Icon(Icons.delete),
+                      icon: const Icon(Icons.delete),
                       onPressed: () => controller.deleteQuestion(index),
                     ),
                   );

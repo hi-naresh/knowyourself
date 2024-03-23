@@ -5,8 +5,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../routes.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
-import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../controller/onboard/onboard_controller.dart';
 

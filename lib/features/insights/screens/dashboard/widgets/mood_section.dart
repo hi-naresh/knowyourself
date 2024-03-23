@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/features/insights/controller/dashboard_controller.dart';
+import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
@@ -8,7 +9,6 @@ import 'package:knowyourself/utils/constants/text_strings.dart';
 import '../../../../../common/widgets/custom_container.dart';
 import 'package:get/get.dart';
 
-import '../../../../mySpace/mood/screens/add_mood/add_mood_screen.dart';
 import '../../../../personalisation/controller/user_controller.dart';
 class MoodSection extends StatelessWidget {
   const MoodSection({super.key});
@@ -86,10 +86,7 @@ class MoodSection extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      //navigate
-                      Get.to( () => const AddMoodScreen());
-                    },
+                    onPressed: ()=>Get.toNamed(KRoutes.getAddMoodRoute()),
                     icon: const Icon(
                       Icons.arrow_forward_ios_outlined,
                       color: Colors.white,

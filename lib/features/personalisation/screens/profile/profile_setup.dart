@@ -41,33 +41,33 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Setup Profile"),
+        title: const Text("Setup Profile"),
       ),
       body: Form(
         key: _formKey,
         child: ListView(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           children: [
             TextFormField(
-              decoration: InputDecoration(labelText: 'Name'),
+              decoration: const InputDecoration(labelText: 'Name'),
               onSaved: (value) => _name = value!,
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Age'),
+              decoration: const InputDecoration(labelText: 'Age'),
               keyboardType: TextInputType.number,
               onSaved: (value) => _age = value!,
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Gender'),
+              decoration: const InputDecoration(labelText: 'Gender'),
               onSaved: (value) => _gender = value!,
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Goal'),
+              decoration: const InputDecoration(labelText: 'Goal'),
               onSaved: (value) => _goal = value!,
             ),
             ElevatedButton(
               onPressed: (){},
-              child: Text('Submit'),
+              child: const Text('Submit'),
             ),
           ],
         ),

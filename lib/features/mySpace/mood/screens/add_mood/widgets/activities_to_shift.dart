@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../model/activity_model.dart';
-import 'activity_tile.dart';
+import 'helpers/activity_tile.dart';
 
 class ActivitiesToShiftScreen extends StatelessWidget {
   ActivitiesToShiftScreen({Key? key}) : super(key: key);

@@ -25,15 +25,15 @@ class InsightScreen extends StatelessWidget {
                     'Value Reflection',
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
-                  SizedBox(height: KSizes.defaultSpace),
+                  const SizedBox(height: KSizes.defaultSpace),
                   Center(
                       child: AnimatedPieChart(coreValues: coreValues,)),
-                  SizedBox(height: KSizes.defaultSpace),
+                  const SizedBox(height: KSizes.defaultSpace),
                   Text(
                     KTexts.learnHead2,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
-                  SizedBox(height: KSizes.defaultSpace),
+                  const SizedBox(height: KSizes.defaultSpace),
                   const LearningProgressBars(
                     learningAspectsProgress: {
                       'Mental': 0.65, // 75%
@@ -42,7 +42,7 @@ class InsightScreen extends StatelessWidget {
                       'Spiritual': 0.6, // 60%
                     },
                   ),
-                  SizedBox(height: KSizes.defaultSpace),
+                  const SizedBox(height: KSizes.defaultSpace),
                   const ProgressComponent(
                     milestonesProgress: {
                       'Daily': 0.35,
@@ -50,7 +50,7 @@ class InsightScreen extends StatelessWidget {
                       'Yearly': 0.7,
                     },
                   ),
-                  SizedBox(height: KSizes.defaultSpace*6),
+                  const SizedBox(height: KSizes.defaultSpace*6),
                   // CustomPlaceHolder("Consistency Record", 50.h, double.infinity),
                   // SizedBox(height: 20.h),
                   // CustomPlaceHolder("Activity Suggestion", 80.h, double.infinity),

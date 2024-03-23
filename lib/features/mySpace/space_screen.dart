@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/features/mySpace/gratitude/screens/gratitude_screen.dart';
 import 'package:knowyourself/features/mySpace/gratitude/screens/widgets/gratitude_widget.dart';
 import 'package:knowyourself/features/mySpace/journal/screens/journal/journal_screen.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/milestone_screen.dart';
@@ -34,9 +33,9 @@ class MySpaceScreen extends StatelessWidget {
               indicator: KStyles.containerDecoration(selectedColor),
               labelColor: Colors.white,
               isScrollable: true,
-              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
               tabAlignment: TabAlignment.center,
-              labelPadding: EdgeInsets.symmetric(horizontal: 20),
+              labelPadding: const EdgeInsets.symmetric(horizontal: 20),
               // labelStyle: h3,
               // tabAlignment: TabAlignment.center,
               indicatorPadding: const EdgeInsets.symmetric(

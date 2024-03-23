@@ -5,7 +5,7 @@ class StoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Center(
         child: Text('Story Screen'),
       ),

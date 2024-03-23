@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/personalisation/controller/app_controller.dart';
 import '../../../../routes.dart';
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/image_strings.dart';
 import '/features/personalisation/screens/settings/widgets/logout_pop.dart';
 import '/features/personalisation/screens/settings/widgets/settings_tile.dart';
 import '/utils/constants/sizes.dart';
@@ -31,15 +34,21 @@ class SettingScreen extends StatelessWidget {
               //profile card
               const SizedBox(height: KSizes.defaultSpace),
               ListTile(
-                leading: CircleAvatar(
+                leading:Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  shape: BoxShape.circle,
+                ),
+                child: CircleAvatar(
                   radius: 30,
-                  backgroundColor: Theme.of(context).primaryColor,
-                  child: const Icon(
-                    Icons.account_circle_outlined,
-                    color: Colors.white,
-                    size: 30,
+                  backgroundColor: KColors.primary,
+                  child: SvgPicture.asset(
+                    KImages.avatarF,
+                    height: KSizes.iconLg*1.6,
                   ),
                 ),
+              ),
                 title: Obx(
                   ()=> Text(
                     controller.user.value.fullName ?? "No user",
@@ -88,12 +97,12 @@ class SettingScreen extends StatelessWidget {
                 ),
                 icon: Icons.notifications_active_outlined,
               ),
-              SettingTile(
+              const SettingTile(
                   title: "About",
                   subtitle: "Know more about KYB",
                   trailing: Icon(Icons.chevron_right),
                   icon: Icons.info_outline),
-              SettingTile(
+              const SettingTile(
                   title: "Help",
                   subtitle: "Get help from KYB",
                   trailing: Icon(Icons.chevron_right),
@@ -104,14 +113,14 @@ class SettingScreen extends StatelessWidget {
                   },
                   title: "Logout",
                   subtitle: "Logout from KYB",
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                   icon: Icons.logout),
               const SizedBox(height: KSizes.spaceBtwSections),
               Image.asset(
                 "assets/res/sailcc.png",
                 height: 40,
               ),
-              SizedBox(
+              const SizedBox(
                 height: KSizes.md,
               ),
               Text(
@@ -125,6 +134,4 @@ class SettingScreen extends StatelessWidget {
     );
   }
 
-  @override
-  bool get wantKeepAlive => true;
 }

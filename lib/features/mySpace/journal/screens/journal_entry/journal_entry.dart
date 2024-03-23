@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
@@ -47,23 +46,23 @@ class JournalEntryScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.camera_outlined),
+                    icon: const Icon(Icons.camera_outlined),
                     onPressed: ()=>controller.pickImage(),
                   ),
                   IconButton(
-                    icon: Icon(Icons.camera_alt_outlined),
+                    icon: const Icon(Icons.camera_alt_outlined),
                     onPressed: ()=>controller.pickImage(),
                   ),
                   IconButton(
-                    icon: Icon(Icons.location_on_outlined),
+                    icon: const Icon(Icons.location_on_outlined),
                     onPressed: ()=>controller.addLocation(),
                   ),
                   IconButton(
-                    icon: Icon(Icons.mic_none_outlined),
+                    icon: const Icon(Icons.mic_none_outlined),
                     onPressed: ()=>controller.recordVoiceNote()
                   ),
                   IconButton(
-                    icon: Icon(Icons.stop_circle),
+                    icon: const Icon(Icons.stop_circle),
                     onPressed: ()=>controller.stopRecording(),
                   ),
                 ],

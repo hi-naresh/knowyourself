@@ -34,7 +34,7 @@ class SignUpScreen extends StatelessWidget {
                     TextFormField(
                       controller: controller.fullName,
                       validator: (value)=> KValidator.validateEmpty("FullName", value),
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: KTexts.fullname,
                       ),
                     ),
@@ -43,7 +43,7 @@ class SignUpScreen extends StatelessWidget {
                     TextFormField(
                       controller: controller.email,
                       validator: (value)=> KValidator.validateEmail(value),
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: KTexts.email,
                       ),
                     ),
@@ -58,7 +58,7 @@ class SignUpScreen extends StatelessWidget {
                           labelText: KTexts.password,
                           suffixIcon: IconButton(
                             onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
-                            icon: Icon(Icons.remove_red_eye_outlined),
+                            icon: const Icon(Icons.remove_red_eye_outlined),
                           ),
                         ),
                       ),
@@ -69,7 +69,7 @@ class SignUpScreen extends StatelessWidget {
                       controller: controller.confirmPassword,
                       obscureText: true,
                       validator: (value) => KValidator.validateConfirmPass(value, controller.password.text),
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: KTexts.confirmPassword,
                       ),
                     ),
@@ -82,14 +82,14 @@ class SignUpScreen extends StatelessWidget {
                         // const SizedBox(width: KSizes.spaceBtwItems),
                         Text.rich(
                           TextSpan(children: [
-                            TextSpan(text: "${KTexts.iAgreeTo} "),
+                            const TextSpan(text: "${KTexts.iAgreeTo} "),
                             TextSpan(
                               text: KTexts.privacyPolicy,
                               style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                               ),
                             ),
-                            TextSpan(text: " ${KTexts.and} "),
+                            const TextSpan(text: " ${KTexts.and} "),
                             TextSpan(
                               text: KTexts.termsOfUse,
                               style: TextStyle(
@@ -110,7 +110,7 @@ class SignUpScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.all(KSizes.md),
                         ),
-                        child: Text(KTexts.createAccount),
+                        child: const Text(KTexts.createAccount),
                       ),
                     ),
                   ],

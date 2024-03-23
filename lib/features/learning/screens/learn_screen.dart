@@ -60,12 +60,12 @@ class LearnScreen extends StatelessWidget {
                       imageUrl:KImages.spiritual),
                 ],
               ),
-              SizedBox(height: KSizes.defaultSpace),
+              const SizedBox(height: KSizes.defaultSpace),
               Text(
                 KTexts.learnHead2,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              SizedBox(height: KSizes.defaultSpace),
+              const SizedBox(height: KSizes.defaultSpace),
               const LearningProgressBars(
                 learningAspectsProgress: {
                   KTexts.mental: 0.65, // 75%
@@ -74,16 +74,16 @@ class LearnScreen extends StatelessWidget {
                   KTexts.spiritual: 0.6, // 60%
                 },
               ),
-              SizedBox(height: KSizes.defaultSpace),
+              const SizedBox(height: KSizes.defaultSpace),
               Text(
                 KTexts.learnHead3,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 300,
                 // child: ArticleScreen(),
               ),
-              SizedBox(height: KSizes.defaultSpace*4),
+              const SizedBox(height: KSizes.defaultSpace*4),
             ],
           ),
         ),

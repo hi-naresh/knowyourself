@@ -13,7 +13,8 @@ class LogoutPop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProfileController());
-    return Padding(
+    return Container(
+      height: Get.height * 0.4,
       padding: const EdgeInsets.all(KSizes.defaultSpace),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

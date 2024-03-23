@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/progress_bar.dart';
+import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/helpers/progress_bar.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../../utils/constants/colors.dart';
@@ -7,21 +7,11 @@ import 'package:get/get.dart';
 
 import '../../../controller/add_mood_controller.dart';
 
-class AspectSelectWidget extends StatefulWidget {
-  const AspectSelectWidget({super.key});
-
-  @override
-  State<AspectSelectWidget> createState() => _AspectSelectWidgetState();
-}
-
-class _AspectSelectWidgetState extends State<AspectSelectWidget> {
-  int _selectedOptionIndex = 0;
-
-  List<String> options = ['Mental', 'Physical', 'Emotional', 'Spiritual'];
+class AspectSelectPage extends StatelessWidget {
+  const AspectSelectPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // JournalEditorProvider journalEditorProvider = Provider.of<JournalEditorProvider>(context, listen: false);
     final controller = Get.put(AddMoodController());
     return Scaffold(
         body: SingleChildScrollView(
@@ -47,7 +37,7 @@ class _AspectSelectWidgetState extends State<AspectSelectWidget> {
                           'In which Aspect?',
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: KSizes.defaultSpace*2,
                         ),
                         Container(
@@ -57,9 +47,51 @@ class _AspectSelectWidgetState extends State<AspectSelectWidget> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Column(
-                            children:[
-                              optionsAspect(context, options),
-                            ]
+                            children: List.generate(controller.aspectsList.length, (index) {
+                              return Obx(
+                                  ()=> GestureDetector(
+                                  onTap: ()=> controller.selectAspect.value = index,
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(vertical: 12.0),
+                                    padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+                                    decoration: BoxDecoration(
+                                      color: controller.selectAspect.value == index ? kApp1 : kEmptyProgress,
+                                      borderRadius: BorderRadius.circular(30.0),
+                                      border: Border.all(
+                                        color: controller.selectAspect.value == index ? kApp1: Colors.transparent,
+                                        width: 2,
+                                      ),
+                                      boxShadow: [
+                                        if (controller.selectAspect.value == index)
+                                          BoxShadow(
+                                            color: kApp1.withOpacity(0.5),
+                                            spreadRadius: 1,
+                                            blurRadius: 5,
+                                            offset: const Offset(0, 3),
+                                          ),
+                                      ],
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          controller.aspectsList[index],
+                                          style: TextStyle(
+                                            color: controller.selectAspect.value == index ? Colors.white : Colors.black,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        if (controller.selectAspect.value == index)
+                                          const Icon(
+                                            Icons.check_circle,
+                                            color: Colors.white,
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }),
                           ),
                         ),
                       ],
@@ -71,64 +103,11 @@ class _AspectSelectWidgetState extends State<AspectSelectWidget> {
                       duration: const Duration(milliseconds: 400),
                       curve: Curves.easeInOut,
                     ),
-                    child: Text("Next")
+                    child: const Text("Next")
                 ),
               ],
             ),
           ),
         ));
   }
-
-  Widget optionsAspect(BuildContext context, List<String> options) {
-    return Column(
-      children: List.generate(options.length, (index) {
-        return GestureDetector(
-          onTap: () {
-            setState(() {
-              _selectedOptionIndex = index;
-            });
-          },
-          child: Container(
-            margin: EdgeInsets.symmetric(vertical: 12.0),
-            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-            decoration: BoxDecoration(
-              color: _selectedOptionIndex == index ? kApp1 : Colors.grey[200],
-              borderRadius: BorderRadius.circular(30.0),
-              border: Border.all(
-                color: _selectedOptionIndex == index ? kApp1: Colors.transparent,
-                width: 2,
-              ),
-              boxShadow: [
-                if (_selectedOptionIndex == index)
-                  BoxShadow(
-                    color: kApp1.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 5,
-                    offset: Offset(0, 3),
-                  ),
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  options[index],
-                  style: TextStyle(
-                    color: _selectedOptionIndex == index ? Colors.white : Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-                if (_selectedOptionIndex == index)
-                  Icon(
-                    Icons.check_circle,
-                    color: Colors.white,
-                  ),
-              ],
-            ),
-          ),
-        );
-      }),
-    );
-  }
-
 }
