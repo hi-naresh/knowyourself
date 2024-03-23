@@ -13,9 +13,6 @@ class GratitudeTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = GratitudeController.instance;
     return GestureDetector(
-      // onTap: () {
-      //   value.updateCelebration(gratitudeModel);
-      // },
       onTap: ()=>controller.updateCelebration(gratitudeModel),
       child: Container(
         margin: const EdgeInsets.only(bottom: 5, top: 5),

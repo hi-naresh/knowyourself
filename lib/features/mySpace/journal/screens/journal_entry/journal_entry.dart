@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
-import '../controller/entry_controller.dart';
+import '../../controller/entry_controller.dart';
 
 class JournalEntryScreen extends StatelessWidget {
   const JournalEntryScreen({super.key});

@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:knowyourself/common/widgets/appbar/appbar.dart';
+import 'package:knowyourself/utils/constants/colors.dart';
+import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../controller/add_mood_controller.dart';
 import '../../../model/mood_model_old.dart';
@@ -35,9 +38,9 @@ class _MoodSummaryState extends State<MoodSummary> {
   Widget build(BuildContext context) {
     final controller = Get.put(AddMoodController());
     return Scaffold(
-      appBar: KAppBar(back: true,),
+      appBar: const KAppBar(back: true,),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        padding: const EdgeInsets.all(KSizes.defaultSpace),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,9 +133,12 @@ class _MoodSummaryState extends State<MoodSummary> {
                     left: 20, right: 20, top: 0, bottom: 0),
                 child: Text(
                   "Mood",
-                  style:Theme.of(context).textTheme.titleLarge,
+                  style:Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
+            const SizedBox(
+              height: KSizes.defaultSpace,
+            ),
             GestureDetector(
               onTap: () {
                 // if (widget.readOnly == false) {
@@ -141,29 +147,24 @@ class _MoodSummaryState extends State<MoodSummary> {
                 // }
               },
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    width: 10,
+                  Container(
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: SvgPicture.asset(
+                      "assets/emojis/happy.svg",
+                      height: 50,
+                      width: 50,
+                    ),
                   ),
-                  // Container(
-                  //   padding: const EdgeInsets.all(5),
-                  //   decoration: BoxDecoration(
-                  //     color: Theme.of(context).cardColor,
-                  //     shape: BoxShape.circle,
-                  //   ),
-                  //   child: SvgPicture.asset(
-                  //     "assets/emojis/${moodModel.mood}.svg",
-                  //     height: 50.h,
-                  //     width: 50.h,
-                  //   ),
-                  // ),
-
-
                   Text(
                     controller.mood.value,
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ],
               ),
@@ -174,10 +175,13 @@ class _MoodSummaryState extends State<MoodSummary> {
                     left: 20, right: 20, top: 10, bottom: 0),
                 child: Text(
                   "Aspect",
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context).textTheme.headlineMedium,
 
                 ),
               ),
+            const SizedBox(
+              height: KSizes.sm,
+            ),
             GestureDetector(
               onTap: () {
                 // if (widget.readOnly == false) {
@@ -193,7 +197,7 @@ class _MoodSummaryState extends State<MoodSummary> {
                     left: 20, right: 20, top: 10, bottom: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).chipTheme.backgroundColor,
+                  color: kEmptyProgress,
                 ),
                 child: Align(
                     alignment: Alignment.centerLeft,
@@ -202,13 +206,16 @@ class _MoodSummaryState extends State<MoodSummary> {
                     )),
               ),
             ),
+            const SizedBox(
+              height: KSizes.defaultSpace,
+            ),
             if (!widget.readOnly)
               Padding(
                 padding: const EdgeInsets.only(
                     left: 20, right: 20, top: 0, bottom: 0),
                 child: Text(
                   "Reasons",
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Theme.of(context).textTheme.headlineMedium,
 
                 ),
               ),
@@ -229,7 +236,7 @@ class _MoodSummaryState extends State<MoodSummary> {
                   decoration: BoxDecoration(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(20)),
-                      color: Theme.of(context).chipTheme.backgroundColor),
+                      color: kEmptyProgress),
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: SingleChildScrollView(

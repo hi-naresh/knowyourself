@@ -65,7 +65,6 @@ class AddMoodHereController extends GetxController{
     const MoodSelectWidget(),
     const AspectSelectWidget(),
     const ExpressFeelingsWidget(),
-    // MoodSummaryScreen(readOnly: true),
     const MoodSummary(readOnly: false),
   ];
 

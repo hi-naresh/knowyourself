@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/features/insights/screens/dashboard/home_screen.dart';
+import 'package:knowyourself/features/insights/screens/dashboard/dashboard_screen.dart';
 import 'package:knowyourself/features/insights/screens/insights/insight_screen.dart';
 import 'package:knowyourself/features/learning/screens/learn_screen.dart';
-import 'package:knowyourself/features/mySpace/journal/screens/journal_entry.dart';
+import 'package:knowyourself/features/mySpace/journal/screens/journal_entry/journal_entry.dart';
 import 'package:knowyourself/features/mySpace/space_screen.dart';
 
 import '../../common/styles/styles.dart';
@@ -75,6 +75,7 @@ class MasterScreen extends StatelessWidget {
     final controller = Get.put(MasterController());
     return Scaffold(
       appBar: const KAppBar(),
+      // extendBodyBehindAppBar: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Obx(() => controller.currentIndex.value == 3
           ? _buildFAB(context)
@@ -96,4 +97,5 @@ class MasterController extends GetxController {
     const LearnScreen(),
     const MySpaceScreen(),
   ];
+
 }

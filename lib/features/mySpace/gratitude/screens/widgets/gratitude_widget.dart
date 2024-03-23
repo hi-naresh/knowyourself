@@ -9,7 +9,7 @@ class GratitudeWidget extends StatelessWidget {
   const GratitudeWidget({super.key});
   @override
   Widget build(BuildContext context) {
-    final controller = GratitudeController.instance;
+    final controller = Get.put(GratitudeController());
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 0),

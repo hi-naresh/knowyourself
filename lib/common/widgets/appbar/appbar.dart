@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
+import 'package:knowyourself/utils/constants/image_strings.dart';
 import '/utils/device/device_utility.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../routes.dart';
@@ -40,8 +41,8 @@ class KAppBar extends StatelessWidget implements PreferredSizeWidget {
                   )
                 : CircleAvatar(
                     backgroundColor: KColors.primary,
-                    child: Image.asset(
-                      "assets/avatars/avatar7.png",
+                    child: SvgPicture.asset(
+                      KImages.avatarM,
                       height: KSizes.iconLg,
                     ),
                   ),
@@ -71,6 +72,5 @@ class KAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(KDeviceUtils.getAppBarHeight());
 }

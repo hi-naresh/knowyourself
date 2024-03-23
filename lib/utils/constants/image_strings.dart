@@ -2,10 +2,37 @@
 class KImages {
 
   // -- App Logos
-  static const String appLogo = "assets/logo/iconKYB.svg";
+  static const String appLogo = "assets/logo/kyb.svg";
+  static const String sailcLogo = "assets/res/sailcc.png";
 
   //animations
-  // static const String logoAnim = "assets/animations/logo.json";
+  static const String logoAnim = "assets/animations/KYB.json";
+
+  //avatars
+  static const String avatarM = "assets/avatars/avatar3.svg";
+  static const String avatarF = "assets/avatars/avatar2.svg";
+
+  //illustrations
+  static const String health1 = "assets/illustrations/health1.svg";
+  static const String health2 = "assets/illustrations/health2.svg";
+  static const String health3 = "assets/illustrations/health3.svg";
+  static const String health4 = "assets/illustrations/health4.svg";
+  static const String health5 = "assets/illustrations/health5.svg";
+  static const String health6 = "assets/illustrations/health6.svg";
+  static const String health7 = "assets/illustrations/health7.svg";
+  static const String health8 = "assets/illustrations/health8.svg";
+  static const String health9 = "assets/illustrations/health9.svg";
+  static const String health10 = "assets/illustrations/health10.svg";
+  static const String health11 = "assets/illustrations/health11.svg";
+  static const String health12 = "assets/illustrations/health12.svg";
+  static const String health13 = "assets/illustrations/health13.svg";
+  static const String health14 = "assets/illustrations/health14.svg";
+  static const String health15 = "assets/illustrations/health15.svg";
+  static const String health16 = "assets/illustrations/health16.svg";
+  static const String health17 = "assets/illustrations/health17.svg";
+  static const String health18 = "assets/illustrations/health18.svg";
+  static const String health19 = "assets/illustrations/health19.svg";
+
 
   //avatars
   static const String avatar1 = "assets/avatars/avatar5.png";

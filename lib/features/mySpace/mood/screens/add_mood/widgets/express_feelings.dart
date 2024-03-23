@@ -79,12 +79,12 @@ class _ExpressFeelingsWidgetState extends State<ExpressFeelingsWidget> {
                           textInputAction: TextInputAction.newline,
                           textAlignVertical: TextAlignVertical.top,
                           expands: true,
-                          decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.all(20),
+                          decoration:  InputDecoration(
+                            contentPadding: const EdgeInsets.all(20),
                             // fillColor: Theme.of(context).chipTheme.backgroundColor,
                             fillColor: kBoxLight,
                             filled: true,
-                            border: OutlineInputBorder(
+                            border: const OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(25)),
                               borderSide: BorderSide.none,
                             ),
