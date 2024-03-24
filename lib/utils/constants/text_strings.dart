@@ -37,11 +37,6 @@ class KTexts {
   static const String gratitudeHead = "Gratification";
   static const String gratitudeSubtext = "Give yourself credit for your strengths and accomplishments.";
 
-
-  // -- OnBoarding Texts
-  static const String onBoardingTitle = "Welcome to KYB";
-  static const String onBoardingSubtitle = "Our vision is to make version 2.0 of you. \n Click on get started button!";
-
   // -- Authentication Forms
   static const String fullname = "Full Name";
   static const String email = "E-Mail";
@@ -79,8 +74,104 @@ class KTexts {
   static const String yourAccountCreatedTitle = "Your account successfully created!";
   static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
 
-  // -- Home
-
+//   final Text onBoardScreen1RichText = Text.rich(
+//     TextSpan(
+//       children: [
+//         TextSpan(
+//           text: 'Welcome to ',
+//           style : Theme.of(context).textTheme.displayLarge?.copyWith(
+//             fontWeight: FontWeight.w800,
+//             overflow: TextOverflow.ellipsis,
+//           ),
+//         ),
+//         TextSpan(
+//           text: 'K',
+//           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+//             fontWeight: FontWeight.w800,
+//             color: kApp2,
+//           ),
+//         ),
+//         TextSpan(
+//           text: 'now ',
+//           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+//             fontWeight: FontWeight.w800,
+//             color: kApp3,
+//           ),
+//         ),
+//         TextSpan(
+//             text: 'Yourself ',
+//             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+//               fontWeight: FontWeight.w800,
+//               color: kApp4Dark,
+//             )
+//         ),
+//         TextSpan(
+//             text: 'Better\n',
+//             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+//               fontWeight: FontWeight.w800,
+//             )
+//         ),
+//         TextSpan(
+//             text:'Embark on a transformative journey with Know Yourself Better, unlocking the tools to illuminate the spark within.',
+//             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+//               overflow: TextOverflow.ellipsis,
+//               fontWeight: FontWeight.w400,)
+//         ),
+//       ],
+//     ),
+//     textAlign: TextAlign.center,
+//   );
+//
+//   final Text onBoardScreen2RichText = Text.rich(
+//     TextSpan(
+//       children: [
+//         TextSpan(
+//           text: 'Feel, Track, Reflect.',
+//           style: Theme.of(context).textTheme.displaySmall?.copyWith(
+//             fontWeight: FontWeight.w800,
+//             overflow: TextOverflow.ellipsis,
+//           ),
+//         ),
+//         TextSpan(
+//           text:   "\n\nCapture emotions, track feelings, and gain personalized insights. Empower yourself for a deeper understanding, navigating life's highs and lows.",
+//           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+//             fontWeight: FontWeight.w400,
+//             overflow: TextOverflow.ellipsis,
+//           ),
+//         ),
+//       ],
+//     ),
+//     textAlign: TextAlign.center,
+//   );
+//
+//   final Text onBoardScreen3RichText = Text.rich(
+//     TextSpan(
+//       children: [
+//         TextSpan(
+//           text: 'Get Started!',
+//           style: Theme.of(context).textTheme.displaySmall?.copyWith(
+//             fontWeight: FontWeight.w800,
+//           ),
+//         ),
+//         TextSpan(
+//             text: "\n\nYour path to self-discovery \nawaits, let's start this empowering journey together.",
+//             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+//               fontWeight: FontWeight.w400,
+//             )
+//         ),
+//       ],
+//     ),
+//     textAlign: TextAlign.center,
+//   );
+//
+// // -- onboarding texts
+  static const String onBoardingTitle = "Welcome to";
+  static const String onBoardingTitle1 = "Know Yourself Better";
+  static const String onBoardingSubTitle = "Embark on a transformative journey with Know Yourself Better, unlocking the tools to illuminate the spark within.";
+  static const String onBoardingTitle2 = "Feel, Track, Reflect.";
+  static const String onBoardingSubTitle2 = "Capture emotions, track feelings, and gain personalized insights. Empower yourself for a deeper understanding, navigating life's highs and lows.";
+  static const String onBoardingTitle3 = "Get Started!";
+  static const String onBoardingSubTitle3 = "Your path to self-discovery awaits, let's start this empowering journey together.";
 
 }
 

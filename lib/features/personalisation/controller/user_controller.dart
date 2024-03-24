@@ -22,10 +22,10 @@ class UserController extends GetxController {
     try{
       final userSnapshot = await userRepo.fetchUserRecord();
       user(userSnapshot);
-      // return userSnapshot;
+      // return;
     } catch(e){
-      KHelper.showSnackBar("Data not found!", "Something went wrong. Try again.");
       user(UserModel.empty());
+      // KHelper.showSnackBar("Data not found!", "Something went wrong. Try again.");
     }
   }
 

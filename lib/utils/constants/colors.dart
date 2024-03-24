@@ -173,6 +173,7 @@ const Color kApp1Light = Color(0xFFBFDAFF);
 
 //Appcolor2
 const Color kApp2 = Color(0xFFFF98BF);
+const Color kApp2Light = Color(0xFFFFD7E8);
 
 //appcolor3
 const Color kApp3 = Color(0xFF63D5AC);
