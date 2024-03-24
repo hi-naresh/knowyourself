@@ -13,7 +13,8 @@ class EntryController extends GetxController {
   bool isRecorderInitialized = false;
 
   @override
-  void initState() {
+  void onInit() {
+    super.onInit();
     soundRecorder = FlutterSoundRecorder();
     _openAudioSession();
   }
@@ -22,14 +23,6 @@ class EntryController extends GetxController {
     soundRecorder!.isRecording;
     // setState(() => isRecorderInitialized = true);
   }
-
-  // @override
-  // void dispose() {
-  //   _textEditingController.dispose();
-  //   soundRecorder!.isStopped;
-  //   soundRecorder = null;
-  //   super.dispose();
-  // }
 
   Future<void> pickImage() async {
     final ImagePicker picker = ImagePicker();

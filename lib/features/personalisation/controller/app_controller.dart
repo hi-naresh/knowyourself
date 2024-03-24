@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../../utils/helpers/shadow_disabler.dart';
-import '../../../utils/theme/theme.dart';
 
 class AppStateController extends GetxController {
   // Accessing GetStorage

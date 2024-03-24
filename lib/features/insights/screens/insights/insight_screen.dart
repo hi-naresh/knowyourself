@@ -4,7 +4,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../utils/constants/text_strings.dart';
 import '../../../learning/model/core_values/core_values.dart';
-import '../../../learning/screens/widgets/progress_bar.dart';
+import '../../../learning/screens/learn_screen/progress_bar.dart';
 import '../dashboard/widgets/progress_milestones.dart';
 
 class InsightScreen extends StatelessWidget {
