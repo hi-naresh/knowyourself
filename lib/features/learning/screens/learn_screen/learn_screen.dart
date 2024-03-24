@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:knowyourself/features/learning/screens/widgets/progress_bar.dart';
+import 'package:knowyourself/features/learning/screens/learn_screen/progress_bar.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
-import '../../../common/widgets/my_card.dart';
-import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/text_strings.dart';
+import '../../../../common/widgets/my_card.dart';
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/enums.dart';
+import '../../../../utils/constants/text_strings.dart';
+import '../../controller/article_controller.dart';
+import 'package:get/get.dart';
 
+import '../articles/article_widget.dart';
 
 class LearnScreen extends StatelessWidget {
   const LearnScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final ArticleController controller = Get.put(ArticleController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -57,7 +62,7 @@ class LearnScreen extends StatelessWidget {
                       height: KSizes.hCardMedium,
                       title: KTexts.spiritual,
                       color: kApp4,
-                      imageUrl:KImages.spiritual),
+                      imageUrl: KImages.spiritual),
                 ],
               ),
               const SizedBox(height: KSizes.defaultSpace),
@@ -79,11 +84,57 @@ class LearnScreen extends StatelessWidget {
                 KTexts.learnHead3,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              const SizedBox(
-                height: 300,
-                // child: ArticleScreen(),
+              const SizedBox(height: KSizes.defaultSpace),
+              ElevatedButton(onPressed: ()=>controller.deleteCache(), child: Text('Delete Cache')),
+              SizedBox(
+                height: Get.height*0.8,
+                child: Column(
+                  children: [
+                    Wrap(
+                      spacing: 10,
+                      direction: Axis.horizontal,
+                      children: LifeAspects.values.map((aspect) {
+                        return Obx(
+                          () => ChoiceChip(
+                            backgroundColor: kBoxLight,
+                            selectedColor: kApp3Light,
+                            label: Text(
+                                aspect.toString().split('.').last.capitalize!),
+                            selected: controller.selectedAspect.value == aspect,
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                color: kApp3,
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            padding: const EdgeInsets.all(10),
+                            disabledColor: kEmptyProgress,
+                            onSelected: (_) => controller.changeAspect(aspect),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                    Expanded(
+                      child: Obx(() {
+                        if (controller.articles.isNotEmpty) {
+                          return ListView.builder(
+                            itemCount: controller.filteredArticles.length,
+                            itemBuilder: (context, index) {
+                              return ArticleWidget(
+                                  article: controller.filteredArticles[index]);
+                            },
+                          );
+                        } else {
+                          // Show a loading indicator or a placeholder widget instead.
+                          return const Center(child: CircularProgressIndicator());
+                        }
+                      }),
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(height: KSizes.defaultSpace*4),
+              // const SizedBox(height: KSizes.defaultSpace * 4),
             ],
           ),
         ),

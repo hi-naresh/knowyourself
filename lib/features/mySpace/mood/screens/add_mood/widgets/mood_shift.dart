@@ -5,7 +5,6 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../../common/styles/styles.dart';
 import '../../../../../../routes.dart';
 import '../../../../../../utils/constants/colors.dart';
-import 'activities_to_shift.dart';
 
 class MoodShiftPage extends StatelessWidget {
   MoodShiftPage({super.key});

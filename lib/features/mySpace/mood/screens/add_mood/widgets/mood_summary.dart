@@ -234,8 +234,8 @@ class MoodSummaryPage extends StatelessWidget {
                   margin: const EdgeInsets.only(
                       left: 20, right: 20, top: 10, bottom: 20),
                   padding: const EdgeInsets.all(10),
-                  decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
                       color: kEmptyProgress),
                   child: Align(
                     alignment: Alignment.topLeft,

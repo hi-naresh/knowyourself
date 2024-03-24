@@ -177,7 +177,7 @@ const Color kApp2Light = Color(0xFFFFD7E8);
 
 //appcolor3
 const Color kApp3 = Color(0xFF63D5AC);
-const Color kApp3Light = Color(0xFFD9FFED);
+const Color kApp3Light = Color(0xFFB6F3D4);
 
 //appcolor4
 const Color kApp4 = Color(0xFFFFB999);
@@ -188,7 +188,8 @@ const Color kApp4Dark = Color(0xFFFFA497);
 const Color kProgress = Color(0xFFE9EDF1);
 Color kBoxLight = kEmptyProgress.withOpacity(0.5);
 const Color kPieBox = Color(0xFFEEF6FF);
-const Color kEmptyProgress = Color(0xFFE3E9F3);
+// const Color kEmptyProgress = Color(0xFFE3E9F3);
+Color kEmptyProgress = const Color(0xFFE3E9F3).withOpacity(0.5);
 
 // const Color kPalette6_1 = Color(0xFFEAE9E8);
 // const Color kPalette6 = Color(0xFFFBFBFB);

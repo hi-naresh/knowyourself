@@ -8,7 +8,6 @@ import 'package:knowyourself/routes.dart';
 import '../screens/add_mood/widgets/aspect_select.dart';
 import '../screens/add_mood/widgets/express_feelings.dart';
 import '../screens/add_mood/widgets/mood_select.dart';
-import '../screens/add_mood/widgets/mood_shift.dart';
 import '../screens/add_mood/widgets/mood_summary.dart';
 
 class AddMoodController extends GetxController {
