@@ -15,16 +15,13 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: const Text(KTexts.signupTitle),),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(KSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              //title
-              Text(KTexts.signupTitle, style: Theme.of(context).textTheme.headlineMedium,),
-              const SizedBox(height: KSizes.spaceBtwSections),
               //form
               Form(
                 key : controller.signupFormKey,
