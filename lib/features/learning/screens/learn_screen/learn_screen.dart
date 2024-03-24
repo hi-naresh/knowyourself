@@ -85,7 +85,6 @@ class LearnScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: KSizes.defaultSpace),
-              ElevatedButton(onPressed: ()=>controller.deleteCache(), child: Text('Delete Cache')),
               SizedBox(
                 height: Get.height*0.8,
                 child: Column(
