@@ -8,6 +8,7 @@ import 'package:knowyourself/features/mySpace/story/screens/story_screen.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../common/styles/styles.dart';
 import '../../utils/constants/colors.dart';
+import '../../utils/helpers/helper_functions.dart';
 
 class MySpaceScreen extends StatelessWidget {
   const MySpaceScreen({super.key});
@@ -15,17 +16,16 @@ class MySpaceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const selectedColor = kApp4;
-    final controller = Get.put(MySpaceController());
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: KSizes.defaultSpace,vertical: KSizes.defaultSpace/2),
-      child: Column(
+    final controller = MySpaceController.instance;
+    return Column(
         children: [
           Container(
             clipBehavior: Clip.none,
             decoration: BoxDecoration(
-              color: kEmptyProgress,
+              color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
               borderRadius: BorderRadius.circular(KSizes.cardRadiusLg),
             ),
+            margin: const EdgeInsets.all(KSizes.md),
             padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 5),
             child: TabBar(
               controller: controller.tabController,
@@ -41,7 +41,6 @@ class MySpaceScreen extends StatelessWidget {
               // tabAlignment: TabAlignment.center,
               indicatorPadding: const EdgeInsets.symmetric(
                   horizontal: -20, vertical: 5),
-              unselectedLabelColor: Colors.black,
               tabs: controller.tabs,
             ),
           ),
@@ -59,8 +58,7 @@ class MySpaceScreen extends StatelessWidget {
                 ],
               ))
         ],
-      ),
-    );
+      );
   }
 }
 
@@ -69,8 +67,9 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
   static MySpaceController get instance => Get.find();
   final RxInt tabIndex = 0.obs;
   late TabController tabController;
+
   final tabs = const [
-    Tab(text: 'Journal'),
+    Tab(text: 'Reflections'),
     Tab(text: 'Milestones'),
     Tab(text: 'Questions'),
     Tab(text: 'Story'),
@@ -79,11 +78,21 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
   @override
   void onInit() {
     super.onInit();
-    tabController = TabController(length: 5, vsync: this);
+    tabController = TabController(length: tabs.length, vsync: this,initialIndex: tabIndex.value);
+    tabController.animation?.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        tabIndex.value = tabController.index;
+      }
+    });
+  }
+
+  @override
+  void onClose() {
+    tabController.dispose();
+    super.onClose();
   }
   void updateTabIndex(int index) {
-    if (tabController.indexIsChanging || tabController.index != index) {
       tabController.animateTo(index);
-    }
   }
+
 }

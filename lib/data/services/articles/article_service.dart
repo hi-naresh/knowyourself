@@ -23,8 +23,8 @@ class ArticleApiClient extends GetConnect {
         return articlesJson
             .map((json) => Article.fromJson(json, aspect))
             .where((article) =>
-                article.imageUrl.isNotEmpty &&
-                !article.imageUrl.contains('[Removed]'))
+                article.urlToImage.isNotEmpty &&
+                !article.urlToImage.contains('[Removed]'))
             .toList();
       }
     } catch (e) {

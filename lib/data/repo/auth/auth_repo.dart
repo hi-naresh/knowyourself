@@ -23,7 +23,7 @@ class AuthRepo extends GetxController {
     screenRedirect();
   }
 
-  screenRedirect() => Future.delayed(const Duration(milliseconds: 2900), () {
+  screenRedirect() => Future.delayed(const Duration(milliseconds: 2000), () {
     final user = _auth.currentUser;
     // deviceStorage.read('isLogged') == true
     //     ? Get.offAllNamed(KRoutes.getMasterRoute())

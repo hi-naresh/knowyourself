@@ -120,6 +120,12 @@ class KHelper {
     }
   }
 
+  static Future<void> launchUrl(Uri uri, {LaunchMode mode = LaunchMode.inAppWebView}) async {
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: mode);
+    }
+  }
+
   static List<Widget> wrapWidgets(List<Widget> widgets, int rowSize) {
     final wrappedList = <Widget>[];
     for (var i = 0; i < widgets.length; i += rowSize) {

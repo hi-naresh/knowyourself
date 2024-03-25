@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourself/features/insights/screens/dashboard/widgets/myself_section.dart';
-import '../../../mySpace/space_screen.dart';
 import '/features/insights/screens/dashboard/widgets/milestones_section.dart';
 import '/features/insights/screens/dashboard/widgets/mood_section.dart';
 import '/features/insights/screens/dashboard/widgets/progress_milestones.dart';
 import '/features/insights/screens/dashboard/widgets/recommend_section.dart';
 import '/utils/constants/sizes.dart';
-import 'package:get/get.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(MySpaceController());
     return const SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: KSizes.defaultSpace, vertical: KSizes.defaultSpace/2),

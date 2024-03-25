@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../controller/entry_controller.dart';
 
@@ -13,67 +15,114 @@ class JournalEntryScreen extends StatelessWidget {
     return SizedBox(
       height: Get.height * 0.7,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal:  KSizes.defaultSpace),
+        padding: const EdgeInsets.symmetric(horizontal: KSizes.defaultSpace),
         child: Column(
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: const Icon(CupertinoIcons.bookmark),
-                  onPressed: ()=>controller.addBookmark(),
+                  icon: const Icon(
+                    CupertinoIcons.bookmark,
+                    color: kApp4,
+                  ),
+                  onPressed: () => controller.addBookmark(),
                 ),
                 Text(
                   controller.getCurrentDate(),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
-                TextButton(onPressed: (){},
-                    child: Text('Save', style: Theme.of(context).textTheme.titleLarge)
-                )
+                TextButton(
+                    onPressed: (){
+                      controller.saveJournalEntry();
+                      Get.back();
+                    },
+                    child: Text('Save',
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: kApp4
+                        )))
               ],
             ),
-            TextFormField(
-              onTap: ()=>controller.deFocusKeyboard(context),
-              controller: controller.textEditingController,
-              maxLines: null,
-              keyboardType: TextInputType.multiline,
-              decoration: const InputDecoration(
-                hintText: 'Your reflection for today...',
-                hintStyle: TextStyle(color: Colors.grey),
-                contentPadding: EdgeInsets.all(KSizes.defaultSpace),
-                disabledBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
+            const SizedBox(height: KSizes.defaultSpace),
+            Obx(() {
+              if (controller.location.value.isNotEmpty) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(controller.location.value,
+                        style: Theme.of(context).textTheme.labelMedium),
+                    IconButton(
+                      icon: const Icon(CupertinoIcons.restart),
+                      onPressed: () => controller.updateLocation(),
+                    ),
+                  ],
+                );
+              } else {
+                return const SizedBox();
+              }
+            }),
+            Obx(() {
+              if (controller.selectedImage.value != null) {
+                return Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(KSizes.borderRadiusXl),
+                      child: Image.file(File(controller.selectedImage.value!.path),
+                          height: Get.height * 0.2, width: Get.width * 0.9,
+                          fit: BoxFit.cover
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(CupertinoIcons.delete_left),
+                      onPressed: () => controller.removeSelectedImage(),
+                    ),
+                  ],
+                );
+              } else {
+                return const SizedBox();
+              }
+            }),
+            Expanded(
+              child: TextFormField(
+                onTap: () => controller.deFocusKeyboard(context),
+                controller: controller.textEditingController,
+                maxLines: null,
+                keyboardType: TextInputType.multiline,
+                decoration: const InputDecoration(
+                  hintText: 'Your reflection for today...',
+                  hintStyle: TextStyle(color: Colors.grey),
+                  contentPadding: EdgeInsets.all(KSizes.sm),
+                  disabledBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                ),
               ),
             ),
-            const Spacer(),
-            Container(
-              // color: Theme.of(context).scaffoldBackgroundColor,
-              padding: const EdgeInsets.symmetric(vertical: KSizes.lg),
+            Padding(
+              padding: const EdgeInsets.only(bottom: KSizes.md),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
                     icon: const Icon(CupertinoIcons.photo_on_rectangle),
-                    onPressed: ()=>controller.pickImage(),
+                    onPressed: () => controller.pickImage(),
                   ),
                   IconButton(
                     icon: const Icon(CupertinoIcons.camera),
-                    onPressed: ()=>controller.pickImage(),
+                    onPressed: () => controller.openCamera(),
                   ),
                   IconButton(
                     icon: const Icon(CupertinoIcons.location_solid),
-                    onPressed: ()=>controller.addLocation(),
+                    onPressed: () => controller.addLocation(),
                   ),
                   IconButton(
-                    icon: const Icon(CupertinoIcons.waveform_path_badge_plus),
-                    onPressed: ()=>controller.recordVoiceNote()
-                  ),
+                      icon: const Icon(CupertinoIcons.waveform_path_badge_plus),
+                      onPressed: () => controller.recordVoiceNote()),
                   IconButton(
                     icon: const Icon(CupertinoIcons.largecircle_fill_circle),
-                    onPressed: ()=>controller.stopRecording(),
+                    onPressed: () => controller.stopRecording(),
                   ),
                 ],
               ),

@@ -1,33 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/insights/screens/dashboard/dashboard_screen.dart';
 import 'package:knowyourself/features/insights/screens/insights/insight_screen.dart';
+import 'package:knowyourself/common/widgets/k_floating_action.dart';
 import 'package:knowyourself/features/learning/screens/learn_screen/learn_screen.dart';
-import 'package:knowyourself/features/mySpace/journal/screens/journal_entry/journal_entry.dart';
 import 'package:knowyourself/features/mySpace/space_screen.dart';
-import '../../common/styles/styles.dart';
+
 import '../../utils/constants/colors.dart';
 import '../common/widgets/appbar/appbar.dart';
 import '../common/widgets/navbar/bottom_nar_bar.dart';
 import '../utils/constants/sizes.dart';
-import '../utils/helpers/helper_functions.dart';
 
 class MasterScreen extends StatelessWidget {
   const MasterScreen({super.key});
-  Widget _buildFAB(BuildContext context) {
-    return Container(
-      height: KSizes.iconXl * 2,
-      width: KSizes.iconXl * 2,
-      decoration: KStyles.containerDecoration(kApp4),
-      child: IconButton(
-        icon: const Icon(CupertinoIcons.book),
-        onPressed: () {
-          KHelper.showBottomSheet( const JournalEntryScreen());
-        },
-      ),
-    );
-  }
 
   Widget bottomNavBar(MasterController controller) {
     return Obx(
@@ -68,13 +53,18 @@ class MasterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MasterController());
+    final spaceController = Get.put(MySpaceController());
     return Scaffold(
       appBar: const KAppBar(),
-      // extendBodyBehindAppBar: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Obx(() => controller.currentIndex.value == 3
-          ? _buildFAB(context)
-          : const SizedBox()),
+      floatingActionButton: Obx(() {
+        if (controller.currentIndex.value == 3 &&
+            spaceController.tabIndex.value == 0) {
+          return KFloatingAction(context: context);
+        } else {
+          return const SizedBox();
+        }
+      }),
       extendBody: true,
       body: Obx(() => controller._screens[controller.currentIndex.value]),
       bottomNavigationBar: bottomNavBar(controller),
@@ -92,5 +82,4 @@ class MasterController extends GetxController {
     const LearnScreen(),
     const MySpaceScreen(),
   ];
-
 }

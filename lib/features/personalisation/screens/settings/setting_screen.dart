@@ -19,7 +19,7 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(UserController());
+    final controller = UserController.instance;
     final appController = AppStateController.instance;
     return Scaffold(
       appBar: const KAppBar(

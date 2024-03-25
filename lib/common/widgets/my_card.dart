@@ -44,20 +44,11 @@ class MyCard extends StatelessWidget {
             Positioned(
               left: left?? width!/ 4,
               top: top?? height!/20,
-              child: Opacity(
-                opacity: 1,
-                // child: Image.asset(
-                //   imageUrl,
-                //   width: width,
-                //   height: height,
-                //   fit: BoxFit.contain,
-                // ),
-                child: SvgPicture.asset(
-                  imageUrl,
-                  width: width,
-                  height: height,
-                  fit: BoxFit.contain,
-                )
+              child: SvgPicture.asset(
+                imageUrl,
+                width: width,
+                height: height,
+                fit: BoxFit.contain,
               ),
             ),
             Padding(

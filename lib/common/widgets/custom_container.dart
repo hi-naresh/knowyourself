@@ -9,6 +9,7 @@ class CustomContainer extends StatelessWidget {
   final Color color;
   final BorderRadius borderRadius;
   final EdgeInsets padding;
+  final Clip? clipBehavior;
   final EdgeInsets margin;
   final List<BoxShadow> boxShadow;
   final Alignment alignment;
@@ -26,7 +27,7 @@ class CustomContainer extends StatelessWidget {
 
     ],
     this.alignment = Alignment.center,
-    this.onTap,
+    this.onTap, this.clipBehavior,
   });
 
   @override
@@ -34,14 +35,12 @@ class CustomContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        clipBehavior: clipBehavior ?? Clip.none,
         width: width,
         // height: height,
         decoration: BoxDecoration(
           borderRadius: borderRadius,
-          border: Border.all(
-            color: color,
-            width: 1,
-          ),
+
           gradient: LinearGradient(
             colors: [
               color,

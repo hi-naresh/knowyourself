@@ -12,7 +12,7 @@ class MoodSelectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AddMoodController());
+    final controller = AddMoodController.instance;
     return Scaffold(
       body: Container(
         width: double.infinity,

@@ -1,105 +1,89 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
+import '../../../../data/repo/space/journal/journal_repo.dart';
 import '../model/journal_model.dart';
 
 class JournalController extends GetxController {
   static JournalController get instance => Get.find();
-  final FirebaseFirestoreService _firestoreService = FirebaseFirestoreService();
-  final TextEditingController _titleEditingController = TextEditingController();
-  final TextEditingController _notesEditingController = TextEditingController();
-  final PageController _pageController = PageController();
-  final _dateTime = DateTime.now().obs;
-  final _listOfJournals = <JournalModel>[].obs;
+  final RxList<JournalEntry> journalEntries = <JournalEntry>[].obs;
 
-  DateTime get getDate => _dateTime.value;
-  List<JournalModel> get journals => _listOfJournals;
-  TextEditingController get titleEditingController => _titleEditingController;
-  TextEditingController get notesEditingController => _notesEditingController;
-  PageController get pageController => _pageController;
+  var currentDate = DateTime.now().obs;
+  late ScrollController scrollController;
+  late double initialScrollIndex;
+  @override
+  void onReady() {
+    super.onReady();
+    initialScrollIndex = currentDate.value.day - 1;
+    scrollController = ScrollController(initialScrollOffset: initialScrollIndex * 70.0);
+    updateDate(currentDate.value);
+    loadJournalEntries();
+  }
 
+  // Method to load all journal entries from the repository
+  void loadJournalEntries() async {
+    List<JournalEntry> entries = await JournalRepo.instance.getJournalEntries();
+    journalEntries.assignAll(entries);
+  }
 
-  void updateDate(DateTime dateTime) async {
-    try {
-      _dateTime.value = dateTime;
-      _listOfJournals.value = await _firestoreService.getJournalEntries().first;
-    } catch (e) {
-      print('Error updating date and journal entries: $e');
-      // Handle error
+  // Method to add a new journal entry
+  Future<void> addJournalEntry(JournalEntry entry) async {
+    await JournalRepo.instance.saveJournalEntry(entry);
+    journalEntries.add(entry);
+  }
+
+  // Method to update an existing journal entry
+  Future<void> updateJournalEntry(JournalEntry entry) async {
+    await JournalRepo.instance.updateJournalEntry(entry);
+    int index = journalEntries.indexWhere((e) => e.id == entry.id);
+    if (index != -1) {
+      journalEntries[index] = entry;
     }
   }
 
-  void updateJournalList(JournalModel journalModel) async {
-    try {
-      await _firestoreService.addJournalEntry(journalModel);
-      _listOfJournals.add(journalModel);
-    } catch (e) {
-      print('Error updating journal list: $e');
-      // Handle error
-    }
+  // Method to delete a journal entry
+  Future<void> deleteJournalEntry(String entryId) async {
+    await JournalRepo.instance.deleteJournalEntry(entryId);
+    journalEntries.removeWhere((entry) => entry.id == entryId);
   }
 
-  void deleteJournal({required JournalModel journalModel}) async {
-    try {
-      await _firestoreService.deleteJournal(journalModel: journalModel);
-      _listOfJournals.remove(journalModel);
-    } catch (e) {
-      print('Error deleting journal entry: $e');
-      // Handle error
-    }
+  // Method to clear the list of journal entries (if needed)
+  void clearJournalEntries() {
+    journalEntries.clear();
   }
+
+  void updateDate(DateTime selectedDay) {
+    if (selectedDay.isAfter(DateTime.now())) {
+      KHelper.showSnackBar('Cannot select future date', 'Cannot select future dates');
+      return;
+    }
+    currentDate.value = selectedDay;
+    JournalRepo.instance.getJournalEntries().then((entries) {
+      var filteredEntries = entries.where((entry) {
+        // Normalize entry's date for comparison
+        DateTime normalizedEntryDate = DateTime(entry.entryDate.year, entry.entryDate.month, entry.entryDate.day);
+        // Compare normalized dates
+        return normalizedEntryDate.isAtSameMomentAs(selectedDay);
+      }).toList();
+      journalEntries.assignAll(filteredEntries);
+    });
+
+  }
+
+  String getNumberOfEntries() {
+    return journalEntries.length.toString();
+  }
+
+  //demo save
+  // save() {
+  //   //entry for dec 1st 2018
+  //   JournalEntry entry = JournalEntry(
+  //     id: '1',
+  //     content: 'This is the first entry',
+  //     entryDate: DateTime(2018, 12, 1),
+  //   );
+  //   addJournalEntry(entry);
+  // }
+
 }
-
-
-class FirebaseFirestoreService {
-  static final FirebaseFirestoreService _instance =
-  FirebaseFirestoreService._internal();
-
-  factory FirebaseFirestoreService() {
-    return _instance;
-  }
-
-  FirebaseFirestoreService._internal();
-
-  final CollectionReference _journalCollection =
-  FirebaseFirestore.instance.collection('journals');
-
-  Future<void> addJournalEntry(JournalModel journalModel) async {
-    try {
-      DocumentReference docRef = await _journalCollection.add({
-        'createdOn': DateTime.now(),
-        'mood': journalModel.mood,
-        'title': journalModel.title,
-        'description': journalModel.description,
-        'journalId': journalModel.journalId, // Include journalId in Firestore document
-      });
-      // Update the journalModel with the Firestore document ID
-      journalModel = journalModel.copyWith(id: docRef.id);
-    } catch (e) {
-      print('Error adding journal entry: $e');
-      throw 'Failed to add journal entry';
-    }
-  }
-
-  Future<void> deleteJournal({required JournalModel journalModel}) async {
-    try {
-      await _journalCollection.doc(journalModel.id.toString()).delete();
-    } catch (e) {
-      print('Error deleting journal entry: $e');
-      throw 'Failed to delete journal entry';
-    }
-  }
-
-  Stream<List<JournalModel>> getJournalEntries() {
-    try {
-      return _journalCollection.snapshots().map((snapshot) => snapshot.docs
-          .map((doc) => JournalModel.fromMap(doc.data() as Map<String, dynamic>))
-          .toList());
-    } catch (e) {
-      print('Error getting journal entries: $e');
-      throw 'Failed to get journal entries';
-    }
-  }
-}
-
