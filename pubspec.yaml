@@ -13,37 +13,23 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
-#  flutter_animate: ^4.1.1+1
-#  flutter_local_notifications: ^13.0.0
-#  flutter_native_splash: ^2.3.5
 #  flutter_screenutil: ^5.9.0
+#  local_auth: ^2.1.3
+  path_provider: ^2.0.11
+  permission_handler: ^10.2.0
   awesome_notifications:
   workmanager:
 
-  flutter_slidable: ^3.1.0
   flutter_svg: ^1.1.6
   google_fonts: ^5.0.1
-#  hive: ^2.2.3
-#  hive_flutter: ^1.1.0
   intl: ^0.18.0
 
-#  local_auth: ^2.1.3
-#  package_info_plus: ^3.0.3
-  path_provider: ^2.0.11
-  permission_handler: ^10.2.0
-  provider: ^6.0.5
-  shared_preferences: ^2.0.15
   smooth_page_indicator: ^1.0.1
-#  story: ^1.0.0+1
   table_calendar: ^3.0.8
   timezone: ^0.9.1
   url_launcher: ^6.1.9
 
-  webfeed_revised: ^0.7.2
-  flutter_widget_from_html_core: ^0.10.0
   http: ^0.13.5
-  webview_flutter: ^4.2.1
-
   firebase_auth: ^4.6.2
   firebase_core: ^2.13.1
   cloud_firestore: ^4.8.0
@@ -57,6 +43,7 @@ dependencies:
 
   image_picker: ^1.0.7
   geolocator: ^11.0.0
+  geocoding:
   flutter_sound: ^9.2.13
 
 

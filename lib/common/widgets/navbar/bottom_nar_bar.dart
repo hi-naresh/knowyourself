@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../utils/helpers/shadow_disabler.dart';
+import '../../../utils/helpers/helper_functions.dart';
 import '/utils/constants/sizes.dart';
 import '../../../utils/constants/colors.dart';
 
@@ -18,36 +18,12 @@ class BottomRoundedNavBar extends StatelessWidget {
       required this.onChanged,
       this.height = 80});
 
-  // Color _buildIconColor(int index, BuildContext context) {
-  //   if (index == currentIndex) {
-  //     return Colors.white;
-  //   }
-
-  //   return const Color(0xFFB3B3B7);
-  // }
-
   Color _buildIconContainerColor(int index, BuildContext context) {
     if (index == currentIndex) {
       return items[index].selectedIconColor;
     }
-    return Theme.of(context).iconTheme.color!;
+    return Theme.of(context).textTheme.headlineSmall!.color!;
   }
-
-  // Color _buildTextColor(int index, BuildContext context) {
-  //   if (index == currentIndex) {
-  //     return Colors.white;
-  //   }
-
-  //   return const Color(0xFFB3B3B7);
-  // }
-
-  // Widget _buildBottomNavbarWidget(int index, BuildContext context) {
-  //   return I(
-  //     items[index].icon,
-  //     color: _buildIconContainerColor(index, context),
-  //     size: items[index].iconSize,
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -60,26 +36,14 @@ class BottomRoundedNavBar extends StatelessWidget {
           child: Container(
             height: height,
             padding: const EdgeInsets.only(left: KSizes.sm, right: KSizes.sm),
-            width: MediaQuery.of(context).size.width,
+            width: double.infinity,
             decoration: BoxDecoration(
-              //code for shadow in upper direction
-              // color: kBoxLight.withOpacity(0.5),
-              boxShadow: CustomShadow.getShadow([
-                BoxShadow(
-                  color: kBoxLight.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 10,
-                  offset: const Offset(10, 10), // changes position of shadow
-                ),
-              ]),              borderRadius: BorderRadius.circular(KSizes.borderRadiusXxl),
-              border: Border.all(
-                color: kBoxLight,
-                width: 1.5,
-              ),
+              color: KHelper.isDarkMode(context) ? kEmptyProgressDark.withOpacity(0.5) : kEmptyProgress.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(KSizes.borderRadiusXxl),
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 for (int i = 0; i < items.length; i++)
                   GestureDetector(
@@ -87,32 +51,25 @@ class BottomRoundedNavBar extends StatelessWidget {
                       onChanged(i);
                     },
                     behavior: HitTestBehavior.opaque,
-                    child: AnimatedContainer(
-                      width: 80,
-                      padding: const EdgeInsets.symmetric(horizontal: KSizes.sm, vertical: KSizes.sm),
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.linearToEaseOut,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          // _buildBottomNavbarWidget(i, context),
-                          SvgPicture.asset(
-                            items[i].icon,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          items[i].icon,
+                          color: _buildIconContainerColor(i, context),
+                          height: KSizes.iconMd,
+                        ),
+                        const SizedBox(
+                          height: KSizes.sm
+                        ),
+                        Text(
+                          items[i].title,
+                          style: Theme.of(context).textTheme.labelMedium?.copyWith(
                             color: _buildIconContainerColor(i, context),
-                            height: KSizes.iconMd,
-                          ),
-                          const SizedBox(
-                            height: KSizes.xs
-                          ),
-                          Text(
-                            items[i].title,
-                            style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                              color: _buildIconContainerColor(i, context),
-                            )
-                          ),
-                        ],
-                      ),
+                          )
+                        ),
+                      ],
                     ),
                   )
               ],

@@ -1,78 +1,75 @@
 import 'dart:convert';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../features/mySpace/journal/model/journal_model.dart';
 
+class JournalRepo extends GetxController{
 
-class JournalGetStorage {
-  static final GetStorage _storage = GetStorage();
-  static const String _journalKeyPrefix = 'journal_';
+  static JournalRepo get instance => Get.find();
+  final GetStorage _storage = GetStorage();
+  final String _storageKey = 'journalEntries';
 
-  static String _formatDate(DateTime dateTime) {
-    return DateFormat('d, MMMM, yyyy').format(dateTime);
+  Future<void> saveJournalEntry(JournalEntry entry) async {
+    // Get the current list of journal entries
+    var currentEntries = _getJournalEntriesFromStorage();
+    // Add the new entry
+    currentEntries.add(entry);
+    // Save the updated list back to storage
+    await _storage.write(_storageKey, jsonEncode(currentEntries.map((e) => e.toMap()).toList()));
   }
 
-  static String _getStorageKey(DateTime dateTime) {
-    return '$_journalKeyPrefix${_formatDate(dateTime)}';
-  }
+  List<JournalEntry> _getJournalEntriesFromStorage() {
+    // Retrieve the stored journal entries JSON string
+    var entriesJsonString = _storage.read(_storageKey);
 
-  static Future<void> init() async {
-    await GetStorage.init();
-  }
+    // Decode the JSON string into a list of maps
+    if (entriesJsonString != null) {
+      List<dynamic> entriesJson = jsonDecode(entriesJsonString);
 
-  static List<JournalModel> getListOfJournals(DateTime dateTime) {
-    String key = _getStorageKey(dateTime);
-    var storedData = _storage.read(key);
-    if (storedData != null) {
-      List<dynamic> decodedData = jsonDecode(storedData);
-      return decodedData
-          .map((e) => JournalModel.fromMap(e as Map<String, dynamic>))
-          .toList();
-    }
-    return [];
-  }
+      // Convert the list of maps to a list of JournalEntry objects
+      List<JournalEntry> entries = entriesJson.map((entryMap) {
+        return JournalEntry.fromJson(entryMap);
+      }).toList();
 
-  static void saveJournal({
-    required DateTime dateTime,
-    required JournalModel journalModel,
-  }) {
-    List<JournalModel> journals = getListOfJournals(dateTime);
-    if (!journals.any((jm) => jm.journalId == journalModel.journalId)) {
-      journals.add(journalModel);
-    }
-    _storage.write(_getStorageKey(dateTime), jsonEncode(journals.map((jm) => jm.toMap()).toList()));
-  }
-
-  static void updateJournal({
-    required DateTime dateTime,
-    required JournalModel journalModel,
-  }) {
-    List<JournalModel> journals = getListOfJournals(dateTime);
-    int index = journals.indexWhere((jm) => jm.journalId == journalModel.journalId);
-    if (index != -1) {
-      journals[index] = journalModel;
-      _storage.write(_getStorageKey(dateTime), jsonEncode(journals.map((jm) => jm.toMap()).toList()));
+      return entries;
+    } else {
+      return [];
     }
   }
 
-  static void deleteJournal({
-    required DateTime dateTime,
-    required JournalModel journalModel,
-  }) {
-    List<JournalModel> journals = getListOfJournals(dateTime);
-    journals.removeWhere((jm) => jm.journalId == journalModel.journalId);
-    _storage.write(_getStorageKey(dateTime), jsonEncode(journals.map((jm) => jm.toMap()).toList()));
+  Future<List<JournalEntry>> getJournalEntries() async {
+    return _getJournalEntriesFromStorage();
   }
 
-  static Future<int> getMonthNumOfEntries(DateTime dateTime) async {
-    int entries = 0;
-    int daysInMonth = DateTime(dateTime.year, dateTime.month + 1, 0).day;
-    for (int i = 1; i <= daysInMonth; i++) {
-      DateTime date = DateTime(dateTime.year, dateTime.month, i);
-      var dailyEntries = getListOfJournals(date);
-      entries += dailyEntries.length;
+  Future<void> updateJournalEntry(JournalEntry updatedEntry) async {
+    var currentEntries = _getJournalEntriesFromStorage();
+
+    // Find the index of the entry we're updating
+    int indexToUpdate = currentEntries.indexWhere((entry) => entry.id == updatedEntry.id);
+
+    if (indexToUpdate != -1) {
+      currentEntries[indexToUpdate] = updatedEntry;
+      await _storage.write(_storageKey, jsonEncode(currentEntries.map((e) => e.toMap()).toList()));
     }
-    return entries;
+  }
+
+  Future<void> deleteJournalEntry(String entryId) async {
+    var currentEntries = _getJournalEntriesFromStorage();
+
+    // Remove the entry with the given id
+    currentEntries.removeWhere((entry) => entry.id == entryId);
+
+    // Save the updated list back to storage
+    await _storage.write(_storageKey, jsonEncode(currentEntries.map((e) => e.toMap()).toList()));
+  }
+
+  Future<int> getNumberOfEntries(DateTime currentDate) {
+    var currentEntries = _getJournalEntriesFromStorage();
+
+    // Filter the entries to get only the ones for the current date
+    var entriesForDate = currentEntries.where((entry) => entry.entryDate == currentDate);
+
+    return Future.value(entriesForDate.length);
   }
 }

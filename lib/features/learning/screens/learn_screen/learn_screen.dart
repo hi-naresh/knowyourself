@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:knowyourself/features/learning/screens/learn_screen/progress_bar.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
@@ -80,40 +81,53 @@ class LearnScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: KSizes.defaultSpace),
-              Text(
-                KTexts.learnHead3,
-                style: Theme.of(context).textTheme.headlineMedium,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    KTexts.learnHead3,
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                  IconButton(
+                    onPressed: () => controller.deleteCache(),
+                    icon: const Icon(
+                      CupertinoIcons.restart,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: KSizes.defaultSpace),
-              ElevatedButton(onPressed: ()=>controller.deleteCache(), child: Text('Delete Cache')),
               SizedBox(
                 height: Get.height*0.8,
                 child: Column(
                   children: [
-                    Wrap(
-                      spacing: 10,
-                      direction: Axis.horizontal,
-                      children: LifeAspects.values.map((aspect) {
-                        return Obx(
-                          () => ChoiceChip(
-                            backgroundColor: kBoxLight,
-                            selectedColor: kApp3Light,
-                            label: Text(
-                                aspect.toString().split('.').last.capitalize!),
-                            selected: controller.selectedAspect.value == aspect,
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                color: kApp3,
-                                width: 1,
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Wrap(
+                        spacing: 10,
+                        direction: Axis.horizontal,
+                        children: LifeAspects.values.map((aspect) {
+                          return Obx(
+                            () => ChoiceChip(
+                              backgroundColor: kBoxLight,
+                              selectedColor: kApp3Light,
+                              label: Text(
+                                  aspect.toString().split('.').last.capitalize!),
+                              selected: controller.selectedAspect.value == aspect,
+                              shape: RoundedRectangleBorder(
+                                side: const BorderSide(
+                                  color: kApp3,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              borderRadius: BorderRadius.circular(20),
+                              padding: const EdgeInsets.all(10),
+                              disabledColor: kEmptyProgress,
+                              onSelected: (_) => controller.changeAspect(aspect),
                             ),
-                            padding: const EdgeInsets.all(10),
-                            disabledColor: kEmptyProgress,
-                            onSelected: (_) => controller.changeAspect(aspect),
-                          ),
-                        );
-                      }).toList(),
+                          );
+                        }).toList(),
+                      ),
                     ),
                     Expanded(
                       child: Obx(() {

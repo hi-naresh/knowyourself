@@ -4,6 +4,22 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<!-- Camera Permission -->
+    <key>NSCameraUsageDescription</key>
+    <string>Your permission message goes here</string>
+
+    <!-- Microphone Permission -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Your permission message goes here</string>
+
+    <!-- Photo Library Permission -->
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Your permission message goes here</string>
+
+    <!-- Location Permission -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Your permission message goes here</string>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

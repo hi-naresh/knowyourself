@@ -4,5 +4,5 @@ enum TextSizes { small, medium, large }
 enum CoreValues {progress, }
 
 enum LifeAspects {
-  mental, physical, emotional, spiritual, all
+  all,mental, physical, emotional, spiritual
 }

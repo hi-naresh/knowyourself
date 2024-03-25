@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/widget/milestone_detail.dart';
 import '../../../../common/widgets/linear_percent_indicator.dart';
 import '../../../../utils/constants/colors.dart';
+import '../../../../utils/helpers/helper_functions.dart';
 import '../controller/milestone_controller.dart';
 import '../model/milestone_model.dart';
 
@@ -41,7 +42,7 @@ class MilestoneAdd extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: kBoxLight,
+              color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
               borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),

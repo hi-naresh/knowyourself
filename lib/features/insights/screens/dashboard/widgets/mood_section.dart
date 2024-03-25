@@ -17,7 +17,7 @@ class MoodSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(DashboardController());
-    final userController = Get.put(UserController());
+    final userController = UserController.instance;
     return CustomContainer(
       width: double.infinity,
       color: kApp1Light,
@@ -27,36 +27,37 @@ class MoodSection extends StatelessWidget {
           Positioned(
             right: 0,
             top: 0,
-            child: Opacity(
-              opacity: 0.1,
-              child: SvgPicture.asset(
-                KImages.health13,
-                height: 140,
-              ),
+            child: SvgPicture.asset(
+              KImages.health13,
+              height: 140,
+              color: const Color.fromRGBO(255, 255, 255, 0.3),
+              colorBlendMode: BlendMode.modulate,
             ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(
-                      text: controller.greeting(),
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    TextSpan(
-                      text: "${userController.user.value.fullName!}!",
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    TextSpan(
-                      text: "\n${KTexts.feel}",
-                      style: Theme.of(context).textTheme.headlineLarge,
-                    ),
-                  ],
-                ),
-                ),
+              Obx(
+              ()=> Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: controller.greeting(),
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      TextSpan(
+                        text: "${userController.user.value.fullName!}!",
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      TextSpan(
+                        text: "\n${KTexts.feel}",
+                        style: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                    ],
+                  ),
+                  ),
+              ),
               const SizedBox(height: KSizes.md),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,

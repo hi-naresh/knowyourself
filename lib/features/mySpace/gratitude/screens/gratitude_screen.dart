@@ -16,7 +16,7 @@ class GratitudeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(GratitudeController());
+    final controller = GratitudeController.instance;
     return Scaffold(
       appBar: const KAppBar(back: true,),
       body: Padding(

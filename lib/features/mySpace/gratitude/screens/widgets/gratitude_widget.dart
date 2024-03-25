@@ -3,19 +3,20 @@ import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/gratitude/controller/gratitude_controller.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/helpers/helper_functions.dart';
 import '../gratitude_screen.dart';
 
 class GratitudeWidget extends StatelessWidget {
   const GratitudeWidget({super.key});
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(GratitudeController());
+    final GratitudeController controller = Get.put(GratitudeController());
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: kBoxLight,
+        color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),

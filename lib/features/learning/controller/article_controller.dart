@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:get/get.dart';
 
@@ -9,11 +8,12 @@ import '../../../utils/helpers/helper_functions.dart';
 import '../model/articles/article_model.dart';
 
 class ArticleController extends GetxController {
+
+  static ArticleController get instance => Get.find();
   final ArticleApiClient apiClient = ArticleApiClient();
   final RxList<Article> articles = <Article>[].obs;
   final Rx<LifeAspects> selectedAspect = LifeAspects.all.obs;
   final CacheManager _cacheManager = CacheManager(); // Create an instance of CacheManager
-
 
   @override
   void onInit() {
@@ -25,6 +25,10 @@ class ArticleController extends GetxController {
   void deleteCache() {
     _cacheManager.deleteCache();
     KHelper.showSnackBar("Cache Deleted", "All cached articles have been deleted.");
+  }
+
+  void networkError() {
+    KHelper.showSnackBar("Network Error", "Please check your internet connection and try again.");
   }
 
   void fetchAndSetArticles(LifeAspects aspect) async {
@@ -65,5 +69,10 @@ class ArticleController extends GetxController {
     } else {
       return articles.where((article) => article.aspect == selectedAspect.value).toList();
     }
+  }
+
+  openArticle(String s) {
+    //convert string into uri
+    KHelper.launchUrl( Uri.parse(s));
   }
 }

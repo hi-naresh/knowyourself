@@ -5,7 +5,6 @@ import 'package:knowyourself/features/mySpace/journal/screens/journal/widgets/ca
 import 'package:knowyourself/features/mySpace/journal/screens/journal/widgets/journal_widget.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:get/get.dart';
-import '../../../../../data/repo/space/journal/journal_repo.dart';
 import '../../../../../utils/constants/colors.dart';
 
 class JournalScreen extends StatelessWidget {
@@ -19,60 +18,54 @@ class JournalScreen extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.all(KSizes.md),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "My Journal",
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    Obx(() {
-                      final DateTime currentDate = controller.getDate;
-                      final Future<int> entriesFuture = JournalGetStorage.getMonthNumOfEntries(currentDate);
-                      return FutureBuilder<int>(
-                        future: entriesFuture,
-                        builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-                          if (snapshot.hasData) {
-                            int entries = snapshot.data!;
-                            return Row(
-                              children: [
-                                SvgPicture.asset(
-                                  "assets/icons/entries.svg",
-                                  height: 20,
-                                  color: kApp4,
-                                ),
-                                const SizedBox(width: KSizes.sm),
-                                Text(
-                                  entries.toString(),
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                ),
-                                const SizedBox(width: KSizes.sm),
-                                Text(
-                                  "Entries",
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                ),
-                              ],
-                            );
-                          }
-                          return const Text("..."); // Placeholder for loading or no data state
-                        },
-                      );
-                    })
-                  ],
-                ),
-                const SizedBox(height: KSizes.defaultSpace),
-                const CalendarWidget(),
-              ],
-            ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "My Reflections",
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/entries.svg",
+                        height: 20,
+                        color: kApp4,
+                      ),
+                      const SizedBox(width: KSizes.sm),
+                      Obx(
+                          ()=> Text(
+                          controller.getNumberOfEntries(),
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                      ),
+                      const SizedBox(width: KSizes.sm),
+                      Text(
+                        "Entries",
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              const SizedBox(height: KSizes.defaultSpace),
+              const SizedBox(
+                height: 160,
+                  width: double.infinity,
+                  child: CalendarWidget()),
+            ],
+          ),
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(
+            height: KSizes.defaultSpace,
           ),
         ),
         Obx(
           () {
-            List journals = controller.journals;
+            List journals = controller.journalEntries;
             if (journals.isEmpty) {
               return SliverToBoxAdapter(
                   child: Padding(
@@ -83,18 +76,99 @@ class JournalScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                       )));
+            } else {
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: KSizes.defaultSpace),
+                      child: JournalWidget(journalEntry: journals[index]),
+                    );
+                  },
+                  childCount: journals.length,
+                ),
+              );
             }
-            return SliverList(
-              delegate: SliverChildBuilderDelegate(
-                childCount: journals.length,
-                (context, index) {
-                  return JournalWidget(journalModel: journals[index]);
-                },
-              ),
-            );
           },
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(
+            height: 100,
+          )
         ),
       ],
     );
+
+    // return SingleChildScrollView(
+    //   child :Column(
+    //     children:[
+    //       Row(
+    //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+    //         children: [
+    //           Text(
+    //             "My Journal",
+    //             style: Theme.of(context).textTheme.headlineMedium,
+    //           ),
+    //           Row(
+    //             children: [
+    //               SvgPicture.asset(
+    //                 "assets/icons/entries.svg",
+    //                 height: 20,
+    //                 color: kApp4,
+    //               ),
+    //               const SizedBox(width: KSizes.sm),
+    //               Obx(
+    //                     ()=> Text(
+    //                   controller.getNumberOfEntries(),
+    //                   style: Theme.of(context).textTheme.titleLarge,
+    //                 ),
+    //               ),
+    //               const SizedBox(width: KSizes.sm),
+    //               Text(
+    //                 "Entries",
+    //                 style: Theme.of(context).textTheme.titleLarge,
+    //               ),
+    //             ],
+    //           )
+    //         ],
+    //       ),
+    //       const SizedBox(height: KSizes.defaultSpace),
+    //        Container(
+    //          clipBehavior: Clip.none,
+    //           height: 160,
+    //           width: double.infinity,
+    //           child: CalendarWidget()),
+    //       Obx(() {
+    //           List journals = controller.journalEntries;
+    //           if (journals.isEmpty) {
+    //             return Padding(
+    //                 padding: const EdgeInsets.all(KSizes.defaultSpace),
+    //                 child: Center(
+    //                   child: Text(
+    //                     "No Journals Entries!",
+    //                     style: Theme
+    //                         .of(context)
+    //                         .textTheme
+    //                         .titleSmall,
+    //                   ),
+    //                 ));
+    //           }else{
+    //             return ListView.builder(
+    //                 shrinkWrap: true,
+    //                 key: const PageStorageKey('journalList'),
+    //                 padding: const EdgeInsets.all(KSizes.defaultSpace),
+    //                 itemCount: journals.length,
+    //                 itemBuilder: (context, index) {
+    //                   return JournalWidget(journalEntry: journals[index]);
+    //                 },
+    //             );
+    //             // return JournalWidget(journalEntry: journals[1]);
+    //           }
+    //         },
+    //       )
+    //     ]
+    //   )
+    // );
+
   }
 }
