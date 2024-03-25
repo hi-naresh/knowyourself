@@ -19,7 +19,7 @@ class ProgressBar extends StatefulWidget {
 class _ProgressBarState extends State<ProgressBar> {
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AddMoodController());
+    final controller = AddMoodController.instance;
     return Padding(
       padding: const EdgeInsets.only(top: 20.0),
       child: LinearPercentIndicator(

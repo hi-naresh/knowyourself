@@ -2,10 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:knowyourself/features/learning/controller/article_controller.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../utils/constants/colors.dart';
+import '../../../../utils/helpers/helper_functions.dart';
 import '../../model/articles/article_model.dart';
+import 'article_read_screen.dart';
 
 class ArticleWidget extends StatelessWidget {
   final Article article;
@@ -16,7 +19,7 @@ class ArticleWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: KSizes.defaultSpace),
       decoration: BoxDecoration(
-        color: kEmptyProgress,
+        color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -29,10 +32,15 @@ class ArticleWidget extends StatelessWidget {
                 bottomRight: Radius.circular(70 )
             ),
             child: Image.network(
-              article.imageUrl.toString(),
+              article.urlToImage.toString(),
               height: Get.height * 0.18,
               width: Get.width * 0.4,
               fit: BoxFit.cover,
+                errorBuilder: (BuildContext context, Object error,
+                    StackTrace? stackTrace) {
+                  ArticleController.instance.networkError() ;
+                  return Icon(CupertinoIcons.photo,size:Get.height * 0.15 ,);
+                }
             ),
           ),
           const SizedBox(),
@@ -73,14 +81,8 @@ class ArticleWidget extends StatelessWidget {
                         style: Theme.of(context).textTheme.labelLarge,
                       ),
                       GestureDetector(
-                        onTap: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          //     builder: (BuildContext context) {
-                          //   return ReadArticleScreen(
-                          //     rssItem: rssItem,
-                          //   );
-                          // }));
-                        },
+                        onTap: () => Get.to(() => ReadArticleScreen(article: article)),
+                        // onTap: () =>ArticleController.instance.openArticle(article.url),
                         child: const Icon(
                           CupertinoIcons.globe,
                           color: kApp3,

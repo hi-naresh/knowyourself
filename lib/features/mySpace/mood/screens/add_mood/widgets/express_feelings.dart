@@ -15,7 +15,7 @@ class ExpressFeelingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AddMoodController());
+    final controller = AddMoodController.instance;
     return Scaffold(
         body: SingleChildScrollView(
           child: Container(

@@ -99,10 +99,10 @@ class KColors {
   static const Color borderSecondary = Color(0xFFE6E6E6);
 
   // Error and validation colors
-  static const Color error = Color(0xFFD32F2F);
-  static const Color success = Color(0xFF388E3C);
-  static const Color warning = Color(0xFFF57C00);
-  static const Color info = Color(0xFF1976D2);
+  static const Color error = kApp4;
+  static const Color success = kApp3;
+  static const Color warning = kApp2;
+  static const Color info = kApp1;
 
   // Neutral Shades
 
@@ -186,19 +186,11 @@ const Color kApp4Dark = Color(0xFFFFA497);
 
 //grey
 const Color kProgress = Color(0xFFE9EDF1);
-Color kBoxLight = kEmptyProgress.withOpacity(0.5);
+Color kBoxLight = kEmptyProgress.withOpacity(0.7);
 const Color kPieBox = Color(0xFFEEF6FF);
 // const Color kEmptyProgress = Color(0xFFE3E9F3);
-Color kEmptyProgress = const Color(0xFFE3E9F3).withOpacity(0.5);
-
-// const Color kPalette6_1 = Color(0xFFEAE9E8);
-// const Color kPalette6 = Color(0xFFFBFBFB);
-
-//cal
-const Color kDisText = Color(0xFF171616);
-const Color kSelectedText = Color(0xFFFBFBFB);
-
-
+const Color kEmptyProgress = Color(0xFFE4E9F3);
+const Color kEmptyProgressDark = Color(0xFF3E3E3F);
 
 const Color kPrimaryColor = Color(0xFFAEBFFF);
 const Color kSecondaryColor = Color(0xFFD9E9FF);
