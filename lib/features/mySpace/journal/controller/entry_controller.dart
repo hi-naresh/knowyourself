@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:knowyourself/features/personalisation/controller/user_controller.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -55,10 +56,11 @@ class EntryController extends GetxController {
     // Create the journal entry object
     final entry = JournalEntry(
       id: DateTime.now().millisecondsSinceEpoch.toString(), // Or use a proper ID generator
+      userId: UserController.instance.user.value.id!,
       content: textEditingController.text,
       entryDate: DateTime.now(),
-      imagePath: selectedImage.value?.path ?? null,
-      audioPath: voiceNotePath.value?? null,
+      imagePath: selectedImage.value?.path,
+      audioPath: voiceNotePath.value,
       locationPath: location.value?? 'No location',
     );
 

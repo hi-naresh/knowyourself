@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,13 +32,15 @@ class ArticleWidget extends StatelessWidget {
                 topRight: Radius.circular(70 ),
                 bottomRight: Radius.circular(70 )
             ),
-            child: Image.network(
-              article.urlToImage.toString(),
+            child: CachedNetworkImage(
+              key: UniqueKey(),
+              imageUrl: article.urlToImage.toString(),
               height: Get.height * 0.18,
               width: Get.width * 0.4,
+              maxWidthDiskCache: 500,
               fit: BoxFit.cover,
-                errorBuilder: (BuildContext context, Object error,
-                    StackTrace? stackTrace) {
+                // placeholder: ,
+                errorWidget: ( context, url, error) {
                   ArticleController.instance.networkError() ;
                   return Icon(CupertinoIcons.photo,size:Get.height * 0.15 ,);
                 }
