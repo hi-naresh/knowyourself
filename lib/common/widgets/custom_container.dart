@@ -23,9 +23,7 @@ class CustomContainer extends StatelessWidget {
     this.borderRadius = const BorderRadius.all(Radius.circular(25)),
     this.padding = const EdgeInsets.all(KSizes.md),
     this.margin = const EdgeInsets.all(0),
-    this.boxShadow = const [
-
-    ],
+    this.boxShadow = const [],
     this.alignment = Alignment.center,
     this.onTap, this.clipBehavior,
   });
@@ -43,8 +41,8 @@ class CustomContainer extends StatelessWidget {
 
           gradient: LinearGradient(
             colors: [
-              color,
               color.withOpacity(0.5),
+              color,
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomLeft,

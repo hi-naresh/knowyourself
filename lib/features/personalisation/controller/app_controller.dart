@@ -4,32 +4,26 @@ import 'package:get_storage/get_storage.dart';
 import '../../../utils/helpers/shadow_disabler.dart';
 
 class AppStateController extends GetxController {
-  // Accessing GetStorage
-  static final storage = GetStorage();
   static AppStateController get instance => Get.find();
+  static final storage = GetStorage();
   RxBool isDarkMode = false.obs;
-  final PageController _pageController = PageController();
-  PageController get pageController => _pageController;
-
-  final RxInt _pageState = 0.obs;
-  int get pageState => _pageState.value;
+  final _key = 'isDarkMode';
 
   @override
   void onInit() {
     super.onInit();
-    isDarkMode.value = Get.isDarkMode;
+    // Load theme mode from storage
+    isDarkMode.value = storage.read(_key) ?? false;
     CustomShadow.disableShadows = isDarkMode.value;
+    Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
   }
 
   void toggleTheme() {
     isDarkMode.value = !isDarkMode.value;
     CustomShadow.disableShadows = isDarkMode.value;
-    // Get.changeTheme(isDarkMode.value ? KAppTheme.darkTheme : KAppTheme.lightTheme);
     Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
+    // Save theme mode to storage
+    storage.write(_key, isDarkMode.value);
   }
-
-  void updatePage(int index) {
-    _pageState.value = index;
-  }
-
 }
+
