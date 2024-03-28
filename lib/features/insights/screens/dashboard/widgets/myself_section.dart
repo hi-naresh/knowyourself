@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
 
@@ -41,7 +42,7 @@ class MyselfSection extends StatelessWidget {
               title: "Journal",
               color: kApp1,
               imageUrl: KImages.health12,
-              screenWidth: KDeviceUtils.getScreenWidth(context),
+              screenWidth: kIsWeb? 390: KDeviceUtils.getScreenWidth(context),
               onTap: () {
                 final controller = MySpaceController.instance;
                 final masterController = MasterController.instance;
@@ -54,7 +55,7 @@ class MyselfSection extends StatelessWidget {
               title: "Review",
               color: kApp2,
               imageUrl: KImages.health1,
-              screenWidth: KDeviceUtils.getScreenWidth(context),
+              screenWidth: kIsWeb? 390: KDeviceUtils.getScreenWidth(context),
             ),
           ],
         ),
