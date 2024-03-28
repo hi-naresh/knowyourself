@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../../../../features/mySpace/journal/model/journal_model.dart';
+import '../../../../features/personalisation/controller/user_controller.dart';
 
 class JournalRepo extends GetxController{
 
@@ -22,17 +23,24 @@ class JournalRepo extends GetxController{
   List<JournalEntry> _getJournalEntriesFromStorage() {
     // Retrieve the stored journal entries JSON string
     var entriesJsonString = _storage.read(_storageKey);
-
+    final userID = UserController.instance.user.value.id.toString();
+    // print("$userID , Entries : $entriesJsonString");
     // Decode the JSON string into a list of maps
-    if (entriesJsonString != null) {
+    if (entriesJsonString != null  ) {
       List<dynamic> entriesJson = jsonDecode(entriesJsonString);
-
       // Convert the list of maps to a list of JournalEntry objects
+      //check if userId matches to journalEntries , then show journal entries
       List<JournalEntry> entries = entriesJson.map((entryMap) {
         return JournalEntry.fromJson(entryMap);
       }).toList();
 
-      return entries;
+      bool authenticated = entries.every((element) => element.userId == userID);
+      if (authenticated) {
+        return entries;
+      } else {
+        return [];
+      }
+      // return entries;
     } else {
       return [];
     }

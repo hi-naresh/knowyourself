@@ -17,7 +17,7 @@ class ProfileController extends GetxController {
   void logoutUser() async {
     try{
       await AuthRepo.instance.logoutUser();
-      await deviceStorage.erase();
+      await deviceStorage.remove("isLogged");
       Get.offAllNamed(KRoutes.getOnBoardingRoute());
     } catch (e){
       throw 'Something went Wrong. Try Again';

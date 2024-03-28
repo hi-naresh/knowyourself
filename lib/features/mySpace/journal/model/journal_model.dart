@@ -1,5 +1,6 @@
 class JournalEntry {
   String id;
+  String userId;
   String content;
   DateTime entryDate;
   String? imagePath;
@@ -8,6 +9,7 @@ class JournalEntry {
 
   JournalEntry({
     required this.id,
+    required this.userId,
     required this.content,
     required this.entryDate,
     this.imagePath,
@@ -18,6 +20,7 @@ class JournalEntry {
   factory JournalEntry.fromJson(Map<String, dynamic> json) {
     return JournalEntry(
       id: json['id'] ?? '',
+      userId: json['userId']??'',
       content: json['content'] ?? '',
       entryDate: DateTime.parse(json['entryDate'] as String),
       imagePath: json['imagePath'],
@@ -29,6 +32,7 @@ class JournalEntry {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'userId': userId,
       'content': content,
       'entryDate': entryDate.toIso8601String(),
       'imagePath': imagePath,
@@ -39,7 +43,7 @@ class JournalEntry {
 
   @override
   String toString() {
-    return 'JournalEntry{id: $id, content: $content, entryDate: $entryDate, imagePath: $imagePath, locationPath: $locationPath, audioPath: $audioPath}';
+    return 'JournalEntry{id: $id, userId: $userId, content: $content, entryDate: $entryDate, imagePath: $imagePath, locationPath: $locationPath, audioPath: $audioPath}';
   }
 
   static List<JournalEntry> fromMap(List<Map<String, dynamic>> entryMapList) {

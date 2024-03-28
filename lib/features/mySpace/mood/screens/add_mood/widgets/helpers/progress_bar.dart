@@ -4,7 +4,6 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../../../common/widgets/linear_percent_indicator.dart';
 import '../../../../../../../utils/constants/colors.dart';
-import 'package:get/get.dart';
 
 class ProgressBar extends StatefulWidget {
   final String steps;

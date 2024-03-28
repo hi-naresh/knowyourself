@@ -21,8 +21,19 @@ class JournalController extends GetxController {
     loadJournalEntries();
   }
 
+
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   loadJournalEntries();
+  // }
+
   // Method to load all journal entries from the repository
-  void loadJournalEntries() async {
+  Future<void> loadJournalEntries() async {
+    //fetch all journal entries even if user was logged out and logged in back, if userId matches to journalEntries , then show journal entries
+    // JournalRepo.instance.getJournalEntries().then((entries) {
+    //   journalEntries.assignAll(entries);
+    // });
     List<JournalEntry> entries = await JournalRepo.instance.getJournalEntries();
     journalEntries.assignAll(entries);
   }

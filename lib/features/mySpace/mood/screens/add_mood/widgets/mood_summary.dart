@@ -6,7 +6,6 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../controller/add_mood_controller.dart';
 import '../../../model/mood_model_input.dart';
-import 'package:get/get.dart';
 
 class MoodSummaryPage extends StatelessWidget {
   final bool readOnly;

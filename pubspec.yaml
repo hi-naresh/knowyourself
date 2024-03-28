@@ -19,6 +19,7 @@ dependencies:
   permission_handler: ^10.2.0
   awesome_notifications:
   workmanager:
+  cached_network_image:
 
   flutter_svg: ^1.1.6
   google_fonts: ^5.0.1
