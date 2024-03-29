@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/data/repo/space/journal/journal_repo.dart';
 import 'package:knowyourself/features/insights/screens/insights/widgets/AnimationChart.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
@@ -14,13 +13,14 @@ import '../dashboard/widgets/progress_milestones.dart';
 class InsightScreen extends StatelessWidget {
   const InsightScreen({super.key});
 
-  //widget for core value, each color indicating value name and percentage
   Widget coreValueWidget(BuildContext context, String name, double percentage) {
     return Padding(
       padding: const EdgeInsets.all(KSizes.sm),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          Text(name.capitalize!,
+              style: Theme.of(context).textTheme.titleMedium),
           Container(
             height: 40,
             width: 40,
@@ -36,8 +36,6 @@ class InsightScreen extends StatelessWidget {
               ),
             ),
           ),
-          Text(name.capitalize!,
-              style: Theme.of(context).textTheme.titleMedium),
         ],
       ),
     );
@@ -46,7 +44,6 @@ class InsightScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(InsightsController());
-    final jController = Get.put(JournalRepo());
     return SingleChildScrollView(
       child: Center(
           child: Padding(
@@ -64,7 +61,7 @@ class InsightScreen extends StatelessWidget {
             ),
             const SizedBox(height: KSizes.defaultSpace),
             Text(
-              'Value Reflection',
+              'Weekly Value Reflection',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: KSizes.defaultSpace),
@@ -75,7 +72,7 @@ class InsightScreen extends StatelessWidget {
                         ),
                       )
                     : const Text(
-                        'Loading...') // Placeholder for when data is not yet available
+                        'No data found...') // Placeholder for when data is not yet available
                 ),
             const SizedBox(height: KSizes.defaultSpace),
             Obx(

@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
+import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../model/core_values.dart';
 
@@ -84,15 +85,15 @@ class PieChartPainter extends CustomPainter {
       path.lineTo(center.dx, center.dy);
 
       final paint = Paint()
-        ..color = kEmptyProgress
+        ..color = KHelper.isDark() ? kEmptyProgressDark : kEmptyProgress
         ..style = PaintingStyle.fill;
       canvas.drawPath(path, paint);
 
       // Stroke for the path
       final strokePaint = Paint()
-        ..color = KColors.white // Transparent stroke
+        ..color = KHelper.isDark() ? KColors.scaffoldDark : KColors.scaffoldLight // Transparent stroke
         ..style = PaintingStyle.stroke
-        ..strokeWidth = strokeWidth;
+        ..strokeWidth = strokeWidth/2;
       canvas.drawPath(path, strokePaint);
     }
 
@@ -126,7 +127,7 @@ class PieChartPainter extends CustomPainter {
       final strokePaint = Paint()
         ..color = KColors.white
         ..style = PaintingStyle.stroke
-        ..strokeWidth = strokeWidth;
+        ..strokeWidth = strokeWidth/3;
       canvas.drawPath(path, strokePaint);
     }
   }

@@ -3,6 +3,7 @@ import 'package:knowyourself/common/styles/styles.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../utils/constants/colors.dart';
+import '../../../../utils/helpers/helper_functions.dart';
 
 class LearningProgressBars extends StatefulWidget {
   final Map<String, double> learningAspectsProgress;
@@ -61,7 +62,7 @@ class _LearningProgressBarsState extends State<LearningProgressBars> with Single
                 Container(
                   height: KSizes.xl,
                   decoration: BoxDecoration(
-                    color: kEmptyProgress,
+                    color: KHelper.isDark() ? kEmptyProgressDark : kEmptyProgress,
                     borderRadius: BorderRadius.circular(KSizes.borderRadiusXl),
                   ),
                 ),

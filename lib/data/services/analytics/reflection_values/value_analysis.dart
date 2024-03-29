@@ -36,11 +36,11 @@ class ValueAnalysis {
 
 }
 
-void main(){
-  String textToAnalyze = '''When it comes to books, I didn’t understand the appeal. I’d read one after another for each assignment not understanding what all the fuss was about. However, the moment I read Pride and Prejudice, it was like my literary eyes opened for the first time. It stirred love within me for classics I didn’t realize could exist.
-When I was first given the assignment of reading Pride and Prejudice, like many of my friends, I scoffed. With an eye roll, I internally calculated how much time I would have to read the book and write a report. I sighed at the loss of time with my friends for a stupid classic.''';
-  ValueAnalysis analysis = ValueAnalysis();
-  final result = analysis.performAnalysis(textToAnalyze);
-  print(result);
-
-}
+// void main(){
+//   String textToAnalyze = '''When it comes to books, I didn’t understand the appeal. I’d read one after another for each assignment not understanding what all the fuss was about. However, the moment I read Pride and Prejudice, it was like my literary eyes opened for the first time. It stirred love within me for classics I didn’t realize could exist.
+// When I was first given the assignment of reading Pride and Prejudice, like many of my friends, I scoffed. With an eye roll, I internally calculated how much time I would have to read the book and write a report. I sighed at the loss of time with my friends for a stupid classic.''';
+//   ValueAnalysis analysis = ValueAnalysis();
+//   final result = analysis.performAnalysis(textToAnalyze);
+//   print(result);
+//
+// }

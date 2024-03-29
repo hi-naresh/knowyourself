@@ -67,6 +67,11 @@ class KHelper {
     return Theme.of(context).brightness == Brightness.dark;
   }
 
+  //isDarkMode without context
+  static bool isDark() {
+    return Get.isDarkMode;
+  }
+
   static Size screenSize() {
     return MediaQuery.of(Get.context!).size;
   }

@@ -20,39 +20,63 @@ class AnimatedPieChart extends StatefulWidget {
 }
 
 class _AnimatedPieChartState extends State<AnimatedPieChart> with TickerProviderStateMixin {
-  final List<AnimationController> _controllers = [];
-  final List<Animation<double>> _animations = [];
+  late List<AnimationController> _controllers = [];
+  late List<Animation<double>> _animations = [];
 
   @override
   void initState() {
     super.initState();
 
-    for (var i = 0; i < widget.coreValues.length; i++) {
-      var controller = AnimationController(
-        duration: const Duration(milliseconds: 200), // Duration of each segment's animation
+    _controllers = List.generate(widget.coreValues.length, (index) {
+      return AnimationController(
+        duration: const Duration(milliseconds: 500), // Making the animation quick
         vsync: this,
       );
-      _controllers.add(controller);
+    });
 
-      var animation = Tween<double>(begin: 0, end: widget.coreValues[i].percentage).animate(
-        CurvedAnimation(parent: controller, curve: Curves.easeOut),
+    _animations = List.generate(widget.coreValues.length, (index) {
+      // First animate to 100% in the first half of the animation
+
+      // Then animate back to the actual percentage in the second half
+      var secondHalf = Tween<double>(begin: 100, end: widget.coreValues[index].percentage).animate(
+        CurvedAnimation(parent: _controllers[index], curve: const Interval(0.5, 1.0, curve: Curves.easeIn)),
       );
-      _animations.add(animation);
+      // Using a ProxyAnimation to link both animations
+      return ProxyAnimation(secondHalf);
+    });
 
-      if (i > 0) {
-        // Chain the animation so it starts after the previous segment's animation
-        _controllers[i - 1].addStatusListener((status) {
-          if (status == AnimationStatus.completed) {
-            controller.forward();
-          }
-        });
-      }
+    // Chain the animations so that each segment animates one after the other
+    for (int i = 0; i < _controllers.length - 1; i++) {
+      _controllers[i].addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          _controllers[i + 1].forward();
+        }
+      });
     }
 
-    // Start the first animation
+    // Start the animation of the first segment
     if (_controllers.isNotEmpty) {
       _controllers.first.forward();
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: Listenable.merge(_controllers),
+      builder: (context, child) {
+        return PieChart(
+          strokeWidth: widget.strokeWidth,
+          strokeColor: widget.strokeColor,
+          coreValues: List.generate(widget.coreValues.length, (index) {
+            return CoreValue(
+              name: widget.coreValues[index].name,
+              percentage: _animations[index].value,
+            );
+          }),
+        );
+      },
+    );
   }
 
   @override
@@ -61,27 +85,5 @@ class _AnimatedPieChartState extends State<AnimatedPieChart> with TickerProvider
       controller.dispose();
     }
     super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: Listenable.merge(_controllers), // Merge all controllers for the AnimatedBuilder
-      builder: (context, child) {
-        // Create a temporary list of core values with animated percentages
-        List<CoreValue> animatedCoreValues = List<CoreValue>.generate(widget.coreValues.length, (index) {
-          return CoreValue(
-            name: widget.coreValues[index].name,
-            percentage: _animations[index].value,
-          );
-        });
-
-        return PieChart(
-          strokeWidth: widget.strokeWidth,
-          strokeColor: widget.strokeColor,
-          coreValues: animatedCoreValues, // Pass the animated core values
-        );
-      },
-    );
   }
 }
