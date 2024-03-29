@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/personalisation/controller/app_controller.dart';
+import '../../../../data/helper_service/local_auth/local_bio_auth.dart';
 import '../../../../routes.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
@@ -21,6 +22,7 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     final appController = AppStateController.instance;
+    final bioController = LocalBioAuth.instance;
     return Scaffold(
       appBar: const KAppBar(
         back: true,
@@ -83,15 +85,20 @@ class SettingScreen extends StatelessWidget {
                 icon: CupertinoIcons.moon_circle,
               ),
 
-            // SettingTile(
-            //       title: "Bio-metric Login",
-            //       subtitle: "Login with your face/fingerprint",
-            //       trailing: CupertinoSwitch(
-            //         value: true,
-            //         onChanged: (value) {},
-            //         activeColor: Theme.of(context).primaryColor,
-            //       ),
-            //       icon: CupertinoIcons.eye_slash),
+            SettingTile(
+                  title: "Bio-metric Login",
+                  subtitle: "Login with your face/fingerprint",
+                  trailing: Obx(
+                    ()=> CupertinoSwitch(
+                      value: bioController.isAuthEnabled.value,
+                      onChanged: (value) async {
+                        await bioController.toggleBioAuth(value);
+                        Get.snackbar('Settings Updated', value ? 'Biometric Authentication Enabled' : 'Biometric Authentication Disabled');
+                      },
+                      activeColor: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  icon: CupertinoIcons.eye_slash),
             SettingTile(
                 title: "Notifications",
                 subtitle: "In order to remind your tasks.",

@@ -31,7 +31,3 @@ class ArticleApiClient extends GetConnect {
     }
   }
 }
-
-class ArticleCache{
-
-}
