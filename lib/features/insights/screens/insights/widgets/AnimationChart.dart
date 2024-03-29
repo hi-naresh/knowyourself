@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../model/core_values.dart';
 import 'PieChart.dart';
 
@@ -9,11 +8,11 @@ class AnimatedPieChart extends StatefulWidget {
   final Color strokeColor;
 
   const AnimatedPieChart({
-    Key? key,
+    super.key,
     required this.coreValues,
     this.strokeWidth = 4.0,
     this.strokeColor = Colors.transparent,
-  }) : super(key: key);
+  });
 
   @override
   _AnimatedPieChartState createState() => _AnimatedPieChartState();
@@ -26,6 +25,7 @@ class _AnimatedPieChartState extends State<AnimatedPieChart> with TickerProvider
   @override
   void initState() {
     super.initState();
+
 
     _controllers = List.generate(widget.coreValues.length, (index) {
       return AnimationController(
@@ -62,6 +62,7 @@ class _AnimatedPieChartState extends State<AnimatedPieChart> with TickerProvider
 
   @override
   Widget build(BuildContext context) {
+
     return AnimatedBuilder(
       animation: Listenable.merge(_controllers),
       builder: (context, child) {

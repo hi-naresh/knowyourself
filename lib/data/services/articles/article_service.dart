@@ -6,7 +6,6 @@ import '../../../utils/constants/enums.dart';
 class ArticleApiClient extends GetConnect {
 
   final fetchRequestTimes = 0.obs;
-
   Future<List<Article>> fetchArticles(LifeAspects aspect) async {
     try {
       final queryParam = aspect == LifeAspects.all
@@ -31,4 +30,8 @@ class ArticleApiClient extends GetConnect {
       return Future.error('Something went wrong while fetching articles: $e');
     }
   }
+}
+
+class ArticleCache{
+
 }

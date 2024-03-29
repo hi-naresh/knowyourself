@@ -11,10 +11,10 @@ class ProgressComponent extends StatefulWidget {
   final List<Color> colors;
 
   const ProgressComponent({
-    Key? key,
+    super.key,
     required this.milestonesProgress,
     this.colors = const [kApp1, kApp2, kApp3],
-  }) : super(key: key);
+  });
 
   @override
   State<ProgressComponent> createState() => _ProgressComponentState();

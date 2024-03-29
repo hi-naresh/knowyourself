@@ -13,7 +13,7 @@ import 'article_read_screen.dart';
 
 class ArticleWidget extends StatelessWidget {
   final Article article;
-  const ArticleWidget({Key? key, required this.article}) : super(key: key);
+  const ArticleWidget({super.key, required this.article});
 
   @override
   Widget build(BuildContext context) {

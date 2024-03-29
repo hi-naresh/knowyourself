@@ -7,7 +7,7 @@ import '/features/insights/screens/dashboard/widgets/recommend_section.dart';
 import '/utils/constants/sizes.dart';
 
 class Dashboard extends StatelessWidget {
-  const Dashboard({Key? key}) : super(key: key);
+  const Dashboard({super.key});
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
@@ -24,8 +24,8 @@ class Dashboard extends StatelessWidget {
             ProgressComponent(
               milestonesProgress: {
                 'Daily': 0.35,
-                'Monthly': 0.5,
-                'Yearly': 0.7,
+                'Weekly': 0.5,
+                'Monthly': 0.7,
               },
             ),
             SizedBox(height: KSizes.defaultSpace),

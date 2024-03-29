@@ -8,14 +8,13 @@ import '../model/core_values.dart';
 
 class InsightsController extends GetxController {
   static InsightsController get instance => Get.find();
-
   final RxList<JournalEntry> journalEntries = <JournalEntry>[].obs;
   final RxList<CoreValue> analyzedCoreValues = <CoreValue>[].obs;
 
 
   @override
-  void onInit() {
-    super.onInit();
+  void onReady() {
+    super.onReady();
     calculateInsights();
   }
 
@@ -43,7 +42,7 @@ class InsightsController extends GetxController {
       });
     }
 
-    Map<CoreValues, double> averageAnalysisResults = sumAnalysisResults.map((key, value) => MapEntry(key, value / journalEntries.length));
+    Map<CoreValues, double> averageAnalysisResults = sumAnalysisResults.map((key, value) => MapEntry(key, value / journalEntries.length*2));
     averageAnalysisResults.forEach((key, value) {
       analyzedCoreValues.add(CoreValue(name: key.toString().split('.').last, percentage: value));
     });

@@ -7,6 +7,7 @@ class KImages {
 
   //animations
   static const String logoAnim = "assets/animations/KYB.json";
+  static const String mySpaceAnim = "assets/animations/space.json";
   //onboard
   static const String onBoard1 = "assets/illustrations/onboard1.svg";
   static const String onBoard2 = "assets/illustrations/onboard2.svg";

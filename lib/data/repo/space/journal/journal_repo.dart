@@ -69,6 +69,18 @@ class JournalRepo extends GetxController{
     // Save the updated list back to storage
     await _storage.write(_storageKey, jsonEncode(currentEntries.map((e) => e.toMap()).toList()));
   }
+
+  Future<List<dynamic>> exportJournalEntries() async {
+    // Fetch journal entries, serialize, and return
+    var entries = _getJournalEntriesFromStorage();
+    return Future.value(entries.map((entry) => entry.toMap()).toList());
+  }
+
+  Future<void> importJournalEntries(List<dynamic> entries) async {
+    // Deserialize entries and save them
+    var journalEntries = entries.map((entry) => JournalEntry.fromJson(entry)).toList();
+    await _storage.write(_storageKey, jsonEncode(journalEntries.map((e) => e.toMap()).toList()));
+  }
   Future<int> getNumberOfEntries(DateTime currentDate) {
     var currentEntries = _getJournalEntriesFromStorage();
 

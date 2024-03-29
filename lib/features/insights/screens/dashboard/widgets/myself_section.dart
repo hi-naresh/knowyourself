@@ -39,7 +39,7 @@ class MyselfSection extends StatelessWidget {
           children: [
             myCard(
               context: context,
-              title: "Journal",
+              title: "Reflect",
               color: kApp1,
               imageUrl: KImages.health12,
               screenWidth: kIsWeb? 390: KDeviceUtils.getScreenWidth(context),
