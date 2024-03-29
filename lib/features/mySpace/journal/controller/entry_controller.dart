@@ -114,12 +114,12 @@ class EntryController extends GetxController {
     // if (!isRecorderInitialized) return;
     final status = await Permission.microphone.status;
     if (status == PermissionStatus.denied) {
-      print('Recording$status');
+      // print('Recording$status');
       openAppSettings();
     }
 
     if (await Permission.microphone.isGranted) {
-      print('Recording');
+      // print('Recording');
       await soundRecorder!.startRecorder(toFile: 'voice_note.aac');
     } else {
       // Handle permission denied
@@ -166,7 +166,7 @@ class EntryController extends GetxController {
         List<Placemark> placemarks = await placemarkFromCoordinates(
             userPosition.value!.latitude, userPosition.value!.longitude);
         // location.value = placemarks.first.name ?? "No nearby area found";
-        print("Location: ${placemarks.first.name}");
+        // print("Location: ${placemarks.first.name}");
         return placemarks.first.name ?? "No nearby area found";
       } else {
         return "No nearby area found";
@@ -187,7 +187,5 @@ class EntryController extends GetxController {
   void deFocusKeyboard(BuildContext context) {
     FocusScope.of(context).unfocus();
   }
-  addBookmark() {
-
-  }
+  addBookmark() {}
 }

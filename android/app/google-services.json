@@ -49,6 +49,42 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325206134116:android:bee074a8d735928a8e3e71",
+        "android_client_info": {
+          "package_name": "com.knowyourself.know_yourself"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325206134116-o3pc0hmenrp7st7vnqhdq7i8hburloh9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkQ4UXWamKwCHizYmpGq14GSEHnZChhnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325206134116-o3pc0hmenrp7st7vnqhdq7i8hburloh9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "325206134116-49k98kvr7624e09cop4t0vtfuk9tub66.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.knowyourself.beta.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

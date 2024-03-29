@@ -16,35 +16,34 @@ class JournalRepo extends GetxController{
     var currentEntries = _getJournalEntriesFromStorage();
     // Add the new entry
     currentEntries.add(entry);
-    // Save the updated list back to storage
     await _storage.write(_storageKey, jsonEncode(currentEntries.map((e) => e.toMap()).toList()));
   }
 
   List<JournalEntry> _getJournalEntriesFromStorage() {
-    // Retrieve the stored journal entries JSON string
     var entriesJsonString = _storage.read(_storageKey);
     final userID = UserController.instance.user.value.id.toString();
-    // print("$userID , Entries : $entriesJsonString");
     // Decode the JSON string into a list of maps
     if (entriesJsonString != null  ) {
       List<dynamic> entriesJson = jsonDecode(entriesJsonString);
       // Convert the list of maps to a list of JournalEntry objects
-      //check if userId matches to journalEntries , then show journal entries
       List<JournalEntry> entries = entriesJson.map((entryMap) {
         return JournalEntry.fromJson(entryMap);
-      }).toList();
-
-      bool authenticated = entries.every((element) => element.userId == userID);
-      if (authenticated) {
-        return entries;
-      } else {
-        return [];
-      }
-      // return entries;
+      }).where((entry) => entry.userId == userID).toList();
+      // print("at storage $entries");
+      return entries;
     } else {
       return [];
     }
   }
+
+  //getJournalEntriesBy date
+  // List<JournalEntry> getJournalEntriesByDate(DateTime date) {
+  //   var currentEntries = _getJournalEntriesFromStorage();
+  //   print("at repo $currentEntries");
+  //   final List<JournalEntry> entries = currentEntries.where((entry) => entry.entryDate == date).toList();
+  //   print("at repo $entries");
+  //   return entries;
+  // }
 
   Future<List<JournalEntry>> getJournalEntries() async {
     return _getJournalEntriesFromStorage();
@@ -61,7 +60,6 @@ class JournalRepo extends GetxController{
       await _storage.write(_storageKey, jsonEncode(currentEntries.map((e) => e.toMap()).toList()));
     }
   }
-
   Future<void> deleteJournalEntry(String entryId) async {
     var currentEntries = _getJournalEntriesFromStorage();
 
@@ -71,7 +69,6 @@ class JournalRepo extends GetxController{
     // Save the updated list back to storage
     await _storage.write(_storageKey, jsonEncode(currentEntries.map((e) => e.toMap()).toList()));
   }
-
   Future<int> getNumberOfEntries(DateTime currentDate) {
     var currentEntries = _getJournalEntriesFromStorage();
 

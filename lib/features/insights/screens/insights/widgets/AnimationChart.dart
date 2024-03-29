@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../learning/model/core_values/core_values.dart';
+import '../../../model/core_values.dart';
 import 'PieChart.dart';
 
 class AnimatedPieChart extends StatefulWidget {
@@ -73,7 +73,6 @@ class _AnimatedPieChartState extends State<AnimatedPieChart> with TickerProvider
           return CoreValue(
             name: widget.coreValues[index].name,
             percentage: _animations[index].value,
-            color: widget.coreValues[index].color,
           );
         });
 

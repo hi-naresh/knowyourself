@@ -56,7 +56,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAkQ4UXWamKwCHizYmpGq14GSEHnZChhnc',
-    appId: '1:325206134116:android:fc2e9a7c62a7e8218e3e71',
+    appId: '1:325206134116:android:bee074a8d735928a8e3e71',
     messagingSenderId: '325206134116',
     projectId: 'know-yourself-60f9b',
     databaseURL: 'https://know-yourself-60f9b-default-rtdb.asia-southeast1.firebasedatabase.app',
@@ -77,13 +77,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyDapERcu33YQ7QZ2TD3feTyX3a5VEfrVlg',
-    appId: '1:325206134116:ios:6f16c7d8c3710e618e3e71',
+    appId: '1:325206134116:ios:d61c47dddfbd84158e3e71',
     messagingSenderId: '325206134116',
     projectId: 'know-yourself-60f9b',
     databaseURL: 'https://know-yourself-60f9b-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'know-yourself-60f9b.appspot.com',
     androidClientId: '325206134116-q10oh895nch8al76i1uufhl0phav58ee.apps.googleusercontent.com',
-    iosClientId: '325206134116-49k98kvr7624e09cop4t0vtfuk9tub66.apps.googleusercontent.com',
-    iosBundleId: 'com.knowyourself.beta.RunnerTests',
+    iosClientId: '325206134116-i1t7lbun1b8uiucvhaibot1n2qf4ff87.apps.googleusercontent.com',
+    iosBundleId: 'com.knowyourself.knowYourself.RunnerTests',
   );
 }

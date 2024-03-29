@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourself/utils/constants/enums.dart';
 
 class KColors {
   // App theme colors
@@ -118,54 +119,61 @@ class KColors {
 
 }
 
-final valueColors ={
-  // TaskCategory.work: Color(0xff9dd7ff),
-  // TaskCategory.education: Color(0xFFFFB4E2),
-  // TaskCategory.exercise: Color(0xFFB4A6FE),
-  // TaskCategory.timePass: Color(0xFFCAE0F5),
-  // TaskCategory.meditation: Color(0xFFB4A6FE),
-  // TaskCategory.personalCare: Color(0xFFFFB4E2),
-  // TaskCategory.leisure: Color(0xFFC4C4FF),
-  // TaskCategory.social: Color(0xFFFFB4E2),
-  // TaskCategory.chores: Color(0xFFB4A6FE),
-  // TaskCategory.family: Color(0xFFFDB9AE),
-  // TaskCategory.finance: Color(0xFFB4A6FE),
-  // TaskCategory.volunteer: Color(0xFFFFB4E2),
-  // TaskCategory.creative: Color(0xFFFDB9AE),
-  // TaskCategory.spiritual: Color(0xFFB4A6FE),
-  // TaskCategory.professional: Color(0xFFFFB4E2),
-  // TaskCategory.fitness: Color(0xFFFDB9AE),
-  // TaskCategory.mindfulness: Color(0xFFB4A6FE),
-  // TaskCategory.outdoor: Color(0xFFFDB9AE),
-  // TaskCategory.planning: Color(0xFFB4A6FE),
-  // TaskCategory.other: Color(0xFFFFB4E2),
-};
 
-//core values
-const Color kCoreValue1 = Color(0xFFEF7C00);
-const Color kCoreValue1_1 = Color(0xFFFAC6A1);
-const Color kCoreValue2 = Color(0xFFEFB500);
-const Color kCoreValue2_1 = Color(0xFFF3E1AA);
-const Color kCoreValue3 = Color(0xFFF8D600);
-const Color kCoreValue3_1 = Color(0xFFFCEA9E);
-const Color kCoreValue4 = Color(0xFFB9D900);
-const Color kCoreValue4_1 = Color(0xFFE3F3A5);
-const Color kCoreValue5 = Color(0xFF00AE1B);
-const Color kCoreValue5_1 = Color(0xFFA3E6B4);
-const Color kCoreValue6 = Color(0xFF007530);
-const Color kCoreValue6_1 = Color(0xFF78D59E);
-const Color kCoreValue7 = Color(0xFF005CA5);
-const Color kCoreValue7_1 = Color(0xFF7AB9E6);
-const Color kCoreValue8 = Color(0xFF1C3385);
-const Color kCoreValue8_1 = Color(0xFF49AAEF);
-const Color kCoreValue9 = Color(0xFF692A81);
-const Color kCoreValue9_1 = Color(0xFFA17DE6);
-const Color kCoreValue10 = Color(0xFFBC037B);
-const Color kCoreValue10_1 = Color(0xFFE07FBC);
-const Color kCoreValue11 = Color(0xFFF0025E);
-const Color kCoreValue11_1 = Color(0xFFF676A6);
-const Color kCoreValue12 = Color(0xFFEC0012);
-const Color kCoreValue12_1 = Color(0xFFEF7272);
+
+// const Color kCoreValue1 = Color(0xFFEF7C00);
+// const Color kCoreValue1_1 = Color(0xFFFAC6A1);
+// const Color kCoreValue2 = Color(0xFFEFB500);
+// const Color kCoreValue2_1 = Color(0xFFF3E1AA);
+// const Color kCoreValue3 = Color(0xFFF8D600);
+// const Color kCoreValue3_1 = Color(0xFFFCEA9E);
+// const Color kCoreValue4 = Color(0xFFB9D900);
+// const Color kCoreValue4_1 = Color(0xFFE3F3A5);
+// const Color kCoreValue5 = Color(0xFF00AE1B);
+// const Color kCoreValue5_1 = Color(0xFFA3E6B4);
+// const Color kCoreValue6 = Color(0xFF007530);
+// const Color kCoreValue6_1 = Color(0xFF78D59E);
+// const Color kCoreValue7 = Color(0xFF005CA5);
+// const Color kCoreValue7_1 = Color(0xFF7AB9E6);
+// const Color kCoreValue8 = Color(0xFF1C3385);
+// const Color kCoreValue8_1 = Color(0xFF49AAEF);
+// const Color kCoreValue9 = Color(0xFF692A81);
+// const Color kCoreValue9_1 = Color(0xFFA17DE6);
+// const Color kCoreValue10 = Color(0xFFBC037B);
+// const Color kCoreValue10_1 = Color(0xFFE07FBC);
+// const Color kCoreValue11 = Color(0xFFF0025E);
+// const Color kCoreValue11_1 = Color(0xFFF676A6);
+// const Color kCoreValue12 = Color(0xFFEC0012);
+// const Color kCoreValue12_1 = Color(0xFFEF7272);
+//
+
+const Color valueProgress = Color(0xFFFAC6A1);
+const Color valueReceptivity = Color(0xFFF3E1AA);
+const Color valueAspiration = Color(0xFFFCEA9E);
+const Color valuePerseverance = Color(0xFFE3F3A5);
+const Color valueGratitude = Color(0xFFA3E6B4);
+const Color valueHumility = Color(0xFF78D59E);
+const Color valueSincerity = Color(0xFF7AB9E6);
+const Color valuePeace = Color(0xFF49AAEF);
+const Color valueEquanimity = Color(0xFFA17DE6);
+const Color valueGenerosity = Color(0xFFE07FBC);
+const Color valueGoodness = Color(0xFFF676A6);
+const Color valueCourage = Color(0xFFEF7272);
+
+final valueColors ={
+  CoreValues.progress: valueProgress,
+  CoreValues.receptivity: valueReceptivity,
+  CoreValues.aspiration: valueAspiration,
+  CoreValues.perseverance: valuePerseverance,
+  CoreValues.gratitude: valueGratitude,
+  CoreValues.humility: valueHumility,
+  CoreValues.sincerity: valueSincerity,
+  CoreValues.peace: valuePeace,
+  CoreValues.equanimity: valueEquanimity,
+  CoreValues.generosity: valueGenerosity,
+  CoreValues.goodness: valueGoodness,
+  CoreValues.courage: valueCourage,
+};
 
 //AppColor1
 const Color kApp1 = Color(0xFFAEBFFF);

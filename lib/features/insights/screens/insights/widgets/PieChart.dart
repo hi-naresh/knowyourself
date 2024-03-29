@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 
-import '../../../../learning/model/core_values/core_values.dart';
+import '../../../model/core_values.dart';
 
 class PieChart extends StatelessWidget {
   final double strokeWidth;
@@ -39,6 +39,21 @@ class PieChartPainter extends CustomPainter {
     required this.strokeColor,
     required this.coreValues, // Update to coreValues
   });
+
+  List<Color> coreValueColors = [
+    valueProgress,
+    valueReceptivity,
+    valueAspiration,
+    valuePerseverance,
+    valueGratitude,
+    valueHumility,
+    valueSincerity,
+    valuePeace,
+    valueEquanimity,
+    valueGenerosity,
+    valueGoodness,
+    valueCourage,
+  ];
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -103,7 +118,7 @@ class PieChartPainter extends CustomPainter {
       );
 
       final paint = Paint()
-        ..color = coreValue.color
+        ..color = coreValueColors[i] // Update to coreValueColors
         ..style = PaintingStyle.fill;
       canvas.drawPath(path, paint);
 

@@ -22,7 +22,7 @@ Future<void> main() async {
   // runApp(const MyApp());
   final runnableApp = _buildRunnableApp(
     isWeb: kIsWeb,
-    webAppWidth: 375.0,
+    webAppWidth:double.infinity,
     app: const MyApp(),
   );
 
