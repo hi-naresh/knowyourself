@@ -29,7 +29,7 @@ class DailyMilestoneSection extends StatelessWidget {
                 top: KSizes.lg,
                 child: SvgPicture.asset(
                   KImages.health5,
-                  height: 130,
+                  height: 129,
                   fit: BoxFit.contain,
                 ),
               ),
