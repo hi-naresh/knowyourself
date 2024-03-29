@@ -4,6 +4,7 @@ import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../../data/repo/space/journal/journal_repo.dart';
 import '../model/journal_model.dart';
+import '../screens/journal_view_entry/journal_view_entry.dart';
 
 class JournalController extends GetxController {
   static JournalController get instance => Get.find();
@@ -91,6 +92,10 @@ class JournalController extends GetxController {
 
   String getNumberOfEntries() {
     return journalEntries.length.toString();
+  }
+
+  viewJournalEntry(JournalEntry journalEntry) {
+    Get.to(() => JournalEntryView(journalEntry: journalEntry));
   }
 
 }

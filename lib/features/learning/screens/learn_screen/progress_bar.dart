@@ -10,10 +10,10 @@ class LearningProgressBars extends StatefulWidget {
   final List<Color> colors;
 
   const LearningProgressBars({
-    Key? key,
+    super.key,
     required this.learningAspectsProgress,
     this.colors = const [kApp1, kApp2, kApp3, kApp4],
-  }) : super(key: key);
+  });
 
   @override
   _LearningProgressBarsState createState() => _LearningProgressBarsState();

@@ -6,7 +6,7 @@ import 'package:knowyourself/utils/http/http_client.dart';
 import 'package:workmanager/workmanager.dart';
 import 'app.dart';
 import 'data/repo/auth/auth_repo.dart';
-import 'data/services/background_services/background_service.dart';
+import 'data/helper_service/background_scheduler/background_service.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 

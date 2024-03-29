@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:get_storage/get_storage.dart';
 import '../../../features/learning/model/articles/article_model.dart';
 import '../../../utils/constants/enums.dart';
-class CacheManager {
+class ArticleCacheService {
   final GetStorage _box = GetStorage();
   final String _articlesKey = 'articles';
   final String _timestampKey = 'articles_timestamp';

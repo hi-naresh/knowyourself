@@ -7,8 +7,10 @@ import 'package:knowyourself/features/learning/screens/learn_screen/learn_screen
 import 'package:knowyourself/features/mySpace/space_screen.dart';
 
 import '../../utils/constants/colors.dart';
+import '../common/extras/auth_screen_prompt.dart';
 import '../common/widgets/appbar/appbar.dart';
 import '../common/widgets/navbar/bottom_nar_bar.dart';
+import '../data/helper_service/local_auth/local_bio_auth.dart';
 import '../utils/constants/sizes.dart';
 
 class MasterScreen extends StatelessWidget {
@@ -76,10 +78,36 @@ class MasterController extends GetxController {
   static MasterController get instance => Get.find();
   final RxInt currentIndex = 0.obs;
 
+  final LocalBioAuth _localBioAuth = LocalBioAuth.instance;
+
   final List<Widget> _screens = [
     const Dashboard(),
     const InsightScreen(),
     const LearnScreen(),
-    const MySpaceScreen(),
-  ];
+    const AuthScreenPrompt(),
+  ].obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    currentIndex.listen((index) {
+      if (index == 3) { // Index 3 corresponds to MySpaceScreen
+        authenticateBeforeAccess();
+      }else{
+        _screens[3] = const AuthScreenPrompt();
+      }
+    });
+  }
+
+  Future<void> authenticateBeforeAccess() async {
+    bool isAuthenticated = await _localBioAuth.authenticateWithBiometrics();
+    if (isAuthenticated) {
+      // If authentication is successful, allow access to MySpaceScreen
+      _screens[3] = const MySpaceScreen();
+    } else {
+      // Handle authentication failure, such as displaying an error message or redirecting
+      // currentIndex.value = 0; // Redirect user to a safe screen e.g., Dashboard
+      Get.snackbar('Authentication Required', 'Please authenticate to access this section.');
+    }
+  }
 }

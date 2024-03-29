@@ -83,16 +83,16 @@ class SettingScreen extends StatelessWidget {
                 icon: CupertinoIcons.moon_circle,
               ),
 
+            // SettingTile(
+            //       title: "Bio-metric Login",
+            //       subtitle: "Login with your face/fingerprint",
+            //       trailing: CupertinoSwitch(
+            //         value: true,
+            //         onChanged: (value) {},
+            //         activeColor: Theme.of(context).primaryColor,
+            //       ),
+            //       icon: CupertinoIcons.eye_slash),
             SettingTile(
-                  title: "Bio-metric Login",
-                  subtitle: "Login with your face/fingerprint",
-                  trailing: CupertinoSwitch(
-                    value: true,
-                    onChanged: (value) {},
-                    activeColor: Theme.of(context).primaryColor,
-                  ),
-                  icon: CupertinoIcons.eye_slash),
-              SettingTile(
                 title: "Notifications",
                 subtitle: "In order to remind your tasks.",
                 trailing: CupertinoSwitch(
@@ -102,16 +102,25 @@ class SettingScreen extends StatelessWidget {
                 ),
                 icon: CupertinoIcons.bell,
               ),
-              const SettingTile(
-                  title: "About",
-                  subtitle: "Know more about KYB",
-                  trailing: Icon(CupertinoIcons.forward),
-                  icon: CupertinoIcons.layers_alt),
+
+
+              SettingTile(
+                  title: "My Space",
+                  subtitle: "Personalize your space",
+                  onTap: ()=> Get.toNamed(KRoutes.getSettingSpaceRoute()),
+                  trailing: const Icon(CupertinoIcons.forward),
+                  icon: CupertinoIcons.sparkles),
+
               const SettingTile(
                   title: "Help",
                   subtitle: "Get help from KYB",
                   trailing: Icon(CupertinoIcons.forward),
                   icon: CupertinoIcons.conversation_bubble),
+              const SettingTile(
+                  title: "About",
+                  subtitle: "Know more about KYB",
+                  trailing: Icon(CupertinoIcons.forward),
+                  icon: CupertinoIcons.layers_alt),
               SettingTile(
                   onTap: () {
                     KHelper.showBottomSheet(const LogoutPop());

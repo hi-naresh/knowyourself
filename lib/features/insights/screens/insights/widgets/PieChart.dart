@@ -11,11 +11,11 @@ class PieChart extends StatelessWidget {
   final List<CoreValue> coreValues;
 
   const PieChart({
-    Key? key,
+    super.key,
     this.strokeWidth = 4.0,
     this.strokeColor = Colors.transparent,
     required this.coreValues, // Update to coreValues
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

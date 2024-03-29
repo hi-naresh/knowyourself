@@ -10,11 +10,11 @@ class FullCircleSlider extends StatelessWidget {
   final FullCircleSliderController controller = Get.put(FullCircleSliderController());
 
   FullCircleSlider({
-    Key? key,
+    super.key,
     required double value,
     required this.onChanged,
     required this.emojis,
-  }) : super(key: key) {
+  }) {
     controller.value.value = value;
   }
 

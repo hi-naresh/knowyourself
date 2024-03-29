@@ -8,7 +8,7 @@ import '../../../model/activity_model.dart';
 import 'helpers/activity_tile.dart';
 
 class ActivitiesToShiftScreen extends StatelessWidget {
-  ActivitiesToShiftScreen({Key? key}) : super(key: key);
+  ActivitiesToShiftScreen({super.key});
 
   final List<Activity> activities = [
     Activity(title: 'Go for a walk in nature', duration: '10 min', imageUrl: 'assets/illustrations/physical.svg', color: kApp1),
