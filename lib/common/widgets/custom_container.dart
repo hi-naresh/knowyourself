@@ -38,20 +38,20 @@ class CustomContainer extends StatelessWidget {
         // height: height,
         decoration: BoxDecoration(
           borderRadius: borderRadius,
-
           gradient: LinearGradient(
             colors: [
-              color.withOpacity(0.5),
               color,
+              color.withOpacity(0.5),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomLeft,
           ),
           boxShadow: CustomShadow.getShadow( [
             BoxShadow(
-              color: color.withOpacity(0.7),
-              offset: const Offset(0, 5),
-              blurRadius: 15,
+              color: color.withOpacity(0.5),
+              offset: const Offset(0, 4),
+              spreadRadius: 1,
+              blurRadius: 10,
             )
           ]),
         ),

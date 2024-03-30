@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../utils/helpers/shadow_disabler.dart';
 
@@ -30,7 +31,7 @@ class MyCard extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomLeft,
           ),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(KSizes.borderRadiusLgx),
           boxShadow: CustomShadow.getShadow([
             BoxShadow(
               color: color.withOpacity(0.5),

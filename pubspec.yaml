@@ -35,6 +35,8 @@ dependencies:
   url_launcher: ^6.1.9
 
   http: ^0.13.5
+  html: ^0.15.4
+
   firebase_auth: ^4.6.2
   firebase_core: ^2.13.1
   cloud_firestore: ^4.8.0

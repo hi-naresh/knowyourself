@@ -44,11 +44,15 @@ class MoodSection extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: controller.greeting(),
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          color: KColors.dark,
+                        )
                       ),
                       TextSpan(
                         text: "${userController.user.value.fullName!}!",
-                        style: Theme.of(context).textTheme.headlineSmall,
+                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                            color: KColors.dark,
+                          )
                       ),
                       TextSpan(
                         text: "\n${KTexts.feel}",
