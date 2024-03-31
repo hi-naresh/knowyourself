@@ -7,15 +7,16 @@ import '../../utils/helpers/shadow_disabler.dart';
 class MyCard extends StatelessWidget {
   final String title;
   final Color color;
-  final String imageUrl;
+  final String? imageUrl;
   final double? width;
   final double? height;
   final double? left;
   final double? top;
+  final double? fontSize;
   final Function()? onTap;
   const MyCard({super.key,
-    required this.title, required this.color, required this.imageUrl,
-    this.width, this.height, this.onTap, this.left, this.top});
+    required this.title, required this.color, this.imageUrl,
+    this.width, this.height, this.onTap, this.left, this.top, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -42,23 +43,25 @@ class MyCard extends StatelessWidget {
           ]),        ),
         child: Stack(
           children: [
+            if (imageUrl != null)
             Positioned(
               left: left?? width!/ 4,
               top: top?? height!/20,
               child: SvgPicture.asset(
-                imageUrl,
+                imageUrl!,
                 width: width,
                 height: height,
                 fit: BoxFit.contain,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(14.0),
               child: Text(
                 title,
-                style: const TextStyle(
+                style: TextStyle(
+                  overflow: TextOverflow.ellipsis,
                   color: Colors.white,
-                  fontSize: 24,
+                  fontSize: fontSize??18,
                   fontWeight: FontWeight.bold,
                 ),
               ),

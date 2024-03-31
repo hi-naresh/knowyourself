@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:knowyourself/common/styles/styles.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
-import '../../../../utils/constants/colors.dart';
-import '../../../../utils/helpers/helper_functions.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/helpers/helper_functions.dart';
 
 class LearningProgressBars extends StatefulWidget {
   final Map<String, double> learningAspectsProgress;

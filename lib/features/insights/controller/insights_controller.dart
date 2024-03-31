@@ -10,13 +10,25 @@ class InsightsController extends GetxController {
   static InsightsController get instance => Get.find();
   final RxList<JournalEntry> journalEntries = <JournalEntry>[].obs;
   final RxList<CoreValue> analyzedCoreValues = <CoreValue>[].obs;
-
+  //if empty then all values to 100% by default as List of CoreValues
+  final List<CoreValue> byDefault = [];
+  // void addDefaultValues() {
+  //   for (var value in CoreValues.values) {
+  //     byDefault.add(CoreValue(name: value.toString().split('.').last, percentage: 0));
+  //   }
+  // }
 
   @override
   void onReady() {
     super.onReady();
     calculateInsights();
   }
+
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   addDefaultValues();
+  // }
 
   Future<void> loadJournalEntries() async {
     List<JournalEntry> entries = await JournalRepo.instance.getJournalEntries();

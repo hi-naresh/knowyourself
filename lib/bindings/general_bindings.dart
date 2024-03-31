@@ -13,7 +13,7 @@ class GeneralBindings extends Bindings{
     // Get.put(NetworkManager());
     // Get.put(NotificationService());
     Get.lazyPut<NotificationService>(() => NotificationService(),fenix: true);
-    Get.lazyPut<ArticleController>(() => ArticleController());
+    // Get.lazyPut<ArticleController>(() => ArticleController());
     Get.lazyPut(() => UserController(), fenix: true);
     Get.lazyPut(() => BackupService(), fenix: true);
     Get.lazyPut(() => LocalBioAuth(),fenix: true);

@@ -125,7 +125,7 @@ class PieChartPainter extends CustomPainter {
 
       // Stroke for the path - internal border
       final strokePaint = Paint()
-        ..color = KColors.white
+        ..color = KHelper.isDark() ? KColors.scaffoldDark : KColors.scaffoldLight
         ..style = PaintingStyle.stroke
         ..strokeWidth = strokeWidth/3;
       canvas.drawPath(path, strokePaint);

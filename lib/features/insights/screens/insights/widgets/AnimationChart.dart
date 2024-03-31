@@ -29,7 +29,7 @@ class _AnimatedPieChartState extends State<AnimatedPieChart> with TickerProvider
 
     _controllers = List.generate(widget.coreValues.length, (index) {
       return AnimationController(
-        duration: const Duration(milliseconds: 500), // Making the animation quick
+        duration: const Duration(milliseconds: 300), // Making the animation quick
         vsync: this,
       );
     });
@@ -39,7 +39,7 @@ class _AnimatedPieChartState extends State<AnimatedPieChart> with TickerProvider
 
       // Then animate back to the actual percentage in the second half
       var secondHalf = Tween<double>(begin: 100, end: widget.coreValues[index].percentage).animate(
-        CurvedAnimation(parent: _controllers[index], curve: const Interval(0.5, 1.0, curve: Curves.easeIn)),
+        CurvedAnimation(parent: _controllers[index], curve: const Interval(0.5, 1.0, curve: Curves.easeInOut)),
       );
       // Using a ProxyAnimation to link both animations
       return ProxyAnimation(secondHalf);

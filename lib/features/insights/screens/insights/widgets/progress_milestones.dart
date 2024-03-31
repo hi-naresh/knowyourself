@@ -3,7 +3,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../common/widgets/custom_container.dart';
 import '../../../../../utils/constants/colors.dart';
-import 'helper/progress_chart_painter.dart';
+import '../../dashboard/widgets/helper/progress_chart_painter.dart';
 
 
 class ProgressComponent extends StatefulWidget {
@@ -29,7 +29,7 @@ class _ProgressComponentState extends State<ProgressComponent> with SingleTicker
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3), // The duration of the animation
+      duration: const Duration(milliseconds: 1000), // The duration of the animation
     );
 
     _animations = widget.milestonesProgress.keys.map((key) {

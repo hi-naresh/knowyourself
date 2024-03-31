@@ -82,7 +82,7 @@ class KColors {
   // Background colors
   static const Color light = Color(0xffe5e5ea);
   static const Color navLight = Color(0xffcecee3);
-  static const Color dark = Color(0xff3E3861);
+  static const Color dark = Color(0xff201d34);
   static const Color primaryBackground = Color(0xFFF3F5FF);
 
   // Background Container colors

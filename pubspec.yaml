@@ -36,6 +36,8 @@ dependencies:
 
   http: ^0.13.5
   html: ^0.15.4
+  youtube_player_flutter: ^9.0.0
+#  youtube_player_iframe: ^5.1.1
 
   firebase_auth: ^4.6.2
   firebase_core: ^2.13.1
@@ -74,3 +76,4 @@ flutter:
     - assets/brand/
     - assets/icons/
     - assets/animations/
+    - assets/materials/

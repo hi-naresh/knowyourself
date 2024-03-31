@@ -79,6 +79,7 @@ class KSizes {
   //custom cards
   static const double wCardSmall= 120.0;
   static const double hCardSmall= 80.0;
+  static const double hCardxSmall= 55.0;
 
   static const double wCardMedium= 160.0;
   static const double hCardMedium= 110.0;

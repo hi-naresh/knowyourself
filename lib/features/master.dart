@@ -83,7 +83,7 @@ class MasterController extends GetxController {
   final List<Widget> _screens = [
     const Dashboard(),
     const InsightScreen(),
-    const LearnScreen(),
+     LearnScreen(),
     const AuthScreenPrompt(),
   ].obs;
 

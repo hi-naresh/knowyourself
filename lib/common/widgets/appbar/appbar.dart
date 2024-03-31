@@ -21,13 +21,7 @@ class KAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: Padding(
         padding: const EdgeInsets.only(left: KSizes.defaultSpace),
         child: GestureDetector(
-          onTap: () {
-            if (back == true) {
-              Get.back();
-            } else {
-              Get.toNamed(KRoutes.getSettingsRoute());
-            }
-          },
+          onTap: () => back! ? Get.back() : Get.toNamed(KRoutes.getSettingsRoute()),
           child: Container(
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(

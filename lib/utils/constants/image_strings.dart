@@ -42,6 +42,10 @@ class KImages {
   static const String health21 = "assets/illustrations/health21.svg";
 
 
+  //materials
+  static const String sa = "assets/materials/sa.jpg";
+
+
   //avatars
   static const String avatar1 = "assets/avatars/avatar5.png";
   //home

@@ -21,7 +21,7 @@ class LocalBioAuth extends GetxService {
 
   // Load the authentication enabled state from GetStorage.
   Future<void> _loadAuthEnabledState() async {
-    bool isEnabled = await _storage.read(_authEnabledKey) ?? false;
+    bool isEnabled = _storage.read(_authEnabledKey) ?? false;
     isAuthEnabled.value = isEnabled;
   }
 

@@ -25,8 +25,6 @@ class QuoteService extends GetxService {
         var author = authorElement?.text.trim() ?? 'Sri Aurobindo';
         var tag = tagElement?.text.trim()?? 'Absolute';
 
-        print('Quote: $quote');
-
         // Save to storage
         _storage.write(_storageKey, {
           'title': quote,

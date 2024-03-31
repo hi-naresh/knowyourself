@@ -48,8 +48,10 @@ class BackupService extends GetxService {
       }
 
       // Notify user of successful import or handle errors
+      KHelper.showSnackBar("Data Imported", "Your data has been successfully imported.");
     } else {
       // User canceled the picker
+      KHelper.showSnackBar("Import Canceled", "You did not select a file to import.");
     }
   }
 

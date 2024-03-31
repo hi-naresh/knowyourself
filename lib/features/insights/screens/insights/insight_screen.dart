@@ -6,9 +6,9 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/text_strings.dart';
-import '../../../learning/screens/learn_screen/progress_bar.dart';
+import '../../../learning/screens/learn_screen/widgets/progress_bar.dart';
 import '../../controller/insights_controller.dart';
-import '../dashboard/widgets/progress_milestones.dart';
+import 'widgets/progress_milestones.dart';
 
 class InsightScreen extends StatelessWidget {
   const InsightScreen({super.key});
@@ -65,15 +65,16 @@ class InsightScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: KSizes.defaultSpace),
-            Obx(() => controller.analyzedCoreValues.isNotEmpty
-                    ? Center(
-                        child: AnimatedPieChart(
-                          coreValues: controller.analyzedCoreValues,
-                        ),
+            Center(
+              child: Obx(() => controller.analyzedCoreValues.isNotEmpty
+                      ? AnimatedPieChart(
+                        coreValues: controller.analyzedCoreValues,
                       )
-                    : const Text(
-                        'No data found...') // Placeholder for when data is not yet available
-                ),
+                      :  AnimatedPieChart(
+                coreValues: controller.byDefault,
+              ) // Placeholder for when data is not yet available
+                  ),
+            ),
             const SizedBox(height: KSizes.defaultSpace),
             Obx(
                 ()=> Column(

@@ -3,7 +3,6 @@ import 'package:knowyourself/features/insights/screens/dashboard/widgets/myself_
 import 'package:knowyourself/features/insights/screens/dashboard/widgets/quote_widget.dart';
 import '/features/insights/screens/dashboard/widgets/milestones_section.dart';
 import '/features/insights/screens/dashboard/widgets/mood_section.dart';
-import '/features/insights/screens/dashboard/widgets/progress_milestones.dart';
 import '/features/insights/screens/dashboard/widgets/recommend_section.dart';
 import '/utils/constants/sizes.dart';
 
@@ -18,11 +17,12 @@ class Dashboard extends StatelessWidget {
           children: [
             MoodSection(),
             SizedBox(height: KSizes.defaultSpace),
-            DailyMilestoneSection(),
-            SizedBox(height: KSizes.defaultSpace),
             QuoteWidget(),
             SizedBox(height: KSizes.defaultSpace),
+            DailyMilestoneSection(),
+            SizedBox(height: KSizes.defaultSpace),
             MyselfSection(),
+            SizedBox(height: KSizes.defaultSpace),
             SizedBox(height: KSizes.defaultSpace),
             RecommendSection(),
             SizedBox(height: KSizes.defaultSpace*5),

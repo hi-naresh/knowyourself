@@ -5,6 +5,9 @@ enum LifeAspects {
   all,mental, physical, emotional, spiritual
 }
 
+//  // types : Video Guide Auro-Society magazine audio-ebooks Centers
+enum CourseType{ video,guide, magazine, centers, eBooks, auroSociety }
+
 enum CoreValues{
   progress,
   receptivity,

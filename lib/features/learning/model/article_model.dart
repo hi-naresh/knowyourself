@@ -1,6 +1,9 @@
-import '../../../../utils/constants/enums.dart';
+import '../../../utils/constants/enums.dart';
 
 class Article {
+
+  final String id;
+  final DateTime fetchedAt;
   final String title;
   final String description;
   final String content;
@@ -10,6 +13,8 @@ class Article {
   final LifeAspects aspect;
 
   Article({
+    required this.id,
+    required this.fetchedAt,
     required this.title,
     required this.description,
     required this.content,
@@ -21,6 +26,8 @@ class Article {
 
   factory Article.fromJson(Map<String, dynamic> json, LifeAspects aspect) {
     return Article(
+      id: json['id'] as String? ?? '',
+      fetchedAt: DateTime.now(),
       title: json['title'] as String? ?? '',
       description: json['description'] as String? ?? '',
       content: json['content'] as String? ?? '',
@@ -34,6 +41,8 @@ class Article {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
+      'fetchedAt': fetchedAt.toIso8601String(),
       'title': title,
       'description': description,
       'content': content,
@@ -46,7 +55,7 @@ class Article {
 
   @override
   String toString() {
-    return 'Article{title: $title, description: $description, content: $content, url: $url, publishedAt: $publishedAt, urlToImage: $urlToImage, aspect: $aspect}';
+    return 'Article{id: $id, fetchedAt: $fetchedAt, title: $title, description: $description, content: $content, url: $url, publishedAt: $publishedAt, urlToImage: $urlToImage, aspect: $aspect}';
   }
 }
 
