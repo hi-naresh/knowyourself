@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/features/insights/screens/insights/widgets/AnimationChart.dart';
+import 'package:knowyourself/features/insights/screens/insights/widgets/reflection_chart.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
@@ -66,18 +66,13 @@ class InsightScreen extends StatelessWidget {
             ),
             const SizedBox(height: KSizes.defaultSpace),
             Center(
-              child: Obx(() => controller.analyzedCoreValues.isNotEmpty
-                      ? AnimatedPieChart(
-                        coreValues: controller.analyzedCoreValues,
-                      )
-                      :  AnimatedPieChart(
-                coreValues: controller.byDefault,
-              ) // Placeholder for when data is not yet available
-                  ),
+              child: ReflectionChart(
+
+              )
             ),
             const SizedBox(height: KSizes.defaultSpace),
             Obx(
-                ()=> Column(
+              () => Column(
                 children: controller.analyzedCoreValues
                     .map((e) => coreValueWidget(
                         context, e.name, e.percentage.toPrecision(2)))

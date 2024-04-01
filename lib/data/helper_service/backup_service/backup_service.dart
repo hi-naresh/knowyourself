@@ -58,7 +58,7 @@ class BackupService extends GetxService {
   void eraseData() {
     final storage = GetStorage();
     try {
-      storage.erase();
+      storage.remove('journalEntries');
       KHelper.showSnackBar("Deleted All Data", "My Space has been cleaned up.");
     } catch (e) {
       print('Error erasing data: $e');

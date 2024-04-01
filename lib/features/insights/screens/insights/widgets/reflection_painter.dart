@@ -4,41 +4,15 @@ import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../model/core_values.dart';
-
-class PieChart extends StatelessWidget {
+class ReflectionPainter extends CustomPainter {
   final double strokeWidth;
   final Color strokeColor;
   final List<CoreValue> coreValues;
 
-  const PieChart({
-    super.key,
-    this.strokeWidth = 4.0,
-    this.strokeColor = Colors.transparent,
-    required this.coreValues, // Update to coreValues
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      size: const Size(300, 300), // You can adjust the size as needed
-      painter: PieChartPainter(
-        strokeWidth: strokeWidth,
-        strokeColor: strokeColor,
-        coreValues: coreValues, // Update to coreValues
-      ),
-    );
-  }
-}
-
-class PieChartPainter extends CustomPainter {
-  final double strokeWidth;
-  final Color strokeColor;
-  final List<CoreValue> coreValues; // Now expects a list of CoreValue
-
-  PieChartPainter({
+  ReflectionPainter({
     required this.strokeWidth,
     required this.strokeColor,
-    required this.coreValues, // Update to coreValues
+    required this.coreValues,
   });
 
   List<Color> coreValueColors = [
@@ -100,6 +74,7 @@ class PieChartPainter extends CustomPainter {
     for (int i = 0; i < total; i++) {
       final CoreValue coreValue = coreValues[i];
       final startAngle = arcWidth * i - pi / 2;
+      // final radius = coreValue.percentage > 0 ? maxRadius * (coreValue.percentage / 100) : 0.1;
       final radius = maxRadius * (coreValue.percentage / 100); // Scale radius by percentage
 
       // Create a path for each segment
