@@ -52,7 +52,7 @@ class MySpaceScreen extends StatelessWidget {
                 children: const [
                   JournalScreen(),
                   MilestoneAdd(),
-                  QuestionSpace(),
+                  QuestionsScreen(),
                   MyStoryScreen(),
                   GratitudeWidget()
                 ],
