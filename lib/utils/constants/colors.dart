@@ -198,7 +198,7 @@ Color kBoxLight = kEmptyProgress.withOpacity(0.7);
 const Color kPieBox = Color(0xFFEEF6FF);
 // const Color kEmptyProgress = Color(0xFFE3E9F3);
 const Color kEmptyProgress = Color(0xFFE4E9F3);
-const Color kEmptyProgressDark = Color(0xFF3E3E3F);
+const Color kEmptyProgressDark = Color(0xFF353536);
 
 const Color kPrimaryColor = Color(0xFFAEBFFF);
 const Color kSecondaryColor = Color(0xFFD9E9FF);

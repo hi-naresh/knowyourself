@@ -9,7 +9,7 @@ class QuestionController extends GetxController {
   final QuestionRepo _questionRepo = Get.put(QuestionRepo());
   var questions = <QuestionModel>[].obs;
   final TextEditingController questionController = TextEditingController();
-  final Rx<ReminderPeriod> reminderPeriod = ReminderPeriod.daily.obs;
+  final Rx<Period> reminderPeriod = Period.daily.obs;
 
   @override
   void onInit() {

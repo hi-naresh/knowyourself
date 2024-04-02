@@ -51,10 +51,10 @@ class MySpaceScreen extends StatelessWidget {
                 controller: controller.tabController,
                 children: const [
                   JournalScreen(),
-                  MilestoneAdd(),
+                  MilestoneScreen(),
                   QuestionsScreen(),
                   MyStoryScreen(),
-                  GratitudeWidget()
+                  // GratitudeWidget()
                 ],
               ))
         ],
@@ -73,7 +73,7 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
     Tab(text: 'Milestones'),
     Tab(text: 'Questions'),
     Tab(text: 'Story'),
-    Tab(text: 'Gratitude'),
+    // Tab(text: 'Gratitude'),
   ];
   @override
   void onInit() {

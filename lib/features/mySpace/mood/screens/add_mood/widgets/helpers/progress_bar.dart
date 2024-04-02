@@ -20,7 +20,7 @@ class _ProgressBarState extends State<ProgressBar> {
   Widget build(BuildContext context) {
     final controller = AddMoodController.instance;
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: const EdgeInsets.only(top: KSizes.defaultSpace),
       child: LinearPercentIndicator(
         alignment: MainAxisAlignment.spaceBetween,
         leading: GestureDetector(
@@ -30,7 +30,7 @@ class _ProgressBarState extends State<ProgressBar> {
             size: KSizes.iconMd,
           ),
         ),
-        barRadius: const Radius.circular(20),
+        barRadius: const Radius.circular(KSizes.borderRadiusLg),
         lineHeight: KSizes.sm,
         width: 200,
         percent: widget.percent,

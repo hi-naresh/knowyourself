@@ -28,6 +28,22 @@ class QuestionsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                    text: 'My ',
+                    style: Theme.of(context).textTheme.headlineMedium),
+                TextSpan(
+                  text: 'Questions',
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        color: kApp4,
+                      ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: KSizes.spaceBtwItems),
           TextFormField(
             controller: controller.questionController,
             decoration: InputDecoration(
@@ -43,7 +59,7 @@ class QuestionsScreen extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Obx(() => Wrap(
                   spacing: 8,
-                  children: ReminderPeriod.values
+                  children: Period.values
                       .map((period) => ChoiceChip(
                             backgroundColor: KHelper.isDark()
                                 ? kEmptyProgressDark
@@ -56,7 +72,7 @@ class QuestionsScreen extends StatelessWidget {
                               ),
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            padding: const EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(10),
                             disabledColor: kEmptyProgress,
                             label: Text(period.name.capitalizeFirst!),
                             selected: controller.reminderPeriod.value == period,
@@ -69,7 +85,7 @@ class QuestionsScreen extends StatelessWidget {
                       .toList(),
                 )),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: KSizes.md),
           TextButton(
               style: const ButtonStyle().copyWith(
                   minimumSize: MaterialStateProperty.all(

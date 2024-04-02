@@ -4,7 +4,7 @@ class QuestionModel {
   final String id;
   final String userId;
   final String title;
-  final ReminderPeriod reminderPeriod;
+  final Period reminderPeriod;
   final String answer;
   final bool isAnswered;
 
@@ -21,7 +21,7 @@ class QuestionModel {
     String? id,
     String? userId,
     String? title,
-    ReminderPeriod? reminderPeriod,
+    Period? reminderPeriod,
     String? answer,
     bool? isAnswered,
   }) {
@@ -48,7 +48,8 @@ class QuestionModel {
     id: json['id'],
     userId: json['userId'],
     title: json['title'],
-    reminderPeriod: ReminderPeriod.values.firstWhere((e) => e.toString() == json['reminderPeriod']),
+    // reminderPeriod: Period.values.firstWhere((e) => e.toString() == json['reminderPeriod']),
+    reminderPeriod: json['reminderPeriod'] == 'Period.daily' ? Period.daily : json['reminderPeriod'] == 'Period.weekly' ? Period.weekly : Period.monthly,
     answer: json['answer'] ?? '',
     isAnswered: json['isAnswered'] ?? false,
   );

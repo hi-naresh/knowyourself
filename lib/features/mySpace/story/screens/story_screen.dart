@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/story/screens/widgets/story_section.dart';
+import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../controller/my_story_controller.dart';
@@ -16,6 +17,23 @@ class MyStoryScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: KSizes.md),
       child: ListView(
         children:[
+          Text.rich(
+            textAlign: TextAlign.center,
+            TextSpan(
+              children: [
+                TextSpan(
+                    text: 'My ',
+                    style: Theme.of(context).textTheme.headlineMedium),
+                TextSpan(
+                  text: 'Story',
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: kApp4,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: KSizes.spaceBtwItems),
           Obx(() => StorySection(
             storyType: StoryType.current,
             story: controller.currentStory.value,
