@@ -44,11 +44,15 @@ class MoodSection extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: controller.greeting(),
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          color: KColors.dark,
+                        )
                       ),
                       TextSpan(
                         text: "${userController.user.value.fullName!}!",
-                        style: Theme.of(context).textTheme.headlineSmall,
+                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                            color: KColors.dark,
+                          )
                       ),
                       TextSpan(
                         text: "\n${KTexts.feel}",
@@ -71,7 +75,9 @@ class MoodSection extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
                       "Express Your Mood & Reflect:\nLog emotions and thoughts.",
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: KColors.scaffoldDark,
+                      ),
                       textAlign: TextAlign.left,
                     ),
                   ),

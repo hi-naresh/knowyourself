@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../constants/colors.dart';
 import '../constants/sizes.dart';
@@ -67,6 +68,11 @@ class KHelper {
     return Theme.of(context).brightness == Brightness.dark;
   }
 
+  //isDarkMode without context
+  static bool isDark() {
+    return Get.isDarkMode;
+  }
+
   static Size screenSize() {
     return MediaQuery.of(Get.context!).size;
   }
@@ -94,37 +100,45 @@ class KHelper {
         .join('&');
   }
 
-  Future<void> sendMail() async {
-    final Uri emailLaunchUri = Uri(
-      scheme: 'mailto',
-      path: 'contact@KYB.com',
-      query: _encodeQueryParameters(<String, String>{
-        'subject': 'Feedback For KYB',
-      }),
-    );
+  // Future<void> sendMail() async {
+  //   final Uri emailLaunchUri = Uri(
+  //     scheme: 'mailto',
+  //     path: 'contact@KYB.com',
+  //     query: _encodeQueryParameters(<String, String>{
+  //       'subject': 'Feedback For KYB',
+  //     }),
+  //   );
+  //
+  //   launchUrl(emailLaunchUri);
+  // }
 
-    launchUrl(emailLaunchUri);
-  }
+  // Future<void> openPlayStore() async {
+  //   String playStoreLink =
+  //       "https://google.com";
+  //
+  //   final uri = Uri.parse(playStoreLink);
+  //   if (await canLaunchUrl(uri)) {
+  //     await launchUrl(
+  //       uri,
+  //       mode: LaunchMode.externalApplication,
+  //     );
+  //     return;
+  //   }
+  // }
 
-  Future<void> openPlayStore() async {
-    String playStoreLink =
-        "https://google.com";
-
-    final uri = Uri.parse(playStoreLink);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(
-        uri,
-        mode: LaunchMode.externalApplication,
-      );
-      return;
+  static Future<void> launchUrl(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url, mode: LaunchMode.inAppWebView);
     }
   }
 
-  static Future<void> launchUrl(Uri uri, {LaunchMode mode = LaunchMode.inAppWebView}) async {
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: mode);
-    }
-  }
+  // static Future<void> openUrl(String url) async {
+  //   if (await canLaunchUrl(Uri.parse(url))) {
+  //     await launch(url);
+  //   } else {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
   static List<Widget> wrapWidgets(List<Widget> widgets, int rowSize) {
     final wrappedList = <Widget>[];

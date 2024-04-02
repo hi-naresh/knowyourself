@@ -8,12 +8,11 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/helpers/helper_functions.dart';
-import '../../model/articles/article_model.dart';
-import 'article_read_screen.dart';
+import '../../model/article_model.dart';
 
 class ArticleWidget extends StatelessWidget {
   final Article article;
-  const ArticleWidget({Key? key, required this.article}) : super(key: key);
+  const ArticleWidget({super.key, required this.article});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,6 @@ class ArticleWidget extends StatelessWidget {
               fit: BoxFit.cover,
                 // placeholder: ,
                 errorWidget: ( context, url, error) {
-                  ArticleController.instance.networkError() ;
                   return Icon(CupertinoIcons.photo,size:Get.height * 0.15 ,);
                 }
             ),
@@ -84,8 +82,8 @@ class ArticleWidget extends StatelessWidget {
                         style: Theme.of(context).textTheme.labelLarge,
                       ),
                       GestureDetector(
-                        onTap: () => Get.to(() => ReadArticleScreen(article: article)),
-                        // onTap: () =>ArticleController.instance.openArticle(article.url),
+                        // onTap: () => Get.to(() => ReadArticleScreen(article: article)),
+                        onTap: () =>ArticleController.instance.openArticle(article.url),
                         child: const Icon(
                           CupertinoIcons.globe,
                           color: kApp3,

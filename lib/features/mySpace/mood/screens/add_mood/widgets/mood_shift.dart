@@ -62,11 +62,11 @@ class MoodTile extends StatelessWidget {
   final VoidCallback onTap;
 
   const MoodTile({
-    Key? key,
+    super.key,
     required this.mood,
     required this.color,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

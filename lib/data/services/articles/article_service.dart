@@ -1,12 +1,11 @@
 import 'package:get/get.dart';
-import '../../../features/learning/model/articles/article_model.dart';
+import '../../../features/learning/model/article_model.dart';
 import '../../../utils/constants/api_constants.dart';
 import '../../../utils/constants/enums.dart';
 
 class ArticleApiClient extends GetConnect {
 
   final fetchRequestTimes = 0.obs;
-
   Future<List<Article>> fetchArticles(LifeAspects aspect) async {
     try {
       final queryParam = aspect == LifeAspects.all

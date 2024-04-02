@@ -1,6 +1,7 @@
 
 class KSizes {
   // Padding and margin sizes
+  static const double zero = 0.0;
   static const double xs = 4.0;
   static const double sm = 8.0;
   static const double md = 16.0;
@@ -41,6 +42,9 @@ class KSizes {
   static const double borderRadiusSm = 4.0;
   static const double borderRadiusMd = 8.0;
   static const double borderRadiusLg = 12.0;
+  static const double borderRadiusLgx = 16.0;
+
+
   static const double borderRadiusXl = 24.0;
   static const double borderRadiusXxl = 40.0;
 
@@ -75,6 +79,7 @@ class KSizes {
   //custom cards
   static const double wCardSmall= 120.0;
   static const double hCardSmall= 80.0;
+  static const double hCardxSmall= 55.0;
 
   static const double wCardMedium= 160.0;
   static const double hCardMedium= 110.0;

@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:knowyourself/features/learning/screens/materials/pages/course_page.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/add_mood_screen.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/activities_to_shift.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/mood_shift.dart';
+import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_my_space.dart';
 import 'common/extras/notification_screen.dart';
 import 'features/master.dart';
 import 'features/personalisation/screens/profile/profile_screen.dart';
@@ -32,6 +34,9 @@ class KRoutes{
   static String getProfileRoute() => profileSetup;
 
   //settings screens
+  static const String settingSpace = '/settingSpace';
+  static String getSettingSpaceRoute() => settingSpace;
+
   static const String settings = '/settings';
   static const String profileEdit = '/profileEdit';
   static const String about = '/about';
@@ -54,9 +59,14 @@ class KRoutes{
   static const String moodShift = '/moodShift';
   static String getMoodShiftRoute() => moodShift;
 
+  //learning
+  static const String resourcesVideo = '/resourcesVideo';
+  static String getResourcesVideoRoute() => resourcesVideo;
+  static const String resourcesMagazine = '/resourcesMagazine';
+  static String getResourcesMagazineRoute() => resourcesMagazine;
+
   static const String activities = '/activities';
   static String getActivitiesRoute() => activities;
-
 
   //extras
   static const String notifications = '/notifications';
@@ -101,6 +111,15 @@ class KRoutes{
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
     GetPage(name: activities, page: () => ActivitiesToShiftScreen(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    GetPage(name: settingSpace, page: () => const SettingsMySpace(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    // GetPage(name: resourcesVideo, page: () =>  ResourcesVideoPage(),
+    //     transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    // ),
+    GetPage(name: resourcesMagazine, page: () =>  const CoursePage(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
   ];

@@ -20,12 +20,24 @@ class JournalScreen extends StatelessWidget {
         SliverToBoxAdapter(
           child: Column(
             children: [
+              const SizedBox(height: KSizes.defaultSpace),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(
-                    "My Reflections",
-                    style: Theme.of(context).textTheme.headlineMedium,
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                            text: 'My ',
+                            style: Theme.of(context).textTheme.headlineMedium),
+                        TextSpan(
+                          text: 'Reflections',
+                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                            color: kApp4,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   Row(
                     children: [

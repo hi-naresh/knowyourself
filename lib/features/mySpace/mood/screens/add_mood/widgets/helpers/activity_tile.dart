@@ -7,10 +7,10 @@ class ActivityTile extends StatelessWidget {
   final VoidCallback onTap;
 
   const ActivityTile({
-    Key? key,
+    super.key,
     required this.activity,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

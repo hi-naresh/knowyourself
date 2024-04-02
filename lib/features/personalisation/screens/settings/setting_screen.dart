@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/personalisation/controller/app_controller.dart';
+import '../../../../data/helper_service/local_auth/local_bio_auth.dart';
 import '../../../../routes.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
@@ -21,6 +22,7 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     final appController = AppStateController.instance;
+    final bioController = LocalBioAuth.instance;
     return Scaffold(
       appBar: const KAppBar(
         back: true,
@@ -86,13 +88,18 @@ class SettingScreen extends StatelessWidget {
             SettingTile(
                   title: "Bio-metric Login",
                   subtitle: "Login with your face/fingerprint",
-                  trailing: CupertinoSwitch(
-                    value: true,
-                    onChanged: (value) {},
-                    activeColor: Theme.of(context).primaryColor,
+                  trailing: Obx(
+                    ()=> CupertinoSwitch(
+                      value: bioController.isAuthEnabled.value,
+                      onChanged: (value) async {
+                        await bioController.toggleBioAuth(value);
+                        Get.snackbar('Settings Updated', value ? 'Biometric Authentication Enabled' : 'Biometric Authentication Disabled');
+                      },
+                      activeColor: Theme.of(context).primaryColor,
+                    ),
                   ),
                   icon: CupertinoIcons.eye_slash),
-              SettingTile(
+            SettingTile(
                 title: "Notifications",
                 subtitle: "In order to remind your tasks.",
                 trailing: CupertinoSwitch(
@@ -102,16 +109,25 @@ class SettingScreen extends StatelessWidget {
                 ),
                 icon: CupertinoIcons.bell,
               ),
-              const SettingTile(
-                  title: "About",
-                  subtitle: "Know more about KYB",
-                  trailing: Icon(CupertinoIcons.forward),
-                  icon: CupertinoIcons.layers_alt),
+
+
+              SettingTile(
+                  title: "My Space",
+                  subtitle: "Personalize your space",
+                  onTap: ()=> Get.toNamed(KRoutes.getSettingSpaceRoute()),
+                  trailing: const Icon(CupertinoIcons.forward),
+                  icon: CupertinoIcons.sparkles),
+
               const SettingTile(
                   title: "Help",
                   subtitle: "Get help from KYB",
                   trailing: Icon(CupertinoIcons.forward),
                   icon: CupertinoIcons.conversation_bubble),
+              const SettingTile(
+                  title: "About",
+                  subtitle: "Know more about KYB",
+                  trailing: Icon(CupertinoIcons.forward),
+                  icon: CupertinoIcons.layers_alt),
               SettingTile(
                   onTap: () {
                     KHelper.showBottomSheet(const LogoutPop());

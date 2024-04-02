@@ -2,10 +2,10 @@
 import 'package:get/get.dart';
 
 import '../../../data/services/articles/article_service.dart';
-import '../../../data/services/cache_manager/cache_manager.dart';
+import '../../../data/services/articles/article_cache.dart';
 import '../../../utils/constants/enums.dart';
 import '../../../utils/helpers/helper_functions.dart';
-import '../model/articles/article_model.dart';
+import '../model/article_model.dart';
 
 class ArticleController extends GetxController {
 
@@ -13,7 +13,7 @@ class ArticleController extends GetxController {
   final ArticleApiClient apiClient = ArticleApiClient();
   final RxList<Article> articles = <Article>[].obs;
   final Rx<LifeAspects> selectedAspect = LifeAspects.all.obs;
-  final CacheManager _cacheManager = CacheManager(); // Create an instance of CacheManager
+  final ArticleCacheService _cacheManager = ArticleCacheService(); // Create an instance of CacheManager
 
   @override
   void onInit() {
@@ -27,16 +27,12 @@ class ArticleController extends GetxController {
     KHelper.showSnackBar("Cache Deleted", "All cached articles have been deleted.");
   }
 
-  void networkError() {
-    KHelper.showSnackBar("Network Error", "Please check your internet connection and try again.");
-  }
-
   void fetchAndSetArticles(LifeAspects aspect) async {
     // get cached articles
-    final cachedArticles = _cacheManager.getArticles(aspect);
+    final List<Article>? cachedArticles = _cacheManager.getArticles(aspect);
     if (cachedArticles != null) {
       articles.value = cachedArticles;
-      return; // Return early if we have valid cached articles for today
+      return;
     }
 
     // If no valid cache for today, fetch from the API
@@ -73,6 +69,6 @@ class ArticleController extends GetxController {
 
   openArticle(String s) {
     //convert string into uri
-    KHelper.launchUrl( Uri.parse(s));
+    KHelper.launchUrl( s);
   }
 }

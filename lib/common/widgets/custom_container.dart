@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
+import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import 'package:knowyourself/utils/helpers/shadow_disabler.dart';
 
 class CustomContainer extends StatelessWidget {
   final Widget child;
   final double width;
-  // final double height;
-  final Color color;
+  // final double? height;
+  late Color color;
   final BorderRadius borderRadius;
   final EdgeInsets padding;
   final Clip? clipBehavior;
@@ -15,11 +18,11 @@ class CustomContainer extends StatelessWidget {
   final Alignment alignment;
   final Function()? onTap;
 
-  const CustomContainer({super.key,
+   CustomContainer({super.key,
     required this.child,
     this.width = double.infinity,
     // this.height = double.maxFinite,
-    this.color = Colors.white,
+    this.color = Colors.transparent,
     this.borderRadius = const BorderRadius.all(Radius.circular(25)),
     this.padding = const EdgeInsets.all(KSizes.md),
     this.margin = const EdgeInsets.all(0),
@@ -30,6 +33,10 @@ class CustomContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = KHelper.isDark();
+    if(color == Colors.transparent){
+      color = isDark ? color : kEmptyProgress;
+    }
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -38,20 +45,20 @@ class CustomContainer extends StatelessWidget {
         // height: height,
         decoration: BoxDecoration(
           borderRadius: borderRadius,
-
           gradient: LinearGradient(
             colors: [
-              color.withOpacity(0.5),
               color,
+              color.withOpacity(0.5),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomLeft,
           ),
           boxShadow: CustomShadow.getShadow( [
             BoxShadow(
-              color: color.withOpacity(0.7),
-              offset: const Offset(0, 5),
-              blurRadius: 15,
+              color: color.withOpacity(0.5),
+              offset: const Offset(0, 4),
+              spreadRadius: 1,
+              blurRadius: 10,
             )
           ]),
         ),

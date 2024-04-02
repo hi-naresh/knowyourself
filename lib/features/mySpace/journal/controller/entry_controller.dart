@@ -18,31 +18,29 @@ class EntryController extends GetxController {
   static EntryController get instance => Get.find();
   final textEditingController = TextEditingController();
 
-  // Sound recorder
-  FlutterSoundRecorder? soundRecorder;
-  bool isRecorderInitialized = false;
-
   // Selected image file , can be multiple
   Rx<XFile?> selectedImage = Rx<XFile?>(null);
 
-  // Recorded voice note path
-  Rx<String?> voiceNotePath = Rx<String?>(null);
-
   // User's location
   Rx<Position?> userPosition = Rx<Position?>(null);
-
   RxString location = ''.obs;
+
+  // Sound recorder
+  // FlutterSoundRecorder? soundRecorder;
+  // bool isRecorderInitialized = false;
+  // Recorded voice note path
+  Rx<String?> voiceNotePath = Rx<String?>(null);
 
   @override
   void onInit() {
     super.onInit();
-    initializeRecorder();
+    // initializeRecorder();
   }
 
   @override
   void onClose() {
-    soundRecorder?.closeRecorder();
-    soundRecorder = null;
+    // soundRecorder?.closeRecorder();
+    // soundRecorder = null;
     super.onClose();
   }
 
@@ -76,14 +74,6 @@ class EntryController extends GetxController {
     voiceNotePath.value = null;
     userPosition.value = null;
   }
-
-  Future<void> initializeRecorder() async {
-    await Permission.microphone.request();
-    soundRecorder = FlutterSoundRecorder();
-    await soundRecorder!.openRecorder();
-    isRecorderInitialized = true;
-  }
-
   Future<void> pickImage() async {
     try {
       final XFile? image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -110,31 +100,38 @@ class EntryController extends GetxController {
       openAppSettings();
     }
   }
-  Future<void> recordVoiceNote() async {
-    // if (!isRecorderInitialized) return;
-    final status = await Permission.microphone.status;
-    if (status == PermissionStatus.denied) {
-      print('Recording$status');
-      openAppSettings();
-    }
 
-    if (await Permission.microphone.isGranted) {
-      print('Recording');
-      await soundRecorder!.startRecorder(toFile: 'voice_note.aac');
-    } else {
-      // Handle permission denied
-      KHelper.showSnackBar('Permission denied', 'Please enable microphone permission');
-      await Permission.microphone.request();
-      openAppSettings();
-    }
-  }
-  Future<void> stopRecording() async {
-    if (isRecorderInitialized) {
-      await soundRecorder!.stopRecorder();
-      // save the audio with journal entry
-      // voiceNotePath.value = soundRecorder!.path;
-    }
-  }
+  // Future<void> initializeRecorder() async {
+  //   await Permission.microphone.request();
+  //   soundRecorder = FlutterSoundRecorder();
+  //   await soundRecorder!.openRecorder();
+  //   isRecorderInitialized = true;
+  // }
+  // Future<void> recordVoiceNote() async {
+  //   // if (!isRecorderInitialized) return;
+  //   final status = await Permission.microphone.status;
+  //   if (status == PermissionStatus.denied) {
+  //     // print('Recording$status');
+  //     openAppSettings();
+  //   }
+  //
+  //   if (await Permission.microphone.isGranted) {
+  //     // print('Recording');
+  //     await soundRecorder!.startRecorder(toFile: 'voice_note.aac');
+  //   } else {
+  //     // Handle permission denied
+  //     KHelper.showSnackBar('Permission denied', 'Please enable microphone permission');
+  //     await Permission.microphone.request();
+  //     openAppSettings();
+  //   }
+  // }
+  // Future<void> stopRecording() async {
+  //   if (isRecorderInitialized) {
+  //     await soundRecorder!.stopRecorder();
+  //     // save the audio with journal entry
+  //     // voiceNotePath.value = soundRecorder!.path;
+  //   }
+  // }
 
   Future<void> addLocation() async {
     LocationPermission permission = await Geolocator.checkPermission();
@@ -166,7 +163,7 @@ class EntryController extends GetxController {
         List<Placemark> placemarks = await placemarkFromCoordinates(
             userPosition.value!.latitude, userPosition.value!.longitude);
         // location.value = placemarks.first.name ?? "No nearby area found";
-        print("Location: ${placemarks.first.name}");
+        // print("Location: ${placemarks.first.name}");
         return placemarks.first.name ?? "No nearby area found";
       } else {
         return "No nearby area found";
@@ -187,7 +184,9 @@ class EntryController extends GetxController {
   void deFocusKeyboard(BuildContext context) {
     FocusScope.of(context).unfocus();
   }
-  addBookmark() {
-
+  void cancelEntry() {
+    deFocusKeyboard(Get.context!);
+    Get.back();
   }
+  addBookmark() {}
 }

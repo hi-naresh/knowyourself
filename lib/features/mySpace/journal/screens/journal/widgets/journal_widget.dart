@@ -18,57 +18,63 @@ class JournalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = JournalController.instance;
-    return CustomContainer(
-      color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
-      margin: const EdgeInsets.symmetric(vertical: KSizes.md),
-      padding: const EdgeInsets.all(KSizes.md+KSizes.xs),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            journalEntry.content,
-            softWrap: true,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                DateFormat.jm().format(journalEntry.entryDate),
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
-              IconButton(
-                  onPressed: ()=>controller.deleteJournalEntry(journalEntry.id),
-                  icon: const Icon(
-                      CupertinoIcons.delete_left_fill,
-                    size: KSizes.iconMd,
-                  )),
-            ],
-          ),
-          const SizedBox(height: KSizes.md),
-          if (journalEntry.imagePath != null)
-            ClipRRect(
-              borderRadius: BorderRadius.circular(KSizes.borderRadiusXl),
-              clipBehavior: Clip.antiAlias,
-              child: Image(
-                  image: AssetImage(journalEntry.imagePath.toString()),
-                  width: double.infinity,
-                  height: Get.height * 0.15,
-                  fit: BoxFit.cover,
-                  errorBuilder: (BuildContext context, Object error,
-                      StackTrace? stackTrace) {
-                    return Icon(CupertinoIcons.photo,size:Get.height * 0.15 ,);
-                  }
-              ),
+    return GestureDetector(
+      onTap: () => controller.viewJournalEntry(journalEntry),
+      child: CustomContainer(
+        color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
+        margin: const EdgeInsets.symmetric(vertical: KSizes.md),
+        padding: const EdgeInsets.all(KSizes.md+KSizes.xs),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              journalEntry.content,
+              softWrap: true,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
-          const SizedBox(height: KSizes.md),
-          if (journalEntry.locationPath != null)
+            const SizedBox(height: KSizes.md),
+            journalEntry.imagePath != null?
+              ClipRRect(
+                borderRadius: BorderRadius.circular(KSizes.borderRadiusXl),
+                clipBehavior: Clip.antiAlias,
+                child: Image(
+                    image: AssetImage(journalEntry.imagePath.toString()),
+                    width: double.infinity,
+                    height: Get.height * 0.15,
+                    fit: BoxFit.cover,
+                    errorBuilder: (BuildContext context, Object error,
+                        StackTrace? stackTrace) {
+                      return const SizedBox();
+                    }
+                ),
+              ):
+            const SizedBox(height: KSizes.zero),
+            const SizedBox(height: KSizes.md),
+
+            journalEntry.locationPath != null?
             Text(journalEntry.locationPath.toString() ,
-                textAlign: TextAlign.right,
-                style: Theme.of(context).textTheme.labelMedium),
-        ],
+                  textAlign: TextAlign.right,
+                  style: Theme.of(context).textTheme.labelMedium):
+            const SizedBox(height: KSizes.zero),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  DateFormat.jm().format(journalEntry.entryDate),
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+                IconButton(
+                    onPressed: ()=>controller.deleteJournalEntry(journalEntry.id),
+                    icon: const Icon(
+                      CupertinoIcons.restart,
+                      size: KSizes.iconMd,
+                    )),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -11,7 +11,7 @@ class RecommendSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  CustomContainer(
-      color: kEmptyProgress.withOpacity(0.3),
+      color: kApp1Light.withOpacity(0.5),
       padding: const EdgeInsets.all(KSizes.defaultSpace),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

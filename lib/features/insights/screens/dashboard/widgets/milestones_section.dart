@@ -26,10 +26,14 @@ class DailyMilestoneSection extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Positioned(
-                top: KSizes.lg,
+                left: 0,
                 child: SvgPicture.asset(
+                  colorFilter: const ColorFilter.mode(
+                    Colors.white70,
+                    BlendMode.modulate,
+                  ),
                   KImages.health5,
-                  height: 130,
+                  height: 152,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -38,15 +42,22 @@ class DailyMilestoneSection extends StatelessWidget {
                   children: [
                     TextSpan(
                       //demo
-                        text: "Tasks: 5/",
+                        text: "Tasks: 2/",
                         // text: (value.toDolist.length - value.getUncompletedTasksCount()).toString(),
-                        style: Theme.of(context).textTheme.labelSmall
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: KColors.dark,
+                          fontWeight: FontWeight.bold,
+                        )
                     ),
                     TextSpan(
                       //demo
-                        text: "2",
+                        text: "6",
                         // text: '/${value.toDolist.length} task completed',
-                        style: Theme.of(context).textTheme.labelSmall
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: KColors.dark,
+                          fontWeight: FontWeight.bold,
+
+                        )
                     ),
                     TextSpan(
                       text: "\n${KTexts.dailyMilestones}",
@@ -71,7 +82,7 @@ class DailyMilestoneSection extends StatelessWidget {
                   completedTasks: 2,
                   totalTasks: 5,
                   radius: KSizes.xl,
-                  strokeWidth: KSizes.md/1.5,
+                  strokeWidth: KSizes.md/1,
                 ),
                 child: SizedBox(
                   height: 80,
@@ -81,7 +92,7 @@ class DailyMilestoneSection extends StatelessWidget {
                       //demo
                       "45%",
                       // "${value.toDolist.isNotEmpty ? ((value.toDolist.length - value.getUncompletedTasksCount()) * 100 / value.toDolist.length).toStringAsFixed(1) : 0} %",
-                      style: Theme.of(context).textTheme.titleSmall,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
                 ),
@@ -89,7 +100,7 @@ class DailyMilestoneSection extends StatelessWidget {
               const SizedBox(
                 height: KSizes.sm,
               ),
-              ElevatedButton(
+              FilledButton(
                   onPressed: (){
                     final controller = MySpaceController.instance;
                     final masterController = MasterController.instance;
@@ -98,8 +109,9 @@ class DailyMilestoneSection extends StatelessWidget {
                   },
                 style: const ButtonStyle().copyWith(
                   foregroundColor: MaterialStateProperty.all(Colors.black),
+                  backgroundColor: MaterialStateProperty.all(Theme.of(context).scaffoldBackgroundColor),
                 ),
-                  child: const Text("Start"),
+                  child: Text("Start", style: Theme.of(context).textTheme.titleMedium),
               ),
             ],
           ),

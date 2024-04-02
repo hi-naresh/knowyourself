@@ -7,6 +7,7 @@ class KImages {
 
   //animations
   static const String logoAnim = "assets/animations/KYB.json";
+  static const String mySpaceAnim = "assets/animations/space.json";
   //onboard
   static const String onBoard1 = "assets/illustrations/onboard1.svg";
   static const String onBoard2 = "assets/illustrations/onboard2.svg";
@@ -37,6 +38,12 @@ class KImages {
   static const String health17 = "assets/illustrations/health17.svg";
   static const String health18 = "assets/illustrations/health18.svg";
   static const String health19 = "assets/illustrations/health19.svg";
+  static const String health20 = "assets/illustrations/health20.svg";
+  static const String health21 = "assets/illustrations/health21.svg";
+
+
+  //materials
+  static const String sa = "assets/materials/sa.jpg";
 
 
   //avatars

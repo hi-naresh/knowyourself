@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
-import '../../model/articles/article_model.dart';
+import '../../model/article_model.dart';
 import 'package:get/get.dart';
 
 class ReadArticleScreen extends StatelessWidget {
