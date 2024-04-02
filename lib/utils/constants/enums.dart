@@ -8,6 +8,29 @@ enum LifeAspects {
 //  // types : Video Guide Auro-Society magazine audio-ebooks Centers
 enum CourseType{ video,guide, magazine, centers, eBooks, auroSociety }
 
+enum ReminderPeriod { daily, weekly, monthly, yearly }
+extension ReminderPeriodExtension on ReminderPeriod {
+  String toJson() => this.toString().split('.').last;
+
+  static ReminderPeriod fromJson(String json) {
+    return ReminderPeriod.values.firstWhere((e) => e.toString() == 'ReminderPeriod.$json');
+  }
+}
+
+
+enum StoryType { current, desired, }
+
+extension StoryTypeExtension on StoryType {
+  String toJson() {
+    return toString().split('.').last;
+  }
+
+  static StoryType fromJson(String json) {
+    return StoryType.values.firstWhere((e) => e.toJson() == json);
+  }
+}
+
+
 enum CoreValues{
   progress,
   receptivity,

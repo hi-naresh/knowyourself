@@ -8,7 +8,7 @@ import 'package:knowyourself/utils/helpers/shadow_disabler.dart';
 class CustomContainer extends StatelessWidget {
   final Widget child;
   final double width;
-  // final double height;
+  // final double? height;
   late Color color;
   final BorderRadius borderRadius;
   final EdgeInsets padding;

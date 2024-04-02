@@ -127,20 +127,21 @@ class OnBoard extends StatelessWidget {
                   richText: onBoardScreen1RichText,
                   pngName: "onboard1",
                   context: context,
-                color: controller.colors[0],
+                // color: controller.colors[0],
               ),
               _buildPage(
                   richText: onBoardScreen2RichText,
                   pngName: "onboard2",
                   context: context,
-                color: controller.colors[1],
+                // color: controller.colors[1],
               ),
 
               _buildPage(
                   richText: onBoardScreen3RichText,
                   pngName: "onboard3",
                   context: context,
-                color: controller.colors[2],),
+                // color: controller.colors[2],
+              ),
             ],
           ),
           Positioned(
@@ -169,9 +170,9 @@ class OnBoard extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: Theme.of(context).textTheme.headlineLarge?.color,
                 ),
-                child: const Icon(
+                child: Icon(
                   CupertinoIcons.rocket,
-                  color: KColors.white,
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   size: KSizes.iconLg,
                 ),
               ),
@@ -185,17 +186,9 @@ class OnBoard extends StatelessWidget {
   Container _buildPage(
       {required Text richText,
         required String pngName,
-        Color? color,
         required BuildContext context}) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [color!.withOpacity(0.3),color ],
-        ),
-      ),
-      padding: const EdgeInsets.all(KSizes.defaultSpace),
+      padding: const EdgeInsets.all(KSizes.defaultSpace*2),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,

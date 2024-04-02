@@ -44,7 +44,7 @@ class MySpaceScreen extends StatelessWidget {
               tabs: controller.tabs,
             ),
           ),
-          const SizedBox(height: KSizes.defaultSpace),
+          // const SizedBox(height: KSizes.defaultSpace),
           Expanded(
               child: TabBarView(
                 clipBehavior: Clip.none,
@@ -53,7 +53,7 @@ class MySpaceScreen extends StatelessWidget {
                   JournalScreen(),
                   MilestoneAdd(),
                   QuestionSpace(),
-                  StoryScreen(),
+                  MyStoryScreen(),
                   GratitudeWidget()
                 ],
               ))

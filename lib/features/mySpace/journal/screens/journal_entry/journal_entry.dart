@@ -40,6 +40,7 @@ class JournalEntryScreen extends StatelessWidget {
                     },
                     child: Text('Save',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w700,
                           color: kApp4
                         )))
               ],
@@ -117,13 +118,20 @@ class JournalEntryScreen extends StatelessWidget {
                     icon: const Icon(CupertinoIcons.location_solid),
                     onPressed: () => controller.addLocation(),
                   ),
-                  IconButton(
-                      icon: const Icon(CupertinoIcons.waveform_path_badge_plus),
-                      onPressed: () => controller.recordVoiceNote()),
-                  IconButton(
-                    icon: const Icon(CupertinoIcons.largecircle_fill_circle),
-                    onPressed: () => controller.stopRecording(),
-                  ),
+                  FilledButton(
+                    style: const ButtonStyle().copyWith(
+                      backgroundColor: MaterialStateProperty.all(kApp4),
+                      foregroundColor: MaterialStateProperty.all(Colors.white)
+                    ),
+                      onPressed: ()=>controller.cancelEntry(),
+                      child: const Text('Cancel',))
+                  // IconButton(
+                  //     icon: const Icon(CupertinoIcons.waveform_path_badge_plus),
+                  //     onPressed: () => controller.recordVoiceNote()),
+                  // IconButton(
+                  //   icon: const Icon(CupertinoIcons.largecircle_fill_circle),
+                  //   onPressed: () => controller.stopRecording(),
+                  // ),
                 ],
               ),
             ),
