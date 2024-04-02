@@ -1,12 +1,30 @@
-enum TextSizes { small, medium, large }
-// enum MilestoneStatus { pending, completed }
+enum LifeAspects { all, mental, physical, emotional, spiritual }
 
-enum LifeAspects {
-  all,mental, physical, emotional, spiritual
+enum CourseType{ video,guide, magazine, centers, eBooks, auroSociety }
+
+enum Period { daily, weekly, monthly }
+
+extension ReminderPeriodExtension on Period {
+  String toJson() => toString().split('.').last;
+
+  static Period fromJson(String json) {
+    return Period.values.firstWhere((e) => e.toString() == 'ReminderPeriod.$json');
+  }
 }
 
-//  // types : Video Guide Auro-Society magazine audio-ebooks Centers
-enum CourseType{ video,guide, magazine, centers, eBooks, auroSociety }
+
+enum StoryType { current, desired, }
+
+extension StoryTypeExtension on StoryType {
+  String toJson() {
+    return toString().split('.').last;
+  }
+
+  static StoryType fromJson(String json) {
+    return StoryType.values.firstWhere((e) => e.toJson() == json);
+  }
+}
+
 
 enum CoreValues{
   progress,

@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/insights/screens/dashboard/dashboard_screen.dart';
 import 'package:knowyourself/features/insights/screens/insights/insight_screen.dart';
 import 'package:knowyourself/common/widgets/k_floating_action.dart';
 import 'package:knowyourself/features/learning/screens/learn_screen/learn_screen.dart';
+import 'package:knowyourself/features/mySpace/journal/screens/journal_entry/journal_entry.dart';
+import 'package:knowyourself/features/mySpace/milestones/screens/widget/milestone_add.dart';
 import 'package:knowyourself/features/mySpace/space_screen.dart';
 
 import '../../utils/constants/colors.dart';
@@ -62,8 +65,17 @@ class MasterScreen extends StatelessWidget {
       floatingActionButton: Obx(() {
         if (controller.currentIndex.value == 3 &&
             spaceController.tabIndex.value == 0) {
-          return KFloatingAction(context: context);
-        } else {
+          return const KFloatingAction(
+            icon: CupertinoIcons.book,
+            screenWidget:JournalEntryScreen(),
+          );
+        } else if(controller.currentIndex.value == 3 &&
+            spaceController.tabIndex.value == 1){
+          return const KFloatingAction(
+            icon: CupertinoIcons.add,
+            screenWidget:MilestoneAdd(),
+          );
+        }else {
           return const SizedBox();
         }
       }),
@@ -83,7 +95,7 @@ class MasterController extends GetxController {
   final List<Widget> _screens = [
     const Dashboard(),
     const InsightScreen(),
-     LearnScreen(),
+     const LearnScreen(),
     const AuthScreenPrompt(),
   ].obs;
 

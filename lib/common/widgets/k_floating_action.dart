@@ -8,12 +8,12 @@ import '../../utils/constants/sizes.dart';
 import '../../utils/helpers/helper_functions.dart';
 
 class KFloatingAction extends StatelessWidget {
-  const KFloatingAction({
-    super.key,
-    required this.context,
-  });
 
-  final BuildContext context;
+  final IconData icon;
+  final Widget screenWidget;
+  const KFloatingAction({
+    super.key, required this.icon, required this.screenWidget,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +23,12 @@ class KFloatingAction extends StatelessWidget {
       decoration: KStyles.darkToLight(kApp4),
       child: IconButton(
         icon: Icon(
-          CupertinoIcons.book,
+          icon,
           size: KSizes.iconLg,
           color: Theme.of(context).textTheme.titleMedium!.color,
         ),
         onPressed: () {
-          KHelper.showBottomSheet(const JournalEntryScreen());
+          KHelper.showBottomSheet( screenWidget);
         },
       ),
     );
