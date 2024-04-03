@@ -248,13 +248,29 @@ class MoodSummaryPage extends StatelessWidget {
                 ),
               ),
             ),
-            if (!readOnly)
-              ElevatedButton(
-                  onPressed: ()=>controller.saveMoodData(),
-                  child: const Text("Save")),
-            ElevatedButton(
-                onPressed: ()=>controller.shiftMood(),
-                child: const Text("Mood Transformation")),
+            SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  if (!readOnly)
+                    ElevatedButton(
+                      onPressed: () => controller.saveMoodData(),
+                      child: const Text("Save"),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white, backgroundColor: Color(0xFFAEBFFF), // foreground color
+                      ),
+                    ),
+                  ElevatedButton(
+                    onPressed: () => controller.shiftMood(),
+                    child: const Text("Mood Transformation"),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white, backgroundColor: Color(0xFFAEBFFF), // foreground color
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
