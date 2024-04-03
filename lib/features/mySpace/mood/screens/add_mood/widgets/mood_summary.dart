@@ -254,7 +254,7 @@ class MoodSummaryPage extends StatelessWidget {
                   child: const Text("Save")),
             ElevatedButton(
                 onPressed: ()=>controller.shiftMood(),
-                child: const Text("Shift Mood")),
+                child: const Text("Mood Transformation")),
           ],
         ),
       ),
