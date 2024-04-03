@@ -8,7 +8,6 @@ import 'package:knowyourself/routes.dart';
 import '../screens/add_mood/widgets/aspect_select.dart';
 import '../screens/add_mood/widgets/express_feelings.dart';
 import '../screens/add_mood/widgets/mood_select.dart';
-import '../screens/add_mood/widgets/mood_summary.dart';
 
 class AddMoodController extends GetxController {
 
@@ -46,7 +45,7 @@ class AddMoodController extends GetxController {
     const MoodSelectPage(),
     const AspectSelectPage(),
     const ExpressFeelingsPage(),
-    const MoodSummaryPage(readOnly: false),
+    // const MoodSummaryPage(readOnly: false),
   ];
 
   //intialize read-only mode if needed in future
@@ -94,12 +93,12 @@ class AddMoodController extends GetxController {
     //send all data to server
   }
 
-  void updateJournal( moodModel) {
+  void updateMoodJournal( moodModel) {
     //update all data
     moodModel.value = moodModel;
   }
 
-  void clearJournalData() {
+  void clearMoodJournalData() {
     // clear mood, aspect, reasons, happenedAt
     reasons.clear();
   }
@@ -119,7 +118,11 @@ class AddMoodController extends GetxController {
   void shiftMood() {
     // Navigator.push(context,
     // MaterialPageRoute(builder: (context) => MoodShift()));
-    Get.toNamed(KRoutes.getMoodShiftRoute());
+    Get.toNamed(KRoutes.getActivitiesRoute());
+  }
+
+  deFocusKeyboard(BuildContext context) {
+    FocusScope.of(context).unfocus();
   }
 
 // void getIndexOfPage() {
