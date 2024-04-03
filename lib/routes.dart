@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/features/learning/screens/materials/pages/course_page.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/add_mood_screen.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/activities_to_shift.dart';
+import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_about.dart';
 import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_my_space.dart';
 import 'common/extras/notification_screen.dart';
 import 'features/master.dart';
@@ -114,6 +115,9 @@ class KRoutes{
     //     transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     // ),
     GetPage(name: resourcesMagazine, page: () =>  const CoursePage(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    GetPage(name: about, page: () =>  const SettingsAboutScreen(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
   ];

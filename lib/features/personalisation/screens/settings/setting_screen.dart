@@ -120,14 +120,15 @@ class SettingScreen extends StatelessWidget {
                     icon: CupertinoIcons.sparkles),
 
                 const SettingTile(
-                    title: "Help",
-                    subtitle: "Get help from KYB",
+                    title: "Feedback",
+                    subtitle: "Thoughts & improvements",
                     trailing: Icon(CupertinoIcons.forward),
                     icon: CupertinoIcons.conversation_bubble),
-                const SettingTile(
+                SettingTile(
                     title: "About",
+                    onTap: ()=> Get.toNamed(KRoutes.getAboutRoute()),
                     subtitle: "Know more about KYB",
-                    trailing: Icon(CupertinoIcons.forward),
+                    trailing: const Icon(CupertinoIcons.forward),
                     icon: CupertinoIcons.layers_alt),
                 SettingTile(
                     onTap: () {

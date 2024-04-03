@@ -7,8 +7,9 @@ import '../../../../../utils/constants/text_strings.dart';
 import '../../../controller/login/login_controller.dart';
 
 class SocialButton extends StatelessWidget {
+  final bool isSignGoogle;
   const SocialButton({
-    super.key,
+    super.key, required this.isSignGoogle,
   });
 
   @override
@@ -26,7 +27,7 @@ class SocialButton extends StatelessWidget {
               height: 20,
             ),
             const SizedBox(width: KSizes.spaceBtwItems),
-            const Text(KTexts.signInGoogle),
+            Text(isSignGoogle ? KTexts.signInGoogle : KTexts.signUpGoogle),
           ],
         ),
       ),
