@@ -11,11 +11,12 @@ class KElevatedButtonTheme {
   static final lightElevatedButtonTheme  = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: KColors.light,
+      foregroundColor: KColors.white,
       backgroundColor: KColors.primary,
       disabledForegroundColor: KColors.darkGrey,
       disabledBackgroundColor: KColors.buttonDisabled,
-      side: const BorderSide(color: KColors.primary),
+      // side: const BorderSide(color: KColors.primary),
+      side: BorderSide.none,
       // shadowColor: KColors.primary.withOpacity(0.95),
       // padding: const EdgeInsets.symmetric(vertical: KSizes.buttonHeight),
       textStyle: const TextStyle(fontSize: 16, color: KColors.textWhite, fontWeight: FontWeight.w600),

@@ -65,7 +65,7 @@ class InsightScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: KSizes.defaultSpace),
-            Center(
+            const Center(
               child: ReflectionChart(
 
               )

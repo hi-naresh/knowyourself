@@ -62,7 +62,7 @@ class MilestoneProgressList extends StatelessWidget {
                       borderRadius: BorderRadius.circular(KSizes.borderRadiusLg),
                     ),
                     secondary: IconButton(
-                      icon: Icon(CupertinoIcons.reply_thick_solid),
+                      icon: const Icon(CupertinoIcons.reply_thick_solid),
                       onPressed: () {
                         controller.undoCompleteMilestone(milestone.id, period);
                       },
