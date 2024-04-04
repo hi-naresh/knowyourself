@@ -100,16 +100,16 @@ class MasterController extends GetxController {
   ].obs;
 
   @override
-  void onInit() {
-    super.onInit();
-    currentIndex.listen((index) {
-      if (index == 3) { // Index 3 corresponds to MySpaceScreen
-        authenticateBeforeAccess();
-      }else{
-        _screens[3] = const AuthScreenPrompt();
-      }
-    });
-  }
+  // void onInit() {
+  //   super.onInit();
+  //   currentIndex.listen((index) {
+  //     if (index == 3) { // Index 3 corresponds to MySpaceScreen
+  //       authenticateBeforeAccess();
+  //     }else{
+  //       _screens[3] = const AuthScreenPrompt();
+  //     }
+  //   });
+  // }
 
   Future<void> authenticateBeforeAccess() async {
     if (_localBioAuth.isAuthEnabled()) {

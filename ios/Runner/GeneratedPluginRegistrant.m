@@ -36,6 +36,12 @@
 @import firebase_core;
 #endif
 
+#if __has_include(<firebase_ml_model_downloader/FirebaseModelDownloaderPlugin.h>)
+#import <firebase_ml_model_downloader/FirebaseModelDownloaderPlugin.h>
+#else
+@import firebase_ml_model_downloader;
+#endif
+
 #if __has_include(<firebase_storage/FLTFirebaseStoragePlugin.h>)
 #import <firebase_storage/FLTFirebaseStoragePlugin.h>
 #else
@@ -128,6 +134,7 @@
   [FilePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FilePickerPlugin"]];
   [FLTFirebaseAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseAuthPlugin"]];
   [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
+  [FirebaseModelDownloaderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FirebaseModelDownloaderPlugin"]];
   [FLTFirebaseStoragePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseStoragePlugin"]];
   [InAppWebViewFlutterPlugin registerWithRegistrar:[registry registrarForPlugin:@"InAppWebViewFlutterPlugin"]];
   [FlutterSound registerWithRegistrar:[registry registrarForPlugin:@"FlutterSound"]];
