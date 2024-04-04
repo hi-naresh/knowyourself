@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/features/learning/screens/materials/pages/course_page.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/add_mood_screen.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/activities_to_shift.dart';
-import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/mood_shift.dart';
+import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_about.dart';
 import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_my_space.dart';
 import 'common/extras/notification_screen.dart';
 import 'features/master.dart';
@@ -56,8 +56,6 @@ class KRoutes{
   static const String addMood = '/addMood';
   static String getAddMoodRoute() => addMood;
 
-  static const String moodShift = '/moodShift';
-  static String getMoodShiftRoute() => moodShift;
 
   //learning
   static const String resourcesVideo = '/resourcesVideo';
@@ -107,9 +105,6 @@ class KRoutes{
     GetPage(name: addMood, page: () => const AddMoodScreen(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
-    GetPage(name: moodShift, page: () => MoodShiftPage(),
-        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
-    ),
     GetPage(name: activities, page: () => ActivitiesToShiftScreen(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
@@ -120,6 +115,9 @@ class KRoutes{
     //     transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     // ),
     GetPage(name: resourcesMagazine, page: () =>  const CoursePage(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    GetPage(name: about, page: () =>  const SettingsAboutScreen(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
   ];

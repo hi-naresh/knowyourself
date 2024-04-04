@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:knowyourself/features/mySpace/journal/screens/journal_entry/journal_entry.dart';
 
 import '../../../common/styles/styles.dart';
 import '../../../utils/constants/colors.dart';

@@ -1,5 +1,6 @@
 enum LifeAspects { all, mental, physical, emotional, spiritual }
 
+enum HappenedAt { home, work, personal, social }
 enum CourseType{ video,guide, magazine, centers, eBooks, auroSociety }
 
 enum Period { daily, weekly, monthly }
@@ -12,7 +13,6 @@ extension ReminderPeriodExtension on Period {
   }
 }
 
-
 enum StoryType { current, desired, }
 
 extension StoryTypeExtension on StoryType {
@@ -24,7 +24,6 @@ extension StoryTypeExtension on StoryType {
     return StoryType.values.firstWhere((e) => e.toJson() == json);
   }
 }
-
 
 enum CoreValues{
   progress,
@@ -40,7 +39,6 @@ enum CoreValues{
   goodness,
   courage
 }
-
 // Keywords associated with each core value
 final Map<CoreValues, List<String>> coreValueKeywords = {
   CoreValues.progress: ['advance', 'growth', 'improvement', 'evolution', 'enhancement', 'success', 'innovation', 'betterment', 'forward', 'achievement', 'milestone', 'prosperity', 'headway', 'upgrade', 'breakthrough', 'leap', 'progression', 'ascension', 'advancement', 'maturation', 'amplification', 'expansion', 'boost', 'refinement', 'development', 'unfolding', 'maturity', 'movement', 'movement', 'upswing', 'rise', 'enrichment', 'augmentation', 'momentum', 'succession', 'unveiling', 'enhancement', 'upturn', 'perfection', 'thrive', 'uplift', 'growth', 'progressive', 'advancing', 'elevate', 'escalate', 'moving', 'progressive', 'unfurl', 'proliferation'],

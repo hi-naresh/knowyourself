@@ -6,7 +6,6 @@ import '../data/helper_service/backup_service/backup_service.dart';
 import '../data/helper_service/local_auth/local_bio_auth.dart';
 import '../data/helper_service/notifications/notification_service.dart';
 import '../data/services/quotes/quote_service.dart';
-import '../features/learning/controller/article_controller.dart';
 class GeneralBindings extends Bindings{
 
   @override

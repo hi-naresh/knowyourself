@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/personalisation/controller/user_controller.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 
 import '../../../../data/repo/space/milestones/milestone_repo.dart';
 import '../../../../utils/constants/enums.dart';
 import '../model/milestone_model.dart';
-
 
 class MilestoneController extends GetxController {
   final MilestoneRepo _milestoneRepo = Get.put(MilestoneRepo());
@@ -17,12 +17,7 @@ class MilestoneController extends GetxController {
 
   var titleController = TextEditingController();
   var descriptionController = TextEditingController();
-  // final Rx<Period> milestonePeriod = Period.daily.obs;
-  //exclude year from period
   final Rx<Period> milestonePeriod = Period.daily.obs;
-  // final completedTasks = 0.obs;
-  // final totalTasks = 0.obs;
-
 
   @override
   void onInit() {
@@ -57,22 +52,12 @@ class MilestoneController extends GetxController {
   }
 
   Future<void> completeMilestone(String id, Period period) async {
-    List<MilestoneModel> milestones = [];
-    switch (period) {
-      case Period.daily:
-        milestones = dailyMilestones.value;
-        break;
-      case Period.weekly:
-        milestones = weeklyMilestones.value;
-        break;
-      case Period.monthly:
-        milestones = monthlyMilestones.value;
-        break;
-    }
+    List<MilestoneModel> milestones = getMilestonesByPeriod(period);
     final index = milestones.indexWhere((m) => m.id == id);
     if (index != -1) {
       final updatedMilestone = milestones[index].copyWith(status: true);
       await addOrUpdateMilestone(updatedMilestone);
+      _showNotification("Task Completed", "Congratulations! You have completed a task.");
     }
   }
 
@@ -81,7 +66,6 @@ class MilestoneController extends GetxController {
     fetchAllMilestones(); // Refresh milestones after deletion
   }
 
-  // Get the number of completed tasks for each period
   double getCompletedTasksCount(Period period) {
     switch (period) {
       case Period.daily:
@@ -95,7 +79,7 @@ class MilestoneController extends GetxController {
     }
   }
 
-  int getUncompletedTasksCount( Period period) {
+  int getUncompletedTasksCount(Period period) {
     switch (period) {
       case Period.daily:
         return dailyMilestones.where((m) => !m.status).length;
@@ -108,7 +92,7 @@ class MilestoneController extends GetxController {
     }
   }
 
-  getMilestonesByPeriod(Period period) {
+  List<MilestoneModel> getMilestonesByPeriod(Period period) {
     switch (period) {
       case Period.daily:
         return dailyMilestones;
@@ -128,18 +112,7 @@ class MilestoneController extends GetxController {
   }
 
   void undoCompleteMilestone(id, Period period) {
-    List<MilestoneModel> milestones = [];
-    switch (period) {
-      case Period.daily:
-        milestones = dailyMilestones.value;
-        break;
-      case Period.weekly:
-        milestones = weeklyMilestones.value;
-        break;
-      case Period.monthly:
-        milestones = monthlyMilestones.value;
-        break;
-    }
+    List<MilestoneModel> milestones = getMilestonesByPeriod(period);
     final index = milestones.indexWhere((m) => m.id == id);
     if (index != -1) {
       final updatedMilestone = milestones[index].copyWith(status: false);
@@ -147,4 +120,15 @@ class MilestoneController extends GetxController {
     }
   }
 
+  Future<void> _showNotification(String title, String body) async {
+    int notificationId = DateTime.now().millisecondsSinceEpoch & 0xFFFFFFFF; // Generate a valid 32-bit size integer ID
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: notificationId,
+        channelKey: 'basic_channel',
+        title: title,
+        body: body,
+      ),
+    );
+  }
 }

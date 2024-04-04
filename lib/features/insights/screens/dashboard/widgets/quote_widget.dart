@@ -5,6 +5,7 @@ import 'package:knowyourself/common/styles/styles.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
+import '../../../../../common/widgets/custom_container.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../controller/quote_controller.dart';
@@ -17,8 +18,13 @@ class QuoteWidget extends StatelessWidget {
     final controller = Get.put(QuoteController());
     return Container(
       padding: const EdgeInsets.all(KSizes.md),
-      decoration: KStyles.lightToDark(
-          KHelper.isDark()? kEmptyProgressDark: kEmptyProgress,
+      // decoration: KStyles.lightToDark(
+      //     KHelper.isDark()? kEmptyProgressDark: kEmptyProgress,
+      // ),
+      // color: KHelper.isDark() ? kEmptyProgressDark : kEmptyProgress,
+      decoration: BoxDecoration(
+        color: kApp1.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(KSizes.lg),
       ),
       child: Stack(
         clipBehavior: Clip.none,
@@ -27,12 +33,12 @@ class QuoteWidget extends StatelessWidget {
             left: 0,
             child: SvgPicture.asset(
               colorFilter: const ColorFilter.mode(
-                Colors.white54,
+                Colors.white70,
                 BlendMode.modulate,
               ),
               KImages.health21,
-              height: 105,
-              fit: BoxFit.contain,
+              height: 82,
+              fit: BoxFit.cover,
             ),
           ),
           Obx(
@@ -40,27 +46,24 @@ class QuoteWidget extends StatelessWidget {
               if (controller.quoteModel.value == null) {
                 return const CircularProgressIndicator();
               }
-              return Text.rich(
-                textAlign: TextAlign.right,
-                strutStyle: const StrutStyle(
-                  fontSize: 20.0,
-                  height: 1.5,
-                ),
-                TextSpan(
-                  children: [
-                    TextSpan(
-                      text: controller.quoteModel.value!.title,
-                      style: Theme.of(context).textTheme.bodyLarge
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    textAlign: TextAlign.end,
+                    controller.quoteModel.value!.title,
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
                     ),
-                    TextSpan(
-                      text: "\n- ${controller.quoteModel.value!.author}",
-                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-
+                  ),
+                  const SizedBox(height: KSizes.sm),
+                  Text(
+                    "- ${controller.quoteModel.value!.author}",
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),)
+                ],
               );
             },
           ),

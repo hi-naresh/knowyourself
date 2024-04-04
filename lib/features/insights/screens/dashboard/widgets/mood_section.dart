@@ -30,8 +30,10 @@ class MoodSection extends StatelessWidget {
             child: SvgPicture.asset(
               KImages.health13,
               height: 140,
-              color: const Color.fromRGBO(255, 255, 255, 0.3),
-              colorBlendMode: BlendMode.modulate,
+              colorFilter: ColorFilter.mode(
+                Colors.white.withOpacity(0.3),
+                BlendMode.modulate,
+              ),
             ),
           ),
           Column(
@@ -44,15 +46,12 @@ class MoodSection extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: controller.greeting(),
-                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          color: KColors.dark,
-                        )
+                        style: Theme.of(context).textTheme.titleLarge
                       ),
                       TextSpan(
                         text: "${userController.user.value.fullName!}!",
-                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                            color: KColors.dark,
-                          )
+                          style: Theme.of(context).textTheme.titleLarge
+
                       ),
                       TextSpan(
                         text: "\n${KTexts.feel}",
@@ -75,9 +74,7 @@ class MoodSection extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
                       "Express Your Mood & Reflect:\nLog emotions and thoughts.",
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: KColors.scaffoldDark,
-                      ),
+                      style: Theme.of(context).textTheme.labelLarge,
                       textAlign: TextAlign.left,
                     ),
                   ),

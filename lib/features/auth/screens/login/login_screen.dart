@@ -27,7 +27,9 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: KSizes.defaultSpace),
               PDivider( text: KTexts.orSignInWith,),
               SizedBox(height: KSizes.defaultSpace),
-              SocialButton(),
+              SocialButton(
+                isSignGoogle: true,
+              ),
             ],
           ),
         ),

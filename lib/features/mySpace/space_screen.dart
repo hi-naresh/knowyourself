@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/features/mySpace/gratitude/screens/widgets/gratitude_widget.dart';
 import 'package:knowyourself/features/mySpace/journal/screens/journal/journal_screen.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/milestone_screen.dart';
 import 'package:knowyourself/features/mySpace/questions/screens/question_screen.dart';

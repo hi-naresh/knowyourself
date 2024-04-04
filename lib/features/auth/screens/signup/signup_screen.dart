@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/utils/constants/app_links.dart';
+import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import '../../../../utils/validators/validation.dart';
 import '../../controller/signup/signup_controller.dart';
 import '/features/auth/screens/login/widgets/social_button.dart';
@@ -76,26 +78,16 @@ class SignUpScreen extends StatelessWidget {
                       children: [
                         Obx(()=> Checkbox(value: controller.privacyPolicy.value,
                             onChanged: (value) => controller.privacyPolicy.value = !controller.privacyPolicy.value )),
-                        // const SizedBox(width: KSizes.spaceBtwItems),
-                        Text.rich(
-                          TextSpan(children: [
-                            const TextSpan(text: "${KTexts.iAgreeTo} "),
-                            TextSpan(
-                              text: KTexts.privacyPolicy,
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                              ),
-                            ),
-                            const TextSpan(text: " ${KTexts.and} "),
-                            TextSpan(
-                              text: KTexts.termsOfUse,
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                              ),
-                            ),
-                          ]
-                          )
-                        )
+                        const Text(KTexts.iAgreeTo),
+                        TextButton(
+                          onPressed: () => KHelper.launchUrl(AppLinks.privacy),
+                          child:  Text(KTexts.privacyPolicy, style: TextStyle(color: Theme.of(context).primaryColor),),
+                          ),
+                        const Text(KTexts.and),
+                        TextButton(
+                          onPressed: () => KHelper.launchUrl(AppLinks.terms),
+                          child:  Text(KTexts.termsOfUse, style: TextStyle(color: Theme.of(context).primaryColor),),
+                        ),
                       ],
                     ),
                     const SizedBox(height: KSizes.spaceBtwItems),
@@ -117,7 +109,9 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(height: KSizes.defaultSpace),
               const PDivider(text: KTexts.orSignUpWith,),
               const SizedBox(height: KSizes.defaultSpace),
-              const SocialButton(),
+              const SocialButton(
+                isSignGoogle: false,
+              ),
 
             ],
           ),

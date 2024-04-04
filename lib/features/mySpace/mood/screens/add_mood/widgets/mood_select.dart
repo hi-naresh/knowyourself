@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_emoji/animated_emoji.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/helpers/progress_bar.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
+import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
 import '../../../controller/add_mood_controller.dart';
 import 'helpers/full_circle_slider.dart';
@@ -29,7 +30,8 @@ class MoodSelectPage extends StatelessWidget {
                   "How Are You\n Feeling?",
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    fontWeight: FontWeight.w800,
+                    fontSize: KSizes.xxl,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 const SizedBox(
@@ -97,10 +99,18 @@ class MoodSelectPage extends StatelessWidget {
                 ),
               ],
             ),
-            ElevatedButton(
-              onPressed: ()=> controller.nextPage(),
-                child: const Text("Next")
-            ),
+            TextButton(
+                style: const ButtonStyle().copyWith(
+                    minimumSize: MaterialStateProperty.all(
+                        const Size(double.infinity, 60)),
+                    backgroundColor: MaterialStateProperty.all(kApp1),
+                    foregroundColor: MaterialStateProperty.all(Colors.white)),
+                onPressed: ()=> controller.nextPage(),
+                child: Text(
+                  'Next',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                )),
           ],
         ),
       ),

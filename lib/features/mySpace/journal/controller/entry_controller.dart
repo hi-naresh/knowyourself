@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_sound/public/flutter_sound_recorder.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -31,11 +30,6 @@ class EntryController extends GetxController {
   // Recorded voice note path
   Rx<String?> voiceNotePath = Rx<String?>(null);
 
-  @override
-  void onInit() {
-    super.onInit();
-    // initializeRecorder();
-  }
 
   @override
   void onClose() {

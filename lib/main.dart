@@ -25,7 +25,6 @@ Future<void> main() async {
     webAppWidth:double.infinity,
     app: const MyApp(),
   );
-
   runApp(runnableApp);
 }
 
