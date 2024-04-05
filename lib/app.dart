@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '/bindings/general_bindings.dart';
 import 'data/repo/space/journal/journal_repo.dart';
+import 'features/mySpace/space_screen.dart';
 import 'features/personalisation/controller/app_controller.dart';
 import 'routes.dart';
 import 'package:get/get.dart';
@@ -13,6 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.lazyPut(() => AppStateController(), fenix: true);
     Get.put(JournalRepo());
+    final spaceController = Get.lazyPut(()=>MySpaceController(),fenix: true);
+
     // Get.put(StoryRepo());
     return GetMaterialApp(
       initialBinding: GeneralBindings(),

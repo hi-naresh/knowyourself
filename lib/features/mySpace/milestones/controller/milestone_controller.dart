@@ -22,6 +22,7 @@ class MilestoneController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    // addDemoMilestones();
     fetchAllMilestones();
   }
 
@@ -45,6 +46,26 @@ class MilestoneController extends GetxController {
     );
     await addOrUpdateMilestone(milestone);
   }
+
+  //add demo milestones data
+  // Future<void> addDemoMilestones() async {
+  //   final userId = UserController.instance.user.value.id!;
+  //   final demoMilestones = [
+  //     MilestoneModel(
+  //       id: DateTime.now().millisecondsSinceEpoch.toString(),
+  //       title: "Read a book",
+  //       description: "Read a book for 30 minutes",
+  //       status: false,
+  //       userId: userId,
+  //       createdAt: DateTime.now(),
+  //       dueDate: DateTime.now(),
+  //       milestonePeriod: Period.daily,
+  //     ),
+  //   ];
+  //   for (var milestone in demoMilestones) {
+  //     await addOrUpdateMilestone(milestone);
+  //   }
+  // }
 
   Future<void> addOrUpdateMilestone(MilestoneModel milestone) async {
     await _milestoneRepo.saveOrUpdateMilestone(milestone);

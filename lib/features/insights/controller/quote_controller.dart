@@ -9,19 +9,11 @@ class QuoteController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Attempt to load the stored quote when the controller initializes
     fetchQuote();
-    // QuoteModel storedQuote = _quoteService.getStoredQuote();
-    // if (storedQuote.title.isNotEmpty) {
-    //   quoteModel.value = storedQuote;
-    // } else {
-    //   // If there's no stored quote, fetch a new one
-    //   fetchQuote();
-    // }
   }
 
   void fetchQuote() async {
-    QuoteModel newQuote = await _quoteService.fetchDailyQuote();
+    QuoteModel newQuote = _quoteService.getStoredQuote();
     quoteModel.value = newQuote;
   }
 }

@@ -25,6 +25,8 @@ class QuoteService extends GetxService {
         var author = authorElement?.text.trim() ?? 'Sri Aurobindo';
         var tag = tagElement?.text.trim()?? 'Absolute';
 
+
+
         // Save to storage
         _storage.write(_storageKey, {
           'title': quote,
@@ -47,8 +49,9 @@ class QuoteService extends GetxService {
     var storedQuoteJson = _storage.read(_storageKey);
     if (storedQuoteJson != null) {
       return QuoteModel.fromJson(storedQuoteJson);
-    } else {
-      return QuoteModel(title: 'No stored quote');
+    }else{
+      fetchDailyQuote();
+      return QuoteModel.fromJson(storedQuoteJson);
     }
   }
 

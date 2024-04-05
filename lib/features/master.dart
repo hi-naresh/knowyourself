@@ -58,7 +58,8 @@ class MasterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MasterController());
-    final spaceController = Get.put(MySpaceController());
+    // final spaceController = Get.put(MySpaceController());
+    final spaceController = MySpaceController.instance;
     return Scaffold(
       appBar: const KAppBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
