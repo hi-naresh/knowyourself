@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:knowyourself/features/personalisation/controller/user_controller.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 
@@ -23,7 +22,7 @@ class MilestoneController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    addDemoMilestones();
+    // addDemoMilestones();
     fetchAllMilestones();
   }
 
@@ -49,48 +48,24 @@ class MilestoneController extends GetxController {
   }
 
   //add demo milestones data
-  Future<void> addDemoMilestones() async {
-    final storage = GetStorage();
-    storage.remove('dailyMilestones');
-    storage.remove('weeklyMilestones');
-    storage.remove('monthlyMilestones');
-    final userId = UserController.instance.user.value.id!;
-    final demoMilestones = [
-      MilestoneModel(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        title: "Read a book",
-        description: "Read a book for 30 minutes",
-        status: false,
-        userId: userId,
-        createdAt: DateTime.now(),
-        dueDate: DateTime.now(),
-        milestonePeriod: Period.daily,
-      ),
-      MilestoneModel(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        title: "Exercise",
-        description: "Exercise for 30 minutes",
-        status: false,
-        userId: userId,
-        createdAt: DateTime.now(),
-        dueDate: DateTime.now(),
-        milestonePeriod: Period.daily,
-      ),
-      MilestoneModel(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        title: "Call a friend",
-        description: "Call a friend to catch up",
-        status: false,
-        userId: userId,
-        createdAt: DateTime.now(),
-        dueDate: DateTime.now(),
-        milestonePeriod: Period.weekly,
-      ),
-    ];
-    for (var milestone in demoMilestones) {
-      await addOrUpdateMilestone(milestone);
-    }
-  }
+  // Future<void> addDemoMilestones() async {
+  //   final userId = UserController.instance.user.value.id!;
+  //   final demoMilestones = [
+  //     MilestoneModel(
+  //       id: DateTime.now().millisecondsSinceEpoch.toString(),
+  //       title: "Read a book",
+  //       description: "Read a book for 30 minutes",
+  //       status: false,
+  //       userId: userId,
+  //       createdAt: DateTime.now(),
+  //       dueDate: DateTime.now(),
+  //       milestonePeriod: Period.daily,
+  //     ),
+  //   ];
+  //   for (var milestone in demoMilestones) {
+  //     await addOrUpdateMilestone(milestone);
+  //   }
+  // }
 
   Future<void> addOrUpdateMilestone(MilestoneModel milestone) async {
     await _milestoneRepo.saveOrUpdateMilestone(milestone);

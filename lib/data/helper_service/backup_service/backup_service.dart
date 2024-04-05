@@ -3,89 +3,19 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:knowyourself/data/helper_service/backup_service/remote/backup_remote.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../repo/space/journal/journal_repo.dart';
-
-// class BackupService extends GetxService {
-//   static BackupService get instance => Get.find();
-//
-//   final JournalRepo _journalRepo = Get.find();
-//
-//   // Method to export data to a file and share
-//   Future<void> exportData() async {
-//     // Fetch data from other repositories as needed
-//     // Example keys to fetch data from GetStorage:
-//
-//     final storage = GetStorage();
-//     var entries = storage.read('journalEntries');
-//     final journalEntries = Future.value(entries.map((e) => e.toString()).toList());
-//     final List questions = storage.read('questions');
-//     // flutter: Key: journalEntries
-//     // flutter: Key: questions
-//     // flutter: Key: currentStory
-//     // flutter: Key: desiredStory
-//     // flutter: Key: dailyMilestones
-//     // flutter: Key: weeklyMilestones
-//
-//     final Map<String, dynamic> exportData = {
-//       'journalEntries': journalEntries,
-//       'questions': questions,
-//       // Include other data as needed
-//     };
-//
-//     final String serializedData = jsonEncode(exportData);
-//
-//     final Directory directory = await getApplicationDocumentsDirectory();
-//     final File file = File('${directory.path}/backup.json');
-//     await file.writeAsString(serializedData);
-//
-//     final List<XFile> xFile = [XFile(file.path)];
-//
-//     Share.shareXFiles(xFile);
-//   }
-//
-//   Future<void> importData() async {
-//     FilePickerResult? result = await FilePicker.platform.pickFiles();
-//
-//     if (result != null) {
-//       File file = File(result.files.single.path!);
-//       String content = await file.readAsString();
-//       Map<String, dynamic> importData = jsonDecode(content);
-//
-//       if (importData.containsKey('journalEntries')) {
-//         await _journalRepo.importJournalEntries(importData['journalEntries']);
-//         // Import data into other repositories as needed
-//       }
-//
-//       // Notify user of successful import or handle errors
-//       KHelper.showSnackBar("Data Imported", "Your data has been successfully imported.");
-//     } else {
-//       // User canceled the picker
-//       KHelper.showSnackBar("Import Canceled", "You did not select a file to import.");
-//     }
-//   }
-//
-//   void eraseData() {
-//     final storage = GetStorage();
-//     try {
-//       storage.remove('journalEntries');
-//       KHelper.showSnackBar("Deleted All Data", "My Space has been cleaned up.");
-//     } catch (e) {
-//       print('Error erasing data: $e');
-//     }
-//   }
-//
-// }
 
 class BackupService extends GetxService {
   static BackupService get instance => Get.find();
 
   final GetStorage _storage = GetStorage();
+  final OnlineBackupService _onlineBackupService = Get.put(OnlineBackupService()); // Get OnlineBackupService instance
 
   // Method to export data to a file and share
-  Future<void> exportData() async {
+  Future<String> exportData() async {
     Map<String, dynamic> exportData = {
       'journalEntries': _storage.read('journalEntries') ?? [],
       'questions': _storage.read('questions') ?? [],
@@ -98,22 +28,28 @@ class BackupService extends GetxService {
 
     String serializedData = jsonEncode(exportData);
     final Directory directory = await getApplicationDocumentsDirectory();
-    final String filePath = '${directory.path}/backup.json';
+    final String filePath = '${directory.path}/backup-${KHelper.getFormattedDateString(DateTime.now())}.json';
     final File file = File(filePath);
     await file.writeAsString(serializedData);
 
-    final List<XFile> xFile = [XFile(file.path)];
-
-    Share.shareXFiles(xFile);
-
+    return filePath;
   }
 
-  // Method to import data from a file
-  Future<void> importData() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
+  Future<void> localStore() async{
+    final List<XFile> xFile = [XFile(await exportData())];
+    Share.shareXFiles(xFile);
+  }
 
-    if (result != null) {
-      File file = File(result.files.single.path!);
+  Future<void> remoteStore() async {
+
+    String filePath = await exportData();
+    // Use OnlineBackupService to upload the file
+    await _onlineBackupService.uploadBackup(filePath);
+    KHelper.showSnackBar("Successfully backed up", "Data has been saved online successfully.");
+  }
+
+  Future<void> _importDataFromMap(File file) async {
+    try{
       String content = await file.readAsString();
       Map<String, dynamic> importData = jsonDecode(content);
 
@@ -125,8 +61,30 @@ class BackupService extends GetxService {
       _storage.write('dailyMilestones', importData['dailyMilestones']);
       _storage.write('weeklyMilestones', importData['weeklyMilestones']);
       _storage.write('monthlyMilestones', importData['monthlyMilestones']);
-      // Handle other keys similarly
+    } on FormatException catch (e){
+      KHelper.showSnackBar("Data import error", "$e");
+    }
+  }
 
+  Future<void> importRemoteData() async {
+    // Use OnlineBackupService to download the latest backup file
+    final String downloadedFilePath = await _onlineBackupService.downloadBackup();
+    if (downloadedFilePath.isNotEmpty) {
+      File file = File(downloadedFilePath);
+      _importDataFromMap(file);
+      KHelper.showSnackBar("Online Data Imported", "Your data has been successfully imported.");
+      // Optionally delete the downloaded file after import
+      await file.delete();
+    }else{
+      KHelper.showSnackBar("No data found", "You have not backed up any data online");
+    }
+  }
+
+  Future<void> importData() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      File file = File(result.files.single.path!);
+      _importDataFromMap( file);
       KHelper.showSnackBar("Data Imported", "Your data has been successfully imported.");
     } else {
       KHelper.showSnackBar("Import Canceled", "You did not select a file to import.");
@@ -142,4 +100,5 @@ class BackupService extends GetxService {
       KHelper.showSnackBar("Error Deleting Data", "An error occurred while deleting data.");
     }
   }
+
 }

@@ -88,6 +88,10 @@ class KHelper {
     return DateFormat(format).format(date);
   }
 
+  static String getFormattedDateString(DateTime date, {String format = 'dd-MMM-yyyy'}) {
+    return DateFormat(format).format(date);
+  }
+
   static List<T> removeDuplicates<T>(List<T> list) {
     return list.toSet().toList();
   }
