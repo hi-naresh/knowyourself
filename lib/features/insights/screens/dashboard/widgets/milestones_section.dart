@@ -47,24 +47,20 @@ class DailyMilestoneSection extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      //demo
-                        text: "Tasks: 2/",
-                        // text: (value.toDolist.length - value.getUncompletedTasksCount()).toString(),
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          // color: KColors.dark,
-                          fontWeight: FontWeight.bold,
-                        )
+                      text: "Tasks: 2/",
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        // color: KColors.dark,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     TextSpan(
-                      //demo
-                        text: "6",
-                        // text: '/${value.toDolist.length} task completed',
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          // color: KColors.dark,
-                          fontWeight: FontWeight.bold,
-
-                        )
+                      text: "6",
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        // color: KColors.dark,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+
                     TextSpan(
                       text: "\n${KTexts.dailyMilestones}",
                       style: Theme.of(context).textTheme.headlineLarge?.copyWith(

@@ -16,18 +16,18 @@ class ReflectionPainter extends CustomPainter {
   });
 
   List<Color> coreValueColors = [
-    valueProgress,
-    valueReceptivity,
-    valueAspiration,
-    valuePerseverance,
-    valueGratitude,
-    valueHumility,
     valueSincerity,
-    valuePeace,
-    valueEquanimity,
-    valueGenerosity,
-    valueGoodness,
+    valueHumility,
+    valueGratitude,
+    valuePerseverance,
+    valueAspiration,
+    valueReceptivity,
+    valueProgress,
     valueCourage,
+    valueGoodness,
+    valueGenerosity,
+    valueEquanimity,
+    valuePeace
   ];
 
   @override

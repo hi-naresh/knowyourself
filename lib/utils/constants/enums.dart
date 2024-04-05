@@ -26,18 +26,18 @@ extension StoryTypeExtension on StoryType {
 }
 
 enum CoreValues{
-  progress,
-  receptivity,
-  aspiration,
-  perseverance,
-  gratitude,
-  humility,
   sincerity,
-  peace,
-  equanimity,
-  generosity,
+  humility,
+  gratitude,
+  perseverance,
+  aspiration,
+  receptivity,
+  progress,
+  courage,
   goodness,
-  courage
+  generosity,
+  equanimity,
+  peace,
 }
 // Keywords associated with each core value
 final Map<CoreValues, List<String>> coreValueKeywords = {

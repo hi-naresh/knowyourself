@@ -87,14 +87,14 @@ class MilestoneController extends GetxController {
     fetchAllMilestones(); // Refresh milestones after deletion
   }
 
-  double getCompletedTasksCount(Period period) {
+  int getCompletedTasksCount(Period period) {
     switch (period) {
       case Period.daily:
-        return dailyMilestones.where((m) => m.status).length.toDouble();
+        return dailyMilestones.where((m) => m.status).length;
       case Period.weekly:
-        return weeklyMilestones.where((m) => m.status).length.toDouble();
+        return weeklyMilestones.where((m) => m.status).length;
       case Period.monthly:
-        return monthlyMilestones.where((m) => m.status).length.toDouble();
+        return monthlyMilestones.where((m) => m.status).length;
       default:
         return 0;
     }

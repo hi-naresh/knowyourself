@@ -11,15 +11,16 @@ class MilestoneProgressList extends StatelessWidget {
   final Period period;
 
   const MilestoneProgressList({
-    super.key,
+    Key? key,
     required this.period,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final MilestoneController controller = Get.put(MilestoneController());
     final title = '${period.name.capitalizeFirst}';
-    final tasksCount = controller.getUncompletedTasksCount(period).toString();
+    final tasksCount = controller.getUncompletedTasksCount(period);
+    final completedTasksCount = controller.getCompletedTasksCount(period);
     final double progress = controller.getProgress(period);
 
     return Container(
@@ -32,7 +33,7 @@ class MilestoneProgressList extends StatelessWidget {
         children: [
           ListTile(
             title: Text(title, style: Theme.of(context).textTheme.headlineSmall),
-            subtitle: Text('I will accomplish $tasksCount milestones ${period.toString().split('.').last}.'),
+            subtitle: Text('I have completed $completedTasksCount milestones ${period.toString().split('.').last}.'),
           ),
           LinearProgressIndicator(
             value: progress,
