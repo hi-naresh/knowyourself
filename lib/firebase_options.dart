@@ -25,7 +25,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -56,7 +59,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAkQ4UXWamKwCHizYmpGq14GSEHnZChhnc',
-    appId: '1:325206134116:android:bee074a8d735928a8e3e71',
+    appId: '1:325206134116:android:ab80cc4deb8046788e3e71',
     messagingSenderId: '325206134116',
     projectId: 'know-yourself-60f9b',
     databaseURL: 'https://know-yourself-60f9b-default-rtdb.asia-southeast1.firebasedatabase.app',
@@ -70,20 +73,8 @@ class DefaultFirebaseOptions {
     projectId: 'know-yourself-60f9b',
     databaseURL: 'https://know-yourself-60f9b-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'know-yourself-60f9b.appspot.com',
-    androidClientId: '325206134116-q10oh895nch8al76i1uufhl0phav58ee.apps.googleusercontent.com',
+    androidClientId: '325206134116-34hsaes2qkjjdcrgak58rvgoovc8rpfb.apps.googleusercontent.com',
     iosClientId: '325206134116-pmmjqnk6mua70addqsa58u73t22v9t5s.apps.googleusercontent.com',
     iosBundleId: 'com.knowyourself.beta',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDapERcu33YQ7QZ2TD3feTyX3a5VEfrVlg',
-    appId: '1:325206134116:ios:d61c47dddfbd84158e3e71',
-    messagingSenderId: '325206134116',
-    projectId: 'know-yourself-60f9b',
-    databaseURL: 'https://know-yourself-60f9b-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'know-yourself-60f9b.appspot.com',
-    androidClientId: '325206134116-q10oh895nch8al76i1uufhl0phav58ee.apps.googleusercontent.com',
-    iosClientId: '325206134116-i1t7lbun1b8uiucvhaibot1n2qf4ff87.apps.googleusercontent.com',
-    iosBundleId: 'com.knowyourself.knowYourself.RunnerTests',
   );
 }

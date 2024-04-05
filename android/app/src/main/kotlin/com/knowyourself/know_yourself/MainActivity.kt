@@ -1,4 +1,4 @@
-package com.knowyourself.beta
+package com.knowyourself.know_yourself
 
 import io.flutter.embedding.android.FlutterActivity
 
