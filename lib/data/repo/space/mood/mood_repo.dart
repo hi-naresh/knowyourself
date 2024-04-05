@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../../../features/mySpace/mood/model/mood_model_input.dart';
-import '../../../../features/mySpace/mood/screens/add_mood/widgets/helpers/model_service.dart';
+import '../../../services/mood_shifter/model_service.dart';
 import '../../../../features/personalisation/controller/user_controller.dart';
 
 class MoodRepo extends GetxController {

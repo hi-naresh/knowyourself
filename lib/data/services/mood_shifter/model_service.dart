@@ -1,6 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 
+import '../../../features/mySpace/mood/model/mood_model_input.dart';
+
 class ModelService {
   late Interpreter _interpreter;
   List<String> activities = [];
@@ -49,4 +51,29 @@ class ModelService {
   double mapMoodToIndex(String mood) => 0; // Implement based on your data
   double mapAspectToIndex(String aspect) => 0; // Implement based on your data
   double mapPlaceToIndex(String place) => 0; // Implement based on your data
+
+  Future<int> predictMoodShiftFromModel(MoodModel moodModel) async {
+    // Preprocess inputs
+    List<double> inputs = preprocessInputs(
+      moodModel.mood,
+      moodModel.aspect,
+      moodModel.description,
+      moodModel.happenedAt,
+    );
+
+    // Perform prediction
+    int predictedMoodIndex = predictMoodShift(inputs);
+
+    return predictedMoodIndex;
+  }
+
+  Future<List<String>> recommendActivities(MoodModel moodModel) async {
+    // Get predicted mood shift
+    int predictedMoodIndex = await predictMoodShiftFromModel(moodModel);
+
+    // Get recommended activities based on predicted mood shift
+    List<String> recommendedActivities = getActivitiesForMoodShift(predictedMoodIndex);
+
+    return recommendedActivities;
+  }
 }
