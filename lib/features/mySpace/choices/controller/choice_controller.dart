@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:knowyourself/features/mySpace/choices/model/user_choice_model.dart';
+import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 class ChoiceController extends GetxController {
@@ -41,7 +42,7 @@ class ChoiceController extends GetxController {
 
   void submitAnswers() {
     // Save user answers to the database
-    Get.back();
+    Get.offAllNamed(KRoutes.getMasterRoute());
     KHelper.showSnackBar('Saved your choices!', 'Answers submitted successfully');
   }
 

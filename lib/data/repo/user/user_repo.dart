@@ -28,6 +28,46 @@ class UserRepo extends GetxController{
     }
   }
 
+  Future<void> addNewCollectionUnderUser(String collectionName, Map<String, dynamic> data) async{
+    try{
+      await _onlineDB.collection("users").doc(AuthRepo.instance.authUser!.uid).collection(collectionName).doc(AuthRepo.instance.authUser!.uid).set(data);
+    } on FirebaseException catch(e){
+      throw KFirebaseException(e.code).message;
+    } on FormatException catch(_){
+      throw const KFormatException();
+    } on PlatformException catch(e){
+      throw KPlatformException(e.code).message;
+    } catch (e){
+      throw 'Something went Wrong. Try Again';
+    }
+  }
+
+  Future<bool?> fetchFirstTimeCreate(String userId) async {
+    try {
+      DocumentSnapshot userSnapshot = await _onlineDB.collection('users').doc(userId).collection('user_profile').doc(userId).get();
+      return userSnapshot.get('isFirstTimeCreate');
+    } catch (e) {
+      // If there's an error (e.g., document doesn't exist), treat the user as new.
+      return true;
+    }
+  }
+
+
+  Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>> fetchCollectionUnderUser(String collectionName) async{
+    try{
+      final collectionSnapshot = await _onlineDB.collection("users").doc(AuthRepo.instance.authUser!.uid).collection(collectionName).get();
+      return collectionSnapshot.docs;
+    } on FirebaseException catch(e){
+      throw KFirebaseException(e.code).message;
+    } on FormatException catch(_){
+      throw const KFormatException();
+    } on PlatformException catch(e){
+      throw KPlatformException(e.code).message;
+    } catch (e){
+      throw 'Something went Wrong. Try Again';
+    }
+  }
+
   //get user data
   Future<UserModel> fetchUserRecord() async{
     try{

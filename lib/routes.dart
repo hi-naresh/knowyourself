@@ -7,7 +7,7 @@ import 'package:knowyourself/features/personalisation/screens/settings/pages/set
 import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_my_space.dart';
 import 'common/extras/notification_screen.dart';
 import 'features/master.dart';
-import 'features/personalisation/screens/profile/profile_screen.dart';
+import 'features/personalisation/screens/profile/profile_edit_screen.dart';
 import 'features/personalisation/screens/profile/profile_setup.dart';
 import 'features/personalisation/screens/settings/setting_screen.dart';
 import 'common/extras/splash_screen.dart';

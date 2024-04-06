@@ -7,22 +7,22 @@ import '../../../../data/helper_service/local_auth/local_bio_auth.dart';
 import '../../../../routes.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
+import '../../controller/profile_setup_controller.dart';
 import '/features/personalisation/screens/settings/widgets/logout_pop.dart';
 import '/features/personalisation/screens/settings/widgets/settings_tile.dart';
 import '/utils/constants/sizes.dart';
 import '/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
-import '../../controller/user_controller.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = UserController.instance;
     final appController = AppStateController.instance;
     final bioController = LocalBioAuth.instance;
+    final profileController = ProfileSetupController.instance;
     return Scaffold(
       appBar: const KAppBar(
         back: true,
@@ -48,18 +48,19 @@ class SettingScreen extends StatelessWidget {
                       radius: KSizes.iconMd,
                       backgroundColor: KColors.primary,
                       child: SvgPicture.asset(
-                        KImages.avatarF,
-                        height: KSizes.iconLg*1.6,
+                        profileController.userProfile.value.avatarPath ?? KImages.defaultAvatar,
+                        height: KSizes.iconXxl*2,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
                   title: Obx(
                         ()=> Text(
-                      controller.user.value.fullName ?? "No user",
+                      profileController.userProfile.value.name ?? "No user",
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ),
-                  subtitle: Obx(()=> Text(controller.user.value.username ?? "No email")),
+                  subtitle: Obx(()=> Text(profileController.userProfile.value.occupation?? "Setup your profile.")),
                   trailing: IconButton(
                     icon: const Icon(CupertinoIcons.paperplane),
                     onPressed: () {
@@ -68,10 +69,10 @@ class SettingScreen extends StatelessWidget {
                     },
                   ),
                 ),
-
                 const SizedBox(height: KSizes.spaceBtwSections),
-
-                // ReminderNotificationWidget(),
+                // ElevatedButton(onPressed: ()=>Get.to(()=>const ProfileSetupScreen()),
+                //     child: Text("Test")),
+                // ElevatedButton(onPressed: ()=> appController.getData(), child: Text("Test2")),
                 SettingTile(
                   title: "Dark Mode",
                   subtitle: "Switch to dark mode",

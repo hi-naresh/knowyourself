@@ -4,7 +4,8 @@ import 'package:knowyourself/utils/constants/enums.dart';
 class KColors {
   // App theme colors
   static const Color primary = Color(0xFFAEBFFF);
-  static const Color secondary = Color(0xFFFFE24B);
+  static const Color secondary = Color(0xFFFFB999);
+
   static const Color accent = Color(0xFFb0c7ff);
 
   static const Color accent1 = Color(0xff9dd7ff);

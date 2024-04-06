@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/features/insights/controller/dashboard_controller.dart';
+import 'package:knowyourself/features/personalisation/controller/profile_setup_controller.dart';
 import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
@@ -10,14 +11,13 @@ import 'package:knowyourself/utils/constants/text_strings.dart';
 import '../../../../../common/widgets/custom_container.dart';
 import 'package:get/get.dart';
 
-import '../../../../personalisation/controller/user_controller.dart';
 class MoodSection extends StatelessWidget {
   const MoodSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(DashboardController());
-    final userController = UserController.instance;
+    final profileController = ProfileSetupController.instance;
     return CustomContainer(
       width: double.infinity,
       color: kApp1Light,
@@ -49,7 +49,7 @@ class MoodSection extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleLarge
                       ),
                       TextSpan(
-                        text: "${userController.user.value.fullName!}!",
+                        text: "${profileController.userProfile.value.name}!",
                           style: Theme.of(context).textTheme.titleLarge
 
                       ),

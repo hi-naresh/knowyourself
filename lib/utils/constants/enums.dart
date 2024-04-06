@@ -15,6 +15,8 @@ extension ReminderPeriodExtension on Period {
 
 enum StoryType { current, desired, }
 
+enum UserType { regularUser, sailcMember }
+
 extension StoryTypeExtension on StoryType {
   String toJson() {
     return toString().split('.').last;
