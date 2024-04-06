@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourself/utils/theme/widget_themes/filled_button_theme.dart';
 import '/utils/theme/widget_themes/appbar_theme.dart';
 import '/utils/theme/widget_themes/bottom_sheet_theme.dart';
 import '/utils/theme/widget_themes/checkbox_theme.dart';
@@ -26,6 +27,7 @@ class KAppTheme {
     checkboxTheme: KCheckboxTheme.lightCheckboxTheme,
     bottomSheetTheme: KBottomSheetTheme.lightBottomSheetTheme,
     elevatedButtonTheme: KElevatedButtonTheme.lightElevatedButtonTheme,
+    filledButtonTheme: KFilledButtonTheme.lightFilledButtonTheme,
     outlinedButtonTheme: KOutlinedButtonTheme.lightOutlinedButtonTheme,
     inputDecorationTheme: KTextFormFieldTheme.lightInputDecorationTheme,
   );
@@ -43,6 +45,7 @@ class KAppTheme {
     checkboxTheme: KCheckboxTheme.darkCheckboxTheme,
     bottomSheetTheme: KBottomSheetTheme.darkBottomSheetTheme,
     elevatedButtonTheme: KElevatedButtonTheme.darkElevatedButtonTheme,
+    filledButtonTheme: KFilledButtonTheme.darkFilledButtonTheme,
     outlinedButtonTheme: KOutlinedButtonTheme.darkOutlinedButtonTheme,
     inputDecorationTheme: KTextFormFieldTheme.darkInputDecorationTheme,
   );

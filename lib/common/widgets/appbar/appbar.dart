@@ -9,15 +9,15 @@ import '../../../utils/constants/sizes.dart';
 import '../../../routes.dart';
 
 class KAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const KAppBar({super.key, this.back = false});
+  const KAppBar({super.key, this.back = false, this.title});
   final bool? back;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // title: Text(KTexts.appName),
-      // centerTitle: true,
-      // flexibleSpace: const CustomHeader( title: KTexts.appName,),
+      title: Text(title ?? ''),
+      centerTitle: true,
       leading: Padding(
         padding: const EdgeInsets.only(left: KSizes.defaultSpace),
         child: GestureDetector(

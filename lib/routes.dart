@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:knowyourself/features/learning/screens/materials/pages/course_page.dart';
+import 'package:knowyourself/features/mySpace/choices/screens/choice_screen.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/add_mood_screen.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/activities_to_shift.dart';
 import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_about.dart';
@@ -55,6 +56,9 @@ class KRoutes{
   //myspace
   static const String addMood = '/addMood';
   static String getAddMoodRoute() => addMood;
+
+  static const String choiceScreen = '/choiceScreen';
+  static String getChoiceScreenRoute() => choiceScreen;
 
 
   //learning
@@ -118,6 +122,9 @@ class KRoutes{
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
     GetPage(name: about, page: () =>  const SettingsAboutScreen(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    GetPage(name: choiceScreen, page: () =>  const ChoiceScreen(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
   ];

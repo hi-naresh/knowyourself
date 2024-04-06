@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/widget/milestones_list_view.dart';
 import '../../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../controller/milestone_controller.dart';
 
 class MilestoneScreen extends StatelessWidget {
   const MilestoneScreen({super.key});
