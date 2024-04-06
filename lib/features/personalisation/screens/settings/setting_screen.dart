@@ -93,8 +93,18 @@ class SettingScreen extends StatelessWidget {
                           ()=> CupertinoSwitch(
                         value: bioController.isAuthEnabled.value,
                         onChanged: (value) async {
-                          await bioController.toggleBioAuth(value);
-                          Get.snackbar('Settings Updated', value ? 'Biometric Authentication Enabled' : 'Biometric Authentication Disabled');
+                          if(value){
+                            await bioController.toggleBioAuth(value);
+                            KHelper.showSnackBar("Biometric Enabled now","All your personal spaces will be locked.");
+                          }else{
+                            final isAuth = await bioController.authenticateWithBiometrics();
+                            if(isAuth){
+                              await bioController.toggleBioAuth(value);
+                              KHelper.showSnackBar("Biometric Disabled now","All your personal spaces are unlocked.");
+                            }else{
+                              KHelper.showSnackBar("Authentication Failed","Biometric Authentication could not be disabled");
+                            }
+                          }
                         },
                         activeColor: Theme.of(context).primaryColor,
                       ),

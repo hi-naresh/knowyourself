@@ -73,7 +73,7 @@ class MoodSection extends StatelessWidget {
                     ),
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      "Express Your Mood & Reflect:\nLog emotions and thoughts.",
+                      "Express your present state:\nPhysically, Mentally or Emotionally.",
                       style: Theme.of(context).textTheme.labelLarge,
                       textAlign: TextAlign.left,
                     ),

@@ -11,7 +11,6 @@ class MilestoneScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MilestoneController controller = Get.put(MilestoneController());
     return ListView(
       // physics: const ClampingScrollPhysics(),
       padding: const EdgeInsets.all(KSizes.defaultSpace),
@@ -40,7 +39,6 @@ class MilestoneScreen extends StatelessWidget {
 
         const MilestoneProgressList(period: Period.monthly),
         const SizedBox(height: KSizes.defaultSpace*5),
-
       ],
     );
   }

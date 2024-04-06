@@ -24,7 +24,7 @@ class MyselfSection extends StatelessWidget {
             children: [
               Text("Myself", style: Theme.of(context).textTheme.headlineSmall),
               GestureDetector(
-                onTap: () {},
+                onTap: ()=> MasterController.instance.currentIndex.value = 3,
                 child: Text(
                   "View All",
                   style: Theme.of(context).textTheme.bodyMedium,

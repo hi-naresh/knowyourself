@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../common/widgets/custom_container.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/enums.dart';
+import '../../../../mySpace/milestones/controller/milestone_controller.dart';
 import '../../dashboard/widgets/helper/progress_chart_painter.dart';
 
 
@@ -49,8 +52,10 @@ class _ProgressComponentState extends State<ProgressComponent> with SingleTicker
   }
   @override
   Widget build(BuildContext context) {
+    final milesController = MilestoneController.instance;
     return CustomContainer(
       color: kApp1Light,
+      padding: const EdgeInsets.all(KSizes.defaultSpace),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -62,11 +67,11 @@ class _ProgressComponentState extends State<ProgressComponent> with SingleTicker
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: KSizes.lg),
-              ProgressLabel(progress: '12%', label: 'Daily', color: kApp1),
+              ProgressLabel(label: '${milesController.getTotalTasksCount(Period.daily)} Tasks daily', color: kApp3),
               const SizedBox(height: KSizes.sm),
-              ProgressLabel(progress: '68%', label: 'Monthly', color: kApp2),
+              ProgressLabel( label: '${milesController.getTotalTasksCount(Period.weekly)} Tasks weekly', color: kApp2),
               const SizedBox(height: KSizes.sm),
-              ProgressLabel(progress: '46%', label: 'Yearly', color: kApp3),
+              ProgressLabel(label: '${milesController.getTotalTasksCount(Period.monthly)} Tasks monthly', color: kApp1),
             ],
           ),
           AnimatedBuilder(
@@ -75,12 +80,12 @@ class _ProgressComponentState extends State<ProgressComponent> with SingleTicker
                 return CustomPaint(
                   painter: ProgressPainter(progress: _animations.map((e) => e.value).toList()),
                   child: SizedBox(
-                    width: 150,
-                    height: 150,
+                    width: 120,
+                    height: 120,
                     child: Center(
                       child: Text(
                         'G',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                         )
                       ),
@@ -94,25 +99,16 @@ class _ProgressComponentState extends State<ProgressComponent> with SingleTicker
     );
   }
 
-  Widget ProgressLabel({required String progress, required String label, required Color color}) {
+  Widget ProgressLabel({ required String label, required Color color}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          width: KSizes.xl,
-          height: KSizes.xl,
+          width: KSizes.md,
+          height: KSizes.md,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: color,
-          ),
-          child:Center(
-            child: Text(
-              progress,
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              )
-            ),
           ),
         ),
         const SizedBox(width: KSizes.sm),
