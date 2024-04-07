@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/features/personalisation/controller/app_controller.dart';
 
 import '../../../../../utils/constants/sizes.dart';
-import '../../../controller/profile_controller.dart';
 
 
 class LogoutPop extends StatelessWidget {
@@ -12,7 +12,7 @@ class LogoutPop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProfileController());
+    final controller = AppStateController.instance;
     return Container(
       height: Get.height * 0.4,
       padding: const EdgeInsets.all(KSizes.defaultSpace),

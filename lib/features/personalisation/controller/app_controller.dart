@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import '../../../data/repo/auth/auth_repo.dart';
+import '../../../routes.dart';
 import '../../../utils/helpers/shadow_disabler.dart';
 
 class AppStateController extends GetxController {
   static AppStateController get instance => Get.find();
   static final storage = GetStorage();
   RxBool isDarkMode = false.obs;
-  final _key = 'isDarkMode';
+  final _dark = 'isDarkMode';
 
   @override
   void onInit() {
     super.onInit();
     // Load theme mode from storage
-    isDarkMode.value = storage.read(_key) ?? false;
+    isDarkMode.value = storage.read(_dark) ?? false;
     CustomShadow.disableShadows = isDarkMode.value;
     Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
   }
@@ -23,7 +25,17 @@ class AppStateController extends GetxController {
     CustomShadow.disableShadows = isDarkMode.value;
     Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
     // Save theme mode to storage
-    storage.write(_key, isDarkMode.value);
+    storage.write(_dark, isDarkMode.value);
+  }
+
+  void logoutUser() async {
+    try{
+      await AuthRepo.instance.logoutUser();
+      await storage.erase();
+      Get.offAllNamed(KRoutes.getOnBoardingRoute());
+    } catch (e){
+      throw 'Something went Wrong. Try Again';
+    }
   }
 }
 

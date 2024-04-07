@@ -8,28 +8,36 @@ class UserProfileRepo {
 
   static UserProfileRepo get instance => Get.find();
 
-  final GetStorage _box = GetStorage();
+  final GetStorage _storage = GetStorage();
 
   static const String _userProfileKey = 'user_profile';
 
   void saveUserProfile(UserProfileModel userProfile) {
-    _box.write(_userProfileKey, userProfile.toJson());
+    _storage.writeIfNull(_userProfileKey, userProfile);
     UserRepo.instance.addNewCollectionUnderUser(_userProfileKey,userProfile.toJson());
   }
 
   void removeUserProfile() {
-    _box.remove(_userProfileKey);
+    _storage.remove(_userProfileKey);
   }
 
   void updateUserProfile(UserProfileModel userProfile) {
-    _box.write(_userProfileKey, userProfile.toJson());
+    _storage.write(_userProfileKey, userProfile.toJson());
   }
 
-  UserProfileModel? getUserProfile() {
-    final json = _box.read<Map<String, dynamic>>(_userProfileKey);
+  Future<UserProfileModel> getUserProfile() async {
+    final json = _storage.read(_userProfileKey);
     if (json != null) {
       return UserProfileModel.fromJson(json);
+    }else {
+      final userProfile = await fetchUserProfileData();
+      _storage.write(_userProfileKey, userProfile.toJson());
+      return userProfile;
     }
-    return null;
   }
+
+  Future<UserProfileModel> fetchUserProfileData() {
+    return UserRepo.instance.fetchUserProfileFirestore();
+  }
+
 }

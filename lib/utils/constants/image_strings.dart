@@ -61,7 +61,7 @@ class KImages {
 
   //home
   static const String milestones = "assets/illustrations/milestones.svg";
-  static const String loginImage = "assets/illustrations/emotional.svg";
+  static const String loginImage = "assets/illustrations/health11.svg";
 
   // 4 aspects
   static const String mental = "assets/illustrations/mental.svg";

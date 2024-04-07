@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/features/personalisation/model/user_onboard_model.dart';
 import '/data/repo/auth/auth_repo.dart';
 
 import '../../../features/personalisation/model/user_model.dart';
@@ -53,10 +54,36 @@ class UserRepo extends GetxController{
   }
 
 
-  Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>> fetchCollectionUnderUser(String collectionName) async{
+  // Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>> fetchCollectionUnderUser(String collectionName) async{
+  //   try{
+  //     final collectionSnapshot = await _onlineDB.collection("users").doc(AuthRepo.instance.authUser!.uid).collection(collectionName).get();
+  //     return collectionSnapshot.docs;
+  //   } on FirebaseException catch(e){
+  //     throw KFirebaseException(e.code).message;
+  //   } on FormatException catch(_){
+  //     throw const KFormatException();
+  //   } on PlatformException catch(e){
+  //     throw KPlatformException(e.code).message;
+  //   } catch (e){
+  //     throw 'Something went Wrong. Try Again';
+  //   }
+  // }
+
+  //get user_profile data as UserProfileModel
+  Future<UserProfileModel> fetchUserProfileFirestore() async{
     try{
-      final collectionSnapshot = await _onlineDB.collection("users").doc(AuthRepo.instance.authUser!.uid).collection(collectionName).get();
-      return collectionSnapshot.docs;
+      final userSnapshot = await _onlineDB
+          .collection('users')
+          .doc(AuthRepo.instance.authUser!.uid)
+          .collection('user_profile')
+          .doc(AuthRepo.instance.authUser!.uid)
+          .get();
+      if (userSnapshot.exists) {
+        return UserProfileModel.fromDocument(userSnapshot);
+      } else {
+        return UserProfileModel.empty();
+        // throw Exception('User not found');
+      }
     } on FirebaseException catch(e){
       throw KFirebaseException(e.code).message;
     } on FormatException catch(_){

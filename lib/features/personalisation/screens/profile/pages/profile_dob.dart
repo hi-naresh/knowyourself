@@ -38,10 +38,15 @@ class ProfileDobPage extends StatelessWidget {
             selectedColor: KColors.white,
             fillColor: kApp1,
             borderRadius: BorderRadius.circular(KSizes.borderRadiusLgx),
-            verticalDirection: VerticalDirection.down,
             isSelected: controller.genderSelections,
             onPressed: (int index) {
-              controller.genderSelections[index] = !controller.genderSelections[index];
+              for (int buttonIndex = 0; buttonIndex < controller.genderSelections.length; buttonIndex++) {
+                if (buttonIndex == index) {
+                  controller.genderSelections[buttonIndex] = true;
+                } else {
+                  controller.genderSelections[buttonIndex] = false;
+                }
+              }
             },
             children: const [
               Text('Male'),

@@ -7,6 +7,7 @@ import 'package:knowyourself/features/personalisation/screens/settings/pages/set
 import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_my_space.dart';
 import 'common/extras/notification_screen.dart';
 import 'features/master.dart';
+import 'features/personalisation/screens/profile/pages/profile_review_ask.dart';
 import 'features/personalisation/screens/profile/profile_edit_screen.dart';
 import 'features/personalisation/screens/profile/profile_setup.dart';
 import 'features/personalisation/screens/settings/setting_screen.dart';
@@ -33,6 +34,9 @@ class KRoutes{
   static String getSignupRoute() => signup;
   static String getPasswordResetRoute() => passwordReset;
   static String getProfileRoute() => profileSetup;
+
+  static const String reviewAsk = '/reviewAsk';
+  static String getReviewAskRoute() => reviewAsk;
 
   //settings screens
   static const String settingSpace = '/settingSpace';
@@ -125,6 +129,9 @@ class KRoutes{
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
     GetPage(name: choiceScreen, page: () =>  const ChoiceScreen(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    GetPage(name: reviewAsk, page: () =>  const PromptReviewTest(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
   ];

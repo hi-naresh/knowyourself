@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/data/repo/auth/auth_repo.dart';
 import 'package:knowyourself/features/personalisation/controller/user_controller.dart';
 import 'package:knowyourself/features/personalisation/screens/profile/pages/profile_review_ask.dart';
+import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../data/repo/user/local/user_profile_repo.dart';
@@ -27,10 +29,12 @@ class ProfileSetupController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    final savedProfile = _repository.getUserProfile();
-    if (savedProfile != null) {
-      userProfile(savedProfile);
-    }
+    fetchUserProfile();
+  }
+
+  Future<void> fetchUserProfile() async {
+    final fetchedProfile = await _repository.getUserProfile();
+    userProfile(fetchedProfile);
   }
 
   void setGender(int index) {
@@ -55,7 +59,7 @@ class ProfileSetupController extends GetxController {
   void finishOnboarding() {
     if (_validateInputs()) {
       final userProfileValue = UserProfileModel(
-        userId: UserController.instance.user.value.id,
+        userId: AuthRepo.instance.authUser!.uid,
         name: name.value,
         avatarPath: avatar.value,
         dob: dob.value,
@@ -68,7 +72,7 @@ class ProfileSetupController extends GetxController {
       _repository.saveUserProfile(userProfileValue);
       userProfile(userProfileValue);
       userProfile.refresh();
-      Get.to(() => const PromptReviewTest());
+      Get.offAllNamed(KRoutes.getReviewAskRoute());
     } else {
       KHelper.showSnackBar('Error', 'Please fill in all the fields correctly.');
     }
