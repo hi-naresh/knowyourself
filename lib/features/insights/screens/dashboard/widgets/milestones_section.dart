@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:knowyourself/features/master.dart';
+import 'package:knowyourself/features/mySpace/milestones/controller/milestone_controller.dart';
 import 'package:knowyourself/features/mySpace/space_screen.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
@@ -8,6 +10,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
 
 import '../../../../../common/widgets/custom_container.dart';
+import '../../../../../utils/constants/enums.dart';
 import 'circular_painter.dart';
 
 class DailyMilestoneSection extends StatelessWidget {
@@ -15,6 +18,7 @@ class DailyMilestoneSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final milesController = MilestoneController.instance;
     return CustomContainer(
       width: double.infinity,
       color: kApp4Light,
@@ -34,10 +38,10 @@ class DailyMilestoneSection extends StatelessWidget {
               Positioned(
                 left: 0,
                 child: SvgPicture.asset(
-                  // colorFilter: const ColorFilter.mode(
-                  //   Colors.white70,
-                  //   BlendMode.modulate,
-                  // ),
+                  colorFilter: const ColorFilter.mode(
+                    Colors.white70,
+                    BlendMode.modulate,
+                  ),
                   KImages.health5,
                   height: KSizes.xxl*2.4,
                   fit: BoxFit.contain,
@@ -47,24 +51,20 @@ class DailyMilestoneSection extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      //demo
-                        text: "Tasks: 2/",
-                        // text: (value.toDolist.length - value.getUncompletedTasksCount()).toString(),
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          // color: KColors.dark,
-                          fontWeight: FontWeight.bold,
-                        )
+                      text: "Tasks: ${milesController.getCompletedTasksCount(Period.daily)}/",
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        // color: KColors.dark,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     TextSpan(
-                      //demo
-                        text: "6",
-                        // text: '/${value.toDolist.length} task completed',
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          // color: KColors.dark,
-                          fontWeight: FontWeight.bold,
-
-                        )
+                      text: "${milesController.getTotalTasksCount(Period.daily)}",
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        // color: KColors.dark,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+
                     TextSpan(
                       text: "\n${KTexts.dailyMilestones}",
                       style: Theme.of(context).textTheme.headlineLarge?.copyWith(
@@ -79,23 +79,17 @@ class DailyMilestoneSection extends StatelessWidget {
           ),
           CustomPaint(
             painter: ToDoPainter(
-              // completedTasks: (value.toDolist.length -
-              //     value.getUncompletedTasksCount()),
-              // totalTasks: value.toDolist.length,
-              //demo
-              completedTasks: 2,
-              totalTasks: 5,
-              radius: KSizes.xl,
-              strokeWidth: KSizes.md/1,
+              completedTasks: milesController.getCompletedTasksCount(Period.daily),
+              totalTasks: milesController.getTotalTasksCount(Period.daily),
+              radius: KSizes.xl*1.2,
+              strokeWidth: KSizes.md/1.5,
             ),
             child: SizedBox(
               height: 80,
               width: 80,
               child: Center(
                 child: Text(
-                  //demo
-                  "45%",
-                  // "${value.toDolist.isNotEmpty ? ((value.toDolist.length - value.getUncompletedTasksCount()) * 100 / value.toDolist.length).toStringAsFixed(1) : 0} %",
+                  "${milesController.getProgress(Period.daily).toPrecision(2) * 100}%",
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),

@@ -2,46 +2,62 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart';
+import 'package:intl/intl.dart';
+import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../features/insights/model/quote_model.dart';
 
 class QuoteService extends GetxService {
-
   static QuoteService get instance => Get.find();
   final GetStorage _storage = GetStorage();
   final String _storageKey = 'dailyQuote';
 
+  @override
+  void onInit() {
+    super.onInit();
+    ensureQuoteForToday();
+  }
+
+  Future<void> ensureQuoteForToday() async {
+    if (shouldFetchNewQuote()) {
+      await fetchDailyQuote();
+    }
+  }
+
   Future<QuoteModel> fetchDailyQuote() async {
     try {
-      var response = await http.get(Uri.parse('https://incarnateword.in/sa/quotes'));
+      var response = await http.get(Uri.parse('https://www.goodreads.com/author/quotes/5867530.Sri_Aurobindo'));
       if (response.statusCode == 200) {
         var document = parse(response.body);
-        // The selectors are updated based on the HTML snippet you provided
-        var quoteElement = document.querySelector('div.card-content p:first-child');
-        var authorElement = document.querySelector('div.card-content p:nth-child(2)');
-        var tagElement = document.querySelector('div.card-content p span.badge-self');
+        var content = document.querySelector('.quote');
+        if (content != null) {
+          var quoteElement = content.querySelector('.quoteText');
+          var authorElement = content.querySelector('.authorOrTitle');
 
-        var quote = quoteElement?.text.trim() ?? 'It is only by the touch of the Absolute that we can arrive at our own absolute.';
-        var author = authorElement?.text.trim() ?? 'Sri Aurobindo';
-        var tag = tagElement?.text.trim()?? 'Absolute';
+          var quoteText = quoteElement?.text.split('“').last.split('”').first.trim();
+          var authorText = authorElement?.text.trim();
 
+          if (quoteText != null && authorText != null) {
+            var today = DateTime.now();
+            _storage.write(_storageKey, {
+              'title': quoteText,
+              'author': authorText,
+              'date': DateFormat('yyyy-MM-dd').format(today),
+            });
 
-
-        // Save to storage
-        _storage.write(_storageKey, {
-          'title': quote,
-          'author': author,
-          'tag': tag,
-        });
-
-        return QuoteModel(title: quote, author: author, tag: tag);
-      } else {
-        print('Failed to fetch quote. Status: ${response.statusCode}');
-        return QuoteModel(title: 'Failed to fetch quote');
+            return QuoteModel(title: quoteText, author: authorText, date: today.toString());
+          }
+        }
       }
+      throw Exception('Failed to fetch quote');
     } catch (e) {
-      print(e);
-      return QuoteModel(title: 'Error occurred while fetching quote');
+      KHelper.showSnackBar('Failed to fetch quote', 'Please check your internet connection');
+      // Return a default quote or handle the error as needed
+      return QuoteModel(
+          title: 'It is only by the touch of the Absolute that we can arrive at our own absolute.',
+          author: 'Sri Aurobindo',
+          date: DateTime.now().toString(),
+      );
     }
   }
 
@@ -49,29 +65,21 @@ class QuoteService extends GetxService {
     var storedQuoteJson = _storage.read(_storageKey);
     if (storedQuoteJson != null) {
       return QuoteModel.fromJson(storedQuoteJson);
-    }else{
-      fetchDailyQuote();
-      return QuoteModel.fromJson(storedQuoteJson);
     }
-  }
-
-  Future<void> updateQuote() async {
-    // Here you can add logic to check if the stored quote is from today
-    // If it's not, fetch a new quote
-    if (shouldFetchNewQuote()) {
-      await fetchDailyQuote();
-    }
+    return QuoteModel(title: '', author: '', date: '');
   }
 
   bool shouldFetchNewQuote() {
-    // Implement logic to decide if we should fetch a new quote
-    // For example, check the date stored in GetStorage and compare with current date
-    // Assuming we store the date like this: _storage.write('quoteDate', DateTime.now().toIso8601String());
-    var storedDate = _storage.read('quoteDate');
-    if (storedDate != null) {
-      var date = DateTime.parse(storedDate);
-      return date.day != DateTime.now().day;
+    var storedQuoteJson = _storage.read(_storageKey);
+    if (storedQuoteJson != null) {
+      var storedDate = DateFormat('yyyy-MM-dd').parse(storedQuoteJson['date']);
+      var today = DateTime.now();
+      if (storedDate.day == today.day &&
+          storedDate.month == today.month &&
+          storedDate.year == today.year) {
+        return false;
+      }
     }
-    return true; // If no date is stored, return true
+    return true;
   }
 }

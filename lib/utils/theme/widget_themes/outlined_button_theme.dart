@@ -13,9 +13,10 @@ class KOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
       elevation: 0,
       foregroundColor: KColors.dark,
+      padding: const EdgeInsets.all(KSizes.md),
       side: const BorderSide(color: KColors.borderPrimary),
       textStyle: const TextStyle(fontSize: 16, color: KColors.black, fontWeight: FontWeight.w600),
-      padding: const EdgeInsets.symmetric(vertical: KSizes.buttonHeight, horizontal: 20),
+      // padding: const EdgeInsets.symmetric(vertical: KSizes.buttonHeight, horizontal: 20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(KSizes.buttonRadius)),
     ),
   );
@@ -25,8 +26,9 @@ class KOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
       foregroundColor: KColors.light,
       side: const BorderSide(color: KColors.borderPrimary),
+      padding: const EdgeInsets.all(KSizes.md),
       textStyle: const TextStyle(fontSize: 16, color: KColors.textWhite, fontWeight: FontWeight.w600),
-      padding: const EdgeInsets.symmetric(vertical: KSizes.buttonHeight, horizontal: 20),
+      // padding: const EdgeInsets.symmetric(vertical: KSizes.buttonHeight, horizontal: 20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(KSizes.buttonRadius)),
     ),
   );

@@ -16,35 +16,42 @@ class SettingsMySpace extends StatelessWidget {
     final backupController = BackupService.instance;
     return Scaffold(
       appBar: const KAppBar(back: true,),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.all(KSizes.md),
-        child: Column(
-          children: [
-            Lottie.asset(KImages.mySpaceAnim,
-              width: double.infinity,
-              repeat: true,
-              reverse: true,
-              fit: BoxFit.contain,
-            ),
-            // ElevatedButton(onPressed: backupController.getData(), child: Text('Test')),
-            SettingTile(
-                title: "Import Data",
-                subtitle: "Import data from last account",
-                onTap: ()=>backupController.importData(),
-                icon: CupertinoIcons.arrow_clockwise),
-            SettingTile(
-                title: "Export Data",
-                onTap: ()=>backupController.exportData(),
-                subtitle: "Export data to another account",
-                icon: CupertinoIcons.arrow_swap),
-            //erase all data
-            SettingTile(
-                title: "Erase Data",
-                onTap: ()=>backupController.eraseData(),
-                subtitle: "Erase all data from this account",
-                icon: CupertinoIcons.delete_right),
-          ],
-        ),
+        children: [
+          Lottie.asset(KImages.mySpaceAnim,
+            width: double.infinity,
+            repeat: true,
+            reverse: true,
+            fit: BoxFit.contain,
+          ),
+          SettingTile(
+              title: "Recover local data",
+              subtitle: "Import data from last account",
+              onTap: ()=>backupController.importData(),
+              icon: CupertinoIcons.arrow_clockwise),
+          SettingTile(
+              title: "Recover online data",
+              subtitle: "Import data from last saved to online",
+              onTap: ()=>backupController.importRemoteData(),
+              icon: CupertinoIcons.arrow_2_circlepath_circle),
+          SettingTile(
+              title: "Backup data locally",
+              onTap: ()=>backupController.localStore(),
+              subtitle: "Store your data on your phone",
+              icon: CupertinoIcons.device_phone_portrait),
+          SettingTile(
+              title: "Backup data online",
+              onTap: ()=>backupController.remoteStore(),
+              subtitle: "Save your data on cloud",
+              icon: CupertinoIcons.arrow_swap),
+          //erase all data
+          SettingTile(
+              title: "Erase Data",
+              onTap: ()=>backupController.eraseData(),
+              subtitle: "Erase all user data from this account",
+              icon: CupertinoIcons.delete_right),
+        ],
       ),
     );
   }

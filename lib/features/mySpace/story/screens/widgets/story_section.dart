@@ -26,7 +26,7 @@ class StorySection extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(storyType == StoryType.current ? 'Current Story' : 'Desired Story',
+              Text(storyType == StoryType.current ? 'Present Story' : "You're hero",
                   style: Theme.of(context).textTheme.headlineSmall),
               const Spacer(),
               TextButton(

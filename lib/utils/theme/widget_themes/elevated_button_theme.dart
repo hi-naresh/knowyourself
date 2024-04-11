@@ -15,11 +15,9 @@ class KElevatedButtonTheme {
       backgroundColor: KColors.primary,
       disabledForegroundColor: KColors.darkGrey,
       disabledBackgroundColor: KColors.buttonDisabled,
-      // side: const BorderSide(color: KColors.primary),
+      minimumSize: const Size(double.infinity, KSizes.buttonHeight),
       side: BorderSide.none,
-      // shadowColor: KColors.primary.withOpacity(0.95),
-      // padding: const EdgeInsets.symmetric(vertical: KSizes.buttonHeight),
-      textStyle: const TextStyle(fontSize: 16, color: KColors.textWhite, fontWeight: FontWeight.w600),
+      textStyle: const TextStyle(fontSize: 18, color: KColors.textWhite, fontWeight: FontWeight.w600),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(KSizes.buttonRadius)),
     ),
   );
@@ -28,13 +26,13 @@ class KElevatedButtonTheme {
   static final darkElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: KColors.light,
+      foregroundColor: KColors.white,
       backgroundColor: KColors.primary,
       disabledForegroundColor: KColors.darkGrey,
       disabledBackgroundColor: KColors.darkerGrey,
-      side: const BorderSide(color: KColors.primary),
-      // padding: const EdgeInsets.symmetric(vertical: KSizes.buttonHeight),
-      textStyle: const TextStyle(fontSize: 16, color: KColors.textWhite, fontWeight: FontWeight.w600),
+      minimumSize: const Size(double.infinity, KSizes.buttonHeight),
+      side: BorderSide.none,
+      textStyle: const TextStyle(fontSize: 18, color: KColors.textWhite, fontWeight: FontWeight.w600),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(KSizes.buttonRadius)),
     ),
   );

@@ -1,12 +1,14 @@
 import 'package:get/get.dart';
 import 'package:knowyourself/features/learning/screens/materials/pages/course_page.dart';
+import 'package:knowyourself/features/mySpace/choices/screens/choice_screen.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/add_mood_screen.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/activities_to_shift.dart';
 import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_about.dart';
 import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_my_space.dart';
 import 'common/extras/notification_screen.dart';
 import 'features/master.dart';
-import 'features/personalisation/screens/profile/profile_screen.dart';
+import 'features/personalisation/screens/profile/pages/profile_review_ask.dart';
+import 'features/personalisation/screens/profile/profile_edit_screen.dart';
 import 'features/personalisation/screens/profile/profile_setup.dart';
 import 'features/personalisation/screens/settings/setting_screen.dart';
 import 'common/extras/splash_screen.dart';
@@ -33,6 +35,9 @@ class KRoutes{
   static String getPasswordResetRoute() => passwordReset;
   static String getProfileRoute() => profileSetup;
 
+  static const String reviewAsk = '/reviewAsk';
+  static String getReviewAskRoute() => reviewAsk;
+
   //settings screens
   static const String settingSpace = '/settingSpace';
   static String getSettingSpaceRoute() => settingSpace;
@@ -55,6 +60,9 @@ class KRoutes{
   //myspace
   static const String addMood = '/addMood';
   static String getAddMoodRoute() => addMood;
+
+  static const String choiceScreen = '/choiceScreen';
+  static String getChoiceScreenRoute() => choiceScreen;
 
 
   //learning
@@ -118,6 +126,12 @@ class KRoutes{
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
     GetPage(name: about, page: () =>  const SettingsAboutScreen(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    GetPage(name: choiceScreen, page: () =>  const ChoiceScreen(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    GetPage(name: reviewAsk, page: () =>  const PromptReviewTest(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
   ];

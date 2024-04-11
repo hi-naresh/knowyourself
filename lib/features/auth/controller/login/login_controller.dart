@@ -15,8 +15,11 @@ class LoginController extends GetxController{
   final localStorage = GetStorage();
   final email =TextEditingController();
   final password =TextEditingController();
-  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
   final userController = Get.put(UserController());
+
+  GlobalKey<FormState> get loginFormKey => _loginFormKey;
+
 
   //function login
   Future<void> emailLogin() async{
@@ -27,7 +30,7 @@ class LoginController extends GetxController{
       //   return;
       // }
       //check form
-      if (!loginFormKey.currentState!.validate()) {
+      if (!_loginFormKey.currentState!.validate()) {
         KHelper.showSnackBar("Invalid Form", "Please fill the form correctly");
         return;
       }
@@ -71,6 +74,13 @@ class LoginController extends GetxController{
     // email.text = localStorage.read("REMEMBER_ME_EMAIL").toString();
     // password.text = localStorage.read("REMEMBER_ME_PASSWORD").toString();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    email.dispose();
+    password.dispose();
+    super.onClose();
   }
 
 }

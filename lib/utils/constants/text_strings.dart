@@ -18,7 +18,7 @@ class KTexts {
 
 
   //Dashboard
-  static const String feel = "How do you feel?";
+  static const String feel = "How are you today?";
   static const String dailyMilestones ="Daily milestones";
   static const String myself = "Myself";
   static const String progress = "Progress";

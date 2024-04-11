@@ -10,6 +10,11 @@ class QuoteController extends GetxController {
   void onInit() {
     super.onInit();
     fetchQuote();
+    quoteModel.listen((quote) {
+      if (quote != null) {
+        _quoteService.getStoredQuote();
+      }
+    });
   }
 
   void fetchQuote() async {
