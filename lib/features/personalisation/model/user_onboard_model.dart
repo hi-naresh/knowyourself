@@ -21,7 +21,7 @@ class UserProfileModel {
     this.gender,
     this.occupation,
     this.institution,
-    this.userType = UserType.regularUser,
+    this.userType = UserType.individualConsumer,
     this.isFirstTimeCreate = true,
   });
 
@@ -33,7 +33,7 @@ class UserProfileModel {
     gender: '',
     occupation: '',
     institution: '',
-    userType: UserType.regularUser,
+    userType: UserType.individualConsumer,
     isFirstTimeCreate: true,
   );
 
@@ -60,7 +60,7 @@ class UserProfileModel {
     institution: json['institution'],
     userType: UserType.values.firstWhere(
           (e) => e.toString() == json['userType'],
-      orElse: () => UserType.regularUser,
+      orElse: () => UserType.individualConsumer,
     ),
     isFirstTimeCreate: json['isFirstTimeCreate'] ?? true,
   );
@@ -78,7 +78,7 @@ class UserProfileModel {
         institution: data['institution']??'',
         userType: UserType.values.firstWhere(
               (e) => e.toString() == data['userType'],
-          orElse: () => UserType.regularUser,
+          orElse: () => UserType.individualConsumer,
         ),
         isFirstTimeCreate: data['isFirstTimeCreate'] ?? true,
       );

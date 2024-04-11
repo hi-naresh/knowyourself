@@ -32,7 +32,7 @@ class AppStateController extends GetxController {
     try{
       await AuthRepo.instance.logoutUser();
       await storage.erase();
-      Get.offAllNamed(KRoutes.getOnBoardingRoute());
+      Get.offAllNamed(KRoutes.getLoginRoute());
     } catch (e){
       throw 'Something went Wrong. Try Again';
     }

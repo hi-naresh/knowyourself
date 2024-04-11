@@ -12,7 +12,7 @@ class QuoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(QuoteController());
-    if (controller.quoteModel.value != null) {
+    if (controller.quoteModel.value!.title.isNotEmpty) {
       return Container(
         padding: const EdgeInsets.all(KSizes.md),
         decoration: BoxDecoration(
@@ -60,6 +60,5 @@ class QuoteWidget extends StatelessWidget {
       );
     }
     return const SizedBox();
-
   }
 }

@@ -33,7 +33,7 @@ class ProfileMemberPage extends StatelessWidget {
         ),
         const SizedBox(height: KSizes.defaultSpace),
         Text(
-          'What kind of audience you fall into?',
+          'Please choose one that best describes your Affiliation?',
           style: Theme.of(context).textTheme.titleMedium,
         ),
         Obx(

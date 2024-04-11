@@ -5,16 +5,18 @@ import '/utils/device/device_utility.dart';
 import '../../../utils/constants/sizes.dart';
 
 class KPageBar extends StatelessWidget implements PreferredSizeWidget {
-  const KPageBar({super.key, this.title, this.onTap});
+  const KPageBar({super.key, this.title, this.onTap, this.showBackButton=true, this.action});
   final String? title;
+  final bool? showBackButton;
   final Function()? onTap;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(title ?? ''),
       centerTitle: true,
-      leading: Padding(
+      leading: showBackButton! ? Padding(
         padding: const EdgeInsets.only(left: KSizes.defaultSpace),
         child: GestureDetector(
           onTap: onTap,
@@ -31,8 +33,12 @@ class KPageBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
         ),
-      ),
-      actions: const [],
+      ): null,
+      actions: [
+        Padding(
+            padding: const EdgeInsets.only(right: KSizes.defaultSpace),
+            child: action ?? const SizedBox.shrink()),
+      ],
     );
   }
 

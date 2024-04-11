@@ -14,8 +14,15 @@ extension ReminderPeriodExtension on Period {
 }
 
 enum StoryType { current, desired, }
+// 1. **Individual Consumer**
+// 2. **SAILC Member**
+// 3. **Sri Aurobindo Society Member**
+// 4. **Student**
+// 5. **Academic Professional**
+// 6. **Business Professional**
+// Other: Kindly Specify your Role Here {Textbox to specify role}”
+enum UserType { individualConsumer, sailcMember, sriAurobindoSocietyMember, student, academicProfessional, businessProfessional, other }
 
-enum UserType { regularUser, sailcMember }
 
 extension StoryTypeExtension on StoryType {
   String toJson() {
