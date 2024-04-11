@@ -15,6 +15,7 @@ class KSizes {
   static const double iconMd = 24.0;
   static const double iconLg = 32.0;
   static const double iconXl = 28.0;
+  static const double iconXxl = 34.0;
 
   // Font sizes
   static const double fontSizeSm = 14.0;
@@ -22,7 +23,7 @@ class KSizes {
   static const double fontSizeLg = 18.0;
 
   // Button sizes
-  static const double buttonHeight = 18.0;
+  static const double buttonHeight = 54.0;
   // static const double buttonHeightCompact = 12;
   static const double buttonRadius = 25.0;
   static const double buttonWidth = 120.0;

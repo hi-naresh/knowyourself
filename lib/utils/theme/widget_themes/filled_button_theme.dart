@@ -2,36 +2,32 @@ import 'package:flutter/material.dart';
 import '../../constants/colors.dart';
 import '../../constants/sizes.dart';
 
-/* -- Light & Dark Elevated Button Themes -- */
-class PElevatedButtonTheme {
-  PElevatedButtonTheme._(); //To avoid creating instances
-
+class KFilledButtonTheme {
+  KFilledButtonTheme._(); //To avoid creating instances
 
   /* -- Light Theme -- */
-  static final lightElevatedButtonTheme  = ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
+  static final lightFilledButtonTheme = FilledButtonThemeData(
+    style: FilledButton.styleFrom(
       elevation: 0,
-      foregroundColor: KColors.light,
-      backgroundColor: KColors.primary,
+      foregroundColor: KColors.white,
+      backgroundColor: kApp1,
       disabledForegroundColor: KColors.darkGrey,
       disabledBackgroundColor: KColors.buttonDisabled,
-      side: const BorderSide(color: KColors.primary),
-      padding: const EdgeInsets.symmetric(vertical: KSizes.buttonHeight),
+      side: BorderSide.none,
       textStyle: const TextStyle(fontSize: 16, color: KColors.textWhite, fontWeight: FontWeight.w600),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(KSizes.buttonRadius)),
     ),
   );
 
   /* -- Dark Theme -- */
-  static final darkElevatedButtonTheme = ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
+  static final darkFilledButtonTheme = FilledButtonThemeData(
+    style: FilledButton.styleFrom(
       elevation: 0,
-      foregroundColor: KColors.light,
-      backgroundColor: KColors.primary,
+      foregroundColor: KColors.white,
+      backgroundColor: kApp1,
       disabledForegroundColor: KColors.darkGrey,
       disabledBackgroundColor: KColors.darkerGrey,
       side: const BorderSide(color: KColors.primary),
-      padding: const EdgeInsets.symmetric(vertical: KSizes.buttonHeight),
       textStyle: const TextStyle(fontSize: 16, color: KColors.textWhite, fontWeight: FontWeight.w600),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(KSizes.buttonRadius)),
     ),

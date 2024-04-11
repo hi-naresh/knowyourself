@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../data/repo/auth/auth_repo.dart';
 import '../../../../data/repo/user/user_repo.dart';
-import '../../../../routes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../../personalisation/model/user_model.dart';
 
@@ -59,7 +58,7 @@ class SignUpController extends GetxController {
       //show success
       KHelper.showSnackBar("Congratulations!", "Account created successfully");
       //redirect to home
-      Get.offAllNamed(KRoutes.getMasterRoute());
+      // Get.offAllNamed(KRoutes.getMasterRoute());
 
     } catch (e) {
       KHelper.showSnackBar("Oh no!", e.toString());

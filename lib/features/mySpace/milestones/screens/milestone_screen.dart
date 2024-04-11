@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/widget/milestones_list_view.dart';
 import '../../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../controller/milestone_controller.dart';
 
 class MilestoneScreen extends StatelessWidget {
   const MilestoneScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final MilestoneController controller = Get.put(MilestoneController());
     return ListView(
       // physics: const ClampingScrollPhysics(),
       padding: const EdgeInsets.all(KSizes.defaultSpace),
@@ -40,7 +37,6 @@ class MilestoneScreen extends StatelessWidget {
 
         const MilestoneProgressList(period: Period.monthly),
         const SizedBox(height: KSizes.defaultSpace*5),
-
       ],
     );
   }

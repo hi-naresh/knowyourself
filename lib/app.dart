@@ -3,6 +3,7 @@ import '/bindings/general_bindings.dart';
 import 'data/repo/space/journal/journal_repo.dart';
 import 'features/mySpace/space_screen.dart';
 import 'features/personalisation/controller/app_controller.dart';
+import 'features/personalisation/controller/profile_setup_controller.dart';
 import 'routes.dart';
 import 'package:get/get.dart';
 import '../utils/theme/theme.dart';
@@ -15,8 +16,7 @@ class MyApp extends StatelessWidget {
     Get.lazyPut(() => AppStateController(), fenix: true);
     Get.put(JournalRepo());
     final spaceController = Get.lazyPut(()=>MySpaceController(),fenix: true);
-
-    // Get.put(StoryRepo());
+    Get.put(ProfileSetupController());
     return GetMaterialApp(
       initialBinding: GeneralBindings(),
       debugShowCheckedModeBanner: false,

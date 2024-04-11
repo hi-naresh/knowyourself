@@ -6,6 +6,7 @@ import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/validators/validation.dart';
 import '../../../controller/login/login_controller.dart';
+
 class PLoginForm extends StatelessWidget {
   const PLoginForm({
     super.key,
@@ -20,7 +21,8 @@ class PLoginForm extends StatelessWidget {
         children: [
           TextFormField(
             controller: controller.email,
-            validator: (value)=> KValidator.validateEmpty(value, controller.email.text),
+            validator: (value) =>
+                KValidator.validateEmpty(value, controller.email.text),
             decoration: const InputDecoration(
               labelText: KTexts.username,
               hintText: KTexts.usernameHint,
@@ -28,18 +30,18 @@ class PLoginForm extends StatelessWidget {
           ),
           const SizedBox(height: KSizes.spaceBtwInputFields),
           Obx(
-            ()=> TextFormField(
+            () => TextFormField(
               controller: controller.password,
-              validator: (value)=> KValidator.validateEmpty(value, controller.password.text),
+              validator: (value) =>
+                  KValidator.validateEmpty(value, controller.password.text),
               obscureText: controller.hidePassword.value,
               decoration: InputDecoration(
-                labelText: KTexts.password,
-                hintText: KTexts.passwordHint,
-                suffixIcon: IconButton(
-                    onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
-                    icon: const Icon(Icons.remove_red_eye_outlined))
-              ),
-
+                  labelText: KTexts.password,
+                  hintText: KTexts.passwordHint,
+                  suffixIcon: IconButton(
+                      onPressed: () => controller.hidePassword.value =
+                          !controller.hidePassword.value,
+                      icon: const Icon(Icons.remove_red_eye_outlined))),
             ),
           ),
           const SizedBox(height: KSizes.spaceBtwInputFields),
@@ -50,8 +52,10 @@ class PLoginForm extends StatelessWidget {
               Row(
                 children: [
                   Obx(
-                () =>Checkbox(value: controller.rememberMe.value,
-                        onChanged: (value) => controller.rememberMe.value = !controller.rememberMe.value),
+                    () => Checkbox(
+                        value: controller.rememberMe.value,
+                        onChanged: (value) => controller.rememberMe.value =
+                            !controller.rememberMe.value),
                   ),
                   const Text(KTexts.rememberMe),
                 ],

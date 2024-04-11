@@ -6,6 +6,8 @@ import '../data/helper_service/backup_service/backup_service.dart';
 import '../data/helper_service/local_auth/local_bio_auth.dart';
 import '../data/helper_service/notifications/notification_service.dart';
 import '../data/services/quotes/quote_service.dart';
+import '../features/mySpace/milestones/controller/milestone_controller.dart';
+import '../features/personalisation/controller/profile_setup_controller.dart';
 class GeneralBindings extends Bindings{
 
   @override
@@ -19,7 +21,8 @@ class GeneralBindings extends Bindings{
     Get.lazyPut(() => LocalBioAuth(),fenix: true);
     Get.lazyPut(() => QuoteService(), fenix: true);
     Get.lazyPut(() => StoryRepo(), fenix: true);
-
+    Get.lazyPut(() => MilestoneController(),fenix: true);
+    Get.lazyPut(() => ProfileSetupController(),fenix: true);
 
   }
 }
