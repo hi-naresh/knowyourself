@@ -27,15 +27,26 @@ class AspectSelectPage extends StatelessWidget {
             Column(
               children: [
                 const ProgressBar(
-                  steps: "2/3",
-                  percent: 0.6,
+                  steps: "1/3",
+                  percent: 0.3,
                 ),
                 const SizedBox(
                   height: KSizes.defaultSpace,
                 ),
-                Text(
-                  'In which Aspect?',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                Text.rich(
+                  textAlign: TextAlign.center,
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Select an Aspect',
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                      TextSpan(
+                        text: '\n\naspect to describe your current state of yourself, select one to proceed.',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: KSizes.defaultSpace * 2,

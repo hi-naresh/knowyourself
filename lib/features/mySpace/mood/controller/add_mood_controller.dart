@@ -32,7 +32,7 @@ class AddMoodController extends GetxController {
 
 
   RxInt selectAspect = 0.obs;
-  List<String> aspectsList = ['Mental', 'Physical', 'Vital', 'Spiritual'];
+  List<String> aspectsList = ['Mentally', 'Physically', 'Emotionally', 'Spiritually'];
   //get aspect from index
   String get aspectString => aspectsList[selectAspect.value];
   RxInt selectHappenedAt = 0.obs; //0 for social, 1 for work, 2 for home, 3 for personal
@@ -42,22 +42,21 @@ class AddMoodController extends GetxController {
   final TextEditingController reasons = TextEditingController();
 
   final List<Widget> journalPages = [
-    const MoodSelectPage(),
     const AspectSelectPage(),
+    const MoodSelectPage(),
+    // const variousAspects(),
     const ExpressFeelingsPage(),
-    // const MoodSummaryPage(readOnly: false),
   ];
 
-  //intialize read-only mode if needed in future
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   if (widget.moodModel == null) {
-  //     moodModel =
-  //         Provider.of<JournalEditorProvider>(context, listen: false).journal!;
-  //   } else {
-  //     moodModel = widget.moodModel!;
-  //   }
+  // if aspectString == 'Mentally' {
+  //   //do something
+  //
+  // } else if aspectString == 'Physically' {
+  //   //do something
+  // } else if aspectString == 'Emotionally' {
+  //   //do something
+  // } else if aspectString == 'Spiritually' {
+  //   //do something
   // }
 
   void nextPage() {
@@ -85,7 +84,6 @@ class AddMoodController extends GetxController {
   }
 
   void showSummary( mood) {
-    //other data also
     mood.value = mood;
   }
 
@@ -94,30 +92,18 @@ class AddMoodController extends GetxController {
   }
 
   void updateMoodJournal( moodModel) {
-    //update all data
     moodModel.value = moodModel;
   }
 
   void clearMoodJournalData() {
-    // clear mood, aspect, reasons, happenedAt
     reasons.clear();
   }
 
   void saveMoodData() {
-    // Provider.of<JournalEditorProvider>(context, listen: false).updateIndex(0);
-    // Provider.of<JournalProvider>(context, listen: false)
-    //     .updateJournalList(moodModel);
-    // Provider.of<PointsProvider>(context, listen: false)
-    //     .setScore(point: kAddJournalPoint);
-    // Provider.of<JournalEditorProvider>(context, listen: false)
-    //     .clearJournalData();
-    // Navigator.pop(context);
     Get.back();
   }
 
   void shiftMood() {
-    // Navigator.push(context,
-    // MaterialPageRoute(builder: (context) => MoodShift()));
     Get.toNamed(KRoutes.getActivitiesRoute());
   }
 
@@ -125,13 +111,4 @@ class AddMoodController extends GetxController {
     FocusScope.of(context).unfocus();
   }
 
-// void getIndexOfPage() {
-//    index.value = pageController.page?.round() ?? 0;
-// }
-
-// void updateIndex( index) {
-//   index.value = index;
-//   pageController.animateToPage(index,
-//       duration: const Duration(milliseconds: 200), curve: Curves.linear);
-// }
 }

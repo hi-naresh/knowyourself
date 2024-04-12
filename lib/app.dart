@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     Get.lazyPut(() => AppStateController(), fenix: true);
     Get.put(JournalRepo());
     final spaceController = Get.lazyPut(()=>MySpaceController(),fenix: true);
+    //needs to be lazy loaded or corrected when no user logged in
     Get.put(ProfileSetupController());
     return GetMaterialApp(
       initialBinding: GeneralBindings(),

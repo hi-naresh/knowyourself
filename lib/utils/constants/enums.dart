@@ -5,6 +5,8 @@ enum CourseType{ video,guide, magazine, centers, eBooks, auroSociety }
 
 enum Period { daily, weekly, monthly }
 
+enum Gender {male,female, other}
+
 extension ReminderPeriodExtension on Period {
   String toJson() => toString().split('.').last;
 

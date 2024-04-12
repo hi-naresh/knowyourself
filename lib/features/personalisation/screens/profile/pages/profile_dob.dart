@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
+import '../../../../../utils/constants/enums.dart';
 import '../../../controller/profile_setup_controller.dart';
 
 class ProfileDobPage extends StatelessWidget {
@@ -25,37 +26,40 @@ class ProfileDobPage extends StatelessWidget {
               child: Obx(() => Text(controller.dob.value != null
                   ? KHelper.getFormattedDateString(controller.dob.value!)
                   : 'Select date')),
-            )
-        ),
+            )),
         const SizedBox(height: KSizes.defaultSpace),
-        Text(
-            "What is your gender?",
-            style: Theme.of(context).textTheme.titleMedium
-        ),
+        Text("What is your gender?",
+            style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: KSizes.spaceBtwItems),
-        Obx(
-    ()=> ToggleButtons(
-            selectedColor: KColors.white,
-            fillColor: kApp1,
-            borderRadius: BorderRadius.circular(KSizes.borderRadiusLgx),
-            isSelected: controller.genderSelections,
-            onPressed: (int index) {
-              for (int buttonIndex = 0; buttonIndex < controller.genderSelections.length; buttonIndex++) {
-                if (buttonIndex == index) {
-                  controller.genderSelections[buttonIndex] = true;
-                } else {
-                  controller.genderSelections[buttonIndex] = false;
-                }
-              }
-            },
-            children: const [
-              Text('Male'),
-              Text('Female'),
-              Text('Other'),
-            ].map((e) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: KSizes.defaultSpace),
-              child: e,
-            )).toList(),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Wrap(
+            spacing: 10,
+            direction: Axis.horizontal,
+            children: Gender.values.map((gender) {
+              return Obx(
+                    () => ChoiceChip(
+                  backgroundColor: KHelper.isDark()
+                      ? kEmptyProgressDark
+                      : kEmptyProgress,
+                  selectedColor: kApp1,
+                  label: Text(
+                      gender.toString().split('.').last.capitalize!),
+                  selected: controller.selectedGender.value == gender,
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(
+                      color: kApp1,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: const EdgeInsets.all(10),
+                  disabledColor: kEmptyProgress,
+                  onSelected: (_)=> controller.selectedGender.value = gender,
+                  // onSelected: (_) => controller.changeAspect(gender),
+                ),
+              );
+            }).toList(),
           ),
         ),
       ],

@@ -10,7 +10,7 @@ class UserProfileModel {
   final String? gender;
   final String? occupation;
   final String? institution;
-  final UserType userType;
+  final String? userType;
   final bool isFirstTimeCreate;
 
   UserProfileModel({
@@ -21,7 +21,7 @@ class UserProfileModel {
     this.gender,
     this.occupation,
     this.institution,
-    this.userType = UserType.individualConsumer,
+    this.userType,
     this.isFirstTimeCreate = true,
   });
 
@@ -33,7 +33,8 @@ class UserProfileModel {
     gender: '',
     occupation: '',
     institution: '',
-    userType: UserType.individualConsumer,
+    // userType: UserType.individualConsumer,
+    userType: UserType.individualConsumer.toString(),
     isFirstTimeCreate: true,
   );
 
@@ -53,15 +54,17 @@ class UserProfileModel {
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) => UserProfileModel(
     userId: json['userId'],
+    avatarPath: json['avatarPath'],
     name: json['name'],
     dob: json['dob'] != null ? DateTime.parse(json['dob']) : null,
     gender: json['gender'],
     occupation: json['occupation'],
     institution: json['institution'],
-    userType: UserType.values.firstWhere(
-          (e) => e.toString() == json['userType'],
-      orElse: () => UserType.individualConsumer,
-    ),
+    // userType: UserType.values.firstWhere(
+    //       (e) => e.toString() == json['userType'],
+    //   orElse: () => UserType.individualConsumer,
+    // ),
+    userType: json['userType'],
     isFirstTimeCreate: json['isFirstTimeCreate'] ?? true,
   );
 
@@ -76,10 +79,11 @@ class UserProfileModel {
         gender: data['gender']??'',
         occupation: data['occupation']??'',
         institution: data['institution']??'',
-        userType: UserType.values.firstWhere(
-              (e) => e.toString() == data['userType'],
-          orElse: () => UserType.individualConsumer,
-        ),
+        // userType: UserType.values.firstWhere(
+        //       (e) => e.toString() == data['userType'],
+        //   orElse: () => UserType.individualConsumer,
+        // ),
+        userType: data['userType']??'',
         isFirstTimeCreate: data['isFirstTimeCreate'] ?? true,
       );
     }else{

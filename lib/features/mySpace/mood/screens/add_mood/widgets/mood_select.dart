@@ -22,7 +22,7 @@ class MoodSelectPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const ProgressBar(percent:0.3,steps: "1/3"),
+            const ProgressBar(percent:0.6,steps: "2/3"),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
