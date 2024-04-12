@@ -5,17 +5,36 @@ import '../../../../features/mySpace/mood/model/mood_model_input.dart';
 import '../../../services/mood_shifter/model_service.dart';
 import '../../../../features/personalisation/controller/user_controller.dart';
 
-class MoodRepo extends GetxController {
+class MoodRepo extends GetxService {
   static MoodRepo get instance => Get.find();
   final GetStorage _storage = GetStorage();
   final String _storageKey = 'moodEntries';
 
-  final ModelService _modelService = ModelService();
+  // final _modelService = Get.put(ModelService());
+  final _modelService = ModelService(); // Don't use Get.put here, it's unnecessary.
 
-  // Ensure you call this method at the appropriate time to initialize ModelService
-  Future<void> initModelService() async {
-    await _modelService.init();
+
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   // Ensure you call this method at the appropriate time to initialize ModelService
+  //   initModelService();
+  // } // Ensure you call this method at the appropriate time to initialize ModelService
+  // Future<void> initModelService() async {
+  //   await _modelService;
+  // }
+
+  @override
+  Future<void> onInit() async {
+    await initModelService(); // await the initialization
+    super.onInit();
   }
+
+  Future<void> initModelService() async {
+    await _modelService.onInit();
+  }
+
+
 
   Future<void> saveMoodModel(MoodModel entry) async {
     // Get the current list of mood entries
@@ -23,6 +42,11 @@ class MoodRepo extends GetxController {
     // Add the new entry
     currentEntries.add(entry);
     await _storage.write(_storageKey, jsonEncode(currentEntries.map((e) => e.toMap()).toList()));
+    _storage.read(_storageKey);
+  }
+
+  Future<List<String>> recommendActivity(MoodModel entry) async {
+    return await _modelService.getActivitiesForMoodShift(2) ;
   }
 
   List<MoodModel> _getMoodEntriesFromStorage() {

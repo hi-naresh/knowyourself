@@ -5,6 +5,7 @@ import 'package:knowyourself/features/personalisation/controller/user_controller
 import '../data/helper_service/backup_service/backup_service.dart';
 import '../data/helper_service/local_auth/local_bio_auth.dart';
 import '../data/helper_service/notifications/notification_service.dart';
+import '../data/services/mood_shifter/model_service.dart';
 import '../data/services/quotes/quote_service.dart';
 class GeneralBindings extends Bindings{
 
@@ -19,6 +20,7 @@ class GeneralBindings extends Bindings{
     Get.lazyPut(() => LocalBioAuth(),fenix: true);
     Get.lazyPut(() => QuoteService(), fenix: true);
     Get.lazyPut(() => StoryRepo(), fenix: true);
+    Get.lazyPut(()=>ModelService(), fenix: true);
 
 
   }
