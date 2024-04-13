@@ -5,6 +5,8 @@ enum CourseType{ video,guide, magazine, centers, eBooks, auroSociety }
 
 enum Period { daily, weekly, monthly }
 
+enum Gender {male,female, other}
+
 extension ReminderPeriodExtension on Period {
   String toJson() => toString().split('.').last;
 
@@ -14,6 +16,15 @@ extension ReminderPeriodExtension on Period {
 }
 
 enum StoryType { current, desired, }
+// 1. **Individual Consumer**
+// 2. **SAILC Member**
+// 3. **Sri Aurobindo Society Member**
+// 4. **Student**
+// 5. **Academic Professional**
+// 6. **Business Professional**
+// Other: Kindly Specify your Role Here {Textbox to specify role}”
+enum UserType { individualConsumer, sailcMember, sriAurobindoSocietyMember, student, academicProfessional, businessProfessional, other }
+
 
 extension StoryTypeExtension on StoryType {
   String toJson() {
@@ -26,18 +37,18 @@ extension StoryTypeExtension on StoryType {
 }
 
 enum CoreValues{
-  progress,
-  receptivity,
-  aspiration,
-  perseverance,
-  gratitude,
-  humility,
   sincerity,
-  peace,
-  equanimity,
-  generosity,
+  humility,
+  gratitude,
+  perseverance,
+  aspiration,
+  receptivity,
+  progress,
+  courage,
   goodness,
-  courage
+  generosity,
+  equanimity,
+  peace,
 }
 // Keywords associated with each core value
 final Map<CoreValues, List<String>> coreValueKeywords = {

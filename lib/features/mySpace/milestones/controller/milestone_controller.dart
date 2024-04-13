@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:knowyourself/features/personalisation/controller/user_controller.dart';
-import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../../data/repo/space/milestones/milestone_repo.dart';
 import '../../../../utils/constants/enums.dart';
 import '../model/milestone_model.dart';
 
 class MilestoneController extends GetxController {
+  static MilestoneController instance = Get.find();
   final MilestoneRepo _milestoneRepo = Get.put(MilestoneRepo());
 
   // Observables
@@ -23,7 +23,7 @@ class MilestoneController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    addDemoMilestones();
+    // addDemoMilestones();
     fetchAllMilestones();
   }
 
@@ -46,51 +46,31 @@ class MilestoneController extends GetxController {
       milestonePeriod: milestonePeriod.value,
     );
     await addOrUpdateMilestone(milestone);
+    titleController.clear();
+    descriptionController.clear();
+    Get.back();
+    KHelper.showSnackBar("Milestone added successfully","success");
   }
 
   //add demo milestones data
-  Future<void> addDemoMilestones() async {
-    final storage = GetStorage();
-    storage.remove('dailyMilestones');
-    storage.remove('weeklyMilestones');
-    storage.remove('monthlyMilestones');
-    final userId = UserController.instance.user.value.id!;
-    final demoMilestones = [
-      MilestoneModel(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        title: "Read a book",
-        description: "Read a book for 30 minutes",
-        status: false,
-        userId: userId,
-        createdAt: DateTime.now(),
-        dueDate: DateTime.now(),
-        milestonePeriod: Period.daily,
-      ),
-      MilestoneModel(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        title: "Exercise",
-        description: "Exercise for 30 minutes",
-        status: false,
-        userId: userId,
-        createdAt: DateTime.now(),
-        dueDate: DateTime.now(),
-        milestonePeriod: Period.daily,
-      ),
-      MilestoneModel(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        title: "Call a friend",
-        description: "Call a friend to catch up",
-        status: false,
-        userId: userId,
-        createdAt: DateTime.now(),
-        dueDate: DateTime.now(),
-        milestonePeriod: Period.weekly,
-      ),
-    ];
-    for (var milestone in demoMilestones) {
-      await addOrUpdateMilestone(milestone);
-    }
-  }
+  // Future<void> addDemoMilestones() async {
+  //   final userId = UserController.instance.user.value.id!;
+  //   final demoMilestones = [
+  //     MilestoneModel(
+  //       id: DateTime.now().millisecondsSinceEpoch.toString(),
+  //       title: "Read a book",
+  //       description: "Read a book for 30 minutes",
+  //       status: false,
+  //       userId: userId,
+  //       createdAt: DateTime.now(),
+  //       dueDate: DateTime.now(),
+  //       milestonePeriod: Period.daily,
+  //     ),
+  //   ];
+  //   for (var milestone in demoMilestones) {
+  //     await addOrUpdateMilestone(milestone);
+  //   }
+  // }
 
   Future<void> addOrUpdateMilestone(MilestoneModel milestone) async {
     await _milestoneRepo.saveOrUpdateMilestone(milestone);
@@ -103,7 +83,7 @@ class MilestoneController extends GetxController {
     if (index != -1) {
       final updatedMilestone = milestones[index].copyWith(status: true);
       await addOrUpdateMilestone(updatedMilestone);
-      _showNotification("Task Completed", "Congratulations! You have completed a task.");
+      // _showNotification("Task Completed", "Congratulations! You have completed a task.");
     }
   }
 
@@ -112,14 +92,14 @@ class MilestoneController extends GetxController {
     fetchAllMilestones(); // Refresh milestones after deletion
   }
 
-  double getCompletedTasksCount(Period period) {
+  int getCompletedTasksCount(Period period) {
     switch (period) {
       case Period.daily:
-        return dailyMilestones.where((m) => m.status).length.toDouble();
+        return dailyMilestones.where((m) => m.status).length;
       case Period.weekly:
-        return weeklyMilestones.where((m) => m.status).length.toDouble();
+        return weeklyMilestones.where((m) => m.status).length;
       case Period.monthly:
-        return monthlyMilestones.where((m) => m.status).length.toDouble();
+        return monthlyMilestones.where((m) => m.status).length;
       default:
         return 0;
     }
@@ -133,6 +113,19 @@ class MilestoneController extends GetxController {
         return weeklyMilestones.where((m) => !m.status).length;
       case Period.monthly:
         return monthlyMilestones.where((m) => !m.status).length;
+      default:
+        return 0;
+    }
+  }
+
+  int getTotalTasksCount(Period period) {
+    switch (period) {
+      case Period.daily:
+        return dailyMilestones.length;
+      case Period.weekly:
+        return weeklyMilestones.length;
+      case Period.monthly:
+        return monthlyMilestones.length;
       default:
         return 0;
     }
@@ -166,15 +159,4 @@ class MilestoneController extends GetxController {
     }
   }
 
-  Future<void> _showNotification(String title, String body) async {
-    int notificationId = DateTime.now().millisecondsSinceEpoch & 0xFFFFFFFF; // Generate a valid 32-bit size integer ID
-    await AwesomeNotifications().createNotification(
-      content: NotificationContent(
-        id: notificationId,
-        channelKey: 'basic_channel',
-        title: title,
-        body: body,
-      ),
-    );
-  }
 }

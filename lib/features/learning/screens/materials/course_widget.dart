@@ -13,12 +13,13 @@ class CourseSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final resources = [
+      {"title": "Auro Society", "color": kApp1,"type":CourseType.auroSociety},
+      {"title": "Magazines and Newsletters", "color": kApp2,"type":CourseType.magazine},
       {"title": "Videos", "color": kApp1,"type":CourseType.video},
       {"title": "E-books", "color": kApp4,"type":CourseType.eBooks},
-      {"title": "guide", "color": kApp3,"type":CourseType.guide},
-      {"title": "Magazine", "color": kApp2,"type":CourseType.magazine},
+      {"title": "Guide", "color": kApp3,"type":CourseType.guide},
       {"title": "Centers", "color": kApp4,"type":CourseType.centers},
-      {"title": "Auro Society", "color": kApp1,"type":CourseType.auroSociety},
+
     ];
     final controller = Get.put(CourseController());
 

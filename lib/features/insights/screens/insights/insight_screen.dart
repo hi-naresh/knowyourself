@@ -7,6 +7,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../learning/screens/learn_screen/widgets/progress_bar.dart';
+import '../../../mySpace/milestones/controller/milestone_controller.dart';
 import '../../controller/insights_controller.dart';
 import 'widgets/progress_milestones.dart';
 
@@ -44,6 +45,7 @@ class InsightScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(InsightsController());
+    final milesController = MilestoneController.instance;
     return SingleChildScrollView(
       child: Center(
           child: Padding(
@@ -52,11 +54,11 @@ class InsightScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ProgressComponent(
+            ProgressComponent(
               milestonesProgress: {
-                'Daily': 0.35,
-                'Monthly': 0.5,
-                'Yearly': 0.7,
+                'Daily': milesController.getCompletedTasksCount(Period.daily)/milesController.getTotalTasksCount(Period.daily),
+                'Weekly': milesController.getCompletedTasksCount(Period.weekly)/milesController.getTotalTasksCount(Period.weekly),
+                'Monthly': milesController.getCompletedTasksCount(Period.monthly)/milesController.getTotalTasksCount(Period.monthly),
               },
             ),
             const SizedBox(height: KSizes.defaultSpace),

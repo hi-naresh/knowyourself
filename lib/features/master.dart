@@ -58,7 +58,8 @@ class MasterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MasterController());
-    final spaceController = Get.put(MySpaceController());
+    // final spaceController = Get.put(MySpaceController());
+    final spaceController = MySpaceController.instance;
     return Scaffold(
       appBar: const KAppBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -124,17 +125,4 @@ class MasterController extends GetxController {
       _screens[3] = const MySpaceScreen();
     }
   }
-
-
-// Future<void> authenticateBeforeAccess() async {
-  //   bool isAuthenticated = await _localBioAuth.authenticateWithBiometrics();
-  //   if (isAuthenticated) {
-  //     // If authentication is successful, allow access to MySpaceScreen
-  //     _screens[3] = const MySpaceScreen();
-  //   } else {
-  //     // Handle authentication failure, such as displaying an error message or redirecting
-  //     // currentIndex.value = 0; // Redirect user to a safe screen e.g., Dashboard
-  //     Get.snackbar('Authentication Required', 'Please authenticate to access this section.');
-  //   }
-  // }
 }

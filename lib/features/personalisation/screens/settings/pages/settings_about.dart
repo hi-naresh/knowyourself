@@ -6,7 +6,6 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../../../data/helper_service/backup_service/backup_service.dart';
 import '../../../../../utils/constants/app_links.dart';
 import '../widgets/settings_tile.dart';
 

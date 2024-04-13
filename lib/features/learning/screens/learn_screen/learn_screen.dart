@@ -114,7 +114,7 @@ class LearnScreen extends StatelessWidget {
               ),
               const SizedBox(height: KSizes.defaultSpace),
               SizedBox(
-                height: Get.height*0.77,
+                height: Get.height*0.5,
                 child: Column(
                   children: [
                     SingleChildScrollView(

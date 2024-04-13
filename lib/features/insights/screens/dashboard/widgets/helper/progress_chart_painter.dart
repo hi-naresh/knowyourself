@@ -23,8 +23,8 @@ class ProgressPainter extends CustomPainter {
 
     // Draw complete circles for each progress bar with greyed-out remaining percentage
     drawProgressArc(canvas, center, radius - 0, kApp3, progress[0], true);
-    drawProgressArc(canvas, center, radius - 30, kApp2,progress[1], true);
-    drawProgressArc(canvas, center, radius - 55, kApp1, progress[2], true);
+    drawProgressArc(canvas, center, radius - 20, kApp2,progress[1], true);
+    drawProgressArc(canvas, center, radius - 40, kApp1, progress[2], true);
   }
 
   void drawProgressArc(Canvas canvas, Offset center, double radius, Color color, double percent, bool drawBackground) {
@@ -37,7 +37,7 @@ class ProgressPainter extends CustomPainter {
       final backgroundPaint = Paint()
         ..color = kEmptyProgress
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 18
+        ..strokeWidth = 12
         ..strokeCap = StrokeCap.round;
       canvas.drawArc(
         Rect.fromCircle(center: center, radius: radius),
@@ -60,7 +60,7 @@ class ProgressPainter extends CustomPainter {
         [color.withOpacity(0.5), color],
       )
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 20
+      ..strokeWidth = 14
       ..strokeCap = StrokeCap.round;
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),
