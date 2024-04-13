@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:knowyourself/data/repo/space/story/story_repo.dart';
+import 'package:knowyourself/data/services/mood_shifter/model_service.dart';
 import 'package:knowyourself/features/personalisation/controller/user_controller.dart';
 
 import '../data/helper_service/backup_service/backup_service.dart';
@@ -23,6 +24,7 @@ class GeneralBindings extends Bindings{
     Get.lazyPut(() => StoryRepo(), fenix: true);
     Get.lazyPut(() => MilestoneController(),fenix: true);
     Get.lazyPut(() => ProfileSetupController(),fenix: true);
+    Get.lazyPut(() => ModelService(),fenix: true);
 
   }
 }

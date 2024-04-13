@@ -7,28 +7,23 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/helpers/helper_functions.dart';
+import '../../../controller/add_mood_controller.dart';
 import '../../../model/activity_model.dart';
 import 'helpers/activity_tile.dart';
 
 class ActivitiesToShiftScreen extends StatelessWidget {
-  ActivitiesToShiftScreen({super.key});
-
-  final List<Activity> activities = [
-    Activity(title: 'Go for a walk in nature', duration: '10 min', imageUrl: 'assets/illustrations/physical.svg', color: kApp1),
-    Activity(title: 'Do a dance party by yourself', duration: '15 min', imageUrl: 'assets/illustrations/physical.svg', color: kApp2),
-    Activity(title: 'Paint something', duration: '15 min', imageUrl: 'assets/illustrations/physical.svg', color: kApp3),
-    Activity(title: 'Eat a dessert', duration: '15 min', imageUrl: 'assets/illustrations/physical.svg', color: kApp4),
-  ];
+  const ActivitiesToShiftScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<AddMoodController>();
     return Scaffold(
       appBar: const KAppBar(back: true,),
       body: Padding(
         padding: const EdgeInsets.all( KSizes.defaultSpace),
         child: Column(
           children: [
-            Text("Lighten Up Your Mood By",
+            Text("Enlighten yourself by",
             style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: KSizes.defaultSpace),
@@ -67,10 +62,11 @@ class ActivitiesToShiftScreen extends StatelessWidget {
                   crossAxisSpacing: KSizes.defaultSpace,
                   mainAxisSpacing: KSizes.defaultSpace,
                 ),
-                itemCount: activities.length,
+                itemCount: controller.activitiesTitle.length,
                 itemBuilder: (context, index) {
+                  final activity = Activity(title: controller.activitiesTitle[index], duration: "5 mins", imageUrl: "assets/illustrations/health2.svg", color: kApp1);
                   return ActivityTile(
-                    activity: activities[index],
+                    activity: activity,
                     onTap: (){},
                   );
                 },

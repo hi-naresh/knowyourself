@@ -6,6 +6,7 @@ import 'package:knowyourself/data/repo/space/mood/mood_repo.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
 import '../../../../data/services/mood_shifter/model_service.dart';
+import '../model/activity_model.dart';
 import '../screens/add_mood/widgets/aspect_select.dart';
 import '../screens/add_mood/widgets/express_feelings.dart';
 import '../screens/add_mood/widgets/mood_select.dart';
@@ -24,7 +25,7 @@ class AddMoodController extends GetxController {
   RxDouble sliderValue = 0.0.obs;
   // use this for int values - (controller.sliderValue.value * 10).round()
 
-  final List activities = [].obs;
+  final RxList activitiesTitle = [].obs;
 
   final List<AnimatedEmoji> emojis = List.generate(10, (index) =>
       AnimatedEmoji(
@@ -116,8 +117,8 @@ class AddMoodController extends GetxController {
   Future<void> shiftMood() async {
     try {
       // Ensure the model service is already initialized and accessible via Get.put or Get.find
-      final ModelService modelService = Get.find<ModelService>();
-
+      // final ModelService modelService = Get.find<ModelService>();
+      //
       // Create a MoodModel instance from the current state
       MoodModel currentMood = MoodModel(
         mood: moodString,
@@ -132,8 +133,9 @@ class AddMoodController extends GetxController {
       List<String> userActivities = await _moodRepo.recommendActivity(currentMood);
 
       // Assign activities to the observable list to update the UI or further processing
-      activities.assignAll(userActivities);
+      activitiesTitle.assignAll(userActivities);
       print('Recommended activities: $userActivities');
+      print(activitiesTitle);
 
       // Optionally, you can handle the navigation or any follow-up actions here
       if (userActivities.isNotEmpty) {
