@@ -1,6 +1,9 @@
 enum LifeAspects { all, mental, physical, emotional, spiritual }
 
+
+enum HumanState {mentally, physically, emotionally, spiritually}
 enum HappenedAt { home, work, personal, social }
+
 enum CourseType{ video,guide, magazine, centers, eBooks, auroSociety }
 
 enum Period { daily, weekly, monthly }

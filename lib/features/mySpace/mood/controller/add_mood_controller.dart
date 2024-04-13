@@ -46,6 +46,7 @@ class AddMoodController extends GetxController {
 
   RxInt selectAspect = 0.obs;
   List<String> aspectsList = ['Mental', 'Physical', 'Vital', 'Spiritual'];
+
   //get aspect from index
   String get aspectString => aspectsList[selectAspect.value];
   RxInt selectHappenedAt = 0.obs; //0 for social, 1 for work, 2 for home, 3 for personal
@@ -55,8 +56,8 @@ class AddMoodController extends GetxController {
   final TextEditingController reasons = TextEditingController();
 
   final List<Widget> journalPages = [
-    const MoodSelectPage(),
     const AspectSelectPage(),
+    const MoodSelectPage(),
     const ExpressFeelingsPage(),
     // const MoodSummaryPage(readOnly: false),
   ];
