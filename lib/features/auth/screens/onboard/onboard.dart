@@ -61,12 +61,6 @@ class OnBoard extends StatelessWidget {
               fontWeight: FontWeight.w800,
             )
           ),
-          TextSpan(
-              text:"\n\n${KTexts.onBoardingSubTitle}",
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                overflow: TextOverflow.ellipsis,
-                fontWeight: FontWeight.w400,)
-          ),
         ],
       ),
       textAlign: TextAlign.center,
@@ -79,13 +73,6 @@ class OnBoard extends StatelessWidget {
             text: KTexts.onBoardingTitle2,
             style: Theme.of(context).textTheme.displaySmall?.copyWith(
               fontWeight: FontWeight.w800,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          TextSpan(
-            text:  "\n\n${KTexts.onBoardingSubTitle2}",
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.w400,
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -103,13 +90,6 @@ class OnBoard extends StatelessWidget {
               fontWeight: FontWeight.w800,
             ),
           ),
-          TextSpan(
-            text: "\n\n${KTexts.onBoardingSubTitle3}",
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.w400,
-              overflow: TextOverflow.ellipsis,
-            )
-          ),
         ],
       ),
       textAlign: TextAlign.center,
@@ -125,12 +105,14 @@ class OnBoard extends StatelessWidget {
             children: [
               _buildPage(
                   richText: onBoardScreen1RichText,
+                  subtitle: KTexts.onBoardingSubTitle,
                   pngName: "onboard1",
                   context: context,
                 // color: controller.colors[0],
               ),
               _buildPage(
                   richText: onBoardScreen2RichText,
+                  subtitle: KTexts.onBoardingSubTitle2,
                   pngName: "onboard2",
                   context: context,
                 // color: controller.colors[1],
@@ -138,6 +120,7 @@ class OnBoard extends StatelessWidget {
 
               _buildPage(
                   richText: onBoardScreen3RichText,
+                  subtitle: KTexts.onBoardingSubTitle3,
                   pngName: "onboard3",
                   context: context,
                 // color: controller.colors[2],
@@ -185,23 +168,34 @@ class OnBoard extends StatelessWidget {
 
   Container _buildPage(
       {required Text richText,
+        required String subtitle,
         required String pngName,
         required BuildContext context}) {
     return Container(
       padding: const EdgeInsets.all(KSizes.defaultSpace*2),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: 300,
+            height: 280,
             width: double.infinity,
             child: SvgPicture.asset(
               "assets/illustrations/$pngName.svg",
               fit: BoxFit.contain,
             ),
           ),
+          const SizedBox(
+            height: KSizes.defaultSpace*2,),
           richText,
+          const SizedBox(
+            height: KSizes.defaultSpace,),
+          Text(
+            subtitle,
+            textAlign: TextAlign.justify,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              fontWeight: FontWeight.w400,
+            ),
+          ),
           const SizedBox(
             height: KSizes.defaultSpace*2,)
         ],

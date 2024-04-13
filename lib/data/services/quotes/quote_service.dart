@@ -24,15 +24,52 @@ class QuoteService extends GetxService {
     }
   }
 
+  // Future<QuoteModel> fetchDailyQuote() async {
+  //   try {
+  //     var response = await http.get(Uri.parse('https://www.goodreads.com/author/quotes/5867530.Sri_Aurobindo'));
+  //     if (response.statusCode == 200) {
+  //       var document = parse(response.body);
+  //       var content = document.querySelector('.quote');
+  //       if (content != null) {
+  //         var quoteElement = content.querySelector('.quoteText');
+  //         var authorElement = content.querySelector('.authorOrTitle');
+  //
+  //         var quoteText = quoteElement?.text.split('“').last.split('”').first.trim();
+  //         var authorText = authorElement?.text.trim();
+  //
+  //         if (quoteText != null && authorText != null) {
+  //           var today = DateTime.now();
+  //           _storage.write(_storageKey, {
+  //             'title': quoteText,
+  //             'author': authorText,
+  //             'date': DateFormat('yyyy-MM-dd').format(today),
+  //           });
+  //
+  //           return QuoteModel(title: quoteText, author: authorText, date: today.toString());
+  //         }
+  //       }
+  //     }
+  //     throw Exception('Failed to fetch quote');
+  //   } catch (e) {
+  //     KHelper.showSnackBar('Failed to fetch quote', 'Please check your internet connection');
+  //     // Return a default quote or handle the error as needed
+  //     return QuoteModel(
+  //         title: 'It is only by the touch of the Absolute that we can arrive at our own absolute.',
+  //         author: 'Sri Aurobindo',
+  //         date: DateTime.now().toString(),
+  //     );
+  //   }
+  // }
+
   Future<QuoteModel> fetchDailyQuote() async {
     try {
-      var response = await http.get(Uri.parse('https://www.goodreads.com/author/quotes/5867530.Sri_Aurobindo'));
+      var response = await http.get(Uri.parse('https://aurosociety.org/society/index/Questions-And-Answers'));
       if (response.statusCode == 200) {
         var document = parse(response.body);
-        var content = document.querySelector('.quote');
+        var content = document.querySelector('.plan.orange');
         if (content != null) {
-          var quoteElement = content.querySelector('.quoteText');
-          var authorElement = content.querySelector('.authorOrTitle');
+          var quoteElement = content.querySelector('p');
+          var authorElement = content.querySelector('p:nth-child(2)');
 
           var quoteText = quoteElement?.text.split('“').last.split('”').first.trim();
           var authorText = authorElement?.text.trim();
@@ -47,19 +84,21 @@ class QuoteService extends GetxService {
 
             return QuoteModel(title: quoteText, author: authorText, date: today.toString());
           }
+
         }
       }
       throw Exception('Failed to fetch quote');
     } catch (e) {
-      KHelper.showSnackBar('Failed to fetch quote', 'Please check your internet connection');
       // Return a default quote or handle the error as needed
+      KHelper.showSnackBar('Failed to fetch quote', 'Please check your internet connection');
       return QuoteModel(
-          title: 'It is only by the touch of the Absolute that we can arrive at our own absolute.',
-          author: 'Sri Aurobindo',
-          date: DateTime.now().toString(),
+        title: 'It is only by the touch of the Absolute that we can arrive at our own absolute.',
+        author: 'Sri Aurobindo',
+        date: DateTime.now().toString(),
       );
     }
   }
+
 
   QuoteModel getStoredQuote() {
     var storedQuoteJson = _storage.read(_storageKey);
