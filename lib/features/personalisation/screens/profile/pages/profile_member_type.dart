@@ -51,7 +51,12 @@ class ProfileMemberPage extends StatelessWidget {
                 .map<DropdownMenuItem<UserType>>((UserType value) {
               return DropdownMenuItem<UserType>(
                 value: value,
-                child: Text(value.toString().split('.').last),
+                child: Text(value.toString().split('.').last.splitMapJoin(
+                      RegExp(r"(?=[A-Z])"),
+                      onMatch: (m) => ' ',
+                      onNonMatch: (m) => m,
+                    ).capitalizeFirst!,
+                ),
               );
             }).toList(),
           ),

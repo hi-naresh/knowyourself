@@ -26,12 +26,12 @@ class ProfileSetupScreen extends StatelessWidget {
         appBar: KPageBar(
             title: 'Profile Setup',
             showBackButton: controller.pageIndex.value > 0,
-            action: controller.pageIndex.value == 0 ? FilledButton(
-              child: Text('Logout', style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: KColors.white,
-              ),),
-              onPressed: ()=>AppStateController.instance.logoutUser()
-            ) : null,
+            // action: controller.pageIndex.value == 0 ? FilledButton(
+            //   child: Text('Logout', style: Theme.of(context).textTheme.labelSmall?.copyWith(
+            //     color: KColors.white,
+            //   ),),
+            //   onPressed: ()=>AppStateController.instance.logoutUser()
+            // ) : null,
             onTap: controller.goToPreviousPage),
         body: PopScope(child: pages[controller.pageIndex.value]),
         bottomNavigationBar: BottomAppBar(

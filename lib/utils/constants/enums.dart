@@ -26,7 +26,7 @@ enum StoryType { current, desired, }
 // 5. **Academic Professional**
 // 6. **Business Professional**
 // Other: Kindly Specify your Role Here {Textbox to specify role}”
-enum UserType { individualConsumer, sailcMember, sriAurobindoSocietyMember, student, academicProfessional, businessProfessional, other }
+enum UserType { individualConsumer, sailcMember, sriAurobindoSocietyMember, academicProfessional, businessProfessional, other }
 
 
 extension StoryTypeExtension on StoryType {
