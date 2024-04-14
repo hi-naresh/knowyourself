@@ -15,7 +15,6 @@ dependencies:
 
 #  flutter_screenutil: ^5.9.0
   path_provider: ^2.1.2
-  share_plus: ^8.0.2
   file_picker: ^8.0.0+1
   local_auth: ^2.2.0
 
@@ -52,6 +51,7 @@ dependencies:
   geocoding:
   tflite_flutter: ^0.10.4
   firebase_ml_model_downloader: ^0.2.4+16
+  share_plus: ^8.0.3
 
 
 
@@ -77,3 +77,4 @@ flutter:
     - assets/animations/
     - assets/materials/
     - assets/mood-shifter/
+    - assets/value-analysis/

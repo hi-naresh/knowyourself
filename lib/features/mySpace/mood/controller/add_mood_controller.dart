@@ -6,7 +6,6 @@ import 'package:knowyourself/data/repo/space/mood/mood_repo.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
 import '../../../../data/services/mood_shifter/model_service.dart';
-import '../model/activity_model.dart';
 import '../screens/add_mood/widgets/aspect_select.dart';
 import '../screens/add_mood/widgets/express_feelings.dart';
 import '../screens/add_mood/widgets/mood_select.dart';
@@ -27,14 +26,31 @@ class AddMoodController extends GetxController {
 
   final RxList activitiesTitle = [].obs;
 
-  final List<AnimatedEmoji> emojis = List.generate(10, (index) =>
-      AnimatedEmoji(
-        AnimatedEmojis.values[index],
-        size: 40,
-        repeat: true,
-      )
-  );
-  String get moodString => emojis[(sliderValue.value * 10).round() % 10].emoji.name;
+  // final List<AnimatedEmoji> emojis = List.generate(10, (index) =>
+  //     AnimatedEmoji(
+  //       AnimatedEmojis.values[index],
+  //       size: 40,
+  //       repeat: true,
+  //     )
+  // );
+  // String get moodString => emojis[(sliderValue.value * 10).round() % 10].emoji.name;
+
+  final List<AnimatedEmoji> emojis = [
+    const AnimatedEmoji(AnimatedEmojis.slightlyHappy, size: 40, repeat: true),
+    const AnimatedEmoji(AnimatedEmojis.sad, size: 40, repeat: true),
+    const AnimatedEmoji(AnimatedEmojis.anxiousWithSweat, size: 40, repeat: true),
+    const AnimatedEmoji(
+        AnimatedEmojis.smilingEyesWithHandOverMouth, size: 40, repeat: true),
+    const AnimatedEmoji(AnimatedEmojis.relieved, size: 40, repeat: true),
+    const AnimatedEmoji(AnimatedEmojis.rage, size: 40, repeat: true),
+    const AnimatedEmoji(AnimatedEmojis.halo, size: 40, repeat: true),
+    const AnimatedEmoji(AnimatedEmojis.distraught, size: 40, repeat: true),
+    const AnimatedEmoji(AnimatedEmojis.cry, size: 40, repeat: true),
+    const AnimatedEmoji(AnimatedEmojis.sunglassesFace, size: 40, repeat: true),
+  ];
+
+  String get moodString =>
+      emojis[(sliderValue.value * 10).round() % emojis.length].emoji.name;
 
 
   @override
@@ -45,7 +61,7 @@ class AddMoodController extends GetxController {
   }
 
   RxInt selectAspect = 0.obs;
-  List<String> aspectsList = ['Mental', 'Physical', 'Vital', 'Spiritual'];
+  List<String> aspectsList = ['Mental', 'Physical', 'Emotional', 'Spiritual'];
 
   //get aspect from index
   String get aspectString => aspectsList[selectAspect.value];
