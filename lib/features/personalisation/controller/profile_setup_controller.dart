@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/data/repo/auth/auth_repo.dart';
@@ -19,53 +22,51 @@ class ProfileSetupController extends GetxController {
   RxString name = ''.obs;
   RxString avatar = ''.obs;
   Rx<DateTime?> dob = Rx<DateTime?>(null);
-  RxList<bool> genderSelections = RxList<bool>([false, false, false]);
+  final Rx<Gender> selectedGender = Gender.other.obs;
   RxString occupation = ''.obs;
   RxString institution = ''.obs;
   Rx<UserType?> userType = UserType.individualConsumer.obs;
 
-  // void setAvatar(String path) {
-  //   // selectedAvatar.value = path;
-  //   avatar.value = path;
-  // }
-
   void setAvatar(String path) {
-    userProfile.update((val) {
-      avatar.value = path;
-    });
+    // userProfile.update((val) {
+    //   avatar.value = path;
+    // });
+    avatar.value = path;
   }
+
+  final StreamSubscription<User?> _authListener = AuthRepo.instance.authStateChanges.listen((User? user) {
+    if (user != null) {
+      ProfileSetupController.instance.fetchUserProfile();
+    } else {
+      ProfileSetupController.instance.userProfile(UserProfileModel()); // Resets to an empty profile
+    }
+  });
 
   @override
   void onInit() {
     super.onInit();
-    if (userProfile.value.userId != null) {
-      fetchUserProfile();
-    }
+    // Attach an auth state changes listener
+    _authListener;
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    _authListener.cancel(); // Don't forget to cancel the listener
+    userProfile.close();
   }
 
   Future<void> fetchUserProfile() async {
-    final fetchedProfile = await _repository.getUserProfile();
-    userProfile(fetchedProfile);
-  }
-
-  void setGender(int index) {
-    for (int i = 0; i < genderSelections.length; i++) {
-      genderSelections[i] = i == index;
+    final user = AuthRepo.instance.authUser;
+    if (user != null) {
+      final fetchedProfile = await _repository.getUserProfile();
+      userProfile(fetchedProfile);
+      userProfile.refresh(); // This triggers the UI to update with the new profile
+    } else {
+      userProfile(UserProfileModel()); // Resets to an empty profile
     }
-    genderSelections.refresh(); // Trigger update in UI
   }
 
-  // void goToNextPage() {
-  //   if (_validateInputs()) {
-  //     if (pageIndex.value < 2) {
-  //       pageIndex.value++;
-  //     } else {
-  //       finishOnboarding();
-  //     }
-  //   } else {
-  //     KHelper.showSnackBar('Fill up details', 'Please fill in all the fields correctly.');
-  //   }
-  // }
 
   void goToPreviousPage() {
     if (pageIndex.value > 0) {
@@ -82,10 +83,10 @@ class ProfileSetupController extends GetxController {
         name: name.value,
         avatarPath: avatar.value,
         dob: dob.value,
-        gender: genderSelections[0] ? 'Male' : genderSelections[1] ? 'Female' : 'Other',
+        gender: selectedGender.value.toString().split('.').last,
         occupation: occupation.value,
         institution: institution.value,
-        userType: userType.value == UserType.individualConsumer ? UserType.individualConsumer : UserType.sailcMember,
+        userType: userType.value!.toString().split('.').last,
         isFirstTimeCreate: false,
       );
       _repository.saveUserProfile(userProfileValue);
@@ -98,7 +99,7 @@ class ProfileSetupController extends GetxController {
   }
 
   bool _validateInputs() {
-    if (name.isEmpty || dob.value == null || !genderSelections.contains(true) || occupation.isEmpty || institution.isEmpty || userType.value == null) {
+    if (name.isEmpty || dob.value == null || occupation.isEmpty || institution.isEmpty || userType.value == null) {
       return false;
     }
     return true;
@@ -112,7 +113,7 @@ class ProfileSetupController extends GetxController {
   }
 
   bool _validatePage2Inputs() {
-    if (dob.value == null || !genderSelections.contains(true)) {
+    if (dob.value == null ) {
       return false;
     }
     return true;

@@ -66,11 +66,14 @@ class InsightScreen extends StatelessWidget {
               'Weekly Value Reflection',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            const SizedBox(height: KSizes.spaceBtwItems),
+            Text(
+              "Start Writing your reflections and get your value insights...",
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
             const SizedBox(height: KSizes.defaultSpace),
             const Center(
-              child: ReflectionChart(
-
-              )
+              child: ReflectionChart()
             ),
             const SizedBox(height: KSizes.defaultSpace),
             Obx(

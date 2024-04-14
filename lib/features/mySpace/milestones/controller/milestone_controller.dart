@@ -21,16 +21,19 @@ class MilestoneController extends GetxController {
   final Rx<Period> milestonePeriod = Period.daily.obs;
 
   @override
-  void onInit() {
-    super.onInit();
-    // addDemoMilestones();
+  void onReady() {
+    super.onReady();
     fetchAllMilestones();
+    _milestoneRepo.milestonesUpdated.listen((_) {
+      fetchAllMilestones();
+    });
   }
 
-  Future<void> fetchAllMilestones() async {
-    dailyMilestones.value = await _milestoneRepo.fetchMilestones(Period.daily);
-    weeklyMilestones.value = await _milestoneRepo.fetchMilestones(Period.weekly);
-    monthlyMilestones.value = await _milestoneRepo.fetchMilestones(Period.monthly);
+  void fetchAllMilestones() async {
+    var allMilestones = await _milestoneRepo.fetchAllMilestones();
+    dailyMilestones.assignAll(allMilestones.where((m) => m.milestonePeriod == Period.daily));
+    weeklyMilestones.assignAll(allMilestones.where((m) => m.milestonePeriod == Period.weekly));
+    monthlyMilestones.assignAll(allMilestones.where((m) => m.milestonePeriod == Period.monthly));
   }
 
   Future<void> addMilestone() async {

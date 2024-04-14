@@ -36,8 +36,9 @@ class UserProfileRepo {
     }
   }
 
-  Future<UserProfileModel> fetchUserProfileData() {
-    return UserRepo.instance.fetchUserProfileFirestore();
+  Future<UserProfileModel> fetchUserProfileData() async {
+    return await UserRepo.instance.fetchUserProfileFirestore();
   }
+
 
 }

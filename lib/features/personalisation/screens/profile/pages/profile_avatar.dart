@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
+import '../../../controller/app_controller.dart';
 import '../../../controller/profile_setup_controller.dart';
 
 class ProfileAvatarPage extends StatelessWidget {
@@ -71,6 +72,9 @@ class ProfileAvatarPage extends StatelessWidget {
             );
           },
         ),
+        const SizedBox(height: KSizes.defaultSpace * 2),
+        OutlinedButton(onPressed: ()=>AppStateController.instance.logoutUser(),
+            child: const Text('Logout')),
       ],
     );
   }
