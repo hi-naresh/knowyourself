@@ -12,13 +12,14 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(KSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(height: KSizes.defaultSpace*2),
               PLoginHeader(),
               SizedBox(height: KSizes.defaultSpace),
               //form
@@ -27,7 +28,9 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: KSizes.defaultSpace),
               PDivider( text: KTexts.orSignInWith,),
               SizedBox(height: KSizes.defaultSpace),
-              SocialButton(),
+              SocialButton(
+                isSignGoogle: true,
+              ),
             ],
           ),
         ),

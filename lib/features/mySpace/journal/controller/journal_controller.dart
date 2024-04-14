@@ -20,6 +20,7 @@ class JournalController extends GetxController {
     initialScrollIndex = currentDate.value.day - 1;
     scrollController = ScrollController(initialScrollOffset: initialScrollIndex * 70.0);
     loadJournalEntries();
+    journalEntries.refresh();
     // ever(currentDate, (_) => loadJournalEntries());
     // addJournalManually();
   }

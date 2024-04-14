@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:knowyourself/data/repo/user/user_repo.dart';
 import '/routes.dart';
 import '/utils/exceptions/firebase_auth_exceptions.dart';
 import '/utils/exceptions/firebase_exceptions.dart';
@@ -13,9 +14,13 @@ class AuthRepo extends GetxController {
   static AuthRepo get instance => Get.find();
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
+  final UserRepo _userRepo = Get.put(UserRepo());
 
   //get authenticaed user
   User? get authUser => _auth.currentUser;
+
+  Stream<User?> get authStateChanges => _auth.authStateChanges();
+
 
   @override
   void onReady() {
@@ -23,23 +28,40 @@ class AuthRepo extends GetxController {
     screenRedirect();
   }
 
-  screenRedirect() => Future.delayed(const Duration(milliseconds: 2000), () {
-    final user = _auth.currentUser;
-    // deviceStorage.read('isLogged') == true
-    //     ? Get.offAllNamed(KRoutes.getMasterRoute())
-    //     : Get.offAllNamed(KRoutes.getOnBoardingRoute());
-    if (user !=null){
-      Get.offAllNamed(KRoutes.getMasterRoute());
-    }else {
-      deviceStorage.writeIfNull('isLogged', false);
+  screenRedirect() => Future.delayed(const Duration(milliseconds: 2500), () async {
+    User? user = _auth.currentUser;
+    if (user != null) {
+      final isFirstTime = await _userRepo.fetchFirstTimeCreate(user.uid);
+      if (isFirstTime == null || isFirstTime) {
+        // isNewUser is null or true, redirect to profile setup.
+        Get.offAllNamed(KRoutes.getProfileRoute());
+      } else {
+        // isNewUser is false, redirect to dashboard.
+        Get.offAllNamed(KRoutes.getMasterRoute());
+      }
+    } else {
+      // No user is logged in, show onboarding.
       Get.offAllNamed(KRoutes.getOnBoardingRoute());
     }
   });
 
+  Future<void> _checkAndRedirect(User user) async {
+    final isFirstTime = await _userRepo.fetchFirstTimeCreate(user.uid);
+    if (isFirstTime == null || isFirstTime) {
+      // isNewUser is null or true, redirect to profile setup.
+      Get.offAllNamed(KRoutes.getProfileRoute());
+    } else {
+      // isNewUser is false, redirect to dashboard.
+      Get.offAllNamed(KRoutes.getMasterRoute());
+    }
+  }
+
   //register user
   Future<UserCredential> registerUser(String email, String password) async {
     try{
-      return await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential= await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      await _checkAndRedirect(userCredential.user!);
+      return userCredential;
     } on FirebaseAuthException catch(e){
       throw KFirebaseAuthException(e.code).message;
     } on FirebaseException catch(e){
@@ -56,7 +78,9 @@ class AuthRepo extends GetxController {
   //login user
   Future<UserCredential> loginUser(String email, String password) async {
     try{
-      return await _auth.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential= await _auth.signInWithEmailAndPassword(email: email, password: password);
+      await _checkAndRedirect(userCredential.user!);
+      return userCredential;
     } on FirebaseAuthException catch(e){
       throw KFirebaseAuthException(e.code).message;
     } on FirebaseException catch(e){
@@ -80,7 +104,9 @@ class AuthRepo extends GetxController {
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-      return await _auth.signInWithCredential(credentials);
+      UserCredential userCredential= await _auth.signInWithCredential(credentials);
+      await _checkAndRedirect(userCredential.user!);
+      return userCredential;
 
     } on FirebaseAuthException catch(e){
       throw KFirebaseAuthException(e.code).message;
@@ -95,7 +121,7 @@ class AuthRepo extends GetxController {
     }
   }
 
-  //resetPassword user
+  //reset password
   Future<void> resetPassword(String email) async {
     try{
       await _auth.sendPasswordResetEmail(email: email);
@@ -116,8 +142,9 @@ class AuthRepo extends GetxController {
     try{
       await GoogleSignIn().signOut();
       await _auth.signOut();
+      deviceStorage.erase();
       deviceStorage.write('isLogged', false);
-      Get.offAllNamed(KRoutes.getOnBoardingRoute());
+      // Get.offAllNamed(KRoutes.getOnBoardingRoute());
     } on FirebaseAuthException catch(e){
       throw KFirebaseAuthException(e.code).message;
     } on FirebaseException catch(e){

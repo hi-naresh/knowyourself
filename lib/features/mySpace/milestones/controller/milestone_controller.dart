@@ -1,85 +1,165 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:knowyourself/features/personalisation/controller/user_controller.dart';
+import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
+import '../../../../data/repo/space/milestones/milestone_repo.dart';
+import '../../../../utils/constants/enums.dart';
 import '../model/milestone_model.dart';
 
 class MilestoneController extends GetxController {
-  static MilestoneController get instance => Get.find();
+  static MilestoneController instance = Get.find();
+  final MilestoneRepo _milestoneRepo = Get.put(MilestoneRepo());
 
-  final RxList<MilestoneModel> toDoList = <MilestoneModel>[].obs;
-  final RxBool isAdding = false.obs;
-  final TextEditingController todoTextEditingController = TextEditingController();
+  // Observables
+  var dailyMilestones = <MilestoneModel>[].obs;
+  var weeklyMilestones = <MilestoneModel>[].obs;
+  var monthlyMilestones = <MilestoneModel>[].obs;
+
+  var titleController = TextEditingController();
+  var descriptionController = TextEditingController();
+  final Rx<Period> milestonePeriod = Period.daily.obs;
 
   @override
-  void onInit() {
-    super.onInit();
-    _initializeNotifications();
-    _loadToDoList();
+  void onReady() {
+    super.onReady();
+    fetchAllMilestones();
+    _milestoneRepo.milestonesUpdated.listen((_) {
+      fetchAllMilestones();
+    });
   }
 
-  Future<void> _initializeNotifications() async {
-    await AwesomeNotifications().initialize(
-      // Set the icon to null if you want to use the default app icon
-      'resource://drawable/res_app_icon',
-      [
-        NotificationChannel(
-          channelKey: 'basic_channel',
-          channelName: 'Basic notifications',
-          channelDescription: 'Notification channel for basic tests',
-          defaultColor: const Color(0xFF9D50DD),
-          ledColor: Colors.white,
-        ),
-      ],
+  void fetchAllMilestones() async {
+    var allMilestones = await _milestoneRepo.fetchAllMilestones();
+    dailyMilestones.assignAll(allMilestones.where((m) => m.milestonePeriod == Period.daily));
+    weeklyMilestones.assignAll(allMilestones.where((m) => m.milestonePeriod == Period.weekly));
+    monthlyMilestones.assignAll(allMilestones.where((m) => m.milestonePeriod == Period.monthly));
+  }
+
+  Future<void> addMilestone() async {
+    final userId = UserController.instance.user.value.id!;
+    final milestone = MilestoneModel(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      title: titleController.text,
+      description: descriptionController.text,
+      status: false,
+      userId: userId,
+      createdAt: DateTime.now(),
+      dueDate: DateTime.now(),
+      milestonePeriod: milestonePeriod.value,
     );
+    await addOrUpdateMilestone(milestone);
+    titleController.clear();
+    descriptionController.clear();
+    Get.back();
+    KHelper.showSnackBar("Milestone added successfully","success");
   }
 
-  void _loadToDoList() {
-    final storedToDoList = GetStorage().read<List>('todoList');
-    if (storedToDoList != null) {
-      toDoList.assignAll(
-          storedToDoList.map((e)
-          => MilestoneModel.fromJson(
-            e as String
-          )).toList());
+  //add demo milestones data
+  // Future<void> addDemoMilestones() async {
+  //   final userId = UserController.instance.user.value.id!;
+  //   final demoMilestones = [
+  //     MilestoneModel(
+  //       id: DateTime.now().millisecondsSinceEpoch.toString(),
+  //       title: "Read a book",
+  //       description: "Read a book for 30 minutes",
+  //       status: false,
+  //       userId: userId,
+  //       createdAt: DateTime.now(),
+  //       dueDate: DateTime.now(),
+  //       milestonePeriod: Period.daily,
+  //     ),
+  //   ];
+  //   for (var milestone in demoMilestones) {
+  //     await addOrUpdateMilestone(milestone);
+  //   }
+  // }
+
+  Future<void> addOrUpdateMilestone(MilestoneModel milestone) async {
+    await _milestoneRepo.saveOrUpdateMilestone(milestone);
+    fetchAllMilestones(); // Refresh milestones after adding/updating
+  }
+
+  Future<void> completeMilestone(String id, Period period) async {
+    List<MilestoneModel> milestones = getMilestonesByPeriod(period);
+    final index = milestones.indexWhere((m) => m.id == id);
+    if (index != -1) {
+      final updatedMilestone = milestones[index].copyWith(status: true);
+      await addOrUpdateMilestone(updatedMilestone);
+      // _showNotification("Task Completed", "Congratulations! You have completed a task.");
     }
   }
 
-  void updateIsAdding(bool adding) => isAdding.value = adding;
-
-  void addToDo(MilestoneModel toDo) {
-    toDoList.add(toDo);
-    _saveToDoList();
-    todoTextEditingController.clear();
+  Future<void> deleteMilestone(String id, Period period) async {
+    await _milestoneRepo.deleteMilestone(id, period);
+    fetchAllMilestones(); // Refresh milestones after deletion
   }
 
-  void updateTodo(int index, MilestoneModel toDo) {
-    if (index.isValidIndex(toDoList)) {
-      toDoList[index] = toDo;
-      _saveToDoList();
-      if (toDo.isDone) _sendAppreciationNotification();
+  int getCompletedTasksCount(Period period) {
+    switch (period) {
+      case Period.daily:
+        return dailyMilestones.where((m) => m.status).length;
+      case Period.weekly:
+        return weeklyMilestones.where((m) => m.status).length;
+      case Period.monthly:
+        return monthlyMilestones.where((m) => m.status).length;
+      default:
+        return 0;
     }
   }
 
-  void _saveToDoList() => GetStorage().write('todoList', toDoList.toList());
-
-  Future<void> _sendAppreciationNotification() async {
-    await AwesomeNotifications().createNotification(
-      content: NotificationContent(
-        id: 10,
-        channelKey: 'basic_channel',
-        title: 'Task Completed!',
-        body: 'Great job! You completed a task from your to-do list.',
-        notificationLayout: NotificationLayout.Default,
-      ),
-    );
+  int getUncompletedTasksCount(Period period) {
+    switch (period) {
+      case Period.daily:
+        return dailyMilestones.where((m) => !m.status).length;
+      case Period.weekly:
+        return weeklyMilestones.where((m) => !m.status).length;
+      case Period.monthly:
+        return monthlyMilestones.where((m) => !m.status).length;
+      default:
+        return 0;
+    }
   }
 
-  int getUncompletedTasksCount() => toDoList.where((todo) => !todo.isDone).length;
-}
+  int getTotalTasksCount(Period period) {
+    switch (period) {
+      case Period.daily:
+        return dailyMilestones.length;
+      case Period.weekly:
+        return weeklyMilestones.length;
+      case Period.monthly:
+        return monthlyMilestones.length;
+      default:
+        return 0;
+    }
+  }
 
-extension on int {
-  bool isValidIndex(List list) => this >= 0 && this < list.length;
-}
+  List<MilestoneModel> getMilestonesByPeriod(Period period) {
+    switch (period) {
+      case Period.daily:
+        return dailyMilestones;
+      case Period.weekly:
+        return weeklyMilestones;
+      case Period.monthly:
+        return monthlyMilestones;
+      default:
+        return [];
+    }
+  }
 
+  double getProgress(Period period) {
+    final totalTasks = getMilestonesByPeriod(period).length;
+    final completedTasks = getCompletedTasksCount(period);
+    return totalTasks == 0 ? 0 : completedTasks / totalTasks;
+  }
+
+  void undoCompleteMilestone(id, Period period) {
+    List<MilestoneModel> milestones = getMilestonesByPeriod(period);
+    final index = milestones.indexWhere((m) => m.id == id);
+    if (index != -1) {
+      final updatedMilestone = milestones[index].copyWith(status: false);
+      addOrUpdateMilestone(updatedMilestone);
+    }
+  }
+
+}

@@ -1,127 +1,175 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/features/mySpace/questions/controller/question_controller.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
-
 import '../../../../utils/constants/colors.dart';
-class QuestionSpace extends StatelessWidget {
-  const QuestionSpace({super.key});
+import '../../../../utils/helpers/helper_functions.dart';
+import '../controller/question_controller.dart';
+import '../../../../utils/constants/enums.dart';
+
+class QuestionsScreen extends StatelessWidget {
+  const QuestionsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(QuestionController());
-    return SizedBox(
-      height: MediaQuery.of(context).size.height*0.7,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                      text: 'My ',
-                      style: TextStyle(
-                          fontSize: 24, fontWeight: FontWeight.w600)),
-                  TextSpan(
-                    text: 'Questions',
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600,
-                        color: kApp4),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: KSizes.defaultSpace),
-            TextField(
-              controller: controller.questionController,
-              decoration: const InputDecoration(labelText: 'Enter your question'),
-            ),
-            const SizedBox(height: KSizes.defaultSpace),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+    return Column(
+      children: [
+        _buildAddQuestionSection(context, controller),
+        Expanded(child: _buildQuestionList(controller)),
+      ],
+    );
+  }
+
+  Widget _buildAddQuestionSection(context, QuestionController controller) {
+    return Padding(
+      padding: const EdgeInsets.all(KSizes.defaultSpace),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text.rich(
+            TextSpan(
               children: [
-                Text(
-                  controller.selectedDate != null
-                      ? 'No Date Chosen!'
-                      : 'Picked Date: ${controller.selectedDate.toLocal()}',
-                )
-              ],
-            ),
-            const SizedBox(height: KSizes.defaultSpace),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButton(
-                  onPressed: () => controller.pickDate(),
-                  child: const Text('Choose Date'),
-                ),
-                ElevatedButton(
-                  onPressed: () => controller.pickReminder(),
-                  child: const Text('Reminder'),
+                TextSpan(
+                    text: 'My ',
+                    style: Theme.of(context).textTheme.headlineMedium),
+                TextSpan(
+                  text: 'Questions',
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        color: kApp4,
+                      ),
                 ),
               ],
             ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ChoiceChip(
-                  label: const Text('Short-term'),
-                  selected: controller.selectedCategory == 'short',
-                  side: const BorderSide(
-                    color: kApp4,
-                    width: 1.0,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  selectedColor: kApp4,
-                  onSelected: (selected) => controller.selectedCategory = 'short',
-                ),
-                ChoiceChip(
-                  label: const Text('Long-term'),
-                  selected: controller.selectedCategory == 'long',
-                  // labelStyle: TextStyle(
-                  //   color: kDarkText,
-                  // ),
-                  side: const BorderSide(
-                    color: kApp4,
-                    width: 1.0,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  onSelected: (selected) => controller.selectedCategory = 'long',
-                ),
-              ],
+          ),
+          const SizedBox(height: KSizes.spaceBtwItems),
+          TextFormField(
+            controller: controller.questionController,
+            decoration: InputDecoration(
+              labelText: 'Add a life challenging question',
+              labelStyle: Theme.of(context).textTheme.labelMedium,
             ),
-            const SizedBox(height: KSizes.defaultSpace),
-            ElevatedButton(
-              onPressed: () => controller.addQuestion(),
-              child: const Text('Add Question'),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child:ListView.builder(
-                itemCount: controller.questions.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(controller.questions[index].text),
-                    subtitle: Text(controller.questions[index].category),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () => controller.deleteQuestion(index),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(height: KSizes.defaultSpace),
+          Text('Set Reminder Period',
+              style: Theme.of(context).textTheme.bodyLarge),
+          const SizedBox(height: KSizes.sm),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Obx(() => Wrap(
+                  spacing: 8,
+                  children: Period.values
+                      .map((period) => ChoiceChip(
+                            backgroundColor: KHelper.isDark()
+                                ? kEmptyProgressDark
+                                : kEmptyProgress,
+                            selectedColor: kApp4,
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                color: kApp4,
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            padding: const EdgeInsets.all(10),
+                            disabledColor: kEmptyProgress,
+                            label: Text(period.name.capitalizeFirst!),
+                            selected: controller.reminderPeriod.value == period,
+                            onSelected: (selected) {
+                              if (selected) {
+                                controller.reminderPeriod.value = period;
+                              }
+                            },
+                          ))
+                      .toList(),
+                )),
+          ),
+          const SizedBox(height: KSizes.md),
+          TextButton(
+              style: const ButtonStyle().copyWith(
+                  minimumSize: MaterialStateProperty.all(
+                      const Size(double.infinity, 50)),
+                  backgroundColor: MaterialStateProperty.all(kApp4),
+                  foregroundColor: MaterialStateProperty.all(Colors.white)),
+              onPressed: controller.addQuestion,
+              child: Text(
+                'Add Question',
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold),
+              ))
+        ],
       ),
     );
+  }
+
+  Widget _buildQuestionList(QuestionController controller) {
+    return Obx(() => ListView.builder(
+          padding: const EdgeInsets.all(KSizes.md),
+          itemCount: controller.questions.length,
+          itemBuilder: (context, index) {
+            final question = controller.questions[index];
+            return ListTile(
+              splashColor: Colors.transparent,
+              title: Text(question.title),
+              subtitle: Text('Answer: ${question.answer.capitalizeFirst}'),
+              trailing: question.isAnswered
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(CupertinoIcons.checkmark_alt_circle_fill,
+                            color: kApp3),
+                        IconButton(
+                          icon: const Icon(CupertinoIcons.minus_circle_fill,
+                              color: kApp4),
+                          onPressed: () =>
+                              controller.deleteQuestion(question.id),
+                        ),
+                      ],
+                    )
+                  : IconButton(
+                      icon: const Icon(CupertinoIcons.question_circle_fill,
+                          color: kApp4),
+                      onPressed: () => _displayAnswerDialog(
+                          context, controller, question.id),
+                    ),
+              onTap: () {},
+            );
+          },
+        ));
+  }
+
+  void _displayAnswerDialog(
+      BuildContext context, QuestionController controller, String questionId) {
+    final answerController = TextEditingController();
+
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Answer the Question'),
+            content: TextFormField(
+              controller: answerController,
+              decoration: const InputDecoration(hintText: 'Your Answer'),
+            ),
+            actions: [
+              TextButton(
+                  style: const ButtonStyle().copyWith(
+                      minimumSize: MaterialStateProperty.all(
+                          const Size(double.infinity, 50)),
+                      backgroundColor: MaterialStateProperty.all(kApp4),
+                      foregroundColor: MaterialStateProperty.all(Colors.white)),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    controller.addAnswer(questionId, answerController.text);
+                  },
+                  child: Text(
+                    'Add Answer',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ))
+            ],
+          );
+        });
   }
 }

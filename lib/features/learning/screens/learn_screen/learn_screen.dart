@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:knowyourself/features/learning/screens/learn_screen/progress_bar.dart';
+import 'package:knowyourself/features/learning/screens/learn_screen/widgets/progress_bar.dart';
+import 'package:knowyourself/features/learning/screens/materials/course_widget.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
+import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/my_card.dart';
 import '../../../../utils/constants/colors.dart';
@@ -15,9 +17,10 @@ import '../articles/article_widget.dart';
 
 class LearnScreen extends StatelessWidget {
   const LearnScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final ArticleController controller = Get.put(ArticleController());
+    final controller = Get.put(ArticleController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -39,12 +42,15 @@ class LearnScreen extends StatelessWidget {
                       height: KSizes.hCardMedium,
                       title: KTexts.mental,
                       color: kApp1,
-                      imageUrl: KImages.mental),
+                      fontSize: 26,
+                      imageUrl: KImages.mental,
+                  ),
                   MyCard(
                       width: KSizes.wCardMedium,
                       height: KSizes.hCardMedium,
                       title: KTexts.physical,
                       color: kApp2,
+                      fontSize: 26,
                       imageUrl: KImages.physical),
                 ],
               ),
@@ -57,12 +63,15 @@ class LearnScreen extends StatelessWidget {
                       height: KSizes.hCardMedium,
                       title: KTexts.vital,
                       color: kApp3,
+                      fontSize: 26,
+
                       imageUrl: KImages.vital),
                   MyCard(
                       width: KSizes.wCardMedium,
                       height: KSizes.hCardMedium,
                       title: KTexts.spiritual,
                       color: kApp4,
+                      fontSize: 26,
                       imageUrl: KImages.spiritual),
                 ],
               ),
@@ -81,6 +90,13 @@ class LearnScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: KSizes.defaultSpace),
+              Text(
+                "Resources Available",
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              const SizedBox(height: KSizes.defaultSpace),
+              const CourseSection(),
+              const SizedBox(height: KSizes.defaultSpace),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -91,14 +107,14 @@ class LearnScreen extends StatelessWidget {
                   IconButton(
                     onPressed: () => controller.deleteCache(),
                     icon: const Icon(
-                      CupertinoIcons.restart,
+                      CupertinoIcons.refresh_circled,
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: KSizes.defaultSpace),
               SizedBox(
-                height: Get.height*0.8,
+                height: Get.height*0.5,
                 child: Column(
                   children: [
                     SingleChildScrollView(
@@ -109,7 +125,9 @@ class LearnScreen extends StatelessWidget {
                         children: LifeAspects.values.map((aspect) {
                           return Obx(
                             () => ChoiceChip(
-                              backgroundColor: kBoxLight,
+                              backgroundColor: KHelper.isDark()
+                                  ? kEmptyProgressDark
+                                  : kEmptyProgress,
                               selectedColor: kApp3Light,
                               label: Text(
                                   aspect.toString().split('.').last.capitalize!),

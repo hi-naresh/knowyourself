@@ -4,7 +4,8 @@ import 'package:knowyourself/utils/constants/enums.dart';
 class KColors {
   // App theme colors
   static const Color primary = Color(0xFFAEBFFF);
-  static const Color secondary = Color(0xFFFFE24B);
+  static const Color secondary = Color(0xFFFFB999);
+
   static const Color accent = Color(0xFFb0c7ff);
 
   static const Color accent1 = Color(0xff9dd7ff);
@@ -82,7 +83,7 @@ class KColors {
   // Background colors
   static const Color light = Color(0xffe5e5ea);
   static const Color navLight = Color(0xffcecee3);
-  static const Color dark = Color(0xff3E3861);
+  static const Color dark = Color(0xff201d34);
   static const Color primaryBackground = Color(0xFFF3F5FF);
 
   // Background Container colors
@@ -198,7 +199,7 @@ Color kBoxLight = kEmptyProgress.withOpacity(0.7);
 const Color kPieBox = Color(0xFFEEF6FF);
 // const Color kEmptyProgress = Color(0xFFE3E9F3);
 const Color kEmptyProgress = Color(0xFFE4E9F3);
-const Color kEmptyProgressDark = Color(0xFF3E3E3F);
+const Color kEmptyProgressDark = Color(0xFF353536);
 
 const Color kPrimaryColor = Color(0xFFAEBFFF);
 const Color kSecondaryColor = Color(0xFFD9E9FF);

@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
 
 import '../../../../../common/widgets/my_card.dart';
+import '../../../../../routes.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../../../../master.dart';
@@ -24,7 +26,7 @@ class MyselfSection extends StatelessWidget {
             children: [
               Text("Myself", style: Theme.of(context).textTheme.headlineSmall),
               GestureDetector(
-                onTap: () {},
+                onTap: ()=> MasterController.instance.currentIndex.value = 3,
                 child: Text(
                   "View All",
                   style: Theme.of(context).textTheme.bodyMedium,
@@ -56,6 +58,7 @@ class MyselfSection extends StatelessWidget {
               color: kApp2,
               imageUrl: KImages.health1,
               screenWidth: kIsWeb? 390: KDeviceUtils.getScreenWidth(context),
+              onTap: ()=>Get.toNamed(KRoutes.getChoiceScreenRoute()),
             ),
           ],
         ),

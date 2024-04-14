@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
@@ -11,8 +14,9 @@ class RecommendSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  CustomContainer(
-      color: kEmptyProgress.withOpacity(0.3),
+      color: kApp1Light.withOpacity(0.9),
       padding: const EdgeInsets.all(KSizes.defaultSpace),
+      onTap: ()=>Get.toNamed(KRoutes.getActivitiesRoute()),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,7 +37,7 @@ class RecommendSection extends StatelessWidget {
 
           ),
           Icon(
-            Icons.slow_motion_video_outlined,
+            CupertinoIcons.play_circle,
             size: KSizes.iconLg,
             color: Theme.of(context).iconTheme.color,
           ),

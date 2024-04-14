@@ -14,7 +14,8 @@ class PLoginHeader extends StatelessWidget {
       children: [
         SvgPicture.asset(
           KImages.loginImage,
-          height: 200,
+          width: 250,
+          fit: BoxFit.contain,
         ),
         const SizedBox(height: 20),
         Text(

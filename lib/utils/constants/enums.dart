@@ -1,25 +1,55 @@
-enum TextSizes { small, medium, large }
-// enum MilestoneStatus { pending, completed }
+enum LifeAspects { all, mental, physical, emotional, spiritual }
 
-enum LifeAspects {
-  all,mental, physical, emotional, spiritual
+enum HappenedAt { home, work, personal, social }
+enum CourseType{ video,guide, magazine, centers, eBooks, auroSociety }
+
+enum Period { daily, weekly, monthly }
+
+enum Gender {male,female, other}
+
+extension ReminderPeriodExtension on Period {
+  String toJson() => toString().split('.').last;
+
+  static Period fromJson(String json) {
+    return Period.values.firstWhere((e) => e.toString() == 'ReminderPeriod.$json');
+  }
+}
+
+enum StoryType { current, desired, }
+// 1. **Individual Consumer**
+// 2. **SAILC Member**
+// 3. **Sri Aurobindo Society Member**
+// 4. **Student**
+// 5. **Academic Professional**
+// 6. **Business Professional**
+// Other: Kindly Specify your Role Here {Textbox to specify role}”
+enum UserType { individualConsumer, sailcMember, sriAurobindoSocietyMember, academicProfessional, businessProfessional, other }
+
+
+extension StoryTypeExtension on StoryType {
+  String toJson() {
+    return toString().split('.').last;
+  }
+
+  static StoryType fromJson(String json) {
+    return StoryType.values.firstWhere((e) => e.toJson() == json);
+  }
 }
 
 enum CoreValues{
-  progress,
-  receptivity,
-  aspiration,
-  perseverance,
-  gratitude,
-  humility,
   sincerity,
-  peace,
-  equanimity,
-  generosity,
+  humility,
+  gratitude,
+  perseverance,
+  aspiration,
+  receptivity,
+  progress,
+  courage,
   goodness,
-  courage
+  generosity,
+  equanimity,
+  peace,
 }
-
 // Keywords associated with each core value
 final Map<CoreValues, List<String>> coreValueKeywords = {
   CoreValues.progress: ['advance', 'growth', 'improvement', 'evolution', 'enhancement', 'success', 'innovation', 'betterment', 'forward', 'achievement', 'milestone', 'prosperity', 'headway', 'upgrade', 'breakthrough', 'leap', 'progression', 'ascension', 'advancement', 'maturation', 'amplification', 'expansion', 'boost', 'refinement', 'development', 'unfolding', 'maturity', 'movement', 'movement', 'upswing', 'rise', 'enrichment', 'augmentation', 'momentum', 'succession', 'unveiling', 'enhancement', 'upturn', 'perfection', 'thrive', 'uplift', 'growth', 'progressive', 'advancing', 'elevate', 'escalate', 'moving', 'progressive', 'unfurl', 'proliferation'],

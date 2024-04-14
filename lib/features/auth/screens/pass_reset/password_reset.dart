@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../controller/pass_reset/pass_reset_controller.dart';
@@ -32,7 +33,7 @@ class PasswordResetScreen extends StatelessWidget {
               Form(
                 key: controller.passwordResetFormKey,
                 child: TextFormField(
-                  controller: controller.email,
+                  controller: controller.emailReset,
                   decoration: const InputDecoration(
                     labelText: KTexts.email,
                     border: OutlineInputBorder(),
@@ -40,10 +41,18 @@ class PasswordResetScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () => controller.resetPassword(),
-                child: const Text(KTexts.submit),
-              ),
+              TextButton(
+                  style: const ButtonStyle().copyWith(
+                      minimumSize: MaterialStateProperty.all(
+                          const Size(double.infinity, 50)),
+                      backgroundColor: MaterialStateProperty.all(kApp1),
+                      foregroundColor: MaterialStateProperty.all(Colors.white)),
+                  onPressed: ()=> controller.resetPassword(),
+                  child: Text(
+                    'Submit',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  )),
             ],
           ),
         ),

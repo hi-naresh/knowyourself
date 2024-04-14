@@ -18,7 +18,7 @@ class KTexts {
 
 
   //Dashboard
-  static const String feel = "How do you feel?";
+  static const String feel = "How are you today?";
   static const String dailyMilestones ="Daily milestones";
   static const String myself = "Myself";
   static const String progress = "Progress";
@@ -50,6 +50,8 @@ class KTexts {
   static const String forgetPassword = "Forget Password?";
   static const String signIn = "Sign In";
   static const String signInGoogle = "Google Sign In";
+  static const String signUpGoogle = "Google Sign Up";
+
   static const String createAccount = "Create Account";
   static const String orSignInWith = "or sign in with";
   static const String orSignUpWith = "or sign up with";
@@ -167,9 +169,9 @@ class KTexts {
 // // -- onboarding texts
   static const String onBoardingTitle = "Welcome to";
   static const String onBoardingTitle1 = "Know Yourself Better";
-  static const String onBoardingSubTitle = "Embark on a transformative journey with Know Yourself Better, unlocking the tools to illuminate the spark within.";
+  static const String onBoardingSubTitle = "Uncover the complex and hidden dimensions of your inner self. Witness the interconnected tapestry of your emotions, thoughts, and planes of consciousnesses.";
   static const String onBoardingTitle2 = "Feel, Track, Reflect.";
-  static const String onBoardingSubTitle2 = "Capture emotions, track feelings, and gain personalized insights. Empower yourself for a deeper understanding, navigating life's highs and lows.";
+  static const String onBoardingSubTitle2 = "It's a space deeply rooted in the transformative vision and teachings of Sri Aurobindo and the Mother. Go inward, into the depths of your inner self and find out the Truth through daily life practices and unique experiences.";
   static const String onBoardingTitle3 = "Get Started!";
   static const String onBoardingSubTitle3 = "Your path to self-discovery awaits, let's start this empowering journey together.";
 

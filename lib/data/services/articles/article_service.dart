@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../../../features/learning/model/articles/article_model.dart';
+import '../../../features/learning/model/article_model.dart';
 import '../../../utils/constants/api_constants.dart';
 import '../../../utils/constants/enums.dart';
 

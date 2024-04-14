@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/features/insights/screens/insights/widgets/AnimationChart.dart';
+import 'package:knowyourself/features/insights/screens/insights/widgets/reflection_chart.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/text_strings.dart';
-import '../../../learning/screens/learn_screen/progress_bar.dart';
+import '../../../learning/screens/learn_screen/widgets/progress_bar.dart';
+import '../../../mySpace/milestones/controller/milestone_controller.dart';
 import '../../controller/insights_controller.dart';
-import '../dashboard/widgets/progress_milestones.dart';
+import 'widgets/progress_milestones.dart';
 
 class InsightScreen extends StatelessWidget {
   const InsightScreen({super.key});
@@ -44,6 +45,7 @@ class InsightScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(InsightsController());
+    final milesController = MilestoneController.instance;
     return SingleChildScrollView(
       child: Center(
           child: Padding(
@@ -52,11 +54,11 @@ class InsightScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ProgressComponent(
+            ProgressComponent(
               milestonesProgress: {
-                'Daily': 0.35,
-                'Monthly': 0.5,
-                'Yearly': 0.7,
+                'Daily': milesController.getCompletedTasksCount(Period.daily)/milesController.getTotalTasksCount(Period.daily),
+                'Weekly': milesController.getCompletedTasksCount(Period.weekly)/milesController.getTotalTasksCount(Period.weekly),
+                'Monthly': milesController.getCompletedTasksCount(Period.monthly)/milesController.getTotalTasksCount(Period.monthly),
               },
             ),
             const SizedBox(height: KSizes.defaultSpace),
@@ -64,19 +66,18 @@ class InsightScreen extends StatelessWidget {
               'Weekly Value Reflection',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            const SizedBox(height: KSizes.spaceBtwItems),
+            Text(
+              "Start Writing your reflections and get your value insights...",
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
             const SizedBox(height: KSizes.defaultSpace),
-            Obx(() => controller.analyzedCoreValues.isNotEmpty
-                    ? Center(
-                        child: AnimatedPieChart(
-                          coreValues: controller.analyzedCoreValues,
-                        ),
-                      )
-                    : const Text(
-                        'No data found...') // Placeholder for when data is not yet available
-                ),
+            const Center(
+              child: ReflectionChart()
+            ),
             const SizedBox(height: KSizes.defaultSpace),
             Obx(
-                ()=> Column(
+              () => Column(
                 children: controller.analyzedCoreValues
                     .map((e) => coreValueWidget(
                         context, e.name, e.percentage.toPrecision(2)))

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/features/mySpace/gratitude/screens/widgets/gratitude_widget.dart';
 import 'package:knowyourself/features/mySpace/journal/screens/journal/journal_screen.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/milestone_screen.dart';
 import 'package:knowyourself/features/mySpace/questions/screens/question_screen.dart';
@@ -44,17 +43,17 @@ class MySpaceScreen extends StatelessWidget {
               tabs: controller.tabs,
             ),
           ),
-          const SizedBox(height: KSizes.defaultSpace),
+          // const SizedBox(height: KSizes.defaultSpace),
           Expanded(
               child: TabBarView(
                 clipBehavior: Clip.none,
                 controller: controller.tabController,
                 children: const [
                   JournalScreen(),
-                  MilestoneAdd(),
-                  QuestionSpace(),
-                  StoryScreen(),
-                  GratitudeWidget()
+                  MilestoneScreen(),
+                  QuestionsScreen(),
+                  MyStoryScreen(),
+                  // GratitudeWidget()
                 ],
               ))
         ],
@@ -73,7 +72,7 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
     Tab(text: 'Milestones'),
     Tab(text: 'Questions'),
     Tab(text: 'Story'),
-    Tab(text: 'Gratitude'),
+    // Tab(text: 'Gratitude'),
   ];
   @override
   void onInit() {

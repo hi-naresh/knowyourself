@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/features/insights/controller/dashboard_controller.dart';
+import 'package:knowyourself/features/personalisation/controller/profile_setup_controller.dart';
 import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
@@ -10,14 +11,13 @@ import 'package:knowyourself/utils/constants/text_strings.dart';
 import '../../../../../common/widgets/custom_container.dart';
 import 'package:get/get.dart';
 
-import '../../../../personalisation/controller/user_controller.dart';
 class MoodSection extends StatelessWidget {
   const MoodSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(DashboardController());
-    final userController = UserController.instance;
+    final profileController = ProfileSetupController.instance;
     return CustomContainer(
       width: double.infinity,
       color: kApp1Light,
@@ -30,8 +30,10 @@ class MoodSection extends StatelessWidget {
             child: SvgPicture.asset(
               KImages.health13,
               height: 140,
-              color: const Color.fromRGBO(255, 255, 255, 0.3),
-              colorBlendMode: BlendMode.modulate,
+              colorFilter: ColorFilter.mode(
+                Colors.white.withOpacity(0.3),
+                BlendMode.modulate,
+              ),
             ),
           ),
           Column(
@@ -44,11 +46,12 @@ class MoodSection extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: controller.greeting(),
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        style: Theme.of(context).textTheme.titleLarge
                       ),
                       TextSpan(
-                        text: "${userController.user.value.fullName!}!",
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        text: "${profileController.userProfile.value.name}!",
+                          style: Theme.of(context).textTheme.titleLarge
+
                       ),
                       TextSpan(
                         text: "\n${KTexts.feel}",
@@ -70,10 +73,8 @@ class MoodSection extends StatelessWidget {
                     ),
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      "Express Your Mood & Reflect:\nLog emotions and thoughts.",
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: KColors.scaffoldDark,
-                      ),
+                      "Express your present state:\nPhysically, Mentally or Emotionally.",
+                      style: Theme.of(context).textTheme.labelLarge,
                       textAlign: TextAlign.left,
                     ),
                   ),

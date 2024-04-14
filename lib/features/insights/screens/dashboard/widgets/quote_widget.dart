@@ -1,35 +1,64 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:knowyourself/models/Quote/quote_model.dart';
-// import 'package:knowyourself/utils/pref.dart';
-//
-// class QuoteWidget extends StatelessWidget {
-//   const QuoteWidget({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     QuoteModel? quoteModel = SharedPreferencesHelper.getQuote();
-//     return Container(
-//       height: 140.h,
-//       width: double.infinity,
-//       decoration: BoxDecoration(
-//         borderRadius: const BorderRadius.all(
-//           Radius.circular(10),
-//         ),
-//         image: DecorationImage(
-//             image: quoteModel == null
-//                 ? const AssetImage("assets/quote/quote.png")
-//                 : AssetImage("assets/quote/${quoteModel.image}.png"),
-//             fit: BoxFit.cover),
-//       ),
-//       child: Center(
-//           child: Text(
-//         quoteModel == null ? "Quote of the day" : quoteModel.title,
-//         textAlign: TextAlign.center,
-//         maxLines: 4,
-//         style: TextStyle(
-//             fontSize: 14.sp, fontWeight: FontWeight.w600, color: Colors.white),
-//       )),
-//     );
-//   }
-// }
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:knowyourself/utils/constants/sizes.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_strings.dart';
+import '../../../controller/quote_controller.dart';
+
+class QuoteWidget extends StatelessWidget {
+  const QuoteWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.put(QuoteController());
+    if (controller.quoteModel.value!.title.isNotEmpty) {
+      return Container(
+        padding: const EdgeInsets.all(KSizes.md),
+        decoration: BoxDecoration(
+          color: kApp1.withOpacity(0.3),
+          borderRadius: BorderRadius.circular(KSizes.lg),
+        ),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              left: 0,
+              child: SvgPicture.asset(
+                colorFilter: const ColorFilter.mode(
+                  Colors.white70,
+                  BlendMode.modulate,
+                ),
+                KImages.health21,
+                height: 82,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Obx(
+                    ()=> Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      textAlign: TextAlign.end,
+                      controller.quoteModel.value!.title,
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    const SizedBox(height: KSizes.sm),
+                    Text(
+                      "${controller.quoteModel.value!.author}",
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),)
+                  ],
+                )
+            ),
+          ],
+        ),
+      );
+    }
+    return const SizedBox();
+  }
+}

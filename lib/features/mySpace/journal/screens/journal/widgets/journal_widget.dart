@@ -31,26 +31,11 @@ class JournalWidget extends StatelessWidget {
               journalEntry.content,
               softWrap: true,
               overflow: TextOverflow.ellipsis,
-              maxLines: 1,
+              maxLines: 2,
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  DateFormat.jm().format(journalEntry.entryDate),
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
-                IconButton(
-                    onPressed: ()=>controller.deleteJournalEntry(journalEntry.id),
-                    icon: const Icon(
-                        CupertinoIcons.delete,
-                      size: KSizes.iconMd,
-                    )),
-              ],
-            ),
             const SizedBox(height: KSizes.md),
-            if (journalEntry.imagePath != null)
+            journalEntry.imagePath != null?
               ClipRRect(
                 borderRadius: BorderRadius.circular(KSizes.borderRadiusXl),
                 clipBehavior: Clip.antiAlias,
@@ -64,12 +49,30 @@ class JournalWidget extends StatelessWidget {
                       return const SizedBox();
                     }
                 ),
-              ),
+              ):
+            const SizedBox(height: KSizes.zero),
             const SizedBox(height: KSizes.md),
-            if (journalEntry.locationPath != null)
-              Text(journalEntry.locationPath.toString() ,
+
+            journalEntry.locationPath != null?
+            Text(journalEntry.locationPath.toString() ,
                   textAlign: TextAlign.right,
-                  style: Theme.of(context).textTheme.labelMedium),
+                  style: Theme.of(context).textTheme.labelMedium):
+            const SizedBox(height: KSizes.zero),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  DateFormat.jm().format(journalEntry.entryDate),
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+                IconButton(
+                    onPressed: ()=>controller.deleteJournalEntry(journalEntry.id),
+                    icon: const Icon(
+                      CupertinoIcons.restart,
+                      size: KSizes.iconMd,
+                    )),
+              ],
+            ),
           ],
         ),
       ),

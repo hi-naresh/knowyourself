@@ -27,64 +27,73 @@ class AspectSelectPage extends StatelessWidget {
             Column(
               children: [
                 const ProgressBar(
-                  steps: "2/3",
-                  percent: 0.6,
+                  steps: "1/3",
+                  percent: 0.3,
                 ),
                 const SizedBox(
                   height: KSizes.defaultSpace,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'In which Aspect?',
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    const SizedBox(
-                      height: KSizes.defaultSpace * 2,
-                    ),
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.only(left: 10, right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
+                Text.rich(
+                  textAlign: TextAlign.center,
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Select an Aspect',
+                        style: Theme.of(context).textTheme.headlineMedium,
                       ),
-                      child: Column(
-                        children: List.generate(controller.aspectsList.length,
-                            (index) {
-                          return Obx(
-                            () => GestureDetector(
-                              onTap: () =>
-                                  controller.selectAspect.value = index,
-                              child: Container(
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 12.0),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 30.0, vertical: 20.0),
-                                decoration: BoxDecoration(
-                                  color: controller.selectAspect.value == index
-                                      ? kApp1
-                                      : kEmptyProgress,
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  border: Border.all(
-                                    color:
-                                        controller.selectAspect.value == index
-                                            ? kApp1
-                                            : Colors.transparent,
-                                    width: 2,
+                      TextSpan(
+                        text: '\n\naspect to describe your current state of yourself, select one to proceed.',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: KSizes.defaultSpace * 2,
+                ),
+                Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.only(left: 10, right: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    children: List.generate(controller.aspectsList.length,
+                        (index) {
+                      return Obx(
+                        () => GestureDetector(
+                          onTap: () =>
+                              controller.selectAspect.value = index,
+                          child: Container(
+                            margin:
+                                const EdgeInsets.symmetric(vertical: 12.0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 30.0, vertical: 20.0),
+                            decoration: BoxDecoration(
+                              color: controller.selectAspect.value == index
+                                  ? kApp1
+                                  : kEmptyProgress,
+                              borderRadius: BorderRadius.circular(30.0),
+                              border: Border.all(
+                                color:
+                                    controller.selectAspect.value == index
+                                        ? kApp1
+                                        : Colors.transparent,
+                                width: 2,
+                              ),
+                              boxShadow: CustomShadow.getShadow([
+                                if (controller.selectAspect.value == index)
+                                  BoxShadow(
+                                    color: kApp1.withOpacity(0.5),
+                                    spreadRadius: 1,
+                                    blurRadius: 5,
+                                    offset: const Offset(0, 3),
                                   ),
-                                  boxShadow: CustomShadow.getShadow([
-                                    if (controller.selectAspect.value == index)
-                                      BoxShadow(
-                                        color: kApp1.withOpacity(0.5),
-                                        spreadRadius: 1,
-                                        blurRadius: 5,
-                                        offset: const Offset(0, 3),
-                                      ),
-                                  ]),
-                                ),
-                                child: Row(
+                              ]),
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
@@ -105,19 +114,28 @@ class AspectSelectPage extends StatelessWidget {
                                       ),
                                   ],
                                 ),
-                              ),
+                              ],
                             ),
-                          );
-                        }),
-                      ),
-                    ),
-                  ],
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
                 ),
               ],
             ),
-            ElevatedButton(
-                onPressed: () => controller.nextPage(),
-                child: const Text("Next")),
+            TextButton(
+                style: const ButtonStyle().copyWith(
+                    minimumSize: MaterialStateProperty.all(
+                        const Size(double.infinity, 60)),
+                    backgroundColor: MaterialStateProperty.all(kApp1),
+                    foregroundColor: MaterialStateProperty.all(Colors.white)),
+                onPressed: ()=> controller.nextPage(),
+                child: Text(
+                  'Next',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                )),
           ],
         ),
       ),

@@ -1,53 +1,78 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import '../../../../utils/constants/enums.dart';
 class MilestoneModel {
-  String title;
-  bool isDone;
+  final String id;
+  final String userId;
+  final String title;
+  final bool status;
+  final DateTime createdAt;
+  final DateTime dueDate;
+  final Period milestonePeriod;
+  final String? description;
+
   MilestoneModel({
+    required this.id,
+    required this.userId,
     required this.title,
-    required this.isDone,
+    required this.status,
+    required this.createdAt,
+    required this.dueDate,
+    required this.milestonePeriod,
+    this.description,
   });
 
   MilestoneModel copyWith({
-    String? name,
-    bool? isDone,
+    String? id,
+    String? userId,
+    String? title,
+    bool? status,
+    DateTime? createdAt,
+    DateTime? dueDate,
+    Period? milestonePeriod,
+    String? description,
   }) {
     return MilestoneModel(
-      title: name ?? title,
-      isDone: isDone ?? this.isDone,
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      title: title ?? this.title,
+      status: status ?? this.status,
+      createdAt: createdAt ?? this.createdAt,
+      dueDate: dueDate ?? this.dueDate,
+      milestonePeriod: milestonePeriod ?? this.milestonePeriod,
+      description: description ?? this.description,
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': title,
-      'isDone': isDone,
-    };
-  }
+  factory MilestoneModel.fromJson(Map<String, dynamic> json) => MilestoneModel(
+    id: json['id'],
+    userId: json['userId'],
+    title: json['title'],
+    status: json['status'],
+    createdAt: DateTime.parse(json['createdAt']),
+    dueDate: DateTime.parse(json['dueDate']),
+    milestonePeriod: Period.values.firstWhere((e) => e.toString() == json['milestonePeriod']),
+    description: json['description'],
+  );
 
-  factory MilestoneModel.fromMap(Map<String, dynamic> map) {
-    return MilestoneModel(
-      title: map['name'] as String,
-      isDone: map['isDone'] as bool,
-    );
-  }
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'userId': userId,
+    'title': title,
+    'status': status,
+    'createdAt': createdAt.toIso8601String(),
+    'dueDate': dueDate.toIso8601String(),
+    'milestonePeriod': milestonePeriod.toString(),
+    'description': description,
+  };
 
-  String toJson() => json.encode(toMap());
+  String toJsonString() => jsonEncode(toJson());
 
-  factory MilestoneModel.fromJson(String source) =>
-      MilestoneModel.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  @override
-  String toString() => 'ToDoModel(name: $title, isDone: $isDone)';
-
-  @override
-  bool operator ==(covariant MilestoneModel other) {
-    if (identical(this, other)) return true;
-
-    return other.title == title && other.isDone == isDone;
-  }
+  factory MilestoneModel.fromJsonString(String jsonString) => MilestoneModel.fromJson(jsonDecode(jsonString));
 
   @override
-  int get hashCode => title.hashCode ^ isDone.hashCode;
+  String toString() {
+    return 'MilestoneModel(id: $id, userId: $userId, title: $title, status: $status, createdAt: $createdAt, dueDate: $dueDate, milestonePeriod: $milestonePeriod, description: $description)';
+  }
+
 }

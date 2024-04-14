@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "325206134116-q10oh895nch8al76i1uufhl0phav58ee.apps.googleusercontent.com",
+          "client_id": "325206134116-34hsaes2qkjjdcrgak58rvgoovc8rpfb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.knowyourself.beta",
-            "certificate_hash": "131acf073936be4673d05fb3919456da07ec26df"
+            "certificate_hash": "1e95bc85bce08052252ca7033156de27938f7d68"
           }
         },
         {
@@ -52,7 +52,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:325206134116:android:bee074a8d735928a8e3e71",
+        "mobilesdk_app_id": "1:325206134116:android:ab80cc4deb8046788e3e71",
         "android_client_info": {
           "package_name": "com.knowyourself.know_yourself"
         }
