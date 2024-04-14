@@ -50,6 +50,10 @@ class MyCard extends StatelessWidget {
               child: SvgPicture.asset(
                 imageUrl!,
                 width: width,
+                colorFilter: ColorFilter.mode(
+                  Colors.white.withOpacity(0.9),
+                  BlendMode.modulate,
+                ),
                 height: height,
                 fit: BoxFit.contain,
               ),
@@ -58,6 +62,7 @@ class MyCard extends StatelessWidget {
               padding: const EdgeInsets.all(14.0),
               child: Text(
                 title,
+                maxLines: 2,
                 style: TextStyle(
                   overflow: TextOverflow.ellipsis,
                   color: Colors.white,

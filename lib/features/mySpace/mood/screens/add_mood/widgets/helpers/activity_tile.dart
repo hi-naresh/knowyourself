@@ -14,6 +14,9 @@ class ActivityTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyCard(title: activity.title, color: activity.color, imageUrl: activity.imageUrl, onTap: onTap, width: 150, height: 150,);
+    return MyCard(
+      title: activity.title,
+      color: activity.color,
+      imageUrl: activity.imageUrl, onTap: onTap, width: 150, height: 150,);
   }
 }

@@ -15,6 +15,10 @@ class QuoteWidget extends StatelessWidget {
     if (controller.quoteModel.value!.title.isNotEmpty) {
       return Container(
         padding: const EdgeInsets.all(KSizes.md),
+        width: double.infinity,
+        constraints: const BoxConstraints(
+          minHeight: 98,
+        ),
         decoration: BoxDecoration(
           color: kApp1.withOpacity(0.3),
           borderRadius: BorderRadius.circular(KSizes.lg),
@@ -37,6 +41,8 @@ class QuoteWidget extends StatelessWidget {
             Obx(
                     ()=> Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       textAlign: TextAlign.end,
