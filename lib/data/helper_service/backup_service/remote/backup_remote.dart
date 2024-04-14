@@ -10,12 +10,12 @@ import '../../../../utils/helpers/helper_functions.dart';
 class OnlineBackupService extends GetxService {
   static OnlineBackupService get instance => Get.find();
   final FirebaseStorage _storage = FirebaseStorage.instance;
-  final userId = UserController.instance.user.value.id.toString();
 
   // Method to upload backup to Firebase Storage
   Future<void> uploadBackup(String filePath) async {
     File file = File(filePath);
     try {
+      final userId = UserController.instance.user.value.id!;
       String fileName = "backup-${KHelper.getFormattedDateString(DateTime.now())}.json";
       await _storage.ref('$userId/$fileName').putFile(file);
       // Optionally, delete previous backups if required.
@@ -26,6 +26,7 @@ class OnlineBackupService extends GetxService {
 
   Future<String> downloadBackup() async {
     try {
+      final userId = UserController.instance.user.value.id!;
       // List all files and find the latest backup
       final ListResult result = await _storage.ref(userId).listAll();
       final List<Reference> allFiles = result.items;
@@ -37,7 +38,7 @@ class OnlineBackupService extends GetxService {
         if (response.statusCode == 200) {
           // Save the downloaded content locally
           final Directory directory = await getApplicationDocumentsDirectory();
-          final downloadPath = '${directory.path}/retrieved_online_backup.json';
+          final downloadPath = '${directory.path}/backup-${KHelper.getFormattedDateString(DateTime.now())}.json';
           final File downloadFile = File(downloadPath);
           await downloadFile.writeAsBytes(response.bodyBytes);
           return downloadPath;
