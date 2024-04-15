@@ -9,14 +9,15 @@ import 'package:get/get.dart';
 import '../utils/theme/theme.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key}){
+    AppStateController.instance.incrementAppOpenCount();
+  }
 
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => AppStateController(), fenix: true);
     Get.put(JournalRepo());
     final spaceController = Get.lazyPut(()=>MySpaceController(),fenix: true);
-    //needs to be lazy loaded or corrected when no user logged in
     Get.put(ProfileSetupController());
     return GetMaterialApp(
       initialBinding: GeneralBindings(),

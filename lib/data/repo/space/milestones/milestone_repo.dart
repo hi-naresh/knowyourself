@@ -28,7 +28,6 @@ class MilestoneRepo extends GetxController {
     milestonesUpdated.value = !milestonesUpdated.value;
   }
 
-
   // Fetch all milestones for a given period
   Future<List<MilestoneModel>> fetchMilestones(Period period) async {
     final key = _getKeyForPeriod(period);

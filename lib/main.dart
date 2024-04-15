@@ -7,6 +7,7 @@ import 'package:workmanager/workmanager.dart';
 import 'app.dart';
 import 'data/repo/auth/auth_repo.dart';
 import 'data/helper_service/background_scheduler/background_service.dart';
+import 'features/personalisation/controller/app_controller.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 
@@ -18,12 +19,17 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((FirebaseApp value) => Get.put(AuthRepo()));
-  Workmanager().initialize(callbackDispatcher);
+  await Workmanager().initialize(callbackDispatcher,
+      isInDebugMode: true,
+  );
+  Get.lazyPut(() => AppStateController(), fenix: true);
+
+  // scheduleBackgroundTask();
   // runApp(const MyApp());
   final runnableApp = _buildRunnableApp(
     isWeb: kIsWeb,
     webAppWidth:double.infinity,
-    app: const MyApp(),
+    app: MyApp(),
   );
   runApp(runnableApp);
 }

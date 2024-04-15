@@ -132,16 +132,29 @@ class KHelper {
   static Future<void> launchUrl(String url) async {
     if (await canLaunchUrlString(url)) {
       await launchUrlString(url, mode: LaunchMode.inAppWebView);
+    } else {
+      throw 'Could not launch $url';
     }
   }
 
-  // static Future<void> openUrl(String url) async {
-  //   if (await canLaunchUrl(Uri.parse(url))) {
-  //     await launch(url);
-  //   } else {
-  //     throw 'Could not launch $url';
-  //   }
-  // }
+  static int tillNextNoon() {
+    DateTime now = DateTime.now();
+    DateTime nextNoon = DateTime(now.year, now.month, now.day, 12);
+    if (now.hour >= 12) {
+      nextNoon = nextNoon.add(const Duration(days: 1));
+    }
+    return nextNoon.difference(now).inHours;
+  }
+
+  static int tillNextEvening() {
+    DateTime now = DateTime.now();
+    DateTime nextEvening = DateTime(now.year, now.month, now.day, 21, 30);
+    //testing
+    if (now.hour > 21 || (now.hour == 21 && now.minute > 30)) {
+      nextEvening = nextEvening.add(const Duration(days: 1));
+    }
+    return nextEvening.difference(now).inHours;
+  }
 
   static List<Widget> wrapWidgets(List<Widget> widgets, int rowSize) {
     final wrappedList = <Widget>[];

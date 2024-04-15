@@ -8,12 +8,14 @@ import 'package:knowyourself/features/learning/screens/learn_screen/learn_screen
 import 'package:knowyourself/features/mySpace/journal/screens/journal_entry/journal_entry.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/widget/milestone_add.dart';
 import 'package:knowyourself/features/mySpace/space_screen.dart';
+import 'package:knowyourself/features/personalisation/controller/app_controller.dart';
 
 import '../../utils/constants/colors.dart';
 import '../common/extras/auth_screen_prompt.dart';
 import '../common/widgets/appbar/appbar.dart';
 import '../common/widgets/navbar/bottom_nar_bar.dart';
 import '../data/helper_service/local_auth/local_bio_auth.dart';
+import '../data/helper_service/notifications/notification_service.dart';
 import '../utils/constants/sizes.dart';
 
 class MasterScreen extends StatelessWidget {
@@ -103,6 +105,9 @@ class MasterController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    if (AppStateController.instance.getAppOpenCountForToday() == 1) {
+      NotificationService.instance.scheduleDailyNotifications();
+    }
     currentIndex.listen((index) {
       if (index == 3) { // Index 3 corresponds to MySpaceScreen
         authenticateBeforeAccess();
