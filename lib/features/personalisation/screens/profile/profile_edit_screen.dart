@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/text_strings.dart';
 
 class ProfileEditScreen extends StatelessWidget {
   const ProfileEditScreen({super.key});
@@ -9,7 +10,7 @@ class ProfileEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Profile'),
+        title: const Text('${KTexts.edit} ${KTexts.profile} '),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -24,30 +25,30 @@ class ProfileEditScreen extends StatelessWidget {
               const SizedBox(height: 20),
               TextButton(
                 onPressed: () {},
-                child: const Text('Change Profile Picture'),
+                child: const Text('${KTexts.change} ${KTexts.profile} ${KTexts.picture}'),
               ),
               const SizedBox(height: 20),
               const TextField(
                 decoration: InputDecoration(
-                  labelText: 'Full Name',
+                  labelText: KTexts.fullname,
                 ),
               ),
               const SizedBox(height: 20),
               const TextField(
                 decoration: InputDecoration(
-                  labelText: 'Email',
+                  labelText: KTexts.email,
                 ),
               ),
               const SizedBox(height: 20),
               const TextField(
                 decoration: InputDecoration(
-                  labelText: 'Username',
+                  labelText: KTexts.username,
                 ),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {},
-                child: const Text('Save'),
+                child: const Text(KTexts.save),
               ),
             ],
           ),

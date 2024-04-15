@@ -64,7 +64,6 @@ class LearnScreen extends StatelessWidget {
                       title: KTexts.vital,
                       color: kApp3,
                       fontSize: 26,
-
                       imageUrl: KImages.vital),
                   MyCard(
                       width: KSizes.wCardMedium,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../../routes.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
@@ -45,7 +44,7 @@ class PLoginForm extends StatelessWidget {
             ),
           ),
           const SizedBox(height: KSizes.spaceBtwInputFields),
-          //remmeber me and forgot password
+          //remember me and forgot password
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

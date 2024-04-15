@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/common/widgets/custom_container.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../controller/my_story_controller.dart';
 import '../../model/story_model.dart';
 
@@ -26,7 +27,7 @@ class StorySection extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(storyType == StoryType.current ? 'Present Story' : "You're hero",
+              Text(storyType == StoryType.current ? 'Present ${KTexts.story}' : "You're hero",
                   style: Theme.of(context).textTheme.headlineSmall),
               const Spacer(),
               TextButton(
@@ -35,7 +36,7 @@ class StorySection extends StatelessWidget {
                       foregroundColor: MaterialStateProperty.all(Colors.white)
                   ),
                   onPressed: () => controller.updateStory(storyType),
-                  child: const Text('Update',)),
+                  child: const Text(KTexts.update,)),
               const SizedBox(width: KSizes.sm),
               TextButton(
                   style: const ButtonStyle().copyWith(
@@ -43,7 +44,7 @@ class StorySection extends StatelessWidget {
                       foregroundColor: MaterialStateProperty.all(Colors.white)
                   ),
                   onPressed: () => controller.deleteStory( storyType),
-                  child: const Text('Delete',))
+                  child: const Text(KTexts.delete,))
 
             ],
           ),
@@ -55,11 +56,11 @@ class StorySection extends StatelessWidget {
 
           const SizedBox(height: KSizes.defaultSpace),
           if (isEditing) ...[
-            _buildTextField(controller.characterCtrl, 'Character'),
-            _buildTextField(controller.aspirationCtrl, 'Aspiration'),
-            _buildTextField(controller.qualitiesCtrl, 'Qualities'),
-            _buildTextField(controller.scenarioCtrl, 'Scenario'),
-            _buildTextField(controller.skillsCtrl, 'Skills'),
+            _buildTextField(controller.characterCtrl, KTexts.character),
+            _buildTextField(controller.aspirationCtrl, KTexts.aspiration),
+            _buildTextField(controller.qualitiesCtrl, KTexts.qualities),
+            _buildTextField(controller.scenarioCtrl, KTexts.scenario),
+            _buildTextField(controller.skillsCtrl, KTexts.skills),
             const SizedBox(height: KSizes.defaultSpace),
             TextButton(
                 style: const ButtonStyle().copyWith(
@@ -68,7 +69,7 @@ class StorySection extends StatelessWidget {
                     foregroundColor: MaterialStateProperty.all(Colors.white)
                 ),
                 onPressed: () => controller.saveOrUpdateStory(storyType),
-                child: Text('Save Story',
+                child: Text('${KTexts.save} ${KTexts.story}',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold
@@ -76,11 +77,11 @@ class StorySection extends StatelessWidget {
                   ),)
             )
           ] else ...[
-            Text("Character: ${story!.character}"),
-            Text("Aspiration: ${story?.aspiration}"),
-            Text("Qualities: ${story?.qualities}"),
-            Text("Scenario: ${story?.scenario}"),
-            Text("Skills: ${story?.skills}"),
+            Text("${KTexts.character}: ${story!.character}"),
+            Text("${KTexts.aspiration}: ${story?.aspiration}"),
+            Text("${KTexts.qualities}: ${story?.qualities}"),
+            Text("${KTexts.scenario}: ${story?.scenario}"),
+            Text("${KTexts.skills}: ${story?.skills}"),
           ]
         ],
       ),

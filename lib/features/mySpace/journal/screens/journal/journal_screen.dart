@@ -5,6 +5,7 @@ import 'package:knowyourself/features/mySpace/journal/screens/journal/widgets/ca
 import 'package:knowyourself/features/mySpace/journal/screens/journal/widgets/journal_widget.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/utils/constants/text_strings.dart';
 import '../../../../../utils/constants/colors.dart';
 
 class JournalScreen extends StatelessWidget {
@@ -28,10 +29,10 @@ class JournalScreen extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                            text: 'My ',
+                            text:  '${KTexts.my} ',
                             style: Theme.of(context).textTheme.headlineMedium),
                         TextSpan(
-                          text: 'Reflections',
+                          text: KTexts.reflections,
                           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                             color: kApp4,
                           ),

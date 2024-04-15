@@ -5,6 +5,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/enums.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 
 class MilestoneAdd extends StatelessWidget {
@@ -26,7 +27,7 @@ class MilestoneAdd extends StatelessWidget {
                     text: 'Add ',
                     style: Theme.of(context).textTheme.headlineMedium),
                 TextSpan(
-                  text: 'Milestones',
+                  text: KTexts.milestones,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: kApp4,
                   ),

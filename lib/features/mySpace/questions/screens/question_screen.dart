@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../controller/question_controller.dart';
 import '../../../../utils/constants/enums.dart';
@@ -32,10 +33,10 @@ class QuestionsScreen extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                    text: 'My ',
+                    text: '${KTexts.my} ',
                     style: Theme.of(context).textTheme.headlineMedium),
                 TextSpan(
-                  text: 'Questions',
+                  text: KTexts.questions,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         color: kApp4,
                       ),
@@ -47,7 +48,7 @@ class QuestionsScreen extends StatelessWidget {
           TextFormField(
             controller: controller.questionController,
             decoration: InputDecoration(
-              labelText: 'Add a life challenging question',
+              labelText: '${KTexts.add} a life challenging question',
               labelStyle: Theme.of(context).textTheme.labelMedium,
             ),
           ),
@@ -94,7 +95,7 @@ class QuestionsScreen extends StatelessWidget {
                   foregroundColor: MaterialStateProperty.all(Colors.white)),
               onPressed: controller.addQuestion,
               child: Text(
-                'Add Question',
+                '${KTexts.add} Question',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Colors.white, fontWeight: FontWeight.bold),
               ))
@@ -112,7 +113,7 @@ class QuestionsScreen extends StatelessWidget {
             return ListTile(
               splashColor: Colors.transparent,
               title: Text(question.title),
-              subtitle: Text('Answer: ${question.answer.capitalizeFirst}'),
+              subtitle: Text('${KTexts.answer}: ${question.answer.capitalizeFirst}'),
               trailing: question.isAnswered
                   ? Row(
                       mainAxisSize: MainAxisSize.min,
@@ -147,10 +148,10 @@ class QuestionsScreen extends StatelessWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text('Answer the Question'),
+            title: const Text('${KTexts.answer} the Question'),
             content: TextFormField(
               controller: answerController,
-              decoration: const InputDecoration(hintText: 'Your Answer'),
+              decoration: const InputDecoration(hintText: 'Your ${KTexts.answer}'),
             ),
             actions: [
               TextButton(
@@ -164,7 +165,7 @@ class QuestionsScreen extends StatelessWidget {
                     controller.addAnswer(questionId, answerController.text);
                   },
                   child: Text(
-                    'Add Answer',
+                    '${KTexts.add} ${KTexts.answer}',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ))

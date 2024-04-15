@@ -5,6 +5,7 @@ import 'package:knowyourself/features/mySpace/milestones/screens/milestone_scree
 import 'package:knowyourself/features/mySpace/questions/screens/question_screen.dart';
 import 'package:knowyourself/features/mySpace/story/screens/story_screen.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
+import 'package:knowyourself/utils/constants/text_strings.dart';
 import '../../common/styles/styles.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/helpers/helper_functions.dart';
@@ -68,10 +69,10 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
   late TabController tabController;
 
   final tabs = const [
-    Tab(text: 'Reflections'),
-    Tab(text: 'Milestones'),
-    Tab(text: 'Questions'),
-    Tab(text: 'Story'),
+    Tab(text: KTexts.reflections),
+    Tab(text: KTexts.milestones),
+    Tab(text: KTexts.questions),
+    Tab(text: KTexts.story),
     // Tab(text: 'Gratitude'),
   ];
   @override

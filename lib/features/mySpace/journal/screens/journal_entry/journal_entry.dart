@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../controller/entry_controller.dart';
 
 class JournalEntryScreen extends StatelessWidget {
@@ -38,7 +39,7 @@ class JournalEntryScreen extends StatelessWidget {
                       controller.saveJournalEntry();
                       Get.back();
                     },
-                    child: Text('Save',
+                    child: Text(KTexts.save,
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: kApp4
@@ -124,7 +125,7 @@ class JournalEntryScreen extends StatelessWidget {
                       foregroundColor: MaterialStateProperty.all(Colors.white)
                     ),
                       onPressed: ()=>controller.cancelEntry(),
-                      child: const Text('Cancel',))
+                      child: const Text(KTexts.cancel,))
                   // IconButton(
                   //     icon: const Icon(CupertinoIcons.waveform_path_badge_plus),
                   //     onPressed: () => controller.recordVoiceNote()),

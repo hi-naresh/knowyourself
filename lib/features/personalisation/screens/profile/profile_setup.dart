@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/common/widgets/appbar/pagebar.dart';
-import 'package:knowyourself/features/personalisation/controller/app_controller.dart';
 import 'package:knowyourself/features/personalisation/screens/profile/pages/profile_avatar.dart';
 import 'package:knowyourself/features/personalisation/screens/profile/pages/profile_dob.dart';
 import 'package:knowyourself/features/personalisation/screens/profile/pages/profile_member_type.dart';
-import 'package:knowyourself/utils/constants/colors.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../controller/profile_setup_controller.dart';
 
 class ProfileSetupScreen extends StatelessWidget {
@@ -24,7 +23,7 @@ class ProfileSetupScreen extends StatelessWidget {
     return Obx(
         ()=> Scaffold(
         appBar: KPageBar(
-            title: 'Profile Setup',
+            title: '${KTexts.profile} Setup',
             showBackButton: controller.pageIndex.value > 0,
             // action: controller.pageIndex.value == 0 ? FilledButton(
             //   child: Text('Logout', style: Theme.of(context).textTheme.labelSmall?.copyWith(

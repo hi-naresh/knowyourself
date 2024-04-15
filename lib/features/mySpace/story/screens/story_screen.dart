@@ -4,6 +4,7 @@ import 'package:knowyourself/features/mySpace/story/screens/widgets/story_sectio
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../controller/my_story_controller.dart';
 
 
@@ -22,10 +23,10 @@ class MyStoryScreen extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                    text: 'My ',
+                    text: '${KTexts.my} ',
                     style: Theme.of(context).textTheme.headlineMedium),
                 TextSpan(
-                  text: 'Story',
+                  text: KTexts.story,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: kApp4,
                   ),

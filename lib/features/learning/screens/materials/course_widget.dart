@@ -19,7 +19,6 @@ class CourseSection extends StatelessWidget {
       {"title": "E-books", "color": kApp4,"type":CourseType.eBooks},
       {"title": "Guide", "color": kApp3,"type":CourseType.guide},
       {"title": "Centers", "color": kApp4,"type":CourseType.centers},
-
     ];
     final controller = Get.put(CourseController());
 

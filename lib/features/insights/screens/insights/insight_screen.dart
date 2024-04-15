@@ -56,14 +56,14 @@ class InsightScreen extends StatelessWidget {
           children: [
             ProgressComponent(
               milestonesProgress: {
-                'Daily': milesController.getCompletedTasksCount(Period.daily)/milesController.getTotalTasksCount(Period.daily),
-                'Weekly': milesController.getCompletedTasksCount(Period.weekly)/milesController.getTotalTasksCount(Period.weekly),
-                'Monthly': milesController.getCompletedTasksCount(Period.monthly)/milesController.getTotalTasksCount(Period.monthly),
+                KTexts.daily: milesController.getCompletedTasksCount(Period.daily)/milesController.getTotalTasksCount(Period.daily),
+                KTexts.weekly: milesController.getCompletedTasksCount(Period.weekly)/milesController.getTotalTasksCount(Period.weekly),
+                KTexts.monthly: milesController.getCompletedTasksCount(Period.monthly)/milesController.getTotalTasksCount(Period.monthly),
               },
             ),
             const SizedBox(height: KSizes.defaultSpace),
             Text(
-              'Weekly Value Reflection',
+              KTexts.weeklyValueReflection,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: KSizes.spaceBtwItems),
@@ -92,10 +92,10 @@ class InsightScreen extends StatelessWidget {
             const SizedBox(height: KSizes.defaultSpace),
             const LearningProgressBars(
               learningAspectsProgress: {
-                'Mental': 0.65, // 75%
-                'Physical': 0.5, // 50%
-                'Emotional': 0.7, // 90%
-                'Spiritual': 0.6, // 60%
+                KTexts.mental: 0.65, // 75%
+                KTexts.physical: 0.5, // 50%
+                KTexts.emotional: 0.7, // 90%
+                KTexts.spiritual: 0.6, // 60%
               },
             ),
             const SizedBox(height: KSizes.defaultSpace * 6),

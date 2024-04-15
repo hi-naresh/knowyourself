@@ -6,14 +6,24 @@ class KTexts {
   static const String skip = "Skip";
   static const String done = "Done";
   static const String submit = "Submit";
-  static const String appName = "Prodo";
+  static const String appName = "Know Yourself Better";
   static const String Continue = "Continue";
+  static const String save = "Save";
+  static const String cancel = "Cancel";
+  static const String my = "My";
+  static const String update = "Update";
+  static const String delete = "Delete";
+  static const String add = "Add";
+  static const String edit = "Edit";
+  static const String change = "Change";
+
 
   // 4 Aspects
 
   static const String mental= "Mental";
   static const String physical= "Physical";
   static const String vital="Vital";
+  static const String emotional="Emotional";
   static const String spiritual="Spiritual";
 
 
@@ -25,13 +35,31 @@ class KTexts {
   static const String recommend = "Recommended activities";
   static const String startYourDay = "Start your day with some motivation.";
   static const String daily = "Daily";
+  static const String weekly = "Weekly";
   static const String monthly = "Monthly";
   static const String yearly = "Yearly";
+  static const String goodMorning = "Good morning";
+  static const String goodAfternoon = "Good afternoon";
+  static const String goodEvening = "Good evening";
 
+  static const String weeklyValueReflection = "Weekly Value Reflection";
   // Learn Screen
   static const String learnHead = "Learn about aspects";
   static const String learnHead2 = "Learned so far";
   static const String learnHead3 = "Articles";
+
+  static const String reflections = "Reflections";
+  static const String milestones = "Milestones";
+  static const String tasks = "Tasks";
+  static const String questions = "Questions";
+  static const String answer = "Answer";
+
+  static const String story = "Story";
+  static const String character = "Character";
+  static const String aspiration = "Aspiration";
+  static const String qualities = "Qualities";
+  static const String scenario = "Scenario";
+  static const String skills = "Skills";
 
   //gratitude screen
   static const String gratitudeHead = "Gratification";
@@ -61,9 +89,12 @@ class KTexts {
   static const String resendEmail = "Resend Email";
   static const String resendEmailIn = "Resend email in";
 
+  static const String profile = "Profile";
+  static const String picture = "Picture";
+
 
   // -- Authentication Headings
-  static const String loginTitle = "Welcome back,";
+  static const String loginTitle = "Welcome back!";
   static const String loginSubTitle = "Discover Limitless Choices and Unmatched Convenience.";
   static const String signupTitle = "Let’s create your account";
   static const String forgetPasswordTitle = "Forget password";
