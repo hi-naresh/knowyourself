@@ -36,7 +36,7 @@ class MilestoneProgressList extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text(title, style: Theme.of(context).textTheme.headlineSmall),
-                  subtitle: Text('I have completed $completedTasksCount/$tasksCount milestones.'),
+                  subtitle: Text('${KTexts.completed} $completedTasksCount/$tasksCount ${KTexts.milestones}.'),
                 ),
                 LinearProgressIndicator(
                   value: progress,

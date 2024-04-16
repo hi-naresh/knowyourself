@@ -28,8 +28,6 @@ class AddMoodController extends GetxController {
         repeat: true,
       )
   );
-  String get moodString => emojis[(sliderValue.value * 10).round() % 10].emoji.name;
-
 
   RxInt selectAspect = 0.obs;
   List<String> aspectsList = ['Mentally', 'Physically', 'Emotionally', 'Spiritually'];

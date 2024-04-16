@@ -16,15 +16,18 @@ class KTexts {
   static const String add = "Add";
   static const String edit = "Edit";
   static const String change = "Change";
-
+  static const String view = "View";
+  static const String all = "All";
+  static const String now = "Now";
+  static const String no = "No";
+  static const String your = "Your";
 
   // 4 Aspects
-
   static const String mental= "Mental";
   static const String physical= "Physical";
   static const String vital="Vital";
-  static const String emotional="Emotional";
   static const String spiritual="Spiritual";
+  static const String emotional="Emotional";
 
 
   //Dashboard
@@ -34,32 +37,79 @@ class KTexts {
   static const String progress = "Progress";
   static const String recommend = "Recommended activities";
   static const String startYourDay = "Start your day with some motivation.";
+  static const String goodMorning = "Good morning";
+  static const String goodAfternoon = "Good afternoon";
+  static const String goodEvening = "Good evening";
+  static const String expressState = "Express your present state:\nPhysically, Mentally or Emotionally.";
+  static const String reflect = "Reflect";
+  static const String review = "Review";
+
+  //Insights
+  static const String weeklyValueReflection = "Weekly Value Reflection";
+  static const String valueInsights =  "Start Writing your reflections and get your value insights...";
   static const String daily = "Daily";
   static const String weekly = "Weekly";
   static const String monthly = "Monthly";
   static const String yearly = "Yearly";
-  static const String goodMorning = "Good morning";
-  static const String goodAfternoon = "Good afternoon";
-  static const String goodEvening = "Good evening";
 
-  static const String weeklyValueReflection = "Weekly Value Reflection";
   // Learn Screen
   static const String learnHead = "Learn about aspects";
   static const String learnHead2 = "Learned so far";
-  static const String learnHead3 = "Articles";
+  static const String learnHead3 = "Resources Available";
+  static const String learnHead4 = "Articles";
 
+  //Space
+
+  //mood
+  static const String selectAnAspect = "Select an Aspect";
+  static const String aspectDescription = "Aspect to describe your current state of yourself. Select one to proceed.";
+  static const String howAreYouFeeling = "How Are You \nFeeling?";
+  static const String emotion = "Emotion\n";
+  static const String feelingsQuestion = "Can you describe what you're feeling and why?";
+  static const String describeText = "Please provide details about your feelings \nand the reasons behind them.";
+  static const String staySameButtonText = "Stay Same";
+  static const String feelBetterButtonText = "Feel Better";
+  static const String moodLighten = "Lighten Up Your Mood By";
+  static const String goToDashboard = "Go to Dashboard";
+  static const String next = "Next";
+
+
+  //journal
   static const String reflections = "Reflections";
-  static const String milestones = "Milestones";
-  static const String tasks = "Tasks";
-  static const String questions = "Questions";
-  static const String answer = "Answer";
+  static const String entries = "Entries";
+  static const String journal = "Journal";
+  static const String dailyReflection = "Your reflection for today...";
 
+  //milestones
+  static const String milestones = "milestones";
+  static const String milestones3 = "milestone";
+  static const String tasks = "Tasks";
+  static const String completed = "I have completed";
+  static const String hintText = 'Task to achieve in specific period';
+  static const String hintText2 = 'Description of the task (optional)';
+  static const String reminderText = 'Set how often to remind you to complete this task';
+
+
+  //questions
+  static const String questions = "Questions";
+  static const String questions2 = "Question";
+  static const String answer = "Answer";
+  static const String addLifeChallengingQuestion = 'Add a life challenging question';
+  static const String setReminderPeriod = 'Set Reminder Period';
+  static const String answerTheQuestion ="Answer the Question";
+
+  //story
   static const String story = "Story";
+  static const String story2 = " Present Story";
+  static const String hero = "You're hero";
+  static const String describeOngoingLifeStory = 'Describe your ongoing life story in brief.';
+  static const String imagineNarratingOnTedXStage = 'Imagine you are narrating your story on TEDx Stage. What will it be like?';
   static const String character = "Character";
   static const String aspiration = "Aspiration";
   static const String qualities = "Qualities";
   static const String scenario = "Scenario";
   static const String skills = "Skills";
+
 
   //gratitude screen
   static const String gratitudeHead = "Gratification";
@@ -89,6 +139,7 @@ class KTexts {
   static const String resendEmail = "Resend Email";
   static const String resendEmailIn = "Resend email in";
 
+  //Profile
   static const String profile = "Profile";
   static const String picture = "Picture";
 

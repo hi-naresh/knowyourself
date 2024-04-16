@@ -27,7 +27,7 @@ class StorySection extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(storyType == StoryType.current ? 'Present ${KTexts.story}' : "You're hero",
+              Text(storyType == StoryType.current ? KTexts.story2 : KTexts.hero,
                   style: Theme.of(context).textTheme.headlineSmall),
               const Spacer(),
               TextButton(
@@ -50,8 +50,7 @@ class StorySection extends StatelessWidget {
           ),
           const SizedBox(height: KSizes.sm),
           Text(storyType == StoryType.current ?
-          'Describe your ongoing life story in brief.' :
-          'Imagine you are narrating your story on tedX Stage. What will it be like?',
+          KTexts.describeOngoingLifeStory : KTexts.imagineNarratingOnTedXStage,
               style: Theme.of(context).textTheme.labelMedium),
 
           const SizedBox(height: KSizes.defaultSpace),
@@ -96,7 +95,7 @@ class StorySection extends StatelessWidget {
         decoration: InputDecoration(
           // labelText: label,
           // labelStyle: Get.context!.textTheme.labelMedium,
-          hintText: 'Your $label',
+          hintText: '${KTexts.your} $label',
           hintStyle: Get.context!.textTheme.labelMedium,
         ),
       ),

@@ -24,10 +24,10 @@ class MilestoneAdd extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                    text: 'Add ',
+                    text: '${KTexts.add} ',
                     style: Theme.of(context).textTheme.headlineMedium),
                 TextSpan(
-                  text: KTexts.milestones,
+                  text: KTexts.milestones.capitalizeFirst,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: kApp4,
                   ),
@@ -40,7 +40,7 @@ class MilestoneAdd extends StatelessWidget {
             controller: controller.titleController,
             decoration: InputDecoration(
               // labelText: 'Title',
-              hintText: 'Task to achieve in specific period',
+              hintText: KTexts.hintText,
               hintStyle: Theme.of(context).textTheme.labelMedium
             ),
           ),
@@ -48,13 +48,13 @@ class MilestoneAdd extends StatelessWidget {
           TextField(
             controller: controller.descriptionController,
             decoration: InputDecoration(
-                hintText: 'Description of the task (optional)',
+                hintText: KTexts.hintText2,
                 hintStyle: Theme.of(context).textTheme.labelMedium
 
             ),
           ),
           const SizedBox(height: KSizes.defaultSpace),
-          Text('Set how often to remind you to complete this task',
+          Text( KTexts.reminderText,
               style: Theme.of(context).textTheme.bodyMedium),
           const SizedBox(height: KSizes.sm),
           SingleChildScrollView(
@@ -96,7 +96,7 @@ class MilestoneAdd extends StatelessWidget {
                   foregroundColor: MaterialStateProperty.all(Colors.white)),
               onPressed: ()=>controller.addMilestone(),
               child: Text(
-                'Add milestone',
+                '${KTexts.add} ${KTexts.milestones3}',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Colors.white, fontWeight: FontWeight.bold),
               ))

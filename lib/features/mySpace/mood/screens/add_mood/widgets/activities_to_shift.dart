@@ -6,6 +6,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/helpers/helper_functions.dart';
 import '../../../model/activity_model.dart';
 import 'helpers/activity_tile.dart';
@@ -28,7 +29,7 @@ class ActivitiesToShiftScreen extends StatelessWidget {
         padding: const EdgeInsets.all( KSizes.defaultSpace),
         child: Column(
           children: [
-            Text("Lighten Up Your Mood By",
+            Text( KTexts.moodLighten,
             style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: KSizes.defaultSpace),
@@ -84,7 +85,7 @@ class ActivitiesToShiftScreen extends StatelessWidget {
                     foregroundColor: MaterialStateProperty.all(Colors.white)),
                 onPressed: ()=> Get.offAllNamed(KRoutes.getMasterRoute()),
                 child: Text(
-                  'Go to Dashboard',
+                  KTexts.goToDashboard,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 )),

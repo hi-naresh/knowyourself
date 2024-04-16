@@ -3,6 +3,7 @@ import 'package:animated_emoji/animated_emoji.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/helpers/progress_bar.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
 import '../../../controller/add_mood_controller.dart';
 import 'helpers/full_circle_slider.dart';
@@ -14,6 +15,24 @@ class MoodSelectPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = AddMoodController.instance;
+    final Map<String, AnimatedEmojiData> emotionMap = {
+      'Happy': AnimatedEmojis.smileWithBigEyes,
+      'Sad': AnimatedEmojis.sad,
+      'Anxious': AnimatedEmojis.anxiousWithSweat,
+      'Excited': AnimatedEmojis.smilingEyesWithHandOverMouth,
+      'Calm': AnimatedEmojis.relieved,
+      'Angry': AnimatedEmojis.rage,
+      'Grateful': AnimatedEmojis.halo,
+      'Stressed': AnimatedEmojis.distraught,
+      'Lonely': AnimatedEmojis.cry,
+      'Confident': AnimatedEmojis.sunglassesFace,
+      'Guilty': AnimatedEmojis.bigFrown,
+      'Empathetic': AnimatedEmojis.starStruck,
+      'Envious': AnimatedEmojis.triumph,
+      'Optimistic': AnimatedEmojis.heartFace,
+      'Overwhelmed': AnimatedEmojis.concerned,
+    };
+
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -27,7 +46,7 @@ class MoodSelectPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "How Are You\n Feeling?",
+                  KTexts.howAreYouFeeling,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                     fontSize: KSizes.xxl,
@@ -61,14 +80,17 @@ class MoodSelectPage extends StatelessWidget {
                             blurRadius: 20,
                             offset: const Offset(0, 4),
                           ),
-                        ]),                      ),
-                      child: Obx(
-                            ()=> AnimatedEmoji(
-                          AnimatedEmojis.values[(controller.sliderValue.value * 10).round()],
-                          size: 216,
-                          repeat: true,
+                        ]
                         ),
                       ),
+                      child:  Obx(() {
+                        final emojiData = emotionMap.values.elementAt((controller.sliderValue.value * (emotionMap.length - 1)).round());
+                        return AnimatedEmoji(
+                          emojiData,
+                          size: 216,
+                          repeat: true,
+                        );
+                      }),
                     ),
                   ],
                 ),
@@ -76,21 +98,18 @@ class MoodSelectPage extends StatelessWidget {
                   height: KSizes.defaultSpace*2,
                 ),
                 Obx(
-                  //     ()=> Text(
-                  //   "Emotion\n ${(controller.moodString)}",
-                  //   textAlign: TextAlign.center,
-                  //   style: Theme.of(context).textTheme.headlineSmall,
-                  // ),
                     ()=> Text.rich(
                       textAlign: TextAlign.center,
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: "Emotion\n",
+                            text: KTexts.emotion,
                             style: Theme.of(context).textTheme.headlineMedium,
                           ),
                           TextSpan(
-                            text: controller.moodString,
+                            // text: controller.moodString,
+                            // text: emojiName,
+                            text: emotionMap.keys.elementAt((controller.sliderValue.value * (emotionMap.length - 1)).round()),
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                         ],
@@ -107,7 +126,7 @@ class MoodSelectPage extends StatelessWidget {
                     foregroundColor: MaterialStateProperty.all(Colors.white)),
                 onPressed: ()=> controller.nextPage(),
                 child: Text(
-                  'Next',
+                  KTexts.next,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 )),

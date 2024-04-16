@@ -56,7 +56,7 @@ class JournalScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: KSizes.sm),
                       Text(
-                        "Entries",
+                       KTexts.entries,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
@@ -85,7 +85,7 @@ class JournalScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(KSizes.defaultSpace),
                       child: Center(
                         child: Text(
-                          "No Journals Entries!",
+                          "${KTexts.no} ${KTexts.journal} ${KTexts.entries} !",
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                       )));

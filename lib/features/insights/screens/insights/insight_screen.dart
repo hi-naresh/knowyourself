@@ -68,7 +68,7 @@ class InsightScreen extends StatelessWidget {
             ),
             const SizedBox(height: KSizes.spaceBtwItems),
             Text(
-              "Start Writing your reflections and get your value insights...",
+             KTexts.valueInsights,
               style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: KSizes.defaultSpace),

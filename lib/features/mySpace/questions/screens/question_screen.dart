@@ -48,12 +48,12 @@ class QuestionsScreen extends StatelessWidget {
           TextFormField(
             controller: controller.questionController,
             decoration: InputDecoration(
-              labelText: '${KTexts.add} a life challenging question',
+              labelText: KTexts.addLifeChallengingQuestion,
               labelStyle: Theme.of(context).textTheme.labelMedium,
             ),
           ),
           const SizedBox(height: KSizes.defaultSpace),
-          Text('Set Reminder Period',
+          Text( KTexts.setReminderPeriod,
               style: Theme.of(context).textTheme.bodyLarge),
           const SizedBox(height: KSizes.sm),
           SingleChildScrollView(
@@ -95,7 +95,7 @@ class QuestionsScreen extends StatelessWidget {
                   foregroundColor: MaterialStateProperty.all(Colors.white)),
               onPressed: controller.addQuestion,
               child: Text(
-                '${KTexts.add} Question',
+                '${KTexts.add} ${KTexts.questions2}',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Colors.white, fontWeight: FontWeight.bold),
               ))
@@ -148,10 +148,10 @@ class QuestionsScreen extends StatelessWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text('${KTexts.answer} the Question'),
+            title: const Text( KTexts.answerTheQuestion ),
             content: TextFormField(
               controller: answerController,
-              decoration: const InputDecoration(hintText: 'Your ${KTexts.answer}'),
+              decoration: const InputDecoration(hintText: '${KTexts.your} ${KTexts.answer}'),
             ),
             actions: [
               TextButton(

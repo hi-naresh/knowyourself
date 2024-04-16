@@ -90,7 +90,7 @@ class LearnScreen extends StatelessWidget {
               ),
               const SizedBox(height: KSizes.defaultSpace),
               Text(
-                "Resources Available",
+                KTexts.learnHead3,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: KSizes.defaultSpace),
@@ -100,7 +100,7 @@ class LearnScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    KTexts.learnHead3,
+                    KTexts.learnHead4,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   IconButton(

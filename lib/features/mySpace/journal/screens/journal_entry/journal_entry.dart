@@ -92,7 +92,7 @@ class JournalEntryScreen extends StatelessWidget {
                 maxLines: null,
                 keyboardType: TextInputType.multiline,
                 decoration: const InputDecoration(
-                  hintText: 'Your reflection for today...',
+                  hintText: KTexts.dailyReflection,
                   hintStyle: TextStyle(color: Colors.grey),
                   contentPadding: EdgeInsets.all(KSizes.sm),
                   disabledBorder: InputBorder.none,
