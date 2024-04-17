@@ -23,7 +23,7 @@ class ProfileSetupScreen extends StatelessWidget {
     return Obx(
         ()=> Scaffold(
         appBar: KPageBar(
-            title: '${KTexts.profile} Setup',
+            title: '${KTexts.profile} ${KTexts.setup}',
             showBackButton: controller.pageIndex.value > 0,
             // action: controller.pageIndex.value == 0 ? FilledButton(
             //   child: Text('Logout', style: Theme.of(context).textTheme.labelSmall?.copyWith(
@@ -39,11 +39,11 @@ class ProfileSetupScreen extends StatelessWidget {
             child: controller.pageIndex.value == 2
                 ? ElevatedButton(
               onPressed: controller.finishOnboarding,
-              child: const Text('Finish'),
+              child: const Text( KTexts.finish),
             )
                 : ElevatedButton(
               onPressed: controller.goToNextPage,
-              child: const Text('Next'),
+              child: const Text(KTexts.next),
             )),
       ),
     );

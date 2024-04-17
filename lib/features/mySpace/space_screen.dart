@@ -68,11 +68,11 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
   final RxInt tabIndex = 0.obs;
   late TabController tabController;
 
-  final tabs = const [
-    Tab(text: KTexts.reflections),
-    Tab(text: KTexts.milestones),
-    Tab(text: KTexts.questions),
-    Tab(text: KTexts.story),
+  final tabs =  [
+    const Tab(text: KTexts.reflections),
+    Tab(text: KTexts.milestones.capitalizeFirst),
+    const Tab(text: KTexts.questions),
+    const Tab(text: KTexts.story),
     // Tab(text: 'Gratitude'),
   ];
   @override

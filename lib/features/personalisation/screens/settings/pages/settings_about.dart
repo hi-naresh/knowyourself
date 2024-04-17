@@ -7,6 +7,7 @@ import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../../utils/constants/app_links.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../widgets/settings_tile.dart';
 
 class SettingsAboutScreen extends StatelessWidget {
@@ -27,20 +28,20 @@ class SettingsAboutScreen extends StatelessWidget {
               fit: BoxFit.contain,
             ),
             SettingTile(
-                title: "Privacy Policy",
-                subtitle: "Read the policy in detail",
+                title: KTexts.privacyPolicyTitle,
+                subtitle: KTexts.privacyPolicySubtitle,
                 onTap: () => KHelper.launchUrl(AppLinks.privacy),
                 trailing: const Icon(CupertinoIcons.forward),
                 icon: CupertinoIcons.doc_text),
             SettingTile(
-                title: "Terms of Service",
-                subtitle: "Read the terms in detail",
+                title: KTexts.termsOfServiceTitle,
+                subtitle: KTexts.termsOfServiceSubtitle,
                 onTap: () => KHelper.launchUrl(AppLinks.terms),
                 trailing: const Icon(CupertinoIcons.forward),
                 icon: CupertinoIcons.settings_solid),
             const SettingTile(
-                title: "Contact Us",
-                subtitle: "Reach out to us for any queries",
+                title: KTexts.contactUsTitle,
+                subtitle: KTexts.contactUsSubtitle,
                 trailing: Icon(CupertinoIcons.forward),
                 icon: CupertinoIcons.mail),
           ],

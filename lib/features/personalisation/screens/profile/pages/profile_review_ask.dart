@@ -6,6 +6,8 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/device/device_utility.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../../../utils/constants/text_strings.dart';
+
 class PromptReviewTest extends StatelessWidget {
   const PromptReviewTest({super.key});
 
@@ -27,13 +29,13 @@ class PromptReviewTest extends StatelessWidget {
                 width: double.infinity,),
             const SizedBox(height: KSizes.spaceBtwSections),
             Text(
-                'Would you like to take the review test now or skip for now?',
+               KTexts.reviewTestPrompt,
               style: Theme.of(context).textTheme.headlineSmall,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: KSizes.spaceBtwItems),
             Text(
-              'Few questions to help us understand you better.',
+              KTexts.reviewTestDescription,
               style: Theme.of(context).textTheme.bodySmall,
               textAlign: TextAlign.center,
             ),
@@ -41,7 +43,7 @@ class PromptReviewTest extends StatelessWidget {
             TextButton(
               // onPressed: () => AuthRepo.instance.screenRedirect(),
               onPressed: () => Get.offAllNamed(KRoutes.getMasterRoute()),
-              child: Text('Skip for now', style : Theme.of(context).textTheme.titleLarge),
+              child: Text(KTexts.skipForNowButton, style : Theme.of(context).textTheme.titleLarge),
             ),
           ],
         ),
@@ -50,7 +52,7 @@ class PromptReviewTest extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: KSizes.defaultSpace,vertical: KDeviceUtils.getBottomNavigationBarHeight()/2),
         child: ElevatedButton(
           onPressed: ()=> Get.toNamed(KRoutes.getChoiceScreenRoute()),
-          child: const Text('Take Review Test'),
+          child: const Text(KTexts.takeReviewTestButton),
         ),
       )
     );

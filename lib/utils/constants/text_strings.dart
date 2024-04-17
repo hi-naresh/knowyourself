@@ -142,6 +142,76 @@ class KTexts {
   //Profile
   static const String profile = "Profile";
   static const String picture = "Picture";
+  static const String setup = "Setup";
+  static const String finish = "Finish";
+
+  static const String hintText3 = 'What should we call you?';
+  static const String gender = "What is your gender?";
+
+  static const String birthDate = "Date of Birth";
+  static const String selectDate = "Select Date";
+
+//member type
+  final String occupationLabelText = 'Occupation';
+  final String occupationHintText = 'Enter your occupation';
+  final String institutionLabelText = 'Institution/School/College';
+  final String institutionHintText = 'Enter your institution';
+  final String affiliationQuestionText = 'Please choose one that best describes your Affiliation?';
+  final String selectUserTypeHintText = 'Select User Type';
+
+//review test
+  static const String reviewTestPrompt = 'Would you like to take the review test now or skip for now?';
+  static const String reviewTestDescription = 'Few questions to help us understand you better.';
+  static const String skipForNowButton = 'Skip for now';
+  static const String takeReviewTestButton = 'Take Review Test';
+
+  //Settings
+  static const String darkModeTitle = "Dark Mode";
+  static const String darkModeSubtitle = "Switch to dark mode";
+
+  static const String bioMetricLoginTitle = "Bio-metric Login";
+  static const String bioMetricLoginSubtitle = "Login with your face/fingerprint";
+
+  static const String notificationsTitle = "Notifications";
+  static const String notificationsSubtitle = "In order to remind your tasks.";
+
+  static const String mySpaceTitle = "My Space";
+  static const String mySpaceSubtitle = "Personalize your space";
+
+  static const String feedbackTitle = "Feedback";
+  static const String feedbackSubtitle = "Thoughts & improvements";
+
+  static const String aboutTitle = "About";
+  static const String aboutSubtitle = "Know more about KYB";
+
+  static const String logoutTitle = "Logout";
+  static const String logoutSubtitle = "Logout from KYB";
+  static const String logOut = "Log Out";
+  static const String logOutMessage = "Are you sure you want to log out?";
+
+  static const String madeForSAILC = "Made for SAILC";
+
+  //about
+  static const String privacyPolicyTitle = "Privacy Policy";
+  static const String privacyPolicySubtitle = "Read the policy in detail";
+
+  static const String termsOfServiceTitle = "Terms of Service";
+  static const String termsOfServiceSubtitle = "Read the terms in detail";
+
+  static const String contactUsTitle = "Contact Us";
+  static const String contactUsSubtitle = "Reach out to us for any queries";
+
+  //my space
+  static const String recoverLocalDataTitle = "Recover local data";
+  static const String recoverLocalDataSubtitle = "Import data from last account";
+  static const String recoverOnlineDataTitle = "Recover online data";
+  static const String recoverOnlineDataSubtitle = "Import data from last saved to online";
+  static const String backupDataLocallyTitle = "Backup data locally";
+  static const String backupDataLocallySubtitle = "Store your data on your phone";
+  static const String backupDataOnlineTitle = "Backup data online";
+  static const String backupDataOnlineSubtitle = "Save your data on cloud";
+  static const String eraseDataTitle = "Erase Data";
+  static const String eraseDataSubtitle = "Erase all user data from this account";
 
 
   // -- Authentication Headings
@@ -256,6 +326,5 @@ class KTexts {
   static const String onBoardingSubTitle2 = "It's a space deeply rooted in the transformative vision and teachings of Sri Aurobindo and the Mother. Go inward, into the depths of your inner self and find out the Truth through daily life practices and unique experiences.";
   static const String onBoardingTitle3 = "Get Started!";
   static const String onBoardingSubTitle3 = "Your path to self-discovery awaits, let's start this empowering journey together.";
-
 }
 
