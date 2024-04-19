@@ -42,7 +42,7 @@ class ExpressFeelingsPage extends StatelessWidget {
                           color: controller.selectHappenedAt.value == index ? KColors.kApp1 : KColors.kEmptyProgress,
                           borderRadius: BorderRadius.circular(30.0),
                           border: Border.all(
-                            color: controller.selectHappenedAt.value == index ? KColors.kApp1: Colors.transparent,
+                            color: controller.selectHappenedAt.value == index ? KColors.kApp1: KColors.transparent,
                             width: 2,
                           ),
                           boxShadow: CustomShadow.getShadow([

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../utils/constants/colors.dart';
+
 @Deprecated('This property is no longer used, please use barRadius instead.')
 enum LinearStrokeCap { butt, round, roundAll }
 
@@ -90,7 +92,7 @@ class LinearPercentIndicator extends StatefulWidget {
 
   LinearPercentIndicator({
     super.key,
-    this.fillColor = Colors.transparent,
+    this.fillColor = KColors.transparent,
     this.percent = 0.0,
     this.lineHeight = 5.0,
     this.width,
@@ -302,7 +304,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
     }
 
     return Material(
-      color: Colors.transparent,
+      color: KColors.transparent,
       child: Container(
         color: widget.fillColor,
         child: Row(

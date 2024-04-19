@@ -79,7 +79,7 @@ class AspectSelectPage extends StatelessWidget {
                                 color:
                                     controller.selectAspect.value == index
                                         ? KColors.kApp1
-                                        : Colors.transparent,
+                                        : KColors.transparent,
                                 width: 2,
                               ),
                               boxShadow: CustomShadow.getShadow([

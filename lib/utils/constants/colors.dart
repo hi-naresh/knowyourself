@@ -15,6 +15,7 @@ class KColors {
   static const Color accent3Dark = Color(0xFF6D6598);
   static const Color accent4 = Color(0xFFFDB9AE);
   static const Color accent4Light = Color(0xFFFFDFD8);
+  static const Color transparent = Colors.transparent;
 
   // Gradients
   static const Gradient accent1Gradient = LinearGradient(

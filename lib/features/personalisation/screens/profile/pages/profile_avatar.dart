@@ -63,7 +63,7 @@ class ProfileAvatarPage extends StatelessWidget {
                   radius: 30,
                   backgroundColor: controller.avatar.value == avatarPath
                       ? KColors.primary  // Highlight if selected
-                      : Colors.transparent,
+                      : KColors.transparent,
                   child: SvgPicture.asset(
                     avatarPath,
                     height: 70,

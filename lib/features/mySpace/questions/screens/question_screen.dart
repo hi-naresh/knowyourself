@@ -111,7 +111,7 @@ class QuestionsScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             final question = controller.questions[index];
             return ListTile(
-              splashColor: Colors.transparent,
+              splashColor: KColors.transparent,
               title: Text(question.title),
               subtitle: Text('${KTexts.answer}: ${question.answer.capitalizeFirst}'),
               trailing: question.isAnswered

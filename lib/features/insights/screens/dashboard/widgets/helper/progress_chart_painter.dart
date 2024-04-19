@@ -17,7 +17,7 @@ class ProgressPainter extends CustomPainter {
 
     // Draw the background circle with inner shadow
     final backgroundPaint = Paint()
-      ..color = Colors.transparent
+      ..color = KColors.transparent
       ..style = PaintingStyle.fill;
     canvas.drawCircle(center, radius, backgroundPaint);
 

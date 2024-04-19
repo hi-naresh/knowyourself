@@ -35,7 +35,7 @@ class MySpaceScreen extends StatelessWidget {
               isScrollable: true,
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
               tabAlignment: TabAlignment.center,
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
+              overlayColor: MaterialStateProperty.all(KColors.transparent),
               labelPadding: const EdgeInsets.symmetric(horizontal: 20),
               // labelStyle: h3,
               // tabAlignment: TabAlignment.center,
