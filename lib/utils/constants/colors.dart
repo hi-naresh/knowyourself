@@ -5,9 +5,7 @@ class KColors {
   // App theme colors
   static const Color primary = Color(0xFFAEBFFF);
   static const Color secondary = Color(0xFFFFB999);
-
   static const Color accent = Color(0xFFb0c7ff);
-
   static const Color accent1 = Color(0xff9dd7ff);
   static const Color accent1Light = Color(0xffCEEAFF);
   static const Color accent2 = Color(0xFFFFB4E2);
@@ -15,27 +13,22 @@ class KColors {
   static const Color accent3 = Color(0xFFB4A6FE);
   static const Color accent3Light = Color(0xFFCEC4FF);
   static const Color accent3Dark = Color(0xFF6D6598);
-
   static const Color accent4 = Color(0xFFFDB9AE);
   static const Color accent4Light = Color(0xFFFFDFD8);
 
+  // Gradients
   static const Gradient accent1Gradient = LinearGradient(
-    colors: [
-      Colors.blue,
-      accent1 ],
+    colors: [Colors.blue, accent1],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
   );
 
-
   static const Gradient accentPrimaryGradient = LinearGradient(
-    colors: [
-      primary,
-      scaffoldDark,
-    ],
+    colors: [primary, scaffoldDark],
     begin: Alignment.topLeft,
     end: Alignment.bottomLeft,
   );
+
 
   // static List<BoxShadow> defaultShadow =  [
   //   BoxShadow(
@@ -61,8 +54,6 @@ class KColors {
   //   end: Alignment.bottomCenter,
   // );
 
-
-
   // static BoxShadow defaultShadow(accentIn) => BoxShadow(
   //   color: accentIn.withOpacity(0.15),
   //   offset: const Offset(-5, 1.5),
@@ -75,9 +66,8 @@ class KColors {
   static const Color textSecondary = Color(0xFF6C757D);
   static const Color textWhite = Colors.white;
 
-  //scaffold color
+  // Scaffold colors
   static const Color scaffoldLight = Color(0xfff4f3ff);
-
   static const Color scaffoldDark = Color(0xff1f1f25);
 
   // Background colors
@@ -87,9 +77,8 @@ class KColors {
   static const Color primaryBackground = Color(0xFFF3F5FF);
 
   // Background Container colors
-  // static const Color lightContainer = Color(0xFFF6F6F6);
-  static Color lightContainer = KColors.white.withOpacity(0.5);
-  static Color darkContainer = KColors.black.withOpacity(0.05);
+  static Color lightContainer = white.withOpacity(0.5);
+  static Color darkContainer = black.withOpacity(0.05);
 
   // Button colors
   static const Color buttonPrimary = Color(0xFF4b68ff);
@@ -107,7 +96,6 @@ class KColors {
   static const Color info = kApp1;
 
   // Neutral Shades
-
   static const Color primaryWhite = Color(0xFFEFEEFF);
   static const Color primaryBlack = Color(0xFF362424);
   static const Color black = Color(0xFF232323);
@@ -118,11 +106,37 @@ class KColors {
   static const Color lightGrey = Color(0xFFF9F9F9);
   static const Color white = Color(0xFFFFFFFF);
 
-}
+  // Core Values and their colors
+  static final valueColors ={
+    CoreValues.progress: valueProgress,
+    CoreValues.receptivity: valueReceptivity,
+    CoreValues.aspiration: valueAspiration,
+    CoreValues.perseverance: valuePerseverance,
+    CoreValues.gratitude: valueGratitude,
+    CoreValues.humility: valueHumility,
+    CoreValues.sincerity: valueSincerity,
+    CoreValues.peace: valuePeace,
+    CoreValues.equanimity: valueEquanimity,
+    CoreValues.generosity: valueGenerosity,
+    CoreValues.goodness: valueGoodness,
+    CoreValues.courage: valueCourage,
+  };
 
+  // Core Value Colors
+  static const Color valueProgress = Color(0xFFFAC6A1);
+  static const Color valueReceptivity = Color(0xFFF3E1AA);
+  static const Color valueAspiration = Color(0xFFFCEA9E);
+  static const Color valuePerseverance = Color(0xFFE3F3A5);
+  static const Color valueGratitude = Color(0xFFA3E6B4);
+  static const Color valueHumility = Color(0xFF78D59E);
+  static const Color valueSincerity = Color(0xFF7AB9E6);
+  static const Color valuePeace = Color(0xFF49AAEF);
+  static const Color valueEquanimity = Color(0xFFA17DE6);
+  static const Color valueGenerosity = Color(0xFFE07FBC);
+  static const Color valueGoodness = Color(0xFFF676A6);
+  static const Color valueCourage = Color(0xFFEF7272);
 
-
-// const Color kCoreValue1 = Color(0xFFEF7C00);
+  // const Color kCoreValue1 = Color(0xFFEF7C00);
 // const Color kCoreValue1_1 = Color(0xFFFAC6A1);
 // const Color kCoreValue2 = Color(0xFFEFB500);
 // const Color kCoreValue2_1 = Color(0xFFF3E1AA);
@@ -146,60 +160,26 @@ class KColors {
 // const Color kCoreValue11_1 = Color(0xFFF676A6);
 // const Color kCoreValue12 = Color(0xFFEC0012);
 // const Color kCoreValue12_1 = Color(0xFFEF7272);
-//
 
-const Color valueProgress = Color(0xFFFAC6A1);
-const Color valueReceptivity = Color(0xFFF3E1AA);
-const Color valueAspiration = Color(0xFFFCEA9E);
-const Color valuePerseverance = Color(0xFFE3F3A5);
-const Color valueGratitude = Color(0xFFA3E6B4);
-const Color valueHumility = Color(0xFF78D59E);
-const Color valueSincerity = Color(0xFF7AB9E6);
-const Color valuePeace = Color(0xFF49AAEF);
-const Color valueEquanimity = Color(0xFFA17DE6);
-const Color valueGenerosity = Color(0xFFE07FBC);
-const Color valueGoodness = Color(0xFFF676A6);
-const Color valueCourage = Color(0xFFEF7272);
+  // App Colors
+  static const Color kApp1 = Color(0xFFAEBFFF);
+  static const Color kApp1Light = Color(0xFFBFDAFF);
+  static const Color kApp2 = Color(0xFFFF98BF);
+  static const Color kApp2Light = Color(0xFFFFD7E8);
+  static const Color kApp3 = Color(0xFF63D5AC);
+  static const Color kApp3Light = Color(0xFFB6F3D4);
+  static const Color kApp4 = Color(0xFFFFB999);
+  static const Color kApp4Light = Color(0xFFFFCCBF);
+  static const Color kApp4Dark = Color(0xFFFFA497);
 
-final valueColors ={
-  CoreValues.progress: valueProgress,
-  CoreValues.receptivity: valueReceptivity,
-  CoreValues.aspiration: valueAspiration,
-  CoreValues.perseverance: valuePerseverance,
-  CoreValues.gratitude: valueGratitude,
-  CoreValues.humility: valueHumility,
-  CoreValues.sincerity: valueSincerity,
-  CoreValues.peace: valuePeace,
-  CoreValues.equanimity: valueEquanimity,
-  CoreValues.generosity: valueGenerosity,
-  CoreValues.goodness: valueGoodness,
-  CoreValues.courage: valueCourage,
-};
+  // Grey Shades
+  static const Color kProgress = Color(0xFFE9EDF1);
+  static Color kBoxLight = kEmptyProgress.withOpacity(0.7);
+  static const Color kPieBox = Color(0xFFEEF6FF);
+  static const Color kEmptyProgress = Color(0xFFE4E9F3);
+  static const Color kEmptyProgressDark = Color(0xFF353536);
 
-//AppColor1
-const Color kApp1 = Color(0xFFAEBFFF);
-const Color kApp1Light = Color(0xFFBFDAFF);
-
-//Appcolor2
-const Color kApp2 = Color(0xFFFF98BF);
-const Color kApp2Light = Color(0xFFFFD7E8);
-
-//appcolor3
-const Color kApp3 = Color(0xFF63D5AC);
-const Color kApp3Light = Color(0xFFB6F3D4);
-
-//appcolor4
-const Color kApp4 = Color(0xFFFFB999);
-const Color kApp4Light = Color(0xFFFFCCBF);
-const Color kApp4Dark = Color(0xFFFFA497);
-
-//grey
-const Color kProgress = Color(0xFFE9EDF1);
-Color kBoxLight = kEmptyProgress.withOpacity(0.7);
-const Color kPieBox = Color(0xFFEEF6FF);
-// const Color kEmptyProgress = Color(0xFFE3E9F3);
-const Color kEmptyProgress = Color(0xFFE4E9F3);
-const Color kEmptyProgressDark = Color(0xFF353536);
-
-const Color kPrimaryColor = Color(0xFFAEBFFF);
-const Color kSecondaryColor = Color(0xFFD9E9FF);
+  // Primary and Secondary Colors
+  static const Color kPrimaryColor = Color(0xFFAEBFFF);
+  static const Color kSecondaryColor = Color(0xFFD9E9FF);
+}

@@ -32,7 +32,7 @@ class GratitudeTitle extends StatelessWidget {
                 height: 20,
                 width: 20,
                 decoration: const BoxDecoration(
-                    color: kApp4, shape: BoxShape.circle),
+                    color: KColors.kApp4, shape: BoxShape.circle),
                 child: Center(
                   child: Container(
                     height: 12,

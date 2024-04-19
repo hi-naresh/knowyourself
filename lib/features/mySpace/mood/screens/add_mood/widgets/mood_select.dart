@@ -122,7 +122,7 @@ class MoodSelectPage extends StatelessWidget {
                 style: const ButtonStyle().copyWith(
                     minimumSize: MaterialStateProperty.all(
                         const Size(double.infinity, 60)),
-                    backgroundColor: MaterialStateProperty.all(kApp1),
+                    backgroundColor: MaterialStateProperty.all(KColors.kApp1),
                     foregroundColor: MaterialStateProperty.all(Colors.white)),
                 onPressed: ()=> controller.nextPage(),
                 child: Text(

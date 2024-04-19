@@ -16,7 +16,7 @@ class QuoteWidget extends StatelessWidget {
       return Container(
         padding: const EdgeInsets.all(KSizes.md),
         decoration: BoxDecoration(
-          color: kApp1.withOpacity(0.3),
+          color: KColors.kApp1.withOpacity(0.3),
           borderRadius: BorderRadius.circular(KSizes.lg),
         ),
         child: Stack(

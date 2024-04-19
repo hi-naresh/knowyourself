@@ -14,7 +14,7 @@ class RecommendSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  CustomContainer(
-      color: kApp1Light.withOpacity(0.9),
+      color: KColors.kApp1Light.withOpacity(0.9),
       padding: const EdgeInsets.all(KSizes.defaultSpace),
       onTap: ()=>Get.toNamed(KRoutes.getActivitiesRoute()),
       child: Row(

@@ -72,20 +72,20 @@ class AspectSelectPage extends StatelessWidget {
                                 horizontal: 30.0, vertical: 20.0),
                             decoration: BoxDecoration(
                               color: controller.selectAspect.value == index
-                                  ? kApp1
-                                  : kEmptyProgress,
+                                  ? KColors.kApp1
+                                  : KColors.kEmptyProgress,
                               borderRadius: BorderRadius.circular(30.0),
                               border: Border.all(
                                 color:
                                     controller.selectAspect.value == index
-                                        ? kApp1
+                                        ? KColors.kApp1
                                         : Colors.transparent,
                                 width: 2,
                               ),
                               boxShadow: CustomShadow.getShadow([
                                 if (controller.selectAspect.value == index)
                                   BoxShadow(
-                                    color: kApp1.withOpacity(0.5),
+                                    color: KColors.kApp1.withOpacity(0.5),
                                     spreadRadius: 1,
                                     blurRadius: 5,
                                     offset: const Offset(0, 3),
@@ -129,7 +129,7 @@ class AspectSelectPage extends StatelessWidget {
                 style: const ButtonStyle().copyWith(
                     minimumSize: MaterialStateProperty.all(
                         const Size(double.infinity, 60)),
-                    backgroundColor: MaterialStateProperty.all(kApp1),
+                    backgroundColor: MaterialStateProperty.all(KColors.kApp1),
                     foregroundColor: MaterialStateProperty.all(Colors.white)),
                 onPressed: ()=> controller.nextPage(),
                 child: Text(

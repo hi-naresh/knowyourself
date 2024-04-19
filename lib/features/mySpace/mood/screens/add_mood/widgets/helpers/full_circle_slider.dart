@@ -61,25 +61,25 @@ class CircleSliderPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = kBoxLight
+      ..color = KColors.kBoxLight
       ..style = PaintingStyle.stroke
       ..strokeWidth = 25;
 
     final handlerPaintShadow = Paint()
-      ..color = kApp1.withOpacity(0.75)
+      ..color = KColors.kApp1.withOpacity(0.75)
       ..maskFilter = const MaskFilter.blur(BlurStyle.inner, 5)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 8;
 
     final handlerPaintBorder = Paint()
-      ..color = kApp1
+      ..color = KColors.kApp1
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3;
 
     final handlerPaint = Paint()
       // ..color = kApp1
     ..shader = LinearGradient(
-      colors: [kApp1.withOpacity(0.5), kApp1],
+      colors: [KColors.kApp1.withOpacity(0.5), KColors.kApp1],
       begin: Alignment.topLeft,
       end: Alignment.bottomCenter,
     ).createShader(Rect.fromCircle(center: Offset(size.width / 2, size.height / 6), radius: size.width / 4))

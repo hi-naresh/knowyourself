@@ -81,11 +81,11 @@ class CalendarWidget extends StatelessWidget {
 
       Color backgroundColor;
       if (isSelected) {
-        backgroundColor = kApp4;
+        backgroundColor = KColors.kApp4;
       } else if (isToday) {
-        backgroundColor = kApp1;
+        backgroundColor = KColors.kApp1;
       } else {
-        backgroundColor = KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress;
+        backgroundColor = KHelper.isDarkMode(context) ? KColors.kEmptyProgressDark : KColors.kEmptyProgress;
         dayStyle = KHelper.isDarkMode(context) ? dayStyle.copyWith(color: Colors.grey) : dayStyle.copyWith(color: KColors.dark);
         dateStyle = KHelper.isDarkMode(context) ? dateStyle.copyWith(color: Colors.grey) : dateStyle.copyWith(color: KColors.dark);
       }

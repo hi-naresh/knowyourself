@@ -21,7 +21,7 @@ class JournalWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () => controller.viewJournalEntry(journalEntry),
       child: CustomContainer(
-        color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
+        color: KHelper.isDarkMode(context) ? KColors.kEmptyProgressDark : KColors.kEmptyProgress,
         margin: const EdgeInsets.symmetric(vertical: KSizes.md),
         padding: const EdgeInsets.all(KSizes.md+KSizes.xs),
         child: Column(

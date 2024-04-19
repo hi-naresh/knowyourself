@@ -24,7 +24,7 @@ class MilestoneScreen extends StatelessWidget {
               TextSpan(
                 text: KTexts.milestones.capitalizeFirst,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: kApp4,
+                  color: KColors.kApp4,
                 ),
               ),
             ],

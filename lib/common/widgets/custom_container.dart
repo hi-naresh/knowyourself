@@ -34,7 +34,7 @@ class CustomContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = KHelper.isDark();
     if(color == Colors.transparent){
-      color = isDark ? color : kEmptyProgress;
+      color = isDark ? color : KColors.kEmptyProgress;
     }
     return GestureDetector(
       onTap: onTap,

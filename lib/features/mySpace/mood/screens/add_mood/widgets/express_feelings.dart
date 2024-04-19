@@ -39,16 +39,16 @@ class ExpressFeelingsPage extends StatelessWidget {
                         margin: const EdgeInsets.symmetric(horizontal: 3.0),
                         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
                         decoration: BoxDecoration(
-                          color: controller.selectHappenedAt.value == index ? kApp1 : kEmptyProgress,
+                          color: controller.selectHappenedAt.value == index ? KColors.kApp1 : KColors.kEmptyProgress,
                           borderRadius: BorderRadius.circular(30.0),
                           border: Border.all(
-                            color: controller.selectHappenedAt.value == index ? kApp1: Colors.transparent,
+                            color: controller.selectHappenedAt.value == index ? KColors.kApp1: Colors.transparent,
                             width: 2,
                           ),
                           boxShadow: CustomShadow.getShadow([
                             if (controller.selectHappenedAt.value == index)
                               BoxShadow(
-                                color: kApp1.withOpacity(0.5),
+                                color: KColors.kApp1.withOpacity(0.5),
                                 spreadRadius: 1,
                                 blurRadius: 5,
                                 offset: const Offset(0, 3),
@@ -82,7 +82,7 @@ class ExpressFeelingsPage extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(KSizes.md),
                 decoration: BoxDecoration(
-                  color: KHelper.isDark() ? kEmptyProgressDark : kEmptyProgress,
+                  color: KHelper.isDark() ? KColors.kEmptyProgressDark : KColors.kEmptyProgress,
                   borderRadius: BorderRadius.circular(KSizes.borderRadiusXl),
                 ),
                 child: TextFormField(
@@ -136,7 +136,7 @@ class ExpressFeelingsPage extends StatelessWidget {
     return TextButton(
       style: ButtonStyle(
         minimumSize: MaterialStateProperty.all(const Size(double.infinity, 55)),
-        backgroundColor: MaterialStateProperty.all(kApp1),
+        backgroundColor: MaterialStateProperty.all(KColors.kApp1),
         foregroundColor: MaterialStateProperty.all(Colors.white),
       ),
       onPressed: () {

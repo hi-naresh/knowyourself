@@ -32,7 +32,7 @@ class StorySection extends StatelessWidget {
               const Spacer(),
               TextButton(
                   style: const ButtonStyle().copyWith(
-                      backgroundColor: MaterialStateProperty.all(kApp4),
+                      backgroundColor: MaterialStateProperty.all(KColors.kApp4),
                       foregroundColor: MaterialStateProperty.all(Colors.white)
                   ),
                   onPressed: () => controller.updateStory(storyType),
@@ -40,7 +40,7 @@ class StorySection extends StatelessWidget {
               const SizedBox(width: KSizes.sm),
               TextButton(
                   style: const ButtonStyle().copyWith(
-                      backgroundColor: MaterialStateProperty.all(kApp4),
+                      backgroundColor: MaterialStateProperty.all(KColors.kApp4),
                       foregroundColor: MaterialStateProperty.all(Colors.white)
                   ),
                   onPressed: () => controller.deleteStory( storyType),
@@ -64,7 +64,7 @@ class StorySection extends StatelessWidget {
             TextButton(
                 style: const ButtonStyle().copyWith(
                   minimumSize: MaterialStateProperty.all(const Size(double.infinity, 50)),
-                    backgroundColor: MaterialStateProperty.all(kApp4),
+                    backgroundColor: MaterialStateProperty.all(KColors.kApp4),
                     foregroundColor: MaterialStateProperty.all(Colors.white)
                 ),
                 onPressed: () => controller.saveOrUpdateStory(storyType),

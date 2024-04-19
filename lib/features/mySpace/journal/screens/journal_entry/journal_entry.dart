@@ -25,7 +25,7 @@ class JournalEntryScreen extends StatelessWidget {
                 IconButton(
                   icon: const Icon(
                     CupertinoIcons.bookmark,
-                    color: kApp4,
+                    color: KColors.kApp4,
                   ),
                   onPressed: () => controller.addBookmark(),
                 ),
@@ -42,7 +42,7 @@ class JournalEntryScreen extends StatelessWidget {
                     child: Text(KTexts.save,
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w700,
-                          color: kApp4
+                          color: KColors.kApp4
                         )))
               ],
             ),
@@ -121,7 +121,7 @@ class JournalEntryScreen extends StatelessWidget {
                   ),
                   FilledButton(
                     style: const ButtonStyle().copyWith(
-                      backgroundColor: MaterialStateProperty.all(kApp4),
+                      backgroundColor: MaterialStateProperty.all(KColors.kApp4),
                       foregroundColor: MaterialStateProperty.all(Colors.white)
                     ),
                       onPressed: ()=>controller.cancelEntry(),

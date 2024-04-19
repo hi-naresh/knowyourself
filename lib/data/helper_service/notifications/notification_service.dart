@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../../utils/constants/colors.dart';
+
 class NotificationService extends GetxService {
   static NotificationService get instance => Get.find();
   final _storage = GetStorage();
@@ -24,7 +26,7 @@ class NotificationService extends GetxService {
           channelDescription: 'General notifications for KYB App',
           importance: NotificationImportance.High,
           defaultColor: const Color(0xFF9D50DD),
-          ledColor: Colors.white,
+          ledColor: KColors.white,
         ),
         // NotificationChannel(
         //   channelKey: 'milestone_notifications',

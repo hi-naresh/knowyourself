@@ -41,21 +41,21 @@ class ProfileDobPage extends StatelessWidget {
               return Obx(
                     () => ChoiceChip(
                   backgroundColor: KHelper.isDark()
-                      ? kEmptyProgressDark
-                      : kEmptyProgress,
-                  selectedColor: kApp1,
+                      ? KColors.kEmptyProgressDark
+                      : KColors.kEmptyProgress,
+                  selectedColor: KColors.kApp1,
                   label: Text(
                       gender.toString().split('.').last.capitalize!),
                   selected: controller.selectedGender.value == gender,
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(
-                      color: kApp1,
+                      color: KColors.kApp1,
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   padding: const EdgeInsets.all(10),
-                  disabledColor: kEmptyProgress,
+                  disabledColor: KColors.kEmptyProgress,
                   onSelected: (_)=> controller.selectedGender.value = gender,
                   // onSelected: (_) => controller.changeAspect(gender),
                 ),

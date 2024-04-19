@@ -20,7 +20,7 @@ class MoodSection extends StatelessWidget {
     final profileController = ProfileSetupController.instance;
     return CustomContainer(
       width: double.infinity,
-      color: kApp1Light,
+      color: KColors.kApp1Light,
       child: Stack(
         clipBehavior: Clip.none,
         children: [

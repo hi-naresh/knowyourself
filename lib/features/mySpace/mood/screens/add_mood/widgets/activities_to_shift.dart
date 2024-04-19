@@ -15,10 +15,10 @@ class ActivitiesToShiftScreen extends StatelessWidget {
   ActivitiesToShiftScreen({super.key});
 
   final List<Activity> activities = [
-    Activity(title: 'Go for a walk in nature', duration: '10 min', imageUrl: 'assets/illustrations/physical.svg', color: kApp1),
-    Activity(title: 'Do a dance party by yourself', duration: '15 min', imageUrl: 'assets/illustrations/physical.svg', color: kApp2),
-    Activity(title: 'Paint something', duration: '15 min', imageUrl: 'assets/illustrations/physical.svg', color: kApp3),
-    Activity(title: 'Eat a dessert', duration: '15 min', imageUrl: 'assets/illustrations/physical.svg', color: kApp4),
+    Activity(title: 'Go for a walk in nature', duration: '10 min', imageUrl: 'assets/illustrations/physical.svg', color: KColors.kApp1),
+    Activity(title: 'Do a dance party by yourself', duration: '15 min', imageUrl: 'assets/illustrations/physical.svg', color: KColors.kApp2),
+    Activity(title: 'Paint something', duration: '15 min', imageUrl: 'assets/illustrations/physical.svg', color: KColors.kApp3),
+    Activity(title: 'Eat a dessert', duration: '15 min', imageUrl: 'assets/illustrations/physical.svg', color: KColors.kApp4),
   ];
 
   @override
@@ -40,15 +40,15 @@ class ActivitiesToShiftScreen extends StatelessWidget {
                 children: LifeAspects.values
                     .map((period) => ChoiceChip(
                   backgroundColor: KHelper.isDark()
-                      ? kEmptyProgressDark
-                      : kEmptyProgress,
-                  selectedColor: kApp1,
+                      ? KColors.kEmptyProgressDark
+                      : KColors.kEmptyProgress,
+                  selectedColor: KColors.kApp1,
                   shape: RoundedRectangleBorder(
                     side: BorderSide.none,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   padding: const EdgeInsets.all(12),
-                  disabledColor: kEmptyProgress,
+                  disabledColor: KColors.kEmptyProgress,
                   label: Text(period.name.capitalizeFirst!),
                   selected: LifeAspects.mental == period,
                   // onSelected: (selected) {
@@ -81,7 +81,7 @@ class ActivitiesToShiftScreen extends StatelessWidget {
                 style: const ButtonStyle().copyWith(
                     minimumSize: MaterialStateProperty.all(
                         const Size(double.infinity, 60)),
-                    backgroundColor: MaterialStateProperty.all(kApp1),
+                    backgroundColor: MaterialStateProperty.all(KColors.kApp1),
                     foregroundColor: MaterialStateProperty.all(Colors.white)),
                 onPressed: ()=> Get.offAllNamed(KRoutes.getMasterRoute()),
                 child: Text(

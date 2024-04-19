@@ -41,7 +41,7 @@ class LearnScreen extends StatelessWidget {
                       width: KSizes.wCardMedium,
                       height: KSizes.hCardMedium,
                       title: KTexts.mental,
-                      color: kApp1,
+                      color: KColors.kApp1,
                       fontSize: 26,
                       imageUrl: KImages.mental,
                   ),
@@ -49,7 +49,7 @@ class LearnScreen extends StatelessWidget {
                       width: KSizes.wCardMedium,
                       height: KSizes.hCardMedium,
                       title: KTexts.physical,
-                      color: kApp2,
+                      color: KColors.kApp2,
                       fontSize: 26,
                       imageUrl: KImages.physical),
                 ],
@@ -62,14 +62,14 @@ class LearnScreen extends StatelessWidget {
                       width: KSizes.wCardMedium,
                       height: KSizes.hCardMedium,
                       title: KTexts.vital,
-                      color: kApp3,
+                      color: KColors.kApp3,
                       fontSize: 26,
                       imageUrl: KImages.vital),
                   MyCard(
                       width: KSizes.wCardMedium,
                       height: KSizes.hCardMedium,
                       title: KTexts.spiritual,
-                      color: kApp4,
+                      color: KColors.kApp4,
                       fontSize: 26,
                       imageUrl: KImages.spiritual),
                 ],
@@ -125,21 +125,21 @@ class LearnScreen extends StatelessWidget {
                           return Obx(
                             () => ChoiceChip(
                               backgroundColor: KHelper.isDark()
-                                  ? kEmptyProgressDark
-                                  : kEmptyProgress,
-                              selectedColor: kApp3Light,
+                                  ? KColors.kEmptyProgressDark
+                                  : KColors.kEmptyProgress,
+                              selectedColor: KColors.kApp3Light,
                               label: Text(
                                   aspect.toString().split('.').last.capitalize!),
                               selected: controller.selectedAspect.value == aspect,
                               shape: RoundedRectangleBorder(
                                 side: const BorderSide(
-                                  color: kApp3,
+                                  color: KColors.kApp3,
                                   width: 1,
                                 ),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               padding: const EdgeInsets.all(10),
-                              disabledColor: kEmptyProgress,
+                              disabledColor: KColors.kEmptyProgress,
                               onSelected: (_) => controller.changeAspect(aspect),
                             ),
                           );

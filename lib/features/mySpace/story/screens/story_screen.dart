@@ -28,7 +28,7 @@ class MyStoryScreen extends StatelessWidget {
                 TextSpan(
                   text: KTexts.story,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    color: kApp4,
+                    color: KColors.kApp4,
                   ),
                 ),
               ],
