@@ -75,6 +75,11 @@ class KImages {
   //home icons
   static const String home = "assets/icons/home.svg";
   static const String analysis = "assets/icons/analysis.svg";
+  static const String learn = "assets/icons/learn.svg";
+  static const String mySpace = "assets/icons/myspace.svg";
+
+  //journal
+  static const String entries = "assets/icons/entries.svg";
 
 
   // -- Animations

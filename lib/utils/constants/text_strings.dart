@@ -29,6 +29,12 @@ class KTexts {
   static const String spiritual="Spiritual";
   static const String emotional="Emotional";
 
+  //home navigation
+  static const String home = "Home";
+  static const String insights = "Insights";
+  static const String learn = "Learn";
+  static const String mySpace = "Space";
+
 
   //Dashboard
   static const String feel = "How are you today?";

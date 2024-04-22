@@ -7,6 +7,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_strings.dart';
 
 class JournalScreen extends StatelessWidget {
   const JournalScreen({
@@ -43,7 +44,7 @@ class JournalScreen extends StatelessWidget {
                   Row(
                     children: [
                       SvgPicture.asset(
-                        "assets/icons/entries.svg",
+                        KImages.entries,
                         height: 20,
                         color: KColors.kApp4,
                       ),

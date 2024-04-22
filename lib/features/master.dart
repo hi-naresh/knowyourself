@@ -16,7 +16,9 @@ import '../common/widgets/appbar/appbar.dart';
 import '../common/widgets/navbar/bottom_nar_bar.dart';
 import '../data/helper_service/local_auth/local_bio_auth.dart';
 import '../data/helper_service/notifications/notification_service.dart';
+import '../utils/constants/image_strings.dart';
 import '../utils/constants/sizes.dart';
+import '../utils/constants/text_strings.dart';
 
 class MasterScreen extends StatelessWidget {
   const MasterScreen({super.key});
@@ -27,28 +29,28 @@ class MasterScreen extends StatelessWidget {
         height: KSizes.bottomNavBarHeight,
         items: const [
           BottomNavBarWidget(
-            icon: "assets/icons/home.svg",
+            icon: KImages.home,
             iconSize: KSizes.iconLg,
             selectedIconColor: KColors.kApp1,
-            title: 'Home',
+            title: KTexts.home,
           ),
           BottomNavBarWidget(
-            icon: "assets/icons/analysis.svg",
+            icon: KImages.analysis,
             iconSize: KSizes.iconLg,
             selectedIconColor: KColors.kApp2,
-            title: 'Insights',
+            title: KTexts.insights,
           ),
           BottomNavBarWidget(
-            icon: "assets/icons/learn.svg",
+            icon: KImages.learn,
             iconSize: KSizes.iconLg,
             selectedIconColor: KColors.kApp3,
-            title: 'Learn',
+            title: KTexts.learn,
           ),
           BottomNavBarWidget(
-            icon: "assets/icons/myspace.svg",
+            icon: KImages.mySpace,
             iconSize: KSizes.iconLg,
             selectedIconColor: KColors.kApp4,
-            title: 'Space',
+            title: KTexts.mySpace,
           ),
         ],
         currentIndex: controller.currentIndex.value,
