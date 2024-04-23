@@ -15,7 +15,7 @@ class KAppBarTheme{
     systemOverlayStyle: SystemUiOverlayStyle.dark,
     iconTheme: IconThemeData(color: KColors.dark, size: KSizes.iconLg),
     actionsIconTheme: IconThemeData(color: KColors.dark, size: KSizes.iconLg),
-    titleTextStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: KColors.black),
+    titleTextStyle: TextStyle(fontSize: KSizes.fontSizeLg, fontWeight: FontWeight.w600, color: KColors.black),
   );
   static const darkAppBarTheme = AppBarTheme(
     elevation: 0,
@@ -26,6 +26,6 @@ class KAppBarTheme{
     systemOverlayStyle: SystemUiOverlayStyle.light,
     iconTheme: IconThemeData(color: KColors.light, size: KSizes.iconLg),
     actionsIconTheme: IconThemeData(color: KColors.light, size: KSizes.iconLg),
-    titleTextStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: KColors.white),
+    titleTextStyle: TextStyle(fontSize: KSizes.fontSizeLg, fontWeight: FontWeight.w600, color: KColors.white),
   );
 }

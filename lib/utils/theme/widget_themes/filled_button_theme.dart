@@ -14,7 +14,7 @@ class KFilledButtonTheme {
       disabledForegroundColor: KColors.darkGrey,
       disabledBackgroundColor: KColors.buttonDisabled,
       side: BorderSide.none,
-      textStyle: const TextStyle(fontSize: 16, color: KColors.textWhite, fontWeight: FontWeight.w600),
+      textStyle: const TextStyle(fontSize: KSizes.fontSizeMd, color: KColors.textWhite, fontWeight: FontWeight.w600),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(KSizes.buttonRadius)),
     ),
   );
@@ -28,7 +28,7 @@ class KFilledButtonTheme {
       disabledForegroundColor: KColors.darkGrey,
       disabledBackgroundColor: KColors.darkerGrey,
       side: const BorderSide(color: KColors.primary),
-      textStyle: const TextStyle(fontSize: 16, color: KColors.textWhite, fontWeight: FontWeight.w600),
+      textStyle: const TextStyle(fontSize: KSizes.fontSizeMd, color: KColors.textWhite, fontWeight: FontWeight.w600),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(KSizes.buttonRadius)),
     ),
   );

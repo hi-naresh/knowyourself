@@ -105,7 +105,7 @@ class AspectSelectPage extends StatelessWidget {
                                                 index
                                             ? Colors.white
                                             : Colors.black,
-                                        fontSize: 16,
+                                        fontSize: KSizes.fontSizeMd,
                                       ),
                                     ),
                                     if (controller.selectAspect.value == index)

@@ -59,10 +59,10 @@ class MyCard extends StatelessWidget {
               padding: const EdgeInsets.all(14.0),
               child: Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                   overflow: TextOverflow.ellipsis,
                   color: KColors.white,
-                  fontSize: fontSize??18,
+                  fontSize: KSizes.fontSizeLg,
                   fontWeight: FontWeight.bold,
                 ),
               ),

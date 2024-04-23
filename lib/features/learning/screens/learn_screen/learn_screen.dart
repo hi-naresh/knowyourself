@@ -42,7 +42,7 @@ class LearnScreen extends StatelessWidget {
                       height: KSizes.hCardMedium,
                       title: KTexts.mental,
                       color: KColors.kApp1,
-                      fontSize: 26,
+                      fontSize: KSizes.fontSizexl,
                       imageUrl: KImages.mental,
                   ),
                   MyCard(
@@ -50,7 +50,7 @@ class LearnScreen extends StatelessWidget {
                       height: KSizes.hCardMedium,
                       title: KTexts.physical,
                       color: KColors.kApp2,
-                      fontSize: 26,
+                      fontSize: KSizes.fontSizexl,
                       imageUrl: KImages.physical),
                 ],
               ),

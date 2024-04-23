@@ -42,7 +42,7 @@ class QuoteWidget extends StatelessWidget {
                       textAlign: TextAlign.end,
                       controller.quoteModel.value!.title,
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        fontSize: 14,
+                        fontSize: KSizes.fontSizeSm,
                         fontWeight: FontWeight.w400,
                       ),
                     ),

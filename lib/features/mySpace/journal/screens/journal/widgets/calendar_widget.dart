@@ -68,7 +68,7 @@ class CalendarWidget extends StatelessWidget {
   Widget buildDateContainer(BuildContext context, DateTime day,
       {bool isSelected = false, bool isDisabled = false, bool isToday = false, required Function(DateTime) onDaySelected}) {
     TextStyle dateStyle = Theme.of(context).textTheme.headlineSmall!;
-    TextStyle dayStyle = dateStyle.copyWith(fontSize: 10);
+    TextStyle dayStyle = dateStyle.copyWith(fontSize: KSizes.fontSizeXxs);
 
     // Use GetX's Obx widget to listen for changes
     return Obx(() {

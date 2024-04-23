@@ -61,7 +61,7 @@ class ExpressFeelingsPage extends StatelessWidget {
                               controller.happenedAt[index],
                               style: TextStyle(
                                 color: controller.selectHappenedAt.value == index ? Colors.white : Colors.black,
-                                fontSize: 16,
+                                fontSize: KSizes.fontSizeMd,
                               ),
                             ),
                             if (controller.selectHappenedAt.value == index)
