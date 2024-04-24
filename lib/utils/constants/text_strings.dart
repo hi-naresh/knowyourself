@@ -15,6 +15,11 @@ class KTexts {
   static const String physical= "Physical";
   static const String vital="Vital";
   static const String spiritual="Spiritual";
+  static const String mentalDescription = "Enhance cognition with reading, puzzles, and critical thinking.";
+  static const String physicalDescription = "Promote fitness with yoga, sports, and outdoor activities.";
+  static const String vitalDescription = "Optimize energy flow with deep breathing and meditation.";
+  static const String spiritualDescription = "Nurture inner peace with meditation and self-reflection.";
+
 
 
   //Dashboard
@@ -28,12 +33,22 @@ class KTexts {
   static const String monthly = "Monthly";
   static const String yearly = "Yearly";
 
+  static const String reflectSubtitle ="Explore your inner world through journaling!";
+  static const String milestoneSubtitle ="Track your progress with daily, weekly, and monthly tasks.";
+  static const String questionSubtitle ="Delve into life-changing questions at your own pace.";
+  static const String storySubtitle ="Pen a letter to yourself and begin manifesting your journey.";
+
   // Learn Screen
   static const String learnHead = "Learn about aspects";
   static const String learnHead2 = "Learned so far";
   static const String learnHead3 = "Articles";
+  static const String learnAboutAspects = "Mental activities sharpen cognition, physical exercises enhance strength, vital practices promote health, and spiritual pursuits cultivate inner harmony, leading to holistic growth and fulfillment.";
+  static const String resourcesDescription = "Whether you prefer immersive video courses, comprehensive guides, enlightening magazines, renowned centers, enriching eBooks, or the wisdom of the Auro Society, our platform offers a range of options to suit every learning style and interest. Explore and enhance your understanding with our curated collection of resources across various formats.";
 
-  //gratitude screen
+
+  static const String userReviewDescription = "Capture best memories & favorite things. Reflect on joyful moments & share your journey.";
+
+//gratitude screen
   static const String gratitudeHead = "Gratification";
   static const String gratitudeSubtext = "Give yourself credit for your strengths and accomplishments.";
 

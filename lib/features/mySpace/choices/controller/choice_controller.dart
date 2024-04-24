@@ -16,9 +16,9 @@ class ChoiceController extends GetxController {
   void onInit() {
     super.onInit();
     questionnaire.addAll([
-      UserChoice(questionText: 'Best Memories of You',answers: List.filled(3, '')),
-      UserChoice(questionText: 'Your Favorite Music',answers: List.filled(3, '')),
-      UserChoice(questionText: 'Best People in Your Life',answers: List.filled(3, '')),
+      UserChoice(questionText: 'Add your most cherished memories', answers: List.filled(3, '')),
+      UserChoice(questionText: 'Share your favorite music', answers: List.filled(3, '')),
+      UserChoice(questionText: 'Celebrate the best people in your life', answers: List.filled(3, '')),
     ]);
   }
 

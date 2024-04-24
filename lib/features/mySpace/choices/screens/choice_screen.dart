@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/common/widgets/appbar/appbar.dart';
 import 'package:knowyourself/features/mySpace/choices/controller/choice_controller.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/text_strings.dart';
 
 class ChoiceScreen extends StatelessWidget {
   const ChoiceScreen({super.key});
@@ -18,10 +19,16 @@ class ChoiceScreen extends StatelessWidget {
         for (int i = 0; i < currentQuestion.answers.length && i < 3; i++) {
           answers[i] = currentQuestion.answers[i]!;
         }
+
         return ListView(
           padding: const EdgeInsets.all(KSizes.defaultSpace),
           children: [
-            Text('Feature under development...', style: Theme.of(context).textTheme.bodyLarge),
+            Text(
+              KTexts.userReviewDescription,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            const SizedBox(height: KSizes.spaceBtwItems),
+            // Text('Feature under development...', style: Theme.of(context).textTheme.bodyLarge),
             Text(currentQuestion.questionText, style: Theme.of(context).textTheme.headlineSmall),
             const SizedBox(height: KSizes.defaultSpace),
             ...List.generate(3, (index) {

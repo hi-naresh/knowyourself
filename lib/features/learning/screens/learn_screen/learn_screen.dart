@@ -33,6 +33,11 @@ class LearnScreen extends StatelessWidget {
                 KTexts.learnHead,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
+              const SizedBox(height: KSizes.spaceBtwItems),
+              Text(
+                KTexts.learnAboutAspects,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
               const SizedBox(height: KSizes.defaultSpace),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,6 +98,11 @@ class LearnScreen extends StatelessWidget {
               Text(
                 "Resources Available",
                 style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              const SizedBox(height: KSizes.spaceBtwItems),
+              Text(
+                KTexts.resourcesDescription,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: KSizes.defaultSpace),
               const CourseSection(),

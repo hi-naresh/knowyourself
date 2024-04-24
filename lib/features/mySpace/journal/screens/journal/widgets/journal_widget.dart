@@ -68,7 +68,7 @@ class JournalWidget extends StatelessWidget {
                 IconButton(
                     onPressed: ()=>controller.deleteJournalEntry(journalEntry.id),
                     icon: const Icon(
-                      CupertinoIcons.restart,
+                      CupertinoIcons.delete_solid,
                       size: KSizes.iconMd,
                     )),
               ],

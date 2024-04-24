@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
+import 'package:knowyourself/utils/constants/text_strings.dart';
 
 import '../screens/add_mood/widgets/aspect_select.dart';
 import '../screens/add_mood/widgets/express_feelings.dart';
@@ -32,7 +33,7 @@ class AddMoodController extends GetxController {
 
 
   RxInt selectAspect = 0.obs;
-  List<String> aspectsList = ['Mentally', 'Physically', 'Emotionally', 'Spiritually'];
+  List<String> aspectsList = ['Mentally\n ${KTexts.mentalDescription}', 'Physically\n ${KTexts.physicalDescription}', 'Emotionally\n ${KTexts.vitalDescription}', 'Spiritually\n ${KTexts.spiritualDescription}'];
   //get aspect from index
   String get aspectString => aspectsList[selectAspect.value];
   RxInt selectHappenedAt = 0.obs; //0 for social, 1 for work, 2 for home, 3 for personal

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../controller/question_controller.dart';
 import '../../../../utils/constants/enums.dart';
@@ -44,6 +45,10 @@ class QuestionsScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: KSizes.spaceBtwItems),
+          Text(
+            KTexts.questionSubtitle,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
           TextFormField(
             controller: controller.questionController,
             decoration: InputDecoration(

@@ -5,6 +5,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../../utils/constants/colors.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
 import '../../../controller/add_mood_controller.dart';
 
@@ -42,8 +43,8 @@ class AspectSelectPage extends StatelessWidget {
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       TextSpan(
-                        text: '\n\naspect to describe your current state of yourself, select one to proceed.',
-                        style: Theme.of(context).textTheme.bodySmall,
+                          text: '\n\nChoose an aspect to describe your current state. Select one to proceed.',
+                          style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
                   ),
@@ -106,7 +107,7 @@ class AspectSelectPage extends StatelessWidget {
                                             : Colors.black,
                                         fontSize: 16,
                                       ),
-                                    ),
+                                      ),
                                     if (controller.selectAspect.value == index)
                                       const Icon(
                                         Icons.check_circle,
