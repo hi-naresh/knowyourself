@@ -34,6 +34,7 @@ class KTexts {
   static const String yearly = "Yearly";
 
   static const String reflectSubtitle ="Write down your thoughts, feelings, and experiences. Make a habit of reflecting on your day.";
+  static const String moodSubtitle = "View your mood history and we will try to recommend the best activities accordingly.";
   static const String milestoneSubtitle ="Track your progress with your tasks and goals for self-development.";
   static const String questionSubtitle ="Let's solve the life-changing questions together. We will remind and help you to answer them.";
   static const String storySubtitle ="Pen a letter to yourself and begin manifesting your journey. Let your story unfold to the world.";

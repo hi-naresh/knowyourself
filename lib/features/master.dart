@@ -71,7 +71,7 @@ class MasterScreen extends StatelessWidget {
             screenWidget:JournalEntryScreen(),
           );
         } else if(controller.currentIndex.value == 3 &&
-            spaceController.tabIndex.value == 1){
+            spaceController.tabIndex.value == 2){
           return const KFloatingAction(
             icon: CupertinoIcons.add,
             screenWidget:MilestoneAdd(),

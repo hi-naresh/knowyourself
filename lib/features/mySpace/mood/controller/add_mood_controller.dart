@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
+import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
+import '../../../../data/repo/space/mood/mood_repo.dart';
 import '../screens/add_mood/widgets/aspect_select.dart';
 import '../screens/add_mood/widgets/express_feelings.dart';
 import '../screens/add_mood/widgets/mood_select.dart';
@@ -14,10 +16,29 @@ class AddMoodController extends GetxController {
 
   static AddMoodController get instance => Get.find();
 
+  final _moodRepo = Get.put(MoodRepo());
+
   final RxInt index = 0.obs;
   final PageController pageController = PageController();
 
+  final RxList<MoodModel> moodEntries = <MoodModel>[].toList().obs;
+
   final Rx<MoodModel?> moodModel = Rx<MoodModel?>(null);
+
+  @override
+  Future<void> onInit() async {
+    super.onInit();
+    loadMoodEntries();
+    moodEntries.refresh();
+  }
+
+  void loadMoodEntries() async{
+    final getEntries = await _moodRepo.getMoodEntries();
+    if (getEntries.isNotEmpty) {
+      moodEntries.assignAll(getEntries);
+    }
+  }
+
   //mood
   RxDouble sliderValue = 0.0.obs;
 
@@ -106,8 +127,19 @@ class AddMoodController extends GetxController {
     reasons.clear();
   }
 
-  void saveMoodData() {
+  Future<void> saveMoodData() async {
+    await _moodRepo.saveMoodEntry(MoodModel(
+      mood: moodString,
+      aspect: aspectString,
+      description: reasons.text,
+      happenedAt: happenedAtString, id: '',
+      entryDate: DateTime.now(),
+    ));
+    loadMoodEntries();
+    moodEntries.refresh();
     Get.back();
+    KHelper.showSnackBar("Saved Entry!", "Successfully stored your entry at mood board.");
+
   }
 
   void shiftMood() {
@@ -116,6 +148,13 @@ class AddMoodController extends GetxController {
 
   deFocusKeyboard(BuildContext context) {
     FocusScope.of(context).unfocus();
+  }
+
+  Future<void> deleteMoodEntry(String entryId) async {
+    await _moodRepo.deleteMoodEntry(entryId);
+    moodEntries.removeWhere((entry) => entry.id == entryId);
+    // KHelper.showSnackBar("Deleted", "Successfully deleted the entry of yours.");
+    moodEntries.refresh();
   }
 
 }
