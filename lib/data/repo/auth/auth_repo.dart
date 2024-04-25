@@ -28,7 +28,7 @@ class AuthRepo extends GetxController {
     screenRedirect();
   }
 
-  screenRedirect() => Future.delayed(const Duration(milliseconds: 2500), () async {
+  screenRedirect() => Future.delayed(const Duration(milliseconds: 2000), () async {
     User? user = _auth.currentUser;
     if (user != null) {
       final isFirstTime = await _userRepo.fetchFirstTimeCreate(user.uid);

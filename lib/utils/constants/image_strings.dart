@@ -58,6 +58,9 @@ class KImages {
   //materials
   static const String sa = "assets/materials/sa.jpg";
 
+  //abstract
+  static const String abstract = "assets/illustrations/abstract.svg";
+
 
   //home
   static const String milestones = "assets/illustrations/milestones.svg";

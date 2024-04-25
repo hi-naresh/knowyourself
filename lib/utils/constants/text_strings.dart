@@ -10,11 +10,11 @@ class KTexts {
   static const String Continue = "Continue";
 
   // 4 Aspects
-
   static const String mental= "Mental";
   static const String physical= "Physical";
   static const String vital="Vital";
   static const String spiritual="Spiritual";
+
   static const String mentalDescription = "Enhance cognition with reading, puzzles, and critical thinking.";
   static const String physicalDescription = "Promote fitness with yoga, sports, and outdoor activities.";
   static const String vitalDescription = "Optimize energy flow with deep breathing and meditation.";
@@ -33,18 +33,17 @@ class KTexts {
   static const String monthly = "Monthly";
   static const String yearly = "Yearly";
 
-  static const String reflectSubtitle ="Explore your inner world through journaling!";
-  static const String milestoneSubtitle ="Track your progress with daily, weekly, and monthly tasks.";
-  static const String questionSubtitle ="Delve into life-changing questions at your own pace.";
-  static const String storySubtitle ="Pen a letter to yourself and begin manifesting your journey.";
+  static const String reflectSubtitle ="Write down your thoughts, feelings, and experiences. Make a habit of reflecting on your day.";
+  static const String milestoneSubtitle ="Track your progress with your tasks and goals for self-development.";
+  static const String questionSubtitle ="Let's solve the life-changing questions together. We will remind and help you to answer them.";
+  static const String storySubtitle ="Pen a letter to yourself and begin manifesting your journey. Let your story unfold to the world.";
 
   // Learn Screen
   static const String learnHead = "Learn about aspects";
   static const String learnHead2 = "Learned so far";
   static const String learnHead3 = "Articles";
-  static const String learnAboutAspects = "Mental activities sharpen cognition, physical exercises enhance strength, vital practices promote health, and spiritual pursuits cultivate inner harmony, leading to holistic growth and fulfillment.";
-  static const String resourcesDescription = "Whether you prefer immersive video courses, comprehensive guides, enlightening magazines, renowned centers, enriching eBooks, or the wisdom of the Auro Society, our platform offers a range of options to suit every learning style and interest. Explore and enhance your understanding with our curated collection of resources across various formats.";
-
+  static const String learnAboutAspects = "Life skills and practices with our interactive modules.";
+  static const String resourcesDescription = "Explore immersive videos, comprehensive guides, centers, wisdom of the Auro Society.";
 
   static const String userReviewDescription = "Capture best memories & favorite things. Reflect on joyful moments & share your journey.";
 
@@ -181,6 +180,7 @@ class KTexts {
 //     textAlign: TextAlign.center,
 //   );
 //
+
 // // -- onboarding texts
   static const String onBoardingTitle = "Welcome to";
   static const String onBoardingTitle1 = "Know Yourself Better";

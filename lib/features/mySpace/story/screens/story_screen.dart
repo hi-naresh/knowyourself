@@ -15,11 +15,10 @@ class MyStoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final StoryController controller = Get.put(StoryController());
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: KSizes.md),
+      padding: const EdgeInsets.all( KSizes.defaultSpace),
       child: ListView(
         children:[
           Text.rich(
-            textAlign: TextAlign.center,
             TextSpan(
               children: [
                 TextSpan(

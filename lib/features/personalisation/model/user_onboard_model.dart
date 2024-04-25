@@ -12,6 +12,7 @@ class UserProfileModel {
   final String? institution;
   final String? userType;
   final bool isFirstTimeCreate;
+  final int? rewardPoints;
 
   UserProfileModel({
     this.userId,
@@ -23,6 +24,7 @@ class UserProfileModel {
     this.institution,
     this.userType,
     this.isFirstTimeCreate = true,
+    this.rewardPoints,
   });
 
   static UserProfileModel empty() => UserProfileModel(
@@ -36,6 +38,7 @@ class UserProfileModel {
     // userType: UserType.individualConsumer,
     userType: UserType.individualConsumer.toString(),
     isFirstTimeCreate: true,
+    rewardPoints: 0,
   );
 
   Map<String, dynamic> toJson() {
@@ -49,6 +52,7 @@ class UserProfileModel {
       'institution': institution,
       'userType': userType.toString(),
       'isFirstTimeCreate': isFirstTimeCreate,
+      'rewardPoints': rewardPoints??0,
     };
   }
 
@@ -66,6 +70,7 @@ class UserProfileModel {
     // ),
     userType: json['userType'],
     isFirstTimeCreate: json['isFirstTimeCreate'] ?? true,
+    rewardPoints: json['rewardPoints']??0,
   );
 
   factory UserProfileModel.fromDocument(DocumentSnapshot<Map<String,dynamic>> document ) {
@@ -85,6 +90,7 @@ class UserProfileModel {
         // ),
         userType: data['userType']??'',
         isFirstTimeCreate: data['isFirstTimeCreate'] ?? true,
+        rewardPoints: data['rewardPoints']??0,
       );
     }else{
       return UserProfileModel.empty();

@@ -62,10 +62,19 @@ class MoodSelectPage extends StatelessWidget {
                             offset: const Offset(0, 4),
                           ),
                         ]),                      ),
+                      // Slider(
+                      //   value: controller.sliderValue.value,
+                      //   onChanged: (newValue) {
+                      //     controller.sliderValue.value = newValue;
+                      //   },
+                      //   min: 0.0,
+                      //   max: 1.0,
+                      // ),
                       child: Obx(
                             ()=> AnimatedEmoji(
-                          AnimatedEmojis.values[(controller.sliderValue.value * 10).round()],
-                          size: 216,
+                              controller.emojis[(controller.sliderValue.value * controller.emojis.length).floor() % controller.emojis.length].emoji,
+                              source: AnimatedEmojiSource.asset,
+                          size: 200,
                           repeat: true,
                         ),
                       ),
@@ -76,11 +85,6 @@ class MoodSelectPage extends StatelessWidget {
                   height: KSizes.defaultSpace*2,
                 ),
                 Obx(
-                  //     ()=> Text(
-                  //   "Emotion\n ${(controller.moodString)}",
-                  //   textAlign: TextAlign.center,
-                  //   style: Theme.of(context).textTheme.headlineSmall,
-                  // ),
                     ()=> Text.rich(
                       textAlign: TextAlign.center,
                       TextSpan(
@@ -99,18 +103,9 @@ class MoodSelectPage extends StatelessWidget {
                 ),
               ],
             ),
-            TextButton(
-                style: const ButtonStyle().copyWith(
-                    minimumSize: MaterialStateProperty.all(
-                        const Size(double.infinity, 60)),
-                    backgroundColor: MaterialStateProperty.all(kApp1),
-                    foregroundColor: MaterialStateProperty.all(Colors.white)),
+            ElevatedButton(
                 onPressed: ()=> controller.nextPage(),
-                child: Text(
-                  'Next',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                )),
+                child: const Text('Next')),
           ],
         ),
       ),

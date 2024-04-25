@@ -19,6 +19,8 @@ class ProfileSetupController extends GetxController {
 
   RxInt pageIndex = 0.obs;
 
+  String get userID => AuthRepo.instance.authUser!.uid;
+
   RxString name = ''.obs;
   RxString avatar = ''.obs;
   Rx<DateTime?> dob = Rx<DateTime?>(null);

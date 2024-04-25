@@ -12,7 +12,9 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
   final RxList<JournalEntry> journalEntries = <JournalEntry>[].obs;
   var analyzedCoreValues = <CoreValue>[].obs;
   late AnimationController animationController; // Manage animation controller here
-  List<Animation<double>> animations = []; // Animations for each CoreValue
+  List<Animation<double>> animations = [];
+
+  var showCoreValues = false.obs;
 
   @override
   Future<void> onInit() async {
@@ -52,11 +54,11 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
       ..forward();
   }
 
-
   Future<void> loadJournalEntries() async {
     List<JournalEntry> entries = await JournalRepo.instance.getJournalEntries();
     journalEntries.assignAll(entries);
   }
+
 
   Future<void> calculateInsights() async {
     // Ensure we have enough entries
@@ -75,6 +77,10 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
       result.forEach((key, value) {
         sumAnalysisResults[key] = sumAnalysisResults[key]! + value;
       });
+      //save the analyzed core values to the journal entry to get storage now
+      entry.coreValues = result.map((key, value) => MapEntry(key.toString().split('.').last, value));
+      //update the journal entry with the analyzed core values in "coreValues" field under "journalEntries" collection
+      await JournalRepo.instance.updateJournalEntry(entry);
     }
 
     Map<CoreValues, double> averageAnalysisResults = sumAnalysisResults.map((key, value) => MapEntry(key, value / journalEntries.length*2));
@@ -87,5 +93,8 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
       analyzedCoreValues.add(CoreValue(name: key.toString().split('.').last, percentage: value));
     });
     // analyzedCoreValues.sort((a, b) => b.percentage.compareTo(a.percentage));
+
+    // setupAnimations(analyzedCoreValues);
+
   }
 }

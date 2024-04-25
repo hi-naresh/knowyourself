@@ -36,6 +36,8 @@ class LearnScreen extends StatelessWidget {
               const SizedBox(height: KSizes.spaceBtwItems),
               Text(
                 KTexts.learnAboutAspects,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: KSizes.defaultSpace),
@@ -102,6 +104,8 @@ class LearnScreen extends StatelessWidget {
               const SizedBox(height: KSizes.spaceBtwItems),
               Text(
                 KTexts.resourcesDescription,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: KSizes.defaultSpace),

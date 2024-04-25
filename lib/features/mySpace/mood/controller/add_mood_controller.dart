@@ -18,22 +18,28 @@ class AddMoodController extends GetxController {
   final PageController pageController = PageController();
 
   final Rx<MoodModel?> moodModel = Rx<MoodModel?>(null);
-
   //mood
   RxDouble sliderValue = 0.0.obs;
-  // use this for int values - (controller.sliderValue.value * 10).round()
-  final List<AnimatedEmoji> emojis = List.generate(10, (index) =>
-      AnimatedEmoji(
-        AnimatedEmojis.values[index],
-        size: 40,
-        repeat: true,
-      )
-  );
-  String get moodString => emojis[(sliderValue.value * 10).round() % 10].emoji.name;
 
+  static myEmojis(emoji) => AnimatedEmoji(emoji, size: 40, repeat: true, source:  AnimatedEmojiSource.asset,);
+
+  final List<AnimatedEmoji> emojis= [
+    myEmojis(AnimatedEmojis.slightlyHappy),
+    myEmojis(AnimatedEmojis.sad),
+    myEmojis(AnimatedEmojis.rage),
+    myEmojis(AnimatedEmojis.anxiousWithSweat),
+    myEmojis(AnimatedEmojis.surprised),
+    myEmojis(AnimatedEmojis.distraught),
+    myEmojis(AnimatedEmojis.cry),
+    myEmojis(AnimatedEmojis.sunglassesFace),
+    myEmojis(AnimatedEmojis.bigFrown),
+  ];
+  String get moodString=> emojis[(sliderValue.value * emojis.length).round() % emojis.length].emoji.name;
 
   RxInt selectAspect = 0.obs;
-  List<String> aspectsList = ['Mentally\n ${KTexts.mentalDescription}', 'Physically\n ${KTexts.physicalDescription}', 'Emotionally\n ${KTexts.vitalDescription}', 'Spiritually\n ${KTexts.spiritualDescription}'];
+  // List<String> aspectsList = ['Mentally\n ${KTexts.mentalDescription}', 'Physically\n ${KTexts.physicalDescription}', 'Emotionally\n ${KTexts.vitalDescription}', 'Spiritually\n ${KTexts.spiritualDescription}'];
+  List<String> aspectsList = ['Mentally', 'Physically', 'Emotionally', 'Spiritually'];
+  List<String> aspectDescriptions = ['${KTexts.mentalDescription}', '${KTexts.physicalDescription}', '${KTexts.vitalDescription}', '${KTexts.spiritualDescription}'];
   //get aspect from index
   String get aspectString => aspectsList[selectAspect.value];
   RxInt selectHappenedAt = 0.obs; //0 for social, 1 for work, 2 for home, 3 for personal

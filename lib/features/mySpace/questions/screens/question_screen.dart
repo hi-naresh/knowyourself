@@ -15,6 +15,7 @@ class QuestionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(QuestionController());
 
+
     return Column(
       children: [
         _buildAddQuestionSection(context, controller),
@@ -49,6 +50,7 @@ class QuestionsScreen extends StatelessWidget {
             KTexts.questionSubtitle,
             style: Theme.of(context).textTheme.bodySmall,
           ),
+          const SizedBox(height: KSizes.defaultSpace),
           TextFormField(
             controller: controller.questionController,
             decoration: InputDecoration(

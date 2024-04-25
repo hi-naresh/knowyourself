@@ -8,7 +8,7 @@ import '../../../controller/app_controller.dart';
 import '../../../controller/profile_setup_controller.dart';
 
 class ProfileAvatarPage extends StatelessWidget {
-  final ProfileSetupController controller;
+  final ProfileSetupController? controller;
 
   const ProfileAvatarPage({super.key, required this.controller});
 
@@ -22,7 +22,7 @@ class ProfileAvatarPage extends StatelessWidget {
           decoration: const InputDecoration(
             hintText: 'What should we call you?',
           ),
-          onChanged: (value) => controller.name.value = value,
+          onChanged: (value) => controller!.name.value = value,
         ),
         const SizedBox(height: KSizes.defaultSpace * 2),
         GridView.builder(
@@ -40,10 +40,10 @@ class ProfileAvatarPage extends StatelessWidget {
             if (index == 11) {
               return Obx(
                   ()=> GestureDetector(
-                  onTap: () => controller.setAvatar(''),
+                  onTap: () => controller!.setAvatar(''),
                   child: CircleAvatar(
                     radius: 30,
-                    backgroundColor: controller.avatar.value.isEmpty
+                    backgroundColor: controller!.avatar.value.isEmpty
                         ? KColors.primary // Highlight if selected
                         : Colors.transparent,
                     child: const Icon(
@@ -57,10 +57,10 @@ class ProfileAvatarPage extends StatelessWidget {
             String avatarPath = 'assets/avatars/avatar${index + 1}.svg';
             return Obx(
               ()=> GestureDetector(
-                onTap: () => controller.setAvatar(avatarPath),
+                onTap: () => controller!.setAvatar(avatarPath),
                 child: CircleAvatar(
                   radius: 30,
-                  backgroundColor: controller.avatar.value == avatarPath
+                  backgroundColor: controller!.avatar.value == avatarPath
                       ? KColors.primary  // Highlight if selected
                       : Colors.transparent,
                   child: SvgPicture.asset(

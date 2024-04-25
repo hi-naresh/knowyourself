@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:knowyourself/features/personalisation/controller/profile_setup_controller.dart';
 
 import '../../../../features/mySpace/journal/model/journal_model.dart';
 import '../../../../features/personalisation/controller/user_controller.dart';
@@ -21,7 +22,8 @@ class JournalRepo extends GetxController{
 
   List<JournalEntry> _getJournalEntriesFromStorage() {
     var entriesJsonString = _storage.read(_storageKey);
-    final userID = UserController.instance.user.value.id.toString();
+    // final userID = UserController.instance.user.value.id.toString();
+    final userID = ProfileSetupController.instance.userID.toString();
     // Decode the JSON string into a list of maps
     if (entriesJsonString != null  ) {
       List<dynamic> entriesJson = jsonDecode(entriesJsonString);

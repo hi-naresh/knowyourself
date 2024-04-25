@@ -65,9 +65,13 @@ class JournalScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: KSizes.spaceBtwItems),
-              Text(
-                KTexts.reflectSubtitle,
-                style: Theme.of(context).textTheme.bodySmall,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: KSizes.defaultSpace),
+                child: Text(
+                  KTexts.reflectSubtitle,
+                  textAlign: TextAlign.left,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
               ),
               const SizedBox(height: KSizes.defaultSpace),
               const SizedBox(

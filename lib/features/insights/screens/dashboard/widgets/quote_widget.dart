@@ -14,46 +14,49 @@ class QuoteWidget extends StatelessWidget {
     final controller = Get.put(QuoteController());
     if (controller.quoteModel.value!.title.isNotEmpty) {
       return Container(
-        padding: const EdgeInsets.all(KSizes.md),
         decoration: BoxDecoration(
           color: kApp1.withOpacity(0.3),
           borderRadius: BorderRadius.circular(KSizes.lg),
         ),
         child: Stack(
-          clipBehavior: Clip.none,
+          clipBehavior: Clip.hardEdge,
           children: [
             Positioned(
-              left: 0,
+              left: 10,
+              bottom: 0,
               child: SvgPicture.asset(
                 colorFilter: const ColorFilter.mode(
-                  Colors.white70,
+                  Colors.white10,
                   BlendMode.modulate,
                 ),
                 KImages.health21,
-                height: 82,
+                height: 112,
                 fit: BoxFit.cover,
               ),
             ),
             Obx(
-                    ()=> Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      textAlign: TextAlign.end,
-                      controller.quoteModel.value!.title,
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
+                    ()=> Padding(
+                      padding: const EdgeInsets.all(KSizes.md),
+                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                      Text(
+                        textAlign: TextAlign.end,
+                        controller.quoteModel.value!.title,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: KSizes.sm),
-                    Text(
-                      "${controller.quoteModel.value!.author}",
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),)
-                  ],
-                )
+                      const SizedBox(height: KSizes.sm),
+                      Text(
+                        "${controller.quoteModel.value!.author}",
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),)
+                                        ],
+                                      ),
+                    )
             ),
           ],
         ),

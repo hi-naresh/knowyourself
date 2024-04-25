@@ -1,3 +1,5 @@
+import 'package:knowyourself/features/insights/model/core_values.dart';
+
 class JournalEntry {
   String id;
   String userId;
@@ -6,6 +8,8 @@ class JournalEntry {
   String? imagePath;
   String? locationPath;
   String? audioPath;
+  Map<String, double> coreValues;
+
 
   JournalEntry({
     required this.id,
@@ -15,6 +19,7 @@ class JournalEntry {
     this.imagePath,
     this.locationPath,
     this.audioPath,
+    this.coreValues = const {},
   });
 
   factory JournalEntry.fromJson(Map<String, dynamic> json) {
@@ -26,6 +31,10 @@ class JournalEntry {
       imagePath: json['imagePath'],
       locationPath: json['locationPath'],
       audioPath: json['audioPath'],
+      // coreValues: Map<String, double>.from(json['coreValues']),
+      coreValues: (json['coreValues'] as Map<String, dynamic>)
+          .map((key, value) => MapEntry(key, value.toDouble())),
+
     );
   }
 
@@ -38,6 +47,7 @@ class JournalEntry {
       'imagePath': imagePath,
       'locationPath': locationPath,
       'audioPath': audioPath,
+      'coreValues': coreValues.map((key, value) => MapEntry(key.toString(), value)),
     };
   }
 
