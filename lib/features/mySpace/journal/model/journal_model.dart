@@ -1,4 +1,3 @@
-import 'package:knowyourself/features/insights/model/core_values.dart';
 
 class JournalEntry {
   String id;

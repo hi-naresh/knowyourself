@@ -13,10 +13,12 @@ class MyCard extends StatelessWidget {
   final double? left;
   final double? top;
   final double? fontSize;
+  final double? opacity;
   final Function()? onTap;
+
   const MyCard({super.key,
     required this.title, required this.color, this.imageUrl,
-    this.width, this.height, this.onTap, this.left, this.top, this.fontSize});
+    this.width, this.height, this.onTap, this.left, this.top,this.opacity =1.0,this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +51,10 @@ class MyCard extends StatelessWidget {
               top: top?? height!/20,
               child: SvgPicture.asset(
                 imageUrl!,
+                colorFilter: ColorFilter.mode(
+                  Colors.white.withOpacity(opacity!),
+                  BlendMode.modulate,
+                ),
                 width: width,
                 height: height,
                 fit: BoxFit.contain,
@@ -59,8 +65,8 @@ class MyCard extends StatelessWidget {
               child: Text(
                 title,
                 style: TextStyle(
-                  overflow: TextOverflow.ellipsis,
-                  color: Colors.white,
+                  // overflow: TextOverflow.ellipsis,
+                  color: Colors.black87,
                   fontSize: fontSize??18,
                   fontWeight: FontWeight.bold,
                 ),
