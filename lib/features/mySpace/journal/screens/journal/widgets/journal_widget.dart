@@ -1,7 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
 import 'package:knowyourself/features/mySpace/journal/model/journal_model.dart';
@@ -9,9 +7,6 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../common/widgets/custom_container.dart';
-import '../../../../../../utils/constants/colors.dart';
-import '../../../../../../utils/constants/image_strings.dart';
-import '../../../../../../utils/helpers/helper_functions.dart';
 import '../../../controller/journal_controller.dart';
 
 class JournalWidget extends StatelessWidget {

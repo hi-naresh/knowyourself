@@ -46,7 +46,13 @@ class MoodBoard extends StatelessWidget {
           SizedBox(
             height: 400,
             child: Obx(
-              () => ListView.builder(
+              () {
+                if (controller.moodEntries.isEmpty) {
+                  return const Center(
+                    child: Text("No Mood Entries Yet"),
+                  );
+                }
+                return ListView.builder(
                 itemCount: controller.moodEntries.length,
                 itemBuilder: (context, index) {
                   final mood = controller.moodEntries[index];
@@ -57,28 +63,41 @@ class MoodBoard extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(mood.entryDate.day.toString() ,
-                              style: Theme.of(context).textTheme.headlineMedium,
+                            Text(mood.entryDate.day.toString(),
+                              style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .headlineMedium,
                             ),
                             Text(
-                              KHelper.getFormattedDateString(mood.entryDate, format: "MMM"),
-                              style: Theme.of(context).textTheme.bodySmall,
+                              KHelper.getFormattedDateString(
+                                  mood.entryDate, format: "MMM"),
+                              style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodySmall,
                             )
                           ],
                         ),
                         const SizedBox(
-                          width:KSizes.defaultSpace,
+                          width: KSizes.defaultSpace,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(mood.mood),
-                            Text("${mood.aspect} at ${mood.happenedAt} Place", style: Theme.of(context).textTheme.labelMedium,)
+                            Text("${mood.aspect} at ${mood.happenedAt} Place",
+                              style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .labelMedium,)
                           ],
                         ),
-                        Spacer(),
+                        const Spacer(),
                         AnimatedEmoji(
-                          controller.emojis[(controller.sliderValue.value * controller.emojis.length).floor() % controller.emojis.length].emoji,
+                          controller.emojis[(controller.sliderValue.value *
+                              controller.emojis.length).floor() %
+                              controller.emojis.length].emoji,
                           source: AnimatedEmojiSource.asset,
                           size: 30,
                           repeat: false,
@@ -91,21 +110,27 @@ class MoodBoard extends StatelessWidget {
 
                   return ListTile(
                     leading: AnimatedEmoji(
-                      controller.emojis[(controller.sliderValue.value * controller.emojis.length).floor() % controller.emojis.length].emoji,
+                      controller.emojis[(controller.sliderValue.value *
+                          controller.emojis.length).floor() %
+                          controller.emojis.length].emoji,
                       source: AnimatedEmojiSource.asset,
                       size: 30,
                       repeat: false,
                     ),
                     title: Text(mood.mood),
-                    subtitle: Text("${mood.aspect} at ${mood.happenedAt} Place", style: Theme.of(context).textTheme.labelMedium,),
+                    subtitle: Text(
+                      "${mood.aspect} at ${mood.happenedAt} Place", style: Theme
+                        .of(context)
+                        .textTheme
+                        .labelMedium,),
                     trailing: IconButton(
-                        onPressed:()=> controller.deleteMoodEntry(mood.id),
+                        onPressed: () => controller.deleteMoodEntry(mood.id),
                         icon: const Icon(CupertinoIcons.clear_circled)
                     ),
 
                   );
                 },
-              ),
+              );},
             ),
           ),
         ],
@@ -113,3 +138,4 @@ class MoodBoard extends StatelessWidget {
     );
   }
 }
+

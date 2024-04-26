@@ -49,6 +49,7 @@ class ProfileSetupController extends GetxController {
     super.onInit();
     // Attach an auth state changes listener
     _authListener;
+    userProfile.refresh();
   }
 
   @override
@@ -68,6 +69,42 @@ class ProfileSetupController extends GetxController {
       userProfile(UserProfileModel()); // Resets to an empty profile
     }
   }
+
+  // Future<void> updateProfile() async {
+  //   final userProfileValue = UserProfileModel(
+  //     occupation: occupation.value,
+  //     institution: institution.value,
+  //     userType: userType.value!.toString().split('.').last,
+  //   );
+  //   _repository.updateUserProfile(userProfileValue);
+  //   userProfile(userProfileValue);
+  //   userProfile.refresh();
+  //   Get.back();
+  //   KHelper.showSnackBar('Profile Updated', 'Your profile has been updated successfully.');
+  //
+  // }
+  Future<void> updateProfile() async {
+    final updatedProfile = userProfile.value.copyWith(
+      name: name.value,
+      avatarPath: avatar.value,
+      occupation: occupation.value,
+      institution: institution.value,
+      userType: userType.value?.toString().split('.').last,
+    );
+
+    await _repository.updateUserProfile(updatedProfile);
+
+    // This updates the local observable UserProfileModel with the new values
+    userProfile.value = updatedProfile;
+
+    // Since we updated the whole value, this line is redundant:
+    // userProfile.refresh();
+
+    Get.back();
+    KHelper.showSnackBar('Profile Updated', 'Your profile has been updated successfully.');
+  }
+
+
 
 
   void goToPreviousPage() {

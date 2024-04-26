@@ -41,6 +41,32 @@ class UserProfileModel {
     rewardPoints: 0,
   );
 
+  UserProfileModel copyWith({
+    String? userId,
+    String? avatarPath,
+    String? name,
+    DateTime? dob,
+    String? gender,
+    String? occupation,
+    String? institution,
+    String? userType,
+    bool? isFirstTimeCreate,
+    int? rewardPoints,
+  }) {
+    return UserProfileModel(
+      userId: userId ?? this.userId,
+      avatarPath: avatarPath ?? this.avatarPath,
+      name: name ?? this.name,
+      dob: dob ?? this.dob,
+      gender: gender ?? this.gender,
+      occupation: occupation ?? this.occupation,
+      institution: institution ?? this.institution,
+      userType: userType ?? this.userType,
+      isFirstTimeCreate: isFirstTimeCreate ?? this.isFirstTimeCreate,
+      rewardPoints: rewardPoints ?? this.rewardPoints,
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'userId': userId,

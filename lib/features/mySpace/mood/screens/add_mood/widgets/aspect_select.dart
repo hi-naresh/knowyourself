@@ -5,7 +5,6 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../../utils/constants/colors.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
 import '../../../controller/add_mood_controller.dart';
 

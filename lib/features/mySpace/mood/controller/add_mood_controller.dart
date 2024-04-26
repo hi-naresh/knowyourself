@@ -2,6 +2,7 @@ import 'package:animated_emoji/emoji.dart';
 import 'package:animated_emoji/emojis.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
@@ -55,12 +56,28 @@ class AddMoodController extends GetxController {
     myEmojis(AnimatedEmojis.sunglassesFace),
     myEmojis(AnimatedEmojis.bigFrown),
   ];
+
   String get moodString=> emojis[(sliderValue.value * emojis.length).round() % emojis.length].emoji.name;
+
+  //set strings for each emoji in this order
+  //slightlyHappy -> happy
+  //sad -> sad
+  //rage -> angry
+  //anxiousWithSweat -> anxious
+  //surprised -> surprised
+  //distraught -> distraught
+  //cry -> cry
+  //sunglassesFace -> cool
+  //bigFrown -> frown
+
+  //use switch case for each emoji to get the moodString above ones
+
+  String get userMoodString => moodString == 'slightlyHappy' ? 'Happy' : moodString == 'sad' ? 'Sad' : moodString == 'rage' ? 'Angry' : moodString == 'anxiousWithSweat' ? 'Anxious' : moodString == 'surprised' ? 'Surprised' : moodString == 'distraught' ? 'Distraught' : moodString == 'cry' ? 'Cry' : moodString == 'sunglassesFace' ? 'Cool' : 'Frown';
 
   RxInt selectAspect = 0.obs;
   // List<String> aspectsList = ['Mentally\n ${KTexts.mentalDescription}', 'Physically\n ${KTexts.physicalDescription}', 'Emotionally\n ${KTexts.vitalDescription}', 'Spiritually\n ${KTexts.spiritualDescription}'];
   List<String> aspectsList = ['Mentally', 'Physically', 'Emotionally', 'Spiritually'];
-  List<String> aspectDescriptions = ['${KTexts.mentalDescription}', '${KTexts.physicalDescription}', '${KTexts.vitalDescription}', '${KTexts.spiritualDescription}'];
+  List<String> aspectDescriptions = [(KTexts.mentalDescription), (KTexts.physicalDescription), (KTexts.vitalDescription), (KTexts.spiritualDescription)];
   //get aspect from index
   String get aspectString => aspectsList[selectAspect.value];
   RxInt selectHappenedAt = 0.obs; //0 for social, 1 for work, 2 for home, 3 for personal
@@ -72,7 +89,6 @@ class AddMoodController extends GetxController {
   final List<Widget> journalPages = [
     const AspectSelectPage(),
     const MoodSelectPage(),
-    // const variousAspects(),
     const ExpressFeelingsPage(),
   ];
 
@@ -111,25 +127,9 @@ class AddMoodController extends GetxController {
     }
   }
 
-  void showSummary( mood) {
-    mood.value = mood;
-  }
-
-  void sendDetails() {
-    //send all data to server
-  }
-
-  void updateMoodJournal( moodModel) {
-    moodModel.value = moodModel;
-  }
-
-  void clearMoodJournalData() {
-    reasons.clear();
-  }
-
   Future<void> saveMoodData() async {
     await _moodRepo.saveMoodEntry(MoodModel(
-      mood: moodString,
+      mood: moodString.toString(),
       aspect: aspectString,
       description: reasons.text,
       happenedAt: happenedAtString, id: '',

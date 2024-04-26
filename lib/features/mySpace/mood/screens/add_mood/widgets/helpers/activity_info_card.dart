@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:knowyourself/features/learning/controller/course_controller.dart';
-import 'package:knowyourself/features/learning/model/course_model.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../../../common/widgets/appbar/appbar.dart';
@@ -21,8 +18,8 @@ class ActivityInfoCard extends StatelessWidget {
         back: true,
       ),
       body: CustomContainer(
-        margin: EdgeInsets.all(KSizes.defaultSpace),
-        padding: EdgeInsets.all(KSizes.defaultSpace),
+        margin: const EdgeInsets.all(KSizes.defaultSpace),
+        padding: const EdgeInsets.all(KSizes.defaultSpace),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

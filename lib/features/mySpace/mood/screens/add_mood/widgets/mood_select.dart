@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:animated_emoji/animated_emoji.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/helpers/progress_bar.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
-import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
 import '../../../controller/add_mood_controller.dart';
 import 'helpers/full_circle_slider.dart';
@@ -94,7 +93,7 @@ class MoodSelectPage extends StatelessWidget {
                             style: Theme.of(context).textTheme.headlineMedium,
                           ),
                           TextSpan(
-                            text: controller.moodString,
+                            text: controller.userMoodString,
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                         ],

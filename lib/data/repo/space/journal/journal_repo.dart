@@ -4,7 +4,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:knowyourself/features/personalisation/controller/profile_setup_controller.dart';
 
 import '../../../../features/mySpace/journal/model/journal_model.dart';
-import '../../../../features/personalisation/controller/user_controller.dart';
 
 class JournalRepo extends GetxController{
 

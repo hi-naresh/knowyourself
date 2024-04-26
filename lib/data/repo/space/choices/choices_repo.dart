@@ -5,7 +5,7 @@ import '../../../../features/mySpace/choices/model/choice_model.dart';
 
 class ChoiceRepo extends GetxController{
   final GetStorage _storage = GetStorage();
-  final String _choicesKey = 'choices';
+  final String _choicesKey = 'UserChoices';
 
   Future<void> saveChoice(ChoiceModel choice) async {
     // Retrieve existing choices and convert them into ChoiceModel list

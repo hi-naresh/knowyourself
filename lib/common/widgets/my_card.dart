@@ -66,7 +66,7 @@ class MyCard extends StatelessWidget {
                 title,
                 style: TextStyle(
                   // overflow: TextOverflow.ellipsis,
-                  color: Colors.black87,
+                  color: Colors.white,
                   fontSize: fontSize??18,
                   fontWeight: FontWeight.bold,
                 ),

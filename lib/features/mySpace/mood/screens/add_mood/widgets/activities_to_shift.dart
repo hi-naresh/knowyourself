@@ -68,6 +68,7 @@ class ActivitiesToShiftScreen extends StatelessWidget {
                 },
               ),
             ),
+
             ElevatedButton(
                 onPressed: ()=> Get.offAllNamed(KRoutes.getMasterRoute()),
                 child: const Text('Go to Dashboard')),

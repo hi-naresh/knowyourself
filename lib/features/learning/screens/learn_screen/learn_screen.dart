@@ -82,20 +82,20 @@ class LearnScreen extends StatelessWidget {
                       imageUrl: KImages.spiritual),
                 ],
               ),
-              const SizedBox(height: KSizes.defaultSpace),
-              Text(
-                KTexts.learnHead2,
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-              const SizedBox(height: KSizes.defaultSpace),
-              const LearningProgressBars(
-                learningAspectsProgress: {
-                  KTexts.mental: 0.65, // 75%
-                  KTexts.physical: 0.5, // 50%
-                  KTexts.vital: 0.7, // 90%
-                  KTexts.spiritual: 0.6, // 60%
-                },
-              ),
+              // const SizedBox(height: KSizes.defaultSpace),
+              // Text(
+              //   KTexts.learnHead2,
+              //   style: Theme.of(context).textTheme.headlineMedium,
+              // ),
+              // const SizedBox(height: KSizes.defaultSpace),
+              // const LearningProgressBars(
+              //   learningAspectsProgress: {
+              //     KTexts.mental: 0.65, // 75%
+              //     KTexts.physical: 0.5, // 50%
+              //     KTexts.vital: 0.7, // 90%
+              //     KTexts.spiritual: 0.6, // 60%
+              //   },
+              // ),
               const SizedBox(height: KSizes.defaultSpace),
               Text(
                 "Resources Available",
