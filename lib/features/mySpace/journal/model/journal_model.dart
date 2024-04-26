@@ -31,8 +31,10 @@ class JournalEntry {
       locationPath: json['locationPath'],
       audioPath: json['audioPath'],
       // coreValues: Map<String, double>.from(json['coreValues']),
-      coreValues: (json['coreValues'] as Map<String, dynamic>)
-          .map((key, value) => MapEntry(key, value.toDouble())),
+      coreValues: json['coreValues'] == null ? {} : Map<String, double>.from(json['coreValues']),
+
+      // coreValues: (json['coreValues'] as Map<String, dynamic>)
+      //     .map((key, value) => MapEntry(key, value.toDouble())),
 
     );
   }
@@ -46,7 +48,9 @@ class JournalEntry {
       'imagePath': imagePath,
       'locationPath': locationPath,
       'audioPath': audioPath,
-      'coreValues': coreValues.map((key, value) => MapEntry(key.toString(), value)),
+      'coreValues': coreValues.map((key, value) => MapEntry(key, value)),
+
+      // 'coreValues': coreValues.map((key, value) => MapEntry(key.toString(), value)),
     };
   }
 
