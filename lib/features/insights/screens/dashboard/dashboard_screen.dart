@@ -11,6 +11,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
+      // clipBehavior: Clip.none,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: KSizes.defaultSpace, vertical: KSizes.defaultSpace/2),
         child: Column(
@@ -24,7 +25,7 @@ class Dashboard extends StatelessWidget {
             MyselfSection(),
             SizedBox(height: KSizes.defaultSpace),
             RecommendSection(),
-            SizedBox(height: KSizes.defaultSpace*5),
+            SizedBox(height: KSizes.defaultSpace*4),
           ],
         ),
       ),

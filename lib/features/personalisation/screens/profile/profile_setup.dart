@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/common/widgets/appbar/pagebar.dart';
-import 'package:knowyourself/features/personalisation/controller/app_controller.dart';
 import 'package:knowyourself/features/personalisation/screens/profile/pages/profile_avatar.dart';
 import 'package:knowyourself/features/personalisation/screens/profile/pages/profile_dob.dart';
 import 'package:knowyourself/features/personalisation/screens/profile/pages/profile_member_type.dart';
-import 'package:knowyourself/utils/constants/colors.dart';
 import '../../controller/profile_setup_controller.dart';
 
 class ProfileSetupScreen extends StatelessWidget {

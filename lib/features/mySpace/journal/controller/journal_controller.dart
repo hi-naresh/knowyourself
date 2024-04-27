@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../../data/repo/space/journal/journal_repo.dart';
@@ -25,8 +26,53 @@ class JournalController extends GetxController {
     // addJournalManually();
   }
 
+  String maxCoreValue() {
+    //it is Map<String , double> , accordingly find max core value
+    double max = 0;
+    String maxCoreValue = '';
+    for (var element in journalEntries) {
+      element.coreValues.forEach((key, value) {
+        if (value > max) {
+          max = value;
+          maxCoreValue = key;
+        }
+      });
+    }
+    return maxCoreValue;
+  }
 
-// Method to load all journal entries from the repository
+  Color getColorForCoreValue() {
+    switch (maxCoreValue()) {
+      case 'progress':
+        return valueProgress;
+      case 'receptivity':
+        return valueReceptivity;
+      case 'aspiration':
+        return valueAspiration;
+      case 'perseverance':
+        return valuePerseverance;
+      case 'gratitude':
+        return valueGratitude;
+      case 'humility':
+        return valueHumility;
+      case 'sincerity':
+        return valueSincerity;
+      case 'peace':
+        return valuePeace;
+      case 'equanimity':
+        return valueEquanimity;
+      case 'generosity':
+        return valueGenerosity;
+      case 'goodness':
+        return valueGoodness;
+      case 'courage':
+        return valueCourage;
+      default:
+        return kEmptyProgress;
+    }
+  }
+
+  // Method to load all journal entries from the repository
   void loadJournalEntries() async {
     List<JournalEntry> entries = await JournalRepo.instance.getJournalEntries();
     // Filter entries for today's date

@@ -113,7 +113,7 @@ class KRoutes{
     GetPage(name: addMood, page: () => const AddMoodScreen(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
-    GetPage(name: activities, page: () => ActivitiesToShiftScreen(),
+    GetPage(name: activities, page: () => const ActivitiesToShiftScreen(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
     GetPage(name: settingSpace, page: () => const SettingsMySpace(),

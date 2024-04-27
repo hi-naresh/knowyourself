@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
@@ -7,42 +8,60 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
 
 import '../../../../../common/widgets/custom_container.dart';
+import '../../../../mySpace/mood/controller/recommend_controller.dart';
+import '../../../../mySpace/mood/screens/add_mood/widgets/activities_to_shift.dart';
+import '../../../../mySpace/mood/screens/add_mood/widgets/helpers/activity_info_card.dart';
+import '../../../../mySpace/mood/screens/add_mood/widgets/helpers/activity_tile.dart';
 
 class RecommendSection extends StatelessWidget {
   const RecommendSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  CustomContainer(
-      color: kApp1Light.withOpacity(0.9),
-      padding: const EdgeInsets.all(KSizes.defaultSpace),
-      onTap: ()=>Get.toNamed(KRoutes.getActivitiesRoute()),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text: KTexts.recommend,
-                  style: Theme.of(context).textTheme.headlineSmall,
+    final controller = Get.put(ActivityController());
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children:[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(KTexts.recommend, style: Theme.of(context).textTheme.headlineSmall),
+              GestureDetector(
+                onTap: ()=> Get.to(()=>const ActivitiesToShiftScreen()),
+                child: Text(
+                  "View All",
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                TextSpan(
-                  text: "\n${KTexts.startYourDay}",
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
-              ],
-            ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: KSizes.defaultSpace),
+        SizedBox(
+          height: 130,
+          child: ListView.separated(
+            clipBehavior: Clip.none,
+            scrollDirection: Axis.horizontal,
+            // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            //   crossAxisCount: 1,
+            //   crossAxisSpacing: KSizes.defaultSpace,
+            //   mainAxisSpacing: KSizes.defaultSpace,
+            //
+            // ),
+            separatorBuilder: (context, index) => const SizedBox(width: KSizes.defaultSpace),
 
+            itemCount: controller.activities.length,
+            itemBuilder: (context, index) {
+              return ActivityTile(
+                activity: controller.activities[index],
+                onTap: ()=> Get.to(()=>ActivityInfoCard(activityModel: controller.activities[index])),
+              );
+            },
           ),
-          Icon(
-            CupertinoIcons.play_circle,
-            size: KSizes.iconLg,
-            color: Theme.of(context).iconTheme.color,
-          ),
-        ],
-      ),
+        ),
+      ]
     );
   }
 }

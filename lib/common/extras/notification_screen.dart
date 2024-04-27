@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourself/common/widgets/appbar/appbar.dart';
+import 'package:knowyourself/common/widgets/appbar/pagebar.dart';
 
 class NotificationItem {
   final String id;
@@ -39,16 +41,18 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Notifications'),
-        actions: [
-          TextButton(
-              onPressed: clearNotifications,
-              child: Text('Clear All',
-                style: Theme.of(context).textTheme.bodyLarge,
-              )
-          ),
-        ],
+      appBar: KPageBar(
+        title: 'Notifications',
+        showBackButton: true,
+        onTap: () => Navigator.of(context).pop(),
+        action: TextButton(
+          onPressed: clearNotifications,
+          child: Text('Clear',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              color: Theme.of(context).primaryColor,
+            )
+          )
+        )
       ),
       body: ListView.builder(
         itemCount: notifications.length,

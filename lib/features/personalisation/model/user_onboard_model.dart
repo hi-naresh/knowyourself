@@ -12,6 +12,7 @@ class UserProfileModel {
   final String? institution;
   final String? userType;
   final bool isFirstTimeCreate;
+  final int? rewardPoints;
 
   UserProfileModel({
     this.userId,
@@ -23,6 +24,7 @@ class UserProfileModel {
     this.institution,
     this.userType,
     this.isFirstTimeCreate = true,
+    this.rewardPoints,
   });
 
   static UserProfileModel empty() => UserProfileModel(
@@ -36,7 +38,34 @@ class UserProfileModel {
     // userType: UserType.individualConsumer,
     userType: UserType.individualConsumer.toString(),
     isFirstTimeCreate: true,
+    rewardPoints: 0,
   );
+
+  UserProfileModel copyWith({
+    String? userId,
+    String? avatarPath,
+    String? name,
+    DateTime? dob,
+    String? gender,
+    String? occupation,
+    String? institution,
+    String? userType,
+    bool? isFirstTimeCreate,
+    int? rewardPoints,
+  }) {
+    return UserProfileModel(
+      userId: userId ?? this.userId,
+      avatarPath: avatarPath ?? this.avatarPath,
+      name: name ?? this.name,
+      dob: dob ?? this.dob,
+      gender: gender ?? this.gender,
+      occupation: occupation ?? this.occupation,
+      institution: institution ?? this.institution,
+      userType: userType ?? this.userType,
+      isFirstTimeCreate: isFirstTimeCreate ?? this.isFirstTimeCreate,
+      rewardPoints: rewardPoints ?? this.rewardPoints,
+    );
+  }
 
   Map<String, dynamic> toJson() {
     return {
@@ -49,6 +78,7 @@ class UserProfileModel {
       'institution': institution,
       'userType': userType.toString(),
       'isFirstTimeCreate': isFirstTimeCreate,
+      'rewardPoints': rewardPoints??0,
     };
   }
 
@@ -66,6 +96,7 @@ class UserProfileModel {
     // ),
     userType: json['userType'],
     isFirstTimeCreate: json['isFirstTimeCreate'] ?? true,
+    rewardPoints: json['rewardPoints']??0,
   );
 
   factory UserProfileModel.fromDocument(DocumentSnapshot<Map<String,dynamic>> document ) {
@@ -85,6 +116,7 @@ class UserProfileModel {
         // ),
         userType: data['userType']??'',
         isFirstTimeCreate: data['isFirstTimeCreate'] ?? true,
+        rewardPoints: data['rewardPoints']??0,
       );
     }else{
       return UserProfileModel.empty();

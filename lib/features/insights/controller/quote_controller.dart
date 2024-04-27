@@ -5,6 +5,7 @@ import '../model/quote_model.dart';
 class QuoteController extends GetxController {
   final _quoteService = QuoteService.instance;
   Rxn<QuoteModel> quoteModel = Rxn<QuoteModel>();
+  RxBool showFullQuote = false.obs;
 
   @override
   void onInit() {

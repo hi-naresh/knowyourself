@@ -7,8 +7,6 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../common/widgets/custom_container.dart';
-import '../../../../../../utils/constants/colors.dart';
-import '../../../../../../utils/helpers/helper_functions.dart';
 import '../../../controller/journal_controller.dart';
 
 class JournalWidget extends StatelessWidget {
@@ -18,17 +16,19 @@ class JournalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = JournalController.instance;
+    String maxCoreValue = controller.maxCoreValue();
     return GestureDetector(
       onTap: () => controller.viewJournalEntry(journalEntry),
       child: CustomContainer(
-        color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
+        // color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
+        color: controller.getColorForCoreValue(),
         margin: const EdgeInsets.symmetric(vertical: KSizes.md),
         padding: const EdgeInsets.all(KSizes.md+KSizes.xs),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              journalEntry.content,
+              journalEntry.content ,
               softWrap: true,
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
@@ -68,7 +68,7 @@ class JournalWidget extends StatelessWidget {
                 IconButton(
                     onPressed: ()=>controller.deleteJournalEntry(journalEntry.id),
                     icon: const Icon(
-                      CupertinoIcons.restart,
+                      CupertinoIcons.delete_solid,
                       size: KSizes.iconMd,
                     )),
               ],

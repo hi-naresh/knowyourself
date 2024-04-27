@@ -72,3 +72,12 @@ flutter:
     - assets/icons/
     - assets/animations/
     - assets/materials/
+    - packages/animated_emoji/lottie/sad.json
+    - packages/animated_emoji/lottie/slightlyHappy.json
+    - packages/animated_emoji/lottie/anxiousWithSweat.json
+    - packages/animated_emoji/lottie/surprised.json
+    - packages/animated_emoji/lottie/rage.json
+    - packages/animated_emoji/lottie/distraught.json
+    - packages/animated_emoji/lottie/cry.json
+    - packages/animated_emoji/lottie/sunglassesFace.json
+    - packages/animated_emoji/lottie/bigFrown.json

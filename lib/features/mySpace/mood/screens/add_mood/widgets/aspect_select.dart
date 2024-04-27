@@ -42,8 +42,8 @@ class AspectSelectPage extends StatelessWidget {
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       TextSpan(
-                        text: '\n\naspect to describe your current state of yourself, select one to proceed.',
-                        style: Theme.of(context).textTheme.bodySmall,
+                          text: '\n\nChoose an aspect to describe your current state. Select one to proceed.',
+                          style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
                   ),
@@ -74,13 +74,6 @@ class AspectSelectPage extends StatelessWidget {
                                   ? kApp1
                                   : kEmptyProgress,
                               borderRadius: BorderRadius.circular(30.0),
-                              border: Border.all(
-                                color:
-                                    controller.selectAspect.value == index
-                                        ? kApp1
-                                        : Colors.transparent,
-                                width: 2,
-                              ),
                               boxShadow: CustomShadow.getShadow([
                                 if (controller.selectAspect.value == index)
                                   BoxShadow(
@@ -106,13 +99,21 @@ class AspectSelectPage extends StatelessWidget {
                                             : Colors.black,
                                         fontSize: 16,
                                       ),
-                                    ),
+                                      ),
                                     if (controller.selectAspect.value == index)
                                       const Icon(
                                         Icons.check_circle,
                                         color: Colors.white,
                                       ),
                                   ],
+                                ),
+                                Text (
+                                  controller.aspectDescriptions[index],
+                                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                    color: controller.selectAspect.value == index
+                                        ? Colors.white
+                                        : Colors.grey,
+                                  ),
                                 ),
                               ],
                             ),
