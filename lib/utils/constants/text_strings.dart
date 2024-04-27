@@ -33,6 +33,11 @@ class KTexts {
   static const String monthly = "Monthly";
   static const String yearly = "Yearly";
 
+  //Insights
+  static const String insightsHead = "Overall Insights";
+  static const String insightSubtitle = "Check your daily progress and overall insights of you understanding yourself better.";
+
+
   static const String reflectSubtitle ="Write down your thoughts, feelings, and experiences. Make a habit of reflecting on your day.";
   static const String moodSubtitle = "View your mood history and we will try to recommend the best activities accordingly.";
   static const String milestoneSubtitle ="Track your progress with your tasks and goals for self-development.";

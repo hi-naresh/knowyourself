@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/insights/screens/insights/widgets/reflection_chart.dart';
@@ -16,12 +17,8 @@ import 'widgets/progress_milestones.dart';
 class InsightScreen extends StatelessWidget {
   const InsightScreen({super.key});
 
-  Widget coreValueWidget(BuildContext context, String name, double percentage, List<JournalEntry> entries) {
-    if (entries.isEmpty) {
-      return ListTile(
-        title: Text('No entries available for $name.'),
-      );
-    }
+  Widget coreValueWidget(BuildContext context, String name, double percentage,
+      List<JournalEntry> entries) {
     return ExpansionTile(
       title: Text(name.capitalizeFirst!,
           style: Theme.of(context).textTheme.titleMedium),
@@ -41,22 +38,27 @@ class InsightScreen extends StatelessWidget {
         ),
       ),
       //add header for entries with date and impact only first line
-      children: entries.map((entry) => coreValueDetailWidget(
-        context,
-        KHelper.getFormattedDate(entry.entryDate),
-        entry.coreValues[name] ?? 0.0,
-      )).toList() ,
+      children: entries
+          .map((entry) => coreValueDetailWidget(
+                context,
+                KHelper.getFormattedDate(entry.entryDate),
+                entry.coreValues[name] ?? 0.0,
+              ))
+          .toList(),
     );
   }
 
-  Widget coreValueDetailWidget(BuildContext context, String date, double impact) {
+  Widget coreValueDetailWidget(
+      BuildContext context, String date, double impact) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: KSizes.md, vertical: KSizes.xs),
+      padding: const EdgeInsets.symmetric(
+          horizontal: KSizes.md, vertical: KSizes.xs),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(date , style: Theme.of(context).textTheme.bodyMedium),
-          Text('${(impact).toPrecision(2)}%', style: Theme.of(context).textTheme.bodySmall),
+          Text(date, style: Theme.of(context).textTheme.bodyMedium),
+          Text('${(impact).toPrecision(2)}%',
+              style: Theme.of(context).textTheme.bodySmall),
         ],
       ),
     );
@@ -74,58 +76,90 @@ class InsightScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              KTexts.insightsHead,
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            const SizedBox(height: KSizes.sm),
+            Text(
+              KTexts.insightSubtitle,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            const SizedBox(height: KSizes.md),
             ProgressComponent(
               milestonesProgress: {
-                'Daily': milesController.getCompletedTasksCount(Period.daily)/milesController.getTotalTasksCount(Period.daily),
-                'Weekly': milesController.getCompletedTasksCount(Period.weekly)/milesController.getTotalTasksCount(Period.weekly),
-                'Monthly': milesController.getCompletedTasksCount(Period.monthly)/milesController.getTotalTasksCount(Period.monthly),
+                'Daily': milesController.getCompletedTasksCount(Period.daily) /
+                    milesController.getTotalTasksCount(Period.daily),
+                'Weekly':
+                    milesController.getCompletedTasksCount(Period.weekly) /
+                        milesController.getTotalTasksCount(Period.weekly),
+                'Monthly':
+                    milesController.getCompletedTasksCount(Period.monthly) /
+                        milesController.getTotalTasksCount(Period.monthly),
               },
             ),
             const SizedBox(height: KSizes.defaultSpace),
-            Text(
-              'Weekly Value Reflection',
-              style: Theme.of(context).textTheme.headlineMedium,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Weekly Value Reflection',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                IconButton(
+                    onPressed: () => controller.calculateInsights(),
+                    icon: const Icon(CupertinoIcons.wand_stars_inverse)),
+              ],
             ),
-            const SizedBox(height: KSizes.spaceBtwItems),
+            const SizedBox(height: KSizes.sm),
             Text(
               "Start Writing your reflections and get your value insights...",
               style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: KSizes.defaultSpace),
-            const Center(
-              child: ReflectionChart()
-            ),
+            const Center(child: ReflectionChart()),
             const SizedBox(height: KSizes.defaultSpace),
-            Obx (() => Column(
-              children: [
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Core Values Impacted",
-                        style: Theme.of(context).textTheme.titleMedium,
+            Obx(() => Column(
+                  children: [
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Core Values Impacted",
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          FilledButton(
+                            child: Text(controller.showCoreValues.value
+                                ? "Hide all"
+                                : "Show all"),
+                            onPressed: () => controller.showCoreValues.value =
+                                !controller.showCoreValues.value,
+                          ),
+                        ],
                       ),
-                      TextButton(
-                        child: Text(controller.showCoreValues.value ? "Hide all" : "Show all"),
-                        onPressed: () => controller.showCoreValues.value = !controller.showCoreValues.value,
-                      ),
-                    ],
-                  ),
-                ),
-                if (controller.showCoreValues.value)
-                  Column(
-                    children: controller.analyzedCoreValues
-                        .map((e) => coreValueWidget(
-                            context, e.name, e.percentage.toPrecision(2),
-                      controller.journalEntries.where((entry) => entry.coreValues.containsKey(e.name)).toList(),
-                    ))
-                        .toList(),
-                  ),
-                if (controller.showCoreValues.value)
-                  const SizedBox(height: KSizes.defaultSpace),
-              ],
-            )),
+                    ),
+                    if (controller.showCoreValues.value)
+                      if (controller.journalEntries.isEmpty)
+                        const Text('No entries found!')
+                      else
+                        Column(
+                          children: controller.analyzedCoreValues
+                              .map((e) => coreValueWidget(
+                                    context,
+                                    e.name,
+                                    e.percentage.toPrecision(2),
+                                    controller.journalEntries
+                                        .where((entry) => entry.coreValues
+                                            .containsKey(e.name))
+                                        .toList(),
+                                  ))
+                              .toList(),
+                        ),
+                    if (controller.showCoreValues.value)
+                      const SizedBox(height: KSizes.defaultSpace),
+                  ],
+                )),
             // Obx(
             //       () => Visibility(
             //     visible: controller.showCoreValues.isTrue,
@@ -169,5 +203,4 @@ class InsightScreen extends StatelessWidget {
       )),
     );
   }
-
 }
