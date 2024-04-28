@@ -57,8 +57,6 @@ class JournalEntryView extends StatelessWidget {
                 maxLines: 20,
                 style : Theme.of(context).textTheme.bodyMedium,
               ),
-
-
             ],
           ),
         ),

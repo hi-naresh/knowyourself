@@ -64,11 +64,22 @@ class MilestoneProgressList extends StatelessWidget {
                           checkboxShape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(KSizes.borderRadiusLg),
                           ),
-                          secondary: IconButton(
-                            icon: const Icon(CupertinoIcons.reply_thick_solid),
-                            onPressed: () {
-                              controller.undoCompleteMilestone(milestone.id, period);
-                            },
+                          secondary: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: const Icon(CupertinoIcons.reply_thick_solid),
+                                onPressed: () {
+                                  controller.undoCompleteMilestone(milestone.id, period);
+                                },
+                              ),
+                              IconButton(
+                                icon: const Icon(CupertinoIcons.delete),
+                                onPressed: () {
+                                  controller.deleteMilestone(milestone.id, period);
+                                },
+                              ),
+                            ],
                           ),
                           onChanged: (bool? checked) {
                             controller.completeMilestone(milestone.id, period);

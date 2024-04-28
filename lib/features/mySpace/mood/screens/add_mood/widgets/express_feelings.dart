@@ -6,8 +6,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
-// import '../../../../../../utils/constants/enums.dart';
-// import '../../../../../../utils/helpers/helper_functions.dart';
+
 
 class ExpressFeelingsPage extends StatelessWidget {
   const ExpressFeelingsPage({super.key});
@@ -24,7 +23,7 @@ class ExpressFeelingsPage extends StatelessWidget {
             const ProgressBar(steps: "3/3", percent: 1),
             const SizedBox(height: KSizes.defaultSpace),
             Text(
-              'Write down reasons for your Feelings..',
+              'What exactly are you experiencing and Why?',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: KSizes.defaultSpace),
@@ -93,7 +92,7 @@ class ExpressFeelingsPage extends StatelessWidget {
                   textInputAction: TextInputAction.newline,
                   textAlignVertical: TextAlignVertical.top,
                   decoration: const InputDecoration(
-                    hintText: 'Why are you feeling that way?',
+                    hintText: 'Describe in detail about why and how....',
                     hintStyle: TextStyle(color: Colors.grey),
                     contentPadding: EdgeInsets.all(KSizes.sm),
                     disabledBorder: InputBorder.none,

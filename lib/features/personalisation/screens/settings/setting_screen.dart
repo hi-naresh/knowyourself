@@ -60,9 +60,10 @@ class SettingScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ),
-                  subtitle: Obx(()=> Text(profileController.userProfile.value.occupation?? "Setup your profile.")),
-                  trailing: IconButton(
-                    icon: const Icon(CupertinoIcons.paperplane),
+                  subtitle: Obx(()=>
+                      Text("Reward points : ${profileController.userProfile.value.rewardPoints.toString()}")),
+                  trailing: FilledButton(
+                    child: const Text("Edit"),
                     onPressed: () {
                       // Navigate to the profile edit screen
                       Get.toNamed(KRoutes.getProfileEditRoute());

@@ -27,15 +27,26 @@ class AspectSelectPage extends StatelessWidget {
             Column(
               children: [
                 const ProgressBar(
-                  steps: "2/3",
-                  percent: 0.6,
+                  steps: "1/3",
+                  percent: 0.3,
                 ),
                 const SizedBox(
                   height: KSizes.defaultSpace,
                 ),
-                Text(
-                  'In which Aspect?',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                Text.rich(
+                  textAlign: TextAlign.center,
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Select an Aspect',
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                      TextSpan(
+                          text: '\n\nChoose an aspect to describe your current state. Select one to proceed.',
+                          style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: KSizes.defaultSpace * 2,
@@ -63,13 +74,6 @@ class AspectSelectPage extends StatelessWidget {
                                   ? kApp1
                                   : kEmptyProgress,
                               borderRadius: BorderRadius.circular(30.0),
-                              border: Border.all(
-                                color:
-                                    controller.selectAspect.value == index
-                                        ? kApp1
-                                        : Colors.transparent,
-                                width: 2,
-                              ),
                               boxShadow: CustomShadow.getShadow([
                                 if (controller.selectAspect.value == index)
                                   BoxShadow(
@@ -95,13 +99,21 @@ class AspectSelectPage extends StatelessWidget {
                                             : Colors.black,
                                         fontSize: 16,
                                       ),
-                                    ),
+                                      ),
                                     if (controller.selectAspect.value == index)
                                       const Icon(
                                         Icons.check_circle,
                                         color: Colors.white,
                                       ),
                                   ],
+                                ),
+                                Text (
+                                  controller.aspectDescriptions[index],
+                                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                    color: controller.selectAspect.value == index
+                                        ? Colors.white
+                                        : Colors.grey,
+                                  ),
                                 ),
                               ],
                             ),

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 class MoodModel {
   String id; // Unique identifier for each mood entry
-  DateTime createdOn; // Date and time the mood was created
+  DateTime entryDate; // Date and time the mood was created
   String mood; // Mood state (e.g., happy, sad, anxious)
   String aspect; // Aspect of life affected (personal aspect)
   String description; // Description or reasons for the mood
@@ -11,7 +11,7 @@ class MoodModel {
 
   MoodModel({
     required this.id,
-    required this.createdOn,
+    required this.entryDate,
     required this.mood,
     required this.aspect,
     required this.description,
@@ -21,7 +21,7 @@ class MoodModel {
 
   MoodModel copyWith({
     String? id,
-    DateTime? createdOn,
+    DateTime? entryDate,
     String? mood,
     String? aspect,
     String? description,
@@ -30,7 +30,7 @@ class MoodModel {
   }) {
     return MoodModel(
       id: id ?? this.id,
-      createdOn: createdOn ?? this.createdOn,
+      entryDate: entryDate ?? this.entryDate,
       mood: mood ?? this.mood,
       aspect: aspect ?? this.aspect,
       description: description ?? this.description,
@@ -42,7 +42,7 @@ class MoodModel {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'createdOn': createdOn.millisecondsSinceEpoch,
+      'entryDate': entryDate.millisecondsSinceEpoch,
       'mood': mood,
       'aspect': aspect,
       'description': description,
@@ -54,7 +54,7 @@ class MoodModel {
   factory MoodModel.fromMap(Map<String, dynamic> map) {
     return MoodModel(
       id: map['id'] ?? '',
-      createdOn: DateTime.fromMillisecondsSinceEpoch(map['createdOn'] ?? 0),
+      entryDate: DateTime.fromMillisecondsSinceEpoch(map['entryDate'] ?? 0),
       mood: map['mood'] ?? '',
       aspect: map['aspect'] ?? '',
       description: map['description'] ?? '',
@@ -70,31 +70,31 @@ class MoodModel {
 
   @override
   String toString() {
-    return 'MoodModel(id: $id, createdOn: $createdOn, mood: $mood, aspect: $aspect, description: $description, happenedAt: $happenedAt, shift: $shift)';
+    return 'MoodModel(id: $id, entryDate: $entryDate, mood: $mood, aspect: $aspect, description: $description, happenedAt: $happenedAt, shift: $shift)';
   }
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is MoodModel &&
-        other.id == id &&
-        other.createdOn == createdOn &&
-        other.mood == mood &&
-        other.aspect == aspect &&
-        other.description == description &&
-        other.happenedAt == happenedAt &&
-        other.shift == shift;
-  }
-
-  @override
-  int get hashCode {
-    return id.hashCode ^
-        createdOn.hashCode ^
-        mood.hashCode ^
-        aspect.hashCode ^
-        description.hashCode ^
-        happenedAt.hashCode^
-        shift.hashCode;
-  }
+  // @override
+  // bool operator ==(Object other) {
+  //   if (identical(this, other)) return true;
+  //
+  //   return other is MoodModel &&
+  //       other.id == id &&
+  //       other.entryDate == entryDate &&
+  //       other.mood == mood &&
+  //       other.aspect == aspect &&
+  //       other.description == description &&
+  //       other.happenedAt == happenedAt &&
+  //       other.shift == shift;
+  // }
+  //
+  // @override
+  // int get hashCode {
+  //   return id.hashCode ^
+  //       entryDate.hashCode ^
+  //       mood.hashCode ^
+  //       aspect.hashCode ^
+  //       description.hashCode ^
+  //       happenedAt.hashCode^
+  //       shift.hashCode;
+  // }
 }

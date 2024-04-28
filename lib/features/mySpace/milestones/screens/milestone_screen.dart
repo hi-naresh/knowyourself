@@ -3,6 +3,7 @@ import 'package:knowyourself/features/mySpace/milestones/screens/widget/mileston
 import '../../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/text_strings.dart';
 
 class MilestoneScreen extends StatelessWidget {
   const MilestoneScreen({super.key});
@@ -27,6 +28,11 @@ class MilestoneScreen extends StatelessWidget {
               ),
             ],
           ),
+        ),
+        const SizedBox(height: KSizes.spaceBtwItems),
+        Text(
+          KTexts.milestoneSubtitle,
+          style: Theme.of(context).textTheme.bodySmall,
         ),
         const SizedBox(height: KSizes.defaultSpace),
         const MilestoneProgressList(period: Period.daily),

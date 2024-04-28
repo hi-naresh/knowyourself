@@ -1,8 +1,12 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/common/widgets/appbar/appbar.dart';
 import 'package:knowyourself/features/mySpace/choices/controller/choice_controller.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/text_strings.dart';
 
 class ChoiceScreen extends StatelessWidget {
   const ChoiceScreen({super.key});
@@ -18,38 +22,77 @@ class ChoiceScreen extends StatelessWidget {
         for (int i = 0; i < currentQuestion.answers.length && i < 3; i++) {
           answers[i] = currentQuestion.answers[i]!;
         }
-        return ListView(
-          padding: const EdgeInsets.all(KSizes.defaultSpace),
-          children: [
-            Text('Feature under development...', style: Theme.of(context).textTheme.bodyLarge),
-            Text(currentQuestion.questionText, style: Theme.of(context).textTheme.headlineSmall),
-            const SizedBox(height: KSizes.defaultSpace),
-            ...List.generate(3, (index) {
-              return TextFormField(
-                controller: TextEditingController.fromValue(
-                  TextEditingValue(
-                    text: answers[index],
-                    selection: TextSelection.collapsed(offset: answers[index].length),
-                  ),
-                ),
-                onChanged: (value) => controller.setAnswer(controller.pageIndex.value, index, value),
-                decoration: InputDecoration(
-                  labelText: 'Choice ${index + 1}',
-                  hintText: 'Type your answer',
-                ),
-              );
-            }).map((e) => Padding(padding: const EdgeInsets.only(bottom: KSizes.defaultSpace), child: e)),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                if (!controller.isFirstQuestion)
-                  FilledButton(onPressed: controller.previousQuestion, child: const Text('Previous')),
-                if (!controller.isLastQuestion)
-                  FilledButton(onPressed: controller.nextQuestion, child: const Text('Next')),
-                if (controller.isLastQuestion)
-                  FilledButton(onPressed: controller.submitAnswers, child: const Text('Submit')),
-              ],
+        return Column(
+          children: [
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.all(KSizes.defaultSpace),
+                children: [
+                  Text(
+                    KTexts.userReviewDescription,
+                    textAlign: TextAlign.justify,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  const SizedBox(height: KSizes.spaceBtwItems),
+                  // Text('Feature under development...', style: Theme.of(context).textTheme.bodyLarge),
+                  Text(currentQuestion.questionText, style: Theme.of(context).textTheme.headlineSmall),
+                  const SizedBox(height: KSizes.defaultSpace),
+                  ...List.generate(3, (index) {
+                    return Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            controller: TextEditingController(text: currentQuestion.answers[index]),
+                            onChanged: (value) => controller.setAnswer(controller.pageIndex.value, index, value),
+                            decoration: InputDecoration(
+                              icon: Text('${index + 1}'),
+                              // suffixIcon: controller.pageIndex.value == 0 ? IconButton(
+                              //   icon: const Icon(CupertinoIcons.photo_on_rectangle),
+                              //   onPressed: () => controller.pickImage(index),
+                              // ) : null,
+                              // labelText: 'Choice ${index + 1}',
+                              hintText: 'Type your answer',
+                            ),
+                          ),
+                        ),
+
+                        //if image is null pickImage else show image
+                        if (controller.pageIndex.value == 0 && controller.pickedImages[index] == null)
+                          IconButton(
+                            icon: const Icon(CupertinoIcons.photo_on_rectangle),
+                            onPressed: () => controller.pickImage(index),
+                          ),
+                        if (controller.pageIndex.value == 0 && controller.pickedImages[index] != null)
+                          GestureDetector(
+                            onTap: () => controller.removeImage(index),
+                            child: Image.file(
+                              File(controller.pickedImages[index]!.path),
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                      ],
+                    );
+                  }).map((e) => Padding(padding: const EdgeInsets.only(bottom: KSizes.defaultSpace), child: e)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(KSizes.defaultSpace),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  if (!controller.isFirstQuestion)
+                    FilledButton(onPressed: controller.previousQuestion, child: const Text('Previous')),
+                  if (!controller.isLastQuestion)
+                    FilledButton(onPressed: controller.nextQuestion, child: const Text('Next')),
+                  if (controller.isLastQuestion)
+                    FilledButton(onPressed: controller.submitAnswers, child: const Text('Submit')),
+                ],
+              ),
             ),
           ],
         );

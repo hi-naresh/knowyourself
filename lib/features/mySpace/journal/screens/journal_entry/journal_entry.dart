@@ -34,11 +34,8 @@ class JournalEntryScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 TextButton(
-                    onPressed: (){
-                      controller.saveJournalEntry();
-                      Get.back();
-                    },
-                    child: Text('Save',
+                    onPressed: ()=>controller.cancelEntry(),
+                    child: Text('Cancel',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: kApp4
@@ -123,8 +120,11 @@ class JournalEntryScreen extends StatelessWidget {
                       backgroundColor: MaterialStateProperty.all(kApp4),
                       foregroundColor: MaterialStateProperty.all(Colors.white)
                     ),
-                      onPressed: ()=>controller.cancelEntry(),
-                      child: const Text('Cancel',))
+                      onPressed: (){
+                        controller.saveJournalEntry();
+                        Get.back();
+                      },
+                      child: const Text('Save',))
                   // IconButton(
                   //     icon: const Icon(CupertinoIcons.waveform_path_badge_plus),
                   //     onPressed: () => controller.recordVoiceNote()),

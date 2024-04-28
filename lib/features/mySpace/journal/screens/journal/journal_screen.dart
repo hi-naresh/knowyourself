@@ -6,6 +6,7 @@ import 'package:knowyourself/features/mySpace/journal/screens/journal/widgets/jo
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/text_strings.dart';
 
 class JournalScreen extends StatelessWidget {
   const JournalScreen({
@@ -39,6 +40,7 @@ class JournalScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+
                   Row(
                     children: [
                       SvgPicture.asset(
@@ -61,6 +63,15 @@ class JournalScreen extends StatelessWidget {
                     ],
                   )
                 ],
+              ),
+              const SizedBox(height: KSizes.spaceBtwItems),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: KSizes.defaultSpace),
+                child: Text(
+                  KTexts.reflectSubtitle,
+                  textAlign: TextAlign.left,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
               ),
               const SizedBox(height: KSizes.defaultSpace),
               const SizedBox(

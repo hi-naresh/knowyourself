@@ -21,8 +21,8 @@ class UserProfileRepo {
     _storage.remove(_userProfileKey);
   }
 
-  void updateUserProfile(UserProfileModel userProfile) {
-    _storage.write(_userProfileKey, userProfile.toJson());
+  Future<void> updateUserProfile (UserProfileModel userProfile) async {
+    await _storage.write(_userProfileKey, userProfile.toJson());
   }
 
   Future<UserProfileModel> getUserProfile() async {
@@ -36,8 +36,9 @@ class UserProfileRepo {
     }
   }
 
-  Future<UserProfileModel> fetchUserProfileData() {
-    return UserRepo.instance.fetchUserProfileFirestore();
+  Future<UserProfileModel> fetchUserProfileData() async {
+    return await UserRepo.instance.fetchUserProfileFirestore();
   }
+
 
 }

@@ -19,13 +19,16 @@ class AuthRepo extends GetxController {
   //get authenticaed user
   User? get authUser => _auth.currentUser;
 
+  Stream<User?> get authStateChanges => _auth.authStateChanges();
+
+
   @override
   void onReady() {
     super.onReady();
     screenRedirect();
   }
 
-  screenRedirect() => Future.delayed(const Duration(milliseconds: 2500), () async {
+  screenRedirect() => Future.delayed(const Duration(milliseconds: 2000), () async {
     User? user = _auth.currentUser;
     if (user != null) {
       final isFirstTime = await _userRepo.fetchFirstTimeCreate(user.uid);
@@ -139,8 +142,9 @@ class AuthRepo extends GetxController {
     try{
       await GoogleSignIn().signOut();
       await _auth.signOut();
+      deviceStorage.erase();
       deviceStorage.write('isLogged', false);
-      Get.offAllNamed(KRoutes.getOnBoardingRoute());
+      // Get.offAllNamed(KRoutes.getOnBoardingRoute());
     } on FirebaseAuthException catch(e){
       throw KFirebaseAuthException(e.code).message;
     } on FirebaseException catch(e){

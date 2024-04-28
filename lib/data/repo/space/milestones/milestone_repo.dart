@@ -12,6 +12,8 @@ class MilestoneRepo extends GetxController {
   static const _weeklyMilestoneKey = 'weeklyMilestones';
   static const _monthlyMilestoneKey = 'monthlyMilestones';
 
+  final milestonesUpdated = false.obs;
+
   // Save or update a milestone
   Future<void> saveOrUpdateMilestone(MilestoneModel milestone) async {
     final key = _getKeyForPeriod(milestone.milestonePeriod);
@@ -23,7 +25,9 @@ class MilestoneRepo extends GetxController {
       milestones[index] = milestone;
     }
     await _storage.write(key, milestones.map((m) => m.toJson()).toList());
+    milestonesUpdated.value = !milestonesUpdated.value;
   }
+
 
   // Fetch all milestones for a given period
   Future<List<MilestoneModel>> fetchMilestones(Period period) async {
@@ -32,12 +36,21 @@ class MilestoneRepo extends GetxController {
     return milestoneJsonList.map((json) => MilestoneModel.fromJson(json)).toList();
   }
 
+  //fetch all without period
+  Future<List<MilestoneModel>> fetchAllMilestones() async {
+    final dailyMilestones = await fetchMilestones(Period.daily);
+    final weeklyMilestones = await fetchMilestones(Period.weekly);
+    final monthlyMilestones = await fetchMilestones(Period.monthly);
+    return [...dailyMilestones, ...weeklyMilestones, ...monthlyMilestones];
+  }
+
   // Delete a milestone
   Future<void> deleteMilestone(String id, Period period) async {
     final key = _getKeyForPeriod(period);
     final milestones = await fetchMilestones(period);
     milestones.removeWhere((m) => m.id == id);
     await _storage.write(key, milestones.map((m) => m.toJson()).toList());
+    milestonesUpdated.value = !milestonesUpdated.value;
   }
 
   // Helper to determine the correct storage key based on the milestone period

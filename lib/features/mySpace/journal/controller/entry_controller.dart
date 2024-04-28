@@ -68,6 +68,7 @@ class EntryController extends GetxController {
     voiceNotePath.value = null;
     userPosition.value = null;
   }
+
   Future<void> pickImage() async {
     try {
       final XFile? image = await ImagePicker().pickImage(source: ImageSource.gallery);

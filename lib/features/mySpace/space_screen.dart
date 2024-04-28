@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/journal/screens/journal/journal_screen.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/milestone_screen.dart';
+import 'package:knowyourself/features/mySpace/mood/screens/view/mood_screen.dart';
 import 'package:knowyourself/features/mySpace/questions/screens/question_screen.dart';
 import 'package:knowyourself/features/mySpace/story/screens/story_screen.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
@@ -50,6 +51,7 @@ class MySpaceScreen extends StatelessWidget {
                 controller: controller.tabController,
                 children: const [
                   JournalScreen(),
+                  MoodBoard(),
                   MilestoneScreen(),
                   QuestionsScreen(),
                   MyStoryScreen(),
@@ -69,6 +71,7 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
 
   final tabs = const [
     Tab(text: 'Reflections'),
+    Tab(text: 'Mood'),
     Tab(text: 'Milestones'),
     Tab(text: 'Questions'),
     Tab(text: 'Story'),

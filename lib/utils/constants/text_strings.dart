@@ -10,11 +10,16 @@ class KTexts {
   static const String Continue = "Continue";
 
   // 4 Aspects
-
   static const String mental= "Mental";
   static const String physical= "Physical";
   static const String vital="Vital";
   static const String spiritual="Spiritual";
+
+  static const String mentalDescription = "Enhance cognition with reading, puzzles, and critical thinking.";
+  static const String physicalDescription = "Promote fitness with yoga, sports, and outdoor activities.";
+  static const String vitalDescription = "Optimize energy flow with deep breathing and meditation.";
+  static const String spiritualDescription = "Nurture inner peace with meditation and self-reflection.";
+
 
 
   //Dashboard
@@ -28,12 +33,27 @@ class KTexts {
   static const String monthly = "Monthly";
   static const String yearly = "Yearly";
 
+  //Insights
+  static const String insightsHead = "Overall Insights";
+  static const String insightSubtitle = "Check your daily progress and overall insights of you understanding yourself better.";
+
+
+  static const String reflectSubtitle ="Write down your thoughts, feelings, and experiences. Make a habit of reflecting on your day.";
+  static const String moodSubtitle = "View your mood history and we will try to recommend the best activities accordingly.";
+  static const String milestoneSubtitle ="Track your progress with your tasks and goals for self-development.";
+  static const String questionSubtitle ="Let's solve the life-changing questions together. We will remind and help you to answer them.";
+  static const String storySubtitle ="Pen a letter to yourself and begin manifesting your journey. Let your story unfold to the world.";
+
   // Learn Screen
   static const String learnHead = "Learn about aspects";
   static const String learnHead2 = "Learned so far";
   static const String learnHead3 = "Articles";
+  static const String learnAboutAspects = "Life skills and practices with our interactive modules.";
+  static const String resourcesDescription = "Explore immersive videos, comprehensive guides, centers, wisdom of the Auro Society.";
 
-  //gratitude screen
+  static const String userReviewDescription = "Capture best memories & favorite things. Reflect on joyful moments & share your journey.";
+
+//gratitude screen
   static const String gratitudeHead = "Gratification";
   static const String gratitudeSubtext = "Give yourself credit for your strengths and accomplishments.";
 
@@ -166,6 +186,7 @@ class KTexts {
 //     textAlign: TextAlign.center,
 //   );
 //
+
 // // -- onboarding texts
   static const String onBoardingTitle = "Welcome to";
   static const String onBoardingTitle1 = "Know Yourself Better";

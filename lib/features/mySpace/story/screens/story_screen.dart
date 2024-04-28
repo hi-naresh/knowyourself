@@ -4,6 +4,7 @@ import 'package:knowyourself/features/mySpace/story/screens/widgets/story_sectio
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../controller/my_story_controller.dart';
 
 
@@ -14,11 +15,10 @@ class MyStoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final StoryController controller = Get.put(StoryController());
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: KSizes.md),
+      padding: const EdgeInsets.all( KSizes.defaultSpace),
       child: ListView(
         children:[
           Text.rich(
-            textAlign: TextAlign.center,
             TextSpan(
               children: [
                 TextSpan(
@@ -34,6 +34,11 @@ class MyStoryScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: KSizes.spaceBtwItems),
+          Text(
+            KTexts.storySubtitle,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          const SizedBox(height: KSizes.defaultSpace),
           Obx(() => StorySection(
             storyType: StoryType.current,
             story: controller.currentStory.value,
