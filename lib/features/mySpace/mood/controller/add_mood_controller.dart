@@ -2,7 +2,6 @@ import 'package:animated_emoji/emoji.dart';
 import 'package:animated_emoji/emojis.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/enums.dart';
@@ -47,13 +46,6 @@ class AddMoodController extends GetxController {
     selectedPhysical.value = physicalList[index];
   }
 
-  // - Stressed
-  // - Focused
-  // - Confused
-  // - Creative
-  // - Exhausted
-  // - Assertive
-
   //mental
   final List mentalList = [
     'Stressed',
@@ -67,13 +59,6 @@ class AddMoodController extends GetxController {
   void setSelectedMental(int index) {
     selectedMental.value = mentalList[index];
   }
-
-  // - Connected: Feeling a deep sense of connection to oneself, others, nature, or a higher power.
-  // - Grounded: Experiencing a sense of stability, inner peace, and being centered in the present moment.
-  // - Seeking: Experiencing a desire for spiritual growth, exploration, or understanding.
-  // - Surrendered: Feeling a sense of trust, acceptance, and letting go of control to a higher power or divine will.
-  // - Aligned: Feeling harmonious and in sync with one's values, beliefs, and actions.
-  // - Empowered: Feeling a sense of inner strength, confidence, and agency derived from spiritual beliefs and practices.
 
   //spiritual
   final List spiritualList = [
@@ -133,9 +118,8 @@ class AddMoodController extends GetxController {
   //sunglassesFace -> cool
   //bigFrown -> frown
 
-  //use switch case for each emoji to get the moodString above ones
-
   String get userMoodString => moodString == 'slightlyHappy' ? 'Happy' : moodString == 'sad' ? 'Sad' : moodString == 'rage' ? 'Angry' : moodString == 'anxiousWithSweat' ? 'Anxious' : moodString == 'surprised' ? 'Surprised' : moodString == 'distraught' ? 'Distraught' : moodString == 'cry' ? 'Cry' : moodString == 'sunglassesFace' ? 'Cool' : 'Frown';
+  int get moodIndex => (sliderValue.value * emojis.length).round();
 
   RxInt selectAspect = 0.obs;
   // List<String> aspectsList = ['Mentally\n ${KTexts.mentalDescription}', 'Physically\n ${KTexts.physicalDescription}', 'Emotionally\n ${KTexts.vitalDescription}', 'Spiritually\n ${KTexts.spiritualDescription}'];
@@ -148,6 +132,9 @@ class AddMoodController extends GetxController {
   //get happenedAt from index
   String get happenedAtString => happenedAt[selectHappenedAt.value];
   final TextEditingController reasons = TextEditingController();
+
+  final RxList activitiesTitle = [].obs;
+
 
   final List<Widget> journalPages = [
     const AspectSelectPage(),
@@ -212,9 +199,50 @@ class AddMoodController extends GetxController {
 
   }
 
-  void shiftMood() {
-    Get.toNamed(KRoutes.getActivitiesRoute());
+  // void shiftMood() {
+  //   Get.toNamed(KRoutes.getActivitiesRoute());
+  // }
+
+  Future<void> shiftMood() async {
+    try {
+      // Ensure the model service is already initialized and accessible via Get.put or Get.find
+      // final ModelService modelService = Get.find<ModelService>();
+      //
+      // Create a MoodModel instance from the current state
+      MoodModel currentMood = MoodModel(
+        mood: moodString,
+        aspect: aspectString,
+        description: reasons.text,
+        happenedAt: happenedAtString,
+        shift: true,
+        id: '',  // Ensure you have a valid ID if necessary
+        entryDate: DateTime.now(),
+      );
+
+      print('Current mood: $currentMood');
+
+      // Use the repository to recommend activities based on the current mood
+      List<String> userActivities = await _moodRepo.recommendActivity(currentMood, moodIndex);
+      // print("reached here ");
+      // Assign activities to the observable list to update the UI or further processing
+      activitiesTitle.assignAll(userActivities);
+      print('Recommended activities: $userActivities');
+      print(activitiesTitle);
+
+      // Optionally, you can handle the navigation or any follow-up actions here
+      if (userActivities.isNotEmpty) {
+        // Navigate or display activities
+        Get.toNamed(KRoutes.getActivitiesRoute());
+      } else {
+        Get.snackbar('No Activities Found', 'No recommended activities based on your current mood.');
+      }
+    } catch (e) {
+      // Handle any errors that might occur during the process
+      print('Error in shifting mood: $e');
+      Get.snackbar('Error', 'Failed to shift mood due to an error.');
+    }
   }
+
 
   deFocusKeyboard(BuildContext context) {
     FocusScope.of(context).unfocus();

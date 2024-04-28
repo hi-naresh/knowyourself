@@ -6,6 +6,9 @@ import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../../common/widgets/appbar/appbar.dart';
+import '../../../../../../utils/constants/colors.dart';
+import '../../../controller/add_mood_controller.dart';
+import '../../../model/activity_info_model.dart';
 import 'helpers/activity_tile.dart';
 
 class ActivitiesToShiftScreen extends StatelessWidget {
@@ -14,6 +17,7 @@ class ActivitiesToShiftScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ActivityController());
+    final addController = AddMoodController.instance;
     return Scaffold(
       appBar: const KAppBar(back: true,),
       body: Padding(
@@ -52,6 +56,22 @@ class ActivitiesToShiftScreen extends StatelessWidget {
             //   ),
             // ),
             const SizedBox(height: KSizes.defaultSpace),
+            // Expanded(
+            //   child: GridView.builder(
+            //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            //       crossAxisCount: 2,
+            //       crossAxisSpacing: KSizes.defaultSpace,
+            //       mainAxisSpacing: KSizes.defaultSpace,
+            //     ),
+            //     itemCount: controller.activities.length,
+            //     itemBuilder: (context, index) {
+            //       return ActivityTile(
+            //         activity: controller.activities[index],
+            //         onTap: ()=> Get.to(()=>ActivityInfoCard(activityModel: controller.activities[index])),
+            //       );
+            //     },
+            //   ),
+            // ),
             Expanded(
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -59,11 +79,18 @@ class ActivitiesToShiftScreen extends StatelessWidget {
                   crossAxisSpacing: KSizes.defaultSpace,
                   mainAxisSpacing: KSizes.defaultSpace,
                 ),
-                itemCount: controller.activities.length,
+                itemCount: addController.activitiesTitle.length,
                 itemBuilder: (context, index) {
+                  final activity = ActivityModel(
+                    id: index.toString(),
+                      userId: "1",
+                      title: addController.activitiesTitle[index],
+                      duration: "5 mins",
+                      imageUrl: "assets/illustrations/health2.svg",
+                      color: kApp1);
                   return ActivityTile(
-                    activity: controller.activities[index],
-                    onTap: ()=> Get.to(()=>ActivityInfoCard(activityModel: controller.activities[index])),
+                    activity: activity,
+                    onTap: (){},
                   );
                 },
               ),
