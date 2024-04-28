@@ -35,7 +35,7 @@ class AddMoodController extends GetxController {
       )
   );
   String get moodString => emojis[(sliderValue.value * 10).round() % 10].emoji.name;
-
+  int get moodIndex => (sliderValue.value * 10).round();
 
   @override
   Future<void> onInit() async {
@@ -126,13 +126,16 @@ class AddMoodController extends GetxController {
         aspect: aspectString,
         description: reasons.text,
         happenedAt: happenedAtString,
+        shift: true,
         id: '',  // Ensure you have a valid ID if necessary
         createdOn: DateTime.now(),
       );
 
-      // Use the repository to recommend activities based on the current mood
-      List<String> userActivities = await _moodRepo.recommendActivity(currentMood);
+      print('Current mood: $currentMood');
 
+      // Use the repository to recommend activities based on the current mood
+      List<String> userActivities = await _moodRepo.recommendActivity(currentMood, moodIndex);
+      // print("reached here ");
       // Assign activities to the observable list to update the UI or further processing
       activitiesTitle.assignAll(userActivities);
       print('Recommended activities: $userActivities');

@@ -158,6 +158,7 @@ class ModelService extends GetxService {
     return predictedIndex;
   }
 
+
   List<double> preprocessInputs(MoodModel moodModel) {
     double moodIndex = mapMoodToIndex(moodModel.mood);
     double aspectIndex = mapAspectToIndex(moodModel.aspect);
@@ -171,6 +172,16 @@ class ModelService extends GetxService {
     int endIndex = (startIndex + 5).clamp(0, activities.length);
     return activities.sublist(startIndex, endIndex);
   }
+
+  // List<String> getActivitiesForMoodShift(String moodString) {
+  //   double moodIndex = mapMoodToIndex(moodString);
+  //   return getActivitiesForMoodShift(moodIndex);
+  // }
+
+  // Future<List<String>> getActivitiesForMoodShiftFromModel(MoodModel moodModel) async {
+  //   int predictedMoodIndex = await predictMoodShiftFromModel(moodModel);
+  //   return getActivitiesForMoodShift(predictedMoodIndex);
+  // }
 
   double mapMoodToIndex(String mood) => 0;  // Example implementation
   double mapAspectToIndex(String aspect) => 0;  // Example implementation

@@ -45,9 +45,10 @@ class MoodRepo extends GetxService {
     _storage.read(_storageKey);
   }
 
-  Future<List<String>> recommendActivity(MoodModel entry) async {
-    return await _modelService.getActivitiesForMoodShift(2) ;
+  Future<List<String>> recommendActivity(MoodModel mood, int moodIndex) async {
+    return await _modelService.getActivitiesForMoodShift(moodIndex) ;
   }
+
 
   List<MoodModel> _getMoodEntriesFromStorage() {
     var entriesJsonString = _storage.read(_storageKey);

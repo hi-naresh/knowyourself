@@ -61,13 +61,13 @@ class SettingScreen extends StatelessWidget {
                     ),
                   ),
                   subtitle: Obx(()=> Text(profileController.userProfile.value.occupation?? "Setup your profile.")),
-                  trailing: IconButton(
-                    icon: const Icon(CupertinoIcons.paperplane),
-                    onPressed: () {
-                      // Navigate to the profile edit screen
-                      Get.toNamed(KRoutes.getProfileEditRoute());
-                    },
-                  ),
+                  // trailing: IconButton(
+                  //   icon: const Icon(CupertinoIcons.paperplane),
+                  //   onPressed: () {
+                  //     // Navigate to the profile edit screen
+                  //     Get.toNamed(KRoutes.getProfileEditRoute());
+                  //   },
+                  // ),
                 ),
                 const SizedBox(height: KSizes.spaceBtwSections),
                 // ElevatedButton(onPressed: ()=>Get.to(()=>const ProfileSetupScreen()),
