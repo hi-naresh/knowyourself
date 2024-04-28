@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
+import 'package:knowyourself/utils/constants/enums.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
@@ -25,6 +26,68 @@ class AddMoodController extends GetxController {
   final RxList<MoodModel> moodEntries = <MoodModel>[].toList().obs;
 
   final Rx<MoodModel?> moodModel = Rx<MoodModel?>(null);
+
+  //physical
+  final List physicalList = [
+    'Energetic',
+    'Fatigued',
+    'Relaxed',
+    'Tense',
+    'Sore',
+    'Alert',
+    'Lethargic',
+    'Flexible',
+    'Achy',
+    'Numb',
+    'Strong',
+    'Weak',
+  ];
+  final selectedPhysical = ''.obs;
+  void setSelectedPhysical(int index) {
+    selectedPhysical.value = physicalList[index];
+  }
+
+  // - Stressed
+  // - Focused
+  // - Confused
+  // - Creative
+  // - Exhausted
+  // - Assertive
+
+  //mental
+  final List mentalList = [
+    'Stressed',
+    'Focused',
+    'Confused',
+    'Creative',
+    'Exhausted',
+    'Assertive',
+  ];
+  final selectedMental = ''.obs;
+  void setSelectedMental(int index) {
+    selectedMental.value = mentalList[index];
+  }
+
+  // - Connected: Feeling a deep sense of connection to oneself, others, nature, or a higher power.
+  // - Grounded: Experiencing a sense of stability, inner peace, and being centered in the present moment.
+  // - Seeking: Experiencing a desire for spiritual growth, exploration, or understanding.
+  // - Surrendered: Feeling a sense of trust, acceptance, and letting go of control to a higher power or divine will.
+  // - Aligned: Feeling harmonious and in sync with one's values, beliefs, and actions.
+  // - Empowered: Feeling a sense of inner strength, confidence, and agency derived from spiritual beliefs and practices.
+
+  //spiritual
+  final List spiritualList = [
+    'Connected',
+    'Grounded',
+    'Seeking',
+    'Surrendered',
+    'Aligned',
+    'Empowered',
+  ];
+  final selectedSpiritual = ''.obs;
+  void setSelectedSpiritual(int index) {
+    selectedSpiritual.value = spiritualList[index];
+  }
 
   @override
   Future<void> onInit() async {
@@ -92,16 +155,23 @@ class AddMoodController extends GetxController {
     const ExpressFeelingsPage(),
   ];
 
-  // if aspectString == 'Mentally' {
-  //   //do something
-  //
-  // } else if aspectString == 'Physically' {
-  //   //do something
-  // } else if aspectString == 'Emotionally' {
-  //   //do something
-  // } else if aspectString == 'Spiritually' {
-  //   //do something
+  // void updateAspect(LifeAspects aspect) {
+  //   selectAspect.value = aspect.index;
+  //   // Update emojis or other variables based on the aspect
+  //   switch(aspect) {
+  //     case LifeAspects.mental:
+  //       break;
+  //     case LifeAspects.physical:
+  //       break;
+  //     case LifeAspects.emotional:
+  //       break;
+  //     case LifeAspects.spiritual:
+  //       break;
+  //     case LifeAspects.all:
+  //       // TODO: Handle this case.
+  //   }
   // }
+
 
   void nextPage() {
     pageController.nextPage(
