@@ -11,6 +11,18 @@ class OnlineBackupService extends GetxService {
   static OnlineBackupService get instance => Get.find();
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
+  // Method to check if backup exists on Firebase Storage
+  // Future<bool> checkBackupExists() async {
+  //   try {
+  //     final userId = UserController.instance.user.value.id!;
+  //     final ListResult result = await _storage.ref(userId).listAll();
+  //     return result.items.isNotEmpty;
+  //   } catch (e) {
+  //     KHelper.showSnackBar("Error checking backup", "$e");
+  //     return false;
+  //   }
+  // }
+
   // Method to upload backup to Firebase Storage
   Future<void> uploadBackup(String filePath) async {
     File file = File(filePath);

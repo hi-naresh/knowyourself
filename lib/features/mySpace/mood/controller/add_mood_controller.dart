@@ -2,6 +2,7 @@ import 'package:animated_emoji/emoji.dart';
 import 'package:animated_emoji/emojis.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/features/mySpace/mood/model/activity_info_model.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/enums.dart';
@@ -25,6 +26,8 @@ class AddMoodController extends GetxController {
   final RxList<MoodModel> moodEntries = <MoodModel>[].toList().obs;
 
   final Rx<MoodModel?> moodModel = Rx<MoodModel?>(null);
+
+  final RxString humanState = ''.obs;
 
   //physical
   final List physicalList = [
@@ -93,33 +96,49 @@ class AddMoodController extends GetxController {
 
   static myEmojis(emoji) => AnimatedEmoji(emoji, size: 40, repeat: true, source:  AnimatedEmojiSource.asset,);
 
-  final List<AnimatedEmoji> emojis= [
-    myEmojis(AnimatedEmojis.slightlyHappy),
+  final List<AnimatedEmoji> emotionalEmojis= [
+    myEmojis(AnimatedEmojis.grin),
     myEmojis(AnimatedEmojis.sad),
     myEmojis(AnimatedEmojis.rage),
     myEmojis(AnimatedEmojis.anxiousWithSweat),
     myEmojis(AnimatedEmojis.surprised),
+    myEmojis(AnimatedEmojis.sweat),
+    myEmojis(AnimatedEmojis.scared),
+    myEmojis(AnimatedEmojis.grinning),
+    myEmojis(AnimatedEmojis.pleading),
     myEmojis(AnimatedEmojis.distraught),
     myEmojis(AnimatedEmojis.cry),
-    myEmojis(AnimatedEmojis.sunglassesFace),
-    myEmojis(AnimatedEmojis.bigFrown),
   ];
 
-  String get moodString=> emojis[(sliderValue.value * emojis.length).round() % emojis.length].emoji.name;
+  String get moodString=> emotionalEmojis[(sliderValue.value * emotionalEmojis.length).round() % emotionalEmojis.length].emoji.name;
 
   //set strings for each emoji in this order
-  //slightlyHappy -> happy
   //sad -> sad
   //rage -> angry
   //anxiousWithSweat -> anxious
   //surprised -> surprised
   //distraught -> distraught
   //cry -> cry
-  //sunglassesFace -> cool
-  //bigFrown -> frown
+//pleading -> guilty
+  //scared -> scared
+  //sweat -> stressed
+  //grinning -> excited
+  //grin -> happy
+  String get userMoodString => moodString == 'sad' ? 'Sad' : moodString == 'rage' ? 'Angry' : moodString == 'anxiousWithSweat' ? 'Anxious' : moodString == 'surprised' ? 'Surprised' : moodString == 'distraught' ? 'Distraught' : moodString == 'cry' ? 'Cry' : moodString == 'pleading' ? 'Guilty' : moodString == 'scared' ? 'Scared' : moodString == 'sweat' ? 'Stressed' : moodString == 'grinning' ? 'Excited':moodString=="grin" ? 'Happy' : 'Nothing';
+  int get moodIndex => (sliderValue.value * emotionalEmojis.length).round();
 
-  String get userMoodString => moodString == 'slightlyHappy' ? 'Happy' : moodString == 'sad' ? 'Sad' : moodString == 'rage' ? 'Angry' : moodString == 'anxiousWithSweat' ? 'Anxious' : moodString == 'surprised' ? 'Surprised' : moodString == 'distraught' ? 'Distraught' : moodString == 'cry' ? 'Cry' : moodString == 'sunglassesFace' ? 'Cool' : 'Frown';
-  int get moodIndex => (sliderValue.value * emojis.length).round();
+  //human state from physical, mental, emotional, spiritual
+  String getHumanState() {
+    if (selectAspect.value == 0) {
+      return selectedMental.value;
+    } else if (selectAspect.value == 1) {
+      return selectedPhysical.value;
+    } else if (selectAspect.value == 2) {
+      return userMoodString;
+    } else {
+      return selectedSpiritual.value;
+    }
+  }
 
   RxInt selectAspect = 0.obs;
   // List<String> aspectsList = ['Mentally\n ${KTexts.mentalDescription}', 'Physically\n ${KTexts.physicalDescription}', 'Emotionally\n ${KTexts.vitalDescription}', 'Spiritually\n ${KTexts.spiritualDescription}'];
@@ -141,23 +160,6 @@ class AddMoodController extends GetxController {
     const MoodSelectPage(),
     const ExpressFeelingsPage(),
   ];
-
-  // void updateAspect(LifeAspects aspect) {
-  //   selectAspect.value = aspect.index;
-  //   // Update emojis or other variables based on the aspect
-  //   switch(aspect) {
-  //     case LifeAspects.mental:
-  //       break;
-  //     case LifeAspects.physical:
-  //       break;
-  //     case LifeAspects.emotional:
-  //       break;
-  //     case LifeAspects.spiritual:
-  //       break;
-  //     case LifeAspects.all:
-  //       // TODO: Handle this case.
-  //   }
-  // }
 
 
   void nextPage() {
@@ -186,7 +188,8 @@ class AddMoodController extends GetxController {
 
   Future<void> saveMoodData() async {
     await _moodRepo.saveMoodEntry(MoodModel(
-      mood: moodString.toString(),
+      // consider saving all states physically, mentally, emotionally, spiritually
+      mood: getHumanState() ,
       aspect: aspectString,
       description: reasons.text,
       happenedAt: happenedAtString, id: '',
@@ -203,14 +206,23 @@ class AddMoodController extends GetxController {
   //   Get.toNamed(KRoutes.getActivitiesRoute());
   // }
 
+  // //solve error - type 'String' is not a subtype of type 'Map<String, dynamic>' in above function
+  // List<ActivityModel> parseActivities(List<dynamic> jsonList) {
+  //   return jsonList.map((json) {
+  //     if (json is Map<String, dynamic>) {
+  //       return ActivityModel.fromJson(json);
+  //     } else {
+  //       throw Exception('Expected a map but got: ${json.runtimeType}');
+  //     }
+  //   }).toList();
+  // }
+
+
+
   Future<void> shiftMood() async {
     try {
-      // Ensure the model service is already initialized and accessible via Get.put or Get.find
-      // final ModelService modelService = Get.find<ModelService>();
-      //
-      // Create a MoodModel instance from the current state
       MoodModel currentMood = MoodModel(
-        mood: moodString,
+        mood: humanState.value.toString(),
         aspect: aspectString,
         description: reasons.text,
         happenedAt: happenedAtString,
@@ -222,12 +234,15 @@ class AddMoodController extends GetxController {
       print('Current mood: $currentMood');
 
       // Use the repository to recommend activities based on the current mood
-      List<String> userActivities = await _moodRepo.recommendActivity(currentMood, moodIndex);
-      // print("reached here ");
-      // Assign activities to the observable list to update the UI or further processing
-      activitiesTitle.assignAll(userActivities);
-      print('Recommended activities: $userActivities');
-      print(activitiesTitle);
+      List<String> userActivities = await _moodRepo.recommendActivity(currentMood, moodIndex, selectAspect.value, selectHappenedAt.value, 0);
+      List<String> activityTitles = [];
+      for (var activity in userActivities) {
+        activityTitles.add(separateTitle(activity));
+      }
+
+      activitiesTitle.assignAll(activityTitles);
+      // print('Recommended activities: $userActivities');
+      // print(activitiesTitle);
 
       // Optionally, you can handle the navigation or any follow-up actions here
       if (userActivities.isNotEmpty) {
@@ -242,6 +257,19 @@ class AddMoodController extends GetxController {
       Get.snackbar('Error', 'Failed to shift mood due to an error.');
     }
   }
+
+  String separateTitle(String activity) {
+    return activity.split("title:").last.split(",").first;
+  }
+
+  String separateDescription(String activity) {
+    return activity.split("instructions:").last.split(",").first;
+  }
+
+  String separateLink(String activity) {
+    return activity.split("link:").last.split(",").first;
+  }
+
 
 
   deFocusKeyboard(BuildContext context) {

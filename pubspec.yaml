@@ -75,12 +75,19 @@ flutter:
     - assets/animations/
     - assets/materials/
     - assets/mood_shifter/
+    - assets/mood_shifter/mood_shift.tflite
+    - assets/mood_shifter/emotions.json
+    - assets/mood_shifter/sentiments.json
+    - assets/mood_shifter/updated_activities.json
+    - assets/chapters/
     - packages/animated_emoji/lottie/sad.json
-    - packages/animated_emoji/lottie/slightlyHappy.json
+    - packages/animated_emoji/lottie/grin.json
     - packages/animated_emoji/lottie/anxiousWithSweat.json
     - packages/animated_emoji/lottie/surprised.json
     - packages/animated_emoji/lottie/rage.json
     - packages/animated_emoji/lottie/distraught.json
     - packages/animated_emoji/lottie/cry.json
-    - packages/animated_emoji/lottie/sunglassesFace.json
-    - packages/animated_emoji/lottie/bigFrown.json
+    - packages/animated_emoji/lottie/sweat.json
+    - packages/animated_emoji/lottie/grinning.json
+    - packages/animated_emoji/lottie/pleading.json
+    - packages/animated_emoji/lottie/scared.json

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
+import 'package:knowyourself/features/mySpace/mood/controller/add_mood_controller.dart';
 
 import '../../../../../../../utils/constants/colors.dart';
 
@@ -43,14 +44,25 @@ class FullCircleSliderController extends GetxController {
   }
 
   // Update the value of the slider based on the touch position
+  // void updateValue(Offset localPosition, Size size) {
+  //   final Offset center = Offset(size.width / 2, size.height / 2);
+  //   final double angle = math.atan2(localPosition.dy - center.dy, localPosition.dx - center.dx) + (math.pi / 2);
+  //   double newValue = angle / (2 * math.pi);
+  //   if (newValue < 0) newValue += 1.0;
+  //   if (newValue > 1) newValue -= 1.0;
+  //   value.value = newValue;
+  // }
   void updateValue(Offset localPosition, Size size) {
+    final int emojiCount = AddMoodController.instance.emotionalEmojis.length; // Determine the number of emojis
     final Offset center = Offset(size.width / 2, size.height / 2);
     final double angle = math.atan2(localPosition.dy - center.dy, localPosition.dx - center.dx) + (math.pi / 2);
-    double newValue = angle / (2 * math.pi);
-    if (newValue < 0) newValue += 1.0;
-    if (newValue > 1) newValue -= 1.0;
-    value.value = newValue;
+    final double stepAngle = 2 * math.pi / emojiCount; // Step angle based on emoji count
+    double normalizedAngle = angle % (2 * math.pi); // Normalize the angle
+    normalizedAngle = normalizedAngle < 0 ? (2 * math.pi + normalizedAngle) : normalizedAngle; // Adjust if negative
+    final int closestStepIndex = (normalizedAngle / stepAngle).round() % emojiCount; // Find the closest step index
+    value.value = closestStepIndex / emojiCount; // Set the value based on the index
   }
+
 }
 class CircleSliderPainter extends CustomPainter {
   final double value;

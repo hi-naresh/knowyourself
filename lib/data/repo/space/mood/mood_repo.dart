@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:knowyourself/features/mySpace/mood/model/activity_info_model.dart';
 import '../../../../features/mySpace/mood/model/mood_model_input.dart';
 import '../../../../features/personalisation/controller/user_controller.dart';
 import '../../../services/mood_shifter/mood_shift_service.dart';
@@ -83,24 +84,73 @@ class MoodRepo extends GetxService {
     _storage.read(_storageKey);
   }
 
-  Future<List<String>> recommendActivity(MoodModel mood, int moodIndex) async {
-    return await _modelService.getActivitiesForMoodShift(moodIndex) ;
+  // List<ActivityModel> parseActivities(List<dynamic> jsonList) {
+  //   return jsonList.map((json) {
+  //     if (json is Map<String, dynamic>) {
+  //       return ActivityModel.fromJson(json);
+  //     } else {
+  //       throw Exception('Expected a map but got: ${json.runtimeType}');
+  //     }
+  //   }).toList();
+  // }
+
+  // Future<List<ActivityModel>> recommendActivity(MoodModel mood, int moodIndex, int aspectIndex, int placeIndex, int reasonIndex) async {
+  //   // Get the mood shift prediction from the model
+  //   List<ActivityModel> recommendedActivities = _modelService.getActivitiesForMood(moodIndex, aspectIndex, placeIndex, reasonIndex);
+  //
+  //   return recommendedActivities;
+  // }
+
+
+  Future<List<String>> recommendActivity(MoodModel mood, int moodIndex, int aspectIndex, int placeIndex, int reasonIndex ) async {
+    //store list dynamic into list string , then return
+    List<String> recommendedActivities = [];
+    List<dynamic> temp=[];
+    List<ActivityModel> temp2 = [];
+    // Get the current list of mood entries
+    var currentEntries = _getMoodEntriesFromStorage();
+    // Add the new entry
+    currentEntries.add(mood);
+    await _storage.write(_storageKey, jsonEncode(currentEntries.map((e) => e.toMap()).toList()));
+    _storage.read(_storageKey);
+    // Get the mood shift prediction from the model
+    // int moodShift = await _modelService.predictMoodShiftFromModel(mood);
+
+    temp = await _modelService.getActivitiesForMood( moodIndex, aspectIndex, placeIndex, reasonIndex);
+    //convert list dynamic to list string
+    recommendedActivities = temp.map((e) => e.toString()).toList();
+    // recommendedActivities = parseActivities(temp)
+    //dynamic into ActivityModel
+    // temp2 = parseActivities(temp);
+    return recommendedActivities;
   }
 
+  // List<MoodModel> _getMoodEntriesFromStorage() {
+  //   var entriesJsonString = _storage.read(_storageKey);
+  //   final userID = UserController.instance.user.value.id.toString();
+  //   // Decode the JSON string into a list of maps
+  //   if (entriesJsonString != null) {
+  //     List<dynamic> entriesJson = jsonDecode(entriesJsonString);
+  //     // Convert the list of maps to a list of MoodModel objects
+  //     List<MoodModel> entries = entriesJson.map((entryMap) {
+  //       return MoodModel.fromJson(entryMap);
+  //     }).where((entry) => entry.id == userID).toList();
+  //     return entries;
+  //   } else {
+  //     return [];
+  //   }
+  // }
+
   List<MoodModel> _getMoodEntriesFromStorage() {
-    var entriesJsonString = _storage.read(_storageKey);
-    final userID = UserController.instance.user.value.id.toString();
-    // Decode the JSON string into a list of maps
-    if (entriesJsonString != null) {
-      List<dynamic> entriesJson = jsonDecode(entriesJsonString);
-      // Convert the list of maps to a list of MoodModel objects
-      List<MoodModel> entries = entriesJson.map((entryMap) {
-        return MoodModel.fromJson(entryMap);
-      }).where((entry) => entry.id == userID).toList();
+    var entriesRaw = _storage.read(_storageKey);
+    if (entriesRaw is String) {
+      List<dynamic> entriesJson = jsonDecode(entriesRaw);
+      List<MoodModel> entries = entriesJson.map((entryMap) => MoodModel.fromMap(entryMap)).toList();
       return entries;
     } else {
       return [];
     }
+
   }
 
   Future<List<MoodModel>> getMoodEntries() async {

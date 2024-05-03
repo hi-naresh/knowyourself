@@ -10,6 +10,7 @@ class ActivityModel {
   final String? duration;
   final String? imageUrl;
   final Color? color ;
+  final String? tag;
 
   ActivityModel({
     required this.id,
@@ -19,18 +20,32 @@ class ActivityModel {
     this.link,
     this.duration,
     this.imageUrl,
-    this.color
+    this.color,
+    this.tag
   });
 
   factory ActivityModel.fromJson(Map<String, dynamic> json) {
     return ActivityModel(
-      id: json['id'] ?? '',
+      id: json['id'],
       userId: json['userId']??'',
-      title: json['title']??'',
+      title: json['title'],
+      imageUrl: json['imageUrl'] ?? '', // Default to empty if null
+      color: json['color'],
+      tag: json['tag'],
+      link: json['link'],
       instructions: json['instructions']??'',
-      link: json['link']??'',
     );
   }
+
+  // factory ActivityModel.fromJson(Map<String, dynamic> json) {
+  //   return ActivityModel(
+  //     id: json['id'] ?? '',
+  //     userId: json['userId']??'',
+  //     title: json['title']??'',
+  //     instructions: json['instructions']??'',
+  //     link: json['link']??'',
+  //   );
+  // }
 
   Map<String, dynamic> toJson() {
     return {

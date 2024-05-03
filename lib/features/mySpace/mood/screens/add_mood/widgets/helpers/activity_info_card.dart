@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../../../common/widgets/appbar/appbar.dart';
@@ -31,12 +33,26 @@ class ActivityInfoCard extends StatelessWidget {
             const SizedBox(
               height: KSizes.spaceBtwItems,
             ),
-            Text(
-                "Instructions : \n\n${activityModel.instructions!}",
-                style: Theme.of(context).textTheme.bodyLarge,
-                textAlign: TextAlign.justify,
-                // overflow: TextOverflow.ellipsis,
-                // maxLines: 10,
+            SizedBox(
+              height: Get.height * 0.6,
+              child: SingleChildScrollView(
+                child: Text.rich(
+                  TextSpan(
+                    text: "Instructions : \n\n",
+                    children: [
+                      TextSpan(
+                        // text: activityModel.instructions!,
+                        //make it formatted by splitting the string by full stop and numbering each string
+                        text: activityModel.instructions!.split('.').map((e) => e.trim()).where((element) => element.isNotEmpty).map((e) => "${activityModel.instructions!.split('.').map((e) => e.trim()).where((element) => element.isNotEmpty).toList().indexOf(e) + 1}. $e").join('.\n\n'),
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+
+                    ],
+                  ),
+                  textAlign: TextAlign.justify,
+
+                ),
+              ),
             ),
             const Spacer(),
             ElevatedButton(

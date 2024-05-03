@@ -190,7 +190,7 @@ class EmotionalPage extends StatelessWidget {
                     ()=> FullCircleSlider(
                   value: controller.sliderValue.value,
                   onChanged: (newValue)=> controller.sliderValue.value = newValue,
-                  emojis: controller.emojis,
+                  emojis: controller.emotionalEmojis,
                 ),
               ),
               Container(
@@ -218,7 +218,7 @@ class EmotionalPage extends StatelessWidget {
                 // ),
                 child: Obx(
                       ()=> AnimatedEmoji(
-                    controller.emojis[(controller.sliderValue.value * controller.emojis.length).floor() % controller.emojis.length].emoji,
+                    controller.emotionalEmojis[(controller.sliderValue.value * controller.emotionalEmojis.length).floor() % controller.emotionalEmojis.length].emoji,
                     source: AnimatedEmojiSource.asset,
                     size: 200,
                     repeat: true,
