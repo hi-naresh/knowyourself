@@ -79,6 +79,9 @@ flutter:
     - assets/mood_shifter/emotions.json
     - assets/mood_shifter/sentiments.json
     - assets/mood_shifter/updated_activities.json
+    - assets/value_analysis/value_analysis.tflite
+    - assets/value_analysis/core_values.txt
+    - assets/value_analysis/journal_entries.txt
     - assets/chapters/
     - packages/animated_emoji/lottie/sad.json
     - packages/animated_emoji/lottie/grin.json

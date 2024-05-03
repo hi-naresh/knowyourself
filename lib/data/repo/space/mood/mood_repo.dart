@@ -106,13 +106,12 @@ class MoodRepo extends GetxService {
     //store list dynamic into list string , then return
     List<String> recommendedActivities = [];
     List<dynamic> temp=[];
-    List<ActivityModel> temp2 = [];
     // Get the current list of mood entries
-    var currentEntries = _getMoodEntriesFromStorage();
-    // Add the new entry
-    currentEntries.add(mood);
-    await _storage.write(_storageKey, jsonEncode(currentEntries.map((e) => e.toMap()).toList()));
-    _storage.read(_storageKey);
+    // var currentEntries = _getMoodEntriesFromStorage();
+    // // Add the new entry
+    // currentEntries.add(mood);
+    // await _storage.write(_storageKey, jsonEncode(currentEntries.map((e) => e.toMap()).toList()));
+    // _storage.read(_storageKey);
     // Get the mood shift prediction from the model
     // int moodShift = await _modelService.predictMoodShiftFromModel(mood);
 

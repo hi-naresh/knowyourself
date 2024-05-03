@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/data/services/analytics/reflection_values/value_analysis_service.dart';
 import 'package:knowyourself/data/services/analytics/reflection_values/value_analysis.dart';
 
 import '../../../data/repo/auth/auth_repo.dart';
@@ -17,6 +18,8 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
   late AnimationController animationController; // Manage animation controller here
   List<Animation<double>> animations = [];
 
+  final ValueAnalysisService mlAnalysis = Get.find<ValueAnalysisService>();
+
   var showCoreValues = false.obs;
 
   final StreamSubscription<User?> _authListener = AuthRepo.instance.authStateChanges.listen((User? user) {
@@ -26,6 +29,9 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
       InsightsController.instance.analyzedCoreValues.clear();
     }
   });
+
+  // ValueAnalysisService mlAnalysis = ValueAnalysisService();
+
 
   @override
   Future<void> onInit() async {
@@ -50,13 +56,24 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
     _authListener;
     setupAnimations(analyzedCoreValues);
 
+
   }
+
+
 
   @override
   void onClose() {
     animationController.dispose();
     _authListener.cancel();
     super.onClose();
+  }
+
+  Future<void> mlAnalyze() async {
+    // final mlAnalysis = Get.put(ValueAnalysisService());
+    // mlAnalysis.analyzeText();
+    final result = await mlAnalysis.analyzeText("I am feeling happy today");
+    String formattedResult = mlAnalysis.formatResults(result);
+    print(formattedResult);
   }
 
   void setupAnimations(List<CoreValue> coreValues) {
@@ -85,7 +102,7 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
       return;
     }
 
-    ValueAnalysis analysis = ValueAnalysis();
+    final analysis = ValueAnalysis();
     Map<CoreValues, double> sumAnalysisResults = CoreValues.values.asMap().map((_, value) => MapEntry(value, 0.0));
 
     for (var entry in journalEntries) {
