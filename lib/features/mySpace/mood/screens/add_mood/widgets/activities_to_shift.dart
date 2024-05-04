@@ -84,13 +84,14 @@ class ActivitiesToShiftScreen extends StatelessWidget {
                   final activity = ActivityModel(
                     id: index.toString(),
                       userId: "1",
-                      title: addController.activitiesTitle[index],
+                      title: addController.activities.elementAt(index).title,
                       duration: "5 mins",
                       imageUrl: "assets/illustrations/health2.svg",
-                      color: kApp1);
+                    color: addController.activities.elementAt(index).color,
+                  );
                   return ActivityTile(
                     activity: activity,
-                    onTap: (){},
+                    onTap: ()=> Get.to(()=>ActivityInfoCard(activityModel: addController.activities[index])),
                   );
                 },
               ),

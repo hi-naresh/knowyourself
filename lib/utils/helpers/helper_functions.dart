@@ -96,24 +96,28 @@ class KHelper {
     return list.toSet().toList();
   }
 
-  String? _encodeQueryParameters(Map<String, String> params) {
+  static String? encodeQueryParameters(Map<String, String> params) {
     return params.entries
         .map((MapEntry<String, String> e) =>
     '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
         .join('&');
   }
 
-  // Future<void> sendMail() async {
-  //   final Uri emailLaunchUri = Uri(
-  //     scheme: 'mailto',
-  //     path: 'contact@KYB.com',
-  //     query: _encodeQueryParameters(<String, String>{
-  //       'subject': 'Feedback For KYB',
-  //     }),
-  //   );
-  //
-  //   launchUrl(emailLaunchUri);
-  // }
+
+  static Future<void> sendMail() async {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'nareshjhawar9@gmail.com',
+      query: encodeQueryParameters(<String, String>{
+        'subject': 'Feedback For KYB',
+      }),
+    );
+    await launchUrl(emailLaunchUri.toString());
+
+
+
+  }
+
 
   // Future<void> openPlayStore() async {
   //   String playStoreLink =

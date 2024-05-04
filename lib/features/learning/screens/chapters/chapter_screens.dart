@@ -14,7 +14,8 @@ class ChapterLearningScreen extends StatelessWidget {
   final LearningController controller = Get.put(LearningController());
 
   ChapterLearningScreen({super.key, required String aspect}) {
-    controller.loadMaterialsForAspect(aspect);
+    // controller.loadMaterialsForAspect(aspect);
+    controller.loadMaterialsFromJson(aspect);
   }
 
   @override
@@ -83,6 +84,7 @@ class ChapterContentView extends StatelessWidget {
         ),
       ),
       body: PageView.builder(
+        physics: const NeverScrollableScrollPhysics(),
         controller: controller.pageController,
         itemCount: material.contentChunks.length, // Include one more for the quiz
         itemBuilder: (context, pageIndex) {

@@ -2,6 +2,7 @@ import 'package:animated_emoji/emoji.dart';
 import 'package:animated_emoji/emojis.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:knowyourself/features/mySpace/mood/model/activity_info_model.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
@@ -10,6 +11,7 @@ import 'package:knowyourself/utils/constants/text_strings.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../../data/repo/space/mood/mood_repo.dart';
+import '../../../../utils/constants/colors.dart';
 import '../screens/add_mood/widgets/aspect_select.dart';
 import '../screens/add_mood/widgets/express_feelings.dart';
 import '../screens/add_mood/widgets/mood_select.dart';
@@ -154,13 +156,14 @@ class AddMoodController extends GetxController {
 
   final RxList activitiesTitle = [].obs;
 
+  final activities = <ActivityModel>[];
+
 
   final List<Widget> journalPages = [
     const AspectSelectPage(),
     const MoodSelectPage(),
     const ExpressFeelingsPage(),
   ];
-
 
   void nextPage() {
     pageController.nextPage(
@@ -222,7 +225,7 @@ class AddMoodController extends GetxController {
   Future<void> shiftMood() async {
     try {
       MoodModel currentMood = MoodModel(
-        mood: humanState.value.toString(),
+        mood: getHumanState(),
         aspect: aspectString,
         description: reasons.text,
         happenedAt: happenedAtString,
@@ -231,18 +234,30 @@ class AddMoodController extends GetxController {
         entryDate: DateTime.now(),
       );
 
-      print('Current mood: $currentMood');
+      //save mood before shifting
+      await _moodRepo.saveMoodEntry(currentMood);
 
       // Use the repository to recommend activities based on the current mood
       List<String> userActivities = await _moodRepo.recommendActivity(currentMood, moodIndex, selectAspect.value, selectHappenedAt.value, 0);
-      List<String> activityTitles = [];
+      // print('Recommended activities: $userActivities');
+
+      // List<String> activityTitles = [];
       for (var activity in userActivities) {
-        activityTitles.add(separateTitle(activity));
+        activities.add(ActivityModel(
+          id: separateId(activity),
+          userId: '1',
+          link: separateLink(activity),
+          title: separateTitle(activity),
+          instructions: separateInstructions(activity),
+          color: changeColor(userActivities.indexOf(activity)),
+        ));
       }
 
-      activitiesTitle.assignAll(activityTitles);
+
+      activitiesTitle.assignAll(activities.map((e) => e.title).toList());
       // print('Recommended activities: $userActivities');
       // print(activitiesTitle);
+      // fillInActivities();
 
       // Optionally, you can handle the navigation or any follow-up actions here
       if (userActivities.isNotEmpty) {
@@ -258,17 +273,50 @@ class AddMoodController extends GetxController {
     }
   }
 
-  String separateTitle(String activity) {
-    return activity.split("title:").last.split(",").first;
+  //make chnageColor function which can be used to change color of activities after every 4 activities
+  Color changeColor(int index) {
+    if (index % 4 == 0) {
+      return kApp1;
+    } else if (index % 4 == 1) {
+      return kApp2;
+    } else if (index % 4 == 2) {
+      return kApp3;
+    } else {
+      return kApp4;
+    }
   }
 
-  String separateDescription(String activity) {
-    return activity.split("instructions:").last.split(",").first;
+  String separateId(String activity) {
+    return activity.split("id:").last.split(",").first;
+  }
+
+  String separateTitle(String activity) {
+    return activity.split("title: ").last.split(",").first;
+  }
+
+  // instructions: [Step 1: Warm up with dynamic stretches and light cardio exercises for 5-10 minutes., Step 2: Choose 3-5 high-intensity exercises targeting different muscle groups., Step 3: Perform each exercise at maximum effort for 20-30 seconds, followed by 10-20 seconds of rest., Step 4: Repeat the circuit 3-4 times, alternating between exercises and rest periods.]
+  String separateInstructions(String activity) {
+    //return everything within [ ] in instructions
+    return activity.split("instructions: [").last.split("]").first;
   }
 
   String separateLink(String activity) {
-    return activity.split("link:").last.split(",").first;
+    return activity.split("link: ").last.split(",").first;
   }
+
+  // void fillInActivities(){
+  //   for (var activity in activitiesTitle) {
+  //     activities.add(ActivityModel(
+  //       id: separateId(activity),
+  //       userId: '1',
+  //       link: separateLink(activity),
+  //       title: separateTitle(activity),
+  //       instructions: separateInstructions(activity),
+  //     ));
+  //   }
+  //   activities.refresh();
+  // }
+
 
 
 

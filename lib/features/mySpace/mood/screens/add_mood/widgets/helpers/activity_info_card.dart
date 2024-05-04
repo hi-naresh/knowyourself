@@ -34,7 +34,7 @@ class ActivityInfoCard extends StatelessWidget {
               height: KSizes.spaceBtwItems,
             ),
             SizedBox(
-              height: Get.height * 0.6,
+              height: Get.height * 0.5,
               child: SingleChildScrollView(
                 child: Text.rich(
                   TextSpan(
@@ -42,8 +42,8 @@ class ActivityInfoCard extends StatelessWidget {
                     children: [
                       TextSpan(
                         // text: activityModel.instructions!,
-                        //make it formatted by splitting the string by full stop and numbering each string
-                        text: activityModel.instructions!.split('.').map((e) => e.trim()).where((element) => element.isNotEmpty).map((e) => "${activityModel.instructions!.split('.').map((e) => e.trim()).where((element) => element.isNotEmpty).toList().indexOf(e) + 1}. $e").join('.\n\n'),
+                        //make it formatted by splitting the string by comma and then adding a new line
+                        text: activityModel.instructions!.split(', S').join('\n\nS'),
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
 

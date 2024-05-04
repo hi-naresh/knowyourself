@@ -108,30 +108,31 @@ class LearningController extends GetxController {
   Map<int, Map<int, int>> userAnswers = {};
   final learnRepo = Get.put(LearnRepo());
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   // loadMaterialsForAspect("aspect"); // Load initial material
-  // }
-
-  Future<void> loadMaterialsForAspect(String aspect) async {
-    final materials =  await learnRepo.loadMaterialsForAspect(aspect);
-    learningMaterials.assignAll(materials);
+  @override
+  void onInit() {
+    super.onInit();
+    loadMaterialsFromJson("aspect");
+    // loadMaterialsForAspect("aspect"); // Load initial material
   }
 
-  // // load materials from asset , json file
-  // Future<void> loadMaterialsFromJson(String aspect) async {
-  //   final String chaptersJsonString = await rootBundle.loadString('assets/chapters/chapters.json');
-  //   final Map<String, dynamic> chaptersJson = json.decode(chaptersJsonString);
-  //   final List<dynamic> chaptersJsonList = chaptersJson['LearningChapters'];
-  //
-  //   final List<LearningChapters> chaptersList = chaptersJsonList
-  //       .map((chapter) => LearningChapters.fromMap(chapter))
-  //       .where((chapter) => chapter.aspect.toString().split('.').last == aspect)
-  //       .toList();
-  //
-  //   learningMaterials.assignAll(chaptersList);
+  // Future<void> loadMaterialsForAspect(String aspect) async {
+  //   final materials =  await learnRepo.loadMaterialsForAspect(aspect);
+  //   learningMaterials.assignAll(materials);
   // }
+
+  // load materials from asset , json file
+  Future<void> loadMaterialsFromJson(String aspect) async {
+    final String chaptersJsonString = await rootBundle.loadString('assets/chapters/chapters.json');
+    final Map<String, dynamic> chaptersJson = json.decode(chaptersJsonString);
+    final List<dynamic> chaptersJsonList = chaptersJson['LearningChapters'];
+
+    final List<LearningChapters> chaptersList = chaptersJsonList
+        .map((chapter) => LearningChapters.fromMap(chapter))
+        .where((chapter) => chapter.aspect.toString().split('.').last == aspect)
+        .toList();
+
+    learningMaterials.assignAll(chaptersList);
+  }
 
   void answerQuizQuestion(int chapterIndex, int questionIndex, int selectedAnswerIndex) {
     userAnswers[chapterIndex] ??= {};

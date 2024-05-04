@@ -72,8 +72,6 @@ class ModelService extends GetxService {
     print("Input shape: $inputShape, Output shape: $outputShape");
   }
 
-
-
   // Future<int> predictMoodShiftFromModel(MoodModel moodModel) async {
   //   List<double> inputs = preprocessInputs(moodModel);
   //
@@ -88,13 +86,13 @@ class ModelService extends GetxService {
   //   return predictedIndex;
   // }
 
-  List<double> preprocessInputs(MoodModel moodModel) {
-    double moodIndex = mapMoodToIndex(moodModel.mood);
-    double aspectIndex = mapAspectToIndex(moodModel.aspect);
-    double placeIndex = mapPlaceToIndex(moodModel.happenedAt);
-    double reasonIndex = moodModel.description.length.toDouble();
-    return [moodIndex, aspectIndex, placeIndex, reasonIndex];
-  }
+  // List<double> preprocessInputs(MoodModel moodModel) {
+  //   double moodIndex = mapMoodToIndex(moodModel.mood);
+  //   double aspectIndex = mapAspectToIndex(moodModel.aspect);
+  //   double placeIndex = mapPlaceToIndex(moodModel.happenedAt);
+  //   double reasonIndex = moodModel.description.length.toDouble();
+  //   return [moodIndex, aspectIndex, placeIndex, reasonIndex];
+  // }
 
   // Example of a utility function to handle mood index based on the new structure
   double mapMoodToIndex(String mood) {

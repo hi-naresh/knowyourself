@@ -71,7 +71,8 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
   Future<void> mlAnalyze() async {
     // final mlAnalysis = Get.put(ValueAnalysisService());
     // mlAnalysis.analyzeText();
-    final result = await mlAnalysis.analyzeText("I am feeling happy today");
+    const content = '''Today, I am grateful for the love and support of my family.''';
+    final result = await mlAnalysis.analyzeText(content);
     String formattedResult = mlAnalysis.formatResults(result);
     print(formattedResult);
   }

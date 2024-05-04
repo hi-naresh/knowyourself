@@ -22,6 +22,7 @@ class ValueAnalysisService extends GetxService {
 
   void _loadModel() async {
     interpreter = await Interpreter.fromAsset('assets/value_analysis/value_analysis.tflite');
+    interpreter.allocateTensors();
     print("Model loaded successfully!");
     initializeShapes();
   }
@@ -51,7 +52,7 @@ class ValueAnalysisService extends GetxService {
     print("Input vector: $inputVector");
 
     var output = List<double>.filled(outputShape[1], 0.0).reshape([1, outputShape[1]]);
-
+    print("Output vector: $output");
     interpreter.run(inputVector, output);
 
     return _mapOutputToPercentages(output[0]);

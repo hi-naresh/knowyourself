@@ -18,10 +18,10 @@ class ChoiceScreen extends StatelessWidget {
       appBar: const KAppBar(title: 'User Review', back: true),
       body: Obx(() {
         final currentQuestion = controller.questionnaire[controller.pageIndex.value];
-        final answers = List<String>.filled(3, ''); // Create a list that can be modified
-        for (int i = 0; i < currentQuestion.answers.length && i < 3; i++) {
-          answers[i] = currentQuestion.answers[i]!;
-        }
+        // final answers = List<String>.filled(3, ''); // Create a list that can be modified
+        // for (int i = 0; i < currentQuestion.answers.length && i < 3; i++) {
+        //   answers[i] = currentQuestion.answers[i]!;
+        // }
 
         return Column(
           children: [
@@ -44,15 +44,10 @@ class ChoiceScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: TextFormField(
-                            controller: TextEditingController(text: currentQuestion.answers[index]),
+                            controller: controller.textControllers[controller.pageIndex.value][index],
                             onChanged: (value) => controller.setAnswer(controller.pageIndex.value, index, value),
                             decoration: InputDecoration(
                               icon: Text('${index + 1}'),
-                              // suffixIcon: controller.pageIndex.value == 0 ? IconButton(
-                              //   icon: const Icon(CupertinoIcons.photo_on_rectangle),
-                              //   onPressed: () => controller.pickImage(index),
-                              // ) : null,
-                              // labelText: 'Choice ${index + 1}',
                               hintText: 'Type your answer',
                             ),
                           ),
@@ -74,6 +69,7 @@ class ChoiceScreen extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                           ),
+
                       ],
                     );
                   }).map((e) => Padding(padding: const EdgeInsets.only(bottom: KSizes.defaultSpace), child: e)),
