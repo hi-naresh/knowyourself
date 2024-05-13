@@ -1,65 +1,68 @@
-
 import 'dart:ui';
 
 class ActivityModel {
-  late String id;
-  late String userId;
-  late String title;
-  final String? instructions;
-  final String? link;
-  final String? duration;
-  final String? imageUrl;
-  final Color? color ;
-  final String? tag;
+  String id;
+  String? userId;
+  String title;
+  List<String>? instructions;
+  String? link;
+  String? duration;
+  String? imageUrl;
+  Color? color;
+  String? tag;
 
   ActivityModel({
     required this.id,
-    required this.userId,
+    this.userId,
     required this.title,
     this.instructions,
     this.link,
     this.duration,
     this.imageUrl,
     this.color,
-    this.tag
+    this.tag,
   });
 
   factory ActivityModel.fromJson(Map<String, dynamic> json) {
+    // Parsing the 'color' field to a Color object
+    Color? parsedColor;
+    if (json['color'] != null) {
+      String colorStr = json['color'];
+      if (colorStr.startsWith('#')) {
+        parsedColor = Color(int.parse('0xFF' + colorStr.substring(1)));
+      }
+    }
+
     return ActivityModel(
-      id: json['id'],
-      userId: json['userId']??'',
-      title: json['title'],
-      imageUrl: json['imageUrl'] ?? '', // Default to empty if null
-      color: json['color'],
-      tag: json['tag'],
-      link: json['link'],
-      instructions: json['instructions']??'',
+      id: json['id'] as String,
+      userId: json['userId'] as String?,
+      title: json['title'] as String,
+      instructions: (json['instructions'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      link: json['link'] as String?,
+      duration: json['duration'] as String?,
+      imageUrl: json['imageUrl'] as String?,
+      color: parsedColor,
+      tag: json['tag'] as String?,
     );
   }
-
-  // factory ActivityModel.fromJson(Map<String, dynamic> json) {
-  //   return ActivityModel(
-  //     id: json['id'] ?? '',
-  //     userId: json['userId']??'',
-  //     title: json['title']??'',
-  //     instructions: json['instructions']??'',
-  //     link: json['link']??'',
-  //   );
-  // }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'userId': userId,
-      'title':title,
-      'instructions':instructions,
-      'link':link
+      'userId': userId ?? '',
+      'title': title,
+      'instructions': instructions ?? [],
+      'link': link ?? '',
+      'duration': duration ?? '',
+      'imageUrl': imageUrl ?? '',
+      'color': color != null ? '#${color!.value.toRadixString(16).substring(2)}' : '',
+      'tag': tag ?? '',
     };
   }
 
   @override
   String toString() {
-    return 'JournalEntry{id: $id, userId: $userId';
+    return 'ActivityModel{id: $id, title: $title}';
   }
 
   static List<ActivityModel> fromMap(List<Map<String, dynamic>> entryMapList) {
@@ -72,3 +75,4 @@ class ActivityModel {
     return toJson();
   }
 }
+

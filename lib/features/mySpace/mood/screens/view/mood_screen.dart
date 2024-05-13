@@ -87,7 +87,7 @@ class MoodBoard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(mood.mood),
-                            Text("${mood.aspect} at ${mood.happenedAt} Place",
+                            Text("${mood.aspect} at ${mood.place} Place",
                               style: Theme
                                   .of(context)
                                   .textTheme
@@ -120,7 +120,7 @@ class MoodBoard extends StatelessWidget {
                     ),
                     title: Text(mood.mood),
                     subtitle: Text(
-                      "${mood.aspect} at ${mood.happenedAt} Place", style: Theme
+                      "${mood.aspect} at ${mood.place} Place", style: Theme
                         .of(context)
                         .textTheme
                         .labelMedium,),

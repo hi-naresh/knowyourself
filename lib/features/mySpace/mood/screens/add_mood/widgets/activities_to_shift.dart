@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:knowyourself/common/widgets/appbar/pagebar.dart';
 import 'package:knowyourself/features/mySpace/mood/controller/recommend_controller.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/helpers/activity_info_card.dart';
 import 'package:knowyourself/routes.dart';
@@ -19,7 +20,10 @@ class ActivitiesToShiftScreen extends StatelessWidget {
     final controller = Get.put(ActivityController());
     final addController = AddMoodController.instance;
     return Scaffold(
-      appBar: const KAppBar(back: true,),
+      appBar: KPageBar(
+        title: '',
+        onTap: ()=> Get.offAllNamed(KRoutes.getMasterRoute()),
+      ),
       body: Padding(
         padding: const EdgeInsets.all( KSizes.defaultSpace),
         child: Column(

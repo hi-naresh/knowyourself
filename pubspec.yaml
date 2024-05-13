@@ -50,9 +50,10 @@ dependencies:
   image_picker: ^1.0.7
   geolocator: ^11.0.0
   geocoding:
-  tflite_flutter: ^0.10.4
+#  tflite_flutter: ^0.10.4
+#  tflite_flutter_processing: ^0.4.1
   firebase_ml_model_downloader: ^0.2.4+16
-
+#  tflite_v2: ^1.0.0
 #
 #dependency_overrides:
 #  google_fonts: ^6.1.0
@@ -75,13 +76,6 @@ flutter:
     - assets/animations/
     - assets/materials/
     - assets/mood_shifter/
-    - assets/mood_shifter/mood_shift.tflite
-    - assets/mood_shifter/emotions.json
-    - assets/mood_shifter/sentiments.json
-    - assets/mood_shifter/updated_activities.json
-    - assets/value_analysis/value_analysis.tflite
-    - assets/value_analysis/core_values.txt
-    - assets/value_analysis/journal_entries.txt
     - assets/chapters/
     - packages/animated_emoji/lottie/sad.json
     - packages/animated_emoji/lottie/grin.json
