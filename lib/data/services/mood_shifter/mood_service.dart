@@ -6,13 +6,13 @@ import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 
 class MoodShiftService extends GetxService {
   static MoodShiftService get instance => Get.find();
-  final String _primaryUrl = "https://mood-shift.onrender.com/activitiess";
+  final String _primaryUrl = "https://mood-shift.onrender.com/activities";
   final String _backupUrl = "https://cdb0b322-68b9-471f-8a0c-021586dc9b98-00-ihnwwmb3balc.sisko.replit.dev/activities";
   late String _apiUrl;
 
   @override
-  void onInit() {
-    super.onInit();
+  void onReady() {
+    super.onReady();
     _apiUrl = _primaryUrl;
   }
 
@@ -24,7 +24,7 @@ class MoodShiftService extends GetxService {
           'Content-Type': 'application/json',
         },
         body: request.toJson(),
-      ).timeout(const Duration(seconds: 3));
+      ).timeout(const Duration(seconds: 2));
 
       if (response.statusCode == 200) {
         final jsonResponse = response.body;
