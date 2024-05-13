@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 import '../../../../data/repo/auth/auth_repo.dart';
-import '../../../../data/repo/user/user_repo.dart';
+import '../../../../data/repo/user/remote/user_repo.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../../personalisation/model/user_model.dart';
 

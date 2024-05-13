@@ -41,9 +41,8 @@ class ActivityInfoCard extends StatelessWidget {
                     text: "Instructions : \n\n",
                     children: [
                       TextSpan(
-                        // text: activityModel.instructions!,
-                        //make it formatted by splitting the string by comma and then adding a new line
-                        text: activityModel.instructions!.split(', S').join('\n\nS'),
+                        //instructions type List
+                        text : activityModel.instructions!.join('\n\n'),
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
 

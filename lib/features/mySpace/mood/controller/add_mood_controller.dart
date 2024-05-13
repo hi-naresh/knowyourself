@@ -3,6 +3,7 @@ import 'package:animated_emoji/emojis.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:knowyourself/data/services/mood_shifter/mood_service.dart';
 import 'package:knowyourself/features/mySpace/mood/model/activity_info_model.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
@@ -21,6 +22,7 @@ class AddMoodController extends GetxController {
   static AddMoodController get instance => Get.find();
 
   final _moodRepo = Get.put(MoodRepo());
+  
 
   final RxInt index = 0.obs;
   final PageController pageController = PageController();
@@ -194,8 +196,8 @@ class AddMoodController extends GetxController {
       // consider saving all states physically, mentally, emotionally, spiritually
       mood: getHumanState() ,
       aspect: aspectString,
-      description: reasons.text,
-      happenedAt: happenedAtString, id: '',
+      reason: reasons.text,
+      place: happenedAtString, id: '',
       entryDate: DateTime.now(),
     ));
     loadMoodEntries();
@@ -223,12 +225,15 @@ class AddMoodController extends GetxController {
 
 
   Future<void> shiftMood() async {
+    
+    final moodService = MoodShiftService.instance;
+    
     try {
       MoodModel currentMood = MoodModel(
         mood: getHumanState(),
         aspect: aspectString,
-        description: reasons.text,
-        happenedAt: happenedAtString,
+        reason: reasons.text,
+        place: happenedAtString,
         shift: true,
         id: '',  // Ensure you have a valid ID if necessary
         entryDate: DateTime.now(),
@@ -238,18 +243,22 @@ class AddMoodController extends GetxController {
       await _moodRepo.saveMoodEntry(currentMood);
 
       // Use the repository to recommend activities based on the current mood
-      List<String> userActivities = await _moodRepo.recommendActivity(currentMood, moodIndex, selectAspect.value, selectHappenedAt.value, 0);
+      // List<String> userActivities = await _moodRepo.recommendActivity(currentMood, moodIndex, selectAspect.value, selectHappenedAt.value, 0);
+      List<ActivityModel> userActivities = await moodService.fetchActivities(currentMood);
       // print('Recommended activities: $userActivities');
 
       // List<String> activityTitles = [];
       for (var activity in userActivities) {
         activities.add(ActivityModel(
-          id: separateId(activity),
+          id: activity.id,
           userId: '1',
-          link: separateLink(activity),
-          title: separateTitle(activity),
-          instructions: separateInstructions(activity),
-          color: changeColor(userActivities.indexOf(activity)),
+          link: activity.link,
+          title: activity.title,
+          instructions: activity.instructions,
+          imageUrl: '',
+          color: changeColor(activities.length),
+          tag: 'Physical health',
+
         ));
       }
 
@@ -264,12 +273,12 @@ class AddMoodController extends GetxController {
         // Navigate or display activities
         Get.toNamed(KRoutes.getActivitiesRoute());
       } else {
-        Get.snackbar('No Activities Found', 'No recommended activities based on your current mood.');
+        KHelper.showSnackBar("No Activities Found", "No recommended activities based on your current mood.");
       }
     } catch (e) {
       // Handle any errors that might occur during the process
-      print('Error in shifting mood: $e');
-      Get.snackbar('Error', 'Failed to shift mood due to an error.');
+      // print('Error in shifting mood: $e');
+      KHelper.showSnackBar("Try again after sometime. ", "Failed to shift mood due to an server error.Try later");
     }
   }
 
@@ -285,24 +294,24 @@ class AddMoodController extends GetxController {
       return kApp4;
     }
   }
-
-  String separateId(String activity) {
-    return activity.split("id:").last.split(",").first;
-  }
-
-  String separateTitle(String activity) {
-    return activity.split("title: ").last.split(",").first;
-  }
-
-  // instructions: [Step 1: Warm up with dynamic stretches and light cardio exercises for 5-10 minutes., Step 2: Choose 3-5 high-intensity exercises targeting different muscle groups., Step 3: Perform each exercise at maximum effort for 20-30 seconds, followed by 10-20 seconds of rest., Step 4: Repeat the circuit 3-4 times, alternating between exercises and rest periods.]
-  String separateInstructions(String activity) {
-    //return everything within [ ] in instructions
-    return activity.split("instructions: [").last.split("]").first;
-  }
-
-  String separateLink(String activity) {
-    return activity.split("link: ").last.split(",").first;
-  }
+  //
+  // String separateId(String activity) {
+  //   return activity.split("id:").last.split(",").first;
+  // }
+  //
+  // String separateTitle(String activity) {
+  //   return activity.split("title: ").last.split(",").first;
+  // }
+  //
+  // // instructions: [Step 1: Warm up with dynamic stretches and light cardio exercises for 5-10 minutes., Step 2: Choose 3-5 high-intensity exercises targeting different muscle groups., Step 3: Perform each exercise at maximum effort for 20-30 seconds, followed by 10-20 seconds of rest., Step 4: Repeat the circuit 3-4 times, alternating between exercises and rest periods.]
+  // String separateInstructions(String activity) {
+  //   //return everything within [ ] in instructions
+  //   return activity.split("instructions: [").last.split("]").first;
+  // }
+  //
+  // String separateLink(String activity) {
+  //   return activity.split("link: ").last.split(",").first;
+  // }
 
   // void fillInActivities(){
   //   for (var activity in activitiesTitle) {

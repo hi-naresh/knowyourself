@@ -5,8 +5,8 @@ class MoodModel {
   DateTime entryDate; // Date and time the mood was created
   String mood; // Mood state (e.g., happy, sad, anxious)
   String aspect; // Aspect of life affected (personal aspect)
-  String description; // Description or reasons for the mood
-  String happenedAt; // Categorization (work, social, home, personal)
+  String reason; // Description or reasons for the mood
+  String place; // Categorization (work, social, home, personal)
   bool shift; //stay or shift
 
   MoodModel({
@@ -14,8 +14,8 @@ class MoodModel {
     required this.entryDate,
     required this.mood,
     required this.aspect,
-    required this.description,
-    required this.happenedAt,
+    required this.reason,
+    required this.place,
     this.shift = false,
   });
 
@@ -24,8 +24,8 @@ class MoodModel {
     DateTime? entryDate,
     String? mood,
     String? aspect,
-    String? description,
-    String? happenedAt,
+    String? reason,
+    String? place,
     bool? shift,
   }) {
     return MoodModel(
@@ -33,8 +33,8 @@ class MoodModel {
       entryDate: entryDate ?? this.entryDate,
       mood: mood ?? this.mood,
       aspect: aspect ?? this.aspect,
-      description: description ?? this.description,
-      happenedAt: happenedAt ?? this.happenedAt,
+      reason: reason ?? this.reason,
+      place: place ?? this.place,
       shift: shift ?? this.shift,
     );
   }
@@ -45,8 +45,8 @@ class MoodModel {
       'entryDate': entryDate.millisecondsSinceEpoch,
       'mood': mood,
       'aspect': aspect,
-      'description': description,
-      'happenedAt': happenedAt,
+      'reason': reason,
+      'place': place,
       'shift': shift,
     };
   }
@@ -57,8 +57,8 @@ class MoodModel {
       entryDate: DateTime.fromMillisecondsSinceEpoch(map['entryDate'] ?? 0),
       mood: map['mood'] ?? '',
       aspect: map['aspect'] ?? '',
-      description: map['description'] ?? '',
-      happenedAt: map['happenedAt'] ?? '',
+      reason: map['reason'] ?? '',
+      place: map['place'] ?? '',
       shift: map['shift'] ?? false,
     );
   }
@@ -70,7 +70,7 @@ class MoodModel {
 
   @override
   String toString() {
-    return 'MoodModel(id: $id, entryDate: $entryDate, mood: $mood, aspect: $aspect, description: $description, happenedAt: $happenedAt, shift: $shift)';
+    return 'MoodModel(id: $id, entryDate: $entryDate, mood: $mood, aspect: $aspect, reason: $reason, place: $place, shift: $shift)';
   }
 
   // @override

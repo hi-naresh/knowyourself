@@ -18,7 +18,6 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
   late AnimationController animationController; // Manage animation controller here
   List<Animation<double>> animations = [];
 
-  final ValueAnalysisService mlAnalysis = Get.find<ValueAnalysisService>();
 
   var showCoreValues = false.obs;
 
@@ -66,15 +65,6 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
     animationController.dispose();
     _authListener.cancel();
     super.onClose();
-  }
-
-  Future<void> mlAnalyze() async {
-    // final mlAnalysis = Get.put(ValueAnalysisService());
-    // mlAnalysis.analyzeText();
-    const content = '''Today, I am grateful for the love and support of my family.''';
-    final result = await mlAnalysis.analyzeText(content);
-    String formattedResult = mlAnalysis.formatResults(result);
-    print(formattedResult);
   }
 
   void setupAnimations(List<CoreValue> coreValues) {
