@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/personalisation/controller/app_controller.dart';
+import 'package:knowyourself/features/personalisation/screens/settings/pages/debug_screen.dart';
+import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_feedback.dart';
 import '../../../../data/helper_service/local_auth/local_bio_auth.dart';
 import '../../../../routes.dart';
 import '../../../../utils/constants/colors.dart';
@@ -112,16 +114,17 @@ class SettingScreen extends StatelessWidget {
                       ),
                     ),
                     icon: CupertinoIcons.eye_slash),
-                SettingTile(
-                  title: "Notifications",
-                  subtitle: "In order to remind your tasks.",
-                  trailing: CupertinoSwitch(
-                    value: true,
-                    onChanged: (value) {},
-                    activeColor: Theme.of(context).primaryColor,
-                  ),
-                  icon: CupertinoIcons.bell,
-                ),
+                // SettingTile(
+                //   title: "Notifications",
+                //   subtitle: "In order to remind your tasks.",
+                //   trailing: CupertinoSwitch(
+                //     value: true,
+                //     onChanged: (value) {},
+                //     activeColor: Theme.of(context).primaryColor,
+                //   ),
+                //   icon: CupertinoIcons.bell,
+                // ),
+
 
 
                 SettingTile(
@@ -131,11 +134,20 @@ class SettingScreen extends StatelessWidget {
                     trailing: const Icon(CupertinoIcons.forward),
                     icon: CupertinoIcons.sparkles),
 
-                const SettingTile(
+                SettingTile(
                     title: "Feedback",
+                    onTap: ()=> Get.to(()=>const SettingsFeedback()),
                     subtitle: "Thoughts & improvements",
                     trailing: Icon(CupertinoIcons.forward),
                     icon: CupertinoIcons.conversation_bubble),
+                // SettingTile(
+                //     title: "Debug Mode",
+                //     subtitle: "Enable debug mode",
+                //     onTap: ()=> Get.to(()=>DebugScreen()),
+                //     trailing: const Icon(CupertinoIcons.forward),
+                //     icon: CupertinoIcons.timelapse),
+
+
                 SettingTile(
                     title: "About",
                     onTap: ()=> Get.toNamed(KRoutes.getAboutRoute()),

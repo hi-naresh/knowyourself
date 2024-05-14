@@ -23,7 +23,8 @@ class KSizes {
   static const double fontSizeLg = 18.0;
 
   // Button sizes
-  static const double buttonHeight = 54.0;
+  static const double buttonHeight = 58.0;
+
   // static const double buttonHeightCompact = 12;
   static const double buttonRadius = 25.0;
   static const double buttonWidth = 120.0;

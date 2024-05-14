@@ -50,7 +50,10 @@ dependencies:
   image_picker: ^1.0.7
   geolocator: ^11.0.0
   geocoding:
-
+#  tflite_flutter: ^0.10.4
+#  tflite_flutter_processing: ^0.4.1
+  firebase_ml_model_downloader: ^0.2.4+16
+#  tflite_v2: ^1.0.0
 #
 #dependency_overrides:
 #  google_fonts: ^6.1.0
@@ -72,12 +75,16 @@ flutter:
     - assets/icons/
     - assets/animations/
     - assets/materials/
+    - assets/mood_shifter/
+    - assets/chapters/
     - packages/animated_emoji/lottie/sad.json
-    - packages/animated_emoji/lottie/slightlyHappy.json
+    - packages/animated_emoji/lottie/grin.json
     - packages/animated_emoji/lottie/anxiousWithSweat.json
     - packages/animated_emoji/lottie/surprised.json
     - packages/animated_emoji/lottie/rage.json
     - packages/animated_emoji/lottie/distraught.json
     - packages/animated_emoji/lottie/cry.json
-    - packages/animated_emoji/lottie/sunglassesFace.json
-    - packages/animated_emoji/lottie/bigFrown.json
+    - packages/animated_emoji/lottie/sweat.json
+    - packages/animated_emoji/lottie/grinning.json
+    - packages/animated_emoji/lottie/pleading.json
+    - packages/animated_emoji/lottie/scared.json

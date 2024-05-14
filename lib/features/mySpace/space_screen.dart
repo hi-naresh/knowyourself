@@ -47,6 +47,8 @@ class MySpaceScreen extends StatelessWidget {
           // const SizedBox(height: KSizes.defaultSpace),
           Expanded(
               child: TabBarView(
+                //restrict dragging
+                physics: const NeverScrollableScrollPhysics(),
                 clipBehavior: Clip.none,
                 controller: controller.tabController,
                 children: const [

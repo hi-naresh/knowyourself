@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:knowyourself/data/repo/user/user_repo.dart';
+import 'package:knowyourself/data/repo/user/remote/user_repo.dart';
+import '../../helper_service/backup_service/backup_service.dart';
 import '/routes.dart';
 import '/utils/exceptions/firebase_auth_exceptions.dart';
 import '/utils/exceptions/firebase_exceptions.dart';
@@ -15,6 +16,7 @@ class AuthRepo extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
   final UserRepo _userRepo = Get.put(UserRepo());
+  final backupController = Get.put(BackupService());
 
   //get authenticaed user
   User? get authUser => _auth.currentUser;
@@ -37,6 +39,7 @@ class AuthRepo extends GetxController {
         Get.offAllNamed(KRoutes.getProfileRoute());
       } else {
         // isNewUser is false, redirect to dashboard.
+        // await syncData();
         Get.offAllNamed(KRoutes.getMasterRoute());
       }
     } else {
@@ -44,6 +47,20 @@ class AuthRepo extends GetxController {
       Get.offAllNamed(KRoutes.getOnBoardingRoute());
     }
   });
+
+  // Future<void> syncData() async {
+  //   try {
+  //     final user = _auth.currentUser;
+  //     backupController.checkRemoteBackup().then((value) async {
+  //       if (value) {
+  //         print('Remote backup exists, importing data');
+  //         await backupController.importRemoteData();
+  //       }
+  //     });
+  //   } catch (e) {
+  //     throw e;
+  //   }
+  // }
 
   Future<void> _checkAndRedirect(User user) async {
     final isFirstTime = await _userRepo.fetchFirstTimeCreate(user.uid);

@@ -40,6 +40,11 @@ class BackupService extends GetxService {
     Share.shareXFiles(xFile);
   }
 
+  //check if remote backup exists on firebase or not
+  // Future<bool> checkRemoteBackup() async {
+  //   return await _onlineBackupService.checkBackupExists();
+  // }
+
   Future<void> remoteStore() async {
 
     String filePath = await exportData();
@@ -69,9 +74,10 @@ class BackupService extends GetxService {
   Future<void> importRemoteData() async {
     // Use OnlineBackupService to download the latest backup file
     final String downloadedFilePath = await _onlineBackupService.downloadBackup();
+    // await _onlineBackupService.checkBackupExists();
     if (downloadedFilePath.isNotEmpty) {
       File file = File(downloadedFilePath);
-      _importDataFromMap(file);
+      await _importDataFromMap(file);
       KHelper.showSnackBar("Online Data Imported", "Your data has been successfully imported.");
       // Optionally delete the downloaded file after import
       await file.delete();

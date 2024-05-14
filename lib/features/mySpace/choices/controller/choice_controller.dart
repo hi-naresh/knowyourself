@@ -15,6 +15,8 @@ class ChoiceController extends GetxController {
   RxInt pageIndex = 0.obs;
   RxList<UserChoice> questionnaire = RxList<UserChoice>();
   RxList<XFile?> pickedImages = RxList.filled(3, null);
+  List<List<TextEditingController>> textControllers = [];
+
 
   final storage = GetStorage();
 
@@ -22,7 +24,31 @@ class ChoiceController extends GetxController {
   void onInit() {
     super.onInit();
     loadSavedAnswers();
+    initializeTextControllers();
+
   }
+
+  void initializeTextControllers() {
+    textControllers = questionnaire.map((question) {
+      return List.generate(question.answers.length, (index) =>
+          TextEditingController(text: question.answers[index]));
+    }).toList();
+  }
+
+  void disposeControllers() {
+    for (var controllers in textControllers) {
+      for (var controller in controllers) {
+        controller.dispose();
+      }
+    }
+  }
+
+  @override
+  void onClose() {
+    disposeControllers();
+    super.onClose();
+  }
+
 
   void loadSavedAnswers() {
     var storedAnswers = storage.read('userChoices');
@@ -37,13 +63,27 @@ class ChoiceController extends GetxController {
         UserChoice(questionText: 'Share your favorite music', answers: List.filled(3, ''), imagePath: ''),
         UserChoice(questionText: 'Mention the best people in your life', answers: List.filled(3, ''), imagePath: ''),
       ]);
+      initializeTextControllers();
+      updateImageFiles();
+
       // pickedImages.assignAll(List.filled(3, null));
     }
+
 
     for (int i = 0; i < questionnaire.length; i++) {
       var question = questionnaire[i];
       if (question.imagePath.isNotEmpty) {
-        pickedImages[i] = XFile(question.imagePath); // Convert the image path to an XFile
+        //handle this error PathNotFoundException : Cannot retrieve file from path
+        pickedImages[i] = XFile(question.imagePath);
+        print('Image path: ${question.imagePath}');
+      }
+    }
+  }
+
+  void updateImageFiles() {
+    for (int i = 0; i < questionnaire.length; i++) {
+      if (questionnaire[i].imagePath.isNotEmpty) {
+        pickedImages[i] = XFile(questionnaire[i].imagePath);
       }
     }
   }
@@ -81,6 +121,9 @@ class ChoiceController extends GetxController {
   bool get isFirstQuestion => pageIndex.value == 0;
   bool get isLastQuestion => pageIndex.value == questionnaire.length - 1;
 
+
+  // Image path: /Users/naresh/Library/Developer/CoreSimulator/Devices/AFA92658-4D10-420A-8E85-BAD6FB811E0B/data/Containers/Data/Application/68DB7334-0BCE-403B-B181-CB1599000816/tmp/image_picker_7A457FCC-B694-44C6-8102-75165CC48801-51950-00001BCA4825EA7E.jpg
+
   // Method to handle image picking
   Future<void> pickImage(int index) async {
     final ImagePicker picker = ImagePicker();
@@ -90,6 +133,7 @@ class ChoiceController extends GetxController {
     if (image != null) {
       pickedImages[index] = image;
       saveImagePath(index, image.path); // Save the image path to UserChoice and GetStorage
+      print('Image path: ${image.path}');
       update(); // Call update to trigger a rebuild of the UI
     }
   }

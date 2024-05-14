@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:knowyourself/features/personalisation/model/user_onboard_model.dart';
 import '/data/repo/auth/auth_repo.dart';
 
-import '../../../features/personalisation/model/user_model.dart';
-import '../../../utils/exceptions/firebase_exceptions.dart';
-import '../../../utils/exceptions/format_exceptions.dart';
-import '../../../utils/exceptions/platform_exceptions.dart';
+import '../../../../features/personalisation/model/user_model.dart';
+import '../../../../utils/exceptions/firebase_exceptions.dart';
+import '../../../../utils/exceptions/format_exceptions.dart';
+import '../../../../utils/exceptions/platform_exceptions.dart';
 
 class UserRepo extends GetxController{
   static UserRepo get instance => Get.find();

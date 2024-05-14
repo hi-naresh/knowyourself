@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:knowyourself/data/repo/user/user_repo.dart';
+import 'package:knowyourself/data/repo/user/remote/user_repo.dart';
 
 import '../../../../features/personalisation/model/user_onboard_model.dart';
 
