@@ -48,6 +48,12 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: KSizes.spaceBtwItems),
                     //password
+                  Text(
+                      "Make sure your password is more than 8 characters, containing capital letter(A..), number(1..) and special character(@..#..).",
+                          style: Theme.of(context).textTheme.labelMedium
+                    ),
+                    const SizedBox(height: KSizes.spaceBtwItems),
+
                     Obx(
                       ()=> TextFormField(
                         controller: controller.password,

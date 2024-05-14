@@ -2,7 +2,9 @@ import 'package:animated_emoji/emoji.dart';
 import 'package:animated_emoji/emojis.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:knowyourself/data/services/mood_shifter/mood_service.dart';
+import 'package:knowyourself/features/mySpace/mood/model/activity_info_model.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/enums.dart';
@@ -10,6 +12,7 @@ import 'package:knowyourself/utils/constants/text_strings.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../../data/repo/space/mood/mood_repo.dart';
+import '../../../../utils/constants/colors.dart';
 import '../screens/add_mood/widgets/aspect_select.dart';
 import '../screens/add_mood/widgets/express_feelings.dart';
 import '../screens/add_mood/widgets/mood_select.dart';
@@ -19,6 +22,7 @@ class AddMoodController extends GetxController {
   static AddMoodController get instance => Get.find();
 
   final _moodRepo = Get.put(MoodRepo());
+  
 
   final RxInt index = 0.obs;
   final PageController pageController = PageController();
@@ -26,6 +30,8 @@ class AddMoodController extends GetxController {
   final RxList<MoodModel> moodEntries = <MoodModel>[].toList().obs;
 
   final Rx<MoodModel?> moodModel = Rx<MoodModel?>(null);
+
+  final RxString humanState = ''.obs;
 
   //physical
   final List physicalList = [
@@ -47,13 +53,6 @@ class AddMoodController extends GetxController {
     selectedPhysical.value = physicalList[index];
   }
 
-  // - Stressed
-  // - Focused
-  // - Confused
-  // - Creative
-  // - Exhausted
-  // - Assertive
-
   //mental
   final List mentalList = [
     'Stressed',
@@ -67,13 +66,6 @@ class AddMoodController extends GetxController {
   void setSelectedMental(int index) {
     selectedMental.value = mentalList[index];
   }
-
-  // - Connected: Feeling a deep sense of connection to oneself, others, nature, or a higher power.
-  // - Grounded: Experiencing a sense of stability, inner peace, and being centered in the present moment.
-  // - Seeking: Experiencing a desire for spiritual growth, exploration, or understanding.
-  // - Surrendered: Feeling a sense of trust, acceptance, and letting go of control to a higher power or divine will.
-  // - Aligned: Feeling harmonious and in sync with one's values, beliefs, and actions.
-  // - Empowered: Feeling a sense of inner strength, confidence, and agency derived from spiritual beliefs and practices.
 
   //spiritual
   final List spiritualList = [
@@ -108,34 +100,49 @@ class AddMoodController extends GetxController {
 
   static myEmojis(emoji) => AnimatedEmoji(emoji, size: 40, repeat: true, source:  AnimatedEmojiSource.asset,);
 
-  final List<AnimatedEmoji> emojis= [
-    myEmojis(AnimatedEmojis.slightlyHappy),
+  final List<AnimatedEmoji> emotionalEmojis= [
+    myEmojis(AnimatedEmojis.grin),
     myEmojis(AnimatedEmojis.sad),
     myEmojis(AnimatedEmojis.rage),
     myEmojis(AnimatedEmojis.anxiousWithSweat),
     myEmojis(AnimatedEmojis.surprised),
+    myEmojis(AnimatedEmojis.sweat),
+    myEmojis(AnimatedEmojis.scared),
+    myEmojis(AnimatedEmojis.grinning),
+    myEmojis(AnimatedEmojis.pleading),
     myEmojis(AnimatedEmojis.distraught),
     myEmojis(AnimatedEmojis.cry),
-    myEmojis(AnimatedEmojis.sunglassesFace),
-    myEmojis(AnimatedEmojis.bigFrown),
   ];
 
-  String get moodString=> emojis[(sliderValue.value * emojis.length).round() % emojis.length].emoji.name;
+  String get moodString=> emotionalEmojis[(sliderValue.value * emotionalEmojis.length).round() % emotionalEmojis.length].emoji.name;
 
   //set strings for each emoji in this order
-  //slightlyHappy -> happy
   //sad -> sad
   //rage -> angry
   //anxiousWithSweat -> anxious
   //surprised -> surprised
   //distraught -> distraught
   //cry -> cry
-  //sunglassesFace -> cool
-  //bigFrown -> frown
+//pleading -> guilty
+  //scared -> scared
+  //sweat -> stressed
+  //grinning -> excited
+  //grin -> happy
+  String get userMoodString => moodString == 'sad' ? 'Sad' : moodString == 'rage' ? 'Angry' : moodString == 'anxiousWithSweat' ? 'Anxious' : moodString == 'surprised' ? 'Surprised' : moodString == 'distraught' ? 'Distraught' : moodString == 'cry' ? 'Cry' : moodString == 'pleading' ? 'Guilty' : moodString == 'scared' ? 'Scared' : moodString == 'sweat' ? 'Stressed' : moodString == 'grinning' ? 'Excited':moodString=="grin" ? 'Happy' : 'Nothing';
+  int get moodIndex => (sliderValue.value * emotionalEmojis.length).round();
 
-  //use switch case for each emoji to get the moodString above ones
-
-  String get userMoodString => moodString == 'slightlyHappy' ? 'Happy' : moodString == 'sad' ? 'Sad' : moodString == 'rage' ? 'Angry' : moodString == 'anxiousWithSweat' ? 'Anxious' : moodString == 'surprised' ? 'Surprised' : moodString == 'distraught' ? 'Distraught' : moodString == 'cry' ? 'Cry' : moodString == 'sunglassesFace' ? 'Cool' : 'Frown';
+  //human state from physical, mental, emotional, spiritual
+  String getHumanState() {
+    if (selectAspect.value == 0) {
+      return selectedMental.value;
+    } else if (selectAspect.value == 1) {
+      return selectedPhysical.value;
+    } else if (selectAspect.value == 2) {
+      return userMoodString;
+    } else {
+      return selectedSpiritual.value;
+    }
+  }
 
   RxInt selectAspect = 0.obs;
   // List<String> aspectsList = ['Mentally\n ${KTexts.mentalDescription}', 'Physically\n ${KTexts.physicalDescription}', 'Emotionally\n ${KTexts.vitalDescription}', 'Spiritually\n ${KTexts.spiritualDescription}'];
@@ -149,29 +156,16 @@ class AddMoodController extends GetxController {
   String get happenedAtString => happenedAt[selectHappenedAt.value];
   final TextEditingController reasons = TextEditingController();
 
+  final RxList activitiesTitle = [].obs;
+
+  final activities = <ActivityModel>[];
+
+
   final List<Widget> journalPages = [
     const AspectSelectPage(),
     const MoodSelectPage(),
     const ExpressFeelingsPage(),
   ];
-
-  // void updateAspect(LifeAspects aspect) {
-  //   selectAspect.value = aspect.index;
-  //   // Update emojis or other variables based on the aspect
-  //   switch(aspect) {
-  //     case LifeAspects.mental:
-  //       break;
-  //     case LifeAspects.physical:
-  //       break;
-  //     case LifeAspects.emotional:
-  //       break;
-  //     case LifeAspects.spiritual:
-  //       break;
-  //     case LifeAspects.all:
-  //       // TODO: Handle this case.
-  //   }
-  // }
-
 
   void nextPage() {
     pageController.nextPage(
@@ -199,10 +193,11 @@ class AddMoodController extends GetxController {
 
   Future<void> saveMoodData() async {
     await _moodRepo.saveMoodEntry(MoodModel(
-      mood: moodString.toString(),
+      // consider saving all states physically, mentally, emotionally, spiritually
+      mood: getHumanState() ,
       aspect: aspectString,
-      description: reasons.text,
-      happenedAt: happenedAtString, id: '',
+      reason: reasons.text,
+      place: happenedAtString, id: '',
       entryDate: DateTime.now(),
     ));
     loadMoodEntries();
@@ -212,9 +207,127 @@ class AddMoodController extends GetxController {
 
   }
 
-  void shiftMood() {
-    Get.toNamed(KRoutes.getActivitiesRoute());
+  // void shiftMood() {
+  //   Get.toNamed(KRoutes.getActivitiesRoute());
+  // }
+
+  // //solve error - type 'String' is not a subtype of type 'Map<String, dynamic>' in above function
+  // List<ActivityModel> parseActivities(List<dynamic> jsonList) {
+  //   return jsonList.map((json) {
+  //     if (json is Map<String, dynamic>) {
+  //       return ActivityModel.fromJson(json);
+  //     } else {
+  //       throw Exception('Expected a map but got: ${json.runtimeType}');
+  //     }
+  //   }).toList();
+  // }
+
+
+
+  Future<void> shiftMood() async {
+    
+    final moodService = MoodShiftService.instance;
+    
+    try {
+      MoodModel currentMood = MoodModel(
+        mood: getHumanState(),
+        aspect: aspectString,
+        reason: reasons.text,
+        place: happenedAtString,
+        shift: true,
+        id: '',  // Ensure you have a valid ID if necessary
+        entryDate: DateTime.now(),
+      );
+
+      //save mood before shifting
+      await _moodRepo.saveMoodEntry(currentMood);
+
+      // Use the repository to recommend activities based on the current mood
+      // List<String> userActivities = await _moodRepo.recommendActivity(currentMood, moodIndex, selectAspect.value, selectHappenedAt.value, 0);
+      List<ActivityModel> userActivities = await moodService.fetchActivities(currentMood);
+      // print('Recommended activities: $userActivities');
+
+      // List<String> activityTitles = [];
+      for (var activity in userActivities) {
+        activities.add(ActivityModel(
+          id: activity.id,
+          userId: '1',
+          link: activity.link,
+          title: activity.title,
+          instructions: activity.instructions,
+          imageUrl: '',
+          color: changeColor(activities.length),
+          tag: 'Physical health',
+
+        ));
+      }
+
+
+      activitiesTitle.assignAll(activities.map((e) => e.title).toList());
+      // print('Recommended activities: $userActivities');
+      // print(activitiesTitle);
+      // fillInActivities();
+
+      // Optionally, you can handle the navigation or any follow-up actions here
+      if (userActivities.isNotEmpty) {
+        // Navigate or display activities
+        Get.toNamed(KRoutes.getActivitiesRoute());
+      } else {
+        KHelper.showSnackBar("No Activities Found", "No recommended activities based on your current mood.");
+      }
+    } catch (e) {
+      // Handle any errors that might occur during the process
+      // print('Error in shifting mood: $e');
+      KHelper.showSnackBar("Try again after sometime. ", "Failed to shift mood due to an server error.Try later");
+    }
   }
+
+  //make chnageColor function which can be used to change color of activities after every 4 activities
+  Color changeColor(int index) {
+    if (index % 4 == 0) {
+      return kApp1;
+    } else if (index % 4 == 1) {
+      return kApp2;
+    } else if (index % 4 == 2) {
+      return kApp3;
+    } else {
+      return kApp4;
+    }
+  }
+  //
+  // String separateId(String activity) {
+  //   return activity.split("id:").last.split(",").first;
+  // }
+  //
+  // String separateTitle(String activity) {
+  //   return activity.split("title: ").last.split(",").first;
+  // }
+  //
+  // // instructions: [Step 1: Warm up with dynamic stretches and light cardio exercises for 5-10 minutes., Step 2: Choose 3-5 high-intensity exercises targeting different muscle groups., Step 3: Perform each exercise at maximum effort for 20-30 seconds, followed by 10-20 seconds of rest., Step 4: Repeat the circuit 3-4 times, alternating between exercises and rest periods.]
+  // String separateInstructions(String activity) {
+  //   //return everything within [ ] in instructions
+  //   return activity.split("instructions: [").last.split("]").first;
+  // }
+  //
+  // String separateLink(String activity) {
+  //   return activity.split("link: ").last.split(",").first;
+  // }
+
+  // void fillInActivities(){
+  //   for (var activity in activitiesTitle) {
+  //     activities.add(ActivityModel(
+  //       id: separateId(activity),
+  //       userId: '1',
+  //       link: separateLink(activity),
+  //       title: separateTitle(activity),
+  //       instructions: separateInstructions(activity),
+  //     ));
+  //   }
+  //   activities.refresh();
+  // }
+
+
+
 
   deFocusKeyboard(BuildContext context) {
     FocusScope.of(context).unfocus();

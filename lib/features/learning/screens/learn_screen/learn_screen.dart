@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:knowyourself/features/learning/screens/chapters/chapter_screens.dart';
 import 'package:knowyourself/features/learning/screens/learn_screen/widgets/progress_bar.dart';
 import 'package:knowyourself/features/learning/screens/materials/course_widget.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
@@ -41,7 +42,7 @@ class LearnScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: KSizes.defaultSpace),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   MyCard(
@@ -50,6 +51,7 @@ class LearnScreen extends StatelessWidget {
                       title: KTexts.mental,
                       color: kApp1,
                       fontSize: 26,
+                      onTap: () => Get.to(()=> ChapterLearningScreen(aspect: LifeAspects.mental.toString().split('.').last)),
                       imageUrl: KImages.mental,
                   ),
                   MyCard(
@@ -58,11 +60,12 @@ class LearnScreen extends StatelessWidget {
                       title: KTexts.physical,
                       color: kApp2,
                       fontSize: 26,
+                      onTap: () => Get.to(()=> ChapterLearningScreen(aspect: LifeAspects.physical.toString().split('.').last)),
                       imageUrl: KImages.physical),
                 ],
               ),
               const SizedBox(height: KSizes.defaultSpace),
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   MyCard(
@@ -70,8 +73,8 @@ class LearnScreen extends StatelessWidget {
                       height: KSizes.hCardMedium,
                       title: KTexts.vital,
                       color: kApp3,
+                      onTap: () => Get.to(()=> ChapterLearningScreen(aspect: LifeAspects.emotional.toString().split('.').last)),
                       fontSize: 26,
-
                       imageUrl: KImages.vital),
                   MyCard(
                       width: KSizes.wCardMedium,
@@ -79,6 +82,8 @@ class LearnScreen extends StatelessWidget {
                       title: KTexts.spiritual,
                       color: kApp4,
                       fontSize: 26,
+                      onTap: () => Get.to(()=> ChapterLearningScreen(aspect: LifeAspects.spiritual.toString().split('.').last)),
+
                       imageUrl: KImages.spiritual),
                 ],
               ),

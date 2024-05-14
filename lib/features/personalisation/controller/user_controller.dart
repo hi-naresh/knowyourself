@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-import '../../../data/repo/user/user_repo.dart';
+import '../../../data/repo/user/remote/user_repo.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../model/user_model.dart';
 

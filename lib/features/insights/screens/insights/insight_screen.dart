@@ -98,6 +98,7 @@ class InsightScreen extends StatelessWidget {
                         milesController.getTotalTasksCount(Period.monthly),
               },
             ),
+            // ElevatedButton(onPressed: ()=>controller.mlAnalyze(), child: Text('Test')),
             const SizedBox(height: KSizes.defaultSpace),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -57,6 +57,7 @@ class MoodBoard extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final mood = controller.moodEntries[index];
                   return CustomContainer(
+                    margin: const EdgeInsets.only(bottom: KSizes.defaultSpace),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -86,7 +87,7 @@ class MoodBoard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(mood.mood),
-                            Text("${mood.aspect} at ${mood.happenedAt} Place",
+                            Text("${mood.aspect} at ${mood.place} Place",
                               style: Theme
                                   .of(context)
                                   .textTheme
@@ -95,9 +96,9 @@ class MoodBoard extends StatelessWidget {
                         ),
                         const Spacer(),
                         AnimatedEmoji(
-                          controller.emojis[(controller.sliderValue.value *
-                              controller.emojis.length).floor() %
-                              controller.emojis.length].emoji,
+                          controller.emotionalEmojis[(controller.sliderValue.value *
+                              controller.emotionalEmojis.length).floor() %
+                              controller.emotionalEmojis.length].emoji,
                           source: AnimatedEmojiSource.asset,
                           size: 30,
                           repeat: false,
@@ -110,16 +111,16 @@ class MoodBoard extends StatelessWidget {
 
                   return ListTile(
                     leading: AnimatedEmoji(
-                      controller.emojis[(controller.sliderValue.value *
-                          controller.emojis.length).floor() %
-                          controller.emojis.length].emoji,
+                      controller.emotionalEmojis[(controller.sliderValue.value *
+                          controller.emotionalEmojis.length).floor() %
+                          controller.emotionalEmojis.length].emoji,
                       source: AnimatedEmojiSource.asset,
                       size: 30,
                       repeat: false,
                     ),
                     title: Text(mood.mood),
                     subtitle: Text(
-                      "${mood.aspect} at ${mood.happenedAt} Place", style: Theme
+                      "${mood.aspect} at ${mood.place} Place", style: Theme
                         .of(context)
                         .textTheme
                         .labelMedium,),
