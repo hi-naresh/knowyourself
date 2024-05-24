@@ -12,7 +12,7 @@ class LearningProgressBars extends StatefulWidget {
   const LearningProgressBars({
     super.key,
     required this.learningAspectsProgress,
-    this.colors = const [kApp1, kApp2, kApp3, kApp4],
+    this.colors = const [KColors.kApp1, KColors.kApp2, KColors.kApp3, KColors.kApp4],
   });
 
   @override
@@ -62,7 +62,7 @@ class _LearningProgressBarsState extends State<LearningProgressBars> with Single
                 Container(
                   height: KSizes.xl,
                   decoration: BoxDecoration(
-                    color: KHelper.isDark() ? kEmptyProgressDark : kEmptyProgress,
+                    color: KHelper.isDark() ? KColors.kEmptyProgressDark : KColors.kEmptyProgress,
                     borderRadius: BorderRadius.circular(KSizes.borderRadiusXl),
                   ),
                 ),

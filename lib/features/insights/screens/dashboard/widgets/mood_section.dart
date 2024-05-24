@@ -20,7 +20,7 @@ class MoodSection extends StatelessWidget {
     final profileController = ProfileSetupController.instance;
     return CustomContainer(
       width: double.infinity,
-      color: kApp1Light,
+      color: KColors.kApp1Light,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -81,11 +81,11 @@ class MoodSection extends StatelessWidget {
                   const Spacer(),
                   IconButton(
                     style: ButtonStyle(
-                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                      padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                         const EdgeInsets.all(KSizes.md),
                       ),
-                      backgroundColor: MaterialStateProperty.all<Color>(KColors.scaffoldDark),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      backgroundColor: WidgetStateProperty.all<Color>(KColors.scaffoldDark),
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -94,7 +94,7 @@ class MoodSection extends StatelessWidget {
                     onPressed: ()=>Get.toNamed(KRoutes.getAddMoodRoute()),
                     icon: const Icon(
                       CupertinoIcons.forward ,
-                      color: Colors.white,
+                      color: KColors.white,
                     ),
                   ),
                 ],

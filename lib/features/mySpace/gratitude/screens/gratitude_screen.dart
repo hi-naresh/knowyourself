@@ -62,11 +62,11 @@ class GratitudeScreen extends StatelessWidget {
                           filled: true,
                           enabledBorder: const UnderlineInputBorder(
                             borderSide:
-                            BorderSide(color: kApp4),
+                            BorderSide(color: KColors.kApp4),
                           ),
                           focusedBorder: const UnderlineInputBorder(
                             borderSide:
-                            BorderSide(color: kApp4),
+                            BorderSide(color: KColors.kApp4),
                           ),
                         ),
                       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
+import '../../utils/constants/colors.dart';
 import '../../utils/helpers/shadow_disabler.dart';
 
 class MyCard extends StatelessWidget {
@@ -66,7 +67,7 @@ class MyCard extends StatelessWidget {
                 title,
                 style: TextStyle(
                   // overflow: TextOverflow.ellipsis,
-                  color: Colors.white,
+                  color: KColors.textWhite,
                   fontSize: fontSize??18,
                   fontWeight: FontWeight.bold,
                 ),

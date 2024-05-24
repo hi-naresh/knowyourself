@@ -30,7 +30,7 @@ class OnBoard extends StatelessWidget {
             text: "\n${KTexts.onBoardingTitle1[0]}",
             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
               fontWeight: FontWeight.w800,
-              color: kApp2,
+              color: KColors.kApp2,
             ),
           ),
           TextSpan(
@@ -38,21 +38,21 @@ class OnBoard extends StatelessWidget {
             text: KTexts.onBoardingTitle1.substring(1,5),
             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
               fontWeight: FontWeight.w800,
-              color: kApp3,
+              color: KColors.kApp3,
             ),
           ),
           TextSpan(
               text: KTexts.onBoardingTitle1.substring(5,9),
               style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                 fontWeight: FontWeight.w800,
-                color: kApp4Dark,
+                color: KColors.kApp4Dark,
               )
           ),
           TextSpan(
               text: KTexts.onBoardingTitle1.substring(9,13),
               style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                 fontWeight: FontWeight.w800,
-                color: kApp3,
+                color: KColors.kApp3,
               )
           ),
           TextSpan(
@@ -138,7 +138,7 @@ class OnBoard extends StatelessWidget {
                 dotWidth: 5,
                 radius: 20,
                 activeDotColor: Theme.of(context).iconTheme.color!,
-                dotColor: kEmptyProgress,
+                dotColor: KColors.kEmptyProgress,
               )
             ),
           ),

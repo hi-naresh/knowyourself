@@ -38,7 +38,7 @@ class BottomRoundedNavBar extends StatelessWidget {
             padding: const EdgeInsets.only(left: KSizes.sm, right: KSizes.sm),
             width: double.infinity,
             decoration: BoxDecoration(
-              color: KHelper.isDarkMode(context) ? kEmptyProgressDark.withOpacity(0.5) : kEmptyProgress.withOpacity(0.5),
+              color: KHelper.isDarkMode(context) ? KColors.kEmptyProgressDark.withOpacity(0.5) : KColors.kEmptyProgress.withOpacity(0.5),
               borderRadius: BorderRadius.circular(KSizes.borderRadiusXxl),
             ),
             child: Row(

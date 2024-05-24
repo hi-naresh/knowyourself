@@ -25,9 +25,9 @@ class OnBoardController extends GetxController {
   }
 
   final List<Color> colors = [
-    kApp1Light,
-    kApp2Light,
-    kApp4Light,
+    KColors.kApp1Light,
+    KColors.kApp2Light,
+    KColors.kApp4Light,
   ];
 
 }

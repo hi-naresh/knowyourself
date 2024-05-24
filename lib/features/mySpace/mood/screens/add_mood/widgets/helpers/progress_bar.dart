@@ -34,8 +34,8 @@ class _ProgressBarState extends State<ProgressBar> {
         lineHeight: KSizes.sm,
         width: 200,
         percent: widget.percent,
-        backgroundColor: kBoxLight,
-        progressColor: kApp1,
+        backgroundColor: KColors.kBoxLight,
+        progressColor: KColors.kApp1,
         trailing: Text(
           widget.steps,
           style: Theme.of(context).textTheme.titleLarge,

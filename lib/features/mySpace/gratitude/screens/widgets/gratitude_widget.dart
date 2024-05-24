@@ -16,7 +16,7 @@ class GratitudeWidget extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
+        color: KHelper.isDarkMode(context) ? KColors.kEmptyProgressDark : KColors.kEmptyProgress,
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),
@@ -73,7 +73,7 @@ class GratitudeWidget extends StatelessWidget {
                   if (controller.celebrationString == "")
                     const Icon(
                       Icons.arrow_forward,
-                      color: kApp4,
+                      color: KColors.kApp4,
                     )
                 ],
               ),

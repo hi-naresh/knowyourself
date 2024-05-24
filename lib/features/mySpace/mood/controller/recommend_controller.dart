@@ -21,7 +21,7 @@ class ActivityController extends GetxController{
   final List<ActivityModel> activities = [
     ActivityModel(id: "1", userId: "1", title: "Deep Breadth",
       imageUrl: KImages.health3,
-      color: kApp1,
+      color: KColors.kApp1,
       link: "https://www.webmd.com/parenting/how-to-deep-breathe",
       // instructions: ''' Find a quiet spot, sit or lie comfortably, close your eyes.
       //                     Place one hand on your belly, the other on your chest.
@@ -36,7 +36,7 @@ class ActivityController extends GetxController{
     ),
     ActivityModel(id: "2", userId: "2", title: "Spend time in nature ",
       imageUrl: KImages.health8,
-      color: kApp2,
+      color: KColors.kApp2,
       link: "https://www.mind.org.uk/information-support/tips-for-everyday-living/relaxation/relaxation-tips/",
       // instructions: '''Take a stroll in a park or nature area, observe trees, flowers, and animals.
       //                  Engage in conservation efforts, like gardening or local green projects.
@@ -45,7 +45,7 @@ class ActivityController extends GetxController{
     ),
     ActivityModel(id: "2", userId: "2", title: "Spend time in nature ",
       imageUrl: KImages.health8,
-      color: kApp3,
+      color: KColors.kApp3,
       link: "https://www.mind.org.uk/information-support/tips-for-everyday-living/relaxation/relaxation-tips/",
       // instructions: '''Take a stroll in a park or nature area, observe trees, flowers, and animals.
       //                  Engage in conservation efforts, like gardening or local green projects.
@@ -54,7 +54,7 @@ class ActivityController extends GetxController{
     ),
     ActivityModel(id: "3", userId: "3", title: "Listen to music",
       imageUrl: KImages.health9,
-      color: kApp4,
+      color: KColors.kApp4,
       link: "https://www.mind.org.uk/information-support/tips-for-everyday-living/relaxation/relaxation-tips/",
       // instructions: '''Create a playlist of calming music, nature sounds, or your favorite tunes.
       //                  Listen to music while relaxing, working, or doing chores.

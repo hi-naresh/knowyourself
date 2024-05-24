@@ -21,7 +21,7 @@ class DailyMilestoneSection extends StatelessWidget {
     final milesController = MilestoneController.instance;
     return CustomContainer(
       width: double.infinity,
-      color: kApp4Light,
+      color: KColors.kApp4Light,
       onTap: () {
         final controller = MySpaceController.instance;
         final masterController = MasterController.instance;

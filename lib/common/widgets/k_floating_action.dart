@@ -18,7 +18,7 @@ class KFloatingAction extends StatelessWidget {
     return Container(
       height: KSizes.iconXl * 2,
       width: KSizes.iconXl * 2,
-      decoration: KStyles.darkToLight(kApp4),
+      decoration: KStyles.darkToLight(KColors.kApp4),
       child: IconButton(
         icon: Icon(
           icon,

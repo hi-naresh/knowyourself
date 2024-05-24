@@ -48,7 +48,7 @@ class LearnScreen extends StatelessWidget {
                       width: KSizes.wCardMedium,
                       height: KSizes.hCardMedium,
                       title: KTexts.mental,
-                      color: kApp1,
+                      color: KColors.kApp1,
                       fontSize: 26,
                       onTap: () => Get.to(()=> ChapterLearningScreen(aspect: LifeAspects.mental.toString().split('.').last)),
                       imageUrl: KImages.mental,
@@ -57,7 +57,7 @@ class LearnScreen extends StatelessWidget {
                       width: KSizes.wCardMedium,
                       height: KSizes.hCardMedium,
                       title: KTexts.physical,
-                      color: kApp2,
+                      color: KColors.kApp2,
                       fontSize: 26,
                       onTap: () => Get.to(()=> ChapterLearningScreen(aspect: LifeAspects.physical.toString().split('.').last)),
                       imageUrl: KImages.physical),
@@ -71,7 +71,7 @@ class LearnScreen extends StatelessWidget {
                       width: KSizes.wCardMedium,
                       height: KSizes.hCardMedium,
                       title: KTexts.vital,
-                      color: kApp3,
+                      color: KColors.kApp3,
                       onTap: () => Get.to(()=> ChapterLearningScreen(aspect: LifeAspects.emotional.toString().split('.').last)),
                       fontSize: 26,
                       imageUrl: KImages.vital),
@@ -79,7 +79,7 @@ class LearnScreen extends StatelessWidget {
                       width: KSizes.wCardMedium,
                       height: KSizes.hCardMedium,
                       title: KTexts.spiritual,
-                      color: kApp4,
+                      color: KColors.kApp4,
                       fontSize: 26,
                       onTap: () => Get.to(()=> ChapterLearningScreen(aspect: LifeAspects.spiritual.toString().split('.').last)),
 
@@ -144,21 +144,21 @@ class LearnScreen extends StatelessWidget {
                           return Obx(
                             () => ChoiceChip(
                               backgroundColor: KHelper.isDark()
-                                  ? kEmptyProgressDark
-                                  : kEmptyProgress,
-                              selectedColor: kApp3Light,
+                                  ? KColors.kEmptyProgressDark
+                                  : KColors.kEmptyProgress,
+                              selectedColor: KColors.kApp3Light,
                               label: Text(
                                   aspect.toString().split('.').last.capitalize!),
                               selected: controller.selectedAspect.value == aspect,
                               shape: RoundedRectangleBorder(
                                 side: const BorderSide(
-                                  color: kApp3,
+                                  color: KColors.kApp3,
                                   width: 1,
                                 ),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               padding: const EdgeInsets.all(10),
-                              disabledColor: kEmptyProgress,
+                              disabledColor: KColors.kEmptyProgress,
                               onSelected: (_) => controller.changeAspect(aspect),
                             ),
                           );

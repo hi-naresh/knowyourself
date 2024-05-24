@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../controller/insights_controller.dart';
 import '../../../model/core_values.dart';
@@ -12,7 +13,7 @@ class ReflectionChart extends StatelessWidget {
   const ReflectionChart({
     super.key,
     this.strokeWidth = 4.0,
-    this.strokeColor = Colors.transparent,
+    this.strokeColor =KColors.transparent,
   });
 
   @override

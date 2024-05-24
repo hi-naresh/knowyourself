@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../data/repo/materials/learning/learn_repo.dart';
+import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/text_strings.dart';
 import '../model/chapter_model.dart';
 import '../screens/chapters/chapter_screens.dart';
@@ -142,7 +143,7 @@ class LearningController extends GetxController {
     Get.snackbar(
       '${KTexts.answer} ${isCorrect ? KTexts.correct : KTexts.incorrect}',
       isCorrect ? KTexts.correctMessage : KTexts.incorrectMessage,
-      backgroundColor: isCorrect ? Colors.green : Colors.red,
+      backgroundColor: isCorrect ? KColors.green : KColors.red,
     );
 
     if (isCorrect) {

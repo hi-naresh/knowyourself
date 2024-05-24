@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:knowyourself/common/widgets/appbar/pagebar.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
 
+import '../../utils/constants/colors.dart';
+
 class NotificationItem {
   final String id;
   final String title;
@@ -61,7 +63,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           return Dismissible(
             key: Key(notification.id),
             onDismissed: (_) => removeNotification(notification.id),
-            background: Container(color: Colors.red),
+            background: Container(color: KColors.red),
             child: ListTile(
               title: Text(notification.title),
               subtitle: Text(notification.body),

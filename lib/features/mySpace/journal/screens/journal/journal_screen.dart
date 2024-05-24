@@ -34,7 +34,7 @@ class JournalScreen extends StatelessWidget {
                         TextSpan(
                           text: KTexts.reflections,
                           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                            color: kApp4,
+                            color: KColors.kApp4,
                           ),
                         ),
                       ],
@@ -46,7 +46,7 @@ class JournalScreen extends StatelessWidget {
                       SvgPicture.asset(
                         "assets/icons/entries.svg",
                         height: 20,
-                        color: kApp4,
+                        color: KColors.kApp4,
                       ),
                       const SizedBox(width: KSizes.sm),
                       Obx(

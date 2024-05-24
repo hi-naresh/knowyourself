@@ -59,7 +59,7 @@ class EditPersonalInfo extends StatelessWidget {
             //               radius: 30,
             //               backgroundColor: controller.avatar.value.isEmpty
             //                   ? KColors.primary // Highlight if selected
-            //                   : Colors.transparent,
+            //                   :KColors.transparent,
             //               child: const Icon(
             //                 CupertinoIcons.nosign, size: KSizes.iconMd*2,
             //               ),
@@ -76,7 +76,7 @@ class EditPersonalInfo extends StatelessWidget {
             //             radius: 30,
             //             backgroundColor: controller.avatar.value == avatarPath
             //                 ? KColors.primary  // Highlight if selected
-            //                 : Colors.transparent,
+            //                 :KColors.transparent,
             //             child: SvgPicture.asset(
             //               avatarPath,
             //               height: 70,
@@ -108,7 +108,7 @@ class EditPersonalInfo extends StatelessWidget {
                             radius: 40,
                             backgroundColor: controller.avatar.value == avatarPath
                                 ? KColors.primary // Highlight if selected
-                                : Colors.transparent,
+                                :KColors.transparent,
                             child: index==11 ?const Icon(CupertinoIcons.nosign, size: KSizes.iconXxl*2,) : SvgPicture.asset(
                               avatarPath,
                               height: 90, // Adjusted for visual fit within the circle

@@ -2,6 +2,8 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../utils/constants/colors.dart';
+
 class NotificationService extends GetxService {
   static NotificationService get instance => Get.find();
 
@@ -25,7 +27,7 @@ class NotificationService extends GetxService {
           channelName: 'Basic Notifications',
           channelDescription: 'Notification channel for basic tests',
           defaultColor: const Color(0xFF9D50DD),
-          ledColor: Colors.white,
+          ledColor: KColors.white,
           playSound: true,
           enableVibration: true,
         ),

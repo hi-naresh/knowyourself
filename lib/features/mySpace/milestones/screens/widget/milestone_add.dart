@@ -29,7 +29,7 @@ class MilestoneAdd extends StatelessWidget {
                 TextSpan(
                   text: KTexts.milestones.capitalizeFirst,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    color: kApp4,
+                    color: KColors.kApp4,
                   ),
                 ),
               ],
@@ -64,18 +64,18 @@ class MilestoneAdd extends StatelessWidget {
               children: Period.values
                   .map((period) => ChoiceChip(
                 backgroundColor: KHelper.isDark()
-                    ? kEmptyProgressDark
-                    : kEmptyProgress,
-                selectedColor: kApp4,
+                    ? KColors.kEmptyProgressDark
+                    : KColors.kEmptyProgress,
+                selectedColor: KColors.kApp4,
                 shape: RoundedRectangleBorder(
                   side: const BorderSide(
-                    color: kApp4,
+                    color: KColors.kApp4,
                     width: 1,
                   ),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 padding: const EdgeInsets.all(5),
-                disabledColor: kEmptyProgress,
+                disabledColor: KColors.kEmptyProgress,
                 label: Text(period.name.capitalizeFirst!),
                 selected: controller.milestonePeriod.value == period,
                 onSelected: (selected) {
@@ -92,13 +92,13 @@ class MilestoneAdd extends StatelessWidget {
               style: const ButtonStyle().copyWith(
                   minimumSize: WidgetStateProperty.all(
                       const Size(double.infinity, 50)),
-                  backgroundColor: WidgetStateProperty.all(kApp4),
+                  backgroundColor: WidgetStateProperty.all(KColors.kApp4),
                   foregroundColor: WidgetStateProperty.all(Colors.white)),
               onPressed: ()=>controller.addMilestone(),
               child: Text(
                 '${KTexts.add} ${KTexts.milestones2}',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold),
+                    color: KColors.white, fontWeight: FontWeight.bold),
               ))
         ],
       ),
