@@ -2,12 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/routes.dart';
-import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
-
-import '../../../../../common/widgets/custom_container.dart';
 import '../../../../mySpace/mood/controller/recommend_controller.dart';
 import '../../../../mySpace/mood/screens/add_mood/widgets/activities_to_shift.dart';
 import '../../../../mySpace/mood/screens/add_mood/widgets/helpers/activity_info_card.dart';
@@ -31,7 +27,7 @@ class RecommendSection extends StatelessWidget {
               GestureDetector(
                 onTap: ()=> Get.to(()=>const ActivitiesToShiftScreen()),
                 child: Text(
-                  "View All",
+                  "${KTexts.view} ${KTexts.all}",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),

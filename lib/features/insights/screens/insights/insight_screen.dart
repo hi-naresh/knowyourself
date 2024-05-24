@@ -88,14 +88,9 @@ class InsightScreen extends StatelessWidget {
             const SizedBox(height: KSizes.md),
             ProgressComponent(
               milestonesProgress: {
-                'Daily': milesController.getCompletedTasksCount(Period.daily) /
-                    milesController.getTotalTasksCount(Period.daily),
-                'Weekly':
-                    milesController.getCompletedTasksCount(Period.weekly) /
-                        milesController.getTotalTasksCount(Period.weekly),
-                'Monthly':
-                    milesController.getCompletedTasksCount(Period.monthly) /
-                        milesController.getTotalTasksCount(Period.monthly),
+                KTexts.daily: milesController.getCompletedTasksCount(Period.daily)/milesController.getTotalTasksCount(Period.daily),
+                KTexts.weekly: milesController.getCompletedTasksCount(Period.weekly)/milesController.getTotalTasksCount(Period.weekly),
+                KTexts.monthly: milesController.getCompletedTasksCount(Period.monthly)/milesController.getTotalTasksCount(Period.monthly),
               },
             ),
             // ElevatedButton(onPressed: ()=>controller.mlAnalyze(), child: Text('Test')),
@@ -104,7 +99,7 @@ class InsightScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Weekly Value Reflection',
+                  KTexts.insightsHead2,
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 IconButton(
@@ -114,7 +109,7 @@ class InsightScreen extends StatelessWidget {
             ),
             const SizedBox(height: KSizes.sm),
             Text(
-              "Start Writing your reflections and get your value insights...",
+              KTexts.insightSubtitle2,
               style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: KSizes.defaultSpace),
@@ -127,13 +122,13 @@ class InsightScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Core Values Impacted",
+                            KTexts.coreValuesTitle,
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                           FilledButton(
                             child: Text(controller.showCoreValues.value
-                                ? "Hide all"
-                                : "Show all"),
+                                ? KTexts.hideAllButtonText
+                                : KTexts.showAllButtonText ),
                             onPressed: () => controller.showCoreValues.value =
                                 !controller.showCoreValues.value,
                           ),
@@ -142,7 +137,7 @@ class InsightScreen extends StatelessWidget {
                     ),
                     if (controller.showCoreValues.value)
                       if (controller.journalEntries.isEmpty)
-                        const Text('No entries found!')
+                        const Text(KTexts.noEntriesFoundMessage)
                       else
                         Column(
                           children: controller.analyzedCoreValues
@@ -188,10 +183,10 @@ class InsightScreen extends StatelessWidget {
             const SizedBox(height: KSizes.defaultSpace),
             const LearningProgressBars(
               learningAspectsProgress: {
-                'Mental': 0.65, // 75%
-                'Physical': 0.5, // 50%
-                'Emotional': 0.7, // 90%
-                'Spiritual': 0.6, // 60%
+                KTexts.mental: 0.65, // 75%
+                KTexts.physical: 0.5, // 50%
+                KTexts.emotional: 0.7, // 90%
+                KTexts.spiritual: 0.6, // 60%
               },
             ),
             const SizedBox(height: KSizes.defaultSpace * 6),

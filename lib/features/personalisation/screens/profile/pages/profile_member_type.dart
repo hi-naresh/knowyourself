@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../utils/constants/enums.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../controller/profile_setup_controller.dart';
 
 class ProfileMemberPage extends StatelessWidget {
@@ -17,8 +18,8 @@ class ProfileMemberPage extends StatelessWidget {
         TextFormField(
           key: const Key('occupation_field'),
           decoration: const InputDecoration(
-            labelText: 'Occupation',
-            hintText: 'Enter your occupation',
+            labelText: KTexts.occupationLabelText,
+            hintText: KTexts.occupationHintText,
           ),
           onChanged: (value) => controller.occupation.value = value,
         ),
@@ -26,21 +27,21 @@ class ProfileMemberPage extends StatelessWidget {
         TextFormField(
           key: const Key('institution_field'),
           decoration: const InputDecoration(
-            labelText: 'Institution/School/College',
-            hintText: 'Enter your institution',
+            labelText: KTexts.institutionText,
+            hintText: KTexts.institutionHintText,
           ),
           onChanged: (value) => controller.institution.value = value,
         ),
         const SizedBox(height: KSizes.defaultSpace),
         Text(
-          'Please choose one that best describes your Affiliation?',
+          KTexts.affiliationQuestion,
           style: Theme.of(context).textTheme.titleMedium,
         ),
         Obx(
           () => DropdownButton<UserType>(
             value: controller.userType.value,
             isExpanded: true,
-            hint: const Text('Select User Type'),
+            hint: const Text(KTexts.selectUserType),
             borderRadius: BorderRadius.circular(KSizes.borderRadiusLg),
             onChanged: (UserType? value) {
               controller.userType.value = value!;

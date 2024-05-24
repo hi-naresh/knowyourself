@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:knowyourself/data/repo/user/remote/user_repo.dart';
+import '../../../utils/constants/text_strings.dart';
 import '../../helper_service/backup_service/backup_service.dart';
 import '/routes.dart';
 import '/utils/exceptions/firebase_auth_exceptions.dart';
@@ -88,7 +89,7 @@ class AuthRepo extends GetxController {
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
 
@@ -107,7 +108,7 @@ class AuthRepo extends GetxController {
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
 
@@ -134,7 +135,7 @@ class AuthRepo extends GetxController {
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
 
@@ -151,7 +152,7 @@ class AuthRepo extends GetxController {
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
   //logout user
@@ -171,7 +172,7 @@ class AuthRepo extends GetxController {
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
 }

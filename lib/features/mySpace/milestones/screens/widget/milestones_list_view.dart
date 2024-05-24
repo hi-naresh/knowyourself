@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/enums.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 import '../../controller/milestone_controller.dart';
 
@@ -35,7 +36,7 @@ class MilestoneProgressList extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text(title, style: Theme.of(context).textTheme.headlineSmall),
-                  subtitle: Text('I have completed $completedTasksCount/$tasksCount milestones.'),
+                  subtitle: Text('${KTexts.completed} $completedTasksCount/$tasksCount ${KTexts.milestones}.'),
                 ),
                 LinearProgressIndicator(
                   value: progress,
@@ -46,7 +47,7 @@ class MilestoneProgressList extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(KSizes.borderRadiusLg),
                   ),
-                  title: Text('Tasks', style: Theme.of(context).textTheme.bodyMedium),
+                  title: Text(KTexts.tasks, style: Theme.of(context).textTheme.bodyMedium),
                   collapsedIconColor: kApp4,
                   iconColor: kApp4,
                   children: [

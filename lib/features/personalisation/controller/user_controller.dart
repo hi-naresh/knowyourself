@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../../data/repo/user/remote/user_repo.dart';
+import '../../../utils/constants/text_strings.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../model/user_model.dart';
 
@@ -47,7 +48,8 @@ class UserController extends GetxController {
         await userRepo.saveUserRecord(newUser);
       }
     } catch(e){
-      KHelper.showSnackBar("Data not saved!", "Something went wrong. Try again.");
+      KHelper.showSnackBar(KTexts.dataNotSaved, KTexts.errorMessage);
+
     }
   }
 

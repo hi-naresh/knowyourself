@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/journal/screens/journal/journal_screen.dart';
-import 'package:knowyourself/features/mySpace/manifest/manifest_screen.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/milestone_screen.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/view/mood_screen.dart';
 import 'package:knowyourself/features/mySpace/questions/screens/question_screen.dart';
@@ -9,8 +8,8 @@ import 'package:knowyourself/features/mySpace/story/screens/story_screen.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../common/styles/styles.dart';
 import '../../utils/constants/colors.dart';
+import '../../utils/constants/text_strings.dart';
 import '../../utils/helpers/helper_functions.dart';
-import 'gratitude/screens/gratitude_page.dart';
 
 class MySpaceScreen extends StatelessWidget {
   const MySpaceScreen({super.key});
@@ -37,7 +36,7 @@ class MySpaceScreen extends StatelessWidget {
               isScrollable: true,
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
               tabAlignment: TabAlignment.center,
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
               labelPadding: const EdgeInsets.symmetric(horizontal: 20),
               // labelStyle: h3,
               // tabAlignment: TabAlignment.center,
@@ -57,8 +56,6 @@ class MySpaceScreen extends StatelessWidget {
                   JournalScreen(),
                   MoodBoard(),
                   MilestoneScreen(),
-                  GratitudeAffirmationScreen(),
-                  ManifestationScreen(),
                   QuestionsScreen(),
                   MyStoryScreen(),
                   // GratitudeWidget()
@@ -75,14 +72,13 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
   final RxInt tabIndex = 0.obs;
   late TabController tabController;
 
-  final tabs = const [
-    Tab(text: 'Reflection'),
-    Tab(text: 'Mood'),
-    Tab(text: 'Milestones'),
-    Tab(text: 'Gratitude'),
-    Tab(text: 'Manifestation'),
-    Tab(text: 'Questions'),
-    Tab(text: 'Story'),
+  final tabs = [
+    const Tab(text: KTexts.reflections),
+    const Tab(text: KTexts.mood),
+    Tab(text: KTexts.milestones.capitalizeFirst),
+    const Tab(text: KTexts.questions),
+    const Tab(text: KTexts.story),
+
     // Tab(text: 'Gratitude'),
   ];
   @override

@@ -5,6 +5,7 @@ import 'package:knowyourself/features/learning/model/resources_model.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/custom_container.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
 class CourseInfoCard extends StatelessWidget {
@@ -53,7 +54,7 @@ class CourseInfoCard extends StatelessWidget {
               KHelper.launchUrl(courseModel.url);
             },
             child:
-                Text("View now", style: Theme.of(context).textTheme.bodyLarge),
+                Text( KTexts.viewNow, style: Theme.of(context).textTheme.bodyLarge),
           ),
         ],
       ),

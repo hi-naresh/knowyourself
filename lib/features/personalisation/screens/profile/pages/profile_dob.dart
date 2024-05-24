@@ -4,6 +4,7 @@ import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import '../../../../../utils/constants/enums.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../controller/profile_setup_controller.dart';
 
 class ProfileDobPage extends StatelessWidget {
@@ -20,15 +21,15 @@ class ProfileDobPage extends StatelessWidget {
             onTap: () => controller.pickDate(context),
             child: InputDecorator(
               decoration: const InputDecoration(
-                labelText: "Date of Birth",
+                labelText: KTexts.birthDate,
                 border: OutlineInputBorder(),
               ),
               child: Obx(() => Text(controller.dob.value != null
                   ? KHelper.getFormattedDateString(controller.dob.value!)
-                  : 'Select date')),
+                  : KTexts.selectDate)),
             )),
         const SizedBox(height: KSizes.defaultSpace),
-        Text("What is your gender?",
+        Text(KTexts.genderQuestion,
             style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: KSizes.spaceBtwItems),
         SingleChildScrollView(

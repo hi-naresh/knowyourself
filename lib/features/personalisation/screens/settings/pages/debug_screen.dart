@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/common/widgets/appbar/appbar.dart';
 
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../controller/debug_controller.dart';
 
 class DebugScreen extends StatelessWidget {
@@ -20,7 +21,7 @@ class DebugScreen extends StatelessWidget {
           children:  <Widget>[
             ElevatedButton(
                 onPressed:()=> controller.onPressed(),
-                child: Text('Test Model')),
+                child: const Text(KTexts.testModel)),
           ],
         ),
       ),

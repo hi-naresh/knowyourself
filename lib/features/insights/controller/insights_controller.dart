@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/data/services/analytics/reflection_values/value_analysis_service.dart';
 import 'package:knowyourself/data/services/analytics/reflection_values/value_analysis.dart';
 
 import '../../../data/repo/auth/auth_repo.dart';

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:knowyourself/utils/constants/text_strings.dart';
 
 import '../../../../features/mySpace/milestones/model/milestone_model.dart';
 import '../../../../utils/constants/enums.dart';
@@ -63,7 +64,7 @@ class MilestoneRepo extends GetxController {
       case Period.monthly:
         return _monthlyMilestoneKey;
       default:
-        throw ArgumentError('Invalid milestone period');
+        throw ArgumentError(KTexts.invalidMilestonePeriodError);
     }
   }
 }

@@ -15,6 +15,7 @@ import '../common/widgets/appbar/appbar.dart';
 import '../common/widgets/navbar/bottom_nar_bar.dart';
 import '../data/helper_service/local_auth/local_bio_auth.dart';
 import '../utils/constants/sizes.dart';
+import '../utils/constants/text_strings.dart';
 
 class MasterScreen extends StatelessWidget {
   const MasterScreen({super.key});
@@ -28,25 +29,25 @@ class MasterScreen extends StatelessWidget {
             icon: "assets/icons/home.svg",
             iconSize: KSizes.iconLg,
             selectedIconColor: kApp1,
-            title: 'Home',
+            title: KTexts.home,
           ),
           BottomNavBarWidget(
             icon: "assets/icons/analysis.svg",
             iconSize: KSizes.iconLg,
             selectedIconColor: kApp2,
-            title: 'Insights',
+            title: KTexts.insights,
           ),
           BottomNavBarWidget(
             icon: "assets/icons/learn.svg",
             iconSize: KSizes.iconLg,
             selectedIconColor: kApp3,
-            title: 'Learn',
+            title: KTexts.learn,
           ),
           BottomNavBarWidget(
             icon: "assets/icons/myspace.svg",
             iconSize: KSizes.iconLg,
             selectedIconColor: kApp4,
-            title: 'Space',
+            title: KTexts.mySpace,
           ),
         ],
         currentIndex: controller.currentIndex.value,
@@ -118,7 +119,8 @@ class MasterController extends GetxController {
       if (isAuthenticated) {
         _screens[3] = const MySpaceScreen();
       } else {
-        Get.snackbar('Authentication Required', 'Please authenticate to access this section.');
+        Get.snackbar(KTexts.authenticationRequired, KTexts.pleaseAuthenticate);
+
       }
     } else {
       // Directly allow access if bio auth is disabled

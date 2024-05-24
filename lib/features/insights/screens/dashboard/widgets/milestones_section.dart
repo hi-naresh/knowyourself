@@ -51,7 +51,7 @@ class DailyMilestoneSection extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "Tasks: ${milesController.getCompletedTasksCount(Period.daily)}/",
+                      text: '${KTexts.tasks}: ${milesController.getCompletedTasksCount(Period.daily)}/',
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         // color: KColors.dark,
                         fontWeight: FontWeight.bold,

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:knowyourself/utils/constants/text_strings.dart';
 import '../../../features/learning/model/article_model.dart';
 import '../../../utils/constants/api_constants.dart';
 import '../../../utils/constants/enums.dart';
@@ -9,7 +10,7 @@ class ArticleApiClient extends GetConnect {
   Future<List<Article>> fetchArticles(LifeAspects aspect) async {
     try {
       final queryParam = aspect == LifeAspects.all
-          ? 'wellness'
+          ? 'mental health'
           : aspect.toString().split('.').last;
       final url =
           '${ApiConstants.baseUrl}/everything?q=$queryParam&apiKey=${ApiConstants.apiKey}&pageSize=20';
@@ -27,7 +28,7 @@ class ArticleApiClient extends GetConnect {
             .toList();
       }
     } catch (e) {
-      return Future.error('Something went wrong while fetching articles: $e');
+      return Future.error('${KTexts.fetchArticlesError}: $e');
     }
   }
 }

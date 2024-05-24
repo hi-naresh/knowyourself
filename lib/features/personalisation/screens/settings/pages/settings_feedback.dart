@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../controller/setting_controller.dart';
 
 class SettingsFeedback extends StatelessWidget {
@@ -17,11 +18,11 @@ class SettingsFeedback extends StatelessWidget {
         padding: const EdgeInsets.all(KSizes.defaultSpace),
         child: Column(
           children: [
-            Text("Your feedback matters.",
+            Text( KTexts.feedbackHeader,
                 style: Theme.of(context).textTheme.headlineMedium),
             const SizedBox(height: KSizes.defaultSpace),
             Text(
-              "We would love to hear from you!\nPlease share your feedback with us.",
+              KTexts.feedbackDescription,
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
@@ -30,8 +31,8 @@ class SettingsFeedback extends StatelessWidget {
               controller: controller.textController,
               onChanged: (value) => controller.setFeedback(),
               decoration: const InputDecoration(
-                labelText: 'Feedback',
-                hintText: 'Enter your feedback here',
+                labelText: KTexts.feedbackTitle,
+                hintText: KTexts.feedbackHint,
               ),
               keyboardType: TextInputType.text,
               maxLines: 8,
@@ -40,7 +41,7 @@ class SettingsFeedback extends StatelessWidget {
             const Spacer(),
             ElevatedButton(
               onPressed: () => controller.sendFeedback(),
-              child: const Text('Submit'),
+              child: const Text(KTexts.submit),
             ),
           ],
         ),

@@ -5,6 +5,7 @@ import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../../data/repo/space/milestones/milestone_repo.dart';
 import '../../../../utils/constants/enums.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../model/milestone_model.dart';
 
 class MilestoneController extends GetxController {
@@ -52,7 +53,7 @@ class MilestoneController extends GetxController {
     titleController.clear();
     descriptionController.clear();
     Get.back();
-    KHelper.showSnackBar("Milestone added successfully","success");
+    KHelper.showSnackBar(KTexts.milestoneAddedSuccessTitle, KTexts.success);
   }
 
   //add demo milestones data

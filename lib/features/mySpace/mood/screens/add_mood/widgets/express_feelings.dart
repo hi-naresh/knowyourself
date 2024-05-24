@@ -5,6 +5,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
 
 
@@ -23,7 +24,7 @@ class ExpressFeelingsPage extends StatelessWidget {
             const ProgressBar(steps: "3/3", percent: 1),
             const SizedBox(height: KSizes.defaultSpace),
             Text(
-              'What exactly are you experiencing and Why?',
+                KTexts.feelingsQuestion,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: KSizes.defaultSpace),
@@ -92,7 +93,7 @@ class ExpressFeelingsPage extends StatelessWidget {
                   textInputAction: TextInputAction.newline,
                   textAlignVertical: TextAlignVertical.top,
                   decoration: const InputDecoration(
-                    hintText: 'Describe in detail about why and how....',
+                    hintText: KTexts.describeText,
                     hintStyle: TextStyle(color: Colors.grey),
                     contentPadding: EdgeInsets.all(KSizes.sm),
                     disabledBorder: InputBorder.none,
@@ -118,13 +119,13 @@ class ExpressFeelingsPage extends StatelessWidget {
       children: [
         _buildActionButton(
           context,
-          buttonText: 'Stay Same',
+          buttonText: KTexts.staySameButtonText,
           action: controller.saveMoodData,
         ),
         const SizedBox(height: KSizes.md),
         _buildActionButton(
           context,
-          buttonText: 'Feel Better',
+          buttonText: KTexts.feelBetterButtonText,
           action: controller.shiftMood,
         ),
       ],
@@ -134,9 +135,9 @@ class ExpressFeelingsPage extends StatelessWidget {
   Widget _buildActionButton(BuildContext context, {required String buttonText, required Function action}) {
     return TextButton(
       style: ButtonStyle(
-        minimumSize: MaterialStateProperty.all(const Size(double.infinity, 55)),
-        backgroundColor: MaterialStateProperty.all(kApp1),
-        foregroundColor: MaterialStateProperty.all(Colors.white),
+        minimumSize: WidgetStateProperty.all(const Size(double.infinity, 55)),
+        backgroundColor: WidgetStateProperty.all(kApp1),
+        foregroundColor: WidgetStateProperty.all(Colors.white),
       ),
       onPressed: () {
         action();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../controller/insights_controller.dart';
 import '../../../model/core_values.dart';
 import 'reflection_painter.dart';
@@ -24,7 +25,7 @@ class ReflectionChart extends StatelessWidget {
         // Use the reactive analyzedCoreValues list directly
         return Obx(() {
           final coreValues = controller.analyzedCoreValues;
-          assert(coreValues.isNotEmpty, 'Core values should be initialized with default 0% values');
+          assert(coreValues.isNotEmpty, KTexts.emptyCoreValuesErrorMessage );
 
           // Map animations to core values for the painter
           final animatedCoreValues = List.generate(coreValues.length, (index) => CoreValue(

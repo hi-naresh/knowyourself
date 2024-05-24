@@ -2,12 +2,10 @@ import 'package:animated_emoji/emoji.dart';
 import 'package:animated_emoji/emojis.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:knowyourself/data/services/mood_shifter/mood_service.dart';
 import 'package:knowyourself/features/mySpace/mood/model/activity_info_model.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/routes.dart';
-import 'package:knowyourself/utils/constants/enums.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
@@ -206,7 +204,7 @@ class AddMoodController extends GetxController {
     loadMoodEntries();
     moodEntries.refresh();
     Get.back();
-    KHelper.showSnackBar("Saved Entry!", "Successfully stored your entry at mood board.");
+    KHelper.showSnackBar(KTexts.savedEntryTitle, KTexts.savedEntryMessage);
 
   }
 
@@ -269,15 +267,15 @@ class AddMoodController extends GetxController {
         // Navigate or display activities
         Get.toNamed(KRoutes.getActivitiesRoute());
       } else {
-        KHelper.showSnackBar("No Activities Found", "No recommended activities based on your current mood.");
+        KHelper.showSnackBar(KTexts.noActivitiesFoundTitle, KTexts.noActivitiesFoundMessage);
       }
     } catch (e) {
       // print('Error in shifting mood: $e');
-      KHelper.showSnackBar("Try again after sometime. ", "Failed to shift mood due to an server error.Try later");
+      KHelper.showSnackBar(KTexts.tryAgainTitle, KTexts.tryAgainMessage);
     }
   }
 
-  //make chnageColor function which can be used to change color of activities after every 4 activities
+  //make changeColor function which can be used to change color of activities after every 4 activities
   Color changeColor(int index) {
     if (index % 4 == 0) {
       return kApp1;

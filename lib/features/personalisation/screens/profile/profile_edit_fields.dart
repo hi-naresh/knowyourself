@@ -7,6 +7,7 @@ import 'package:knowyourself/features/personalisation/controller/profile_setup_c
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/text_strings.dart';
 
 class EditPersonalInfo extends StatelessWidget {
   const EditPersonalInfo({super.key});
@@ -16,21 +17,21 @@ class EditPersonalInfo extends StatelessWidget {
     final controller = ProfileSetupController.instance;
     return Scaffold(
       appBar: KPageBar(
-        title: 'Edit Personal Info',
+        title: '${KTexts.edit} ${KTexts.personalInfo}',
         onTap: () {
           Navigator.of(context).pop();
         },
       ),
       body: Padding(
-        padding: EdgeInsets.all(KSizes.md),
+        padding: const EdgeInsets.all(KSizes.md),
         child: Column(
           children: [
             ListTile(
-              title: Text('Your Name'),
+              title: const Text(KTexts.yourName),
               subtitle: TextField(
                 onChanged: (value) => controller.name.value = value,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   hintText: controller.userProfile.value.name,
                 ),
               ),
@@ -87,8 +88,8 @@ class EditPersonalInfo extends StatelessWidget {
             //   ),
             // ),
             ListTile(
-              title: Text('Your avatar'),
-              subtitle: Container(
+              title: const Text(KTexts.yourAvatar),
+              subtitle: SizedBox(
                 height: 160,  // Set a fixed height
                 child: ListView.builder(
                   shrinkWrap: true,
@@ -108,7 +109,7 @@ class EditPersonalInfo extends StatelessWidget {
                             backgroundColor: controller.avatar.value == avatarPath
                                 ? KColors.primary // Highlight if selected
                                 : Colors.transparent,
-                            child: index==11 ?Icon(CupertinoIcons.nosign, size: KSizes.iconXxl*2,) : SvgPicture.asset(
+                            child: index==11 ?const Icon(CupertinoIcons.nosign, size: KSizes.iconXxl*2,) : SvgPicture.asset(
                               avatarPath,
                               height: 90, // Adjusted for visual fit within the circle
                             ),
@@ -122,30 +123,30 @@ class EditPersonalInfo extends StatelessWidget {
             ),
 
             ListTile(
-              title: Text('Your Occupation'),
+              title: const Text(KTexts.yourOccupation),
               subtitle: TextField(
                 onChanged: (value) => controller.occupation.value = value,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   hintText: controller.userProfile.value.occupation,
                 ),
               ),
             ),
-            SizedBox(height: KSizes.md),
+            const SizedBox(height: KSizes.md),
             ListTile(
-              title: Text('Institution'),
+              title: const Text(KTexts.institutionLabelText),
               subtitle: TextField(
                 onChanged: (value) => controller.institution.value = value,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   hintText: controller.userProfile.value.institution,
                 ),
               ),
             ),
-            SizedBox(height: KSizes.md),
+            const SizedBox(height: KSizes.md),
             ElevatedButton(
                 onPressed: ()=> controller.updateProfile(),
-                child: const Text('Save Changes')
+                child: const Text(KTexts.saveChangesButton)
             ),
         ]
         ),

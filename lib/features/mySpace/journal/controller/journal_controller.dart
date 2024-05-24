@@ -4,6 +4,7 @@ import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../../data/repo/space/journal/journal_repo.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../model/journal_model.dart';
 import '../screens/journal_view_entry/journal_view_entry.dart';
 
@@ -120,8 +121,7 @@ class JournalController extends GetxController {
 
   void updateDate(DateTime selectedDay) {
     if (selectedDay.isAfter(DateTime.now())) {
-      KHelper.showSnackBar(
-          'Cannot select future date', 'Cannot select future dates');
+      KHelper.showSnackBar(KTexts.futureDateError1, KTexts.futureDateError2);
       return;
     }
     currentDate.value = selectedDay;

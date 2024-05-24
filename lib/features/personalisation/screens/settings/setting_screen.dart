@@ -9,6 +9,7 @@ import '../../../../data/helper_service/local_auth/local_bio_auth.dart';
 import '../../../../routes.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../controller/profile_setup_controller.dart';
 import '/features/personalisation/screens/settings/widgets/logout_pop.dart';
 import '/features/personalisation/screens/settings/widgets/settings_tile.dart';
@@ -58,14 +59,14 @@ class SettingScreen extends StatelessWidget {
                   ),
                   title: Obx(
                         ()=> Text(
-                      profileController.userProfile.value.name ?? "No user",
+                      profileController.userProfile.value.name ?? KTexts.noUser,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ),
                   subtitle: Obx(()=>
-                      Text("Reward points : ${profileController.userProfile.value.rewardPoints.toString()}")),
+                      Text("${KTexts.rewardPoints} : ${profileController.userProfile.value.rewardPoints.toString()}")),
                   trailing: FilledButton(
-                    child: const Text("Edit"),
+                    child: const Text(KTexts.edit),
                     onPressed: () {
                       // Navigate to the profile edit screen
                       Get.toNamed(KRoutes.getProfileEditRoute());
@@ -77,8 +78,8 @@ class SettingScreen extends StatelessWidget {
                 //     child: Text("Test")),
                 // ElevatedButton(onPressed: ()=> appController.getData(), child: Text("Test2")),
                 SettingTile(
-                  title: "Dark Mode",
-                  subtitle: "Switch to dark mode",
+                  title: KTexts.darkModeTitle,
+                  subtitle: KTexts.darkModeSubtitle,
                   trailing:Obx(() => CupertinoSwitch(
                     value: appController.isDarkMode.value,
                     onChanged: (value) {
@@ -91,22 +92,22 @@ class SettingScreen extends StatelessWidget {
                 ),
 
                 SettingTile(
-                    title: "Bio-metric Login",
-                    subtitle: "Login with your face/fingerprint",
+                    title: KTexts.bioMetricLoginTitle,
+                    subtitle: KTexts.bioMetricLoginSubtitle,
                     trailing: Obx(
                           ()=> CupertinoSwitch(
                         value: bioController.isAuthEnabled.value,
                         onChanged: (value) async {
                           if(value){
                             await bioController.toggleBioAuth(value);
-                            KHelper.showSnackBar("Biometric Enabled now","All your personal spaces will be locked.");
+                            KHelper.showSnackBar(KTexts.biometricEnabled, KTexts.biometricEnabledDescription);
                           }else{
                             final isAuth = await bioController.authenticateWithBiometrics();
                             if(isAuth){
                               await bioController.toggleBioAuth(value);
-                              KHelper.showSnackBar("Biometric Disabled now","All your personal spaces are unlocked.");
+                              KHelper.showSnackBar(KTexts.biometricDisabled, KTexts.biometricDisabledDescription);
                             }else{
-                              KHelper.showSnackBar("Authentication Failed","Biometric Authentication could not be disabled");
+                              KHelper.showSnackBar(KTexts.authenticationFailed, KTexts.authenticationFailedDescription);
                             }
                           }
                         },
@@ -128,17 +129,17 @@ class SettingScreen extends StatelessWidget {
 
 
                 SettingTile(
-                    title: "My Space",
-                    subtitle: "Personalize your space",
+                    title: KTexts.mySpaceTitle,
+                    subtitle: KTexts.mySpaceSubtitle,
                     onTap: ()=> Get.toNamed(KRoutes.getSettingSpaceRoute()),
                     trailing: const Icon(CupertinoIcons.forward),
                     icon: CupertinoIcons.sparkles),
 
                 SettingTile(
-                    title: "Feedback",
+                    title: KTexts.feedbackTitle,
                     onTap: ()=> Get.to(()=>const SettingsFeedback()),
-                    subtitle: "Thoughts & improvements",
-                    trailing: Icon(CupertinoIcons.forward),
+                    subtitle: KTexts.feedbackSubtitle,
+                    trailing: const Icon(CupertinoIcons.forward),
                     icon: CupertinoIcons.conversation_bubble),
                 // SettingTile(
                 //     title: "Debug Mode",
@@ -149,17 +150,17 @@ class SettingScreen extends StatelessWidget {
 
 
                 SettingTile(
-                    title: "About",
+                    title: KTexts.aboutTitle,
                     onTap: ()=> Get.toNamed(KRoutes.getAboutRoute()),
-                    subtitle: "Know more about KYB",
+                    subtitle: KTexts.aboutSubtitle,
                     trailing: const Icon(CupertinoIcons.forward),
                     icon: CupertinoIcons.layers_alt),
                 SettingTile(
                     onTap: () {
                       KHelper.showBottomSheet(const LogoutPop());
                     },
-                    title: "Logout",
-                    subtitle: "Logout from KYB",
+                    title: KTexts.logoutTitle,
+                    subtitle: KTexts.logoutSubtitle,
                     trailing: const Icon(CupertinoIcons.forward),
                     icon: CupertinoIcons.square_arrow_left),
                 const SizedBox(height: KSizes.spaceBtwSections),
@@ -171,7 +172,7 @@ class SettingScreen extends StatelessWidget {
                   height: KSizes.md,
                 ),
                 Text(
-                  "Made for SAILC",
+                  KTexts.madeForSAILC,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ],

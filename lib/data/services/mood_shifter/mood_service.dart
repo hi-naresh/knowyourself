@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:knowyourself/features/mySpace/mood/model/activity_info_model.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
+import 'package:knowyourself/utils/constants/text_strings.dart';
 
 class MoodShiftService extends GetxService {
   static MoodShiftService get instance => Get.find();
@@ -59,7 +60,7 @@ class MoodShiftService extends GetxService {
         _apiUrl = _backupUrl;
         return await fetchActivities(request, isRetry: true);
       } else {
-        throw Exception('Failed to load activities after retrying');
+        throw Exception(KTexts.fetchActivitiesError);
       }
     } finally {
       _apiUrl = _primaryUrl;
