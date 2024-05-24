@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../../data/repo/auth/auth_repo.dart';
 import '../../../routes.dart';
+import '../../../utils/constants/text_strings.dart';
 import '../../../utils/helpers/shadow_disabler.dart';
 
 class AppStateController extends GetxController {
@@ -34,7 +35,7 @@ class AppStateController extends GetxController {
       await storage.erase();
       Get.offAllNamed(KRoutes.getLoginRoute());
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/features/personalisation/controller/app_controller.dart';
 
 import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/constants/text_strings.dart';
 
 
 class LogoutPop extends StatelessWidget {
@@ -21,13 +22,13 @@ class LogoutPop extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            'Log Out',
+            KTexts.logOut,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           const SizedBox(height: KSizes.spaceBtwItems),
           Text(
-            'Are you sure you want to log out?',
+            KTexts.logOutMessage,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
@@ -35,13 +36,13 @@ class LogoutPop extends StatelessWidget {
           ElevatedButton(
             onPressed: () => controller.logoutUser(),
             style: ButtonStyle(
-              padding: MaterialStateProperty.all(
+              padding: WidgetStateProperty.all(
                 const EdgeInsets.symmetric(
                   vertical: KSizes.md,
                 ),
               ),
             ),
-            child: const Text('Log Out'),
+            child: const Text(KTexts.logOut),
           ),
           const SizedBox(height: KSizes.spaceBtwItems),
           OutlinedButton(
@@ -49,13 +50,13 @@ class LogoutPop extends StatelessWidget {
               Get.back();
             },
             style: ButtonStyle(
-              padding: MaterialStateProperty.all(
+              padding: WidgetStateProperty.all(
                 const EdgeInsets.symmetric(
                   vertical: KSizes.md,
                 ),
               ),
             ),
-            child: const Text('Cancel'),
+            child: const Text(KTexts.cancel),
           ),
         ],
       ),

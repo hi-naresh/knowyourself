@@ -49,7 +49,7 @@ class PasswordResetScreen extends StatelessWidget {
                       foregroundColor: MaterialStateProperty.all(Colors.white)),
                   onPressed: ()=> controller.resetPassword(),
                   child: Text(
-                    'Submit',
+                    KTexts.submit,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),

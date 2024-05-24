@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/utils/constants/enums.dart';
 
 import '../../../data/repo/materials/learning/learn_repo.dart';
+import '../../../utils/constants/text_strings.dart';
 import '../model/chapter_model.dart';
 import '../screens/chapters/chapter_screens.dart';
 
@@ -140,8 +140,8 @@ class LearningController extends GetxController {
 
     var isCorrect = learningMaterials[chapterIndex].quizQuestions![questionIndex].correctAnswerIndex == selectedAnswerIndex;
     Get.snackbar(
-      'Answer ${isCorrect ? 'Correct' : 'Incorrect'}',
-      isCorrect ? 'Great job!' : 'Try again!',
+      '${KTexts.answer} ${isCorrect ? KTexts.correct : KTexts.incorrect}',
+      isCorrect ? KTexts.correctMessage : KTexts.incorrectMessage,
       backgroundColor: isCorrect ? Colors.green : Colors.red,
     );
 

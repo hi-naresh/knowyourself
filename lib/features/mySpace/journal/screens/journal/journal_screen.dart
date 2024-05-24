@@ -29,10 +29,10 @@ class JournalScreen extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                            text: 'My ',
+                            text:  '${KTexts.my} ',
                             style: Theme.of(context).textTheme.headlineMedium),
                         TextSpan(
-                          text: 'Reflections',
+                          text: KTexts.reflections,
                           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                             color: kApp4,
                           ),
@@ -57,7 +57,7 @@ class JournalScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: KSizes.sm),
                       Text(
-                        "Entries",
+                        KTexts.entries,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
@@ -95,7 +95,7 @@ class JournalScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(KSizes.defaultSpace),
                       child: Center(
                         child: Text(
-                          "No Journals Entries!",
+                            "${KTexts.no} ${KTexts.journal} ${KTexts.entries} !",
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                       )));

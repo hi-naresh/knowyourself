@@ -5,6 +5,7 @@ import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/enums.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../common/widgets/my_card.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../controller/course_controller.dart';
 
 class CourseSection extends StatelessWidget {
@@ -13,12 +14,12 @@ class CourseSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final resources = [
-      {"title": "Auro Society", "color": kApp1,"type":CourseType.auroSociety},
-      {"title": "Magazines and Newsletters", "color": kApp2,"type":CourseType.magazine},
-      {"title": "Videos", "color": kApp1,"type":CourseType.video},
-      {"title": "E-books", "color": kApp4,"type":CourseType.eBooks},
-      {"title": "Guide", "color": kApp3,"type":CourseType.guide},
-      {"title": "Centers", "color": kApp4,"type":CourseType.centers},
+      {"title": KTexts.auroSocietyTitle, "color": kApp1,"type":CourseType.auroSociety},
+      {"title": KTexts.magazinesAndNewslettersTitle, "color": kApp2,"type":CourseType.magazine},
+      {"title": KTexts.videosTitle, "color": kApp1,"type":CourseType.video},
+      {"title": KTexts.eBooksTitle, "color": kApp4,"type":CourseType.eBooks},
+      {"title": KTexts.guideTitle, "color": kApp3,"type":CourseType.guide},
+      {"title": KTexts.centersTitle, "color": kApp4,"type":CourseType.centers},
 
     ];
     final controller = Get.put(CourseController());

@@ -1,9 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import 'package:http/http.dart' as http;
+
+import '../../../utils/constants/text_strings.dart';
 
 
 class FeedBackController extends GetxController {
@@ -19,7 +19,7 @@ class FeedBackController extends GetxController {
 
   Future<void> sendFeedback() async {
     if (feedback.value.isEmpty) {
-      Get.snackbar("Error", "Please enter your feedback");
+      Get.snackbar(KTexts.error, KTexts.pleaseEnterFeedback);
       return;
     }
 
@@ -39,14 +39,15 @@ class FeedBackController extends GetxController {
       if (response.statusCode == 200 && data['result'] == 'Success') {
         isSent.value = true;
         Get.back();
-        Get.snackbar("Success", "Thank you for your feedback!");
+        Get.snackbar(KTexts.success, KTexts.thankYouFeedback);
       } else {
         print(data);
-        Get.snackbar("Error", "Failed to send feedback: ${data['error']}");
+        Get.snackbar(KTexts.error, "${KTexts.failedToSendFeedback}: ${data['error']}");
+
       }
     } catch (e) {
       isLoading.value = false;
-      Get.snackbar("Error", "An error occurred: $e");
+      Get.snackbar(KTexts.error, "${KTexts.genericErrorMessage}: $e");
     }
   }
 

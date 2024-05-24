@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../data/services/articles/article_service.dart';
 import '../../../data/services/articles/article_cache.dart';
 import '../../../utils/constants/enums.dart';
+import '../../../utils/constants/text_strings.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../model/article_model.dart';
 
@@ -24,7 +25,7 @@ class ArticleController extends GetxController {
 
   void deleteCache() {
     _cacheManager.deleteCache();
-    KHelper.showSnackBar("Cache Deleted", "All cached articles have been deleted.");
+    KHelper.showSnackBar(KTexts.cacheDeletedSnackBarTitle, KTexts.deleteCacheSnackBarMessage);
   }
 
   void fetchAndSetArticles(LifeAspects aspect) async {
@@ -45,12 +46,11 @@ class ArticleController extends GetxController {
         _cacheManager.storeArticles(fetchedArticles, aspect); // Cache the fetched articles
       } else {
         // Handle empty response
-        KHelper.showSnackBar("No Articles Found", "We couldn't find articles for the selected aspect.");
+        KHelper.showSnackBar(KTexts.noArticlesFoundSnackBarTitle, KTexts.noArticlesFoundSnackBarMessage);
       }
     } catch (e) {
       // Handle error
-      KHelper.showSnackBar("Error", "Something went wrong while fetching articles: $e");
-
+      KHelper.showSnackBar(KTexts.error, "${KTexts.fetchArticlesError} $e");
     }
   }
 

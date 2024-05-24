@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../utils/constants/image_strings.dart';
+import '../../../../../utils/constants/text_strings.dart';
 
 class PLoginHeader extends StatelessWidget {
   const PLoginHeader({
@@ -19,7 +20,7 @@ class PLoginHeader extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         Text(
-          "Welcome back!",
+          KTexts.loginTitle,
           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                 fontWeight: FontWeight.w800,
               ),

@@ -8,6 +8,8 @@ import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import 'dart:convert';
 import 'package:get_storage/get_storage.dart';
 
+import '../../../../utils/constants/text_strings.dart';
+
 class ChoiceController extends GetxController {
   static ChoiceController get instance => Get.find();
 
@@ -115,7 +117,7 @@ class ChoiceController extends GetxController {
   void submitAnswers() {
     // This will automatically save the current state of answers to storage
     Get.offAllNamed(KRoutes.getMasterRoute());
-    KHelper.showSnackBar('Saved your choices!', 'Answers submitted successfully');
+    KHelper.showSnackBar(KTexts.savedChoices, KTexts.answersSubmittedSuccessfully);
   }
 
   bool get isFirstQuestion => pageIndex.value == 0;

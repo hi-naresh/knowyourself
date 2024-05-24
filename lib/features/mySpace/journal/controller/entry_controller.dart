@@ -10,6 +10,7 @@ import 'package:knowyourself/features/personalisation/controller/user_controller
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../../../utils/constants/text_strings.dart';
 import '../model/journal_model.dart';
 import 'journal_controller.dart';
 
@@ -41,7 +42,7 @@ class EntryController extends GetxController {
   Future<void> saveJournalEntry() async {
     if (textEditingController.text.isEmpty) {
       // Handle the case where there is no text entry
-      KHelper.showSnackBar('Error', 'Journal entry cannot be empty');
+      KHelper.showSnackBar(KTexts.error, KTexts.journalEntryEmpty);
       return;
     }
 
@@ -62,7 +63,7 @@ class EntryController extends GetxController {
 
     // Clear the data in EntryController after saving
     deFocusKeyboard(Get.context!);
-    KHelper.showSnackBar('Saved Reflection !', 'Reflection entry saved successfully');
+    KHelper.showSnackBar(KTexts.savedReflectionTitle, KTexts.savedReflectionMessage);
     textEditingController.clear();
     selectedImage.value = null;
     voiceNotePath.value = null;
@@ -76,7 +77,7 @@ class EntryController extends GetxController {
       selectedImage.value = image;
     } catch (e) {
       await Permission.photos.request();
-      KHelper.showSnackBar('Permission denied', 'Please enable permission to access photos');
+      KHelper.showSnackBar(KTexts.permissionDeniedTitle, KTexts.enablePhotoPermission);
     }
   }
 
@@ -91,7 +92,7 @@ class EntryController extends GetxController {
       // selectedImage.map((list) => list?.add(image));
     } catch (e) {
       await Permission.camera.request();
-      KHelper.showSnackBar('Permission denied', 'Please enable permission to access camera');
+      KHelper.showSnackBar(KTexts.permissionDeniedTitle, KTexts.enableCameraPermission);
       openAppSettings();
     }
   }
@@ -141,7 +142,7 @@ class EntryController extends GetxController {
       location.value = await getLocation();
     } else {
       // Handle location permission denied
-      KHelper.showSnackBar('Permission denied', 'Please enable location permission');
+      KHelper.showSnackBar(KTexts.permissionDeniedTitle, KTexts.enableLocationPermission);
       openAppSettings();
     }
   }
@@ -159,14 +160,14 @@ class EntryController extends GetxController {
             userPosition.value!.latitude, userPosition.value!.longitude);
         // location.value = placemarks.first.name ?? "No nearby area found";
         // print("Location: ${placemarks.first.name}");
-        return placemarks.first.name ?? "No nearby area found";
+        return placemarks.first.name ?? KTexts.noNearbyAreaFound;
       } else {
-        return "No nearby area found";
+        return KTexts.noNearbyAreaFound;
       }
     } catch (e) {
       // Handling any errors that occur during the reverse geocoding process
       print("Failed to get nearby area: $e");
-      return "Failed to get nearby area";
+      return KTexts.failedToGetNearbyArea;
     }
   }
 

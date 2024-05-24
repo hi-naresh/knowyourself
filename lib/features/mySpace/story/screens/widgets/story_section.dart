@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/common/widgets/custom_container.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../controller/my_story_controller.dart';
 import '../../model/story_model.dart';
 
@@ -26,49 +27,48 @@ class StorySection extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(storyType == StoryType.current ? 'Present Story' : "You're hero",
+              Text(storyType == StoryType.current ? KTexts.story2 : KTexts.hero,
                   style: Theme.of(context).textTheme.headlineSmall),
               const Spacer(),
               TextButton(
                   style: const ButtonStyle().copyWith(
-                      backgroundColor: MaterialStateProperty.all(kApp4),
-                      foregroundColor: MaterialStateProperty.all(Colors.white)
+                      backgroundColor: WidgetStateProperty.all(kApp4),
+                      foregroundColor: WidgetStateProperty.all(Colors.white)
                   ),
                   onPressed: () => controller.updateStory(storyType),
-                  child: const Text('Update',)),
+                  child: const Text(KTexts.update,)),
               const SizedBox(width: KSizes.sm),
               TextButton(
                   style: const ButtonStyle().copyWith(
-                      backgroundColor: MaterialStateProperty.all(kApp4),
-                      foregroundColor: MaterialStateProperty.all(Colors.white)
+                      backgroundColor: WidgetStateProperty.all(kApp4),
+                      foregroundColor: WidgetStateProperty.all(Colors.white)
                   ),
                   onPressed: () => controller.deleteStory( storyType),
-                  child: const Text('Delete',))
+                  child: const Text(KTexts.delete,))
 
             ],
           ),
           const SizedBox(height: KSizes.sm),
           Text(storyType == StoryType.current ?
-          'Describe your ongoing life story in brief.' :
-          'Imagine you are narrating your story on tedX Stage. What will it be like?',
+          KTexts.describeOngoingLifeStory : KTexts.imagineNarratingOnTedXStage,
               style: Theme.of(context).textTheme.labelMedium),
 
           const SizedBox(height: KSizes.defaultSpace),
           if (isEditing) ...[
-            _buildTextField(controller.characterCtrl, 'Character'),
-            _buildTextField(controller.aspirationCtrl, 'Aspiration'),
-            _buildTextField(controller.qualitiesCtrl, 'Qualities'),
-            _buildTextField(controller.scenarioCtrl, 'Scenario'),
-            _buildTextField(controller.skillsCtrl, 'Skills'),
+            _buildTextField(controller.characterCtrl, KTexts.character),
+            _buildTextField(controller.aspirationCtrl, KTexts.aspiration),
+            _buildTextField(controller.qualitiesCtrl, KTexts.qualities),
+            _buildTextField(controller.scenarioCtrl, KTexts.scenario),
+            _buildTextField(controller.skillsCtrl, KTexts.skills),
             const SizedBox(height: KSizes.defaultSpace),
             TextButton(
                 style: const ButtonStyle().copyWith(
-                  minimumSize: MaterialStateProperty.all(const Size(double.infinity, 50)),
-                    backgroundColor: MaterialStateProperty.all(kApp4),
-                    foregroundColor: MaterialStateProperty.all(Colors.white)
+                  minimumSize: WidgetStateProperty.all(const Size(double.infinity, 50)),
+                    backgroundColor: WidgetStateProperty.all(kApp4),
+                    foregroundColor: WidgetStateProperty.all(Colors.white)
                 ),
                 onPressed: () => controller.saveOrUpdateStory(storyType),
-                child: Text('Save Story',
+                child: Text('${KTexts.save} ${KTexts.story}',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold
@@ -76,11 +76,11 @@ class StorySection extends StatelessWidget {
                   ),)
             )
           ] else ...[
-            Text("Character: ${story!.character}"),
-            Text("Aspiration: ${story?.aspiration}"),
-            Text("Qualities: ${story?.qualities}"),
-            Text("Scenario: ${story?.scenario}"),
-            Text("Skills: ${story?.skills}"),
+            Text("${KTexts.character}: ${story!.character}"),
+            Text("${KTexts.aspiration}: ${story?.aspiration}"),
+            Text("${KTexts.qualities}: ${story?.qualities}"),
+            Text("${KTexts.scenario}: ${story?.scenario}"),
+            Text("${KTexts.skills}: ${story?.skills}"),
           ]
         ],
       ),
@@ -95,7 +95,7 @@ class StorySection extends StatelessWidget {
         decoration: InputDecoration(
           // labelText: label,
           // labelStyle: Get.context!.textTheme.labelMedium,
-          hintText: 'Your $label',
+          hintText: '${KTexts.your} $label',
           hintStyle: Get.context!.textTheme.labelMedium,
         ),
       ),

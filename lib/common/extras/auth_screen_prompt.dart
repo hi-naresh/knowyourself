@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:knowyourself/features/master.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
+
+import '../../utils/constants/text_strings.dart';
 class AuthScreenPrompt extends StatelessWidget {
 
   const AuthScreenPrompt({super.key});
@@ -19,9 +21,9 @@ class AuthScreenPrompt extends StatelessWidget {
             textAlign: TextAlign.center,
             TextSpan(
               children: [
-                TextSpan(text: "My Space is Locked", style: Theme.of(context).textTheme.headlineSmall),
+                TextSpan(text: KTexts.mySpaceIsLocked, style: Theme.of(context).textTheme.headlineSmall),
                 TextSpan(
-                    text:"\nUse your fingerprint or face ID to view.",
+                    text: KTexts.useFingerprintOrFaceId,
                     style: Theme.of(context).textTheme.labelLarge),
               ],
             ),
@@ -32,7 +34,7 @@ class AuthScreenPrompt extends StatelessWidget {
               final masterController = MasterController.instance;
               masterController.authenticateBeforeAccess();
             },
-            child: const Text("View My Space", style: TextStyle(color: kApp4Light),),
+            child: const Text(KTexts.viewMySpace, style: TextStyle(color: kApp4Light),),
           ),
         ],
       ),

@@ -7,6 +7,7 @@ import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
+import '../../../../utils/constants/text_strings.dart';
 import '../../controller/chapter_controller.dart';
 import '../../model/chapter_model.dart';
 
@@ -22,7 +23,7 @@ class ChapterLearningScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: KPageBar(
-        title: "Learning Materials",
+        title: KTexts.learningMaterialsTitle,
         onTap: () => Get.back(),
       ),
       body: Obx(() => ListView.builder(
@@ -115,12 +116,12 @@ class ChapterContentView extends StatelessWidget {
           if (pageIndex == totalLength - 1)
             ElevatedButton(
               onPressed: ()=> controller.chapterCompleted(index),
-              child: Text('Complete Chapter'),
+              child: const Text(KTexts.completeChapter),
             ),
           if (pageIndex < totalLength - 1)
             ElevatedButton(
               onPressed: () => controller.jumpToNextPage(index),
-              child: Text('Next Page'),
+              child: const Text(KTexts.nextPage),
             ),
         ],
       ),
@@ -169,7 +170,7 @@ class ChapterContentView extends StatelessWidget {
           if (controller.getSelectedOptionForQuestion(chapterIndex, questions.length - 1) != null)
             ElevatedButton(
               onPressed: () => controller.chapterCompleted(index),
-              child: Text('Complete Chapter'),
+              child: const Text(KTexts.completeChapter),
             ),
         ],
       ),
@@ -185,7 +186,7 @@ class CongratulationsScreen extends StatelessWidget {
     final LearningController controller = Get.find();
     return Scaffold(
       appBar: KPageBar(
-        title: "Congratulations!",
+        title: KTexts.congratulationsTitle,
         onTap: () => controller.closeChapterContent(),
       ),
       body: Padding(
@@ -203,7 +204,7 @@ class CongratulationsScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: KSizes.defaultSpace),
                     Text(
-                      "Congratulations! You have completed the chapter.",
+                      KTexts.congratulationsMessage,
                       textAlign: TextAlign.justify,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
@@ -215,7 +216,7 @@ class CongratulationsScreen extends StatelessWidget {
                 controller.closeChapterContent();
                 Get.back();
               },
-              child: Text('Close'),
+              child: const Text(KTexts.close),
             ),
           ],
         ),

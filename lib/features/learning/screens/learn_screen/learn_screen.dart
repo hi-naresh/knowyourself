@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:knowyourself/features/learning/screens/chapters/chapter_screens.dart';
-import 'package:knowyourself/features/learning/screens/learn_screen/widgets/progress_bar.dart';
 import 'package:knowyourself/features/learning/screens/materials/course_widget.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
@@ -103,7 +102,7 @@ class LearnScreen extends StatelessWidget {
               // ),
               const SizedBox(height: KSizes.defaultSpace),
               Text(
-                "Resources Available",
+                KTexts.learnHead4,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: KSizes.spaceBtwItems),

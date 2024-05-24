@@ -2,11 +2,12 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../../../utils/constants/text_strings.dart';
 import '../model/gratitude_model.dart';
 
 class GratitudeController extends GetxController {
   static GratitudeController get instance => Get.find();
-  final Rx<GratitudeModel> gratitudeModel = GratitudeModel(title: "I did a random act of ").obs;
+  final Rx<GratitudeModel> gratitudeModel = GratitudeModel(title:  KTexts.randomAct).obs;
   final TextEditingController celebrationTextEditingController = TextEditingController();
   final RxString _celebrationString = ''.obs;
   final GetStorage _storage = GetStorage();

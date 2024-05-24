@@ -3,6 +3,7 @@ import 'package:animated_emoji/animated_emoji.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/helpers/progress_bar.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
 import '../../../controller/add_mood_controller.dart';
 import 'helpers/full_circle_slider.dart';
@@ -27,7 +28,7 @@ class MoodSelectPage extends StatelessWidget {
             AspectSpecificContent(controller: controller),
             ElevatedButton(
                 onPressed: ()=> controller.nextPage(),
-                child: const Text('Next')),
+                child: const Text(KTexts.next)),
           ],
         ),
       ),
@@ -71,7 +72,7 @@ class MentalPage extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'How do you feel Mentally?',
+          KTexts.mentalFeelings,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: KSizes.defaultSpace),
@@ -121,7 +122,7 @@ class PhysicalPage extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'How do you feel physically?',
+          KTexts.physicalFeelings,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: KSizes.defaultSpace),
@@ -173,7 +174,7 @@ class EmotionalPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            "How Are You\n Feeling?",
+          KTexts.howAreYouFeeling,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
               fontSize: KSizes.xxl,
@@ -236,7 +237,7 @@ class EmotionalPage extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "Emotion\n",
+                      text: KTexts.emotion,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     TextSpan(
@@ -263,7 +264,7 @@ class SpiritualPage extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'How do you feel Spiritually?',
+         KTexts.spiritualFeelings,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: KSizes.defaultSpace),

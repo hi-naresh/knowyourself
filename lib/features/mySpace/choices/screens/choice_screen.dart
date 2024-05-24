@@ -15,7 +15,7 @@ class ChoiceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ChoiceController());
     return Scaffold(
-      appBar: const KAppBar(title: 'User Review', back: true),
+      appBar: const KAppBar(title: '${KTexts.user} ${KTexts.review}', back: true),
       body: Obx(() {
         final currentQuestion = controller.questionnaire[controller.pageIndex.value];
         // final answers = List<String>.filled(3, ''); // Create a list that can be modified
@@ -48,7 +48,7 @@ class ChoiceScreen extends StatelessWidget {
                             onChanged: (value) => controller.setAnswer(controller.pageIndex.value, index, value),
                             decoration: InputDecoration(
                               icon: Text('${index + 1}'),
-                              hintText: 'Type your answer',
+                              hintText: KTexts.answerHintText,
                             ),
                           ),
                         ),
@@ -82,11 +82,11 @@ class ChoiceScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   if (!controller.isFirstQuestion)
-                    FilledButton(onPressed: controller.previousQuestion, child: const Text('Previous')),
+                    FilledButton(onPressed: controller.previousQuestion, child: const Text(KTexts.previous)),
                   if (!controller.isLastQuestion)
-                    FilledButton(onPressed: controller.nextQuestion, child: const Text('Next')),
+                    FilledButton(onPressed: controller.nextQuestion, child: const Text(KTexts.next)),
                   if (controller.isLastQuestion)
-                    FilledButton(onPressed: controller.submitAnswers, child: const Text('Submit')),
+                    FilledButton(onPressed: controller.submitAnswers, child: const Text(KTexts.submit)),
                 ],
               ),
             ),

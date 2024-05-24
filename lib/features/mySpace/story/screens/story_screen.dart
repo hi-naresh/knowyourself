@@ -22,10 +22,10 @@ class MyStoryScreen extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                    text: 'My ',
+                    text: '${KTexts.my} ',
                     style: Theme.of(context).textTheme.headlineMedium),
                 TextSpan(
-                  text: 'Story',
+                  text: KTexts.story,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: kApp4,
                   ),

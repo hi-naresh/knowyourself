@@ -5,6 +5,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/enums.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 
 class MilestoneAdd extends StatelessWidget {
@@ -23,10 +24,10 @@ class MilestoneAdd extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                    text: 'Add ',
+                    text: '${KTexts.add} ',
                     style: Theme.of(context).textTheme.headlineMedium),
                 TextSpan(
-                  text: 'Milestones',
+                  text: KTexts.milestones.capitalizeFirst,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: kApp4,
                   ),
@@ -39,7 +40,7 @@ class MilestoneAdd extends StatelessWidget {
             controller: controller.titleController,
             decoration: InputDecoration(
               // labelText: 'Title',
-              hintText: 'Task to achieve in specific period',
+                hintText: KTexts.hintText,
               hintStyle: Theme.of(context).textTheme.labelMedium
             ),
           ),
@@ -47,13 +48,13 @@ class MilestoneAdd extends StatelessWidget {
           TextField(
             controller: controller.descriptionController,
             decoration: InputDecoration(
-                hintText: 'Description of the task (optional)',
+                hintText: KTexts.hintText2,
                 hintStyle: Theme.of(context).textTheme.labelMedium
 
             ),
           ),
           const SizedBox(height: KSizes.defaultSpace),
-          Text('Set how often to remind you to complete this task',
+          Text( KTexts.reminderText,
               style: Theme.of(context).textTheme.bodyMedium),
           const SizedBox(height: KSizes.sm),
           SingleChildScrollView(
@@ -89,13 +90,13 @@ class MilestoneAdd extends StatelessWidget {
           const Spacer(),
           TextButton(
               style: const ButtonStyle().copyWith(
-                  minimumSize: MaterialStateProperty.all(
+                  minimumSize: WidgetStateProperty.all(
                       const Size(double.infinity, 50)),
-                  backgroundColor: MaterialStateProperty.all(kApp4),
-                  foregroundColor: MaterialStateProperty.all(Colors.white)),
+                  backgroundColor: WidgetStateProperty.all(kApp4),
+                  foregroundColor: WidgetStateProperty.all(Colors.white)),
               onPressed: ()=>controller.addMilestone(),
               child: Text(
-                'Add milestone',
+                '${KTexts.add} ${KTexts.milestones2}',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Colors.white, fontWeight: FontWeight.bold),
               ))

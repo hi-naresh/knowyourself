@@ -5,6 +5,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../../utils/constants/colors.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
 import '../../../controller/add_mood_controller.dart';
 
@@ -38,11 +39,11 @@ class AspectSelectPage extends StatelessWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: 'Select an Aspect',
+                        text: KTexts.selectAnAspect,
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       TextSpan(
-                          text: '\n\nChoose an aspect to describe your current state. Select one to proceed.',
+                          text: KTexts.aspectDescription,
                           style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
@@ -133,7 +134,7 @@ class AspectSelectPage extends StatelessWidget {
                     foregroundColor: MaterialStateProperty.all(Colors.white)),
                 onPressed: ()=> controller.nextPage(),
                 child: Text(
-                  'Next',
+                  KTexts.next,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 )),

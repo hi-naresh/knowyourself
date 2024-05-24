@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:knowyourself/utils/constants/enums.dart';
 
+import '../../../utils/constants/text_strings.dart';
+
 class QuizQuestion {
   final String question;
   final List<String> options;
@@ -27,7 +29,7 @@ class QuizQuestion {
 
   factory QuizQuestion.fromMap(Map<String, dynamic> map) {
     if (map['correctAnswerIndex'] == null) {
-      throw Exception('Quiz question lacks a correct answer index.');
+      throw Exception(KTexts.quizQuestionError);
     }
 
     return QuizQuestion(

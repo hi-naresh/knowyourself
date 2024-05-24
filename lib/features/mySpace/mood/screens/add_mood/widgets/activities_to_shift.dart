@@ -8,6 +8,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../utils/constants/text_strings.dart';
 import '../../../controller/add_mood_controller.dart';
 import '../../../model/activity_info_model.dart';
 import 'helpers/activity_tile.dart';
@@ -28,7 +29,7 @@ class ActivitiesToShiftScreen extends StatelessWidget {
         padding: const EdgeInsets.all( KSizes.defaultSpace),
         child: Column(
           children: [
-            Text("Enlighten yourself By",
+            Text(KTexts.moodLighten,
             style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: KSizes.defaultSpace),
@@ -103,7 +104,7 @@ class ActivitiesToShiftScreen extends StatelessWidget {
 
             ElevatedButton(
                 onPressed: ()=> Get.offAllNamed(KRoutes.getMasterRoute()),
-                child: const Text('Go to Dashboard')),
+                child: const Text(KTexts.goToDashboard)),
           ],
         ),
       ),

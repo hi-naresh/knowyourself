@@ -25,10 +25,10 @@ class MoodBoard extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                    text: 'My ',
+                    text: '${KTexts.my} ',
                     style: Theme.of(context).textTheme.headlineMedium),
                 TextSpan(
-                  text: 'Mood Board',
+                  text: KTexts.moodBoardTitle,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         color: kApp4,
                       ),
@@ -49,7 +49,7 @@ class MoodBoard extends StatelessWidget {
               () {
                 if (controller.moodEntries.isEmpty) {
                   return const Center(
-                    child: Text("No Mood Entries Yet"),
+                    child: Text(KTexts.noMoodEntries),
                   );
                 }
                 return ListView.builder(

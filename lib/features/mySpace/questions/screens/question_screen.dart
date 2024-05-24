@@ -14,8 +14,6 @@ class QuestionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(QuestionController());
-
-
     return Column(
       children: [
         _buildAddQuestionSection(context, controller),
@@ -34,10 +32,10 @@ class QuestionsScreen extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                    text: 'My ',
+                    text: '${KTexts.my} ',
                     style: Theme.of(context).textTheme.headlineMedium),
                 TextSpan(
-                  text: 'Questions',
+                  text: KTexts.questions,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         color: kApp4,
                       ),
@@ -54,12 +52,12 @@ class QuestionsScreen extends StatelessWidget {
           TextFormField(
             controller: controller.questionController,
             decoration: InputDecoration(
-              labelText: 'Add a life challenging question',
+              labelText: KTexts.addLifeChallengingQuestion,
               labelStyle: Theme.of(context).textTheme.labelMedium,
             ),
           ),
           const SizedBox(height: KSizes.defaultSpace),
-          Text('Set Reminder Period',
+          Text( KTexts.setReminderPeriod,
               style: Theme.of(context).textTheme.bodyLarge),
           const SizedBox(height: KSizes.sm),
           SingleChildScrollView(
@@ -95,13 +93,13 @@ class QuestionsScreen extends StatelessWidget {
           const SizedBox(height: KSizes.md),
           TextButton(
               style: const ButtonStyle().copyWith(
-                  minimumSize: MaterialStateProperty.all(
+                  minimumSize: WidgetStateProperty.all(
                       const Size(double.infinity, 50)),
-                  backgroundColor: MaterialStateProperty.all(kApp4),
-                  foregroundColor: MaterialStateProperty.all(Colors.white)),
+                  backgroundColor: WidgetStateProperty.all(kApp4),
+                  foregroundColor: WidgetStateProperty.all(Colors.white)),
               onPressed: controller.addQuestion,
               child: Text(
-                'Add Question',
+                '${KTexts.add} ${KTexts.questions2}',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Colors.white, fontWeight: FontWeight.bold),
               ))
@@ -119,7 +117,7 @@ class QuestionsScreen extends StatelessWidget {
             return ListTile(
               splashColor: Colors.transparent,
               title: Text(question.title),
-              subtitle: Text('Answer: ${question.answer.capitalizeFirst}'),
+              subtitle: Text('${KTexts.answer}: ${question.answer.capitalizeFirst}'),
               trailing: question.isAnswered
                   ? Row(
                       mainAxisSize: MainAxisSize.min,
@@ -154,24 +152,24 @@ class QuestionsScreen extends StatelessWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text('Answer the Question'),
+            title: const Text(KTexts.answerTheQuestion),
             content: TextFormField(
               controller: answerController,
-              decoration: const InputDecoration(hintText: 'Your Answer'),
+              decoration: const InputDecoration(hintText: '${KTexts.your} ${KTexts.answer}'),
             ),
             actions: [
               TextButton(
                   style: const ButtonStyle().copyWith(
-                      minimumSize: MaterialStateProperty.all(
+                      minimumSize: WidgetStateProperty.all(
                           const Size(double.infinity, 50)),
-                      backgroundColor: MaterialStateProperty.all(kApp4),
-                      foregroundColor: MaterialStateProperty.all(Colors.white)),
+                      backgroundColor: WidgetStateProperty.all(kApp4),
+                      foregroundColor: WidgetStateProperty.all(Colors.white)),
                   onPressed: () {
                     Navigator.of(context).pop();
                     controller.addAnswer(questionId, answerController.text);
                   },
                   child: Text(
-                    'Add Answer',
+                    '${KTexts.add} ${KTexts.answer}',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ))

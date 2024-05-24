@@ -8,6 +8,7 @@ import 'package:knowyourself/features/mySpace/story/screens/story_screen.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../common/styles/styles.dart';
 import '../../utils/constants/colors.dart';
+import '../../utils/constants/text_strings.dart';
 import '../../utils/helpers/helper_functions.dart';
 
 class MySpaceScreen extends StatelessWidget {
@@ -35,7 +36,7 @@ class MySpaceScreen extends StatelessWidget {
               isScrollable: true,
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
               tabAlignment: TabAlignment.center,
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
               labelPadding: const EdgeInsets.symmetric(horizontal: 20),
               // labelStyle: h3,
               // tabAlignment: TabAlignment.center,
@@ -71,12 +72,13 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
   final RxInt tabIndex = 0.obs;
   late TabController tabController;
 
-  final tabs = const [
-    Tab(text: 'Reflections'),
-    Tab(text: 'Mood'),
-    Tab(text: 'Milestones'),
-    Tab(text: 'Questions'),
-    Tab(text: 'Story'),
+  final tabs = [
+    const Tab(text: KTexts.reflections),
+    const Tab(text: KTexts.mood),
+    Tab(text: KTexts.milestones.capitalizeFirst),
+    const Tab(text: KTexts.questions),
+    const Tab(text: KTexts.story),
+
     // Tab(text: 'Gratitude'),
   ];
   @override
