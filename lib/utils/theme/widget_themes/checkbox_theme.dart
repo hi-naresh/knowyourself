@@ -20,7 +20,7 @@ class KCheckboxTheme {
       if (states.contains(MaterialState.selected)) {
         return KColors.primary;
       } else {
-        return Colors.transparent;
+        return KColors.transparent;
       }
     }),
   );
@@ -28,7 +28,7 @@ class KCheckboxTheme {
   /// Customizable Dark Text Theme
   static CheckboxThemeData darkCheckboxTheme = CheckboxThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(KSizes.xs)),
-    checkColor: MaterialStateProperty.resolveWith((states) {
+    checkColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(MaterialState.selected)) {
         return KColors.white;
       } else {
@@ -39,7 +39,7 @@ class KCheckboxTheme {
       if (states.contains(MaterialState.selected)) {
         return KColors.primary;
       } else {
-        return Colors.transparent;
+        return KColors.transparent;
       }
     }),
   );

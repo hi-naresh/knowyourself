@@ -45,31 +45,31 @@ class JournalController extends GetxController {
   Color getColorForCoreValue() {
     switch (maxCoreValue()) {
       case 'progress':
-        return valueProgress;
+        return KColors.valueProgress;
       case 'receptivity':
-        return valueReceptivity;
+        return KColors.valueReceptivity;
       case 'aspiration':
-        return valueAspiration;
+        return KColors.valueAspiration;
       case 'perseverance':
-        return valuePerseverance;
+        return KColors.valuePerseverance;
       case 'gratitude':
-        return valueGratitude;
+        return KColors.valueGratitude;
       case 'humility':
-        return valueHumility;
+        return KColors.valueHumility;
       case 'sincerity':
-        return valueSincerity;
+        return KColors.valueSincerity;
       case 'peace':
-        return valuePeace;
+        return KColors.valuePeace;
       case 'equanimity':
-        return valueEquanimity;
+        return KColors.valueEquanimity;
       case 'generosity':
-        return valueGenerosity;
+        return KColors.valueGenerosity;
       case 'goodness':
-        return valueGoodness;
+        return KColors.valueGoodness;
       case 'courage':
-        return valueCourage;
+        return KColors.valueCourage;
       default:
-        return kEmptyProgress;
+        return KColors.kEmptyProgress;
     }
   }
 

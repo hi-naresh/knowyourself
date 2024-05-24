@@ -16,14 +16,14 @@ class MySpaceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const selectedColor = kApp4;
+    const selectedColor = KColors.kApp4;
     final controller = MySpaceController.instance;
     return Column(
         children: [
           Container(
             clipBehavior: Clip.none,
             decoration: BoxDecoration(
-              color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
+              color: KHelper.isDarkMode(context) ? KColors.kEmptyProgressDark : KColors.kEmptyProgress,
               borderRadius: BorderRadius.circular(KSizes.cardRadiusLg),
             ),
             margin: const EdgeInsets.all(KSizes.md),
@@ -32,11 +32,11 @@ class MySpaceScreen extends StatelessWidget {
               controller: controller.tabController,
               dividerHeight: 0,
               indicator: KStyles.containerDecoration(selectedColor),
-              labelColor: Colors.white,
+              labelColor: KColors.white,
               isScrollable: true,
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
               tabAlignment: TabAlignment.center,
-              overlayColor: WidgetStateProperty.all(Colors.transparent),
+              overlayColor: WidgetStateProperty.all(KColors.transparent),
               labelPadding: const EdgeInsets.symmetric(horizontal: 20),
               // labelStyle: h3,
               // tabAlignment: TabAlignment.center,

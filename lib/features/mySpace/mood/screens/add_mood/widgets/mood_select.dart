@@ -93,7 +93,7 @@ class MentalPage extends StatelessWidget {
                     radius: 30,
                     backgroundColor: controller.selectedMental.value == controller.mentalList[index]
                         ? KColors.primary  // Highlight if selected
-                        : Colors.transparent,
+                        :KColors.transparent,
                     child: Text(
                       controller.mentalList[index],
                       style: Theme.of(context).textTheme.bodyLarge,
@@ -143,7 +143,7 @@ class PhysicalPage extends StatelessWidget {
                   radius: 30,
                   backgroundColor: controller.selectedPhysical.value == controller.physicalList[index]
                       ? KColors.primary  // Highlight if selected
-                      : Colors.transparent,
+                      :KColors.transparent,
                   child: Text(
                     controller.physicalList[index],
                     style: Theme.of(context).textTheme.bodyLarge,
@@ -199,7 +199,7 @@ class EmotionalPage extends StatelessWidget {
                   color: Colors.white70,
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: Colors.white,
+                    color: KColors.white,
                     width: 1,
                   ),
                   boxShadow: CustomShadow.getShadow([
@@ -285,7 +285,7 @@ class SpiritualPage extends StatelessWidget {
                     radius: 30,
                     backgroundColor: controller.selectedSpiritual.value == controller.spiritualList[index]
                         ? KColors.primary  // Highlight if selected
-                        : Colors.transparent,
+                        :KColors.transparent,
                     child: Text(
                       controller.spiritualList[index],
                       style: Theme.of(context).textTheme.bodyLarge,

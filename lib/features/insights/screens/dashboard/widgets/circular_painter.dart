@@ -21,7 +21,7 @@ class ToDoPainter extends CustomPainter {
 
     Paint paint = Paint();
 
-    paint.color = kProgress;
+    paint.color = KColors.kProgress;
     paint.strokeCap = StrokeCap.round;
     paint.style = PaintingStyle.stroke;
     //inner shadow
@@ -31,7 +31,7 @@ class ToDoPainter extends CustomPainter {
     canvas.drawCircle(radialPosition, radius, paint);
 
     Paint radialProgress = Paint();
-    radialProgress.color = kApp4Dark;
+    radialProgress.color = KColors.kApp4Dark;
     radialProgress.strokeCap = StrokeCap.round;
     radialProgress.style = PaintingStyle.stroke;
     radialProgress.strokeWidth = strokeWidth;

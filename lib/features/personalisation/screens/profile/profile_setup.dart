@@ -4,6 +4,7 @@ import 'package:knowyourself/common/widgets/appbar/pagebar.dart';
 import 'package:knowyourself/features/personalisation/screens/profile/pages/profile_avatar.dart';
 import 'package:knowyourself/features/personalisation/screens/profile/pages/profile_dob.dart';
 import 'package:knowyourself/features/personalisation/screens/profile/pages/profile_member_type.dart';
+import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../controller/profile_setup_controller.dart';
 
@@ -35,7 +36,7 @@ class ProfileSetupScreen extends StatelessWidget {
         body: PopScope(child: pages[controller.pageIndex.value]),
         bottomNavigationBar: BottomAppBar(
             elevation: 0,
-            color: Colors.transparent,
+            color: KColors.transparent,
             child: controller.pageIndex.value == 2
                 ? ElevatedButton(
               onPressed: controller.finishOnboarding,

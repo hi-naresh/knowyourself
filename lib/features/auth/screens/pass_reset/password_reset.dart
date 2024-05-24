@@ -43,15 +43,15 @@ class PasswordResetScreen extends StatelessWidget {
               const SizedBox(height: 20),
               TextButton(
                   style: const ButtonStyle().copyWith(
-                      minimumSize: MaterialStateProperty.all(
+                      minimumSize: WidgetStateProperty.all(
                           const Size(double.infinity, 50)),
-                      backgroundColor: MaterialStateProperty.all(kApp1),
-                      foregroundColor: MaterialStateProperty.all(Colors.white)),
+                      backgroundColor: WidgetStateProperty.all(KColors.kApp1),
+                      foregroundColor: WidgetStateProperty.all(Colors.white)),
                   onPressed: ()=> controller.resetPassword(),
                   child: Text(
                     KTexts.submit,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                        color: KColors.white, fontWeight: FontWeight.bold),
                   )),
             ],
           ),

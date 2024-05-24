@@ -44,17 +44,17 @@ class ChapterLearningScreen extends StatelessWidget {
                   trailing: material.progress == 1 ?
                   const Icon(
                   CupertinoIcons.checkmark_alt_circle_fill,
-                  color: kApp3,
+                  color: KColors.kApp3,
                   size: KSizes.iconLg,
                 ) : material.progress > 0 ?
                   CircularProgressIndicator(
                 strokeWidth: 6.0,
                 value: material.progress,
                 backgroundColor: KHelper.isDark()
-                    ? kEmptyProgressDark
-                    : kEmptyProgress,
+                    ? KColors.kEmptyProgressDark
+                    : KColors.kEmptyProgress,
                 valueColor: AlwaysStoppedAnimation<Color>(
-                    KHelper.isDark() ? kEmptyProgressDark : kApp3),
+                    KHelper.isDark() ? KColors.kEmptyProgressDark : KColors.kApp3),
               ) : null,
                   onTap: () => controller.navigateToChapterContent(index),
                 ),
@@ -92,6 +92,7 @@ class ChapterContentView extends StatelessWidget {
           if (pageIndex < material.contentChunks.length) {
             return buildContentPage(context, material.contentChunks[pageIndex], pageIndex, material.contentChunks.length);
           }
+          return null;
           // else {
           //   return buildQuizPage(context, material.quizQuestions ?? [], index);
           // }
@@ -199,7 +200,7 @@ class CongratulationsScreen extends StatelessWidget {
                   children: [
                     const Icon(
                       CupertinoIcons.checkmark_alt_circle_fill,
-                      color: kApp3,
+                      color: KColors.kApp3,
                       size: KSizes.xxl,
                     ),
                     const SizedBox(height: KSizes.defaultSpace),

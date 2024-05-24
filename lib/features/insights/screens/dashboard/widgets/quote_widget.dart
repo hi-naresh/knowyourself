@@ -19,7 +19,7 @@ class QuoteWidget extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: kApp1.withOpacity(0.3),
+            color: KColors.kApp1.withOpacity(0.3),
             borderRadius: BorderRadius.circular(KSizes.lg),
           ),
           child: Stack(

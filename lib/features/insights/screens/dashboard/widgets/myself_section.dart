@@ -43,7 +43,7 @@ class MyselfSection extends StatelessWidget {
             myCard(
               context: context,
               title: KTexts.reflect,
-              color: kApp1,
+              color: KColors.kApp1,
               imageUrl: KImages.health12,
               screenWidth: kIsWeb? 390: KDeviceUtils.getScreenWidth(context),
               onTap: () {
@@ -56,7 +56,7 @@ class MyselfSection extends StatelessWidget {
             myCard(
               context: context,
               title: KTexts.review,
-              color: kApp2,
+              color: KColors.kApp2,
               imageUrl: KImages.health1,
               screenWidth: kIsWeb? 390: KDeviceUtils.getScreenWidth(context),
               onTap: ()=>Get.toNamed(KRoutes.getChoiceScreenRoute()),

@@ -15,7 +15,7 @@ class AuthScreenPrompt extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(CupertinoIcons.lock_circle_fill, size: KSizes.iconLg*1.6,color: kApp4Light,),
+           const Icon(CupertinoIcons.lock_circle_fill, size: KSizes.iconLg*1.6,color: KColors.kApp4Light,),
           const SizedBox(height: KSizes.defaultSpace),
           Text.rich(
             textAlign: TextAlign.center,
@@ -34,7 +34,7 @@ class AuthScreenPrompt extends StatelessWidget {
               final masterController = MasterController.instance;
               masterController.authenticateBeforeAccess();
             },
-            child: const Text(KTexts.viewMySpace, style: TextStyle(color: kApp4Light),),
+            child: const Text(KTexts.viewMySpace, style: TextStyle(color: KColors.kApp4Light),),
           ),
         ],
       ),

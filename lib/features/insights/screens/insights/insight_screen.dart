@@ -27,7 +27,7 @@ class InsightScreen extends StatelessWidget {
         width: 40,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: valueColors[CoreValues.values
+          color: KColors.valueColors[CoreValues.values
               .firstWhere((e) => e.toString().split('.').last == name)],
         ),
         child: Center(

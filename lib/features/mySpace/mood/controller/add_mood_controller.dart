@@ -278,13 +278,13 @@ class AddMoodController extends GetxController {
   //make changeColor function which can be used to change color of activities after every 4 activities
   Color changeColor(int index) {
     if (index % 4 == 0) {
-      return kApp1;
+      return KColors.kApp1;
     } else if (index % 4 == 1) {
-      return kApp2;
+      return KColors.kApp2;
     } else if (index % 4 == 2) {
-      return kApp3;
+      return KColors.kApp3;
     } else {
-      return kApp4;
+      return KColors.kApp4;
     }
   }
   //
