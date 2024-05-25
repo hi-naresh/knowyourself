@@ -196,7 +196,7 @@ class EmotionalPage extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white70,
+                  color: KColors.white70,
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: KColors.white,
@@ -204,7 +204,7 @@ class EmotionalPage extends StatelessWidget {
                   ),
                   boxShadow: CustomShadow.getShadow([
                     BoxShadow(
-                      color: Colors.orange.withOpacity(0.5),
+                      color: KColors.orangeWithOpacity,
                       blurRadius: 20,
                       offset: const Offset(0, 4),
                     ),
