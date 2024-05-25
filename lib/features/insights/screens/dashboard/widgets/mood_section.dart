@@ -31,7 +31,7 @@ class MoodSection extends StatelessWidget {
               KImages.health13,
               height: 140,
               colorFilter: ColorFilter.mode(
-                Colors.white.withOpacity(0.3),
+                KColors.white30,
                 BlendMode.modulate,
               ),
             ),

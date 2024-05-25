@@ -30,7 +30,7 @@ class QuoteWidget extends StatelessWidget {
                 bottom: 0,
                 child: SvgPicture.asset(
                   colorFilter: const ColorFilter.mode(
-                    Colors.white10,
+                    KColors.white10,
                     BlendMode.modulate,
                   ),
                   KImages.health21,

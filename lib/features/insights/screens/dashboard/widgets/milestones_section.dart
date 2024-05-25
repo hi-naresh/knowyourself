@@ -39,7 +39,7 @@ class DailyMilestoneSection extends StatelessWidget {
                 left: 0,
                 child: SvgPicture.asset(
                   colorFilter: const ColorFilter.mode(
-                    Colors.white70,
+                    KColors.white70,
                     BlendMode.modulate,
                   ),
                   KImages.health5,

@@ -50,7 +50,7 @@ class ProgressPainter extends CustomPainter {
     // Create a Path that describes the inner shadow.
     // Path path = Path()
     //   ..addOval(Rect.fromCircle(center: center, radius: radius - 30));
-    // canvas.drawShadow(path, Colors.grey, 3, false);
+    // canvas.drawShadow(path, KColors.grey, 3, false);
 
     // Draw the progress arc
     final progressPaint = Paint()
