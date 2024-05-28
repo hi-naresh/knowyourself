@@ -14,8 +14,8 @@ class ChapterLearningScreen extends StatelessWidget {
   final LearningController controller = Get.put(LearningController());
 
   ChapterLearningScreen({super.key, required String aspect}) {
-    // controller.loadMaterialsForAspect(aspect);
     controller.loadMaterialsFromJson(aspect);
+    // controller.fetchMaterials(aspect);
   }
 
   @override
@@ -27,9 +27,9 @@ class ChapterLearningScreen extends StatelessWidget {
       ),
       body: Obx(() => ListView.builder(
             padding: const EdgeInsets.all(KSizes.md),
-            itemCount: controller.learningMaterials.length,
+            itemCount: controller.chaptersList.length,
             itemBuilder: (context, index) {
-              LearningChapters material = controller.getMaterialAtIndex(index);
+              ChapterModel material = controller.getMaterialAtIndex(index);
               return CustomContainer(
                 padding: const EdgeInsets.all(KSizes.sm),
                 margin: const EdgeInsets.only(bottom: KSizes.md),
@@ -72,7 +72,7 @@ class ChapterContentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LearningController controller = Get.find();
-    LearningChapters material = controller.getMaterialAtIndex(index);
+    ChapterModel material = controller.getMaterialAtIndex(index);
 
     return Scaffold(
       appBar: KPageBar(
@@ -127,54 +127,54 @@ class ChapterContentView extends StatelessWidget {
     );
   }
 
-  Widget buildQuizPage(BuildContext context, List<QuizQuestion> questions, int chapterIndex) {
-    final LearningController controller = Get.find();
-    //each question on new page and must have button answer and next question
-    return Padding(
-      padding: const EdgeInsets.all(KSizes.defaultSpace),
-      child: Column(
-        children: [
-          Expanded(
-            child: PageView.builder(
-              itemCount: questions.length,
-              itemBuilder: (context, questionIndex) {
-                QuizQuestion question = questions[questionIndex];
-                return Column(
-                  children: [
-                    Text(question.question,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    const SizedBox(height: KSizes.defaultSpace),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: question.options.length,
-                      itemBuilder: (context, answerIndex) {
-                        return RadioListTile(
-                          title: Text(question.options[answerIndex]),
-                          value: answerIndex,
-                          groupValue: question.correctAnswerIndex,
-                          onChanged: (value) {
-                            controller.answerQuizQuestion(chapterIndex, questionIndex, value!);
-                          },
-                        );
-                      },
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
-          if (controller.getSelectedOptionForQuestion(chapterIndex, questions.length - 1) != null)
-            ElevatedButton(
-              onPressed: () => controller.chapterCompleted(index),
-              child: Text('Complete Chapter'),
-            ),
-        ],
-      ),
-    );
-  }
+  // Widget buildQuizPage(BuildContext context, List<QuizModel> questions, int chapterIndex) {
+  //   final LearningController controller = Get.find();
+  //   //each question on new page and must have button answer and next question
+  //   return Padding(
+  //     padding: const EdgeInsets.all(KSizes.defaultSpace),
+  //     child: Column(
+  //       children: [
+  //         Expanded(
+  //           child: PageView.builder(
+  //             itemCount: questions.length,
+  //             itemBuilder: (context, questionIndex) {
+  //               QuizModel question = questions[questionIndex];
+  //               return Column(
+  //                 children: [
+  //                   Text(question.question,
+  //                     textAlign: TextAlign.center,
+  //                     style: Theme.of(context).textTheme.headlineMedium,
+  //                   ),
+  //                   const SizedBox(height: KSizes.defaultSpace),
+  //                   ListView.builder(
+  //                     shrinkWrap: true,
+  //                     physics: const NeverScrollableScrollPhysics(),
+  //                     itemCount: question.options.length,
+  //                     itemBuilder: (context, answerIndex) {
+  //                       return RadioListTile(
+  //                         title: Text(question.options[answerIndex]),
+  //                         value: answerIndex,
+  //                         groupValue: question.correctAnswerIndex,
+  //                         onChanged: (value) {
+  //                           controller.answerQuizQuestion(chapterIndex, questionIndex, value!);
+  //                         },
+  //                       );
+  //                     },
+  //                   ),
+  //                 ],
+  //               );
+  //             },
+  //           ),
+  //         ),
+  //         if (controller.getSelectedOptionForQuestion(chapterIndex, questions.length - 1) != null)
+  //           ElevatedButton(
+  //             onPressed: () => controller.chapterCompleted(index),
+  //             child: Text('Complete Chapter'),
+  //           ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }
 
 class CongratulationsScreen extends StatelessWidget {

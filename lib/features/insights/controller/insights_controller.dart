@@ -15,9 +15,17 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
   static InsightsController get instance => Get.find();
   final RxList<JournalEntry> journalEntries = <JournalEntry>[].obs;
   var analyzedCoreValues = <CoreValue>[].obs;
+  var fullCoreValues = <CoreValue>[].obs;
   late AnimationController animationController; // Manage animation controller here
   List<Animation<double>> animations = [];
 
+
+  void fullCoreValuesList() {
+    fullCoreValues.clear();
+    for (var value in CoreValues.values) {
+      fullCoreValues.add(CoreValue(name: value.toString().split('.').last, percentage: 100.0));
+    }
+  }
 
   var showCoreValues = false.obs;
 
@@ -29,12 +37,11 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
     }
   });
 
-  // ValueAnalysisService mlAnalysis = ValueAnalysisService();
-
 
   @override
   Future<void> onInit() async {
     super.onInit();
+    fullCoreValuesList();
     animationController = AnimationController(
       duration: const Duration(milliseconds: 500), // Adjust duration as needed
       vsync: this,
@@ -54,8 +61,6 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
     // Attach an auth state changes listener
     _authListener;
     setupAnimations(analyzedCoreValues);
-
-
   }
 
 

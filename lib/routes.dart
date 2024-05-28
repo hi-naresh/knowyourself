@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:knowyourself/features/learning/screens/materials/pages/course_page.dart';
+import 'package:knowyourself/features/learning/screens/materials/pages/resources_page.dart';
 import 'package:knowyourself/features/mySpace/choices/screens/choice_screen.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/add_mood_screen.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/activities_to_shift.dart';
@@ -122,7 +122,7 @@ class KRoutes{
     // GetPage(name: resourcesVideo, page: () =>  ResourcesVideoPage(),
     //     transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     // ),
-    GetPage(name: resourcesMagazine, page: () =>  const CoursePage(),
+    GetPage(name: resourcesMagazine, page: () =>  const ResourcesPage(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
     GetPage(name: about, page: () =>  const SettingsAboutScreen(),

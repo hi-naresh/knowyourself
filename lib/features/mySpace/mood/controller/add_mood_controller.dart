@@ -11,8 +11,10 @@ import 'package:knowyourself/utils/constants/enums.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
+import '../../../../data/repo/space/activity/activity_repo.dart';
 import '../../../../data/repo/space/mood/mood_repo.dart';
 import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/image_strings.dart';
 import '../screens/add_mood/widgets/aspect_select.dart';
 import '../screens/add_mood/widgets/express_feelings.dart';
 import '../screens/add_mood/widgets/mood_select.dart';
@@ -22,6 +24,7 @@ class AddMoodController extends GetxController {
   static AddMoodController get instance => Get.find();
 
   final _moodRepo = Get.put(MoodRepo());
+  final _activityRepo = Get.put(ActivityRepo());
   
 
   final RxInt index = 0.obs;
@@ -207,22 +210,6 @@ class AddMoodController extends GetxController {
 
   }
 
-  // void shiftMood() {
-  //   Get.toNamed(KRoutes.getActivitiesRoute());
-  // }
-
-  // //solve error - type 'String' is not a subtype of type 'Map<String, dynamic>' in above function
-  // List<ActivityModel> parseActivities(List<dynamic> jsonList) {
-  //   return jsonList.map((json) {
-  //     if (json is Map<String, dynamic>) {
-  //       return ActivityModel.fromJson(json);
-  //     } else {
-  //       throw Exception('Expected a map but got: ${json.runtimeType}');
-  //     }
-  //   }).toList();
-  // }
-
-
 
   Future<void> shiftMood() async {
     
@@ -246,6 +233,8 @@ class AddMoodController extends GetxController {
       // List<String> userActivities = await _moodRepo.recommendActivity(currentMood, moodIndex, selectAspect.value, selectHappenedAt.value, 0);
       List<ActivityModel> userActivities = await moodService.fetchActivities(currentMood);
       // print('Recommended activities: $userActivities');
+      //save recommended activities
+
 
       // List<String> activityTitles = [];
       for (var activity in userActivities) {
@@ -255,18 +244,25 @@ class AddMoodController extends GetxController {
           link: activity.link,
           title: activity.title,
           instructions: activity.instructions,
-          imageUrl: '',
+          imageUrl: KImages.health9,
           color: changeColor(activities.length),
           tag: 'Physical health',
-
         ));
       }
+
+      // print(activities);
+      // await _activityRepo.clearLastActivities();
+
+      await _activityRepo.saveLastActivities(activities);
+
+      // print(activities);
 
 
       activitiesTitle.assignAll(activities.map((e) => e.title).toList());
       // print('Recommended activities: $userActivities');
       // print(activitiesTitle);
-      // fillInActivities();
+      // print("Navigating to activities");
+
 
       // Optionally, you can handle the navigation or any follow-up actions here
       if (userActivities.isNotEmpty) {
@@ -276,7 +272,6 @@ class AddMoodController extends GetxController {
         KHelper.showSnackBar("No Activities Found", "No recommended activities based on your current mood.");
       }
     } catch (e) {
-      // Handle any errors that might occur during the process
       // print('Error in shifting mood: $e');
       KHelper.showSnackBar("Try again after sometime. ", "Failed to shift mood due to an server error.Try later");
     }
@@ -295,38 +290,6 @@ class AddMoodController extends GetxController {
     }
   }
   //
-  // String separateId(String activity) {
-  //   return activity.split("id:").last.split(",").first;
-  // }
-  //
-  // String separateTitle(String activity) {
-  //   return activity.split("title: ").last.split(",").first;
-  // }
-  //
-  // // instructions: [Step 1: Warm up with dynamic stretches and light cardio exercises for 5-10 minutes., Step 2: Choose 3-5 high-intensity exercises targeting different muscle groups., Step 3: Perform each exercise at maximum effort for 20-30 seconds, followed by 10-20 seconds of rest., Step 4: Repeat the circuit 3-4 times, alternating between exercises and rest periods.]
-  // String separateInstructions(String activity) {
-  //   //return everything within [ ] in instructions
-  //   return activity.split("instructions: [").last.split("]").first;
-  // }
-  //
-  // String separateLink(String activity) {
-  //   return activity.split("link: ").last.split(",").first;
-  // }
-
-  // void fillInActivities(){
-  //   for (var activity in activitiesTitle) {
-  //     activities.add(ActivityModel(
-  //       id: separateId(activity),
-  //       userId: '1',
-  //       link: separateLink(activity),
-  //       title: separateTitle(activity),
-  //       instructions: separateInstructions(activity),
-  //     ));
-  //   }
-  //   activities.refresh();
-  // }
-
-
 
 
   deFocusKeyboard(BuildContext context) {

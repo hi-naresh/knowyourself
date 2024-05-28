@@ -1,40 +1,41 @@
-import 'package:get/get.dart';
-import 'package:knowyourself/features/mySpace/mood/controller/add_mood_controller.dart';
+import 'dart:convert';
 
-import '../../../data/repo/space/mood/mood_repo.dart';
-import '../../mySpace/mood/model/mood_model_input.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:knowyourself/features/learning/model/chapter_model.dart';
+import 'package:knowyourself/features/learning/model/resources_model.dart';
+import '../../../data/repo/materials/resources/remote/resources_online.dart';
 
 class DebugController extends GetxController {
   static DebugController get instance => Get.find();
 
-  final _moodRepo = Get.put(MoodRepo());
+  // final onlineResources = Get.put(OnlineResources()); // final
 
-  final addMoodController = Get.put(AddMoodController());
-
-  // final _modelService = ModelService(); // Don't use Get.put here, it's unnecessary.
 
   @override
   Future<void> onInit() async {
-    // await initModelService(); // await the initialization
     super.onInit();
   }
 
-  // Future<void> initModelService() async {
-  //   await _modelService.onInit();
+  // RxList<ChapterModel> myResources = <ChapterModel>[].obs;
+
+  //load resources from json
+  // Future<void> loadResources() async {
+  //   final String resourcesJsonString = await rootBundle.loadString('assets/chapters/chapters.json');
+  //   final Map<String, dynamic> resourcesJson = json.decode(resourcesJsonString);
+  //   final List<dynamic> resourcesJsonList = resourcesJson['chapters'];
+  //
+  //   final List<ChapterModel> resourcesList = resourcesJsonList
+  //       .map((resource) => ChapterModel.fromMap(resource))
+  //       .toList();
+  //
+  //   myResources.assignAll(resourcesList);
   // }
 
 
   Future<void> onPressed() async {
-    MoodModel currentMood = MoodModel(
-      mood: "sad",
-      aspect: "emotional",
-      reason: "I am feeling sad",
-      place: "work",
-      shift: true,
-      id: '',  // Ensure you have a valid ID if necessary
-      entryDate: DateTime.now(),
-    );
-    // Test model
-    // addMoodController.shiftMood();
+    // loadResources();
+    // await onlineResources.saveResourcesToFirestore(myResources);
   }
+  
 }
