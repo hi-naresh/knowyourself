@@ -1,235 +1,991 @@
 {
-  "LearningChapters": [
+  "chapters": [
     {
       "id": "1",
-      "title": "Chapter 1: The Triple Transformation",
-      "subTitle": "Psychic, Spiritual, and Supramental Transformations",
-      "progress": 0,
-      "contentChunks": [
-        "The Psychic Transformation involves discovering the psychic being, which acts as a guide towards truth and divine love. It influences thoughts and emotions to turn them towards a divine orientation, facilitating a deeper inner knowledge and connection with the universal truth.",
-        "Spiritual Transformation signifies the emergence of the spiritual mind where consciousness expands beyond the intellect and emotional mind to perceive and interact with deeper truths of existence. It includes an understanding of higher planes and their impact on human consciousness, leading to a life that is aligned with cosmic order and divine will.",
-        "Supramental Transformation represents the ascent beyond the ordinary functioning of mind and the emergence of the Supramental consciousness. This state transcends the dualities of life, enabling a manifestation of divine will and truth directly into physical existence, thereby radically transforming human capabilities and the nature of physical reality."
-      ],
+      "title": "What is Mind",
       "aspect": "LifeAspects.mental",
-      "quizQuestions" : [
-        {
-          "question": "What is the Psychic Transformation?",
-          "options": [
-            "A transformation of the physical body",
-            "A transformation of the emotional mind",
-            "A discovery of the psychic being"
-          ],
-          "correctAnswerIndex": 2
-        },
-        {
-          "question": "What is the Spiritual Transformation?",
-          "options": [
-            "An expansion of consciousness beyond the intellect",
-            "An alignment with cosmic order and divine will",
-            "A manifestation of divine will in physical reality"
-          ],
-          "correctAnswerIndex": 1
-        },
-        {
-          "question": "What is the Supramental Transformation?",
-          "options": [
-            "A transcendence of dualities in life",
-            "A transformation of the emotional mind",
-            "An emergence of the Supramental consciousness"
-          ],
-          "correctAnswerIndex": 2
-        }
+      "progress": 0,
+      "subTitle": "The mind is a tool for evolution, reflecting various aspects of existence.",
+      "contentChunks": [
+        "The mind, as beautifully illustrated by Sri Aurobindo, is like a multifaceted gem, reflecting various aspects of existence. At its core, the mind is not just a simple entity but a complex weave of different layers, each layer contributing to our understanding and interaction with the world around us.",
+        "The mind, in its essence, is a tool for evolution, a medium through which we, as beings, can grow and develop. It's the bridge between the simple, often automatic reactions of life and the luminous realm of the spirit. Each layer of the mind has its unique purpose and characteristics, creating a tapestry of consciousness that allows us to experience and interpret the richness of life.",
+        "Sri Aurobindo's insight into the mind's hierarchy is a way of understanding its structure and functions. It's a reminder that within us lies a universe of thought and feeling, each vying for expression and each essential to our journey of self-discovery and transcendence."
       ]
     },
     {
-        "id": "2",
-      "title": "Chapter 2: Evolution of Consciousness",
-      "subTitle": "From Matter to Spirit",
-      "progress": 0,
-      "contentChunks": [
-        "This section discusses the evolution of consciousness from inanimate matter to animate life and conscious mind, and ultimately towards the higher realms of spiritual and supramental consciousness. It emphasizes the progressive development of forms and faculties to embody greater divine forces and consciousness.",
-        "Integral Knowledge involves understanding the transformational impact of true knowledge which is beyond mental constructions. It integrates the lower forms of knowledge, which deal with the outer aspects of life, with the higher truth that transforms one's entire being and reality.",
-        "The problem of evil is addressed from the standpoint of an evolutionary universe, where evil is seen as a result of ignorance and the incomplete evolution of the world. The transformation of consciousness is presented as the solution to overcoming evil and suffering by transcending ignorance through the light of knowledge and truth."
-      ],
+      "id": "2",
+      "title": "What is an Ordinary Classification of the Mind",
       "aspect": "LifeAspects.mental",
-      "quizQuestions" : [
-        {
-          "question": "What is the Psychic Transformation?",
-          "options": [
-            "A transformation of the physical body",
-            "A transformation of the emotional mind",
-            "A discovery of the psychic being"
-          ],
-          "correctAnswerIndex": 2
-        },
-        {
-          "question": "What is the Spiritual Transformation?",
-          "options": [
-            "An expansion of consciousness beyond the intellect",
-            "An alignment with cosmic order and divine will",
-            "A manifestation of divine will in physical reality"
-          ],
-          "correctAnswerIndex": 1
-        },
-        {
-          "question": "What is the Supramental Transformation?",
-          "options": [
-            "A transcendence of dualities in life",
-            "A transformation of the emotional mind",
-            "An emergence of the Supramental consciousness"
-          ],
-          "correctAnswerIndex": 2
-        }
+      "progress": 0,
+      "subTitle": "The mind's layers: Chitta, Manas, Buddhi, and Higher Faculties.",
+      "contentChunks": [
+        "Chitta: The reservoir of past mental impressions, the citta or storehouse of memory, is the foundation on which all other layers stand. All experience lies within us as passive or potential memory; active memory selects and takes what it requires from that storehouse. But the active memory is like a man searching among a great mass of locked-up material: sometimes he cannot find what he wants; often in his rapid search he stumbles across many things for which he has no immediate need; often too he blunders and thinks he has found the real thing when it is something else, irrelevant if not valueless, on which he has laid his hand.",
+        "Manas: The second layer is the mind proper or manas, the sixth sense of our Indian psychology, in which all the others are gathered up. The function of the mind is to receive the images of things translated into sight, sound, smell, taste, and touch by the five senses and translate these again into thought sensations. It also receives images of its own direct grasping and forms them into mental impressions. These sensations and impressions are the material of thought, not thought itself; but it is exceedingly important that thought should work on sufficient and perfect material.",
+        "The Buddhi: The third layer is the intellect or buddhi, which is the real instrument of thought and that which orders and disposes of the knowledge acquired by the other parts of the machine. For the purposes of the educationist, this is infinitely the most important of the three I have named. The intellect is an organ composed of several groups of functions, divisible into two important classes, the functions and faculties of the right hand and the functions and faculties of the left hand.",
+        "The Higher Faculties: There is a fourth layer of faculty which, not as yet entirely developed in man, is attaining gradually to a wider development and more perfect evolution. The powers peculiar to this highest stratum of knowledge are chiefly known to us from the phenomena of genius,—sovereign discernment, intuitive perception of truth, plenary inspiration of speech, direct vision of knowledge to an extent often amounting to revelation, making a man a prophet of truth."
       ]
     },
     {
-        "id": "3",
-      "title": "Chapter 3: Mind and Supermind",
-      "subTitle": "Linking Human to Divine",
-      "progress": 0,
-      "contentChunks": [
-        "The Supermind is explored as the highest level of universal intelligence that governs creation, maintaining a perfect harmony and wisdom. It is the creator of the world and acts as an intermediary between the transcendental divine and manifest existence, enabling the play of possibilities to be actualized in form and action.",
-        "The role of the human mind is discussed as an intermediary stage in the evolutionary ascent towards the Supermind. The mind, with its inherent limitations, is seen as a necessary phase for the soul's evolution, providing the ground for overcoming the separation from the divine and preparing for the supramental transformation.",
-        "Practical steps for manifesting the Supermind in daily life involve cultivating a constant remembrance of the divine, aligning one's will with the higher divine will, and practicing the principles of truth, love, and knowledge in everyday actions. This prepares the individual and collective consciousness for a transformation that brings divine truth into material existence."
-      ],
+      "id": "3",
+      "title": "What is Yogic Classification of Mind",
       "aspect": "LifeAspects.mental",
-      "quizQuestions" : [
-        {
-          "question": "What is the Psychic Transformation?",
-          "options": [
-            "A transformation of the physical body",
-            "A transformation of the emotional mind",
-            "A discovery of the psychic being"
-          ],
-          "correctAnswerIndex": 2
-        },
-        {
-          "question": "What is the Spiritual Transformation?",
-          "options": [
-            "An expansion of consciousness beyond the intellect",
-            "An alignment with cosmic order and divine will",
-            "A manifestation of divine will in physical reality"
-          ],
-          "correctAnswerIndex": 1
-        },
-        {
-          "question": "What is the Supramental Transformation?",
-          "options": [
-            "A transcendence of dualities in life",
-            "A transformation of the emotional mind",
-            "An emergence of the Supramental consciousness"
-          ],
-          "correctAnswerIndex": 2
-        }
+      "progress": 0,
+      "subTitle": "Yogic mind layers: Physical, Vital, Higher, Illumined, Intuitive, Overmind, Supermind.",
+      "contentChunks": [
+        "Physical/Ordinary Mind: This is the outermost layer, concerned with practical matters, sensations, and immediate perceptions.",
+        "Vital Mind: Dealing with desires, emotions, and the vital impulses of life.",
+        "Higher Mind: Concerned with abstract thinking, conceptualization, and logical reasoning.",
+        "Illumined Mind: This level brings intuition, insight, and higher forms of inspiration.",
+        "Intuitive Mind: Beyond rational thought, it grasps truth directly and intuitively.",
+        "Overmind: The level of universal consciousness, where all ideas, forms, and truths exist in their archetypal forms.",
+        "Supermind: The highest level of consciousness, characterized by unity, harmony, and the direct awareness of the divine."
       ]
     },
     {
-        "id": "4",
-      "title": "Chapter 1: Foundations of Physical Development",
-      "subTitle": "Health and Discipline",
+      "id": "4",
+      "title": "Why did Sri Aurobindo Put the Mind in Layers/Hierarchy",
+      "aspect": "LifeAspects.mental",
       "progress": 0,
+      "subTitle": "Sri Aurobindo envisioned the mind as an evolving structure.",
       "contentChunks": [
-        "Physical health is pivotal in integral yoga, where the body is viewed not merely as a biological structure but as a temple of the spirit, designed to manifest divine forces. The health of the physical sheath is crucial for sustaining the rigorous processes of spiritual transformations. This segment delves into the yogic philosophy that integrates body, mind, and spirit, emphasizing the sanctity of maintaining physical health to support spiritual ascent.",
-        "Integrative physical practices such as Hatha Yoga are more than physical fitness routines; they are holistic disciplines that align physical functions with spiritual vibrations. This section provides a detailed exploration of various yogic postures, their spiritual significances, and how they aid in purifying and preparing the body for higher energies. The practices are described in a way that shows their relevance to enhancing not only physical but also psychological and spiritual well-being.",
-        "Establishing daily routines is essential for spiritual seekers to maintain a stable foundation for advanced spiritual practices. This section offers practical advice on creating and sustaining daily regimens that promote physical health, including tips on sleep, exercise, and mindfulness in everyday activities. The importance of consistency and discipline is highlighted, along with how these qualities contribute to spiritual discipline and growth."
-      ],
-      "aspect": "LifeAspects.physical"
+        "Sri Aurobindo envisioned the mind as an intricate, evolving structure. Consider the mind as a growing tree, with its roots deep in the earth and its branches reaching up towards the sky. Each branch represents a different part of our thinking, getting higher and higher as they reach towards the sunlight.",
+        "At the base, we have the ordinary mind, which is our everyday thinking. As we ascend, we encounter layers with increasingly complex and sublime functions. This ascent mirrors our own personal growth and spiritual journey. It's not just about thinking differently; it's about evolving into a higher state of being.",
+        "The mind's layers offer a ladder for us to climb, each rung representing a step toward a greater understanding of ourselves and the universe. It's like moving from a room with a small window to a place with a panoramic view. From the ordinary mind, we can reach the illuminated clarity of the Illumined Mind, the instant knowing of the Intuitive Mind, and the vast expansiveness of the Overmind.",
+        "As we look up, the branches get more complex and reach higher. Each one is a step up from the last, taking us closer to the sky. The highest branches are special—they're called the higher mind. Here, thoughts are clearer and wiser, like a bird flying high above, seeing things from a whole new perspective.",
+        "The mind doesn't just stop there, though. It keeps growing, reaching even further with names like the illumined mind and the intuitive mind. These are like leaves that catch the sunlight, glowing with wisdom and understanding.",
+        "The very top branch, stretching out the furthest, is the Overmind. It's where the mind touches the edge of something even bigger—like the sky touching the stars. It's a place of vastness and unity, where all our thoughts and feelings are connected to everything in the universe."
+      ]
     },
     {
-        "id": "5",
-      "title": "Chapter 2: Yoga and Physical Transformation",
-      "subTitle": "Asanas and Breathwork",
+      "id": "5",
+      "title": "How Does it Make a Difference if I Recognize the Difference Between Different Layers of the Mind?",
+      "aspect": "LifeAspects.mental",
       "progress": 0,
+      "subTitle": "Recognizing mind layers helps navigate thoughts with clarity and purpose.",
       "contentChunks": [
-        "This chapter details specific yoga asanas that facilitate spiritual awakening, providing extensive instructions on each posture, its physical alignment, mental focus, and spiritual implications. The physiological and energetic effects of these asanas are discussed, illustrating how they help in harmonizing the flow of energies within the body, thereby aiding the awakening and rising of Kundalini energy, which is essential for spiritual transcendence.",
-        "Pranayama, or breath control, is a vital aspect of yoga that masters life energies (Prana). This section delves deep into various pranayama techniques, explaining their purposes, methods, and benefits. The connection between breath control and energy mastery is explored, detailing how pranayama prepares the body and mind for deeper meditative states and enhances one's capacity for spiritual experiences.",
-        "Discussing the critical role of physical energy in supporting meditative and spiritual practices, this section covers methods to stabilize and harness physical energy for spiritual endeavors. Techniques such as grounding, centering, and energy conservation are explained, showing how they help maintain energy levels during long periods of meditation and prevent the common pitfalls of spiritual fatigue."
-      ],
-      "aspect": "LifeAspects.physical"
+        "When you understand the layers of your mind, it's like becoming an expert driver in the landscape of your thoughts. Knowing the different parts of your mind helps you navigate through them with purpose and clarity. Just like knowing the roads and paths in a big forest makes you realize where you can go and what adventures await you, recognizing the layers of your mind opens up a world of possibilities.",
+        "For example, the ordinary mind is great at handling everyday tasks, but it might struggle to solve deeper puzzles. On the other hand, the higher mind is like having a map to hidden treasures of wisdom and understanding. When you tap into that level, you can see beyond the surface and reach solutions that feel like magic.",
+        "Understanding these layers means you can choose the right tool for the right job. Suppose you're trying to build a house. You wouldn't use a paintbrush to hammer nails, right? Similarly, you wouldn't use the higher mind to make small talk about the weather. Each part of your mind has its unique strength and purpose.",
+        "Knowing your mind's layers also helps you grow. It's like having a seed and knowing exactly how to nurture it so it blossoms into a beautiful tree. You can consciously guide your growth, reaching higher and higher, until you touch the stars of your highest potential.",
+        "So, recognizing the difference between these layers of the mind is essential for self-mastery and unlocking the full potential of your consciousness. It's like having a key to a treasure chest, where each gem is a new power of understanding waiting to be discovered."
+      ]
     },
     {
-        "id": "6",
-      "title": "Chapter 3: Diet and Lifestyle for the Seeker",
-      "subTitle": "Nutrition and Life Harmony",
+      "id": "6",
+      "title": "What Should I Do to Reach the Overmind?",
+      "aspect": "LifeAspects.mental",
       "progress": 0,
+      "subTitle": "Journey to the Overmind: longing, preparation, and divine grace.",
       "contentChunks": [
-        "The impact of dietary choices on spiritual practices is profound. This section offers an in-depth look at nutritional principles that align with spiritual growth, recommending specific foods and dietary patterns that promote clarity, lightness, and vitality. The discussion includes the effects of various diets on mental clarity, emotional stability, and physical health, providing guidance on choosing foods that enhance rather than hinder spiritual progress.",
-        "Aligning one's lifestyle with spiritual objectives is a multifaceted endeavor. This section provides comprehensive strategies for modifying daily life to nurture spiritual growth, addressing aspects like work-life balance, social interactions, and environmental influences. Practical advice on creating a living space conducive to peace and spirituality is also included, aimed at fostering a supportive environment for spiritual practices.",
-        "Physical challenges such as illness and discomfort can significantly impact one's spiritual journey. This section offers strategies to understand and overcome these challenges, viewing them as opportunities for growth and learning. Methods to use physical limitations as a means of deepening spiritual practice are discussed, encouraging resilience and adaptability in the face of physical adversity."
-      ],
-      "aspect": "LifeAspects.physical"
+        "Visualize you're on a quest to find a treasure that's not just gold and gems, but a special kind of magic called the overmind. The overmind is like a vast, shimmering ocean of wisdom and creativity above us, and reaching it is like becoming a fearless sailor in the endless sea of consciousness.",
+        "Now, to set sail on this adventure, the first thing you need is a deep, unwavering longing. Just like a tiny seed that pushes through the earth because it dreams of the sunlight, you must have this powerful wish to explore beyond the everyday thoughts and feelings.",
+        "But wishing isn't enough; you need to prepare your ship – your own being – to brave the journey. It's like training your mind to be calm and clear, so you can see the stars above, and your heart to be strong and full of love, so you can weather any storm.",
+        "As you journey, keep your sails set towards that star of aspiration, and keep a lookout for the winds of divine Grace. They'll guide you and push your boat along when you least expect it. Remember, though, there will be times when the seas get rough, and you'll need to be patient and keep going even when it feels like you're not getting anywhere.",
+        "And one day, when you've grown and learned enough, when your heart and mind are ready, the winds will carry you to the shores of the overmind. There, you'll find a treasure trove of insights and visions that will make you see the world in a whole new way.",
+        "But how to know when you've reached the overmind? Well, it's like recognizing home when you've been away for a very long time. You'll feel a profound sense of belonging and a light that shines within you, making everything clear. You'll know because you'll be different, transformed in the most wonderful way.",
+        "So, keep your dream alive, keep preparing, and trust in the journey. The stars are waiting for you."
+      ]
     },
     {
-        "id": "7",
-      "title": "Chapter 1: Emotional Intelligence and Transformation",
-      "subTitle": "Mastering Emotions",
+      "id": "7",
+      "title": "Is it Important to Refine the Physical Mind or Other Levels of the Mind?",
+      "aspect": "LifeAspects.mental",
       "progress": 0,
+      "subTitle": "Refining the mind is essential for higher consciousness.",
       "contentChunks": [
-        "Exploring the role of emotions in spiritual growth and the necessity of emotional purification for seekers. This includes understanding the origins of emotional responses and their impact on personal development.",
-        "Techniques for achieving emotional balance, such as observing emotions without attachment, using mindfulness to manage emotional reactions, and transforming emotional energy through meditation and conscious intention.",
-        "Detailed exercises for cultivating positive emotions that align with spiritual values, such as compassion, empathy, joy, and equanimity. These practices are designed to replace negative emotional patterns with uplifting and harmonious ones."
-      ],
-      "aspect": "LifeAspects.emotional"
+        "Contemplate you're an artist with a canvas. Right now, your canvas is your physical mind, and it's filled with all sorts of colors and shapes—some are rough sketches, others are detailed paintings, but none are the masterpiece you're aiming to create. This physical mind is like the ground floor of a grand building; it's essential, but it's not where the most precious treasures are kept.",
+        "The real treasures are in the upper floors, the overmind, and even higher levels, like the supramental. To reach those floors, you need to start by cleaning and polishing the ground floor. This means refining your physical mind so it becomes a clear channel for the light and wisdom from above. It's not about staying where you are but about making the space as bright and welcoming as possible.",
+        "You see, the mind is like a ladder, and you can't jump to the top without stepping up each rung. By refining your mind, you're climbing that ladder, rung by rung, getting closer to the overmind. It's not just important; it's the first step on an amazing journey to higher consciousness.",
+        "So, take a deep breath and begin this beautiful transformation. With patience and perseverance, your entire being will shine like a star, guiding you to the vastness of the overmind."
+      ]
     },
     {
-        "id": "8",
-      "title": "Chapter 2: Vital Energy and Its Cultivation",
-      "subTitle": "Harnessing Life Forces",
+      "id": "8",
+      "title": "Are There Any Phases that Help Us Prepare for a Higher Life or Reach the Level of Overmind?",
+      "aspect": "LifeAspects.mental",
       "progress": 0,
+      "subTitle": "Five phases for higher mental education.",
       "contentChunks": [
-        "Introduction to the concept of Prana or vital energy in integral yoga, detailing its significance in the context of spiritual evolution and day-to-day well-being.",
-        "Comprehensive techniques for increasing and managing vital energy, including specific pranayama practices, exercises to cleanse and balance the energy centers (chakras), and guidance on optimizing energy flow through the body.",
-        "The relationship between vital energy and physical health, mental clarity, and emotional stability. This section offers methods to harmonize these dimensions to enhance overall life quality and facilitate spiritual advancement."
-      ],
-      "aspect": "LifeAspects.emotional"
+        "A true mental education, which will prepare man for a higher life, has five principal phases. Normally these phases follow one after another, but in exceptional individuals, they may alternate or even proceed simultaneously. These five phases, in brief, are:",
+        "Development of the power of concentration, the capacity of attention.",
+        "Development of the capacities of expansion, widening, complexity, and richness.",
+        "Organisation of one’s ideas around a central idea, a higher ideal, or a supremely luminous idea that will serve as a guide in life.",
+        "Thought-control, rejection of undesirable thoughts, to become able to think only what one wants and when one wants.",
+        "Development of mental silence, perfect calm, and a more and more total receptivity to inspirations coming from the higher regions of the being."
+      ]
     },
     {
-        "id": "9",
-      "title": "Chapter 3: Relationships and Collective Growth",
-      "subTitle": "Social Dynamics in Spiritual Context",
+      "id": "9",
+      "title": "How to Get the Power of Concentration?",
+      "aspect": "LifeAspects.mental",
       "progress": 0,
+      "subTitle": "Develop concentration to focus your mind effectively.",
       "contentChunks": [
-        "The spiritual significance of relationships and their role in personal and collective evolution. Exploring how interactions can become a field of spiritual practice and growth.",
-        "Strategies for nurturing relationships that support spiritual paths, including communication skills, boundary setting, and fostering mutual spiritual support among community members.",
-        "Dealing with conflicts and challenges in relationships from a spiritual perspective. Techniques for transforming interpersonal dynamics through understanding, compassion, and the application of integral psychological principles."
-      ],
-      "aspect": "LifeAspects.emotional"
+        "Concentration is like a spotlight that helps you focus your mind on one thing at a time, blocking out distractions. It's an essential skill for learning and accomplishing tasks effectively.",
+        "Start Small: Begin by setting aside short periods of time, maybe just a few minutes each day, to concentrate on a single task or activity. This could be something simple like reading a book or solving a puzzle.",
+        "Eliminate Distractions: Find a quiet and comfortable place to work where you won't be interrupted. Turn off your phone or any other distractions that might pull your attention away from what you're doing.",
+        "Practice Mindfulness: Mindfulness techniques, such as focusing on your breath or paying close attention to your senses, can help train your mind to stay present and focused.",
+        "Set Goals: Clearly define what you want to accomplish during your focused periods of time. Having specific goals can help motivate you to stay concentrated and avoid wandering thoughts.",
+        "Take Breaks: It's important to give your mind regular breaks to rest and recharge. After a period of concentrated work, take a short break to relax and clear your mind before returning to your task.",
+        "Use Visualization: Picture yourself completing the task at hand with full concentration and success. Visualization can help strengthen your focus and increase your motivation.",
+        "Practice Regularly: Like any skill, concentration improves with practice. Make a habit of incorporating focused periods of work into your daily routine, gradually increasing the duration as you become more comfortable with the practice."
+      ]
     },
     {
-        "id": "10",
-      "title": "Chapter 1: Foundations of Spiritual Practice",
-      "subTitle": "Core Principles and Techniques",
+      "id": "10",
+      "title": "What Does the Development of the Capacities of Expansion, Widening, Complexity, and Richness Mean According to Sri Aurobindo?",
+      "aspect": "LifeAspects.mental",
       "progress": 0,
+      "subTitle": "Broadening and deepening consciousness beyond ordinary limits.",
       "contentChunks": [
-        "An introduction to the basic principles of Integral Yoga, emphasizing the importance of spiritual realization in life and the ultimate goal of achieving divine union.",
-        "Detailed guidance on the initial steps in spiritual practice, including the cultivation of sincerity, humility, and aspiration. Discussion on the necessity of these virtues for genuine spiritual progress.",
-        "Techniques for effective meditation, prayer, and contemplation that are fundamental in Integral Yoga. Each technique is explained with steps, expected outcomes, and tips for deepening spiritual experience."
-      ],
-      "aspect": "LifeAspects.spiritual"
+        "According to Sri Aurobindo, the development of the capacities of expansion, widening, complexity, and richness refers to the broadening and deepening of one's consciousness and mental faculties beyond their ordinary limitations. Here's what each aspect entails:",
+        "Expansion: This involves expanding the boundaries of your consciousness to encompass broader perspectives, insights, and understandings. It's about transcending narrow viewpoints and opening up to new possibilities and dimensions of experience. Instead of being confined to a limited worldview, you strive to embrace the vastness of existence and the interconnectedness of all things.",
+        "Widening: Widening of consciousness entails breaking free from mental rigidity and embracing inclusivity and diversity. It's about moving beyond narrow-mindedness and embracing the richness of different perspectives, cultures, and ways of thinking. This process involves cultivating empathy, tolerance, and acceptance of others, thereby enriching your own understanding and enhancing harmony and unity in society.",
+        "Complexity: Sri Aurobindo emphasized the importance of grappling with complexity and embracing the multifaceted nature of reality. Rather than seeking simplistic answers or explanations, you delve deeper into the intricacies and nuances of existence. This involves engaging with ambiguity, paradoxes, and contradictions, recognizing that truth often transcends binary thinking and linear logic. By embracing complexity, you cultivate a more nuanced and holistic understanding of the world.",
+        "Richness: The richness of consciousness refers to the depth, vibrancy, and vitality of your inner life. It involves tapping into your creative potential, imagination, and intuition to enrich your experience of reality. This entails exploring the depths of your emotions, passions, and innermost desires, as well as appreciating the beauty and wonder of existence. By nurturing richness in consciousness, you infuse your life with meaning, purpose, and fulfillment.",
+        "Overall, the development of these capacities according to Sri Aurobindo is a transformative journey of self-discovery and spiritual evolution. It involves transcending limitations, embracing diversity, engaging with complexity, and cultivating a deep and vibrant inner life. Through this process, individuals can unlock their full potential and contribute to the greater flourishing of humanity."
+      ]
     },
     {
-        "id": "11",
-      "title": "Chapter 2: Advanced Spiritual Practices",
-      "subTitle": "Deepening Connection with the Divine",
+      "id": "11",
+      "title": "How One Can Develop It?",
+      "aspect": "LifeAspects.mental",
       "progress": 0,
+      "subTitle": "Practical steps for developing expanded consciousness.",
       "contentChunks": [
-        "Exploration of advanced meditation techniques that aim at the realization of the Divine within and all around. This includes methods for transcending the mind and entering higher states of consciousness.",
-        "The practice of surrender, a key aspect in Sri Aurobindo’s teaching, which involves giving up the ego’s control and allowing the Divine force to act through the individual.",
-        "Exercises to enhance spiritual sensitivity and receptivity, enabling the practitioner to feel and respond to the subtle influences and guidance of the Divine in everyday life."
-      ],
-      "aspect": "LifeAspects.spiritual"
+        "Developing the capacities of expansion, widening, complexity, and richness of consciousness is a gradual and transformative process that requires dedication, practice, and inner exploration. Here are some practical steps to help facilitate this development:",
+        "Cultivate Awareness: Begin by cultivating awareness of your thoughts, emotions, and perceptions. Practice mindfulness techniques such as meditation, deep breathing, or body scan exercises to develop a heightened sense of presence and attentiveness to the present moment.",
+        "Embrace Curiosity: Cultivate a curious and open-minded attitude towards life. Be willing to explore new ideas, experiences, and perspectives with a sense of wonder and inquiry. Ask questions, seek out diverse viewpoints, and engage in lifelong learning to broaden your understanding of the world.",
+        "Practice Reflection: Set aside time for introspection and reflection on a regular basis. Journaling, contemplation, or dialogue with others can help you deepen your understanding of yourself and the world around you. Reflect on your experiences, values, and beliefs, and consider how they shape your perception of reality.",
+        "Engage with Complexity: Challenge yourself to engage with complexity and uncertainty. Rather than seeking easy answers or quick solutions, embrace the complexity of life and allow yourself to sit with ambiguity and paradox. Practice critical thinking, analysis, and synthesis to navigate complex situations and ideas with greater clarity and depth.",
+        "Cultivate Creativity: Tap into your creative potential to enrich your experience of reality. Engage in artistic pursuits such as writing, painting, music, or dance to express your innermost thoughts, feelings, and experiences. Allow yourself to play, experiment, and explore new possibilities without judgment or self-censorship.",
+        "Cultivate Empathy and Compassion: Develop empathy and compassion towards yourself and others. Practice active listening, empathy, and kindness in your interactions with others, and strive to understand and appreciate their unique perspectives and experiences. Cultivating empathy and compassion fosters connection, understanding, and unity in diversity.",
+        "Seek Meaning and Purpose: Reflect on your values, passions, and aspirations to discover what brings meaning and purpose to your life. Align your actions and choices with your deepest values and aspirations, and cultivate a sense of purpose that inspires and energizes you to make a positive difference in the world."
+      ]
     },
     {
-        "id": "12",
-      "title": "Chapter 3: Integrating Spirituality in Daily Life",
-      "subTitle": "Living the Spiritual Truths",
+      "id": "12",
+      "title": "What Does Organization of One’s Ideas Around a Central Idea, a Higher Ideal or a Supremely Luminous Idea that Will Serve as a Guide in Life Mean?",
+      "aspect": "LifeAspects.mental",
       "progress": 0,
+      "subTitle": "Align thoughts with a guiding principle for growth and transformation.",
       "contentChunks": [
-        "Guidelines for integrating spiritual practices into daily routines, ensuring that spirituality is not isolated from everyday activities but is a continuous living experience.",
-        "How to maintain a spiritual perspective and presence amidst daily responsibilities and challenges. This includes balancing work, family, and personal growth from a spiritual viewpoint.",
-        "Strategies for transforming work and interactions into acts of spiritual practice. The concept of Karma Yoga is elaborated, where actions are performed with detachment and devotion to the Divine, turning ordinary activities into spiritual offerings."
-      ],
-      "aspect": "LifeAspects.spiritual"
+        "In the context of Sri Aurobindo's teachings, the 'organization of one’s ideas around a central idea, a higher ideal, or a supremely luminous idea' refers to the process of aligning one's thoughts, beliefs, and actions with a profound guiding principle or vision that holds deep significance and inspires growth and transformation. By organizing their ideas around a central idea, higher ideal, or supremely luminous idea, individuals can cultivate a sense of meaning, direction, and purpose in their lives, ultimately contributing to their personal growth and the betterment of society. Here's what it entails:",
+        "Central Idea: This is a fundamental concept or principle that serves as the focal point around which all other ideas and beliefs are organized. It provides coherence and direction to one's thoughts and actions, acting as a guiding light amidst the complexities of life. This central idea could be a philosophical concept, a moral principle, or a spiritual truth that resonates deeply with the individual. It is like building a castle with the bricks of your thoughts, with a shining light beaconing from the top, guiding you through the night. This central idea is your guiding star, the highest and brightest in your sky.",
+        "Higher Ideal: Sri Aurobindo encourages individuals to aspire towards higher ideals that transcend mundane concerns and elevate consciousness to a greater level of awareness and fulfillment. These ideals embody values such as truth, love, compassion, and selflessness, inspiring individuals to strive for excellence and contribute positively to the world around them.",
+        "Supremely Luminous Idea: This refers to an idea or vision that shines brightly with clarity, wisdom, and divine inspiration. It represents the highest potential of human consciousness and serves as a beacon of hope and guidance on the path of self-discovery and spiritual evolution. This supremely luminous idea may vary from person to person, reflecting their unique journey and aspirations.",
+        "The process of organizing one's ideas around such a central idea, higher ideal, or supremely luminous idea involves:",
+        "Reflection: Reflecting deeply on one's values, beliefs, and aspirations to discern the central idea or ideal that resonates most profoundly.",
+        "Alignment: Aligning one's thoughts, intentions, and actions with the chosen guiding principle or vision, integrating it into every aspect of life.",
+        "Transformation: Allowing the guiding principle or vision to inspire growth, expansion, and transformation, leading to greater clarity, purpose, and fulfillment."
+      ]
+    },
+    {
+      "id": "13",
+      "title": "What is Thought Control?",
+      "aspect": "LifeAspects.mental",
+      "progress": 0,
+      "subTitle": "Consciously regulate and direct thoughts for a positive mental state.",
+      "contentChunks": [
+        "Thought-control refers to the practice of consciously regulating and directing one's thoughts, with the goal of minimizing or eliminating undesirable thoughts and cultivating a more positive and constructive mental state. It involves gaining mastery over the mind's tendency to wander and dwell on negative or unproductive thoughts, and instead, focusing on thoughts that align with one's intentions and aspirations.",
+        "For example, imagine someone who often experiences self-doubt and negative self-talk. Through the practice of thought-control, they learn to recognize when these thoughts arise and consciously choose to reject them. Instead, they intentionally cultivate thoughts of self-confidence, self-compassion, and empowerment. Over time, with consistent practice, they become better able to think only thoughts that serve their well-being and goals, and they can do so whenever they choose, leading to greater mental clarity, emotional resilience, and inner peace."
+      ]
+    },
+    {
+      "id": "14",
+      "title": "How One Can Control Thoughts?",
+      "aspect": "LifeAspects.mental",
+      "progress": 0,
+      "subTitle": "Techniques for observing and guiding thoughts.",
+      "contentChunks": [
+        "Visualize your mind is like a sky, vast and expansive. Now, thoughts are like birds that flit across this sky. They come and go, sometimes in flocks, other times in singles. Now, controlling these thoughts isn't about chasing them away or forcing them to stop. It's about becoming the observer, the quiet witness of these birds as they pass.",
+        "You see, each thought tries to capture your attention, much like a bird tries to catch the eye of an onlooker. But what if you, the onlooker, just watched without jumping into action or getting swayed by their calls? That's the first step. Observe your thoughts as if they were separate from you. They're part of the vast mindscape but not the entirety of who you are.",
+        "The next step is to gently guide your focus elsewhere. Picture redirecting your gaze to the beauty of the horizon, to the serenity of the stars, or the comforting expanse of the night sky. This new focus is your inner quietude, the calm heart of your consciousness. When you shift your awareness here, the thoughts start to fade, just as the noise of the birds recedes when you turn your attention away.",
+        "This isn't a quick process, but with practice, you can learn to redirect your thoughts, to choose which ones you let land and which ones you let fly onward. It's about training your mind, much like you would train a child to behave, with patience and loving guidance.",
+        "Remember, it's not about the struggle to control; it's about the gentle art of choosing. Choose the quiet, choose the stars, and the thoughts will find their own way out of your sky."
+      ]
+    },
+    {
+      "id": "15",
+      "title": "What is Mental Silence and Why is it Needed?",
+      "aspect": "LifeAspects.mental",
+      "progress": 0,
+      "subTitle": "Mental silence: inner calm free from mental chatter.",
+      "contentChunks": [
+        "Mental silence refers to a state of inner calm and quietude where the mind is free from the constant chatter of thoughts, worries, and distractions. It is a state of focused attention and presence, characterized by a sense of clarity, openness, and receptivity.",
+        "Mental silence is like a serene sky, free from the bustle of passing clouds. It's not just an absence of noise; it's a presence of stillness. Picture your mind as a vast landscape, where thoughts are like birds that flit across the sky. Mental silence is when you simply watch these birds without chasing them, without fearing them, without even wishing they would go away.",
+        "In this quiet space, thoughts come and go, but they don't stir up the inner calm. It's needed because it allows the mind to be an observer, to be free from the constant stream of mental chatter. In this way, true insights can emerge, and clarity can be found amidst the complexity of life. It's not about silencing the thoughts forcefully, but rather allowing the mind to rest and simply be.",
+        "Mental silence is the canvas of consciousness where the deeper knowledge can paint its wisdom. It's essential for inner growth and for perceiving the true essence of things beyond the surface noise. It's not a void, but a rich emptiness, a fertile ground for creativity and understanding to blossom.",
+        "So, mental silence is needed for the mind's liberation and for diving into the depths of our inner being, where the symphony of true knowledge plays in the quietude of the soul."
+      ]
+    },
+    {
+      "id": "16",
+      "title": "How Mental Silence Helps in Learning and Living?",
+      "aspect": "LifeAspects.mental",
+      "progress": 0,
+      "subTitle": "Benefits of mental silence in education and personal growth.",
+      "contentChunks": [
+        "Mental silence is essential in education for several reasons:",
+        "Enhanced Learning: When the mind is calm and focused, students are better able to absorb and retain information. Mental silence allows for deeper concentration and engagement with the material being taught, leading to improved learning outcomes.",
+        "Reduced Stress and Anxiety: The school environment can be stressful for students, with academic pressures, social challenges, and other stressors affecting their well-being. Mental silence provides a respite from the constant mental chatter and helps students manage stress and anxiety more effectively.",
+        "Improved Emotional Regulation: Mental silence fosters emotional resilience and self-regulation, enabling students to respond to challenges with greater calmness and clarity. It allows them to pause and reflect before reacting impulsively, leading to more constructive behavior and decision-making.",
+        "Enhanced Creativity and Problem-Solving: In a state of mental silence, students can tap into their creative potential and think more expansively. It fosters innovation and problem-solving skills by allowing students to approach challenges with a clear and open mind, free from the constraints of habitual thinking patterns.",
+        "Cultivation of Inner Awareness: Mental silence facilitates self-awareness and introspection, allowing students to explore their thoughts, feelings, and beliefs more deeply. It fosters a sense of inner peace and connectedness, enhancing overall well-being and personal growth."
+      ]
+    },
+    {
+      "id": "17",
+      "title": "The Four Austerities and the Four Liberations - II",
+      "aspect": "LifeAspects.mental",
+      "progress": 0,
+      "subTitle": "Control of speech as a greater austerity than silence.",
+      "contentChunks": [
+        "The question of mental austerity immediately brings to mind long meditations leading to control of thought and culminating in inner silence. This aspect of yogic discipline is too well known to need dwelling upon. But there is another aspect of the subject which is usually given less attention, and that is control of speech. Apart from a very few exceptions, only absolute silence is set in opposition to loose talk. And yet it is a far greater and far more fruitful austerity to control one’s speech than to abolish it altogether.",
+        "Man is the first animal on earth to be able to use articulate sounds. Indeed, he is very proud of this capacity and exercises it without moderation or discernment. The world is deafened with the sound of his words and sometimes one almost misses the harmonious silence of the plant kingdom.",
+        "Besides, it is a well-known fact that the weaker the mental power, the greater is the need to use speech. Thus there are primitive and uneducated people who cannot think at all unless they speak, and they can be heard muttering sounds more or less loudly to themselves, because this is the only way they can follow a train of thought, which would not be formulated in them but for the spoken word.",
+        "There are also a great many people, even among those who are educated but whose mental power is weak, who do not know what they want to say until they say it. This makes their speech interminable and tedious. For as they speak, their thought becomes clearer and more precise, and so they have to repeat the same thing several times in order to say it more and more exactly.",
+        "Some need to prepare beforehand what they have to say, and splutter when they are obliged to improvise, because they have not had time to elaborate step by step the exact terms of what they want to say.",
+        "Lastly, there are born orators who are masters of the spoken word; they spontaneously find all the words they need to say what they want to say and say it well.",
+        "None of this, however, from the point of view of mental austerity, goes beyond the category of idle talk. For by idle talk I mean every word that is spoken without being absolutely indispensable. One may ask, how can one judge? For this, one must first make a general classification of the various categories of spoken words.",
+        "First, in the physical domain, we have all the words that are spoken for material reasons. They are by far the most numerous and most probably also the most useful in ordinary life.",
+        "A constant babble of words seems to be the indispensable accompaniment to daily work. And yet as soon as one makes an effort to reduce the noise to a minimum, one realizes that many things are done better and faster in silence and that this helps to maintain one’s inner peace and concentration.",
+        "If you are not alone and live with others, cultivate the habit of not externalizing yourself constantly by speaking aloud, and you will notice that little by little an inner understanding is established between yourself and others; you will then be able to communicate among yourselves with a minimum of words or even without any words at all. This outer silence is most favorable to inner peace, and with goodwill and a steadfast aspiration, you will be able to create a harmonious atmosphere which is very conducive to progress.",
+        "In social life, in addition to the words that concern material life and occupations, there will be those that express sensations, feelings and emotions. Here the habit of outer silence proves of valuable help. For when one is assailed by a wave of sensations or feelings, this habitual silence gives you time to reflect and, if necessary, to regain possession of yourself before projecting the sensation or feeling in words. How many quarrels can be avoided in this way; how many times one will be saved from one of those psychological catastrophes which are only too often the result of uncontrolled speech.",
+        "Without going to this extreme, one should always control the words one speaks and never allow one’s tongue to be prompted by a movement of anger, violence or temper. It is not only the quarrel that is bad in its results, but the fact of allowing one’s tongue to be used to project bad vibrations into the atmosphere; for nothing is more contagious than the vibrations of sound, and by giving these movements a chance to express themselves, one perpetuates them in oneself and in others.",
+        "Among the most undesirable kinds of idle talk must also be included everything that is said about others.",
+        "Unless you are responsible for certain people, as a guardian, a teacher or a departmental head, what others do or do not do is no concern of yours and you must refrain from talking about them, from giving your opinion about them and what they do, and from repeating what others may think or say about them.",
+        "It may happen that the very nature of your occupation makes it your duty to report what is taking place in a particular department, undertaking or communal work. But then the report should be confined to the work alone and not touch upon private matters. And as an absolute rule, it must be wholly objective. You should not allow any personal reaction, any preference, any like or dislike to creep in. And above all, never introduce your own petty personal grudges into the work that is assigned to you.",
+        "In all cases and as a general rule, the less one speaks of others, even to praise them, the better. It is already so difficult to know exactly what is happening in oneself—how can one know with certainty what is happening in others? So you must totally abstain from pronouncing upon anybody one of those final judgments which cannot but be foolish if not spiteful.",
+        "When a thought is expressed in speech, the vibration of the sound has a considerable power to bring the most material substance into contact with the thought, thus giving it a concrete and effective reality. That is why one must never speak ill of people or things or say things which go against the progress of the divine realization in the world. This is an absolute general rule. And yet it has one exception. You should not criticize anything unless at the same time you have the conscious power and active will to dissolve or transform the movements or things you criticize. For this conscious power and active will have the capacity of infusing Matter with the possibility to react and refuse the bad vibration and ultimately to correct it so that it becomes impossible for it to go on expressing itself on the physical plane.",
+        "This can be done without risk or danger only by one who moves in the gnostic realms and possesses in his mental faculties the light of the spirit and the power of the truth. He, the divine worker, is free from all preference and all attachment; he has broken down the limits of his ego and is now only a perfectly pure and impersonal instrument of the supramental action upon earth.",
+        "There are also all the words that are uttered to express ideas, opinions, the results of reflection or study. Here we are in an intellectual domain and we might think that in this domain men are more reasonable, more self-controlled, and that the practice of rigorous austerity is less indispensable. It is nothing of the kind, however, for even here, into this abode of ideas and knowledge, man has brought the violence of his convictions, the intolerance of his sectarianism, the passion of his preferences. Thus, here too, one must resort to mental austerity and carefully avoid any exchange of ideas that leads to controversies which are all too often bitter and nearly always unnecessary, or any clash of opinion which ends in heated discussions and even quarrels, which are always the result of some mental narrowness that can easily be cured when one rises high enough in the mental domain.",
+        "For sectarianism becomes impossible when one knows that any formulated thought is only one way of saying something which eludes all expression. Every idea contains a little of the truth or one aspect of the truth. But no idea is absolutely true in itself.",
+        "This sense of the relativity of things is a powerful help in keeping one’s balance and preserving a serene moderation in one’s speech. I once heard an old occultist of some wisdom say, “Nothing is essentially bad; there are only things which are not in their place. Put each thing in its true place and you will have a harmonious world.”",
+        "And yet, from the point of view of action, the value of an idea is in proportion to its pragmatic power. It is true that this power varies a great deal according to the individual on whom it acts. An idea that has great impelling force in one individual may have none whatsoever in another. But the power itself is contagious. Certain ideas are capable of transforming the world. They are the ones that ought to be expressed; they are the ruling stars in the firmament of the spirit that will guide the earth towards its supreme realization.",
+        "Lastly, we have all the words that are spoken for the purpose of teaching. This category ranges from the kindergarten to the university course, not forgetting all the artistic and literary creations of mankind that seek to entertain or instruct. In this domain, everything depends on the worth of the creation, and the subject is too vast to be dealt with here. It is a fact that concern about education is very much in vogue at present and praiseworthy attempts are being made to make use of new scientific discoveries in the service of education. But even in this matter, austerity is demanded from the aspirant towards truth.",
+        "It is generally admitted that in the process of education a certain kind of lighter, more frivolous, more entertaining productions are necessary to reduce the strain of effort and give some relaxation to the children and even to adults. From a certain point of view, this is true; but unfortunately this concession has served as an excuse to justify a whole category of things which are nothing but the efflorescence of all that is vulgar, crude and base in human nature. Its coarsest instincts, its most depraved taste find in this concession a good excuse to display and impose themselves as an inevitable necessity. They are nothing of the kind, however; one can relax without being dissolute, take rest without being vulgar, enjoy oneself without allowing the grosser elements in the nature to rise to the surface. But from the point of view of austerity, these needs themselves change their nature; relaxation is transformed into inner silence, rest into contemplation and enjoyment into bliss.",
+        "This generally recognized need for entertainment, slackening of effort and more or less long and total forgetfulness of the aim of life and the purpose of existence should not be considered as something altogether natural and indispensable, but as a weakness to which one yields because of lack of intensity in the aspiration, because of instability in the will, because of ignorance, unconsciousness and sloth. Do not justify these movements and you will soon realize that they are unnecessary; there will even come a time when they become repugnant and unacceptable to you. Then the greater part of human creation, which is ostensibly entertaining but in reality debasing, will lose its support and cease to be encouraged.",
+        "However, one should not think that the value of spoken words depends on the nature of the subject of conversation. One can talk idly on spiritual matters just as much as on any other, and this kind of idle talk may well be one of the most dangerous. For example, the neophyte is always very eager to share with others the little he has learnt. But as he advances on the path, he becomes more and more aware that he does not know very much and that before trying to instruct others, he must be very sure of the value of what he knows, until he finally becomes wise and realizes that many hours of silent concentration are needed to be able to speak usefully for a few minutes. Moreover, where inner life and spiritual effort are concerned, the use of speech should be subjected to a still more stringent rule and nothing should be said unless it is absolutely indispensable.",
+        "It is a well-known fact that one must never speak of one’s spiritual experiences if one does not want to see vanishing in a flash the energy accumulated in the experience, which was meant to hasten one’s progress. The only exception which can be made to the rule is with regard to one’s guru, when one wants to receive some explanation or teaching from him concerning the content and meaning of one’s experience. Indeed, one can speak about these things without danger only to one’s guru, for only the guru is able by his knowledge to use the elements of the experience for your own good, as steps towards new ascents.",
+        "It is true that the guru himself is subject to the same rule of silence with regard to what concerns him personally. In Nature everything is in movement; thus, whatever does not move forward is bound to fall back. The guru must progress even as his disciples do, although his progress may not be on the same plane. And for him too, to speak about his experiences is not favorable: the greater part of the dynamic force for progress contained in the experience evaporates if it is put into words. But on the other hand, by explaining his experiences to his disciples, he greatly helps their understanding and consequently their progress. It is for him in his wisdom to know to what extent he can and ought to sacrifice the one to the other. It goes without saying that no boasting or vainglory should enter into his account, for the slightest vanity would make him no longer a guru but an imposter.",
+        "As for the disciple, I would tell him: “In all cases, be faithful to your guru whoever he is; he will lead you as far as you can go. But if you have the good fortune to have the Divine as your guru, there will be no limit to your realization.”",
+        "Nevertheless, even the Divine, when incarnate on earth, is subject to the same law of progress. His instrument of manifestation the physical being he has assumed, should be in a constant state of progress, and the law of his personal self-expression is in a way linked to the general law of earthly progress. Thus even the embodied god cannot be perfect on earth until men are ready to understand and accept perfection. That day will come when everything that is now done out of a sense of duty towards the Divine will be done out of love for Him. Progress will be a joy instead of being an effort and often even a struggle. Or, more exactly, progress will be made in joy, with the full adherence of the whole being, instead of by coercing the resistance of the ego, which entails great effort and sometimes even great suffering.",
+        "In conclusion, I would say this: if you want your speech to express the truth and thus acquire the power of the Word, never think out beforehand what you want to say, do not decide what is a good or bad thing to say, do not calculate the effect of what you are going to say. Be silent in mind and remain unwavering in the true attitude of constant aspiration towards the All-Wisdom, the All-Knowledge, the All-Consciousness. Then, if your aspiration is sincere, if it is not a veil for your ambition to do well and to succeed, if it is pure, spontaneous and integral, you will then be able to speak very simply, to say the words that ought to be said, neither more nor less, and they will have a creative power."
+      ]
+    },
+    {
+      "id": "31",
+      "title": "What is a Vital Being?",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Understanding the Vital Being",
+      "contentChunks": [
+        "The vital being in us is the seat of impulses and desires, of enthusiasm and violence, of dynamic energy and desperate depressions, of passions and revolts. It can set everything in motion, build and realize; but it can also destroy and mar everything. Thus it may be the most difficult part to discipline in the human being. It is a long and exacting labor requiring great patience and perfect sincerity, for without sincerity you will deceive yourself from the very outset, and all endeavor for progress will be in vain. With the collaboration of the vital no realization seems impossible, no transformation impracticable. But the difficulty lies in securing this constant collaboration.",
+        "The vital is a good worker, but most often it seeks its own satisfaction. If that is refused, totally or even partially, the vital gets vexed, sulks and goes on strike. Its energy disappears more or less completely and in its place leaves disgust for people and things, discouragement or revolt, depression and dissatisfaction. At such moments it is good to remain quiet and refuse to act; for these are the times when one does stupid things and in a few moments one can destroy or spoil the progress that has been made during months of regular effort. These crises are shorter and less dangerous for those who have established a contact with their psychic being which is sufficient to keep alive in them the flame of aspiration and the consciousness of the ideal to be realized. They can, with the help of this consciousness, deal with their vital as one deals with a rebellious child, with patience and perseverance, showing it the truth and light, endeavoring to convince it and awaken in it the goodwill which has been veiled for a time. By means of such patient intervention each crisis can be turned into a new progress, into one more step towards the goal. Progress may be slow, relapses may be frequent, but if a courageous will is maintained, one is sure to triumph one day and see all difficulties melt and vanish before the radiance of the truth-consciousness."
+      ]
+    },
+    {
+      "id": "32",
+      "title": "Why is it Important to Know About the Vital?",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "The Importance of Understanding the Vital",
+      "contentChunks": [
+        "Knowing about the vital is important because it's like understanding the engine of a car or the wind that fills a sailboat's bill. 🌬️ The vital is the force within us that powers our emotions, desires, and actions. It's what gives us energy and enthusiasm, but it can also lead us down paths if left unchecked.",
+        "By understanding the nature of the vital, we can learn to harness its power, steering it towards noble and meaningful goals rather than letting it run wild, chasing every passing whim. It's like being the captain of a ship in the vast ocean of our inner world. When we know the tides and currents of our vital energies, we can navigate through life's challenges with greater awareness and purpose.",
+        "Understanding the vital aspect of human nature is important for several reasons:",
+        "Self-awareness: Recognizing and understanding the vital aspects of oneself can lead to greater self-awareness. This awareness allows individuals to recognize their emotional patterns, desires, and motivations, which can help them make more conscious choices and navigate life more effectively.",
+        "Emotional intelligence: Knowledge of the vital helps develop emotional intelligence, the ability to understand and manage one's own emotions and those of others. Emotional intelligence is crucial for building healthy relationships, making sound decisions, and achieving personal and professional success.",
+        "Conflict resolution: Many conflicts, both interpersonal and intrapersonal, arise from clashes in vital energies, such as competing desires or emotional triggers. Understanding the vital can provide insights into the root causes of conflicts and facilitate their resolution through communication, empathy, and compromise.",
+        "Personal growth: Working with the vital is essential for personal growth and inner transformation. By transcending the limitations of the vital, individuals can cultivate higher qualities such as compassion, generosity, and equanimity. This process leads to greater fulfillment, happiness, and spiritual evolution.",
+        "Spiritual development: In spiritual traditions, the vital is often seen as a barrier to higher states of consciousness. Understanding and transforming the vital is therefore essential for spiritual development and awakening to deeper truths about existence and the nature of reality."
+      ]
+    },
+    {
+      "id": "33",
+      "title": "Parts of the Vital Being",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Understanding the Components of the Vital Being",
+      "contentChunks": [
+        "The vital being, crucial to our understanding, comprises four parts:",
+        "The mental vital, expressing through thought and speech;",
+        "The emotional vital, the seat of feelings like love and sorrow;",
+        "The central vital, housing stronger desires and reactions; and",
+        "The lower vital, dealing with everyday desires and dislikes.",
+        "Their locations vary from the throat to below the navel.",
+        "Understanding the emotional and higher vital aspects can be complex. In one view, the emotional could be seen as part of the mind, while the higher vital is about creation and self-giving. In another, the emotional and higher vital are intertwined. Meanwhile, the lower vital, though often misunderstood, serves as a bridge between inner and outer life.",
+        "The psychic being, the true soul-power, influences all aspects of our being. When developed, it imbues the mind, vital, and physical with its essence. However, confusion between emotions and the psychic exists; emotions are usually vital, not psychic.",
+        "While this classification aids self-awareness, flexibility is key, as distinctions blur, and synthesis is as vital as analysis. Mind permeates all levels, including the physical. This body-mind, with its resistance to change, poses a challenge to spiritual growth, yet once transformed, becomes a potent tool for embodying higher consciousness in the material world."
+      ]
+    },
+    {
+      "id": "34",
+      "title": "The Mental Vital or Vital Mind",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Understanding the Mental Vital",
+      "contentChunks": [
+        "The mental vital, situated between the throat and the heart, orchestrates desires, plans, and emotions, distinct from the reasoning mind. It's characterized by dynamic will, action, and desire, often preoccupied with achievement and satisfaction.",
+        "This aspect of our being generates repetitive imaginative thinking, planning actions and arrangements without discipline. These mental constructs, arising during sleep or waking, originate from the vital mind, weaving ideas and plans about various aspects of life.",
+        "These imaginings, unrelated to reason, can stem from the vital mind or entities linked to the physical mind, sometimes appearing nonsensical. They lack proportion and can fuel ego-driven fantasies, but detachment and indifference help dissolve them over time.",
+        "Moreover, the vital mind engages in internal dialogue, particularly when physical action is limited. Understanding its tendencies aids in navigating its influence and fostering detachment from its ego-driven narratives."
+      ]
+    },
+    {
+      "id": "35",
+      "title": "The Emotional Being or Heart",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Understanding the Emotional Being",
+      "contentChunks": [
+        "The emotional aspect of our being is a vital component, centered around the heart. Emotions, vital movements, undergo transformation when the heart is purified, transitioning into psychic feelings or psychicized vital movements.",
+        "Control over the heart, like other vital aspects, involves rejecting wrong movements and accepting true psychic surrender. While the heart may not dwell on mental questions, it can still generate pure thoughts and emotions, despite being unpurified.",
+        "Distinguishing between emotions and lower vital movements depends on their origin. Anger, fear, and jealousy stem from the navel region and entrails, while love and hope primarily arise from the heart."
+      ]
+    },
+    {
+      "id": "36",
+      "title": "The Central Vital or Vital Proper",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Understanding the Central Vital",
+      "contentChunks": [
+        "Above the heart lies the vital mind, where sensation originates, lower than emotion and closer to the physical. Desires reside below the heart, in the central and lower vital, extending into emotion and the vital mind.",
+        "The pursuit of happiness isn't universal; the physical vital seeks it, while the larger vital may prioritize passions, power, or other motives. The mind and larger vital can prioritize Truth or causes over happiness, indicating a broader spectrum of motivations beyond mere hedonism.",
+        "The nervous system is part of the vital, closely intertwined with the body's reactions and sensations. While the vital is necessary for our wholeness, it becomes a true instrument only when purified by the psychic touch and guided by spiritual light and power."
+      ]
+    },
+    {
+      "id": "37",
+      "title": "The Lower Vital, Physical Vital, and Material Vital",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Understanding the Lower Vital and Physical Vital",
+      "contentChunks": [
+        "Below the navel lies the lower vital plane, characterized by ignorance and obscurity, harboring small desires, passions, and pleasures. This realm is distinct from the physical vital, entirelyfocused on physical pursuits, desires, and pleasures.",
+        "The attitude of seeking enjoyment primarily stems from the physical vital, representing the animalistic aspect of human nature. In some individuals, this part dominates, while in others, it's subdued by mental pursuits or higher ideals. In the context of yoga, all parts of being must become instruments of the spirit, transcending mere surface-level enjoyment.",
+        "Understanding these distinctions is crucial, as each part may exert its influence, and overcoming resistance often involves addressing the material vital, deeply entwined with physical matter and bound by its movements and characteristics."
+      ]
+    },
+    {
+      "id": "38",
+      "title": "A Strong Vital",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Characteristics of a Strong Vital",
+      "contentChunks": [
+        "A strong vital is one that is full of life-force, has ambition, courage, great energy, a force for action or for creation, a large expansive movement whether for generosity in giving or for possession and lead and domination, a power to fulfil and materialise—many other forms of vital strength there are also. It is often difficult for such a vital to surrender itself because of this sense of its own powers—but if it can do so, it becomes an admirable instrument for the Divine Work.",
+        "No, a weak vital has not the strength to turn spiritually—and being weak more easily falls under a wrong influence and even when it wants, finds it difficult to accept anything beyond its own habitual nature. The strong vital when the will is there can do it much more easily—its one central difficulty is the pride of its ego and the attraction of its powers.",
+        "The chest has more connection with the psychic than the vital. A strong vital may have a good physique, but as often it has not—it draws too much on the physical, eats it up as it were.",
+        "In a mere vampire there is no psychic, for the vampire is a vital being—but in all humans (even if dominated by a vital being or vampire force), there is a psychic veiled behind it all."
+      ]
+    },
+    {
+      "id": "39",
+      "title": "The Vital Body",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Understanding the Vital Body",
+      "contentChunks": [
+        "The physical life cannot last without the body nor can the body live without the life force, but the life in itself has a separate existence and a separate body of its own, the vital body, just as the mind has a separate existence and can exist on its own plane. All the organization is held together by the psychic which is the support of all."
+      ]
+    },
+    {
+      "id": "40",
+      "title": "The Vital Nature",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Understanding the Vital Nature",
+      "contentChunks": [
+        "It was not your own vital that you saw, but the general vital Nature in the Ignorance that took form and spoke. The battle you saw was the struggle between the Powers of the Light and the Powers of the Darkness for possession of the vital Nature on earth.",
+        "Your vital cannot be destroyed, because it is needed as an instrument for the manifestation of the Divine element in you. There can be no life and no manifestation here on earth without the vital. It has not to be destroyed, but purified and changed into the true Vital."
+      ]
+    },
+    {
+      "id": "41",
+      "title": "The Vital Plane and the Physical Plane",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Understanding the Vital and Physical Planes",
+      "contentChunks": [
+        "Things do happen on the vital plane—but they are not more important than what happens here because it is here we have to realize and what happens in the vital is only a help.",
+        "Most things happen in the vital before they happen in the physical, but all that happens in the vital does not realize itself in the physical or not in the same way. There is always or at least usually a change in the form, time, circumstances due to the different conditions of the physical plane."
+      ]
+    },
+    {
+      "id": "42",
+      "title": "How Do I Purify My Vital Self?",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Purification, Control, and Conversion of the Vital Being",
+      "contentChunks": [
+        "Disciplines aimed at purifying and controlling the vital being often resort to coercion, suppression, and asceticism, providing quick but less enduring results. However, a more profound and lasting transformation can be achieved through a rigorous and detailed education that involves the collaboration of the vital.",
+        "Awareness of one's inner movements and understanding their causes is essential. Teaching individuals to observe their reactions, impulses, and desires lays the foundation for discernment and self-awareness. By refining and educating the vital, transforming its crude and egoistic tendencies into noble aspirations, one can overcome violence and cultivate a more elevated way of being. Ultimately, through perseverance and sincerity, the vital can transcend superficial pleasures and pursue the divine delight, contributing to its own growth and fulfillment.",
+        "…take someone who is studying, working—a scientist making discoveries. He progresses in his studies, he knows more and more. But as he does not take any care of his inner life or private life or outward life, he may become more and more backward or unconscious or even full of nasty defects; even though he progresses from the scientific point of view, as a man he may become an absolutely regrettable being. That’s quite a frequent occurrence. And for oneself, if one does not take good care, one may have a part which is progressing and another that’s going backward. If one does not keep a close watch, if one does not control one’s outer movements, if one does not take a special care not to allow the vital to go according to its own fancy, well, he will suddenly realize that he has formed very bad habits and is following a very nasty road though the mental part of the being was full of aspiration and progressing in knowledge and even in the spiritual life. If one does not pay attention, things slide very easily into a hole: one takes a false step, then slips and suddenly bumps against the bottom of the hole. Then one asks oneself, “But how did this come about? What happened?” Simply a false step: you did not take care, you allowed that part of the being to draw you into its own field; because you did not pull it out of its way, did not compel it to follow you, it now drags you back instead.",
+        "If one wants to lead the spiritual life, one must not be three-fourths asleep. It is necessary to be wide awake and very attentive, otherwise you are like a little boat upon a river or a great sea with terrible currents, and if you are not alert, if you do not pay close heed to these currents, if you relax, relax your vigilance, all of a sudden you find that you are at the other end from where you wanted to go! You are carried away, just like that, quite naturally. “Why, yes, I wanted to go there and I find myself here!”",
+        "That’s how it is.",
+        "In ordinary life this happens all the time. Only, you know, in ordinary life one says, “It is circumstances, it is fate, it’s my bad luck, it is their fault”, or else, “I have no luck.” That is very, very, very convenient. One veils everything and expects… yes, one has happy moments and then bad ones, and finally—ah, well, finally one falls into a hole, for everybody tumbles over, and expects to, sooner or later. So, one does not worry, or worries all the time—which comes to the same thing. That is, one is unconscious, one lives unconsciously and puts all the blame for what happens on others and on the circumstances but never tells oneself: “Why! It is my own fault.”… It needs a sufficiently vast consciousness to begin. Even among those who profess to be conscious, there are not many who see clearly enough to become aware that all that happens to them comes from what they are and from nothing else. They always say, “He is wrong; circumstances are unfavourable; oh! Why was that done?”—If you were not what you are, it would not happen in this way. It would happen differently."
+      ]
+    },
+    {
+      "id": "43",
+      "title": "The Two Important Aspects in Developing the Vital",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Developing and Refining the Vital",
+      "contentChunks": [
+        "The two principal aspects are:",
+        "1) The development and use of the sense organs and",
+        "2) The progressing awareness and control of the character, culminating in its transformation."
+      ]
+    },
+    {
+      "id": "44",
+      "title": "Why the Development and Use of the Sense Organs is Important",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Training of the Senses",
+      "contentChunks": [
+        "Education of the senses involves nurturing accuracy and sensitivity, essential for acquiring knowledge. Understanding the obstacles to sensory perfection—such as nerve blockages and emotional disturbances—is crucial for their removal.",
+        "Nerve purification, achieved through regulated breathing, clears obstructions and enhances sensory sensitivity. Emotional disturbances, like fear, can distort sensory information, remedied by cultivating calmness. The mind, acting as both a sense organ and channel, receives thought impressions, which can be distorted by emotions or previous associations ingrained in the passive memory.",
+        "Purifying the mental and moral habits formed in the passive memory is crucial for removing obstacles to accurate perception. Passivity of thought sensations allows the intellect to select and dictate appropriate associations, facilitating correct impressions and enhancing intellectual discernment. Purification of the passive memory is essential for the intellect's liberation and perfect functioning.",
+        "Insufficient use and attention contribute to the inefficiency of the senses in gathering knowledge. Training in observation, distinguishing, and fixing sensory impressions aids in refining perception. Developing accurate perception through sight, hearing, touch, smell, and taste enhances one's understanding of the world.",
+        "The education of the senses serves as a powerful means of observation, control, and knowledge acquisition. Through training, individuals can develop precise vision, enabling them to perceive the exact structure, proportions, and harmonies of objects. Similarly, training in hearing, smell, taste, and touch allows for discerning qualities and relationships between different stimuli.",
+        "By cultivating exactitude of perception, individuals can move beyond mere sensations and develop a conscious understanding of the world. Training in sensory perception enables one to create harmonious arrangements, whether in cooking, arranging a room, or selecting colors and forms. Through consistent practice and observation, individuals can refine their senses, leading to a conscious and deliberate interaction with the world."
+      ]
+    },
+    {
+      "id": "45",
+      "title": "Expanding Your Senses: Unlocking Hidden Potentials",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Methods for Developing the Senses",
+      "contentChunks": [
+        "Oh, the method is very easy. There are disciplines. It depends on what you want to do.",
+        "It depends. For each thing there is a method. And the first method is to want it, to begin with, that is, to take a decision. Then you are given a description of all these senses and how they work—that takes some time. You take one sense or several, or the one which is easiest for you to start with, and you decide. Then you follow the discipline. It is the equivalent of exercises for developing the muscles. You can even succeed in creating a will in yourself.",
+        "But for more subtle things, the method is to make for yourself an exact image of what you want, to come into contact with the corresponding vibration, and then to concentrate and do exercises—such as to practise seeing through an object or hearing through a sound, or seeing at a distance. For example, once, for a long time, for several months, I was confined to bed and I found it rather boring—I wanted to see. I was in a room and at one end there was another little room and at the end of the little room there was a kind of bridge; in the middle of the garden the bridge became a staircase leading down into a very big and very beautiful studio, standing in the middle of the garden. I wanted to go and see what was happening in the studio, for I was feeling bored in my room. So I would remain very quiet, close my eyes and send out my consciousness, little by little, little by little, little by little. And day after day—I chose a fixed time and did the exercise regularly. At first you make use of your imagination and then it becomes a fact. After some time I really had the physical sensation that my vision was moving; I followed it and then I could see things downstairs which I knew nothing about. I would check afterwards. In the evening I would ask, “Was this like that? And was that like this?”",
+        "But for each one of these things you must practise for months with patience, with a kind of obstinacy. You take the senses one by one, hearing, sight, and you can even arrive at subtle realities of taste, smell and touch.",
+        "In some ancient initiations it was stated that the number of senses that man can develop is not five but seven and in certain special cases even twelve. Certain races at certain times have, out of necessity, developed more or less perfectly one or the other of these supplementary senses. With a proper discipline persistently followed, they are within the reach of all who are sincerely interested in this development and its results. Among the faculties that are often mentioned, there is, for example, the ability to widen the physical consciousness, project it out of oneself so as to concentrate it on a given point and thus obtain sight, hearing, smell, taste and even touch at a distance.",
+        "It corresponds a little (a little) to that capacity which was developed in the Red India due to the conditions of their life. I don’t know how it is at present, but formerly they used to put their ear to the earth, and they had so fine an ear that they could hear steps more than a mile away. They heard the steps of those who were walking at a distance of more than two or three kilometres simply by putting their ear to the ground. Or take the dog which, if given something to smell, finds the trail of that scent again, can follow it with its nose. Well, it is one kind of super-see, that is, a see that has reached such a degree of intensity and refinement that it can indeed feel what the ordinary see does not feel, can see at a distance, really see, see physically at a distance, through walls. It is said that the blind develop a see which enables them to feel an object at a distance. They do not see, they walk in darkness as in a black night; but they have a kind of see of touch at a distance, a material contact due to which, long before touching the object, they know; for example, if there is a piece of furniture in their way, long before knocking against it, they feel it from a distance."
+      ]
+    },
+    {
+      "id": "46",
+      "title": "The Significance of Sense Organs in Human Experience",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "The Role of Sense Organs in Our Lives",
+      "contentChunks": [
+        "Perception and Experience: The sense organs, including sight, hearing, taste, smell, and touch, serve as gateways through which individuals perceive and experience the world around them. These senses allow humans to gather information about their environment, interact with others, and navigate their surroundings effectively. The richness of sensory experiences contributes to the depth and quality of life, enriching one's understanding of the world and oneself.",
+        "Survival and Adaptation: Sense organs play a vital role in survival by alerting individuals to potential threats and opportunities in their environment. For example, the sense of sight helps detect dangers such as predators or obstacles, while the sense of taste and smell can signal the presence of food or toxins. The ability to perceive and respond to sensory stimuli is essential for adapting to changing circumstances and ensuring physical well-being.",
+        "Emotional and Aesthetic Experience: Sensory experiences also play a significant role in shaping emotional responses and aesthetic appreciation. The beauty of nature, the pleasure of music, the taste of delicious food, and the touch of a loved one are all examples of how sensory stimuli can evoke profound emotional and aesthetic experiences. The development and refinement of the sense organs contribute to the richness and diversity of human emotional and aesthetic expression.",
+        "Social Interaction: Sense organs facilitate social interaction by enabling communication and nonverbal expression. Facial expressions, gestures, tone of voice, and body language convey subtle cues that enhance interpersonal communication and understanding. The ability to perceive and interpret these sensory signals is essential for building and maintaining relationships, fostering empathy, and navigating social dynamics effectively."
+      ]
+    },
+    {
+      "id": "47",
+      "title": "Progressing Awareness and Control of Character",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "The Role of Awareness and Control in Refining the Vital",
+      "contentChunks": [
+        "As we progress on this journey, we become more aware of the different aspects of our character - the strengths, weaknesses, and potentials that make us unique. With this awareness comes the opportunity for control and transformation. We can learn to align our vital energy with our highest aspirations, channeling it towards our divine purpose. This process of refinement is essential for the overall progress and perfection of our being, both internally and externally.",
+        "So, in essence, it's about evolving from a state of unawareness to a state of conscious evolution, guided by the light of our true nature and the divine influence within us. It's a beautiful journey of self-discovery, transformation, and becoming the best version of ourselves. 🌱"
+      ]
+    },
+    {
+      "id": "48",
+      "title": "Four Austerities and Four Liberations",
+      "aspect": "LifeAspects.emotional",
+      "progress": 0,
+      "subTitle": "Understanding the Vital and the Path to Liberation",
+      "contentChunks": [
+        "Of all austerities the most difficult is the austerity of feelings and emotions, the tapasya of love.",
+        "Indeed, in the domain of feelings, more perhaps than in any other, man has the sense of the inevitable, the irresistible, of a fatality that dominates him and which he cannot escape. Love (or at least what human beings call love) is particularly regarded as an imperious master whose caprice one cannot elude, who strikes you according to his fancy and forces you to obey him whether you will or not. In the name of love the worst crimes have been perpetrated, the greatest follies committed.",
+        "And yet men have invented all kinds of moral and social rules in the hope of controlling this force of love, of making it amenable and docile. But these rules seem to have been made only to be broken; and the restraint they impose on its free activity merely increases its explosive power. For it is not by rules that the movements of love can be disciplined. Only a greater, higher and truer power of love can subdue the uncontrollable impulses of love. Only love can rule over love by enlightening, transforming and exalting it. For here too, more than anywhere else, control does not consist of suppression and abolition but of transmutation—a sublime alchemy. This is because, of all the forces at work in the universe, love is the most powerful, the most irresistible. Without love the world would fall back into the chaos of inconscience.",
+        "Consciousness is indeed the creatrix of the universe, but love is its saviour. Conscious experience alone can give a glimpse of what love is, of its purpose and process. Any verbal transcription is necessarily a mental travesty of something which eludes all expression in every way. Philosophers, mystics, occultists, have all tried to define love, but in vain. I have no pretension of succeeding where they have failed. But I wish to state in the simplest possible terms what in their writings takes such an abstract and complicated form. My words will have no other aim than to lead towards the living experience, and I wish to be able to lead even a child to it.",
+        "Love is, in its essence, the joy of identity; it finds its ultimate expression in the bliss of union. Between the two lie all the phases of its universal manifestation.",
+        "At the beginning of this manifestation, in the purity of its origin, love is composed of two movements, two complementary poles of the urge towards complete oneness. On one hand there is the supreme power of attraction and on the other the irresistible need for absolute self-giving. No other movement could have better bridged the abyss that was created when in the individual being consciousness was separated from its origin and became unconsciousness.",
+        "What had been projected into space had to be brought back to itself without, however, annihilating the universe which had thus been created. That is why love burst forth, the irresistible power of union.",
+        "It brooded over the darkness and the inconscience; it was scattered and fragmented in the bosom of unfathomable night. And then began the awakening and the ascent, the slow formation of Matter and its endless progression. It is indeed love, in a corrupted and darkened form, that is associated with all the impulses of physical and vital Nature, as the urge behind all movement and all grouping, which becomes quite perceptible in the plant kingdom. In trees and plants, it is the need to grow in order to obtain more light, more air, more space; in flowers, it is the offering of their beauty and fragrance in a loving efflorescence. Then, in animals, it is love that lies behind hunger and thirst, the need for appropriation, expansion, procreation, in short, behind every desire, whether conscious or not. And among the higher species, it is in the self-sacrificing devotion of the female to her young. This brings us quite naturally to the human race in which, with the triumphant advent of mental activity, this association reaches its climax, for it has become conscious and deliberate. Indeed, as soon as terrestrial development made it possible. Nature took up this sublime force of love and put it at the service of her creative work by linking and mixing it with her movement of procreation. This association has even become so close, so intimate, that very few human beings are illumined enough in their consciousness to be able to dissociate these movements from each other and experience them separately. In this way, love has suffered every degradation, it has been debased to the level of the beast.",
+        "From then on, too, there clearly appears in Nature’s works the will to rebuild, by steps and stages and through ever more numerous and complex groupings, the primordial oneness. Having made use of the power of love to bring two human beings together to form the biune group, the origin of the family, after having broken the narrow limits of personal egoism, changing it into a dual egoism. Nature, with the appearance of children, brought forth a more complex unit, the family. And in course of time, with multifarious associations between families, individual interchanges and mingling of blood, larger groupings were formed: clans, tribes, castes, classes, leading to the creation of nations. This work of group formation proceeded simultaneously in the various parts of the world, crystallising in the different races. And little by little. Nature will fuse these races too in her endeavour to build a real and material foundation for human unity.",
+        "In the consciousness of most men, all this is the outcome of chance; they are not aware of the existence of a global plan and take circumstances as they come, for better or for worse according to their temperament: some are satisfied, others discontented.",
+        "Among the contented, there is a certain category of people who are perfectly adapted to Nature’s ways: these are the optimists. For them the days are brighter because of the nights, colours are vivid because of the shadows, joy is more intense because of suffering, pain gives a greater charm to pleasure, illness gives health all its value; I have even heard some of them say that they are glad to have enemies because it made them appreciate their friends all the more. In any case, for all these people, sexual activity is one of the most enjoyable of occupations, satisfaction of the palate is a delight of life that they cannot go without; and it is quite normal to die since one is born: death puts an end to a journey which would become tedious if it were to last too long.",
+        "In short, they find life quite all right as it is and do not care to know whether it has a purpose or a goal; they do not worry about the miseries of others and do not see any need for progress.",
+        "Never try to “convert” these people; it would be a serious mistake. If they were unfortunate enough to listen to you, they would lose the balance they have without being able to find a new one. They are not ready to have an inner life, but they are Nature’s favourites; they have a very close alliance with her, and this realization should not be needlessly disturbed.",
+        "To a lesser degree, and above all, in a less durable way, there are other contented people in the world whose contentment is due to the magic effect of love. Each time an individual breaks the narrow limitations in which he is imprisoned by his ego and emerges into the open air, through self-giving, whether for the sake of another human being or his family, his country or his faith, he finds in this self-forgetfulness a foretaste of the marvellous delight of love, and this gives him the impression that he has come into contact with the Divine. But most often it is only a fleeting contact, for in the human being love is immediately mixed with lower egoistic movements which debase it and rob it of its power of purity. But even if it remained pure, this contact with the divine existence could not last for ever, for love is only one aspect of the Divine, an aspect which here on earth has suffered the same distortions as the others.",
+        "Besides, all these experiences are very good and useful for the ordinary man who follows the normal way of Nature in her stumbling march towards the future unity. But they cannot satisfy those who want to hasten the movement, or rather, who aspire to belong to another line of more direct and rapid movement, to an exceptional movement that will liberate them from ordinary mankind and its interminable march, so that they may take part in the spiritual advance which will lead them along the swiftest paths towards the creation of the new race, the race that will express the supramental truth upon earth. These rare souls must reject all forms of love between human beings, for however beautiful and pure they may be, they cause a kind of short-circuit and cut off the direct connection with the Divine.",
+        "For one who has known love for the Divine, all other forms of love are obscure and too mixed with pettiness and egoism and darkness; they are like a perpetual haggling or a struggle for supremacy and domination, and even among the best they are full of misunderstanding and irritability, of friction and incomprehension.",
+        "Moreover, it is a well-known fact that one grows into the likeness of what one loves. Therefore if you want to be like the Divine, love Him alone. Only one who has known the ecstasy of the exchange of love with the Divine can know how insipid and dull and feeble any other exchange is in comparison. And even if the most austere discipline is required to arrive at this exchange, nothing is too hard, too long or too severe in order to achieve it, for it surpasses all expression.",
+        "This is the marvellous state we want to realize on earth; it is this which will have the power to transform the world and make it a habitation worthy of the Divine Presence. Then will pure and true love be able to incarnate in a body that will no longer be a disguise and a veil for it. Many a time, in order to make the discipline easier and to create a closer and more easily perceptible intimacy, the Divine has sought, in his highest form of love, to assume a physical body similar in appearance to the human body; but each time, imprisoned within the gross forms of Matter, he was able to express only a caricature of himself. And in order to manifest in the fullness of his perfection he waits only for human beings to have made some indispensable progress in their consciousness and in their bodies; for the vulgarity of man’s vanity and the stupidity of his conceit mistake the sublime divine love, when it expresses itself in a human form, for a sign of weakness and dependence and need.",
+        "And yet man already knows, at first obscurely, but more and more clearly as he draws nearer to perfection, that love alone can put an end to the suffering of the world; only the ineffable joy of love in its essence can sweep away from the universe the burning pain of separation. For only in the ecstasy of the supreme union will creation discover its purpose and its fulfilment.",
+        "That is why no effort is too arduous, no austerity too rigorous if it can illumine, purify, perfect and transform the physical substance so that it may no longer conceal the Divine when he takes on an outer form in Matter. For then this marvellous tenderness will be able to express itself freely in the world, the divine love which has the power of changing life into a paradise of sweet joy.",
+        "This, you will say, is the culmination, the crown of the effort, the final victory; but what must be done in order to achieve it? What is the path to be followed and what are the first steps on the way?",
+        "Since we have decided to reserve love in all its splendour for our personal relationship with the Divine, we shall replace it in our relations with others by a total, unvarying, constant and egoless kindness and goodwill that will not expect any reward or gratitude or even any recognition. However others may treat you, you will never allow yourself to be carried away by any resentment; and in your unmixed love for the Divine, you will leave him sole judge as to how he is to protect you and defend you against the misunderstanding and bad will of others.",
+        "You will await your joys and pleasures from the Divine alone. In him alone will you seek and find help and support. He will comfort you in all your sorrows, guide you on the path, lift you up if you stumble, and if there are moments of failure and exhaustion, he will take you up in his strong arms of love and enfold you in his soothing sweetness.",
+        "To avoid any misunderstanding, I must point out here that because of the exigencies of the language in which I am expressing myself, I am obliged to use the masculine gender whenever I mention the Divine. But in fact the reality of love I speak of is above and beyond all gender, masculine or feminine; and when it incarnates in a human body, it does so indifferently in the body of a man or a woman according to the needs of the work to be done.",
+        "In summary, austerity in feelings consists then of giving up all emotional attachment, of whatever nature, whether for a person, for the family, for the country or anything else, in order to concentrate on an exclusive attachment for the Divine Reality. This concentration will culminate in an integral identification and will be instrumental to the supramental realization upon earth.",
+        "This leads us quite naturally to the four liberations which will be the concrete forms of this achievement. The liberation of the feelings will be at the same time the liberation from suffering, in a total realization of the supramental oneness.",
+        "The mental liberation or liberation from ignorance will establish in the being the mind of light or gnostic consciousness, whose expression will have the creative power of the Word.",
+        "The vital liberation or liberation from desire gives the individual will the power to identify itself perfectly and consciously with the divine will and brings constant peace and serenity as well as the power which results from them.",
+        "Finally, crowning all the others, comes the physical liberation or liberation from the law of material cause and effect. By a total self-mastery, one is no longer a slave of Nature’s laws which make men act according to subconscious or semi-conscious impulses and maintain them in the rut of ordinary life. With this liberation one can decide in full knowledge the path to be taken, choose the action to be accomplished and free oneself from all blind determinism, so that nothing is allowed to intervene in the course of one’s life but the highest will, the truest knowledge, the supramental consciousness."
+      ]
+    },
+    {
+      "id": "51",
+      "title": "Chapter 1 - What is the Psychic Being?",
+      "aspect": "LifeAspects.spiritual",
+      "progress": 0,
+      "subTitle": "The psychic part of us is something that comes direct from the Divine and is in touch with the Divine.",
+      "contentChunks": [
+        "In its origin, it is the nucleus pregnant with divine possibilities that supports this lower triple manifestation of mind, life and body. There is this divine element in all living beings, but it stands hidden behind the ordinary consciousness, is not at first developed and, even when developed, is not always or often in the front; it expresses itself, so far as the imperfection of the instruments allows, by their means and under their limitations.",
+        "It grows in the consciousness by Godward experience, gaining strength every time there is a higher movement in us, and, finally, by the accumulation of these deeper and higher movements there is developed a psychic individuality,—that which we call usually the psychic being. It is always this psychic being that is the real, though often the secret cause of man's turning to the spiritual life and his greatest help in it. It is therefore that which we have to bring from behind to the front in the Yoga."
+      ]
+    },
+    {
+      "id": "52",
+      "title": "Chapter 2 - Why is it important to know the Psychic aspect of Being?",
+      "aspect": "LifeAspects.spiritual",
+      "progress": 0,
+      "subTitle": "Understanding the psychic aspect of being leads to discovering the true motive of existence.",
+      "contentChunks": [
+        "By knowing this aspect, we come to the problem of the true motive of existence, the purpose of life on earth, the discovery to which this life must lead and the result of that discovery: the consecration of the individual to his eternal principle.",
+        "Normally this discovery is associated with a mystic feeling, a religious life, because it is mainly the religions that have concerned themselves with this aspect of life. But it need not necessarily be so: the mystic notion of God may be replaced by the more philosophical notion of truth and still the discovery will remain essentially the same, but the road leading to it may be taken even by the most intransigent positivist.",
+        "For mental notions and ideas have only a very secondary importance in preparing one for the psychic life. The important thing is to live the experience; that carries with it its own reality and force apart from any theory that may precede or accompany or follow it, for most often theories are no more than explanations that one gives to oneself in order to have, more or less, the illusion of knowledge.",
+        "Man clothes the ideal or the absolute he seeks to attain with different names according to the environment in which he is born and the education he has received. The experience is essentially the same, if it is sincere; it is only the words and phrases in which it is formulated that differ according to the belief and the mental education of the one who has the experience.",
+        "All formulation is thus only an approximation that should be progressive and grow in precision as the experience itself becomes more and more precise and coordinated."
+      ]
+    },
+    {
+      "id": "53",
+      "title": "Chapter 3 - Aim of the Psychic Being",
+      "aspect": "LifeAspects.spiritual",
+      "progress": 0,
+      "subTitle": "The aim of the psychic being is to form an individual being around the divine center.",
+      "contentChunks": [
+        "The aim of the psychic being is to form an individual being, individualised, \"personalised\" around the divine centre. Normally, all the experiences of the external life (unless one does yoga and becomes conscious) pass without organising the inner being, while the psychic being organises these experiences serially.",
+        "It wants to realise a particular attitude towards the Divine. Hence it looks for all favourable experiences in order to have the complete series of opportunities, so to say, which will allow it to realise this attitude towards the Divine."
+      ]
+    },
+    {
+      "id": "54",
+      "title": "Chapter 4 - How to cultivate the Psychic aspect in oneself?",
+      "aspect": "LifeAspects.spiritual",
+      "progress": 0,
+      "subTitle": "To cultivate the psychic aspect, seek that which is independent of the body and circumstances of life.",
+      "contentChunks": [
+        "The starting-point is to seek in yourself that which is independent of the body and the circumstances of life, which is not born of the mental formation that you have been given, the language you speak, the habits and customs of the environment in which you live, the country where you are born or the age to which you belong.",
+        "You must find, in the depths of your being, that which carries in it a sense of universality, limitless expansion, unbroken continuity. Then you decentralise, extend and widen yourself; you begin to live in all things and in all beings; the barriers separating individuals from each other break down. You think in their thoughts, vibrate in their sensations, feel in their feelings, live in the life of all.",
+        "What seemed inert suddenly becomes full of life, stones quicken, plants feel and will and suffer, animals speak in a language more or less inarticulate, but clear and expressive; everything is animated by a marvelous consciousness without time or limit. And this is only one aspect of the psychic realisation; there are others, many others.",
+        "All help you to go beyond the barriers of your egoism, the walls of your external personality, the impotence of your reactions and the incapacity of your will. But, as I have already said, the path to that realisation is long and difficult, strewn with snares and problems to be solved, which demand an unfailing determination.",
+        "It is like the explorer’s trek through virgin forest in quest of an unknown land, of some great discovery. The psychic being is also a great discovery which requires at least as much fortitude and endurance as the discovery of new continents."
+      ]
+    },
+    {
+      "id": "55",
+      "title": "Chapter 5 - Quotes to Ponder upon",
+      "aspect": "LifeAspects.spiritual",
+      "progress": 0,
+      "subTitle": "Reflect on these quotes to deepen your understanding of the psychic being.",
+      "contentChunks": [
+        "The first and perhaps the most important point is that the mind is incapable of judging spiritual things. All those who have written on this subject have said so; but very few are those who have put it into practice. And yet, in order to proceed on the path, it is absolutely indispensable to abstain from all mental opinion and reaction.",
+        "Give up all personal seeking for comfort, satisfaction, enjoyment or happiness. Be only a burning fire for progress, take whatever comes to you as an aid to your progress and immediately make whatever progress is required.",
+        "Try to take pleasure in all you do, but never do anything for the sake of pleasure.",
+        "Never get excited, nervous or agitated. Remain perfectly calm in the face of all circumstances. And yet be always alert to discover what progress you still have to make and lose no time in making it.",
+        "Never take physical happenings at their face value. They are always a clumsy attempt to express something else, the true thing which escapes our superficial understanding.",
+        "Never complain of the behaviour of anyone, unless you have the power to change in his nature what makes him act in this way; and if you have the power, change him instead of complaining.",
+        "Whatever you do, never forget the goal which you have set before you. There is nothing great or small once you have set out on this great discovery; all things are equally important and can either hasten or delay its success.",
+        "Thus before you eat, concentrate a few seconds in the aspiration that the food you are about to eat may bring your body the substance it needs to serve as a solid basis for your effort towards the great discovery, and give it the energy for persistence and perseverance in the effort.",
+        "Before you go to sleep, concentrate a few seconds in the aspiration that the sleep may restore your fatigued nerves, and bring calm and quietness to your brain so that on waking you may, with renewed vigor, begin again your journey on the path of the great discovery.",
+        "Before you act, concentrate in the will that your action may help or at least in no way hinder your march forward towards the great discovery.",
+        "When you speak, before the words come out of your mouth, concentrate just long enough to check your words and allow only those that are absolutely necessary to pass, only those that are not in any way harmful to your progress on the path of the great discovery.",
+        "To sum up, never forget the purpose and goal of your life. The will for the great discovery should be always there above you, above what you do and what you are, like a huge bird of light dominating all the movements of your being."
+      ]
+    },
+    {
+      "id": "71",
+      "title": "Chapter 1 - What is Physical Being?",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The physical being is our earthly aspect, the part of us that connects with the material world.",
+      "contentChunks": [
+        "It's our body, our senses, and the way we interact with the tangible environment around us. It's the foundation of our existence, the solid ground where all our thoughts, emotions, and vital energies find a home to express themselves.",
+        "It's through the physical being that we experience the world and express the fullness of who we are, in this beautiful dance of life."
+      ]
+    },
+    {
+      "id": "72",
+      "title": "Chapter 2 - The Importance of Methodical Discipline in Physical Being",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The physical consciousness is governed by method, order, discipline, and process.",
+      "contentChunks": [
+        "The lack of plasticity and receptivity in the matter has to be replaced by a detailed organization that is both precise and comprehensive. In this organization, one must not forget the interdependence and interpenetration of all the domains of the being.",
+        "However, even a mental or vital impulse, to express itself physically, must submit to an exact process. That is why all education of the body if it is to be effective, must be rigorous and detailed, far-sighted and methodical. This will be translated into habits; the body is a being of habits.",
+        "But these habits should be controlled and disciplined while remaining flexible enough to adapt themselves to circumstances and to the needs of the growth and development of the being."
+      ]
+    },
+    {
+      "id": "73",
+      "title": "Chapter 3 - Perfection of the Body",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The pursuit of perfection in physical culture is integral to our quest for total perfection.",
+      "contentChunks": [
+        "The body serves as the instrument for manifesting ideals, with health and strength being fundamental. A divine life on earth necessitates the elevation of the physical to meet the spiritual. Transformation of the body, mind, and life is essential for achieving supreme perfection, bridging the gap between human and divine.",
+        "While historically, the body has been seen as a limitation, in the pursuit of perfection, it must be embraced and uplifted. Whether starting from a spiritual or physical perspective, the goal remains the same: to transcend limitations and manifest the divine in every aspect of existence.",
+        "This includes integrating physical pursuits like sports into spiritual practice, recognizing their role in achieving total perfection, including the perfection of the body."
+      ]
+    },
+    {
+      "id": "74",
+      "title": "Chapter 4 - Train the Physical: Food",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The Yogic Attitude towards Food",
+      "contentChunks": [
+        "If you want to do Yoga, you must take more and more in all matters, small or great, the Yogic attitude. In our path that attitude is not one of forceful suppression, but of detachment and equality with regard to the objects of desire.",
+        "Forceful suppression (fasting comes under the head) stands on the same level as free indulgence; in both cases, the desire remains; in the one it is fed by indulgence, in the other it lies latent and exasperated by suppression.",
+        "It is only when one stands back, separates oneself from the lower vital, refusing to regard its desires and clamors as one's own, and cultivates an entire equality and equanimity in the consciousness with respect to them that the lower vital itself becomes gradually purified and itself also calm and equal.",
+        "Each wave of desire as it comes must be observed, as quietly and with as much unmoved detachment as you would observe something going on outside you, and must be allowed to pass, rejected from the consciousness, and the true movement, the true consciousness steadily put in its place.",
+        "It is a mistake to neglect the body and let it waste away; the body is the means of the sadhana and should be maintained in good order. There should be no attachment to it, but no contempt or neglect either of the material part of our nature."
+      ]
+    },
+    {
+      "id": "75",
+      "title": "Chapter 5 - Attachment to Food",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "It is the attachment to food, the greed and eagerness for it, making it an unduly important thing in life, that is contrary to the spirit of Yoga.",
+      "contentChunks": [
+        "To be aware that something is pleasant to the palate is not wrong; only one must have no desire nor hankering for it, no exultation in getting it, no displeasure or regret at not getting it.",
+        "One must be calm and equal, not getting upset or dissatisfied when the food is not tasty or not in abundance—eating the fixed amount that is necessary, not less or more. There should be neither eagerness nor repugnance.",
+        "To be always thinking about food and troubling the mind is quite the wrong way of getting rid of the food-desire. Put the food element in the right place in life, in a small corner, and don't concentrate on it but on other things."
+      ]
+    },
+    {
+      "id": "76",
+      "title": "Chapter 6 - Greed for Food",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The first thing to be attained about eating is to get rid of the greed of food, the attachment and desire.",
+      "contentChunks": [
+        "To take it only as a need of the body, to think little of it and not to allow it to occupy a big place in life; also to be satisfied with what you get, not to hanker. At the same time sufficient food should be taken, avoiding either deficiency or excess; an excessive coercion or nigraha in this respect (as opposed to reasonable control) often brings a reaction.",
+        "One should go steadily, but not try to get too much done at once."
+      ]
+    },
+    {
+      "id": "77",
+      "title": "Chapter 7 - Quantity of Food",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "What is necessary is to take enough food and think no more about it, taking it as a means for the maintenance of the physical instrument only.",
+      "contentChunks": [
+        "But just as one should not overeat, so one should not diminish unduly—it produces a reaction which defeats the object—for the object is not to allow either the greed for food or the heavy tamas of the physical which is the result of excessive eating to interfere with the concentration on the spiritual experience and progress.",
+        "If the body is left insufficiently nourished, it will think of food more than otherwise.",
+        "Too much eating makes the body material and heavy, eating too little makes it weak and nervous—one has to find the true harmony and balance between the body's need and the food taken.",
+        "It depends on what you can digest. If you can digest, there is no harm in taking more since you feel hungry. All these things depend upon what is the true need of the body and that may differ in different cases according to the constitution of the body, the amount of work done or exercise taken. It is possible that you have reduced your food too much—so you can try taking more."
+      ]
+    },
+    {
+      "id": "78",
+      "title": "Chapter 8 - Types of Food",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The importance of sattwic food from the spiritual point of view has been exaggerated.",
+      "contentChunks": [
+        "Food is rather a question of hygiene and many of the sanctions and prohibitions laid down in ancient religions had more a hygienic than a spiritual motive. The Gita's definitions seem to point in the same direction—tamasic food, it seems to say, is what is stale or rotten with the virtue gone out of it, rajasic food is that which is too acrid, pungent etc., heats the blood and spoils the health, sattwic food is what is pleasing, healthy etc.",
+        "It may well be that different kinds of food nourish the action of the different gunas and so indirectly are helpful or harmful apart from their physical action. But that is as far as we can confidently go. What particular eatables are or are not sattwic is another question and more difficult to determine.",
+        "Spiritually, I should say that the effect of food depends more on the occult atmosphere and influences that come with it than on anything in the food itself. Vegetarianism is another question altogether; it stands, as you say, on a will not to do harm to the more conscious forms of life for the satisfaction of the belly.",
+        "As to the question of practising to take all kinds of food with equal rasa, it is not necessary to practise nor does it really come by practice. One has to acquire equality within in the consciousness and as this equality grows one can extend it or apply it to the various fields of the activity of the consciousness."
+      ]
+    },
+    {
+      "id": "79",
+      "title": "Chapter 9 - Sleep",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The Yogic Attitude towards Sleep and Food",
+      "contentChunks": [
+        "This is not a Yoga in which physical austerities have to be done for their own sake. Sleep is necessary for the body just as food is. Sufficient sleep must be taken, but not excessive sleep. What sufficient sleep is depends on the need of the body.",
+        "The loss of sleep must not be there. In this Yoga we insist on regular sleep, rest, food, because then the balance can be kept between the strength of the body and the force of all that comes into it from above.",
+        "Otherwise the body is not able to keep and hold what comes—there is disturbance and loss of the right poise and balance.",
+        "The first thing I tell people when they want not to eat or sleep is that no Yoga can be done without sufficient food and sleep (see the Gita on this point). This is not Gandhi's asram or a miracle-shop. Fasting and sleeplessness make the nerves morbid and excited and weaken the brain and lead to delusions and fantasies.",
+        "The Gita says Yoga is not for one who eats too much or sleeps too much, neither is it for one who does not eat or does not sleep, but if one eats and sleeps suitably—yuktāhārī yuktanidraḥ—then one can do it best. It is the same with everything else. How often have I said that excessive retirement was suspect to me and that to do nothing but meditate was a lopsided and therefore unsound sadhana.",
+        "I must ask you to remember what I told you about sadhana. If you want to do the sadhana here, you must sleep well and eat well. If you try to stop sleeping or eating or unduly diminish sleep and food, you will weaken the body and excite the vital and wrong and excited and exaggerated movements will come into you. Remember this in future.",
+        "There are stories told of people living without sleep or food—living without sleep has happened, but it came by an abnormal condition in the person which cannot be brought at will. There is no instance of anyone living without food,—none that is to say which is beyond doubt—but that also may be possible—but here also it must depend on some abnormal condition which cannot be brought at will."
+      ]
+    },
+    {
+      "id": "80",
+      "title": "Chapter 10 - The Need of Sleep and Rest",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "It is not a right method to try to keep awake at night.",
+      "contentChunks": [
+        "The suppression of the needed sleep makes the body tamasic and unfit for the necessary concentration during the waking hours. The right way is to transform the sleep and not suppress it, and especially to learn how to become more and more conscious in sleep itself.",
+        "If that is done, sleep changes into an inner mode of consciousness in which the sadhana can continue as much as in the waking state, and at the same time one is able to enter into other planes of consciousness than the physical and command an immense range of informative and utilisable experience.",
+        "By not sleeping enough you weaken the forces of the physical consciousness and so the physical basis of the sadhana is less strong than it should be. It gets more open to the forces of inertia.",
+        "Is that all your sleep [*three-and-a-half hours*]? If so, it is far too little. If you do not sleep enough, the body and the nervous envelope will be weakened and the body and the nervous envelope are the basis of the sadhana.",
+        "I am glad the peace is coming back at last and I trust it will increase and push out these other things. But how is it,—you have not been taking proper rest? Rest is absolutely necessary for the body and still more for the nervous system; not only for working but for sadhana rest to the body and the nerves is essential.",
+        "If you allow them to be strained and tired, they will not be able to adapt themselves readily for the required change, all sorts of things, confusion, suggestions etc. are likely to come into a tired nervous system. They too must be strong and at peace.",
+        "It is the want of sleep itself that brings the symptoms of uneasiness. The action of the Sadhana cannot of itself bring this kind of reaction, it is only if the body gets strained by want of sleep, insufficient food, overwork or nervous excitement that there are these things. It is probably because the nerves are strung in the daytime and you do not relax into ease that it is difficult to sleep.",
+        "One can assimilate [*spiritual experience*] in sleep also. Remaining awake like that is not good, as in the end it strains the nerves and the system receives wrongly in an excited way or else gets too tired to receive.",
+        "You should have continuous sleep at night and sufficient—otherwise you will feel sleepy in the day which will be a hindrance to work.",
+        "Sleep is necessary; this kind of broken rest is not good. It is the consciousness in sleep itself that has to change.",
+        "Such pressure [*to sleep*] only comes (1) when the body needs sleep, not having had enough or because enough rest is not given, (2) when it wants to recuperate after illness or strong fatigue, (3) when there is a pressure from above which the physical consciousness or part of it replies to by trying to go inside.",
+        "Take care to rest enough. You must guard against fatigue as it may bring relaxation and tamas. To rest well is not tamas, as some people suppose; it can be done in the right consciousness to maintain the bodily energy—like the śavāsana of the strenuous Hathayogin.",
+        "Both for fevers and for mental trouble sleep is a great help and its absence very undesirable—it is the loss of a curative agency."
+      ]
+    },
+    {
+      "id": "81",
+      "title": "Chapter 11 - The Amount of Sleep Needed",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The ordinary period of sleep most people give themselves is 8 hours.",
+      "contentChunks": [
+        "In bad health (I am not speaking of acute illness) it can extend to 9. 12 hours is excessive unless one is seriously ill or recovering from illness or else has underslept for a long time and the body is making up arrears of needed sleep.",
+        "8 hours [*of sleep*] at night is all right, the additional 2 hours is probably necessitated by the bad sleep you were having before. The body recoups itself in this way. That is why it is a mistake to take too little sleep—the body gets strained and has to recoup itself by abnormal sleep afterwards.",
+        "The normal allowance of sleep is said to be 7 to 8 hours except in advanced age when it is said to be less. If one takes less (5 to 6 for instance) the body accommodates itself somehow, but if the control is taken off it immediately wants to make up for its lost arrears of the normal 8 hours.",
+        "So often when one has tried to live on too little food, if one relaxes, the body becomes enormously rapacious for food until it has set right the credit and loss account. At least it often happens like that.",
+        "It must be the want of sleep that keeps your nervous system exposed to weakness—it is a great mistake not to take sufficient sleep. 7 hours is the minimum needed. When one has a very strong nervous system, one can reduce it to 6, sometimes even 5—but it is rare and ought not to be attempted without necessity.",
+        "The feeling that you have in the morning proves that you need more sleep, so it is not wise to cut it short to the minimum as that in the end tells on the body. It is better to continue the sleep when you feel sleepy. 7 hours is not too much for sleep.",
+        "5½ hours [*of sleep*] is quite insufficient. Six is the absolute minimum, it can go up to seven hours.",
+        "It is not possible to do at once what you like with the body. If the body is told to sleep only 2 or 3 hours, it may follow if the will is strong enough—but afterwards it may get exceedingly strained and even break down for want of needed rest.",
+        "The Yogis who minimise their sleep, succeed only after a long tapasya in which they learn how to control the forces of Nature governing the body."
+      ]
+    },
+    {
+      "id": "82",
+      "title": "Chapter 12 - The Real Rest which Restores",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "In sleep one very commonly passes from consciousness to deeper consciousness in a long succession until one reaches the psychic and rests there.",
+      "contentChunks": [
+        "Or else from higher to higher consciousness until one reaches rest in some silence and peace. The few minutes one passes in this rest are the real sleep which restores—if one does not get it, there is only a half rest.",
+        "It is when you come near to either of these domains of rest, that you begin to see these higher kind of dreams.",
+        "A long unbroken sleep is necessary because there are just ten minutes of the whole into which one enters into a true rest—a sort of Sachchidananda immobility of the consciousness—and that it is which really restores the system.",
+        "The rest of the time is spent first in travelling through various states of consciousness towards that and then coming out of it back towards the waking state. This fact of the ten minutes true rest has been noted by medical men, but of course they know nothing about Sachchidananda!",
+        "This feeling of having enough sleep [*when one wakes at night*] and after sleeping again of not having had enough is not unusual. It might be inferred that the first sleep is really enough and the second is a tamasic sleep which leaves the body unrested.",
+        "Some doctors say that there are about ten minutes of rest which are the true sleep and all the rest is only a process of getting into the ten minutes and getting out again—for these ten minutes are difficult to arrive at.",
+        "Perhaps you get your ten minutes before the first waking. The difficulty is that the length of sleep seems important and that by the habit of less the nerves continually seem to get strained—at least I have seen that with many. If that can be overcome then so much sleep might not be requisite.",
+        "According to a recent medical theory one passes in sleep through many phases until one arrives at a state in which there is absolute rest and silence—it lasts only for ten minutes, the rest of the time is taken up by travelling to that and travelling back again to the waking state. I suppose the ten minutes sleep can be called suṣupti in the Brahman or Brahmaloka, the rest is svapna or passage through other worlds (planes or states of conscious existence).",
+        "It is these ten minutes that restore the energies of the being, and without it sleep is not refreshing.",
+        "According to the Mother's experience and knowledge one passes from waking through a succession of states of sleep consciousness which are in fact an entry and passage into so many worlds and arrives at a pure Sachchidananda state of complete rest, light and silence; afterwards one retraces one's way till one reaches the waking physical state.",
+        "It is this Sachchidananda period that gives sleep all its restorative value. These two accounts, the scientific and the occult-spiritual, are practically identical with each other. But the former is only a recent discovery of what the occult-spiritual knowledge knew long ago.",
+        "People's ideas of sound sleep are absolutely erroneous. What they call sound sleep is merely a plunge of the outer consciousness into a complete subconscience. They call that a dreamless sleep; but it is only a state in which the surface sleep consciousness which is a subtle prolongation of the outer still left active in sleep itself is unable to record the dreams and transmit them to the physical mind.",
+        "As a matter of fact the whole sleep is full of dreams. It is only during the brief time in which one is in the Brahmaloka that the dreams cease."
+      ]
+    },
+    {
+      "id": "83",
+      "title": "Chapter 13 - Getting Good Sleep",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The sleep before 12 is supposed to be the best.",
+      "contentChunks": [
+        "To sleep without a burdened stomach is obviously more healthy, both psychologically and physically.",
+        "I don't think the lack of sleep when it comes is due to want of work; for even those who do no work at all, get good sleep. It is something else; but it must be got over.",
+        "It is restlessness in you which prevents you from keeping still inwardly or outwardly. To sleep well the vital and physical and mind also must learn how to relax themselves and be quiet.",
+        "Obviously—it [*reading a novel before going to bed*] threw you into a tamasic consciousness and consequently the sleep was heavy in a gross subconsciousness and the fatigue was the result.",
+        "You should not jump up from sleep. Rise quietly and take a little time. You must give time for the consciousness to come back fully into the body."
+      ]
+    },
+    {
+      "id": "84",
+      "title": "Chapter 14 - Sleep during the Day",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "Many people can't stand afternoon sleep.",
+      "contentChunks": [
+        "But when it is more refreshing, it is because it is lighter than the night sleep—one does not go so deep down to the subconscient.",
+        "According to the old Ayurvedic shastra \"sleep by day impairs the vitality\"; but there are conditions in which the rule may not apply. It is however true that these [*sexual*] dreams do easily occur during sleep by day and the dreams themselves come in a state of deep subconscient relaxation, tamasic inertia when the system can be touched by any subconscient suggestion or influence."
+      ]
+    },
+    {
+      "id": "85",
+      "title": "Chapter 15 - Illness",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "Physical sufferings are due to attacks of the forces of the Ignorance.",
+      "contentChunks": [
+        "But if one knows how to do it, one can make them a means of purification. There are however better and less difficult means of purification.",
+        "Illness must not be accepted as a means of transformation; it rather indicates certain difficulties encountered by the force of transformation especially in the vital and the body.",
+        "But it is not necessary that these difficulties should be allowed to take this obscure form of illness. All illness should be rejected and all suggestions of illness; the Force should be called in to cure by the assent to health and the refusal of assent to the suggestions that bring or prolong its opposite.",
+        "All illnesses are obviously due to the imperfect nature of the body and the physical nature. The body can be immune only when it is open to the higher consciousness and the latter can descend into it. Till then what he writes is the remedy—if he can also call in the force to throw out the illness, that is the most powerful help possible.",
+        "It is only by the conquest of the material nature that illness can cease altogether to come."
+      ]
+    },
+    {
+      "id": "86",
+      "title": "Chapter 16 - The Suggestion of Illness",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The feeling of illness is at first only a suggestion; it becomes a reality because your physical consciousness accepts it.",
+      "contentChunks": [
+        "It is like a wrong suggestion in the mind; if the mind accepts it, it becomes clouded and confused and has to struggle back into harmony and clearness.",
+        "It is so with the body consciousness and illness. You must not accept but reject it with your physical mind and so help the body consciousness to throw off the suggestion. If necessary, make a counter-suggestion, \"No, I shall be well; I am and shall be all right.\" And in any case call in the Mother's Force to throw out the suggestion and the illness it is bringing.",
+        "By suggestion [*of illness*] I do not mean merely thoughts or words. When the hypnotist says, \"Sleep\", it is a suggestion; but when he says nothing but only puts his silent will to convey sleep or makes movements of his hands over the face, that also is a suggestion.",
+        "When a force is thrown on you or a vibration of illness, it carries to the body this suggestion. A wave comes in the body—with a certain vibration in it, the body remembers \"cold\" or feels the vibrations of a cold and begins to cough or sneeze or to feel chill—the suggestion comes to the mind in the form, \"I am weak, I don't feel well, I am catching a cold.\"",
+        "A suggestion is not one's own thought or feeling, but a thought or feeling that comes from outside, from others, from the general atmosphere or from external Nature,—if it is received, it sticks and acts on the being and is taken to be one's own thought or feeling. If it is recognised as a suggestion, then it can be more easily got rid of. This feeling of doubt and self-distrust and hopelessness about oneself is a thing moving about in the atmosphere and trying to enter into people and be accepted; I want you to reject it."
+      ]
+    },
+    {
+      "id": "87",
+      "title": "Chapter 17 - Faith, Confidence and Cure",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "Most of them [*illnesses*] can be got rid of almost at once by faith and calling in the force.",
+      "contentChunks": [
+        "Those that are chronic are more difficult, but they too can be got rid of by the same means if persistently used.",
+        "You have only to admit that the mind and vital can influence the body—then no difficulty is left. In this action of mind and vital on the body faith and hope have an immense importance. I do not at all mean that they are omnipotent or infallibly effective—that is not so. But they assist the action of any force that can be applied, even of an apparently purely material force like medicine. In fact however there is no such thing as a purely material force, but the action may be purely material when it is a question of material objects. But in things that have life or mind and life one cannot isolate the material operation like that. There is always a play of other forces mixed with it in the reception at least and for the most part in the inception and direction also.",
+        "Remain quiet, within, concentrated only on receiving strength and health, confident that we are with you all the time, and you will soon be all right."
+      ]
+    },
+    {
+      "id": "88",
+      "title": "Chapter 18 - Depression and Illness",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "It is not anything physical but a vital depression (in some part of the vital, not the whole) that prevents the body from recovering its elasticity.",
+      "contentChunks": [
+        "There was some part of the vital that was resisting a radical change and even, unknown to your mind, trying to go on as it was under cover of the change in the rest of your being. This has now, owing to this last affair, received a blow and got depressed and, when the vital is depressed like that, it affects the body.",
+        "You say rightly that it is part of a change or turn that is taking place. But these effects of inertia and weakness need not continue; as soon as this vital part acquiesces gladly in the turn or change, the elasticity and energy will return.",
+        "It is good that you reject the sense of illness and allow no depression. Let there be no apprehension in the physical consciousness; with faith make it open to the Force.",
+        "The seeds of these old illnesses remain in the subconscient after they are cured. So when the subconscient is being worked, an adverse push bringing a general depression may make them sprout up; but they can be counteracted by the Force if you are vigilant and persistent in your sadhana and not remain to trouble."
+      ]
+    },
+    {
+      "id": "89",
+      "title": "Chapter 19 - Fear and Illness",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "If you have fear or apprehension of illness in your vital, that is the first thing to be thrown away, as it helps the illnesses to come in.",
+      "contentChunks": [
+        "People taking the utmost precautions catch an illness, while often those who take no precautions escape. One has to take reasonable care if there is some immediate and definite cause of apprehension, but that is all.",
+        "What is the difficulty [*in understanding how the subtle forces of illness attack the body using bacilli and viruses for their purpose*]? You are like the scientists who say or used to say that there is no such thing as mind or thought independent of the physical brain. Mind and thought are only names for brain quiverings. Or that there is no such thing as vital Force because all the movements of life depend upon chemicals, glands and what not. These things and the germs also are only a minor physical instrumentation for something supraphysical.",
+        "They [*the forces of illness*] first weaken or break through the nervous envelope, the aura. If that is strong and whole, a thousand million germs will not be able to do anything to you. The envelope pierced, they attack the subconscient mind in the body, sometimes also the vital mind or mind proper—prepare the illness by fear or thought of illness. The doctors themselves said that in influenza or cholera in the Far East 90 per cent got ill through fear. Nothing to take away the resistance like fear. But still the subconscient is the main thing.",
+        "If the contrary Force is strong in the body, one can move in the midst of plague and cholera and never get contaminated. Plague too, rats dying all around, people passing into Hades. I have seen that myself in Baroda.",
+        "Whatever is wrong in the system can easily be set right—but the first thing necessary is that you should dismiss this fear which hampers the action of the Force and opposes the cure. It is also necessary that you should now abstain finally not only from alcohol and wine, but from sex and smoking. Healthy conditions of living are necessary to help the Force to undo what has been done in the past and restore the full strength and normality of the body.",
+        "Fix in yourself the calm and courage of the sadhak. Fear nothing, open yourself, reject the weaknesses that remain—then the progress that had begun here will complete itself and the body also become an abiding place of the true consciousness and force."
+      ]
+    },
+    {
+      "id": "90",
+      "title": "Chapter 20 - Inertia and Illness",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The human body has always been in the habit of answering to whatever forces chose to lay hands on it and illness is the price it pays for its inertia and ignorance.",
+      "contentChunks": [
+        "It has to learn to answer to the one Force alone, but that is not easy for it to learn.",
+        "It is a weakness and inertia in the physical nature which makes it undergo and acquiesce in the attacks of illness, instead of refusing and repelling them. That is the character of the material physical in all. It can only be remedied by the Force and Consciousness from above occupying the whole physical being.",
+        "The inertia of the lower vital and physical consciousness which prevents it from throwing off the lassitude, from reacting against the attacks and from opening steadily to the Force which would remove these things. All that is due to the breakdown of the poise that you had for so long, the vital trouble that caused it and the reaction of the lower vital to the insistence on throwing out the causes of the trouble.",
+        "This reaction seems to have been a listlessness at losing the things to which it was still holding—such a reaction always brings the inertia of the physical consciousness, while the right reaction in the lower vital brings on the contrary a sense of peace, release, quietude which definitely opens the lowest physical parts to the higher consciousness and force. If you can get over this and get back the old poise, then all these things can be made to disappear."
+      ]
+    },
+    {
+      "id": "91",
+      "title": "Chapter 21 - Anger and Illness",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "Insisting on ego, constantly arguing, and holding onto negative feelings towards others can lead to various troubles.",
+      "contentChunks": [
+        "It invites conflict with others and exposes us to negative energies, affecting our well-being. Additionally, this behavior can harm our liver and digestion, as anger and quarreling often do.",
+        "To maintain good health and progress in our personal growth journey, it's essential to let go of ego, avoid unnecessary arguments, and cultivate positive feelings towards others."
+      ]
+    },
+    {
+      "id": "92",
+      "title": "Chapter 22 - Work and Illness",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "I do not know why working with X must make good health impossible, unless you mean that there is too much work imposed on you,—but then the work can be lessened.",
+      "contentChunks": [
+        "In fact a complete rest and relief from the work can be arranged at present and for the future we can see afterwards. If you mean that working according to somebody else's ideas makes or keeps you ill, I do not see why it should be so.",
+        "999 people out of every 1000 do that—only a few are able to carry out their own ideas and even they have to a large extent to suit their ideas to those of other people in the actual execution of their work.",
+        "If you mean that to have to work under discipline, doing things in what you consider not the best way, makes you nervous, discouraged and ill, that is a pity. It would be so much better if you could leave the responsibility of the way of doing things to the Mother and do cheerfully what you have to do. However, if you cannot bring yourself to that attitude, some other way will have to be found hereafter. But at the present, if that is the case, to take rest as a relief would seem the only way.",
+        "It is no use stopping work because of rheumatism (unless it is of the kind that disables one from working),—it only makes things worse."
+      ]
+    },
+    {
+      "id": "93",
+      "title": "Chapter 23 - Sleep and Illness",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "Yes. If you don't sleep enough the physical system becomes more open to these attacks [*of illness*].",
+      "contentChunks": [
+        "If it is kept in good condition, then usually it repels them automatically and one does not notice even that there has been an attack.",
+        "I said that when the body is in good condition it automatically repels any attack of illness which is in the air without the mind even having to notice that there is an attack. If the attack is automatically repelled what is the need of dealing with it?"
+      ]
+    },
+    {
+      "id": "94",
+      "title": "Chapter 24 - Pain",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "Pain is caused because the physical consciousness in the Ignorance is too limited to bear the touches that come upon it.",
+      "contentChunks": [
+        "Otherwise, to cosmic consciousness in its state of complete knowledge and complete experience, all touches come as Ananda.",
+        "Yes—all pain can become Ananda—pain is only the perversion of what in the original Consciousness would be Ananda.",
+        "Pain can be turned into Ananda, but I don't think that there is a special stage for that.",
+        "Peace in the cells first, then consolidated force [*is the secret of being able to bear heat and cold*]. Pain and discomfort come from a physical consciousness not forceful enough to determine its own reaction to things.",
+        "The healing of the nervous pain in the stomach does not depend on more or less eating—often these pains come when one does not eat enough, not only when one eats too much—so it is not by eating less you can cure it.",
+        "These pains are a part of the pressure of the old nature on the body; that is why we consider it can only be healed by the Peace and Power bringing a new movement of the physical nature there.",
+        "In the stage of the struggle between the two natures, the peace does not always remain, but it will remain longer and longer as you get the habit of opening constantly to it.",
+        "The pains in the body come from the same source as the trouble in the vital nature; both are attacks from the same outside Force that wants to mislead or, when it cannot mislead, to trouble and disturb you. When once you can get rid of the vital invasion and prevent its recurrence, it will be easier to get rid too of the physical trouble whose origin is nervous (vital-physical); although its symptoms seem to be those of a physical illness, it is really an attack on the nervous part and a weakening of it for the time that gives you these pains.",
+        "Remain always quiet and persist in opening yourself. The Force that releases you from the vital trouble, can also remove the disturbance in the nervous part and the physical body.",
+        "The physical pain is obviously due to attacks—any physical cause being only a means for the action of the attack.",
+        "I have often seen that when the mind and consciousness have rejected the attacks, the contrary forces fall on some weak point in the body hoping that by pain or illness they will depress the consciousness and so make it less strong to resist and reject them. We must see whether this recurrence of the pain cannot be quietly pushed out altogether.",
+        "It is a great gain if you feel no depression when the attack on the body comes.",
+        "The pain itself is, from your description, evidently nervous and, if you develop openness in the more physical layers of the being, then the action of the Force can always remove it or you will yourself be able to use the Force to push it away. It is a matter of getting the habit of opening in the body consciousness.",
+        "The consciousness or unconsciousness, as you have seen in the matter of the French studies, is dependent on the condition. It is not that you are unconscious, but that the physical being is prone to the tamasic condition (the condition of inertia) and then it becomes either inactive or obscure, stupid and unconscious; when the tamas goes away the condition becomes bright and what was difficult before becomes natural and easy.",
+        "The whole thing is to get the physical out of its habit of falling back into tamas or inertia, and that can be done by opening and accustoming it to the action of the Force. When the action of the Force becomes constant, then there will be no more tamas.",
+        "You had opened your consciousness, so the pain disappeared. If it came back during sleep, it must have been because you lost touch and fell back into the ordinary consciousness. That often happens.",
+        "Pains of that kind must be due to some resistance or obstruction to the force on the body—it is not the pressure that creates them.",
+        "All these pains are a sign that you have put too great and sudden a strain on your physical system. The mind and vital were ready, but the body could not follow.",
+        "You will have to diminish your work until you recover from the pains and fatigue. You may remember that I suggested to you to do only part of the sweeping work; it was for this reason that I was not sure that the physical system was ready. Now you should follow that—do only part of the work and ask X to arrange for the rest.",
+        "See whether with this diminution and taking rest during the spare time the pain and the fatigue of the body disappear. If it does, then we can see what is best to do.",
+        "That is what they [*pains*] do at first; when one drives them out of one place, they go to another. It is better than their fixing in any place."
+      ]
+    },
+    {
+      "id": "95",
+      "title": "Chapter 25 - Separation and Detachment from Pain",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "The body [*experiences physical pain*], naturally—but the body transmits it to the vital and mental.",
+      "contentChunks": [
+        "With the ordinary consciousness the vital gets disturbed and afflicted and its forces diminished, the mind identifies and is upset.",
+        "The mind has to remain unmoved, the vital unaffected, and the body has to learn to take it with equality so that the higher Force may work.",
+        "The Self is never affected by any kind of pain. The psychic takes it quietly and offers it to the Divine for what is necessary to be done.",
+        "You must arrive at a complete separation of your consciousness from these feelings of the body and its acceptance of illness and from that separated consciousness act upon the body. It is only so that these things can be got rid of or at least neutralised.",
+        "If it [*the consciousness*] is separate, it should not suffer from them [*pains*]. Even for the pains, the body may suffer but the consciousness should not feel itself suffering or overpowered.",
+        "I suppose there are only two ways [*to prevent the lowering effect of pain*]: (1) to think of something else if you can manage it, (2) to be able to detach yourself from the body consciousness, so that the body alone feels the pain, the mind and the vital are not affected.",
+        "It is a detachment of even the physical mind from the pain that makes one able to go on as if nothing were there, but this detachment of the physical mind is not easy to acquire.",
+        "It is by an attack on your physical consciousness that the old forces are bringing back the wrong condition. As you got the power before to stand back from the vital movement and localise it, while the rest of your consciousness observed and was not overpowered, so you must learn to stand back from the physical pain or uneasiness and localise it. If you can do that and do it completely, the pain or uneasiness itself will be more easily and quietly removed and you will not be overpowered like this with the sense of weakness.",
+        "You can see that the Force has the power to take away the pains; but you allow yourself to be nervously overcome and therefore it is difficult for it to act with a continuous result.",
+        "What was done at that time in the vital, must be done in the physical also. It is the only way to get free from the attacks.",
+        "The main difficulty seems to be that you are too subject to an excitement of the nerves—it is only by bringing quietude and calm into the whole being that a steady progress in the sadhana can be assured.",
+        "The first thing to be done in order to recover is to stop yielding to the attack of the nerves—the more you yield and identify yourself with these ideas and feelings, the more they increase.",
+        "You have to draw back and find back something in you that is not affected by pains and depressions, then from there you can get rid of the pains and depressions."
+      ]
+    },
+    {
+      "id": "96",
+      "title": "Chapter 26 - Work and Health",
+      "aspect": "LifeAspects.physical",
+      "progress": 0,
+      "subTitle": "Working with someone else's ideas or under discipline may not necessarily lead to poor health.",
+      "contentChunks": [
+        "Most people work according to others' ideas, and adapting to different perspectives is part of the process.",
+        "However, if work-related stress affects health, taking a break could help. Rheumatism shouldn't always stop work unless it's severe, as stopping work might worsen the condition.",
+        "Sleep and Illness : A lack of sleep can make the body more vulnerable to illness.  When the body is healthy, it naturally fights off infections without us even noticing.",
+        "Pain and Detachment : Pain occurs because our physical consciousness is limited. But with higher consciousness, even pain can be experienced as joy. Detachment from Pain :Developing this detachment isn't easy, but it's crucial for our well-being. "
+      ]
     }
+
   ]
 }

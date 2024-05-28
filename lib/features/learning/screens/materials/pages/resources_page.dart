@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/common/widgets/appbar/appbar.dart';
-import 'package:knowyourself/features/learning/screens/materials/course_info_card.dart';
+import 'package:knowyourself/features/learning/screens/materials/resources_info_card.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
-import '../../../controller/course_controller.dart';
+import '../../../controller/resources_controller.dart';
 
-class CoursePage extends StatelessWidget {
-  const CoursePage({super.key});
+class ResourcesPage extends StatelessWidget {
+  const ResourcesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CourseController());
+    final controller = Get.put(ResourcesController());
     return Scaffold(
       appBar: const KAppBar(
         back: true,

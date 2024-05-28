@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/features/learning/controller/course_controller.dart';
-import 'package:knowyourself/features/learning/model/course_model.dart';
+import 'package:knowyourself/features/learning/controller/resources_controller.dart';
+import 'package:knowyourself/features/learning/model/resources_model.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/custom_container.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
 class CourseInfoCard extends StatelessWidget {
-  final CourseModel courseModel;
+  final ResourcesModel courseModel;
   const CourseInfoCard({super.key,required this.courseModel});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CourseController());
+    final controller = Get.put(ResourcesController());
     return CustomContainer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
