@@ -141,12 +141,12 @@ class SettingScreen extends StatelessWidget {
                     subtitle: KTexts.feedbackSubtitle,
                     trailing: const Icon(CupertinoIcons.forward),
                     icon: CupertinoIcons.conversation_bubble),
-                SettingTile(
-                    title: "Debug Mode",
-                    subtitle: "Enable debug mode",
-                    onTap: ()=> Get.to(()=>DebugScreen()),
-                    trailing: const Icon(CupertinoIcons.forward),
-                    icon: CupertinoIcons.timelapse),
+                // SettingTile(
+                //     title: "Debug Mode",
+                //     subtitle: "Enable debug mode",
+                //     onTap: ()=> Get.to(()=>DebugScreen()),
+                //     trailing: const Icon(CupertinoIcons.forward),
+                //     icon: CupertinoIcons.timelapse),
 
 
                 SettingTile(
