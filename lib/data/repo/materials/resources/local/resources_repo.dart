@@ -31,6 +31,8 @@ class ResourcesRepo extends GetxService{
       List<ResourcesModel> resources = allData.map((e) => ResourcesModel.fromJson(e)).toList();
       return resources;
     }else{
+      loadFromOnline();
+      getExternalResources(type);
       return [];
     }
   }
