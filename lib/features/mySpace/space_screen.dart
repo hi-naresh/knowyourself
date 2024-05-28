@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/journal/screens/journal/journal_screen.dart';
+import 'package:knowyourself/features/mySpace/manifest/manifest_screen.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/milestone_screen.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/view/mood_screen.dart';
 import 'package:knowyourself/features/mySpace/questions/screens/question_screen.dart';
@@ -10,6 +11,7 @@ import '../../common/styles/styles.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/text_strings.dart';
 import '../../utils/helpers/helper_functions.dart';
+import 'gratitude/screens/gratitude_page.dart';
 
 class MySpaceScreen extends StatelessWidget {
   const MySpaceScreen({super.key});
@@ -56,6 +58,8 @@ class MySpaceScreen extends StatelessWidget {
                   JournalScreen(),
                   MoodBoard(),
                   MilestoneScreen(),
+                  GratitudeAffirmationScreen(),
+                  ManifestationScreen(),
                   QuestionsScreen(),
                   MyStoryScreen(),
                   // GratitudeWidget()
@@ -72,13 +76,14 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
   final RxInt tabIndex = 0.obs;
   late TabController tabController;
 
-  final tabs = [
+  final tabs = const [
     const Tab(text: KTexts.reflections),
     const Tab(text: KTexts.mood),
     Tab(text: KTexts.milestones.capitalizeFirst),
+    Tab(text: 'Gratitude'),
+    Tab(text: 'Manifestation'),
     const Tab(text: KTexts.questions),
     const Tab(text: KTexts.story),
-
     // Tab(text: 'Gratitude'),
   ];
   @override

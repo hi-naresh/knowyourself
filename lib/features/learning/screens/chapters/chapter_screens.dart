@@ -7,7 +7,6 @@ import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
-import '../../../../utils/constants/text_strings.dart';
 import '../../controller/chapter_controller.dart';
 import '../../model/chapter_model.dart';
 
@@ -15,8 +14,8 @@ class ChapterLearningScreen extends StatelessWidget {
   final LearningController controller = Get.put(LearningController());
 
   ChapterLearningScreen({super.key, required String aspect}) {
-    // controller.loadMaterialsForAspect(aspect);
     controller.loadMaterialsFromJson(aspect);
+    // controller.fetchMaterials(aspect);
   }
 
   @override

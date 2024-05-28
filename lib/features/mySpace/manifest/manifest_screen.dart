@@ -317,8 +317,6 @@ class ManifestationScreen extends StatelessWidget {
               _buildDailyChallengesSection(context, controller),
               const SizedBox(height: KSizes.defaultSpace),
               _buildProgressTrackerSection(context, controller),
-              const SizedBox(height: KSizes.defaultSpace*5),
-
             ],
           ),
         ),
@@ -342,10 +340,11 @@ class ManifestationScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
-            '“Do not wait on perfect conditions for success to happen; just go ahead and do something.” \n\n- Dan Miller',
+            '“The only limit to our realization of tomorrow is our doubts of today.” - Franklin D. Roosevelt',
             style: Theme.of(context)
                 .textTheme
-                .bodySmall
+                .bodyLarge
+                ?.copyWith(color: kApp4),
           ),
         ),
       ],
@@ -419,39 +418,33 @@ class ManifestationScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: KSizes.defaultSpace),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            TextButton(
-              style: const ButtonStyle().copyWith(
-                minimumSize: MaterialStateProperty.all(const Size(150, 50)),
-                backgroundColor: MaterialStateProperty.all(kApp4),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-              ),
-              onPressed: controller.addJournalEntry,
-              child: Text(
-                'Add now',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-            // const SizedBox(height: KSizes.defaultSpace),
-            TextButton(
-              style: const ButtonStyle().copyWith(
-                minimumSize: MaterialStateProperty.all(const Size(150, 50)),
-                backgroundColor: MaterialStateProperty.all(kEmptyProgressDark),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-              ),
-              onPressed: () => _showJournalEntries(context, controller),
-              child: Text(
-                'View Entries',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
+        TextButton(
+          style: const ButtonStyle().copyWith(
+            minimumSize: MaterialStateProperty.all(const Size(150, 50)),
+            backgroundColor: MaterialStateProperty.all(kApp4),
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+          ),
+          onPressed: controller.addJournalEntry,
+          child: Text(
+            'Add to Journal',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Colors.white, fontWeight: FontWeight.bold),
+          ),
         ),
-
+        const SizedBox(height: KSizes.defaultSpace),
+        TextButton(
+          style: const ButtonStyle().copyWith(
+            minimumSize: MaterialStateProperty.all(const Size(150, 50)),
+            backgroundColor: MaterialStateProperty.all(kApp3),
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+          ),
+          onPressed: () => _showJournalEntries(context, controller),
+          child: Text(
+            'View Journal Entries',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        ),
       ],
     );
   }
@@ -499,37 +492,33 @@ class ManifestationScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: KSizes.defaultSpace),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            TextButton(
-              style: const ButtonStyle().copyWith(
-                minimumSize: MaterialStateProperty.all(const Size(150, 50)),
-                backgroundColor: MaterialStateProperty.all(kApp4),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-              ),
-              onPressed: controller.completeChallenge,
-              child: Text(
-                'Complete',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-            TextButton(
-              style: const ButtonStyle().copyWith(
-                minimumSize: MaterialStateProperty.all(const Size(150, 50)),
-                backgroundColor: MaterialStateProperty.all(kEmptyProgressDark),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-              ),
-              onPressed: () => _showCompletedChallenges(context, controller),
-              child: Text(
-                'View Completed',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
-        )
+        TextButton(
+          style: const ButtonStyle().copyWith(
+            minimumSize: MaterialStateProperty.all(const Size(150, 50)),
+            backgroundColor: MaterialStateProperty.all(kApp4),
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+          ),
+          onPressed: controller.completeChallenge,
+          child: Text(
+            'Complete Challenge',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        ),
+        const SizedBox(height: KSizes.defaultSpace),
+        TextButton(
+          style: const ButtonStyle().copyWith(
+            minimumSize: MaterialStateProperty.all(const Size(150, 50)),
+            backgroundColor: MaterialStateProperty.all(kApp3),
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+          ),
+          onPressed: () => _showCompletedChallenges(context, controller),
+          child: Text(
+            'View All Completed Challenges',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        ),
       ],
     );
   }

@@ -8,8 +8,6 @@ import 'package:knowyourself/utils/constants/enums.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../data/repo/materials/learning/learn_repo.dart';
-import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/text_strings.dart';
 import '../model/chapter_model.dart';
 import '../screens/chapters/chapter_screens.dart';
 
@@ -25,69 +23,51 @@ class LearningController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // loadMaterialsFromJson("aspect");
+    // loadMaterialsFromJson("mental");
     // loadMaterialsForAspect("aspect"); // Load initial material
   }
 
-  // Future<void> loadMaterialsForAspect(String aspect) async {
-  //   final materials =  await learnRepo.loadMaterialsForAspect(aspect);
-  //   learningMaterials.assignAll(materials);
-  // }
-
   // load materials from asset , json file
-  // Future<void> loadMaterialsFromJson(String aspect) async {
-  //   final String chaptersJsonString = await rootBundle.loadString('assets/chapters/chapters.json');
-  //   final Map<String, dynamic> chaptersJson = json.decode(chaptersJsonString);
-  //   final List<dynamic> chaptersJsonList = chaptersJson['chapters'];
-  //
-  //   final List<ChapterModel> chaptersList = chaptersJsonList
-  //       .map((chapter) => ChapterModel.fromMap(chapter))
-  //       .where((chapter) => chapter.aspect.toString().split('.').last == aspect)
-  //       .toList();
-  //
-  //   learningMaterials.assignAll(chaptersList);
+  Future<void> loadMaterialsFromJson(String aspect) async {
+    final String chaptersJsonString = await rootBundle.loadString('assets/chapters/chapters.json');
+    final Map<String, dynamic> chaptersJson = json.decode(chaptersJsonString);
+    final List<dynamic> chaptersJsonList = chaptersJson['chapters'];
+
+    final List<ChapterModel> chaptersListRaw = chaptersJsonList
+        .map((chapter) => ChapterModel.fromJson(chapter))
+        .where((chapter) => chapter.aspect.split('.').last == aspect)
+        .toList();
+
+    // print(chaptersList)
+
+    chaptersList.assignAll(chaptersListRaw);
+
+  }
+
+  // Future<void> loadFromOnline() async {
+  //   var resources = await onlineRepo.fetchResourcesFromFirestore();
+  //   await localRepo.saveExternalResources(resources);
   // }
 
-  Future<void> loadFromOnline() async {
-    var resources = await onlineRepo.fetchResourcesFromFirestore();
-    await localRepo.saveExternalResources(resources);
-  }
-
-  void answerQuizQuestion(int chapterIndex, int questionIndex, int selectedAnswerIndex) {
-    userAnswers[chapterIndex] ??= {};
-    userAnswers[chapterIndex]![questionIndex] = selectedAnswerIndex;
-
-    var isCorrect = learningMaterials[chapterIndex].quizQuestions![questionIndex].correctAnswerIndex == selectedAnswerIndex;
-    Get.snackbar(
-      '${KTexts.answer} ${isCorrect ? KTexts.correct : KTexts.incorrect}',
-      isCorrect ? KTexts.correctMessage : KTexts.incorrectMessage,
-      backgroundColor: isCorrect ? KColors.green : KColors.red,
-    );
-
-    if (isCorrect) {
-      updateProgress(chapterIndex, ((questionIndex + 1) / learningMaterials[chapterIndex].quizQuestions!.length));
-      if (questionIndex == learningMaterials[chapterIndex].quizQuestions!.length - 1) {
-        chapterCompleted(chapterIndex);
-      }
-  Future<void> fetchMaterials( String type) async {
-    List<ChapterModel> fetchedMaterials = await localRepo.getExternalResources();
-    print(fetchedMaterials);
-    if (fetchedMaterials.isEmpty) {
-      // await localRepo.loadFromOnline();
-      await loadFromOnline();
-      KHelper.showSnackBar("Fetching Latest Chapters", "Please wait while we fetch the latest chapters");
-    } else {
-      // print("reached : $fetchedMaterials" );
-      List<ChapterModel> filteredMaterials = fetchedMaterials.where(
-              (element) => element.aspect.split(".").last == type).toList();
-      // print(filteredMaterials);
-      chaptersList.assignAll(filteredMaterials);
-      // print(chaptersList);
-    }
-    // List<ChapterModel> filteredMaterials = fetchedMaterials.where(
-    //         (element) => element.aspect.toString() == type.toString().split(".").last ).toList();
-    // chaptersList.assignAll(filteredMaterials);
-  }
+  // Future<void> fetchMaterials( String type) async {
+  //   List<ChapterModel> fetchedMaterials = await localRepo.getExternalResources();
+  //   print(fetchedMaterials);
+  //   if (fetchedMaterials.isEmpty) {
+  //     // await localRepo.loadFromOnline();
+  //     await loadFromOnline();
+  //     KHelper.showSnackBar("Fetching Latest Chapters", "Please wait while we fetch the latest chapters");
+  //   } else {
+  //     // print("reached : $fetchedMaterials" );
+  //     List<ChapterModel> filteredMaterials = fetchedMaterials.where(
+  //             (element) => element.aspect.split(".").last == type).toList();
+  //     // print(filteredMaterials);
+  //     chaptersList.assignAll(filteredMaterials);
+  //     // print(chaptersList);
+  //   }
+  //   // List<ChapterModel> filteredMaterials = fetchedMaterials.where(
+  //   //         (element) => element.aspect.toString() == type.toString().split(".").last ).toList();
+  //   // chaptersList.assignAll(filteredMaterials);
+  // }
 
   // void answerQuizQuestion(int chapterIndex, int questionIndex, int selectedAnswerIndex) {
   //   userAnswers[chapterIndex] ??= {};
@@ -117,7 +97,6 @@ class LearningController extends GetxController {
     var chapter = chaptersList[index];
     // chaptersList[index] = chapter.copyWith(progress: progress, completed: completed);
     //save progress to my learning repo
-
   }
 
   void jumpToNextPage(int index) {
