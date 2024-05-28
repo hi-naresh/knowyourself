@@ -46,7 +46,7 @@ class KTexts {
 
   // Learn Screen
   static const String learnHead = "Learn about aspects";
-  static const String learnHead1 = "Learn about Core Values";
+  static const String learnHead1 = "Learn - Core Values";
   static const String learnHead2 = "Learned so far";
   static const String learnHead3 = "Articles";
   static const String learnAboutAspects = "Life skills and practices with our interactive modules.";

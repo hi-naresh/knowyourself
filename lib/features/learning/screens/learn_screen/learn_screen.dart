@@ -133,7 +133,7 @@ class LearnScreen extends StatelessWidget {
                   height: KSizes.hCardMedium,
                   title: "Learn Now",
                   isRight: true,
-                  color: kApp2,
+                  color: kApp1,
                   fontSize: 26,
                   opacity: 0.8,
                   right: 0,
