@@ -14,8 +14,8 @@ class ChapterLearningScreen extends StatelessWidget {
   final LearningController controller = Get.put(LearningController());
 
   ChapterLearningScreen({super.key, required String aspect}) {
-    // controller.loadMaterialsForAspect(aspect);
-    controller.fetchMaterials(aspect);
+    controller.loadMaterialsFromJson(aspect);
+    // controller.fetchMaterials(aspect);
   }
 
   @override

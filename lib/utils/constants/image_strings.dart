@@ -4,6 +4,7 @@ class KImages {
   // -- App Logos
   static const String appLogo = "assets/brand/kyb.svg";
   static const String sailcLogo = "assets/brand/sailcc.png";
+  static const String sailcLogo2 = "assets/logo/circle.svg";
 
   //animations
   static const String logoAnim = "assets/animations/KYB.json";

@@ -46,9 +46,11 @@ class KTexts {
 
   // Learn Screen
   static const String learnHead = "Learn about aspects";
+  static const String learnHead1 = "Learn about Core Values";
   static const String learnHead2 = "Learned so far";
   static const String learnHead3 = "Articles";
   static const String learnAboutAspects = "Life skills and practices with our interactive modules.";
+  static const String learnAboutCoreValues = "Learn the core values that can shape your life.";
   static const String resourcesDescription = "Explore immersive videos, comprehensive guides, centers, wisdom of the Auro Society.";
 
   static const String userReviewDescription = "Capture best memories & favorite things. Reflect on joyful moments & share your journey.";
