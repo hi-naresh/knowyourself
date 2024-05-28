@@ -29,8 +29,6 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
     }
   });
 
-  // ValueAnalysisService mlAnalysis = ValueAnalysisService();
-
 
   @override
   Future<void> onInit() async {
@@ -54,8 +52,6 @@ class InsightsController extends GetxController with GetSingleTickerProviderStat
     // Attach an auth state changes listener
     _authListener;
     setupAnimations(analyzedCoreValues);
-
-
   }
 
 

@@ -8,7 +8,6 @@ import '../../../controller/add_mood_controller.dart';
 import 'helpers/full_circle_slider.dart';
 import 'package:get/get.dart';
 
-
 class MoodSelectPage extends StatelessWidget {
   const MoodSelectPage({super.key});
 
@@ -20,14 +19,12 @@ class MoodSelectPage extends StatelessWidget {
         width: double.infinity,
         margin: const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const ProgressBar(percent:0.6,steps: "2/3"),
+            const ProgressBar(percent: 0.6, steps: "2/3"),
+            const SizedBox(height: KSizes.spaceBtwSections),
             AspectSpecificContent(controller: controller),
-            ElevatedButton(
-                onPressed: ()=> controller.nextPage(),
-                child: const Text('Next')),
           ],
         ),
       ),
@@ -42,7 +39,7 @@ class AspectSpecificContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx((){
+    return Obx(() {
       switch (controller.selectAspect.value) {
         case 0:
           return const MentalPage();
@@ -86,22 +83,26 @@ class MentalPage extends StatelessWidget {
           itemCount: controller.mentalList.length,
           itemBuilder: (context, index) {
             return Obx(
-                  ()=> GestureDetector(
-                onTap: () => controller.setSelectedMental(index),
+              () => GestureDetector(
+                onTap: () {
+                  controller.setSelectedMental(index);
+                  controller.nextPage();
+                },
                 child: CircleAvatar(
                     radius: 30,
-                    backgroundColor: controller.selectedMental.value == controller.mentalList[index]
-                        ? KColors.primary  // Highlight if selected
+                    backgroundColor: controller.selectedMental.value ==
+                            controller.mentalList[index]
+                        ? KColors.primary // Highlight if selected
                         : Colors.transparent,
                     child: Text(
                       controller.mentalList[index],
                       style: Theme.of(context).textTheme.bodyLarge,
                     )
-                  // child: SvgPicture.asset(
-                  //   avatarPath,
-                  //   height: 70,
-                  // ),
-                ),
+                    // child: SvgPicture.asset(
+                    //   avatarPath,
+                    //   height: 70,
+                    // ),
+                    ),
               ),
             );
           },
@@ -136,22 +137,26 @@ class PhysicalPage extends StatelessWidget {
           itemCount: 12,
           itemBuilder: (context, index) {
             return Obx(
-                  ()=> GestureDetector(
-                onTap: () => controller.setSelectedPhysical(index),
+              () => GestureDetector(
+                onTap: () {
+                  controller.setSelectedPhysical(index);
+                  controller.nextPage();
+                },
                 child: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: controller.selectedPhysical.value == controller.physicalList[index]
-                      ? KColors.primary  // Highlight if selected
-                      : Colors.transparent,
-                  child: Text(
-                    controller.physicalList[index],
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  )
-                  // child: SvgPicture.asset(
-                  //   avatarPath,
-                  //   height: 70,
-                  // ),
-                ),
+                    radius: 30,
+                    backgroundColor: controller.selectedPhysical.value ==
+                            controller.physicalList[index]
+                        ? KColors.primary // Highlight if selected
+                        : Colors.transparent,
+                    child: Text(
+                      controller.physicalList[index],
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )
+                    // child: SvgPicture.asset(
+                    //   avatarPath,
+                    //   height: 70,
+                    // ),
+                    ),
               ),
             );
           },
@@ -167,86 +172,101 @@ class EmotionalPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = AddMoodController.instance;
-    return SizedBox(
-      height: Get.height * 0.7,
+    return SingleChildScrollView(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(
-            "How Are You\n Feeling?",
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-              fontSize: KSizes.xxl,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(
-            height: KSizes.defaultSpace*2,
-          ),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Obx(
-                    ()=> FullCircleSlider(
-                  value: controller.sliderValue.value,
-                  onChanged: (newValue)=> controller.sliderValue.value = newValue,
-                  emojis: controller.emotionalEmojis,
+          SizedBox(
+            height: Get.height * 0.7,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "How Are You\n Feeling?",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        fontSize: KSizes.xxl,
+                        fontWeight: FontWeight.w700,
+                      ),
                 ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white70,
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 1,
-                  ),
-                  boxShadow: CustomShadow.getShadow([
-                    BoxShadow(
-                      color: Colors.orange.withOpacity(0.5),
-                      blurRadius: 20,
-                      offset: const Offset(0, 4),
-                    ),
-                  ]),                      ),
-                // Slider(
-                //   value: controller.sliderValue.value,
-                //   onChanged: (newValue) {
-                //     controller.sliderValue.value = newValue;
-                //   },
-                //   min: 0.0,
-                //   max: 1.0,
-                // ),
-                child: Obx(
-                      ()=> AnimatedEmoji(
-                    controller.emotionalEmojis[(controller.sliderValue.value * controller.emotionalEmojis.length).floor() % controller.emotionalEmojis.length].emoji,
-                    source: AnimatedEmojiSource.asset,
-                    size: 200,
-                    repeat: true,
-                  ),
+                const SizedBox(
+                  height: KSizes.defaultSpace * 2,
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: KSizes.defaultSpace*2,
-          ),
-          Obx(
-                  ()=> Text.rich(
-                textAlign: TextAlign.center,
-                TextSpan(
+                Stack(
+                  alignment: Alignment.center,
                   children: [
-                    TextSpan(
-                      text: "Emotion\n",
-                      style: Theme.of(context).textTheme.headlineMedium,
+                    Obx(
+                      () => FullCircleSlider(
+                        value: controller.sliderValue.value,
+                        onChanged: (newValue) =>
+                            controller.sliderValue.value = newValue,
+                        emojis: controller.emotionalEmojis,
+                      ),
                     ),
-                    TextSpan(
-                      text: controller.userMoodString,
-                      style: Theme.of(context).textTheme.titleMedium,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white70,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 1,
+                        ),
+                        boxShadow: CustomShadow.getShadow([
+                          BoxShadow(
+                            color: Colors.orange.withOpacity(0.5),
+                            blurRadius: 20,
+                            offset: const Offset(0, 4),
+                          ),
+                        ]),
+                      ),
+                      // Slider(
+                      //   value: controller.sliderValue.value,
+                      //   onChanged: (newValue) {
+                      //     controller.sliderValue.value = newValue;
+                      //   },
+                      //   min: 0.0,
+                      //   max: 1.0,
+                      // ),
+                      child: Obx(
+                        () => AnimatedEmoji(
+                          controller
+                              .emotionalEmojis[(controller.sliderValue.value *
+                                          controller.emotionalEmojis.length)
+                                      .floor() %
+                                  controller.emotionalEmojis.length]
+                              .emoji,
+                          source: AnimatedEmojiSource.asset,
+                          size: 200,
+                          repeat: true,
+                        ),
+                      ),
                     ),
                   ],
                 ),
-              )
+                const SizedBox(
+                  height: KSizes.defaultSpace * 2,
+                ),
+                Obx(() => Text.rich(
+                      textAlign: TextAlign.center,
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Emotion\n",
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
+                          TextSpan(
+                            text: controller.userMoodString,
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                        ],
+                      ),
+                    )),
+              ],
+            ),
           ),
+          const SizedBox( height: KSizes.defaultSpace),
+          ElevatedButton(
+              onPressed: ()=> controller.nextPage(),
+              child: const Text('Next')),
         ],
       ),
     );
@@ -278,22 +298,26 @@ class SpiritualPage extends StatelessWidget {
           itemCount: controller.spiritualList.length,
           itemBuilder: (context, index) {
             return Obx(
-                  ()=> GestureDetector(
-                onTap: () => controller.setSelectedSpiritual(index),
+              () => GestureDetector(
+                onTap: () {
+                  controller.setSelectedSpiritual(index);
+                  controller.nextPage();
+                },
                 child: CircleAvatar(
                     radius: 30,
-                    backgroundColor: controller.selectedSpiritual.value == controller.spiritualList[index]
-                        ? KColors.primary  // Highlight if selected
+                    backgroundColor: controller.selectedSpiritual.value ==
+                            controller.spiritualList[index]
+                        ? KColors.primary // Highlight if selected
                         : Colors.transparent,
                     child: Text(
                       controller.spiritualList[index],
                       style: Theme.of(context).textTheme.bodyLarge,
                     )
-                  // child: SvgPicture.asset(
-                  //   avatarPath,
-                  //   height: 70,
-                  // ),
-                ),
+                    // child: SvgPicture.asset(
+                    //   avatarPath,
+                    //   height: 70,
+                    // ),
+                    ),
               ),
             );
           },

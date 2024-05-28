@@ -52,11 +52,11 @@ class RecommendSection extends StatelessWidget {
             // ),
             separatorBuilder: (context, index) => const SizedBox(width: KSizes.defaultSpace),
 
-            itemCount: controller.activities.length,
+            itemCount: controller.activitiesLoaded.length,
             itemBuilder: (context, index) {
               return ActivityTile(
-                activity: controller.activities[index],
-                onTap: ()=> Get.to(()=>ActivityInfoCard(activityModel: controller.activities[index])),
+                activity: controller.activitiesLoaded[index],
+                onTap: ()=> Get.to(()=>ActivityInfoCard(activityModel: controller.activitiesLoaded[index])),
               );
             },
           ),
