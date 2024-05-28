@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:knowyourself/features/learning/screens/chapters/chapter_screens.dart';
-import 'package:knowyourself/features/learning/screens/materials/course_widget.dart';
+import 'package:knowyourself/features/learning/screens/materials/pages/resources_page.dart';
+import 'package:knowyourself/features/learning/screens/materials/resource_widget.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
+import 'package:knowyourself/utils/device/device_utility.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/my_card.dart';
@@ -86,6 +88,16 @@ class LearnScreen extends StatelessWidget {
                       imageUrl: KImages.spiritual),
                 ],
               ),
+              const SizedBox(height: KSizes.defaultSpace),
+              MyCard(
+                  // width: KDeviceUtils.getScreenWidth(context),
+                  width: double.infinity,
+                  height: KSizes.hCardMedium/1.5,
+                  title: "General",
+                  color: kApp2,
+                  fontSize: 26,
+                  onTap: () => Get.to(()=> ChapterLearningScreen(aspect: "General")),
+                  imageUrl: KImages.mental),
               // const SizedBox(height: KSizes.defaultSpace),
               // Text(
               //   KTexts.learnHead2,
@@ -114,6 +126,15 @@ class LearnScreen extends StatelessWidget {
               ),
               const SizedBox(height: KSizes.defaultSpace),
               const CourseSection(),
+              MyCard(
+                // width: KDeviceUtils.getScreenWidth(context),
+                  width: double.infinity,
+                  height: KSizes.hCardMedium/1.6,
+                  title: "More",
+                  color: kApp3,
+                  fontSize: 26,
+                  onTap: () => Get.to(()=> const ResourcesPage()),
+                  imageUrl: KImages.spiritual),
               const SizedBox(height: KSizes.defaultSpace),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -122,12 +143,12 @@ class LearnScreen extends StatelessWidget {
                     KTexts.learnHead3,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
-                  IconButton(
-                    onPressed: () => controller.deleteCache(),
-                    icon: const Icon(
-                      CupertinoIcons.refresh_circled,
-                    ),
-                  ),
+                  // IconButton(
+                  //   onPressed: () => controller.deleteCache(),
+                  //   icon: const Icon(
+                  //     CupertinoIcons.refresh_circled,
+                  //   ),
+                  // ),
                 ],
               ),
               const SizedBox(height: KSizes.defaultSpace),
@@ -184,7 +205,7 @@ class LearnScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              // const SizedBox(height: KSizes.defaultSpace * 4),
+              const SizedBox(height: KSizes.defaultSpace * 4),
             ],
           ),
         ),

@@ -63,8 +63,10 @@ class AspectSelectPage extends StatelessWidget {
                         (index) {
                       return Obx(
                         () => GestureDetector(
-                          onTap: () =>
-                              controller.selectAspect.value = index,
+                          onTap: () {
+                            controller.selectAspect.value = index;
+                            controller.nextPage();
+                            },
                           child: Container(
                             margin:
                                 const EdgeInsets.symmetric(vertical: 12.0),
@@ -126,18 +128,18 @@ class AspectSelectPage extends StatelessWidget {
                 ),
               ],
             ),
-            TextButton(
-                style: const ButtonStyle().copyWith(
-                    minimumSize: WidgetStateProperty.all(
-                        const Size(double.infinity, 60)),
-                    backgroundColor: WidgetStateProperty.all(KColors.kApp1),
-                    foregroundColor: WidgetStateProperty.all(Colors.white)),
-                onPressed: ()=> controller.nextPage(),
-                child: Text(
-                  KTexts.next,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: KColors.white, fontWeight: FontWeight.bold),
-                )),
+            // TextButton(
+            //     style: const ButtonStyle().copyWith(
+            //         minimumSize: MaterialStateProperty.all(
+            //             const Size(double.infinity, 60)),
+            //         backgroundColor: MaterialStateProperty.all(kApp1),
+            //         foregroundColor: MaterialStateProperty.all(Colors.white)),
+            //     onPressed: ()=> controller.nextPage(),
+            //     child: Text(
+            //       'Next',
+            //       style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            //           color: Colors.white, fontWeight: FontWeight.bold),
+            //     )),
           ],
         ),
       ),
