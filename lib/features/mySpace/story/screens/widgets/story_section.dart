@@ -32,16 +32,16 @@ class StorySection extends StatelessWidget {
               const Spacer(),
               TextButton(
                   style: const ButtonStyle().copyWith(
-                      backgroundColor: WidgetStateProperty.all(KColors.kApp4),
-                      foregroundColor: WidgetStateProperty.all(Colors.white)
+                      backgroundColor: MaterialStateProperty.all(KColors.kApp4),
+                      foregroundColor: MaterialStateProperty.all(Colors.white)
                   ),
                   onPressed: () => controller.updateStory(storyType),
                   child: const Text(KTexts.update,)),
               const SizedBox(width: KSizes.sm),
               TextButton(
                   style: const ButtonStyle().copyWith(
-                      backgroundColor: WidgetStateProperty.all(KColors.kApp4),
-                      foregroundColor: WidgetStateProperty.all(Colors.white)
+                      backgroundColor: MaterialStateProperty.all(KColors.kApp4),
+                      foregroundColor: MaterialStateProperty.all(Colors.white)
                   ),
                   onPressed: () => controller.deleteStory( storyType),
                   child: const Text(KTexts.delete,))
@@ -63,9 +63,9 @@ class StorySection extends StatelessWidget {
             const SizedBox(height: KSizes.defaultSpace),
             TextButton(
                 style: const ButtonStyle().copyWith(
-                  minimumSize: WidgetStateProperty.all(const Size(double.infinity, 50)),
-                    backgroundColor: WidgetStateProperty.all(KColors.kApp4),
-                    foregroundColor: WidgetStateProperty.all(Colors.white)
+                  minimumSize: MaterialStateProperty.all(const Size(double.infinity, 50)),
+                    backgroundColor: MaterialStateProperty.all(KColors.kApp4),
+                    foregroundColor: MaterialStateProperty.all(Colors.white)
                 ),
                 onPressed: () => controller.saveOrUpdateStory(storyType),
                 child: Text('${KTexts.save} ${KTexts.story}',

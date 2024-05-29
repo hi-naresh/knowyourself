@@ -36,7 +36,7 @@ class LogoutPop extends StatelessWidget {
           ElevatedButton(
             onPressed: () => controller.logoutUser(),
             style: ButtonStyle(
-              padding: WidgetStateProperty.all(
+              padding: MaterialStateProperty.all(
                 const EdgeInsets.symmetric(
                   vertical: KSizes.md,
                 ),
@@ -50,7 +50,7 @@ class LogoutPop extends StatelessWidget {
               Get.back();
             },
             style: ButtonStyle(
-              padding: WidgetStateProperty.all(
+              padding: MaterialStateProperty.all(
                 const EdgeInsets.symmetric(
                   vertical: KSizes.md,
                 ),

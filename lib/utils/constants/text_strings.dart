@@ -39,6 +39,8 @@ class KTexts {
   static const String fetchQuoteError = "Failed to fetch quote";
   static const String snackBarMessage = "Please check your internet connection";
   static const String dataNotSaved = 'Data not saved!';
+  static const String healthCheckError ="Service is starting now";
+  static const String checkLater = "Please check back later after 3-5 minutes.";
 
   static const String invalidFormTitle = "Invalid Form";
   static const String invalidFormMessage = "Please fill the form correctly";

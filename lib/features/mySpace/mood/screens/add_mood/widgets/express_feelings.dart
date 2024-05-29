@@ -135,9 +135,9 @@ class ExpressFeelingsPage extends StatelessWidget {
   Widget _buildActionButton(BuildContext context, {required String buttonText, required Function action}) {
     return TextButton(
       style: ButtonStyle(
-        minimumSize: WidgetStateProperty.all(const Size(double.infinity, 55)),
-        backgroundColor: WidgetStateProperty.all(KColors.kApp1),
-        foregroundColor: WidgetStateProperty.all(Colors.white),
+        minimumSize: MaterialStateProperty.all(const Size(double.infinity, 55)),
+        backgroundColor: MaterialStateProperty.all(KColors.kApp1),
+        foregroundColor: MaterialStateProperty.all(Colors.white),
       ),
       onPressed: () {
         action();

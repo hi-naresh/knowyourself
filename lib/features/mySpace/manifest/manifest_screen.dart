@@ -338,7 +338,7 @@ class ManifestationScreen extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: kApp4.withOpacity(0.1),
+            color: KColors.kApp4.withOpacity(0.1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
@@ -373,7 +373,7 @@ class ManifestationScreen extends StatelessWidget {
         TextButton(
           style: const ButtonStyle().copyWith(
             minimumSize: MaterialStateProperty.all(const Size(150, 50)),
-            backgroundColor: MaterialStateProperty.all(kApp4),
+            backgroundColor: MaterialStateProperty.all(KColors.kApp4),
             foregroundColor: MaterialStateProperty.all(Colors.white),
           ),
           onPressed: controller.addVisionBoardItem,
@@ -425,7 +425,7 @@ class ManifestationScreen extends StatelessWidget {
             TextButton(
               style: const ButtonStyle().copyWith(
                 minimumSize: MaterialStateProperty.all(const Size(150, 50)),
-                backgroundColor: MaterialStateProperty.all(kApp4),
+                backgroundColor: MaterialStateProperty.all(KColors.kApp4),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
               ),
               onPressed: controller.addJournalEntry,
@@ -439,7 +439,7 @@ class ManifestationScreen extends StatelessWidget {
             TextButton(
               style: const ButtonStyle().copyWith(
                 minimumSize: MaterialStateProperty.all(const Size(150, 50)),
-                backgroundColor: MaterialStateProperty.all(kEmptyProgressDark),
+                backgroundColor: MaterialStateProperty.all(KColors.kEmptyProgressDark),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
               ),
               onPressed: () => _showJournalEntries(context, controller),
@@ -485,7 +485,7 @@ class ManifestationScreen extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: kApp4.withOpacity(0.1),
+            color: KColors.kApp4.withOpacity(0.1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Obx(
@@ -494,7 +494,7 @@ class ManifestationScreen extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge
-                  ?.copyWith(color: kApp4),
+                  ?.copyWith(color: KColors.kApp4),
             ),
           ),
         ),
@@ -505,7 +505,7 @@ class ManifestationScreen extends StatelessWidget {
             TextButton(
               style: const ButtonStyle().copyWith(
                 minimumSize: MaterialStateProperty.all(const Size(150, 50)),
-                backgroundColor: MaterialStateProperty.all(kApp4),
+                backgroundColor: MaterialStateProperty.all(KColors.kApp4),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
               ),
               onPressed: controller.completeChallenge,
@@ -518,7 +518,7 @@ class ManifestationScreen extends StatelessWidget {
             TextButton(
               style: const ButtonStyle().copyWith(
                 minimumSize: MaterialStateProperty.all(const Size(150, 50)),
-                backgroundColor: MaterialStateProperty.all(kEmptyProgressDark),
+                backgroundColor: MaterialStateProperty.all(KColors.kEmptyProgressDark),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
               ),
               onPressed: () => _showCompletedChallenges(context, controller),
@@ -563,14 +563,14 @@ class ManifestationScreen extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: kApp4.withOpacity(0.1),
+            color: KColors.kApp4.withOpacity(0.1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Obx(
                 () => LinearProgressIndicator(
               value: controller.progress.value / 10,
-              backgroundColor: kEmptyProgress,
-              color: kApp4,
+              backgroundColor: KColors.kEmptyProgress,
+              color: KColors.kApp4,
               minHeight: 10,
             ),
           ),
@@ -582,7 +582,7 @@ class ManifestationScreen extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .bodyLarge
-                ?.copyWith(color: kApp4),
+                ?.copyWith(color: KColors.kApp4),
           ),
         ),
       ],

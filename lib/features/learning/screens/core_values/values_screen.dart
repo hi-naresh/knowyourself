@@ -24,13 +24,13 @@ class CoreValue {
 final List<CoreValue> coreValues = [
   CoreValue(
     name: 'Sincerity',
-    color: valueSincerity,
+    color: KColors.valueSincerity,
     definition: 'The quality of being free from pretense, deceit, or hypocrisy.',
     example: 'Always tell the truth, even when it is difficult.',
   ),
   CoreValue(
     name: 'Peace',
-    color: valuePeace,
+    color: KColors.valuePeace,
     definition: 'Freedom from disturbance; tranquility.',
     example: 'Meditation helps in achieving inner peace.',
   ),

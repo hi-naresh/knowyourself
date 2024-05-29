@@ -28,7 +28,7 @@ class KCheckboxTheme {
   /// Customizable Dark Text Theme
   static CheckboxThemeData darkCheckboxTheme = CheckboxThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(KSizes.xs)),
-    checkColor: WidgetStateProperty.resolveWith((states) {
+    checkColor: MaterialStateProperty.resolveWith((states) {
       if (states.contains(MaterialState.selected)) {
         return KColors.white;
       } else {

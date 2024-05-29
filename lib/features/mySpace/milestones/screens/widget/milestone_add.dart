@@ -90,10 +90,10 @@ class MilestoneAdd extends StatelessWidget {
           const Spacer(),
           TextButton(
               style: const ButtonStyle().copyWith(
-                  minimumSize: WidgetStateProperty.all(
+                  minimumSize: MaterialStateProperty.all(
                       const Size(double.infinity, 50)),
-                  backgroundColor: WidgetStateProperty.all(KColors.kApp4),
-                  foregroundColor: WidgetStateProperty.all(Colors.white)),
+                  backgroundColor: MaterialStateProperty.all(KColors.kApp4),
+                  foregroundColor: MaterialStateProperty.all(Colors.white)),
               onPressed: ()=>controller.addMilestone(),
               child: Text(
                 '${KTexts.add} ${KTexts.milestones2}',

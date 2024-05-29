@@ -93,10 +93,10 @@ class QuestionsScreen extends StatelessWidget {
           const SizedBox(height: KSizes.md),
           TextButton(
               style: const ButtonStyle().copyWith(
-                  minimumSize: WidgetStateProperty.all(
+                  minimumSize: MaterialStateProperty.all(
                       const Size(double.infinity, 50)),
-                  backgroundColor: WidgetStateProperty.all(KColors.kApp4),
-                  foregroundColor: WidgetStateProperty.all(Colors.white)),
+                  backgroundColor: MaterialStateProperty.all(KColors.kApp4),
+                  foregroundColor: MaterialStateProperty.all(Colors.white)),
               onPressed: controller.addQuestion,
               child: Text(
                 '${KTexts.add} ${KTexts.questions2}',
@@ -160,10 +160,10 @@ class QuestionsScreen extends StatelessWidget {
             actions: [
               TextButton(
                   style: const ButtonStyle().copyWith(
-                      minimumSize: WidgetStateProperty.all(
+                      minimumSize: MaterialStateProperty.all(
                           const Size(double.infinity, 50)),
-                      backgroundColor: WidgetStateProperty.all(KColors.kApp4),
-                      foregroundColor: WidgetStateProperty.all(Colors.white)),
+                      backgroundColor: MaterialStateProperty.all(KColors.kApp4),
+                      foregroundColor: MaterialStateProperty.all(Colors.white)),
                   onPressed: () {
                     Navigator.of(context).pop();
                     controller.addAnswer(questionId, answerController.text);

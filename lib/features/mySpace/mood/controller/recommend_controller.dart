@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/image_strings.dart';
 
+import '../../../../data/repo/space/activity/activity_repo.dart';
 import '../model/activity_info_model.dart';
 
 

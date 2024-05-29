@@ -118,8 +118,8 @@ class JournalEntryScreen extends StatelessWidget {
                   ),
                   FilledButton(
                     style: const ButtonStyle().copyWith(
-                      backgroundColor: WidgetStateProperty.all(KColors.kApp4),
-                      foregroundColor: WidgetStateProperty.all(Colors.white)
+                      backgroundColor: MaterialStateProperty.all(KColors.kApp4),
+                      foregroundColor: MaterialStateProperty.all(Colors.white)
                     ),
                       onPressed: (){
                         controller.saveJournalEntry();

@@ -81,11 +81,11 @@ class MoodSection extends StatelessWidget {
                   const Spacer(),
                   IconButton(
                     style: ButtonStyle(
-                      padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
+                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                         const EdgeInsets.all(KSizes.md),
                       ),
-                      backgroundColor: WidgetStateProperty.all<Color>(KColors.scaffoldDark),
-                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                      backgroundColor: MaterialStateProperty.all<Color>(KColors.scaffoldDark),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),

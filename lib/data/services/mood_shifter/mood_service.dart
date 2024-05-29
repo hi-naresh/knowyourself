@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:knowyourself/features/mySpace/mood/model/activity_info_model.dart';
 import 'package:knowyourself/features/mySpace/mood/model/mood_model_input.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
+import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 class MoodShiftService extends GetxService {
   static MoodShiftService get instance => Get.find();
@@ -29,6 +30,7 @@ class MoodShiftService extends GetxService {
       }
     } catch (e) {
       print("Error during health check: $e");
+      KHelper.showSnackBar(KTexts.healthCheckError,KTexts.checkLater);
       throw Exception('Failed to check health');
     }
   }

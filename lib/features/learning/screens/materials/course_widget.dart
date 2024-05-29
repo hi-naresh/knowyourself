@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knowyourself/features/learning/screens/materials/pages/course_page.dart';
+import 'package:knowyourself/features/learning/controller/resources_controller.dart';
+import 'package:knowyourself/features/learning/screens/materials/pages/resources_page.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/enums.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../common/widgets/my_card.dart';
 import '../../../../utils/constants/text_strings.dart';
-import '../../controller/course_controller.dart';
 
 class CourseSection extends StatelessWidget {
   const CourseSection({super.key});
@@ -14,15 +14,15 @@ class CourseSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final resources = [
-      {"title": KTexts.auroSocietyTitle, "color": KColors.kApp1,"type":CourseType.auroSociety},
-      {"title": KTexts.magazinesAndNewslettersTitle, "color": KColors.kApp2,"type":CourseType.magazine},
-      {"title": KTexts.videosTitle, "color": KColors.kApp1,"type":CourseType.video},
-      {"title": KTexts.eBooksTitle, "color": KColors.kApp4,"type":CourseType.eBooks},
-      {"title": KTexts.guideTitle, "color": KColors.kApp3,"type":CourseType.guide},
-      {"title": KTexts.centersTitle, "color": KColors.kApp4,"type":CourseType.centers},
+      {"title": KTexts.auroSocietyTitle, "color": KColors.kApp1,"type":ResourceType.auroSociety},
+      {"title": KTexts.magazinesAndNewslettersTitle, "color": KColors.kApp2,"type":ResourceType.magazine},
+      {"title": KTexts.videosTitle, "color": KColors.kApp1,"type":ResourceType.video},
+      {"title": KTexts.eBooksTitle, "color": KColors.kApp4,"type":ResourceType.eBooks},
+      {"title": KTexts.guideTitle, "color": KColors.kApp3,"type":ResourceType.guide},
+      {"title": KTexts.centersTitle, "color": KColors.kApp4,"type":ResourceType.centers},
 
     ];
-    final controller = Get.put(CourseController());
+    final controller = Get.put(ResourcesController());
 
     return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
@@ -41,8 +41,8 @@ class CourseSection extends StatelessWidget {
           title: resource["title"] as String,
           color: resource["color"] as Color,
           onTap: () {
-            controller.setType(resource["type"] as CourseType);
-            Get.to(() => const CoursePage());
+            controller.setType(resource["type"] as ResourceType);
+            Get.to(() => const ResourcesPage());
           },
         );
       },

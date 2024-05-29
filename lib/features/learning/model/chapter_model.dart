@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:knowyourself/utils/constants/enums.dart';
 
 // class QuizModel {
@@ -152,7 +153,7 @@ class ChapterModel{
     required this.progress,
     required this.contentChunks,
     required this.aspect,
-    this.quizQuestions,
+    // this.quizQuestions,
     this.completed = false,
   });
 

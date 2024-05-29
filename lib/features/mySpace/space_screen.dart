@@ -38,7 +38,7 @@ class MySpaceScreen extends StatelessWidget {
               isScrollable: true,
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
               tabAlignment: TabAlignment.center,
-              overlayColor: WidgetStateProperty.all(KColors.transparent),
+              overlayColor: MaterialStateProperty.all(KColors.transparent),
               labelPadding: const EdgeInsets.symmetric(horizontal: 20),
               // labelStyle: h3,
               // tabAlignment: TabAlignment.center,
@@ -79,7 +79,7 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
   final tabs = const [
     const Tab(text: KTexts.reflections),
     const Tab(text: KTexts.mood),
-    Tab(text: KTexts.milestones.capitalizeFirst),
+    Tab(text: KTexts.milestones),
     Tab(text: 'Gratitude'),
     Tab(text: 'Manifestation'),
     const Tab(text: KTexts.questions),
