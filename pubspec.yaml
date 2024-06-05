@@ -53,6 +53,8 @@ dependencies:
 #  tflite_flutter: ^0.10.4
 #  tflite_flutter_processing: ^0.4.1
   firebase_ml_model_downloader: ^0.2.4+16
+  flutter_dotenv: ^5.1.0
+  google_generative_ai: ^0.4.1
 #  tflite_v2: ^1.0.0
 #
 #dependency_overrides:
@@ -78,6 +80,7 @@ flutter:
     - assets/mood_shifter/
     - assets/chapters/
     - assets/logo/
+    - .env
     - packages/animated_emoji/lottie/sad.json
     - packages/animated_emoji/lottie/grin.json
     - packages/animated_emoji/lottie/anxiousWithSweat.json
