@@ -119,6 +119,7 @@ class KColors {
   static const Color kApp2Light = Color(0xFFFFD7E8);
   static const Color kApp3 = Color(0xFF63D5AC);
   static const Color kApp3Light = Color(0xFFB6F3D4);
+  static const Color kApp3Dark = Color(0xFF0CAD74);
   static const Color kApp4 = Color(0xFFFFB999);
   static const Color kApp4Light = Color(0xFFFFCCBF);
   static const Color kApp4Dark = Color(0xFFFFA497);

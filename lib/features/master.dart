@@ -14,6 +14,7 @@ import '../common/extras/auth_screen_prompt.dart';
 import '../common/widgets/appbar/appbar.dart';
 import '../common/widgets/navbar/bottom_nar_bar.dart';
 import '../data/helper_service/local_auth/local_bio_auth.dart';
+import '../routes.dart';
 import '../utils/constants/sizes.dart';
 import '../utils/constants/text_strings.dart';
 
@@ -62,7 +63,18 @@ class MasterScreen extends StatelessWidget {
     // final spaceController = Get.put(MySpaceController());
     final spaceController = MySpaceController.instance;
     return Scaffold(
-      appBar: const KAppBar(),
+      appBar:  KAppBarCustom(
+        extraActions: [
+          //help button
+          IconButton(
+            onPressed: () => Get.toNamed(KRoutes.getAppTourRoute()),
+            icon: const Icon(
+              CupertinoIcons.question_circle_fill,
+              size: KSizes.iconLg,
+            ),
+          ),
+        ],
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Obx(() {
         if (controller.currentIndex.value == 3 &&
@@ -82,7 +94,7 @@ class MasterScreen extends StatelessWidget {
         }
       }),
       extendBody: true,
-      body: Obx(() => controller._screens[controller.currentIndex.value]),
+      body: Obx(() => controller.screens[controller.currentIndex.value]),
       bottomNavigationBar: bottomNavBar(controller),
     );
   }
@@ -94,7 +106,7 @@ class MasterController extends GetxController {
 
   final LocalBioAuth _localBioAuth = LocalBioAuth.instance;
 
-  final List<Widget> _screens = [
+  final List<Widget> screens = [
     const Dashboard(),
     const InsightScreen(),
      const LearnScreen(),
@@ -108,7 +120,7 @@ class MasterController extends GetxController {
       if (index == 3) { // Index 3 corresponds to MySpaceScreen
         authenticateBeforeAccess();
       }else{
-        _screens[3] = const AuthScreenPrompt();
+        screens[3] = const AuthScreenPrompt();
       }
     });
   }
@@ -117,14 +129,14 @@ class MasterController extends GetxController {
     if (_localBioAuth.isAuthEnabled()) {
       bool isAuthenticated = await _localBioAuth.authenticateWithBiometrics();
       if (isAuthenticated) {
-        _screens[3] = const MySpaceScreen();
+        screens[3] = const MySpaceScreen();
       } else {
         Get.snackbar(KTexts.authenticationRequired, KTexts.pleaseAuthenticate);
 
       }
     } else {
       // Directly allow access if bio auth is disabled
-      _screens[3] = const MySpaceScreen();
+      screens[3] = const MySpaceScreen();
     }
   }
 }

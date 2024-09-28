@@ -9,8 +9,10 @@ class KFloatingAction extends StatelessWidget {
 
   final IconData icon;
   final Widget screenWidget;
+  final Color? buttonColor;
   const KFloatingAction({
     super.key, required this.icon, required this.screenWidget,
+    this.buttonColor = KColors.kApp4,
   });
 
   @override
@@ -18,12 +20,12 @@ class KFloatingAction extends StatelessWidget {
     return Container(
       height: KSizes.iconXl * 2,
       width: KSizes.iconXl * 2,
-      decoration: KStyles.darkToLight(KColors.kApp4),
+      decoration: KStyles.darkToLight(buttonColor!),
       child: IconButton(
         icon: Icon(
           icon,
           size: KSizes.iconLg,
-          color: Theme.of(context).textTheme.titleMedium!.color,
+          color: KColors.white,
         ),
         onPressed: () {
           KHelper.showBottomSheet( screenWidget);

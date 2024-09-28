@@ -21,12 +21,13 @@ class DailyMilestoneSection extends StatelessWidget {
     final milesController = MilestoneController.instance;
     return CustomContainer(
       width: double.infinity,
+      // height: 110,
       color: KColors.kApp4Light,
       onTap: () {
         final controller = MySpaceController.instance;
         final masterController = MasterController.instance;
         masterController.currentIndex.value = 3;
-        controller.updateTabIndex(1);
+        controller.updateTabIndex(2);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

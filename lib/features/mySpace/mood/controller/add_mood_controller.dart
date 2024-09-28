@@ -1,5 +1,6 @@
 import 'package:animated_emoji/emoji.dart';
 import 'package:animated_emoji/emojis.g.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/data/services/mood_shifter/mood_service.dart';
@@ -9,8 +10,10 @@ import 'package:knowyourself/routes.dart';
 import 'package:knowyourself/utils/constants/text_strings.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
+import '../../../../common/widgets/loading_widget.dart';
 import '../../../../data/repo/space/activity/activity_repo.dart';
 import '../../../../data/repo/space/mood/mood_repo.dart';
+import '../../../../data/services/mood_shifter/mood_shift_device.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../screens/add_mood/widgets/aspect_select.dart';
@@ -23,7 +26,7 @@ class AddMoodController extends GetxController {
 
   final _moodRepo = Get.put(MoodRepo());
   final _activityRepo = Get.put(ActivityRepo());
-  
+
 
   final RxInt index = 0.obs;
   final PageController pageController = PageController();
@@ -145,9 +148,22 @@ class AddMoodController extends GetxController {
     }
   }
 
+  bool isNegativeMood() {
+    final negativeEmotionalMoods = ['Sad', 'Angry', 'Anxious', 'Distraught', 'Cry', 'Guilty', 'Scared', 'Stressed'];
+    final negativeMentalStates = ['Stressed', 'Confused', 'Exhausted'];
+    final negativePhysicalStates = ['Fatigued', 'Tense', 'Sore', 'Lethargic', 'Achy', 'Numb', 'Weak'];
+    final negativeSpiritualStates = ['Disconnected', 'Seeking', 'Surrendered'];
+
+    return negativeEmotionalMoods.contains(userMoodString) ||
+        negativeMentalStates.contains(selectedMental.value) ||
+        negativePhysicalStates.contains(selectedPhysical.value) ||
+        negativeSpiritualStates.contains(selectedSpiritual.value);
+  }
+
+
   RxInt selectAspect = 0.obs;
   // List<String> aspectsList = ['Mentally\n ${KTexts.mentalDescription}', 'Physically\n ${KTexts.physicalDescription}', 'Emotionally\n ${KTexts.vitalDescription}', 'Spiritually\n ${KTexts.spiritualDescription}'];
-  List<String> aspectsList = ['Mentally', 'Physically', 'Emotionally', 'Spiritually'];
+  List<String> aspectsList = ['Mental', 'Physical', 'Emotional', 'Spiritual'];
   List<String> aspectDescriptions = [(KTexts.mentalDescription), (KTexts.physicalDescription), (KTexts.vitalDescription), (KTexts.spiritualDescription)];
   //get aspect from index
   String get aspectString => aspectsList[selectAspect.value];
@@ -208,74 +224,78 @@ class AddMoodController extends GetxController {
 
   }
 
-
   Future<void> shiftMood() async {
-    
-    final moodService = MoodShiftService.instance;
-    
+    final MoodShiftDeviceService moodService = Get.put(MoodShiftDeviceService());
+
     try {
+      // Show loading indicator
+      Get.dialog(
+        const GlobalLoadingWidget(),
+        barrierDismissible: false,
+      );
+
+      // Create a MoodModel object with the current mood information
       MoodModel currentMood = MoodModel(
         mood: getHumanState(),
         aspect: aspectString,
         reason: reasons.text,
         place: happenedAtString,
         shift: true,
-        id: '',  // Ensure you have a valid ID if necessary
+        id: KHelper.generateId(),
         entryDate: DateTime.now(),
       );
 
-      //save mood before shifting
+      // Save the current mood before attempting to shift it
       await _moodRepo.saveMoodEntry(currentMood);
 
-      // Use the repository to recommend activities based on the current mood
-      // List<String> userActivities = await _moodRepo.recommendActivity(currentMood, moodIndex, selectAspect.value, selectHappenedAt.value, 0);
-      List<ActivityModel> userActivities = await moodService.fetchActivities(currentMood);
-      // print('Recommended activities: $userActivities');
-      //save recommended activities
+      // Fetch activities based on the current mood
+      List<ActivityModel> userActivities = await moodService.suggestActivities(
+        mood: currentMood.mood,
+        aspect: currentMood.aspect,
+        reason: currentMood.reason,
+        place: currentMood.place,
+      );
 
-
-      // List<String> activityTitles = [];
+      // Prepare the activities for display
       for (var activity in userActivities) {
-        activities.add(ActivityModel(
-          id: activity.id,
-          userId: '1',
-          link: activity.link,
-          title: activity.title,
-          instructions: activity.instructions,
-          imageUrl: KImages.health9,
-          color: changeColor(activities.length),
-          tag: 'Physical health',
-        ));
+        if (activity.title != 'No Activity' && activity.instructions != null) {
+          activities.add(ActivityModel(
+            id: activity.id,
+            userId: FirebaseAuth.instance.currentUser!.uid,
+            title: activity.title,
+            instructions: activity.instructions, // Ensure instructions are a list
+            link: activity.link,
+            duration: activity.duration,
+            imageUrl: activity.imageUrl,
+            color: changeColor(activities.length),
+            tag: activity.tag ?? 'Physical health',
+          ));
+        }
       }
 
-      // print(activities);
-      // await _activityRepo.clearLastActivities();
-
+      // Save the recommended activities
       await _activityRepo.saveLastActivities(activities);
 
-      // print(activities);
-
-
+      // Update the activities title list for UI purposes
       activitiesTitle.assignAll(activities.map((e) => e.title).toList());
-      // print('Recommended activities: $userActivities');
-      // print(activitiesTitle);
-      // print("Navigating to activities");
 
-
-      // Optionally, you can handle the navigation or any follow-up actions here
-      if (userActivities.isNotEmpty) {
-        // Navigate or display activities
+      // Navigate or display the activities
+      Get.back(); // Dismiss the loading dialog
+      if (activities.isNotEmpty) {
         Get.toNamed(KRoutes.getActivitiesRoute());
       } else {
         KHelper.showSnackBar(KTexts.noActivitiesFoundTitle, KTexts.noActivitiesFoundMessage);
       }
     } catch (e) {
-      // print('Error in shifting mood: $e');
+      // Dismiss the loading dialog in case of an error
+      if (Get.isDialogOpen ?? false) {
+        Get.back();
+      }
+      // Handle any errors that occur during the mood shift process
       KHelper.showSnackBar(KTexts.tryAgainTitle, KTexts.tryAgainMessage);
     }
   }
 
-  //make changeColor function which can be used to change color of activities after every 4 activities
   Color changeColor(int index) {
     if (index % 4 == 0) {
       return KColors.kApp1;

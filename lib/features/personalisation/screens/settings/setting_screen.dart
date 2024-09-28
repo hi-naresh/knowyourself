@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/personalisation/controller/app_controller.dart';
 import 'package:knowyourself/features/personalisation/screens/settings/pages/debug_screen.dart';
-import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_feedback.dart';
 import '../../../../data/helper_service/local_auth/local_bio_auth.dart';
 import '../../../../routes.dart';
 import '../../../../utils/constants/colors.dart';
@@ -50,12 +49,17 @@ class SettingScreen extends StatelessWidget {
                     child: CircleAvatar(
                       radius: KSizes.iconMd,
                       backgroundColor: KColors.primary,
-                      child: SvgPicture.asset(
-                        profileController.userProfile.value.avatarPath ?? KImages.defaultAvatar,
+                      child: profileController.userProfile.value.avatarPath == ""
+                          ? const Icon(
+                        CupertinoIcons.person,
+                        size: KSizes.iconXxl,
+                        color: KColors.textPrimary,
+                      ) : SvgPicture.asset(
+                        profileController.userProfile.value.avatarPath!,
                         height: KSizes.iconXxl*2,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                       ),
-                    ),
+                  )
                   ),
                   title: Obx(
                         ()=> Text(
@@ -64,7 +68,8 @@ class SettingScreen extends StatelessWidget {
                     ),
                   ),
                   subtitle: Obx(()=>
-                      Text("${KTexts.rewardPoints} : ${profileController.userProfile.value.rewardPoints.toString()}")),
+                      Text("${KTexts.rewardPoints} "
+                          "${profileController.userProfile.value.rewardPoints.toString() ?? 0}")),
                   trailing: FilledButton(
                     child: const Text(KTexts.edit),
                     onPressed: () {
@@ -135,18 +140,24 @@ class SettingScreen extends StatelessWidget {
                     trailing: const Icon(CupertinoIcons.forward),
                     icon: CupertinoIcons.sparkles),
 
+                // SettingTile(
+                //     title: KTexts.feedbackTitle,
+                //     onTap: ()=> Get.to(()=>const SettingsFeedback()),
+                //     subtitle: KTexts.feedbackSubtitle,
+                //     trailing: const Icon(CupertinoIcons.forward),
+                //     icon: CupertinoIcons.conversation_bubble),
+                // SettingTile(
+                //     title: "Debug Mode",
+                //     subtitle: "Enable debug mode",
+                //     onTap: ()=> Get.to(()=>DebugScreen()),
+                //     trailing: const Icon(CupertinoIcons.forward),
+                //     icon: CupertinoIcons.timelapse),
                 SettingTile(
-                    title: KTexts.feedbackTitle,
-                    onTap: ()=> Get.to(()=>const SettingsFeedback()),
-                    subtitle: KTexts.feedbackSubtitle,
+                    title: "Creators",
+                    subtitle: "Team who created this app",
+                    onTap: ()=> Get.toNamed(KRoutes.getCreatorsRoute()),
                     trailing: const Icon(CupertinoIcons.forward),
-                    icon: CupertinoIcons.conversation_bubble),
-                SettingTile(
-                    title: "Debug Mode",
-                    subtitle: "Enable debug mode",
-                    onTap: ()=> Get.to(()=>DebugScreen()),
-                    trailing: const Icon(CupertinoIcons.forward),
-                    icon: CupertinoIcons.timelapse),
+                    icon: CupertinoIcons.person_2),
 
 
                 SettingTile(
@@ -171,10 +182,10 @@ class SettingScreen extends StatelessWidget {
                 const SizedBox(
                   height: KSizes.md,
                 ),
-                Text(
-                  KTexts.madeForSAILC,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+                // Text(
+                //   KTexts.madeForSAILC,
+                //   style: Theme.of(context).textTheme.titleMedium,
+                // ),
               ],
             ),
           ],

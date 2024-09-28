@@ -4,6 +4,7 @@ import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/help
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
+import '../../../../../../routes.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
@@ -24,7 +25,7 @@ class ExpressFeelingsPage extends StatelessWidget {
             const ProgressBar(steps: "3/3", percent: 1),
             const SizedBox(height: KSizes.defaultSpace),
             Text(
-                KTexts.feelingsQuestion,
+              KTexts.feelingsQuestion,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: KSizes.defaultSpace),
@@ -94,7 +95,7 @@ class ExpressFeelingsPage extends StatelessWidget {
                   textAlignVertical: TextAlignVertical.top,
                   decoration: const InputDecoration(
                     hintText: KTexts.describeText,
-                    hintStyle: TextStyle(color: KColors.grey),
+                    hintStyle: TextStyle(color: KColors.textSecondary),
                     contentPadding: EdgeInsets.all(KSizes.sm),
                     disabledBorder: InputBorder.none,
                     enabledBorder: InputBorder.none,
@@ -112,22 +113,53 @@ class ExpressFeelingsPage extends StatelessWidget {
     );
   }
 
+
+
   Widget _buildActionButtons(BuildContext context) {
     final AddMoodController controller = AddMoodController.instance;
 
     return Column(
       children: [
-        _buildActionButton(
-          context,
-          buttonText: KTexts.staySameButtonText,
-          action: controller.saveMoodData,
-        ),
-        const SizedBox(height: KSizes.md),
-        _buildActionButton(
-          context,
-          buttonText: KTexts.feelBetterButtonText,
-          action: controller.shiftMood,
-        ),
+        // _buildActionButton(
+        //   context,
+        //   buttonText: KTexts.staySameButtonText,
+        //   action: controller.saveMoodData,
+        // ),
+        // const SizedBox(height: KSizes.md),
+        // _buildActionButton(
+        //   context,
+        //   buttonText: KTexts.feelBetterButtonText,
+        //   action: controller.shiftMood,
+        // ),
+        Obx(() {
+          if (controller.isNegativeMood()) {
+            return _buildActionButton(
+              context,
+              buttonText: KTexts.feelBetterButtonText,
+              action: controller.shiftMood,
+            );
+          } else {
+            return Column(
+              children: [
+                _buildActionButton(
+                  context,
+                  buttonText:"Lacking something",
+                  action: () {
+                    controller.saveMoodData().then((value) =>
+                        Get.toNamed(KRoutes.getDigDeeperRoute())
+                    );
+                  },
+                ),
+                const SizedBox(height: KSizes.md),
+                _buildActionButton(
+                  context,
+                  buttonText: KTexts.staySameButtonText,
+                  action: controller.saveMoodData,
+                ),
+              ],
+            );
+          }
+        }),
       ],
     );
   }

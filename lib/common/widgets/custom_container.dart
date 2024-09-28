@@ -20,7 +20,7 @@ class CustomContainer extends StatelessWidget {
    CustomContainer({super.key,
     required this.child,
     this.width = double.infinity,
-    // this.height = double.maxFinite,
+    // this.height = double.minPositive,
     this.color = KColors.transparent,
     this.borderRadius = const BorderRadius.all(Radius.circular(25)),
     this.padding = const EdgeInsets.all(KSizes.md),

@@ -25,6 +25,12 @@ class ChapterLearningScreen extends StatelessWidget {
       appBar: KPageBar(
         title: KTexts.learningMaterialsTitle,
         onTap: () => Get.back(),
+        action: Obx(() {
+          return IconButton(
+            icon: Icon(controller.isPlaying.value ? CupertinoIcons.pause_circle : Icons.play_circle_outlined),
+            onPressed: () => controller.toggleAudio()
+          );
+        }),
       ),
       body: Obx(() => ListView.builder(
             padding: const EdgeInsets.all(KSizes.md),
@@ -36,26 +42,26 @@ class ChapterLearningScreen extends StatelessWidget {
                 margin: const EdgeInsets.only(bottom: KSizes.md),
                 child: ListTile(
                   minVerticalPadding: KSizes.md,
-                  // tileColor: KHelper.isDark()? kEmptyProgressDark : kEmptyProgress,
+                  tileColor: KHelper.isDark()? KColors.kEmptyProgressDark : KColors.kEmptyProgress,
                   title: Text(overflow: TextOverflow.ellipsis, material.title),
                   subtitle:
                       Text(overflow: TextOverflow.ellipsis, material.subTitle),
                   // leading: CircularProgressIndicator(value: material.progress),
                   trailing: material.progress == 1 ?
-                  const Icon(
-                  CupertinoIcons.checkmark_alt_circle_fill,
-                  color: KColors.kApp3,
-                  size: KSizes.iconLg,
-                ) : material.progress > 0 ?
-                  CircularProgressIndicator(
-                strokeWidth: 6.0,
-                value: material.progress,
-                backgroundColor: KHelper.isDark()
-                    ? KColors.kEmptyProgressDark
-                    : KColors.kEmptyProgress,
-                valueColor: AlwaysStoppedAnimation<Color>(
-                    KHelper.isDark() ? KColors.kEmptyProgressDark : KColors.kApp3),
-              ) : null,
+                    const Icon(
+                    CupertinoIcons.checkmark_alt_circle_fill,
+                    color: KColors.kApp3,
+                    size: KSizes.iconLg,
+                  ) : material.progress > 0 ?
+                    CircularProgressIndicator(
+                  strokeWidth: 6.0,
+                  value: material.progress,
+                  backgroundColor: KHelper.isDark()
+                      ? KColors.kEmptyProgressDark
+                      : KColors.kEmptyProgress,
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      KHelper.isDark() ? KColors.kEmptyProgressDark : KColors.kApp3),
+                ) : null,
                   onTap: () => controller.navigateToChapterContent(index),
                 ),
               );
@@ -128,99 +134,4 @@ class ChapterContentView extends StatelessWidget {
     );
   }
 
-  // Widget buildQuizPage(BuildContext context, List<QuizModel> questions, int chapterIndex) {
-  //   final LearningController controller = Get.find();
-  //   //each question on new page and must have button answer and next question
-  //   return Padding(
-  //     padding: const EdgeInsets.all(KSizes.defaultSpace),
-  //     child: Column(
-  //       children: [
-  //         Expanded(
-  //           child: PageView.builder(
-  //             itemCount: questions.length,
-  //             itemBuilder: (context, questionIndex) {
-  //               QuizModel question = questions[questionIndex];
-  //               return Column(
-  //                 children: [
-  //                   Text(question.question,
-  //                     textAlign: TextAlign.center,
-  //                     style: Theme.of(context).textTheme.headlineMedium,
-  //                   ),
-  //                   const SizedBox(height: KSizes.defaultSpace),
-  //                   ListView.builder(
-  //                     shrinkWrap: true,
-  //                     physics: const NeverScrollableScrollPhysics(),
-  //                     itemCount: question.options.length,
-  //                     itemBuilder: (context, answerIndex) {
-  //                       return RadioListTile(
-  //                         title: Text(question.options[answerIndex]),
-  //                         value: answerIndex,
-  //                         groupValue: question.correctAnswerIndex,
-  //                         onChanged: (value) {
-  //                           controller.answerQuizQuestion(chapterIndex, questionIndex, value!);
-  //                         },
-  //                       );
-  //                     },
-  //                   ),
-  //                 ],
-  //               );
-  //             },
-  //           ),
-  //         ),
-  //         if (controller.getSelectedOptionForQuestion(chapterIndex, questions.length - 1) != null)
-  //           ElevatedButton(
-  //             onPressed: () => controller.chapterCompleted(index),
-  // child: const Text(KTexts.completeChapter),
-  //           ),
-  //       ],
-  //     ),
-  //   );
-  // }
-}
-
-class CongratulationsScreen extends StatelessWidget {
-  const CongratulationsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final LearningController controller = Get.find();
-    return Scaffold(
-      appBar: KPageBar(
-        title: KTexts.congratulationsTitle,
-        onTap: () => controller.closeChapterContent(),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(KSizes.defaultSpace),
-        child: Column(
-          children: [
-            Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      CupertinoIcons.checkmark_alt_circle_fill,
-                      color: KColors.kApp3,
-                      size: KSizes.xxl,
-                    ),
-                    const SizedBox(height: KSizes.defaultSpace),
-                    Text(
-                      KTexts.congratulationsMessage,
-                      textAlign: TextAlign.justify,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                  ],
-                )
-            ),
-            ElevatedButton(
-              onPressed: () {
-                controller.closeChapterContent();
-                Get.back();
-              },
-              child: const Text(KTexts.close),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }

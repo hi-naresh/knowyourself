@@ -79,22 +79,23 @@ class KTexts {
   static const String learn = "Learn";
   static const String mySpace = "Space";
 
-  static const String mentalDescription = "Enhance cognition with reading, puzzles, and critical thinking.";
-  static const String physicalDescription = "Promote fitness with yoga, sports, and outdoor activities.";
-  static const String vitalDescription = "Optimize energy flow with deep breathing and meditation.";
-  static const String spiritualDescription = "Nurture inner peace with meditation and self-reflection.";
+  static const String mentalDescription = "Enhance mental clarity and focus with meditation and self-reflection.";
+  static const String physicalDescription = "Strengthen your body with yoga and exercise.";
+  static const String vitalDescription = "Boost emotional well-being with self-care and relaxation.";
+  static const String spiritualDescription = "Deepen your spiritual connection with mindfulness.";
 
   //Dashboard
   static const String feel = "How are you today?";
   static const String dailyMilestones ="Daily milestones";
-  static const String myself = "Myself";
+  static const String myself = "Reflection of my journey";
   static const String progress = "Progress";
-  static const String recommend = "Recommended activities";
+  static const String recommend = "My activities";
   static const String startYourDay = "Start your day with some motivation.";
   static const String goodMorning = "Good morning, ";
   static const String goodAfternoon = "Good afternoon, ";
   static const String goodEvening = "Good evening, ";
-  static const String expressState = "Express your present state:\nPhysically, Mentally or Emotionally.";
+  static const String expressState = "Share your present state of mind: Physically, Mentally or Emotionally.";
+  static const String startJourney = "Start journey";
   static const String reflect = "Reflect";
   static const String review = "Review";
 
@@ -120,8 +121,7 @@ class KTexts {
   static const String storySubtitle ="Pen a letter to yourself and begin manifesting your journey. Let your story unfold to the world.";
 
   // Learn Screen
-
-  static const String learnHead = "Learn about aspects";
+  static const String learnHead = "Dive Deeper";
   static const String learnHead1 = "Learn - Core Values";
   static const String learnHead2 = "Learned so far";
   static const String learnHead3 = "Articles";
@@ -161,7 +161,7 @@ class KTexts {
   static const String spiritualFeelings = 'How do you feel Spiritually?';
   static const String mentalFeelings = 'How do you feel Mentally?';
   static const String physicalFeelings = 'How do you feel Physically?';
-  static const String feelingsQuestion =  'What exactly are you experiencing and Why?';
+  static const String feelingsQuestion =  'Why are you experiencing this way?';
   static const String describeText = 'Describe in detail about why and how....';
   static const String staySameButtonText = "Stay Same";
   static const String feelBetterButtonText = "Feel Better";
@@ -339,7 +339,7 @@ class KTexts {
 
   static const String noUser = "No user";
   static const String user = "User";
-  static const String rewardPoints = "Reward points :";
+  static const String rewardPoints = "Reward Tokens :";
 
   static const String bioMetricLoginTitle = "Bio-metric Login";
   static const String bioMetricLoginSubtitle = "Login with your face/fingerprint";
@@ -409,6 +409,12 @@ class KTexts {
 
   static const String savedChoices = "Saved your choices!";
   static const String answersSubmittedSuccessfully = "Answers submitted successfully";
+
+  static const String rootCauseTitle = "Root Cause Analysis";
+  static const String describeProblem = "Describe your problem:";
+  static const String problemHintText = "What is your current problem?";
+  static const String submitButtonText = "Submit";
+
 
 // // -- onboarding texts
   static const String onBoardingTitle = "Welcome to";

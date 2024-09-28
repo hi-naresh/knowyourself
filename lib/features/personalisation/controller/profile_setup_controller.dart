@@ -51,6 +51,9 @@ class ProfileSetupController extends GetxController {
     // Attach an auth state changes listener
     _authListener;
     userProfile.refresh();
+    // for (final user in userProfile.value.toJson().entries) {
+    //   print('${user.key} : ${user.value}');
+    // }
   }
 
   @override
@@ -67,7 +70,8 @@ class ProfileSetupController extends GetxController {
       userProfile(fetchedProfile);
       userProfile.refresh(); // This triggers the UI to update with the new profile
     } else {
-      userProfile(UserProfileModel()); // Resets to an empty profile
+      userProfile(UserProfileModel());
+      userProfile.refresh();
     }
   }
 

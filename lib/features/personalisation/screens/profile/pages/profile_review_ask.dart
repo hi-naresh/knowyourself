@@ -42,7 +42,7 @@ class PromptReviewTest extends StatelessWidget {
             const SizedBox(height: KSizes.spaceBtwSections),
             TextButton(
               // onPressed: () => AuthRepo.instance.screenRedirect(),
-              onPressed: () => Get.offAllNamed(KRoutes.getMasterRoute()),
+              onPressed: () => Get.offAllNamed(KRoutes.getAppTourRoute()),
               child: Text(KTexts.skipForNowButton, style : Theme.of(context).textTheme.titleLarge),
             ),
           ],

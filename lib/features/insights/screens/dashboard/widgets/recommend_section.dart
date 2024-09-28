@@ -24,13 +24,13 @@ class RecommendSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(KTexts.recommend, style: Theme.of(context).textTheme.headlineSmall),
-              GestureDetector(
-                onTap: ()=> Get.to(()=>const ActivitiesToShiftScreen()),
-                child: Text(
-                  "${KTexts.view} ${KTexts.all}",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              ),
+              // GestureDetector(
+              //   onTap: ()=> Get.to(()=>const ActivitiesToShiftScreen()),
+              //   child: Text(
+              //     "${KTexts.view} ${KTexts.all}",
+              //     style: Theme.of(context).textTheme.bodyMedium,
+              //   ),
+              // ),
             ],
           ),
         ),

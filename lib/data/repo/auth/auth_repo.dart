@@ -29,6 +29,8 @@ class AuthRepo extends GetxController {
   void onReady() {
     super.onReady();
     screenRedirect();
+    //print current user
+    // print(authUser);
   }
 
   screenRedirect() => Future.delayed(const Duration(milliseconds: 2000), () async {
