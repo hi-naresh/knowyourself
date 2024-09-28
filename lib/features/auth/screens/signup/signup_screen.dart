@@ -32,7 +32,7 @@ class SignUpScreen extends StatelessWidget {
                     //name
                     TextFormField(
                       controller: controller.fullName,
-                      validator: (value)=> KValidator.validateEmpty("FullName", value),
+                      validator: (value)=> KValidator.validateEmpty(KTexts.fullname, value),
                       decoration: const InputDecoration(
                         labelText: KTexts.fullname,
                       ),
@@ -49,7 +49,7 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(height: KSizes.spaceBtwItems),
                     //password
                   Text(
-                      "Make sure your password is more than 8 characters, containing capital letter(A..), number(1..) and special character(@..#..).",
+                      KTexts.passwordHintMessage,
                           style: Theme.of(context).textTheme.labelMedium
                     ),
                     const SizedBox(height: KSizes.spaceBtwItems),

@@ -81,5 +81,17 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+    <array>
+    	<string>processing</string>
+
+    	<!-- If you need periodic tasks in iOS 13+ you need to enable Background Fetch as well -->
+    	<string>fetch</string>
+    </array>
+    <key>BGTaskSchedulerPermittedIdentifiers</key>
+    <array>
+      <string>com.knowyourself.beta.taskIdentifier</string>
+      <string>com.knowyourself.beta.periodicTaskIdentifier</string>
+    </array>
 </dict>
 </plist>

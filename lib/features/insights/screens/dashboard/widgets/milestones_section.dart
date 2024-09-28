@@ -21,12 +21,13 @@ class DailyMilestoneSection extends StatelessWidget {
     final milesController = MilestoneController.instance;
     return CustomContainer(
       width: double.infinity,
-      color: kApp4Light,
+      // height: 110,
+      color: KColors.kApp4Light,
       onTap: () {
         final controller = MySpaceController.instance;
         final masterController = MasterController.instance;
         masterController.currentIndex.value = 3;
-        controller.updateTabIndex(1);
+        controller.updateTabIndex(2);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,7 +40,7 @@ class DailyMilestoneSection extends StatelessWidget {
                 left: 0,
                 child: SvgPicture.asset(
                   colorFilter: const ColorFilter.mode(
-                    Colors.white70,
+                    KColors.white70,
                     BlendMode.modulate,
                   ),
                   KImages.health5,
@@ -51,7 +52,7 @@ class DailyMilestoneSection extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "Tasks: ${milesController.getCompletedTasksCount(Period.daily)}/",
+                      text: '${KTexts.tasks}: ${milesController.getCompletedTasksCount(Period.daily)}/',
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         // color: KColors.dark,
                         fontWeight: FontWeight.bold,

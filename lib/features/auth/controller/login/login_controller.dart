@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../../../../data/repo/auth/auth_repo.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../../personalisation/controller/user_controller.dart';
 
@@ -31,7 +32,7 @@ class LoginController extends GetxController{
       // }
       //check form
       if (!_loginFormKey.currentState!.validate()) {
-        KHelper.showSnackBar("Invalid Form", "Please fill the form correctly");
+        KHelper.showSnackBar(KTexts.invalidFormTitle, KTexts.invalidFormMessage);
         return;
       }
       if(rememberMe.value){
@@ -43,11 +44,11 @@ class LoginController extends GetxController{
 
       await AuthRepo.instance.loginUser(email.text.trim(), password.text.trim());
       //redirect
-      KHelper.showSnackBar("Logged in successfully", "Welcome back!");
+      KHelper.showSnackBar(KTexts.loginSuccessTitle, KTexts.loginSuccessMessage);
       AuthRepo.instance.screenRedirect();
 
     }catch(e){
-      KHelper.showSnackBar("Oh no!", e.toString());
+      KHelper.showSnackBar(KTexts.errorTitle, e.toString());
     }
   }
 
@@ -62,10 +63,10 @@ class LoginController extends GetxController{
       //redirect
       await userController.saveUserRecord(userCredentials);
 
-      KHelper.showSnackBar("Logged in successfully", "Welcome back!");
+      KHelper.showSnackBar(KTexts.loginSuccessTitle, KTexts.loginSuccessMessage);
       AuthRepo.instance.screenRedirect();
     } catch (e) {
-      KHelper.showSnackBar("Oh no!", e.toString());
+      KHelper.showSnackBar(KTexts.errorTitle, e.toString());
     }
   }
 

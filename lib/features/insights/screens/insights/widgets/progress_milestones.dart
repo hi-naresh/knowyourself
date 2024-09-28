@@ -4,6 +4,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../common/widgets/custom_container.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/enums.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../../mySpace/milestones/controller/milestone_controller.dart';
 import '../../dashboard/widgets/helper/progress_chart_painter.dart';
 
@@ -15,7 +16,7 @@ class ProgressComponent extends StatefulWidget {
   const ProgressComponent({
     super.key,
     required this.milestonesProgress,
-    this.colors = const [kApp1, kApp2, kApp3],
+    this.colors = const [KColors.kApp1, KColors.kApp2, KColors.kApp3],
   });
 
   @override
@@ -53,7 +54,7 @@ class _ProgressComponentState extends State<ProgressComponent> with SingleTicker
   Widget build(BuildContext context) {
     final milesController = MilestoneController.instance;
     return CustomContainer(
-      color: kApp1Light,
+      color: KColors.kApp1Light,
       padding: const EdgeInsets.all(KSizes.defaultSpace),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,15 +63,15 @@ class _ProgressComponentState extends State<ProgressComponent> with SingleTicker
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Progress',
+                KTexts.progress,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: KSizes.lg),
-              ProgressLabel(label: '${milesController.getTotalTasksCount(Period.daily)} Tasks daily', color: kApp3),
+              ProgressLabel(label: '${milesController.getTotalTasksCount(Period.daily)} ${KTexts.tasks} ${KTexts.daily}', color: KColors.kApp3),
               const SizedBox(height: KSizes.sm),
-              ProgressLabel( label: '${milesController.getTotalTasksCount(Period.weekly)} Tasks weekly', color: kApp2),
+              ProgressLabel( label: '${milesController.getTotalTasksCount(Period.weekly)} ${KTexts.tasks} ${KTexts.weekly}', color: KColors.kApp2),
               const SizedBox(height: KSizes.sm),
-              ProgressLabel(label: '${milesController.getTotalTasksCount(Period.monthly)} Tasks monthly', color: kApp1),
+              ProgressLabel(label: '${milesController.getTotalTasksCount(Period.monthly)} ${KTexts.tasks} ${KTexts.monthly}', color: KColors.kApp1),
             ],
           ),
           AnimatedBuilder(

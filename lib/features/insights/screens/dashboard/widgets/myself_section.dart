@@ -6,6 +6,7 @@ import 'package:knowyourself/utils/constants/image_strings.dart';
 import '../../../../../common/widgets/my_card.dart';
 import '../../../../../routes.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../../../../master.dart';
 import '../../../../mySpace/space_screen.dart';
@@ -24,11 +25,11 @@ class MyselfSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Myself", style: Theme.of(context).textTheme.headlineSmall),
+              Text(KTexts.myself, style: Theme.of(context).textTheme.headlineSmall),
               GestureDetector(
                 onTap: ()=> MasterController.instance.currentIndex.value = 3,
                 child: Text(
-                  "View All",
+                  "${KTexts.view} ${KTexts.all}",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
@@ -41,8 +42,8 @@ class MyselfSection extends StatelessWidget {
           children: [
             myCard(
               context: context,
-              title: "Reflect",
-              color: kApp1,
+              title: KTexts.reflect,
+              color: KColors.kApp1,
               imageUrl: KImages.health12,
               screenWidth: kIsWeb? 390: KDeviceUtils.getScreenWidth(context),
               onTap: () {
@@ -54,8 +55,8 @@ class MyselfSection extends StatelessWidget {
             ),
             myCard(
               context: context,
-              title: "Review",
-              color: kApp2,
+              title: KTexts.review,
+              color: KColors.kApp2,
               imageUrl: KImages.health1,
               screenWidth: kIsWeb? 390: KDeviceUtils.getScreenWidth(context),
               onTap: ()=>Get.toNamed(KRoutes.getChoiceScreenRoute()),

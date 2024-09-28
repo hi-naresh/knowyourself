@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/personalisation/model/user_onboard_model.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '/data/repo/auth/auth_repo.dart';
 
 import '../../../../features/personalisation/model/user_model.dart';
@@ -25,7 +26,8 @@ class UserRepo extends GetxController{
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
+      
     }
   }
 
@@ -39,7 +41,7 @@ class UserRepo extends GetxController{
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
 
@@ -65,7 +67,7 @@ class UserRepo extends GetxController{
   //   } on PlatformException catch(e){
   //     throw KPlatformException(e.code).message;
   //   } catch (e){
-  //     throw 'Something went Wrong. Try Again';
+  //     throw KTexts.errorMessage
   //   }
   // }
 
@@ -91,7 +93,7 @@ class UserRepo extends GetxController{
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
 
@@ -115,7 +117,7 @@ class UserRepo extends GetxController{
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
 
@@ -130,7 +132,7 @@ class UserRepo extends GetxController{
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
 
@@ -145,7 +147,7 @@ class UserRepo extends GetxController{
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
 
@@ -160,7 +162,7 @@ class UserRepo extends GetxController{
     } on PlatformException catch(e){
       throw KPlatformException(e.code).message;
     } catch (e){
-      throw 'Something went Wrong. Try Again';
+      throw KTexts.errorMessage;
     }
   }
 }

@@ -62,11 +62,11 @@ class GratitudeScreen extends StatelessWidget {
                           filled: true,
                           enabledBorder: const UnderlineInputBorder(
                             borderSide:
-                            BorderSide(color: kApp4),
+                            BorderSide(color: KColors.kApp4),
                           ),
                           focusedBorder: const UnderlineInputBorder(
                             borderSide:
-                            BorderSide(color: kApp4),
+                            BorderSide(color: KColors.kApp4),
                           ),
                         ),
                       ),
@@ -97,7 +97,7 @@ class GratitudeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "More Reasons To Celebrate",
+                    KTexts.moreReasonsToCelebrate,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const SizedBox(
@@ -105,36 +105,38 @@ class GratitudeScreen extends StatelessWidget {
                   ),
                   GratitudeTitle(
                     gratitudeModel: GratitudeModel(
-                      title: "I quit a bad habit of ",
+                      title: KTexts.quitBadHabit,
                     ),
                   ),
                   GratitudeTitle(
                     gratitudeModel:
-                    GratitudeModel(title: "I am thankful for "),
-                  ),
-                  GratitudeTitle(
-                    gratitudeModel: GratitudeModel(
-                      title: "I have continued to ",
+                    GratitudeModel(
+                      title: KTexts.thankfulFor,
                     ),
                   ),
                   GratitudeTitle(
                     gratitudeModel: GratitudeModel(
-                      title: "I did an act of kindness by ",
+                      title: KTexts.continuedTo,
                     ),
                   ),
                   GratitudeTitle(
                     gratitudeModel: GratitudeModel(
-                      title: "I started a habit of ",
+                      title: KTexts.actOfKindness,
                     ),
                   ),
                   GratitudeTitle(
                     gratitudeModel: GratitudeModel(
-                      title: "I did a random act of ",
+                      title: KTexts.startedHabit,
                     ),
                   ),
                   GratitudeTitle(
                     gratitudeModel: GratitudeModel(
-                      title: "I am grateful for ",
+                      title: KTexts.randomAct,
+                    ),
+                  ),
+                  GratitudeTitle(
+                    gratitudeModel: GratitudeModel(
+                      title: KTexts.gratefulFor,
                     ),
                   ),
                 ],
@@ -184,7 +186,9 @@ class GratitudeScreen extends StatelessWidget {
             //     );
             //   },
             // )
-            ElevatedButton(onPressed: (){}, child: const Text("Celebrate"))
+            ElevatedButton(onPressed: (){},
+              child: const Text(KTexts.celebrate),
+            )
           ],
         ),
       ),

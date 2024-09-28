@@ -16,18 +16,18 @@ class ReflectionPainter extends CustomPainter {
   });
 
   List<Color> coreValueColors = [
-    valueSincerity,
-    valueHumility,
-    valueGratitude,
-    valuePerseverance,
-    valueAspiration,
-    valueReceptivity,
-    valueProgress,
-    valueCourage,
-    valueGoodness,
-    valueGenerosity,
-    valueEquanimity,
-    valuePeace
+    KColors.valueSincerity,
+    KColors.valueHumility,
+    KColors.valueGratitude,
+    KColors.valuePerseverance,
+    KColors.valueAspiration,
+    KColors.valueReceptivity,
+    KColors.valueProgress,
+    KColors.valueCourage,
+    KColors.valueGoodness,
+    KColors.valueGenerosity,
+    KColors.valueEquanimity,
+    KColors.valuePeace
   ];
 
   @override
@@ -59,7 +59,7 @@ class ReflectionPainter extends CustomPainter {
       path.lineTo(center.dx, center.dy);
 
       final paint = Paint()
-        ..color = KHelper.isDark() ? kEmptyProgressDark : kEmptyProgress
+        ..color = KHelper.isDark() ? KColors.kEmptyProgressDark : KColors.kEmptyProgress
         ..style = PaintingStyle.fill;
       canvas.drawPath(path, paint);
 

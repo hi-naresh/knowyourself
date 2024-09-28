@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../data/repo/auth/auth_repo.dart';
 import '../../../../data/repo/user/remote/user_repo.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../../personalisation/model/user_model.dart';
 
@@ -32,13 +33,15 @@ class SignUpController extends GetxController {
 
       //check form
       if (!signupFormKey.currentState!.validate()) {
-        KHelper.showSnackBar("Invalid Form", "Please fill the form correctly");
+        KHelper.showSnackBar(KTexts.invalidFormTitle, KTexts.invalidFormMessage);
         return;
       }
 
       if (!privacyPolicy.value) {
-        KHelper.showSnackBar("Accept Privacy policy",
-            "In order to create account, you need to accept the privacy policy.");
+        KHelper.showSnackBar(
+          KTexts.acceptPrivacyPolicyTitle,
+          KTexts.acceptPrivacyPolicyMessage,
+        );
       }
       //register user to firebase
       final user = await AuthRepo.instance.registerUser(email.text.trim(), password.text.trim());
@@ -56,12 +59,15 @@ class SignUpController extends GetxController {
       await userRepo.saveUserRecord(newUser);
 
       //show success
-      KHelper.showSnackBar("Congratulations!", "Account created successfully");
+      KHelper.showSnackBar(
+        KTexts.congratulationsTitle,
+        KTexts.accountCreatedMessage,
+      );
       //redirect to home
       // Get.offAllNamed(KRoutes.getMasterRoute());
 
     } catch (e) {
-      KHelper.showSnackBar("Oh no!", e.toString());
+      KHelper.showSnackBar(KTexts.errorTitle, e.toString());
     }
     // finally{
     //   KHelper.showSnackBar("Some Error Encountered", " ");

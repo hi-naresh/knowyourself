@@ -1,5 +1,4 @@
 import 'package:animated_emoji/animated_emoji.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/mood/controller/add_mood_controller.dart';
@@ -25,12 +24,12 @@ class MoodBoard extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                    text: 'My ',
+                    text: '${KTexts.my} ',
                     style: Theme.of(context).textTheme.headlineMedium),
                 TextSpan(
-                  text: 'Mood Board',
+                  text: KTexts.moodBoardTitle,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        color: kApp4,
+                        color: KColors.kApp4,
                       ),
                 ),
               ],
@@ -49,7 +48,7 @@ class MoodBoard extends StatelessWidget {
               () {
                 if (controller.moodEntries.isEmpty) {
                   return const Center(
-                    child: Text("No Mood Entries Yet"),
+                    child: Text(KTexts.noMoodEntries),
                   );
                 }
                 return ListView.builder(
@@ -109,27 +108,6 @@ class MoodBoard extends StatelessWidget {
                     ),
                   );
 
-                  return ListTile(
-                    leading: AnimatedEmoji(
-                      controller.emotionalEmojis[(controller.sliderValue.value *
-                          controller.emotionalEmojis.length).floor() %
-                          controller.emotionalEmojis.length].emoji,
-                      source: AnimatedEmojiSource.asset,
-                      size: 30,
-                      repeat: false,
-                    ),
-                    title: Text(mood.mood),
-                    subtitle: Text(
-                      "${mood.aspect} at ${mood.place} Place", style: Theme
-                        .of(context)
-                        .textTheme
-                        .labelMedium,),
-                    trailing: IconButton(
-                        onPressed: () => controller.deleteMoodEntry(mood.id),
-                        icon: const Icon(CupertinoIcons.clear_circled)
-                    ),
-
-                  );
                 },
               );},
             ),

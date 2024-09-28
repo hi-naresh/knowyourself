@@ -1,4 +1,7 @@
 
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../data/repo/materials/resources/local/resources_repo.dart';
@@ -16,19 +19,35 @@ class ResourcesController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchMaterials(type.value);
+    // fetchMaterials(type.value);
+    loadMaterialsFromJson(type.value.toString().split(".").last);
   }
 
   void setType(ResourceType newType) {
     type.value = newType;
-    fetchMaterials(newType);
+    // fetchMaterials(newType);
+    loadMaterialsFromJson(newType.toString().split(".").last);
   }
 
-  Future<void> fetchMaterials( ResourceType type) async {
-    List<ResourcesModel> fetchedMaterials = await localRepo.getExternalResources(type);
-    List<ResourcesModel> filteredMaterials = fetchedMaterials.where(
-            (element) => element.type == type.toString().split(".").last ).toList();
-    materialsList.assignAll(filteredMaterials);
+  Future<void> loadMaterialsFromJson(String type) async {
+    final String chaptersJsonString = await rootBundle.loadString('assets/materials/data.json');
+    final Map<String, dynamic> chaptersJson = json.decode(chaptersJsonString);
+    final List<dynamic> chaptersJsonList = chaptersJson['resources'];
+
+    final List<ResourcesModel> chaptersListRaw = chaptersJsonList
+        .map((chapter) => ResourcesModel.fromJson(chapter))
+        .where((chapter) => chapter.type == type)
+        .toList();
+
+    materialsList.assignAll(chaptersListRaw);
+
   }
+
+  // Future<void> fetchMaterials( ResourceType type) async {
+  //   List<ResourcesModel> fetchedMaterials = await localRepo.getExternalResources(type);
+  //   List<ResourcesModel> filteredMaterials = fetchedMaterials.where(
+  //           (element) => element.type == type.toString().split(".").last ).toList();
+  //   materialsList.assignAll(filteredMaterials);
+  // }
 
 }

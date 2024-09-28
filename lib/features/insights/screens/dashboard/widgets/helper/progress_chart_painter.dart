@@ -17,14 +17,14 @@ class ProgressPainter extends CustomPainter {
 
     // Draw the background circle with inner shadow
     final backgroundPaint = Paint()
-      ..color = Colors.transparent
+      ..color =KColors.transparent
       ..style = PaintingStyle.fill;
     canvas.drawCircle(center, radius, backgroundPaint);
 
     // Draw complete circles for each progress bar with greyed-out remaining percentage
-    drawProgressArc(canvas, center, radius - 0, kApp3, progress[0], true);
-    drawProgressArc(canvas, center, radius - 20, kApp2,progress[1], true);
-    drawProgressArc(canvas, center, radius - 40, kApp1, progress[2], true);
+    drawProgressArc(canvas, center, radius - 0, KColors.kApp3, progress[0], true);
+    drawProgressArc(canvas, center, radius - 20, KColors.kApp2,progress[1], true);
+    drawProgressArc(canvas, center, radius - 40, KColors.kApp1, progress[2], true);
   }
 
   void drawProgressArc(Canvas canvas, Offset center, double radius, Color color, double percent, bool drawBackground) {
@@ -35,7 +35,7 @@ class ProgressPainter extends CustomPainter {
     // Draw the background circle if needed
     if (drawBackground) {
       final backgroundPaint = Paint()
-        ..color = kEmptyProgress
+        ..color = KColors.kEmptyProgress
         ..style = PaintingStyle.stroke
         ..strokeWidth = 12
         ..strokeCap = StrokeCap.round;
@@ -50,7 +50,7 @@ class ProgressPainter extends CustomPainter {
     // Create a Path that describes the inner shadow.
     // Path path = Path()
     //   ..addOval(Rect.fromCircle(center: center, radius: radius - 30));
-    // canvas.drawShadow(path, Colors.grey, 3, false);
+    // canvas.drawShadow(path, KColors.grey, 3, false);
 
     // Draw the progress arc
     final progressPaint = Paint()

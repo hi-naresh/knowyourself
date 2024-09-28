@@ -4,6 +4,7 @@ import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../../data/repo/space/journal/journal_repo.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../model/journal_model.dart';
 import '../screens/journal_view_entry/journal_view_entry.dart';
 
@@ -44,31 +45,31 @@ class JournalController extends GetxController {
   Color getColorForCoreValue() {
     switch (maxCoreValue()) {
       case 'progress':
-        return valueProgress;
+        return KColors.valueProgress;
       case 'receptivity':
-        return valueReceptivity;
+        return KColors.valueReceptivity;
       case 'aspiration':
-        return valueAspiration;
+        return KColors.valueAspiration;
       case 'perseverance':
-        return valuePerseverance;
+        return KColors.valuePerseverance;
       case 'gratitude':
-        return valueGratitude;
+        return KColors.valueGratitude;
       case 'humility':
-        return valueHumility;
+        return KColors.valueHumility;
       case 'sincerity':
-        return valueSincerity;
+        return KColors.valueSincerity;
       case 'peace':
-        return valuePeace;
+        return KColors.valuePeace;
       case 'equanimity':
-        return valueEquanimity;
+        return KColors.valueEquanimity;
       case 'generosity':
-        return valueGenerosity;
+        return KColors.valueGenerosity;
       case 'goodness':
-        return valueGoodness;
+        return KColors.valueGoodness;
       case 'courage':
-        return valueCourage;
+        return KColors.valueCourage;
       default:
-        return kEmptyProgress;
+        return KColors.kEmptyProgress;
     }
   }
 
@@ -120,8 +121,7 @@ class JournalController extends GetxController {
 
   void updateDate(DateTime selectedDay) {
     if (selectedDay.isAfter(DateTime.now())) {
-      KHelper.showSnackBar(
-          'Cannot select future date', 'Cannot select future dates');
+      KHelper.showSnackBar(KTexts.futureDateError1, KTexts.futureDateError2);
       return;
     }
     currentDate.value = selectedDay;

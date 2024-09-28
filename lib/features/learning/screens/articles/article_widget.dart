@@ -19,7 +19,7 @@ class ArticleWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: KSizes.defaultSpace),
       decoration: BoxDecoration(
-        color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
+        color: KHelper.isDarkMode(context) ? KColors.kEmptyProgressDark : KColors.kEmptyProgress,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -86,7 +86,7 @@ class ArticleWidget extends StatelessWidget {
                         onTap: () =>ArticleController.instance.openArticle(article.url),
                         child: const Icon(
                           CupertinoIcons.globe,
-                          color: kApp3,
+                          color: KColors.kApp3,
                           size: KSizes.iconXl,
                         ),
                       )

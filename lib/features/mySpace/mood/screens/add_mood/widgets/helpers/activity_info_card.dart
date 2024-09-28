@@ -40,19 +40,18 @@ class ActivityInfoCard extends StatelessWidget {
                   TextSpan(
                     text: "Instructions : \n\n",
                     children: [
-                      TextSpan(
-                        //instructions type List
-                        text : activityModel.instructions!.join('\n\n'),
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-
+                      for (int i = 0; i < activityModel.instructions!.length; i++)
+                        TextSpan(
+                          text: '${i + 1}. ${activityModel.instructions![i]}\n\n',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
                     ],
                   ),
                   textAlign: TextAlign.justify,
-
                 ),
               ),
             ),
+
             const Spacer(),
             ElevatedButton(
               onPressed: () {

@@ -5,11 +5,14 @@ import 'package:knowyourself/features/mySpace/mood/screens/add_mood/add_mood_scr
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/activities_to_shift.dart';
 import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_about.dart';
 import 'package:knowyourself/features/personalisation/screens/settings/pages/settings_my_space.dart';
+import 'package:knowyourself/features/tour/screens/tour_screen.dart';
 import 'common/extras/notification_screen.dart';
 import 'features/master.dart';
+import 'features/mySpace/digdeeper/screens/digdeeper_screen.dart';
 import 'features/personalisation/screens/profile/pages/profile_review_ask.dart';
 import 'features/personalisation/screens/profile/profile_edit_screen.dart';
 import 'features/personalisation/screens/profile/profile_setup.dart';
+import 'features/personalisation/screens/settings/pages/settings_creators.dart';
 import 'features/personalisation/screens/settings/setting_screen.dart';
 import 'common/extras/splash_screen.dart';
 import 'features/auth/screens/login/login_screen.dart';
@@ -78,6 +81,18 @@ class KRoutes{
   static const String notifications = '/notifications';
   static String getNotificationsRoute() => notifications;
 
+  //creators
+  static const String creators = '/creators';
+  static String getCreatorsRoute() => creators;
+
+  //in-depth guidance
+  static const String digDeeper = '/rootCause';
+  static String getDigDeeperRoute() => digDeeper;
+
+  //app tour
+  static const String appTour = '/appTour';
+  static String getAppTourRoute() => appTour;
+
   static const _defaultTransition = Transition.fadeIn;
   static const _defaultTransitionDuration = Duration(milliseconds: 500);
 
@@ -107,7 +122,7 @@ class KRoutes{
     GetPage(name: profileEdit, page: () => const ProfileEditScreen(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
-    GetPage(name: notifications, page: () => const NotificationsScreen(),
+    GetPage(name: notifications, page: () =>  NotificationsScreen(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
     GetPage(name: addMood, page: () => const AddMoodScreen(),
@@ -134,5 +149,16 @@ class KRoutes{
     GetPage(name: reviewAsk, page: () =>  const PromptReviewTest(),
         transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
     ),
+    GetPage(name: creators, page: () =>  const CreatorsScreen(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    GetPage(name: appTour, page: () =>  const TourScreen(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
+    GetPage(name: digDeeper, page: () =>   DigDeeperScreen(),
+        transition: _defaultTransition , transitionDuration: _defaultTransitionDuration
+    ),
   ];
+
+
 }

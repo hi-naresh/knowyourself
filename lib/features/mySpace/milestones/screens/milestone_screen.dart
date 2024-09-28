@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:knowyourself/features/mySpace/milestones/screens/widget/milestones_list_view.dart';
 import '../../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/colors.dart';
@@ -18,12 +19,12 @@ class MilestoneScreen extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(
-                  text: 'My ',
+                  text: '${KTexts.my} ',
                   style: Theme.of(context).textTheme.headlineMedium),
               TextSpan(
-                text: 'Milestones',
+                text: KTexts.milestones.capitalizeFirst,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: kApp4,
+                  color: KColors.kApp4,
                 ),
               ),
             ],

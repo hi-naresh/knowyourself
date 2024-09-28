@@ -20,7 +20,8 @@ class MoodSection extends StatelessWidget {
     final profileController = ProfileSetupController.instance;
     return CustomContainer(
       width: double.infinity,
-      color: kApp1Light,
+      // height: 250,
+      color: KColors.kApp1Light,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -31,7 +32,7 @@ class MoodSection extends StatelessWidget {
               KImages.health13,
               height: 140,
               colorFilter: ColorFilter.mode(
-                Colors.white.withOpacity(0.3),
+                KColors.white30,
                 BlendMode.modulate,
               ),
             ),
@@ -62,42 +63,25 @@ class MoodSection extends StatelessWidget {
                   ),
               ),
               const SizedBox(height: KSizes.md),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(13),
-                      color: const Color(0x4DF5F5F5),
-                    ),
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      "Express your present state:\nPhysically, Mentally or Emotionally.",
-                      style: Theme.of(context).textTheme.labelLarge,
-                      textAlign: TextAlign.left,
-                    ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(13),
+                  color: const Color(0x4DF5F5F5),
+                ),
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  KTexts.expressState,
+                  style: Theme.of(context).textTheme.labelLarge,
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              const SizedBox(height: KSizes.md),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: KColors.textPrimary
                   ),
-                  const Spacer(),
-                  IconButton(
-                    style: ButtonStyle(
-                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                        const EdgeInsets.all(KSizes.md),
-                      ),
-                      backgroundColor: MaterialStateProperty.all<Color>(KColors.scaffoldDark),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ),
-                    ),
-                    onPressed: ()=>Get.toNamed(KRoutes.getAddMoodRoute()),
-                    icon: const Icon(
-                      CupertinoIcons.forward ,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
+                  onPressed: ()=>Get.toNamed(KRoutes.getAddMoodRoute()),
+                  child: Text("Start Your Journey", style: Theme.of(context).textTheme.titleSmall?.copyWith(color: KColors.white),),
               ),
             ],
           ),

@@ -51,6 +51,17 @@ class JournalRepo extends GetxController{
     return _getJournalEntriesFromStorage();
   }
 
+  Future<List<JournalEntry>> getJournalEntriesFiltered({required bool filterByAnalyzed}) async {
+    var currentEntries = _getJournalEntriesFromStorage();
+    final userID = UserController.instance.user.value.id.toString();
+    // final userID = ProfileSetupController.instance.userID.toString();
+    if (filterByAnalyzed) {
+      return currentEntries.where((entry) => entry.userId == userID && entry.analyzed).toList();
+    } else {
+      return currentEntries.where((entry) => entry.userId == userID && !entry.analyzed).toList();
+    }
+  }
+
   Future<void> updateJournalEntry(JournalEntry updatedEntry) async {
     var currentEntries = _getJournalEntriesFromStorage();
 

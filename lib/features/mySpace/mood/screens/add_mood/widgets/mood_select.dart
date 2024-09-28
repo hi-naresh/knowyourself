@@ -3,6 +3,7 @@ import 'package:animated_emoji/animated_emoji.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/helpers/progress_bar.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
 import '../../../controller/add_mood_controller.dart';
 import 'helpers/full_circle_slider.dart';
@@ -68,7 +69,7 @@ class MentalPage extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'How do you feel Mentally?',
+          KTexts.mentalFeelings,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: KSizes.defaultSpace),
@@ -93,7 +94,7 @@ class MentalPage extends StatelessWidget {
                     backgroundColor: controller.selectedMental.value ==
                             controller.mentalList[index]
                         ? KColors.primary // Highlight if selected
-                        : Colors.transparent,
+                        : KColors.transparent,
                     child: Text(
                       controller.mentalList[index],
                       style: Theme.of(context).textTheme.bodyLarge,
@@ -122,7 +123,7 @@ class PhysicalPage extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'How do you feel physically?',
+          KTexts.physicalFeelings,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: KSizes.defaultSpace),
@@ -147,7 +148,7 @@ class PhysicalPage extends StatelessWidget {
                     backgroundColor: controller.selectedPhysical.value ==
                             controller.physicalList[index]
                         ? KColors.primary // Highlight if selected
-                        : Colors.transparent,
+                        : KColors.transparent,
                     child: Text(
                       controller.physicalList[index],
                       style: Theme.of(context).textTheme.bodyLarge,
@@ -181,7 +182,7 @@ class EmotionalPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "How Are You\n Feeling?",
+                  KTexts.howAreYouFeeling,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                         fontSize: KSizes.xxl,
@@ -204,15 +205,15 @@ class EmotionalPage extends StatelessWidget {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white70,
+                        color: KColors.white70,
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Colors.white,
+                          color: KColors.white,
                           width: 1,
                         ),
                         boxShadow: CustomShadow.getShadow([
                           BoxShadow(
-                            color: Colors.orange.withOpacity(0.5),
+                            color: KColors.orangeWithOpacity,
                             blurRadius: 20,
                             offset: const Offset(0, 4),
                           ),
@@ -250,7 +251,7 @@ class EmotionalPage extends StatelessWidget {
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: "Emotion\n",
+                            text: KTexts.emotion,
                             style: Theme.of(context).textTheme.headlineMedium,
                           ),
                           TextSpan(
@@ -283,7 +284,7 @@ class SpiritualPage extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'How do you feel Spiritually?',
+         KTexts.spiritualFeelings,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: KSizes.defaultSpace),
@@ -308,7 +309,7 @@ class SpiritualPage extends StatelessWidget {
                     backgroundColor: controller.selectedSpiritual.value ==
                             controller.spiritualList[index]
                         ? KColors.primary // Highlight if selected
-                        : Colors.transparent,
+                        :KColors.transparent,
                     child: Text(
                       controller.spiritualList[index],
                       style: Theme.of(context).textTheme.bodyLarge,

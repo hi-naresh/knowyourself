@@ -96,6 +96,11 @@ class KHelper {
     return list.toSet().toList();
   }
 
+  //create method to generate id from current timestamp
+  static String generateId() {
+    return DateTime.now().millisecondsSinceEpoch.toString();
+  }
+
   static String? encodeQueryParameters(Map<String, String> params) {
     return params.entries
         .map((MapEntry<String, String> e) =>
@@ -113,10 +118,21 @@ class KHelper {
       }),
     );
     await launchUrl(emailLaunchUri.toString());
-
-
-
   }
+
+  //send mail with specific mail
+  static Future<void> sendMailTo(String email) async {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: email,
+      query: encodeQueryParameters(<String, String>{
+        'subject': 'Contact - query',
+      }),
+    );
+    await launchUrl(emailLaunchUri.toString());
+  }
+
+
 
 
   // Future<void> openPlayStore() async {

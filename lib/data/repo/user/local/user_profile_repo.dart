@@ -13,7 +13,8 @@ class UserProfileRepo {
   static const String _userProfileKey = 'user_profile';
 
   void saveUserProfile(UserProfileModel userProfile) {
-    _storage.writeIfNull(_userProfileKey, userProfile);
+    // _storage.writeIfNull(_userProfileKey, userProfile);
+    _storage.write(_userProfileKey, userProfile.toJson());
     UserRepo.instance.addNewCollectionUnderUser(_userProfileKey,userProfile.toJson());
   }
 
@@ -27,14 +28,25 @@ class UserProfileRepo {
 
   Future<UserProfileModel> getUserProfile() async {
     final json = _storage.read(_userProfileKey);
+    //check if json is null
     if (json != null) {
       return UserProfileModel.fromJson(json);
+      // final userProfile = await fetchUserProfileData();
+      // _storage.write(_userProfileKey, userProfile.toJson());
+      // getUserProfile();
+      // return userProfile;
     }else {
-      final userProfile = await fetchUserProfileData();
-      _storage.write(_userProfileKey, userProfile.toJson());
-      return userProfile;
+      return setUserProfile();
     }
   }
+
+  //make method for setUserProfile
+  Future<UserProfileModel> setUserProfile() async {
+    final userProfile = await fetchUserProfileData();
+    _storage.write(_userProfileKey, userProfile.toJson());
+    return userProfile;
+  }
+
 
   Future<UserProfileModel> fetchUserProfileData() async {
     return await UserRepo.instance.fetchUserProfileFirestore();

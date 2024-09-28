@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/features/personalisation/controller/user_controller.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import '../../../../data/repo/space/story/story_repo.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../model/story_model.dart';
 import '../../../../../utils/constants/enums.dart';
 
@@ -40,7 +41,7 @@ class StoryController extends GetxController {
     } else {
       desiredStory.value = story;
     }
-    KHelper.showSnackBar('Story saved successfully',"");
+    KHelper.showSnackBar(KTexts.storySavedSuccess, KTexts.emptyString);
     fetchStories(); // Refresh stories after saving
   }
 
@@ -84,7 +85,7 @@ class StoryController extends GetxController {
     } else {
       desiredStory.value = null;
     }
-    KHelper.showSnackBar('Story Updated successfully',"");
+    KHelper.showSnackBar(KTexts.storyUpdatedSuccess, KTexts.emptyString);
     fetchStories(); // Refresh stories after deletion
   }
 
@@ -96,7 +97,7 @@ class StoryController extends GetxController {
     } else if (type == StoryType.desired) {
       desiredStory.value = null;
     }
-    KHelper.showSnackBar('Story Deleted successfully',"");
+    KHelper.showSnackBar(KTexts.storyDeletedSuccess, KTexts.emptyString);
     clearFields();
   }
 

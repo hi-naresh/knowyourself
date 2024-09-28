@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../controller/app_controller.dart';
 import '../../../controller/profile_setup_controller.dart';
 
@@ -20,7 +21,7 @@ class ProfileAvatarPage extends StatelessWidget {
         TextFormField(
           key: const Key('name_field'),
           decoration: const InputDecoration(
-            hintText: 'What should we call you?',
+            hintText: KTexts.hintText3,
           ),
           onChanged: (value) => controller!.name.value = value,
         ),
@@ -45,7 +46,7 @@ class ProfileAvatarPage extends StatelessWidget {
                     radius: 30,
                     backgroundColor: controller!.avatar.value.isEmpty
                         ? KColors.primary // Highlight if selected
-                        : Colors.transparent,
+                        :KColors.transparent,
                     child: const Icon(
                                   CupertinoIcons.nosign, size: KSizes.iconMd*2,
                                 ),
@@ -62,7 +63,7 @@ class ProfileAvatarPage extends StatelessWidget {
                   radius: 30,
                   backgroundColor: controller!.avatar.value == avatarPath
                       ? KColors.primary  // Highlight if selected
-                      : Colors.transparent,
+                      :KColors.transparent,
                   child: SvgPicture.asset(
                     avatarPath,
                     height: 70,
@@ -74,7 +75,7 @@ class ProfileAvatarPage extends StatelessWidget {
         ),
         const SizedBox(height: KSizes.defaultSpace * 2),
         OutlinedButton(onPressed: ()=>AppStateController.instance.logoutUser(),
-            child: const Text('Logout')),
+            child: const Text(KTexts.logoutTitle)),
       ],
     );
   }

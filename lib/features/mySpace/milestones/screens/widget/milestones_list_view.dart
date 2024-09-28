@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/enums.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 import '../../controller/milestone_controller.dart';
 
@@ -22,7 +23,7 @@ class MilestoneProgressList extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal:  KSizes.defaultSpace/2, vertical: KSizes.xs),
       decoration: BoxDecoration(
-        color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
+        color: KHelper.isDarkMode(context) ? KColors.kEmptyProgressDark : KColors.kEmptyProgress,
         borderRadius: const BorderRadius.all(Radius.circular(KSizes.borderRadiusLgx)),
       ),
       child: Obx(
@@ -35,20 +36,20 @@ class MilestoneProgressList extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text(title, style: Theme.of(context).textTheme.headlineSmall),
-                  subtitle: Text('I have completed $completedTasksCount/$tasksCount milestones.'),
+                  subtitle: Text('${KTexts.completed} $completedTasksCount/$tasksCount ${KTexts.milestones}.'),
                 ),
                 LinearProgressIndicator(
                   value: progress,
                   borderRadius: BorderRadius.circular(KSizes.borderRadiusLgx),
-                  valueColor: const AlwaysStoppedAnimation<Color>(kApp4),
+                  valueColor: const AlwaysStoppedAnimation<Color>(KColors.kApp4),
                 ),
                 ExpansionTile(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(KSizes.borderRadiusLg),
                   ),
-                  title: Text('Tasks', style: Theme.of(context).textTheme.bodyMedium),
-                  collapsedIconColor: kApp4,
-                  iconColor: kApp4,
+                  title: Text(KTexts.tasks, style: Theme.of(context).textTheme.bodyMedium),
+                  collapsedIconColor: KColors.kApp4,
+                  iconColor: KColors.kApp4,
                   children: [
                     ListView.builder(
                       padding: EdgeInsets.zero,
@@ -60,7 +61,7 @@ class MilestoneProgressList extends StatelessWidget {
                         return CheckboxListTile(
                           value: milestone.status,
                           title: Text(milestone.title),
-                          activeColor: kApp4,
+                          activeColor: KColors.kApp4,
                           checkboxShape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(KSizes.borderRadiusLg),
                           ),

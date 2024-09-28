@@ -5,6 +5,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/enums.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 
 class MilestoneAdd extends StatelessWidget {
@@ -23,12 +24,12 @@ class MilestoneAdd extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                    text: 'Add ',
+                    text: '${KTexts.add} ',
                     style: Theme.of(context).textTheme.headlineMedium),
                 TextSpan(
-                  text: 'Milestones',
+                  text: KTexts.milestones.capitalizeFirst,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    color: kApp4,
+                    color: KColors.kApp4,
                   ),
                 ),
               ],
@@ -39,7 +40,7 @@ class MilestoneAdd extends StatelessWidget {
             controller: controller.titleController,
             decoration: InputDecoration(
               // labelText: 'Title',
-              hintText: 'Task to achieve in specific period',
+                hintText: KTexts.hintText,
               hintStyle: Theme.of(context).textTheme.labelMedium
             ),
           ),
@@ -47,13 +48,13 @@ class MilestoneAdd extends StatelessWidget {
           TextField(
             controller: controller.descriptionController,
             decoration: InputDecoration(
-                hintText: 'Description of the task (optional)',
+                hintText: KTexts.hintText2,
                 hintStyle: Theme.of(context).textTheme.labelMedium
 
             ),
           ),
           const SizedBox(height: KSizes.defaultSpace),
-          Text('Set how often to remind you to complete this task',
+          Text( KTexts.reminderText,
               style: Theme.of(context).textTheme.bodyMedium),
           const SizedBox(height: KSizes.sm),
           SingleChildScrollView(
@@ -63,18 +64,18 @@ class MilestoneAdd extends StatelessWidget {
               children: Period.values
                   .map((period) => ChoiceChip(
                 backgroundColor: KHelper.isDark()
-                    ? kEmptyProgressDark
-                    : kEmptyProgress,
-                selectedColor: kApp4,
+                    ? KColors.kEmptyProgressDark
+                    : KColors.kEmptyProgress,
+                selectedColor: KColors.kApp4,
                 shape: RoundedRectangleBorder(
                   side: const BorderSide(
-                    color: kApp4,
+                    color: KColors.kApp4,
                     width: 1,
                   ),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 padding: const EdgeInsets.all(5),
-                disabledColor: kEmptyProgress,
+                disabledColor: KColors.kEmptyProgress,
                 label: Text(period.name.capitalizeFirst!),
                 selected: controller.milestonePeriod.value == period,
                 onSelected: (selected) {
@@ -91,13 +92,13 @@ class MilestoneAdd extends StatelessWidget {
               style: const ButtonStyle().copyWith(
                   minimumSize: MaterialStateProperty.all(
                       const Size(double.infinity, 50)),
-                  backgroundColor: MaterialStateProperty.all(kApp4),
+                  backgroundColor: MaterialStateProperty.all(KColors.kApp4),
                   foregroundColor: MaterialStateProperty.all(Colors.white)),
               onPressed: ()=>controller.addMilestone(),
               child: Text(
-                'Add milestone',
+                '${KTexts.add} ${KTexts.milestones2}',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold),
+                    color: KColors.white, fontWeight: FontWeight.bold),
               ))
         ],
       ),

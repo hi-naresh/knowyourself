@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourself/features/learning/screens/learn_screen/learn_screen.dart';
+import 'package:knowyourself/features/master.dart';
 import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/helpers/progress_bar.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 
+import '../../../../../../routes.dart';
 import '../../../../../../utils/constants/colors.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
 import '../../../controller/add_mood_controller.dart';
 
@@ -14,6 +18,7 @@ class AspectSelectPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = AddMoodController.instance;
+    final masterController = MasterController.instance;
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
@@ -38,11 +43,11 @@ class AspectSelectPage extends StatelessWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: 'Select an Aspect',
+                        text: KTexts.selectAnAspect,
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       TextSpan(
-                          text: '\n\nChoose an aspect to describe your current state. Select one to proceed.',
+                          text: KTexts.aspectDescription,
                           style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
@@ -73,13 +78,13 @@ class AspectSelectPage extends StatelessWidget {
                                 horizontal: 30.0, vertical: 20.0),
                             decoration: BoxDecoration(
                               color: controller.selectAspect.value == index
-                                  ? kApp1
-                                  : kEmptyProgress,
+                                  ? KColors.kApp1
+                                  : KColors.kEmptyProgress,
                               borderRadius: BorderRadius.circular(30.0),
                               boxShadow: CustomShadow.getShadow([
                                 if (controller.selectAspect.value == index)
                                   BoxShadow(
-                                    color: kApp1.withOpacity(0.5),
+                                    color: KColors.kApp1.withOpacity(0.5),
                                     spreadRadius: 1,
                                     blurRadius: 5,
                                     offset: const Offset(0, 3),
@@ -97,15 +102,16 @@ class AspectSelectPage extends StatelessWidget {
                                       style: TextStyle(
                                         color: controller.selectAspect.value ==
                                                 index
-                                            ? Colors.white
-                                            : Colors.black,
+                                            ? KColors.white
+                                            : KColors.black,
                                         fontSize: 16,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                       ),
                                     if (controller.selectAspect.value == index)
                                       const Icon(
                                         Icons.check_circle,
-                                        color: Colors.white,
+                                        color: KColors.white,
                                       ),
                                   ],
                                 ),
@@ -113,8 +119,8 @@ class AspectSelectPage extends StatelessWidget {
                                   controller.aspectDescriptions[index],
                                   style: Theme.of(context).textTheme.labelMedium?.copyWith(
                                     color: controller.selectAspect.value == index
-                                        ? Colors.white
-                                        : Colors.grey,
+                                        ? KColors.white
+                                        : KColors.textPrimary,
                                   ),
                                 ),
                               ],
@@ -127,18 +133,24 @@ class AspectSelectPage extends StatelessWidget {
                 ),
               ],
             ),
-            // TextButton(
-            //     style: const ButtonStyle().copyWith(
-            //         minimumSize: MaterialStateProperty.all(
-            //             const Size(double.infinity, 60)),
-            //         backgroundColor: MaterialStateProperty.all(kApp1),
-            //         foregroundColor: MaterialStateProperty.all(Colors.white)),
-            //     onPressed: ()=> controller.nextPage(),
-            //     child: Text(
-            //       'Next',
-            //       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            //           color: Colors.white, fontWeight: FontWeight.bold),
-            //     )),
+          TextButton(
+            style: const ButtonStyle().copyWith(
+                minimumSize: MaterialStateProperty.all(
+                    const Size(double.infinity, 60)),
+                backgroundColor: MaterialStateProperty.all(KColors.kApp1),
+                foregroundColor: MaterialStateProperty.all(Colors.white)),
+            onPressed: (){
+              Get.back();
+              final masterController = MasterController.instance;
+              masterController.currentIndex.value = 2;
+            },
+            child: Text(
+              'Know above 4 aspects',
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+          )
+
           ],
         ),
       ),

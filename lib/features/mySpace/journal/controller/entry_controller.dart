@@ -10,6 +10,9 @@ import 'package:knowyourself/features/personalisation/controller/user_controller
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../../../data/repo/space/insights/insights_repo.dart';
+import '../../../../utils/constants/text_strings.dart';
+import '../../../insights/controller/insights_controller.dart';
 import '../model/journal_model.dart';
 import 'journal_controller.dart';
 
@@ -38,36 +41,81 @@ class EntryController extends GetxController {
     super.onClose();
   }
 
+  // Future<void> saveJournalEntry() async {
+  //   if (textEditingController.text.isEmpty) {
+  //     // Handle the case where there is no text entry
+  //     KHelper.showSnackBar(KTexts.error, KTexts.journalEntryEmpty);
+  //     return;
+  //   }
+  //
+  //   // Create the journal entry object
+  //   final entry = JournalEntry(
+  //     id: DateTime.now().millisecondsSinceEpoch.toString(), // Or use a proper ID generator
+  //     userId: UserController.instance.user.value.id!,
+  //     content: textEditingController.text,
+  //     entryDate: DateTime.now(),
+  //     imagePath: selectedImage.value?.path,
+  //     audioPath: voiceNotePath.value,
+  //     locationPath: location.value?? 'No location',
+  //   );
+  //
+  //   // Get the JournalController and save the entry
+  //   final journalController = JournalController.instance;
+  //   await journalController.addJournalEntry(entry);
+  //
+  //   // Clear the data in EntryController after saving
+  //   deFocusKeyboard(Get.context!);
+  //   KHelper.showSnackBar(KTexts.savedReflectionTitle, KTexts.savedReflectionMessage);
+  //   textEditingController.clear();
+  //   selectedImage.value = null;
+  //   voiceNotePath.value = null;
+  //   userPosition.value = null;
+  // }
+
   Future<void> saveJournalEntry() async {
     if (textEditingController.text.isEmpty) {
-      // Handle the case where there is no text entry
-      KHelper.showSnackBar('Error', 'Journal entry cannot be empty');
+      KHelper.showSnackBar(KTexts.error, KTexts.journalEntryEmpty);
       return;
     }
 
-    // Create the journal entry object
     final entry = JournalEntry(
-      id: DateTime.now().millisecondsSinceEpoch.toString(), // Or use a proper ID generator
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
       userId: UserController.instance.user.value.id!,
       content: textEditingController.text,
       entryDate: DateTime.now(),
       imagePath: selectedImage.value?.path,
       audioPath: voiceNotePath.value,
-      locationPath: location.value?? 'No location',
+      locationPath: location.value ?? 'No location',
     );
 
-    // Get the JournalController and save the entry
+    // Save the journal entry
     final journalController = JournalController.instance;
     await journalController.addJournalEntry(entry);
 
+    // Perform insights calculation
+    final insightsController = Get.put(InsightsController());
+    await insightsController.calculateInsightsForEntry(entry);
+
+    // Log the analyzed core values after calculation
+    final analyzedData = entry.coreValues ?? {};
+    print('Analyzed Data for Entry ${entry.id}: $analyzedData');
+
+    // Store the analyzed core values in the repository
+    final insightsRepo = Get.put(InsightsRepo());
+    await insightsRepo.storeAnalyzedCoreValues(entry.id!, analyzedData);
+
+    // Log what has been saved
+    print('Stored Analyzed Data for Entry ${entry.id}: ${await insightsRepo.fetchAnalyzedCoreValues(entry.id!)}');
+
     // Clear the data in EntryController after saving
     deFocusKeyboard(Get.context!);
-    KHelper.showSnackBar('Saved Reflection !', 'Reflection entry saved successfully');
+    KHelper.showSnackBar(KTexts.savedReflectionTitle, KTexts.savedReflectionMessage);
     textEditingController.clear();
     selectedImage.value = null;
     voiceNotePath.value = null;
     userPosition.value = null;
   }
+
 
   Future<void> pickImage() async {
     try {
@@ -76,7 +124,7 @@ class EntryController extends GetxController {
       selectedImage.value = image;
     } catch (e) {
       await Permission.photos.request();
-      KHelper.showSnackBar('Permission denied', 'Please enable permission to access photos');
+      KHelper.showSnackBar(KTexts.permissionDeniedTitle, KTexts.enablePhotoPermission);
     }
   }
 
@@ -91,7 +139,7 @@ class EntryController extends GetxController {
       // selectedImage.map((list) => list?.add(image));
     } catch (e) {
       await Permission.camera.request();
-      KHelper.showSnackBar('Permission denied', 'Please enable permission to access camera');
+      KHelper.showSnackBar(KTexts.permissionDeniedTitle, KTexts.enableCameraPermission);
       openAppSettings();
     }
   }
@@ -141,7 +189,7 @@ class EntryController extends GetxController {
       location.value = await getLocation();
     } else {
       // Handle location permission denied
-      KHelper.showSnackBar('Permission denied', 'Please enable location permission');
+      KHelper.showSnackBar(KTexts.permissionDeniedTitle, KTexts.enableLocationPermission);
       openAppSettings();
     }
   }
@@ -159,14 +207,14 @@ class EntryController extends GetxController {
             userPosition.value!.latitude, userPosition.value!.longitude);
         // location.value = placemarks.first.name ?? "No nearby area found";
         // print("Location: ${placemarks.first.name}");
-        return placemarks.first.name ?? "No nearby area found";
+        return placemarks.first.name ?? KTexts.noNearbyAreaFound;
       } else {
-        return "No nearby area found";
+        return KTexts.noNearbyAreaFound;
       }
     } catch (e) {
       // Handling any errors that occur during the reverse geocoding process
       print("Failed to get nearby area: $e");
-      return "Failed to get nearby area";
+      return KTexts.failedToGetNearbyArea;
     }
   }
 

@@ -247,7 +247,7 @@ class GratitudeAffirmationScreen extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium
-                    ?.copyWith(color: kApp4),
+                    ?.copyWith(color: KColors.kApp4),
               ),
             ],
           ),
@@ -274,7 +274,7 @@ class GratitudeAffirmationScreen extends StatelessWidget {
             TextButton(
               style: const ButtonStyle().copyWith(
                 minimumSize: MaterialStateProperty.all(const Size(150, 50)),
-                backgroundColor: MaterialStateProperty.all(kApp4),
+                backgroundColor: MaterialStateProperty.all(KColors.kApp4),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
               ),
               onPressed: controller.addGratitude,
@@ -319,7 +319,7 @@ class GratitudeAffirmationScreen extends StatelessWidget {
                       title: Text(controller.gratitudeItems[index]),
                       trailing: IconButton(
                         icon: const Icon(CupertinoIcons.minus_circle_fill,
-                            color: kApp4),
+                            color: KColors.kApp4),
                         onPressed: () => controller.deleteGratitude(index),
                       ),
                     );
@@ -397,7 +397,7 @@ class GratitudeAffirmationScreen extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium
-                    ?.copyWith(color: kApp4),
+                    ?.copyWith(color: KColors.kApp4),
               ),
             ],
           ),
@@ -426,8 +426,8 @@ class GratitudeAffirmationScreen extends StatelessWidget {
                     context, affirmationTypes[index]),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: kApp4.withOpacity(0.1),
-                    border: Border.all(color: kApp4),
+                    color: KColors.kApp4.withOpacity(0.1),
+                    border: Border.all(color: KColors.kApp4),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
@@ -437,7 +437,7 @@ class GratitudeAffirmationScreen extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge
-                          ?.copyWith(color: kApp4),
+                          ?.copyWith(color: KColors.kApp4),
                     ),
                   ),
                 ),

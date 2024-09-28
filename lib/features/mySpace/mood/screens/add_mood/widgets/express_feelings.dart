@@ -4,7 +4,9 @@ import 'package:knowyourself/features/mySpace/mood/screens/add_mood/widgets/help
 import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
+import '../../../../../../routes.dart';
 import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/helpers/shadow_disabler.dart';
 
 
@@ -23,7 +25,7 @@ class ExpressFeelingsPage extends StatelessWidget {
             const ProgressBar(steps: "3/3", percent: 1),
             const SizedBox(height: KSizes.defaultSpace),
             Text(
-              'What exactly are you experiencing and Why?',
+              KTexts.feelingsQuestion,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: KSizes.defaultSpace),
@@ -38,16 +40,16 @@ class ExpressFeelingsPage extends StatelessWidget {
                         margin: const EdgeInsets.symmetric(horizontal: 3.0),
                         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
                         decoration: BoxDecoration(
-                          color: controller.selectHappenedAt.value == index ? kApp1 : kEmptyProgress,
+                          color: controller.selectHappenedAt.value == index ? KColors.kApp1 : KColors.kEmptyProgress,
                           borderRadius: BorderRadius.circular(30.0),
                           border: Border.all(
-                            color: controller.selectHappenedAt.value == index ? kApp1: Colors.transparent,
+                            color: controller.selectHappenedAt.value == index ? KColors.kApp1:KColors.transparent,
                             width: 2,
                           ),
                           boxShadow: CustomShadow.getShadow([
                             if (controller.selectHappenedAt.value == index)
                               BoxShadow(
-                                color: kApp1.withOpacity(0.5),
+                                color: KColors.kApp1.withOpacity(0.5),
                                 spreadRadius: 1,
                                 blurRadius: 5,
                                 offset: const Offset(0, 3),
@@ -59,14 +61,14 @@ class ExpressFeelingsPage extends StatelessWidget {
                             Text(
                               controller.happenedAt[index],
                               style: TextStyle(
-                                color: controller.selectHappenedAt.value == index ? Colors.white : Colors.black,
+                                color: controller.selectHappenedAt.value == index ? KColors.white : KColors.black,
                                 fontSize: 16,
                               ),
                             ),
                             if (controller.selectHappenedAt.value == index)
                               const Icon(
                                 Icons.check_circle,
-                                color: Colors.white,
+                                color: KColors.white,
                               ),
                           ],
                         ),
@@ -81,7 +83,7 @@ class ExpressFeelingsPage extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(KSizes.md),
                 decoration: BoxDecoration(
-                  color: KHelper.isDark() ? kEmptyProgressDark : kEmptyProgress,
+                  color: KHelper.isDark() ? KColors.kEmptyProgressDark : KColors.kEmptyProgress,
                   borderRadius: BorderRadius.circular(KSizes.borderRadiusXl),
                 ),
                 child: TextFormField(
@@ -92,8 +94,8 @@ class ExpressFeelingsPage extends StatelessWidget {
                   textInputAction: TextInputAction.newline,
                   textAlignVertical: TextAlignVertical.top,
                   decoration: const InputDecoration(
-                    hintText: 'Describe in detail about why and how....',
-                    hintStyle: TextStyle(color: Colors.grey),
+                    hintText: KTexts.describeText,
+                    hintStyle: TextStyle(color: KColors.textSecondary),
                     contentPadding: EdgeInsets.all(KSizes.sm),
                     disabledBorder: InputBorder.none,
                     enabledBorder: InputBorder.none,
@@ -111,22 +113,53 @@ class ExpressFeelingsPage extends StatelessWidget {
     );
   }
 
+
+
   Widget _buildActionButtons(BuildContext context) {
     final AddMoodController controller = AddMoodController.instance;
 
     return Column(
       children: [
-        _buildActionButton(
-          context,
-          buttonText: 'Stay Same',
-          action: controller.saveMoodData,
-        ),
-        const SizedBox(height: KSizes.md),
-        _buildActionButton(
-          context,
-          buttonText: 'Feel Better',
-          action: controller.shiftMood,
-        ),
+        // _buildActionButton(
+        //   context,
+        //   buttonText: KTexts.staySameButtonText,
+        //   action: controller.saveMoodData,
+        // ),
+        // const SizedBox(height: KSizes.md),
+        // _buildActionButton(
+        //   context,
+        //   buttonText: KTexts.feelBetterButtonText,
+        //   action: controller.shiftMood,
+        // ),
+        Obx(() {
+          if (controller.isNegativeMood()) {
+            return _buildActionButton(
+              context,
+              buttonText: KTexts.feelBetterButtonText,
+              action: controller.shiftMood,
+            );
+          } else {
+            return Column(
+              children: [
+                _buildActionButton(
+                  context,
+                  buttonText:"Lacking something",
+                  action: () {
+                    controller.saveMoodData().then((value) =>
+                        Get.toNamed(KRoutes.getDigDeeperRoute())
+                    );
+                  },
+                ),
+                const SizedBox(height: KSizes.md),
+                _buildActionButton(
+                  context,
+                  buttonText: KTexts.staySameButtonText,
+                  action: controller.saveMoodData,
+                ),
+              ],
+            );
+          }
+        }),
       ],
     );
   }
@@ -135,7 +168,7 @@ class ExpressFeelingsPage extends StatelessWidget {
     return TextButton(
       style: ButtonStyle(
         minimumSize: MaterialStateProperty.all(const Size(double.infinity, 55)),
-        backgroundColor: MaterialStateProperty.all(kApp1),
+        backgroundColor: MaterialStateProperty.all(KColors.kApp1),
         foregroundColor: MaterialStateProperty.all(Colors.white),
       ),
       onPressed: () {
@@ -145,7 +178,7 @@ class ExpressFeelingsPage extends StatelessWidget {
       child: Text(
         buttonText,
         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-          color: Colors.white,
+          color: KColors.white,
           fontWeight: FontWeight.bold,
         ),
       ),

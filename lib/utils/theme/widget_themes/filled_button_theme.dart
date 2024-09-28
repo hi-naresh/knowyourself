@@ -10,7 +10,7 @@ class KFilledButtonTheme {
     style: FilledButton.styleFrom(
       elevation: 0,
       foregroundColor: KColors.white,
-      backgroundColor: kApp1,
+      backgroundColor: KColors.kApp1,
       disabledForegroundColor: KColors.darkGrey,
       disabledBackgroundColor: KColors.buttonDisabled,
       side: BorderSide.none,
@@ -24,7 +24,7 @@ class KFilledButtonTheme {
     style: FilledButton.styleFrom(
       elevation: 0,
       foregroundColor: KColors.white,
-      backgroundColor: kApp1,
+      backgroundColor: KColors.kApp1,
       disabledForegroundColor: KColors.darkGrey,
       disabledBackgroundColor: KColors.darkerGrey,
       side: const BorderSide(color: KColors.primary),

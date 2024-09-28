@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/utils/constants/colors.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../controller/entry_controller.dart';
 
 class JournalEntryScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class JournalEntryScreen extends StatelessWidget {
                 IconButton(
                   icon: const Icon(
                     CupertinoIcons.bookmark,
-                    color: kApp4,
+                    color: KColors.kApp4,
                   ),
                   onPressed: () => controller.addBookmark(),
                 ),
@@ -35,10 +36,10 @@ class JournalEntryScreen extends StatelessWidget {
                 ),
                 TextButton(
                     onPressed: ()=>controller.cancelEntry(),
-                    child: Text('Cancel',
+                    child: Text( KTexts.cancel,
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w700,
-                          color: kApp4
+                          color: KColors.kApp4
                         )))
               ],
             ),
@@ -88,8 +89,8 @@ class JournalEntryScreen extends StatelessWidget {
                 maxLines: null,
                 keyboardType: TextInputType.multiline,
                 decoration: const InputDecoration(
-                  hintText: 'Your reflection for today...',
-                  hintStyle: TextStyle(color: Colors.grey),
+                  hintText: KTexts.dailyReflection,
+                  hintStyle: TextStyle(color: KColors.grey),
                   contentPadding: EdgeInsets.all(KSizes.sm),
                   disabledBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,
@@ -117,14 +118,14 @@ class JournalEntryScreen extends StatelessWidget {
                   ),
                   FilledButton(
                     style: const ButtonStyle().copyWith(
-                      backgroundColor: MaterialStateProperty.all(kApp4),
+                      backgroundColor: MaterialStateProperty.all(KColors.kApp4),
                       foregroundColor: MaterialStateProperty.all(Colors.white)
                     ),
                       onPressed: (){
                         controller.saveJournalEntry();
                         Get.back();
                       },
-                      child: const Text('Save',))
+                      child: const Text(KTexts.save,))
                   // IconButton(
                   //     icon: const Icon(CupertinoIcons.waveform_path_badge_plus),
                   //     onPressed: () => controller.recordVoiceNote()),

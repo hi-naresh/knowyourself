@@ -9,6 +9,7 @@ import 'package:knowyourself/features/mySpace/story/screens/story_screen.dart';
 import 'package:knowyourself/utils/constants/sizes.dart';
 import '../../common/styles/styles.dart';
 import '../../utils/constants/colors.dart';
+import '../../utils/constants/text_strings.dart';
 import '../../utils/helpers/helper_functions.dart';
 import 'gratitude/screens/gratitude_page.dart';
 
@@ -17,14 +18,14 @@ class MySpaceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const selectedColor = kApp4;
+    const selectedColor = KColors.kApp4;
     final controller = MySpaceController.instance;
     return Column(
         children: [
           Container(
             clipBehavior: Clip.none,
             decoration: BoxDecoration(
-              color: KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress,
+              color: KHelper.isDarkMode(context) ? KColors.kEmptyProgressDark : KColors.kEmptyProgress,
               borderRadius: BorderRadius.circular(KSizes.cardRadiusLg),
             ),
             margin: const EdgeInsets.all(KSizes.md),
@@ -33,11 +34,11 @@ class MySpaceScreen extends StatelessWidget {
               controller: controller.tabController,
               dividerHeight: 0,
               indicator: KStyles.containerDecoration(selectedColor),
-              labelColor: Colors.white,
+              labelColor: KColors.white,
               isScrollable: true,
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
               tabAlignment: TabAlignment.center,
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
+              overlayColor: MaterialStateProperty.all(KColors.transparent),
               labelPadding: const EdgeInsets.symmetric(horizontal: 20),
               // labelStyle: h3,
               // tabAlignment: TabAlignment.center,
@@ -76,13 +77,13 @@ class MySpaceController extends GetxController with GetSingleTickerProviderState
   late TabController tabController;
 
   final tabs = const [
-    Tab(text: 'Reflection'),
-    Tab(text: 'Mood'),
-    Tab(text: 'Milestones'),
+    const Tab(text: KTexts.reflections),
+    const Tab(text: KTexts.mood),
+    Tab(text: KTexts.milestones),
     Tab(text: 'Gratitude'),
     Tab(text: 'Manifestation'),
-    Tab(text: 'Questions'),
-    Tab(text: 'Story'),
+    const Tab(text: KTexts.questions),
+    const Tab(text: KTexts.story),
     // Tab(text: 'Gratitude'),
   ];
   @override

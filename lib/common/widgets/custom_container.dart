@@ -20,8 +20,8 @@ class CustomContainer extends StatelessWidget {
    CustomContainer({super.key,
     required this.child,
     this.width = double.infinity,
-    // this.height = double.maxFinite,
-    this.color = Colors.transparent,
+    // this.height = double.minPositive,
+    this.color = KColors.transparent,
     this.borderRadius = const BorderRadius.all(Radius.circular(25)),
     this.padding = const EdgeInsets.all(KSizes.md),
     this.margin = const EdgeInsets.all(0),
@@ -33,8 +33,8 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = KHelper.isDark();
-    if(color == Colors.transparent){
-      color = isDark ? color : kEmptyProgress;
+    if(color == KColors.transparent){
+      color = isDark ? color : KColors.kEmptyProgress;
     }
     return GestureDetector(
       onTap: onTap,

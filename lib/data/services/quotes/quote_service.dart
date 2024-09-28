@@ -3,7 +3,9 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart';
 import 'package:intl/intl.dart';
+import 'package:knowyourself/utils/constants/text_strings.dart';
 import 'package:knowyourself/utils/helpers/helper_functions.dart';
+import 'package:knowyourself/utils/theme/widget_themes/text_theme.dart';
 
 import '../../../features/insights/model/quote_model.dart';
 
@@ -87,10 +89,10 @@ class QuoteService extends GetxService {
 
         }
       }
-      throw Exception('Failed to fetch quote');
+      throw Exception(KTexts.fetchQuoteError);
     } catch (e) {
       // Return a default quote or handle the error as needed
-      KHelper.showSnackBar('Failed to fetch quote', 'Please check your internet connection');
+      KHelper.showSnackBar(KTexts.fetchQuoteError, KTexts.snackBarMessage);
       return QuoteModel(
         title: 'It is only by the touch of the Absolute that we can arrive at our own absolute.',
         author: 'Sri Aurobindo',

@@ -6,6 +6,7 @@ import 'package:knowyourself/utils/constants/sizes.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../../data/helper_service/backup_service/backup_service.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../widgets/settings_tile.dart';
 
 class SettingsMySpace extends StatelessWidget {
@@ -26,30 +27,30 @@ class SettingsMySpace extends StatelessWidget {
             fit: BoxFit.contain,
           ),
           SettingTile(
-              title: "Recover local data",
-              subtitle: "Import data from last account",
+              title: KTexts.recoverLocalDataTitle,
+              subtitle: KTexts.recoverLocalDataSubtitle,
               onTap: ()=>backupController.importData(),
               icon: CupertinoIcons.arrow_clockwise),
           SettingTile(
-              title: "Recover online data",
-              subtitle: "Import data from last saved to online",
+              title: KTexts.recoverOnlineDataTitle,
+              subtitle: KTexts.recoverOnlineDataSubtitle,
               onTap: ()=>backupController.importRemoteData(),
               icon: CupertinoIcons.arrow_2_circlepath_circle),
           SettingTile(
-              title: "Backup data locally",
+              title: KTexts.backupDataLocallyTitle,
               onTap: ()=>backupController.localStore(),
-              subtitle: "Store your data on your phone",
+              subtitle: KTexts.backupDataLocallySubtitle,
               icon: CupertinoIcons.device_phone_portrait),
           SettingTile(
-              title: "Backup data online",
+              title: KTexts.backupDataOnlineTitle,
               onTap: ()=>backupController.remoteStore(),
-              subtitle: "Save your data on cloud",
+              subtitle: KTexts.backupDataOnlineSubtitle,
               icon: CupertinoIcons.arrow_swap),
           //erase all data
           SettingTile(
-              title: "Erase Data",
+              title: KTexts.eraseDataTitle,
               onTap: ()=>backupController.eraseData(),
-              subtitle: "Erase all user data from this account",
+              subtitle: KTexts.eraseDataSubtitle,
               icon: CupertinoIcons.delete_right),
         ],
       ),

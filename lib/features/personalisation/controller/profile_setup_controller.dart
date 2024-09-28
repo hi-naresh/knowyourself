@@ -9,6 +9,7 @@ import 'package:knowyourself/utils/helpers/helper_functions.dart';
 
 import '../../../data/repo/user/local/user_profile_repo.dart';
 import '../../../utils/constants/enums.dart';
+import '../../../utils/constants/text_strings.dart';
 import '../model/user_onboard_model.dart';
 
 class ProfileSetupController extends GetxController {
@@ -50,6 +51,9 @@ class ProfileSetupController extends GetxController {
     // Attach an auth state changes listener
     _authListener;
     userProfile.refresh();
+    // for (final user in userProfile.value.toJson().entries) {
+    //   print('${user.key} : ${user.value}');
+    // }
   }
 
   @override
@@ -66,7 +70,8 @@ class ProfileSetupController extends GetxController {
       userProfile(fetchedProfile);
       userProfile.refresh(); // This triggers the UI to update with the new profile
     } else {
-      userProfile(UserProfileModel()); // Resets to an empty profile
+      userProfile(UserProfileModel());
+      userProfile.refresh();
     }
   }
 
@@ -101,7 +106,7 @@ class ProfileSetupController extends GetxController {
     // userProfile.refresh();
 
     Get.back();
-    KHelper.showSnackBar('Profile Updated', 'Your profile has been updated successfully.');
+    KHelper.showSnackBar(KTexts.profileUpdated, KTexts.profileUpdatedMessage);
   }
 
 
@@ -133,7 +138,7 @@ class ProfileSetupController extends GetxController {
       userProfile.refresh();
       Get.offAllNamed(KRoutes.getReviewAskRoute());
     } else {
-      KHelper.showSnackBar('Complete Details', 'Please fill in all the fields correctly.');
+      KHelper.showSnackBar(KTexts.completeDetails, KTexts.completeDetailsMessage);
     }
   }
 
@@ -170,19 +175,19 @@ class ProfileSetupController extends GetxController {
       if(_validatePage1Inputs()){
         pageIndex.value++;
       }else{
-        KHelper.showSnackBar('Fill up details', 'Please fill in all the fields correctly.');
+        KHelper.showSnackBar(KTexts.fillUpDetails, KTexts.fillUpDetailsMessage);
       }
     }else if(pageIndex.value == 1){
       if(_validatePage2Inputs()){
         pageIndex.value++;
       }else{
-        KHelper.showSnackBar('Fill up details', 'Please fill in all the fields correctly.');
+        KHelper.showSnackBar(KTexts.fillUpDetails, KTexts.fillUpDetailsMessage);
       }
     }else if(pageIndex.value == 2){
       if(_validatePage3Inputs()){
         finishOnboarding();
       }else{
-        KHelper.showSnackBar('Fill up details', 'Please fill in all the fields correctly.');
+        KHelper.showSnackBar(KTexts.fillUpDetails, KTexts.fillUpDetailsMessage);
       }
     }
   }

@@ -3,10 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:knowyourself/common/widgets/appbar/pagebar.dart';
 import 'package:knowyourself/features/personalisation/controller/profile_setup_controller.dart';
-import 'package:knowyourself/features/personalisation/screens/profile/pages/profile_avatar.dart';
 import 'package:knowyourself/features/personalisation/screens/profile/profile_edit_fields.dart';
-
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
 class ProfileEditScreen extends StatelessWidget {
@@ -16,7 +15,7 @@ class ProfileEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: KPageBar(
-        title: 'Edit Profile',
+        title: '${KTexts.edit} ${KTexts.profile} ',
         onTap: () {
           Get.back();
         },
@@ -44,11 +43,11 @@ class ProfileEditScreen extends StatelessWidget {
                           TextSpan(
                             children: [
                               TextSpan(
-                                text: ProfileSetupController.instance.userProfile.value.name ?? 'No user',
+                                text: ProfileSetupController.instance.userProfile.value.name ?? KTexts.noUser,
                                 style: Theme.of(context).textTheme.headlineSmall,
                               ),
                               TextSpan(
-                                text: '\nReward points : ${ProfileSetupController.instance.userProfile.value.rewardPoints}\n\n',
+                                text: '\n ${KTexts.rewardPoints} : ${ProfileSetupController.instance.userProfile.value.rewardPoints}\n\n',
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             ],
@@ -60,43 +59,43 @@ class ProfileEditScreen extends StatelessWidget {
                 const SizedBox(height: KSizes.defaultSpace),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Text("Personal Info", style: Theme.of(context).textTheme.headlineSmall),
+                  child: Text(KTexts.personalInfo, style: Theme.of(context).textTheme.headlineSmall),
                 ),
                 const SizedBox(height: KSizes.sm),
                 ListTile(
-                  title: const Text('Occupation'),
-                  trailing: Text(ProfileSetupController.instance.userProfile.value.occupation ?? 'No user',
+                  title: const Text(KTexts.occupationLabelText),
+                  trailing: Text(ProfileSetupController.instance.userProfile.value.occupation ?? KTexts.noUser,
                   style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ),
                 ListTile(
-                  title: const Text('Gender'),
+                  title: const Text(KTexts.gender),
                   trailing: Text(
                       style: Theme.of(context).textTheme.bodyMedium,
-                      ProfileSetupController.instance.userProfile.value.gender ?? 'No user'),
+                      ProfileSetupController.instance.userProfile.value.gender ?? KTexts.noUser),
                 ),
                 ListTile(
-                  title: const Text('Date of Birth'),
+                  title: const Text(KTexts.birthDate),
                   trailing: Text(
                       style: Theme.of(context).textTheme.bodyMedium,
                       KHelper.getFormattedDateString(ProfileSetupController.instance.userProfile.value.dob!)),
                 ),
                 ListTile(
-                  title: const Text('User Type'),
+                  title: const Text(KTexts.userTypeText),
                   trailing: Text(
                       style: Theme.of(context).textTheme.bodyMedium,
-                      ProfileSetupController.instance.userProfile.value.userType?.split('.').last ?? 'No user'),
+                      ProfileSetupController.instance.userProfile.value.userType?.split('.').last ?? KTexts.noUser),
                 ),
                 ListTile(
-                  title: const Text('Insitution'),
+                  title: const Text(KTexts.institutionLabelText),
                   trailing: Text(
                       style: Theme.of(context).textTheme.bodyMedium,
-                      ProfileSetupController.instance.userProfile.value.institution ?? 'No user'),
+                      ProfileSetupController.instance.userProfile.value.institution ?? KTexts.noUser),
                 ),
                 const SizedBox(height: KSizes.defaultSpace,),
                 ElevatedButton(
-                    onPressed: ()=> Get.to(()=>EditPersonalInfo()),
-                    child: Text('Edit Info'))
+                    onPressed: ()=> Get.to(()=>const EditPersonalInfo()),
+                    child: const Text(KTexts.editInfo))
 
               ],
             ),

@@ -19,7 +19,7 @@ class QuoteWidget extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: kApp1.withOpacity(0.3),
+            color: KColors.kApp1.withOpacity(0.3),
             borderRadius: BorderRadius.circular(KSizes.lg),
           ),
           child: Stack(
@@ -30,7 +30,7 @@ class QuoteWidget extends StatelessWidget {
                 bottom: 0,
                 child: SvgPicture.asset(
                   colorFilter: const ColorFilter.mode(
-                    Colors.white10,
+                    KColors.white10,
                     BlendMode.modulate,
                   ),
                   KImages.health21,

@@ -75,19 +75,19 @@ class CalendarWidget extends StatelessWidget {
       final controller = JournalController.instance;
       bool isSelected = isSameDay(controller.currentDate.value, day);
       bool isToday = isSameDay(DateTime.now(), day);
-      dateStyle = dateStyle.copyWith(color: isSelected || isToday ? Colors.white : Colors.black);
-      dayStyle = dayStyle.copyWith(color: isSelected || isToday ? Colors.white : Colors.black);
+      dateStyle = dateStyle.copyWith(color: isSelected || isToday ? KColors.white : KColors.black);
+      dayStyle = dayStyle.copyWith(color: isSelected || isToday ? KColors.white : KColors.black);
 
 
       Color backgroundColor;
       if (isSelected) {
-        backgroundColor = kApp4;
+        backgroundColor = KColors.kApp4;
       } else if (isToday) {
-        backgroundColor = kApp1;
+        backgroundColor = KColors.kApp1;
       } else {
-        backgroundColor = KHelper.isDarkMode(context) ? kEmptyProgressDark : kEmptyProgress;
-        dayStyle = KHelper.isDarkMode(context) ? dayStyle.copyWith(color: Colors.grey) : dayStyle.copyWith(color: KColors.dark);
-        dateStyle = KHelper.isDarkMode(context) ? dateStyle.copyWith(color: Colors.grey) : dateStyle.copyWith(color: KColors.dark);
+        backgroundColor = KHelper.isDarkMode(context) ? KColors.kEmptyProgressDark : KColors.kEmptyProgress;
+        dayStyle = KHelper.isDarkMode(context) ? dayStyle.copyWith(color: KColors.grey) : dayStyle.copyWith(color: KColors.dark);
+        dateStyle = KHelper.isDarkMode(context) ? dateStyle.copyWith(color: KColors.grey) : dateStyle.copyWith(color: KColors.dark);
       }
 
       return GestureDetector(

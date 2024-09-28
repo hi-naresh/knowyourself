@@ -20,7 +20,7 @@ class KCheckboxTheme {
       if (states.contains(MaterialState.selected)) {
         return KColors.primary;
       } else {
-        return Colors.transparent;
+        return KColors.transparent;
       }
     }),
   );
@@ -39,7 +39,7 @@ class KCheckboxTheme {
       if (states.contains(MaterialState.selected)) {
         return KColors.primary;
       } else {
-        return Colors.transparent;
+        return KColors.transparent;
       }
     }),
   );
